@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "dev": "node dev-server.mjs",
+    "dev:vercel": "vercel dev",
+    "check": "node scripts/check-content.mjs",
+    "seo": "node scripts/build-seo-artifacts.mjs",
+    "deploy": "vercel --prod"
+  }
+}

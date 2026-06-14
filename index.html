@@ -1,0 +1,5143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum Mechanics | Interactive Book</title>
+
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <link rel="stylesheet" href="assets/ai-exercises.css?v=0614.2">
+  <script defer src="assets/ai-exercises.js?v=0614.2"></script>
+
+  <style>
+    :root {
+      --bg: #FCFCFA;
+      --panel: #FFFFFF;
+      --header: #F2F4F7;
+      --text: #2C3E50;
+      --muted: #5D6D7E;
+      --blue: #004B87;
+      --blue-soft: #E8F0FE;
+      --border: #DDE3ED;
+      --red: #B03A2E;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html,
+    body {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg);
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
+
+    .top-header {
+      background: var(--header);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 42px;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .header-box {
+      border-left: 6px solid var(--blue);
+      padding-left: 22px;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .header-main {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .header-tools {
+      display: inline-flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 2px;
+      width: 100%;
+      min-width: 0;
+    }
+
+    .course-label {
+      font-size: 13px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.9px;
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .main-title {
+      font-size: 34px;
+      line-height: 1.15;
+      color: var(--blue);
+      font-weight: 700;
+      margin-bottom: 10px;
+      overflow-wrap: break-word;
+    }
+
+    .metadata {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .metadata span {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .menu-launcher-row {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 18px 42px 0 42px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .menu-toggle-button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid rgba(0, 75, 135, 0.18);
+      background: #FFFFFF;
+      color: var(--blue);
+      text-decoration: none;
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+      white-space: nowrap;
+    }
+
+    .menu-launcher-note {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .menu-launcher-note:empty {
+      display: none;
+    }
+
+    .drawer-overlay {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: flex-start;
+      background: rgba(17, 24, 39, 0.44);
+      backdrop-filter: blur(4px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.22s ease;
+      z-index: 1250;
+    }
+
+    .drawer-overlay[hidden] {
+      display: none;
+    }
+
+    .drawer-overlay:target {
+      display: flex !important;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-overlay.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .drawer-shell {
+      width: min(92vw, 390px);
+      height: 100%;
+      background: var(--panel);
+      border-right: 1px solid var(--border);
+      box-shadow: 0 24px 48px rgba(15, 23, 42, 0.16);
+      transform: translateX(-104%);
+      transition: transform 0.26s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .drawer-overlay.is-open .drawer-shell {
+      transform: translateX(0);
+    }
+
+    .drawer-overlay:target .drawer-shell {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 20px 20px 18px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+    }
+
+    .drawer-kicker {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+
+    .drawer-title {
+      color: var(--blue);
+      font-size: 22px;
+      line-height: 1.18;
+      font-weight: 700;
+    }
+
+    .drawer-close-button {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(0, 75, 135, 0.12);
+      border-radius: 999px;
+      background: #F8FBFF;
+      color: #0B5EA8;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .drawer-scroll {
+      padding: 16px 18px 28px;
+      overflow-y: auto;
+      display: grid;
+      gap: 14px;
+    }
+
+    .drawer-stack {
+      display: grid;
+      gap: 14px;
+    }
+
+    .drawer-group {
+      border: 1px solid #E8EDF3;
+      background: #F8F9FA;
+      border-radius: 16px;
+      padding: 12px;
+    }
+
+    .drawer-group-trigger {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      border: 0;
+      background: transparent;
+      padding: 4px 2px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      cursor: pointer;
+      text-align: left;
+      color: var(--blue);
+      font-family: "Inter", sans-serif;
+    }
+
+    .drawer-group-title {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .drawer-group-indicator {
+      color: var(--muted);
+      transition: transform 0.18s ease, color 0.18s ease;
+    }
+
+    .drawer-group-trigger.is-open .drawer-group-indicator {
+      transform: rotate(180deg);
+      color: var(--blue);
+    }
+
+    .drawer-group-panel {
+      display: none;
+      padding-top: 12px;
+    }
+
+    .drawer-group-panel.is-open {
+      display: grid;
+      gap: 10px;
+    }
+
+    .extras-list,
+    .personal-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .sidebar-helper {
+      margin-top: 2px;
+      color: var(--muted);
+      font-size: 12.5px;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .personal-drawer-actions {
+      display: grid;
+      gap: 8px;
+      margin-top: 2px;
+    }
+
+    a.chapter-button,
+    a.personal-button,
+    a.extras-button,
+    a.drawer-inline-action {
+      text-decoration: none;
+    }
+
+    .drawer-inline-action {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #C7D8F3;
+      background: #FFFFFF;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 10px 14px;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .extras-button {
+      width: 100%;
+      border: 1px solid #E8EDF3;
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 10px 11px;
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 9px;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      transition: 0.18s ease;
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .extras-button.active {
+      background: var(--blue-soft);
+      border-color: #C5D8F5;
+      border-left: 5px solid var(--blue);
+      padding-left: 7px;
+    }
+
+    .extras-button:disabled,
+    .personal-button:disabled {
+      cursor: not-allowed;
+      opacity: 0.56;
+      background: #F3F5F8;
+      border-color: #E1E7EF;
+    }
+
+    .personal-button {
+      width: 100%;
+      border: 1px solid #E8EDF3;
+      background: #FFFFFF;
+      border-radius: 10px;
+      padding: 10px 11px;
+      display: grid;
+      grid-template-columns: 18px 1fr;
+      gap: 9px;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      transition: 0.18s ease;
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .personal-button.active {
+      background: var(--blue-soft);
+      border-color: #C5D8F5;
+      border-left: 5px solid var(--blue);
+      padding-left: 7px;
+    }
+
+    .extras-icon {
+      color: var(--blue);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .extras-text {
+      min-width: 0;
+    }
+
+    .extras-label {
+      display: block;
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.25;
+      color: inherit;
+    }
+
+    .extras-note {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .chapter-list {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+    }
+
+    .chapter-button {
+      width: 100%;
+      border: 1px solid #E8EDF3;
+      background: #F8F9FA;
+      border-radius: 9px;
+      padding: 10px 11px;
+      display: grid;
+      grid-template-columns: 38px 1fr;
+      gap: 9px;
+      align-items: center;
+      cursor: pointer;
+      text-align: left;
+      transition: 0.18s ease;
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .chapter-button.active {
+      background: var(--blue-soft);
+      border-color: #C5D8F5;
+      border-left: 5px solid var(--blue);
+      padding-left: 7px;
+    }
+
+    .chapter-button:focus,
+    .chapter-button:focus-visible {
+      outline: none;
+    }
+
+    .chapter-button:not(.active):focus,
+    .chapter-button:not(.active):focus-visible {
+      background: #FFFFFF;
+      border-color: #E8EDF3;
+    }
+
+    .chapter-number {
+      color: var(--blue);
+      font-weight: 700;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    .chapter-name {
+      font-size: 13.5px;
+      font-weight: 600;
+      line-height: 1.25;
+    }
+
+    .layout {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      flex: 1;
+      padding: 22px 42px 36px 42px;
+      min-height: 0;
+      min-width: 0;
+    }
+
+    .content-area {
+      min-width: 0;
+    }
+
+    .chapter-panel {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      min-height: 520px;
+    }
+
+    .panel-header {
+      background: linear-gradient(90deg, var(--blue-soft), #FFFFFF);
+      border-bottom: 1px solid var(--border);
+      padding: 22px 26px;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .panel-headline {
+      min-width: 0;
+      flex: 1;
+    }
+
+    .panel-actions {
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-end;
+      gap: 10px;
+      flex-wrap: wrap;
+      min-height: 42px;
+    }
+
+    .panel-action-button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #C7D8F3;
+      background: #FFFFFF;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 9px 14px;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+    }
+
+    .panel-action-button.is-active {
+      background: #FFF7ED;
+      border-color: #F2C38E;
+      color: #B45309;
+    }
+
+    .panel-action-button:disabled {
+      opacity: 0.56;
+      cursor: not-allowed;
+    }
+
+    .panel-kicker {
+      color: var(--red);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      margin-bottom: 5px;
+    }
+
+    .panel-title {
+      color: var(--blue);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .panel-description {
+      margin-top: 8px;
+      max-width: 850px;
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .panel-description:empty {
+      display: none;
+    }
+
+    .topic-container {
+      padding: 24px 26px 28px 26px;
+    }
+
+    .topic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 14px;
+    }
+
+    .chapter-panel--landing .panel-header {
+      display: none;
+    }
+
+    .chapter-panel--landing .topic-container {
+      padding-top: 8px;
+    }
+
+    .chapter-panel--landing .discovery-grid {
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .discovery-shell {
+      display: grid;
+      gap: 20px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .discovery-hero {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid #DDE7F5;
+      border-radius: 16px;
+      background:
+        radial-gradient(circle at top right, rgba(232, 240, 254, 0.95), transparent 34%),
+        linear-gradient(135deg, #F8FBFF 0%, #FFFFFF 58%, #F8F4FF 100%);
+      padding: 24px;
+    }
+
+    .discovery-hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -40px -50px auto;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: rgba(0, 75, 135, 0.05);
+      filter: blur(6px);
+      pointer-events: none;
+    }
+
+    .discovery-kicker {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .discovery-title {
+      color: var(--blue);
+      font-size: clamp(24px, 3vw, 34px);
+      line-height: 1.1;
+      font-weight: 700;
+      max-width: 780px;
+    }
+
+    .discovery-copy {
+      margin-top: 12px;
+      max-width: 760px;
+      color: var(--text);
+      font-family: "Lora", Georgia, serif;
+      font-size: 17px;
+      line-height: 1.65;
+    }
+
+    .discovery-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .discovery-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #D7E3F4;
+      background: rgba(255, 255, 255, 0.92);
+      border-radius: 999px;
+      padding: 8px 12px;
+      color: var(--blue);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .discovery-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .discovery-action {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #C7D8F3;
+      background: #FFFFFF;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .discovery-action--primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #FFFFFF;
+    }
+
+    .discovery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr));
+      gap: 14px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .discovery-card {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 100%;
+      min-width: 0;
+      max-width: 100%;
+      border: 1px solid #E8EDF3;
+      border-radius: 14px;
+      background: #FFFFFF;
+      padding: 16px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+      text-align: left;
+      cursor: pointer;
+      display: block;
+      text-decoration: none;
+      transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .discovery-card:focus-visible {
+      border-color: #C6D7F2;
+      box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+      transform: translateY(-1px);
+      outline: none;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      .menu-toggle-button:hover {
+        transform: translateY(-1px);
+      }
+
+      .extras-button:hover {
+        background: var(--blue-soft);
+        border-color: #C5D8F5;
+      }
+
+      .personal-button:hover:not(:disabled) {
+        background: var(--blue-soft);
+        border-color: #C5D8F5;
+      }
+
+      .chapter-button:hover {
+        background: var(--blue-soft);
+        border-color: #C5D8F5;
+      }
+
+      .discovery-card:hover {
+        border-color: #C6D7F2;
+        box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+        transform: translateY(-1px);
+      }
+    }
+
+    .discovery-card__title {
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin-bottom: 10px;
+      max-width: 100%;
+    }
+
+    .discovery-card__text {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+      margin-bottom: 12px;
+      overflow-wrap: break-word;
+    }
+
+    .discovery-card__meta {
+      color: var(--blue);
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .chapter-showcase {
+      display: grid;
+      gap: 12px;
+    }
+
+    .chapter-showcase__header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .chapter-showcase__title {
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chapter-showcase__copy {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.5;
+      max-width: 760px;
+    }
+
+    .chapter-showcase__grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .chapter-showcase__card {
+      width: 100%;
+      border: 1px solid #E8EDF3;
+      background: #F8F9FA;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.18s ease;
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+    }
+
+    .chapter-showcase__card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 75, 135, 0.10);
+      background: #FFFFFF;
+      border-color: #C5D8F5;
+    }
+
+    .chapter-showcase__card-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .chapter-showcase__id {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .chapter-showcase__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: #EAF2FD;
+      color: var(--blue);
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .chapter-showcase__name {
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .chapter-showcase__note {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .simulator-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+      gap: 16px;
+    }
+
+    .simulator-card {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      min-width: 0;
+      width: 100%;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid var(--blue);
+      border-radius: 14px;
+      background: #FFFFFF;
+      padding: 18px;
+      text-decoration: none;
+      color: var(--text);
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+
+    .simulator-card:focus-visible {
+      outline: none;
+      border-color: #C5D8F5;
+      box-shadow: 0 10px 24px rgba(0, 75, 135, 0.10);
+      transform: translateY(-2px);
+    }
+
+    .simulator-card__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .simulator-card__eyebrow {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .simulator-card__title {
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1.2;
+      font-weight: 700;
+      overflow-wrap: break-word;
+    }
+
+    .simulator-card__icon {
+      flex: 0 0 auto;
+      width: 42px;
+      height: 42px;
+      border-radius: 999px;
+      background: #EAF2FD;
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .simulator-card__description {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 15px;
+      line-height: 1.6;
+      overflow-wrap: break-word;
+    }
+
+    .simulator-card__footer {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--blue);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .simulator-detail {
+      display: grid;
+      gap: 16px;
+    }
+
+    .simulator-detail__intro,
+    .simulator-detail__frame {
+      background: #FFFFFF;
+      border: 1px solid #E2E8F0;
+      border-radius: 18px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
+    }
+
+    .simulator-detail__intro {
+      padding: 18px;
+    }
+
+    .simulator-detail__eyebrow {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .simulator-detail__title {
+      color: var(--blue);
+      font-size: clamp(24px, 3.2vw, 34px);
+      line-height: 1.15;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .simulator-detail__description {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    .simulator-detail__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .simulator-detail__button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #C7D8F3;
+      background: #FFFFFF;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 10px 15px;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .simulator-detail__button--primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #FFFFFF;
+    }
+
+    .simulator-detail__frame {
+      padding: 12px;
+    }
+
+    .simulator-detail__frame iframe {
+      display: block;
+      width: 100%;
+      min-height: 760px;
+      border: 0;
+      border-radius: 14px;
+      background: #FFFFFF;
+    }
+
+    @media (max-width: 720px) {
+      .simulator-detail__intro {
+        padding: 16px;
+      }
+
+      .simulator-detail__frame {
+        padding: 10px;
+      }
+
+      .simulator-detail__frame iframe {
+        min-height: 620px;
+      }
+    }
+
+    .topic-card {
+      display: block;
+      background: #F8F9FA;
+      border: 1px solid #E8EDF3;
+      border-left: 4px solid var(--blue);
+      border-radius: 10px;
+      padding: 14px 15px;
+      text-decoration: none;
+      color: var(--text);
+      transition: 0.18s ease;
+      min-height: 92px;
+    }
+
+    .topic-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(0, 75, 135, 0.12);
+      background: var(--blue-soft);
+    }
+
+    .topic-card.ai-exercise {
+      background: linear-gradient(180deg, #FCF8FF 0%, #F7F0FF 100%);
+      border-color: #E5D4FA;
+      border-left-color: #6D28D9;
+    }
+
+    .topic-card.ai-exercise:hover {
+      background: #F3E8FF;
+      box-shadow: 0 8px 20px rgba(109, 40, 217, 0.14);
+    }
+
+    .topic-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+
+    .topic-id {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .topic-title {
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .topic-note {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 13.5px;
+      line-height: 1.4;
+    }
+
+    .topic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-family: "Inter", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .topic-badge.ai-exercise {
+      background: #E9D5FF;
+      color: #5B21B6;
+    }
+
+    .empty-state {
+      border: 1px dashed #C8D2DF;
+      background: #F7F9FC;
+      border-radius: 10px;
+      padding: 22px;
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.55;
+    }
+
+    .empty-state strong {
+      color: var(--blue);
+      font-family: "Inter", sans-serif;
+    }
+
+    .saved-grid {
+      display: grid;
+      gap: 16px;
+    }
+
+    .saved-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .saved-item {
+      width: 100%;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid var(--blue);
+      background: #F8F9FA;
+      border-radius: 12px;
+      padding: 14px 15px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+    }
+
+    .saved-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 75, 135, 0.10);
+      background: #FFFFFF;
+    }
+
+    .saved-item__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .saved-item__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .saved-item__favorite {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 38px;
+      height: 38px;
+      border: 1px solid #D5E1F2;
+      border-radius: 999px;
+      background: #FFFFFF;
+      color: #9AA9BC;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+      flex: 0 0 auto;
+    }
+
+    .saved-item__favorite:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(0, 75, 135, 0.10);
+    }
+
+    .saved-item__favorite.is-active {
+      color: #B45309;
+      border-color: rgba(180, 83, 9, 0.24);
+      background: #FFF7E8;
+    }
+
+    .saved-item__favorite:disabled {
+      cursor: wait;
+      opacity: 0.72;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .saved-item__title {
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .saved-item__source {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.4;
+      margin-bottom: 8px;
+    }
+
+    .saved-item__preview {
+      color: var(--text);
+      font-family: "Lora", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .favorite-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .favorite-section {
+      display: grid;
+      gap: 12px;
+    }
+
+    .favorite-section + .favorite-section {
+      margin-top: 20px;
+    }
+
+    .favorite-section__title {
+      color: var(--blue);
+      font-size: 15px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .favorite-item {
+      width: 100%;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid #F59E0B;
+      background: #FFFBEB;
+      border-radius: 12px;
+      padding: 14px 15px;
+      text-align: left;
+      cursor: pointer;
+      transition: 0.18s ease;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+    }
+
+    .favorite-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(180, 83, 9, 0.10);
+    }
+
+    .favorite-item__top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #B45309;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+
+    .favorite-item__title {
+      color: var(--blue);
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 6px;
+    }
+
+    .favorite-item__note {
+      color: var(--muted);
+      font-family: "Lora", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .exercise-modal-overlay {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      background: rgba(17, 24, 39, 0.54);
+      backdrop-filter: blur(6px);
+      z-index: 1300;
+    }
+
+    .exercise-modal-overlay.is-open {
+      display: flex;
+    }
+
+    .exercise-modal {
+      width: min(100%, 860px);
+      max-height: min(88vh, 920px);
+      overflow: auto;
+      background: #FFFFFF;
+      border: 1px solid rgba(0, 75, 135, 0.10);
+      border-radius: 24px;
+      box-shadow: 0 22px 56px rgba(15, 23, 42, 0.18);
+    }
+
+    .exercise-modal__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 24px 0;
+    }
+
+    .exercise-modal__header-actions {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      flex: 0 0 auto;
+    }
+
+    .exercise-modal__kicker {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .exercise-modal__title {
+      color: var(--blue);
+      font-size: 24px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .exercise-modal__close {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(0, 75, 135, 0.12);
+      border-radius: 999px;
+      background: #F8FBFF;
+      color: #0B5EA8;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .exercise-modal__favorite {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(0, 75, 135, 0.12);
+      border-radius: 999px;
+      background: #FFFFFF;
+      color: #B45309;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex: 0 0 auto;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background-color 0.18s ease;
+    }
+
+    .exercise-modal__favorite:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 14px rgba(180, 83, 9, 0.14);
+    }
+
+    .exercise-modal__favorite.is-active {
+      background: #FFF7E8;
+      border-color: rgba(180, 83, 9, 0.24);
+      color: #7C2D12;
+    }
+
+    .exercise-modal__favorite:disabled {
+      cursor: wait;
+      opacity: 0.72;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .exercise-modal__body {
+      padding: 18px 24px 24px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .exercise-modal__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exercise-modal__section {
+      border: 1px solid #E2E8F0;
+      border-radius: 14px;
+      padding: 16px 18px;
+      background: #F8F9FA;
+    }
+
+    .exercise-modal__section--solution {
+      background: #ECFDF3;
+      border-color: #B7E2C6;
+    }
+
+    .exercise-modal__section-title {
+      color: var(--text);
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 10px;
+    }
+
+    .exercise-modal__content {
+      color: var(--text);
+      font-family: "Lora", Georgia, serif;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .exercise-modal__content mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .exercise-modal__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .exercise-modal__status {
+      min-height: 20px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+      font-weight: 600;
+    }
+
+    .exercise-modal__status.is-error {
+      color: var(--red);
+    }
+
+    .saved-card {
+      background: #F8F9FA;
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid var(--blue);
+      border-radius: 14px;
+      padding: 18px;
+    }
+
+    .saved-card__top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+      flex-wrap: wrap;
+    }
+
+    .saved-card__meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .saved-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #EAF2FD;
+      color: var(--blue);
+      font-family: "Inter", sans-serif;
+      font-size: 11.5px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .saved-chip--difficulty {
+      background: #F3E8FF;
+      color: #6D28D9;
+    }
+
+    .saved-card__title {
+      color: var(--blue);
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 8px;
+    }
+
+    .saved-card__source {
+      color: var(--muted);
+      font-family: "Inter", sans-serif;
+      font-size: 13.5px;
+      margin-bottom: 12px;
+    }
+
+    .saved-card__section-title {
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 8px;
+    }
+
+    .saved-card__statement,
+    .saved-card__solution {
+      color: var(--text);
+      font-family: "Lora", Georgia, serif;
+      font-size: 15px;
+      line-height: 1.65;
+    }
+
+    .saved-card__statement mjx-container,
+    .saved-card__solution mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .saved-card__solution {
+      display: none;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid #DDE3ED;
+    }
+
+    .saved-card__solution.is-open {
+      display: block;
+    }
+
+    .saved-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .saved-card__button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #C7D8F3;
+      background: #FFFFFF;
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 9px 14px;
+      text-decoration: none;
+      font-family: "Inter", sans-serif;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .saved-card__button--primary {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #FFFFFF;
+    }
+
+    .saved-card__button:hover {
+      transform: translateY(-1px);
+    }
+
+    .validation-review-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .validation-review-card {
+      border: 1px solid #E2E8F0;
+      border-left: 4px solid #6D28D9;
+      border-radius: 12px;
+      background: #FFFFFF;
+      padding: 16px;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+    }
+
+    .validation-review-card.is-reviewed {
+      opacity: .62;
+    }
+
+    .validation-review-card__top {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .validation-review-card__title {
+      margin-top: 8px;
+      color: var(--blue);
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.25;
+    }
+
+    .validation-review-card__source {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .validation-review-card__notice,
+    .validation-review-card__note {
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-top: 10px;
+      font-size: 13.5px;
+      line-height: 1.45;
+    }
+
+    .validation-review-card__notice {
+      background: #F3E8FF;
+      color: #5B21B6;
+      font-weight: 800;
+    }
+
+    .validation-review-card__choices {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .validation-review-card__choice {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border-radius: 999px;
+      background: #F5F8FC;
+      border: 1px solid #D8E3F2;
+      color: var(--text);
+      padding: 7px 10px;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .validation-review-card__choice strong {
+      color: var(--blue);
+    }
+
+    .validation-review-card__decision-help {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    .validation-review-card__note {
+      background: #FFF7ED;
+      color: #8A3B12;
+    }
+
+    .validation-review-card__details {
+      margin-top: 12px;
+      color: var(--text);
+    }
+
+    .validation-review-card__details summary {
+      cursor: pointer;
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .validation-review-card__section {
+      margin-top: 10px;
+      font-family: "Lora", Georgia, serif;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .validation-review-card__content {
+      margin-top: 6px;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .validation-review-card__content p {
+      margin: 8px 0 0;
+    }
+
+    .validation-review-card__content .termo-exercise__math-block {
+      margin: 10px 0;
+      font-size: 1em;
+    }
+
+    .validation-review-card__content mjx-container {
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: hidden;
+    }
+
+    .validation-review-card__admin-note {
+      display: grid;
+      gap: 7px;
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .validation-review-card__admin-note textarea {
+      width: 100%;
+      resize: vertical;
+      border: 1px solid #D7E0ED;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-family: "Inter", sans-serif;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .validation-review-card__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .footer {
+      max-width: 1280px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 0 42px 24px 42px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      padding-top: 10px;
+    }
+
+    .footer-link {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 0;
+      background: transparent;
+      color: var(--blue);
+      font-family: "Inter", sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      padding: 2px 0;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-divider {
+      color: #A0AEC0;
+      font-size: 12px;
+    }
+
+    .info-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.56);
+      backdrop-filter: blur(6px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1400;
+    }
+
+    .info-modal-overlay.is-open {
+      display: flex;
+    }
+
+    .info-modal {
+      width: min(100%, 760px);
+      max-height: min(88vh, 860px);
+      overflow: auto;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      box-shadow: 0 24px 60px rgba(15, 23, 42, 0.24);
+    }
+
+    .info-modal__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 24px 24px 18px;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%);
+    }
+
+    .info-modal__kicker {
+      color: var(--red);
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .info-modal__title {
+      color: var(--blue);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.15;
+    }
+
+    .info-modal__close {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgba(0, 75, 135, 0.12);
+      border-radius: 999px;
+      background: #F8FBFF;
+      color: #0B5EA8;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 18px;
+    }
+
+    .info-modal__body {
+      padding: 22px 24px 26px;
+      color: var(--text);
+      font-family: "Lora", Georgia, serif;
+      font-size: 16px;
+      line-height: 1.7;
+      display: grid;
+      gap: 16px;
+    }
+
+    .info-modal__body p {
+      margin: 0;
+    }
+
+    .info-modal__body ul {
+      margin: 0;
+      padding-left: 22px;
+      display: grid;
+      gap: 8px;
+    }
+
+    .info-modal__body strong {
+      color: var(--blue);
+    }
+
+    .info-modal__body a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .info-modal__body a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: #EEF3FC;
+      padding: 2px 5px;
+      border-radius: 4px;
+      color: var(--blue);
+      font-size: 0.95em;
+    }
+
+    @media (max-width: 1180px) {
+      .top-header {
+        padding: 20px 28px;
+      }
+      .header-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .header-tools {
+        justify-content: flex-start;
+        width: 100%;
+      }
+      .menu-launcher-row {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+      .layout {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+      .chapter-panel {
+        min-height: 0;
+      }
+      .main-title {
+        font-size: clamp(28px, 4.7vw, 34px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .top-header { padding: 18px 20px; }
+      .header-box {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .header-tools {
+        justify-content: flex-start;
+        padding-top: 8px;
+        width: 100%;
+      }
+      .menu-launcher-row {
+        padding: 14px 20px 0 20px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .layout {
+        padding: 20px;
+      }
+      .footer {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      .topic-container {
+        padding: 20px;
+      }
+      .panel-header {
+        flex-direction: column;
+      }
+      .panel-actions {
+        justify-content: flex-start;
+      }
+      .discovery-hero {
+        padding: 20px;
+      }
+      .discovery-grid,
+      .chapter-showcase__grid {
+        grid-template-columns: 1fr;
+      }
+      .discovery-shell {
+        gap: 14px;
+      }
+      .discovery-card {
+        border-radius: 12px;
+        padding: 14px;
+        min-height: 0;
+      }
+      .discovery-card__title {
+        font-size: 15px;
+        margin-bottom: 6px;
+      }
+      .discovery-card__text {
+        font-size: 13.5px;
+        line-height: 1.45;
+        margin-bottom: 9px;
+      }
+      .discovery-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .discovery-action {
+        justify-content: center;
+      }
+      .saved-card__top {
+        flex-direction: column;
+      }
+      .main-title { font-size: 28px; }
+      .drawer-shell {
+        width: min(94vw, 360px);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .top-header {
+        padding: 14px 16px;
+      }
+      .header-box {
+        gap: 12px;
+        padding-left: 14px;
+      }
+      .metadata {
+        gap: 8px 14px;
+        font-size: 12.5px;
+      }
+      .header-tools {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+      .header-tools .termo-auth-trigger,
+      .header-tools .termo-share-button {
+        width: 100%;
+        min-width: 0;
+        min-height: 38px;
+        padding: 8px 10px;
+        font-size: 12.5px;
+      }
+      .header-tools .termo-auth-trigger span,
+      .header-tools .termo-share-button span {
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .menu-launcher-row {
+        padding: 14px 16px 0 16px;
+      }
+      .menu-launcher-note {
+        font-size: 13px;
+      }
+      .layout {
+        padding: 16px;
+      }
+      .footer {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .chapter-panel {
+        min-height: 0;
+        border-radius: 12px;
+      }
+      .chapter-panel--landing .topic-container,
+      .topic-container {
+        padding: 14px;
+      }
+      .footer-links {
+        justify-content: flex-start;
+        gap: 10px;
+      }
+      .info-modal {
+        border-radius: 18px;
+      }
+      .info-modal__header {
+        padding: 20px 18px 16px;
+      }
+      .info-modal__title {
+        font-size: 24px;
+      }
+      .info-modal__body {
+        padding: 18px;
+        font-size: 15px;
+        line-height: 1.65;
+      }
+    }
+  </style>
+<script>
+(function () {
+  if (window.__termoPreviewRedirect) return;
+  window.__termoPreviewRedirect = true;
+  if (location.protocol !== "file:") return;
+
+  const marker = "/qm/";
+  const markerIndex = location.pathname.lastIndexOf(marker);
+  if (markerIndex === -1) return;
+
+  const relativePath = location.pathname.slice(markerIndex + marker.length);
+  const target = `http://127.0.0.1:4173/${relativePath}${location.search}${location.hash}`;
+  location.replace(target);
+})();
+</script>
+<script>
+(function () {
+  const landingLoginTargetKey = "termoLandingPostLoginTarget";
+  const params = new URLSearchParams(window.location.search);
+  window.__termoLandingStaticMode = false;
+
+  const authKeys = ["code", "state", "error", "error_code", "error_description", "access_token", "refresh_token", "provider_token", "provider_refresh_token"];
+  const hashParams = new URLSearchParams(window.location.hash.startsWith("#") ? window.location.hash.slice(1) : "");
+  const hasAuthParams = authKeys.some(function (key) {
+    return params.has(key) || hashParams.has(key);
+  });
+  let hasPendingTarget = false;
+  try {
+    hasPendingTarget = Boolean(window.sessionStorage && window.sessionStorage.getItem(landingLoginTargetKey));
+  } catch (error) {
+    hasPendingTarget = false;
+  }
+  window.__termoLandingAuthResume = Boolean(hasAuthParams || hasPendingTarget);
+})();
+</script>
+<link rel="stylesheet" href="assets/termo-share.css?v=0614.1">
+<link rel="stylesheet" href="assets/termo-auth.css?v=0614.1">
+<script>
+(function () {
+  const scripts = [
+    "assets/termo-share.js?v=0614.1",
+    "assets/termo-auth.js?v=0614.1",
+    "assets/termo-user-data.js?v=0614.1"
+  ];
+
+  scripts.forEach(function (src) {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.src = src;
+    document.head.appendChild(script);
+  });
+})();
+</script>
+<!-- termo-seo:start -->
+<meta name="description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#004B87"/>
+<link rel="canonical" href="https://qm-theta.vercel.app/"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="website"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Quantum Mechanics | Interactive Book"/>
+<meta property="og:description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
+<meta property="og:url" content="https://qm-theta.vercel.app/"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quantum Mechanics | Interactive Book"/>
+<meta name="twitter:description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"Quantum Mechanics","url":"https://qm-theta.vercel.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://qm-theta.vercel.app/"}]</script>
+<!-- termo-seo:end -->
+<script defer src="assets/termo-seo.js?v=0614.1"></script>
+</head>
+
+<body>
+  <div class="page">
+    <header class="top-header">
+      <div class="header-box">
+        <div class="header-main">
+          <div class="course-label">Living Book</div>
+          <h1 class="main-title">Quantum Mechanics</h1>
+          <div class="metadata">
+            <span><i class="fa-solid fa-user-tie"></i> Prof. Mario Reis</span>
+            <span><i class="fa-solid fa-building-columns"></i> Institute of Physics — Fluminense Federal University</span>
+            <span><i class="fa-solid fa-calendar-days"></i> Last updated: <time id="lastUpdated" datetime="2026-06-14">14/06/2026</time> · <span id="appVersion">v0614.1</span></span>
+          </div>
+        </div>
+        <div class="header-tools" data-termo-header-tools aria-label="Primary actions">
+          <a href="#" class="termo-auth-trigger index-back-button" data-termo-auth-button="true" aria-label="Open sign-in options to save your page bookmark">
+            <i class="fa-solid fa-bookmark"></i>
+            <span>Save progress</span>
+          </a>
+          <a href="mailto:?subject=Quantum%20Mechanics&body=See%20this%20interactive%20Quantum%20Mechanics%20book.%0Ahttps%3A%2F%2Fqm-theta.vercel.app%2F%3Fview%3Dchapters" class="termo-share-button termo-share-button--index index-back-button" data-termo-share-button="true" aria-label="Send this page to someone else">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Send</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <div class="menu-launcher-row">
+      <button
+        type="button"
+        class="menu-toggle-button"
+        id="menuToggleButton"
+        aria-haspopup="dialog"
+        aria-expanded="false"
+        aria-controls="menuDrawerOverlay"
+      >
+        <i class="fa-solid fa-bars"></i>
+        <span>Menu</span>
+      </button>
+      <div class="menu-launcher-note"></div>
+    </div>
+
+    <div class="drawer-overlay" id="menuDrawerOverlay" aria-hidden="true" hidden>
+      <aside class="drawer-shell" role="dialog" aria-modal="true" aria-labelledby="menuDrawerTitle">
+        <div class="drawer-header">
+          <div>
+            <div class="drawer-kicker">Menu</div>
+            <h2 class="drawer-title" id="menuDrawerTitle">Book navigation</h2>
+          </div>
+          <button type="button" class="drawer-close-button" id="menuDrawerClose" aria-label="Close menu">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+
+        <div class="drawer-scroll">
+          <div class="drawer-stack">
+            <section class="drawer-group" data-drawer-group="personal">
+              <button type="button" class="drawer-group-trigger is-open" data-drawer-trigger="personal" aria-expanded="true" aria-controls="drawerPanelPersonal">
+                <span class="drawer-group-title"><i class="fa-solid fa-circle-user"></i> Personal Area</span>
+                <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
+              </button>
+              <div class="drawer-group-panel is-open" id="drawerPanelPersonal">
+                <div class="personal-list" id="personalList">
+                                    <a class="personal-button" href="#" data-landing-login-target="index.html?view=favorites">
+                    <span class="extras-icon"><i class="fa-solid fa-star"></i></span>
+                    <span class="extras-text">
+                      <span class="extras-label">Favorite items</span>
+                      <span class="extras-note">Quick shortcuts to starred pages and exercises.</span>
+                    </span>
+                  </a>
+                </div>
+                <div class="sidebar-helper" id="personalHint">Sign in with Google to enable your personal area.</div>
+                <div class="personal-drawer-actions" id="personalDrawerActions">
+                  <a class="drawer-inline-action" href="#" data-landing-login-target="index.html?view=favorites">
+                    <i class="fa-brands fa-google"></i>
+                    <span>Sign in with Google</span>
+                  </a>
+                </div>
+              </div>
+            </section>
+
+            <section class="drawer-group" data-drawer-group="extras" hidden>
+              <button type="button" class="drawer-group-trigger" data-drawer-trigger="extras" aria-expanded="false" aria-controls="drawerPanelExtras">
+                <span class="drawer-group-title"><i class="fa-solid fa-sparkles"></i> Extras</span>
+                <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
+              </button>
+              <div class="drawer-group-panel" id="drawerPanelExtras">
+                <div class="extras-list" id="extrasList"></div>
+              </div>
+            </section>
+
+            <section class="drawer-group" data-drawer-group="chapters">
+              <button type="button" class="drawer-group-trigger is-open" data-drawer-trigger="chapters" aria-expanded="true" aria-controls="drawerPanelChapters">
+                <span class="drawer-group-title"><i class="fa-solid fa-list-ul"></i> Chapters</span>
+                <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
+              </button>
+              <div class="drawer-group-panel is-open" id="drawerPanelChapters">
+                <ul class="chapter-list" id="chapterList">
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=01">
+                      <span class="chapter-number">01</span>
+                      <span class="chapter-name">Old quantum physics</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=02">
+                      <span class="chapter-number">02</span>
+                      <span class="chapter-name">Construction of quantum theory I: wave mechanics</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=03">
+                      <span class="chapter-number">03</span>
+                      <span class="chapter-name">Construction of quantum theory II: matrix mechanics</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=04">
+                      <span class="chapter-number">04</span>
+                      <span class="chapter-name">One-dimensional problems: bound and unbound states</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=05">
+                      <span class="chapter-number">05</span>
+                      <span class="chapter-name">Traditional problems with central potential</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=06">
+                      <span class="chapter-number">06</span>
+                      <span class="chapter-name">Angular momentum</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=07">
+                      <span class="chapter-number">07</span>
+                      <span class="chapter-name">Addition of angular momenta</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=08">
+                      <span class="chapter-number">08</span>
+                      <span class="chapter-name">Time-independent perturbation theory</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=09">
+                      <span class="chapter-number">09</span>
+                      <span class="chapter-name">Time-dependent perturbation theory</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=10">
+                      <span class="chapter-number">10</span>
+                      <span class="chapter-name">Scattering: partial waves</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=11">
+                      <span class="chapter-number">11</span>
+                      <span class="chapter-name">Density operator</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=12">
+                      <span class="chapter-number">12</span>
+                      <span class="chapter-name">Entangled states</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="chapter-button" href="index.html?view=chapters&chapter=13">
+                      <span class="chapter-number">13</span>
+                      <span class="chapter-name">Relativistic quantum mechanics</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </section>
+          </div>
+        </div>
+      </aside>
+    </div>
+
+    <main class="layout">
+      <section class="content-area" aria-live="polite">
+        <article class="chapter-panel chapter-panel--landing">
+          <div class="panel-header">
+            <div class="panel-headline">
+              <div class="panel-kicker" id="panelKicker">Living Book</div>
+              <h2 class="panel-title" id="panelTitle">Use the menu to navigate</h2>
+              <p class="panel-description" id="panelDescription"></p>
+            </div>
+            <div class="panel-actions" id="panelActions"></div>
+          </div>
+
+          <div class="topic-container" id="topicContainer">
+            <div class="discovery-shell">
+              <section class="discovery-grid">
+                <button type="button" class="discovery-card" data-role="open-drawer-section" data-section-id="chapters">
+                  <div class="discovery-card__title"><i class="fa-solid fa-list-ul"></i> Chapters</div>
+                  <div class="discovery-card__meta">Open chapter menu</div>
+                </button>
+                <a class="discovery-card" href="#" data-landing-login-target="index.html?view=favorites">
+                  <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
+                  <div class="discovery-card__meta">Open Personal Area</div>
+                </a>
+              </section>
+            </div>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-links" aria-label="Institutional information">
+        <button type="button" class="footer-link" data-info-modal-open="privacy">Privacy</button>
+        <span class="footer-divider" aria-hidden="true">•</span>
+        <button type="button" class="footer-link" data-info-modal-open="support">Support</button>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="info-modal-overlay" id="infoModalOverlay" hidden>
+    <div class="info-modal" role="dialog" aria-modal="true" aria-labelledby="infoModalTitle" aria-describedby="infoModalBody">
+      <div class="info-modal__header">
+        <div>
+          <div class="info-modal__kicker" id="infoModalKicker">Information</div>
+          <h2 class="info-modal__title" id="infoModalTitle">Privacy</h2>
+        </div>
+        <button type="button" class="info-modal__close" id="infoModalClose" aria-label="Close janela">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <div class="info-modal__body" id="infoModalBody"></div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      if (window.__termoEarlyActions) return;
+      window.__termoEarlyActions = true;
+
+      function matchesSelector(element, selector) {
+        var matcher = element.matches || element.msMatchesSelector || element.webkitMatchesSelector;
+        return matcher ? matcher.call(element, selector) : false;
+      }
+
+      function closestElement(element, selector) {
+        var node = element;
+        while (node && node.nodeType === 1) {
+          if (matchesSelector(node, selector)) return node;
+          node = node.parentElement;
+        }
+        return null;
+      }
+
+      function each(selector, callback) {
+        var nodes = document.querySelectorAll(selector);
+        for (var i = 0; i < nodes.length; i += 1) callback(nodes[i]);
+      }
+
+      function setDrawerSection(sectionId) {
+        var normalized = sectionId || "chapters";
+        each("[data-drawer-trigger]", function (button) {
+          var isActive = button.getAttribute("data-drawer-trigger") === normalized;
+          if (isActive) {
+            button.classList.add("is-open");
+          } else {
+            button.classList.remove("is-open");
+          }
+          button.setAttribute("aria-expanded", isActive ? "true" : "false");
+        });
+        each(".drawer-group-panel", function (panel) {
+          var expectedId = "drawerPanel" + normalized.charAt(0).toUpperCase() + normalized.slice(1);
+          if (panel.id === expectedId) {
+            panel.classList.add("is-open");
+          } else {
+            panel.classList.remove("is-open");
+          }
+        });
+      }
+
+      function openDrawer(sectionId) {
+        var overlay = document.getElementById("menuDrawerOverlay");
+        var menuButton = document.getElementById("menuToggleButton");
+        if (!overlay) return;
+        overlay.hidden = false;
+        overlay.setAttribute("aria-hidden", "false");
+        overlay.classList.add("is-open");
+        if (menuButton) menuButton.setAttribute("aria-expanded", "true");
+        setDrawerSection(sectionId || "chapters");
+      }
+
+      function closeDrawer() {
+        var overlay = document.getElementById("menuDrawerOverlay");
+        var menuButton = document.getElementById("menuToggleButton");
+        if (!overlay) return;
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        if (menuButton) menuButton.setAttribute("aria-expanded", "false");
+        window.setTimeout(function () {
+          if (!overlay.classList.contains("is-open")) overlay.hidden = true;
+        }, 240);
+      }
+
+      function getShareUrl() {
+        var localHost = /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname);
+        if (!localHost) return window.location.href;
+        var path = window.location.pathname === "/index.html" ? "/" : window.location.pathname;
+        return "https://qm-theta.vercel.app" + path + window.location.search + window.location.hash;
+      }
+
+      function getPageTitle() {
+        var titleNode = document.querySelector("#panelTitle") || document.querySelector(".main-title") || document.querySelector("h1");
+        var text = titleNode && titleNode.textContent ? titleNode.textContent.replace(/\s+/g, " ").trim() : "";
+        return text || "Quantum Mechanics";
+      }
+
+      function setButtonFeedback(button, text) {
+        if (!button) return;
+        var original = button.getAttribute("data-original-label") || button.innerHTML;
+        button.setAttribute("data-original-label", original);
+        button.innerHTML = '<i class="fa-solid fa-check"></i><span>' + text + '</span>';
+        window.clearTimeout(Number(button.getAttribute("data-feedback-timer") || 0));
+        button.setAttribute("data-feedback-timer", String(window.setTimeout(function () {
+          button.innerHTML = original;
+        }, 1800)));
+      }
+
+      function sharePage(button) {
+        var title = "Quantum Mechanics";
+        var text = "Veja este interactive Quantum Mechanics book.";
+        var url = getShareUrl();
+        var payload = { title: title, text: text, url: url };
+        var clipboardText = text + "\n" + url;
+
+        if (navigator.share) {
+          navigator.share(payload).then(function () {
+            setButtonFeedback(button, "Sent");
+          }).catch(function (error) {
+            if (!error || error.name !== "AbortError") setButtonFeedback(button, "Try again");
+          });
+          return;
+        }
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(clipboardText).then(function () {
+            setButtonFeedback(button, "Link copied");
+          }).catch(function () {
+            window.location.href = "mailto:?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(clipboardText);
+          });
+          return;
+        }
+
+        window.location.href = "mailto:?subject=" + encodeURIComponent(title) + "&body=" + encodeURIComponent(clipboardText);
+      }
+
+      document.addEventListener("click", function (event) {
+        var target = event.target;
+        if (!target || target.nodeType !== 1) target = target && target.parentElement;
+        if (!target) return;
+
+        var shareButton = closestElement(target, "[data-termo-share-button]");
+        if (shareButton) {
+          event.preventDefault();
+          event.stopPropagation();
+          sharePage(shareButton);
+          return;
+        }
+
+        var authButton = closestElement(target, "[data-termo-auth-button]");
+        if (authButton && window.TermoAuth && typeof window.TermoAuth.openModal === "function") {
+          event.preventDefault();
+          event.stopPropagation();
+          window.TermoAuth.openModal();
+          return;
+        }
+
+        var landingLoginTarget = closestElement(target, "[data-landing-login-target]");
+        if (landingLoginTarget && !window.TermoIndexReady && typeof window.handleLandingLoginRequest === "function") {
+          event.preventDefault();
+          event.stopPropagation();
+          void window.handleLandingLoginRequest(
+            landingLoginTarget.getAttribute("data-landing-login-target") ||
+            landingLoginTarget.getAttribute("href") ||
+            "index.html?view=favorites"
+          );
+          return;
+        }
+
+        var menuButton = closestElement(target, "#menuToggleButton");
+        if (menuButton && !window.TermoIndexReady) {
+          event.preventDefault();
+          openDrawer("chapters");
+          return;
+        }
+
+        var drawerTrigger = closestElement(target, "[data-drawer-trigger]");
+        if (drawerTrigger && !window.TermoIndexReady) {
+          event.preventDefault();
+          var sectionId = drawerTrigger.getAttribute("data-drawer-trigger") || "chapters";
+          var isOpen = drawerTrigger.getAttribute("aria-expanded") === "true";
+          setDrawerSection(isOpen ? "" : sectionId);
+          return;
+        }
+
+        var drawerClose = closestElement(target, "#menuDrawerClose");
+        if (drawerClose && !window.TermoIndexReady) {
+          event.preventDefault();
+          closeDrawer();
+        }
+      }, false);
+
+      window.TermoEarlyActions = {
+        openDrawer: openDrawer,
+        closeDrawer: closeDrawer,
+        sharePage: sharePage
+      };
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (window.__termoInfoModalsReady) return;
+      window.__termoInfoModalsReady = true;
+
+      const modalContent = {
+        privacy: {
+          kicker: "Legal information",
+          title: "Privacy",
+          body: `
+            <p>This app uses Google sign-in only to identify the user's account and enable optional study features, such as a <strong>page bookmark</strong> and favorite items.</p>
+            <p>When you sign in with Google, the system may receive and store only the basic data authorized during authentication, such as <strong>name, email address, and profile image</strong>. These data are used exclusively for authentication, minimal personalization, and synchronizing study history across devices.</p>
+            <p>The app may also store data generated during use, such as favorites and the last reading point. These records support study continuity and help improve the academic quality of the material.</p>
+            <p>Data are processed using the project's technical infrastructure, including authentication, database, and hosting services. They are <strong>not sold</strong>, not used for personalized advertising, and not shared outside the technical context required for the app to work.</p>
+            <p>The browser may also keep local information, such as the active session, preferences, and temporary interface state, to improve the user experience.</p>
+            <p>To correct, review, or request deletion of data associated with your account, contact <a href="mailto:marioreis@id.uff.br">marioreis@id.uff.br</a>. You can also revoke Google access in your Google Account settings.</p>
+          `
+        },
+        support: {
+          kicker: "Contact",
+          title: "Support",
+          body: `
+            <p>For <strong>technical, conceptual, mathematical, pedagogical</strong>, or any other issues related to the app and the material, send a message to Prof. Mario Reis.</p>
+            <ul>
+              <li><strong>Prof. Mario Reis</strong></li>
+              <li><strong>Institute of Physics — UFF</strong></li>
+              <li><a href="http://profmarioreis.wordpress.com" target="_blank" rel="noopener noreferrer">profmarioreis.wordpress.com</a></li>
+              <li><a href="mailto:marioreis@id.uff.br">marioreis@id.uff.br</a></li>
+            </ul>
+            <p>If possible, briefly describe the page, chapter, or resource involved in the issue to make the analysis easier.</p>
+          `
+        }
+      };
+
+      const overlay = document.getElementById("infoModalOverlay");
+      const closeButton = document.getElementById("infoModalClose");
+      const kicker = document.getElementById("infoModalKicker");
+      const title = document.getElementById("infoModalTitle");
+      const body = document.getElementById("infoModalBody");
+
+      function openInfoModal(modalId) {
+        const content = modalContent[modalId];
+        if (!overlay || !content) return;
+        kicker.textContent = content.kicker;
+        title.textContent = content.title;
+        body.innerHTML = content.body;
+        overlay.hidden = false;
+        window.requestAnimationFrame(function () {
+          overlay.classList.add("is-open");
+        });
+      }
+
+      function closeInfoModal() {
+        if (!overlay) return;
+        overlay.classList.remove("is-open");
+        window.setTimeout(function () {
+          if (!overlay.classList.contains("is-open")) overlay.hidden = true;
+        }, 180);
+      }
+
+      document.addEventListener("click", function (event) {
+        const trigger = event.target && event.target.closest ? event.target.closest("[data-info-modal-open]") : null;
+        if (trigger) {
+          event.preventDefault();
+          openInfoModal(trigger.getAttribute("data-info-modal-open"));
+          return;
+        }
+
+        if (closeButton && (event.target === closeButton || closeButton.contains(event.target))) {
+          event.preventDefault();
+          closeInfoModal();
+          return;
+        }
+
+        if (overlay && event.target === overlay) {
+          closeInfoModal();
+        }
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && overlay && overlay.classList.contains("is-open")) {
+          closeInfoModal();
+        }
+      });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      if (window.__termoLandingFallback) return;
+      window.__termoLandingFallback = true;
+
+      function setDrawerSection(sectionId) {
+        const normalizedSection = sectionId || "chapters";
+        document.querySelectorAll("[data-drawer-trigger]").forEach(function (button) {
+          const isActive = button.dataset.drawerTrigger === normalizedSection;
+          button.classList.toggle("is-open", isActive);
+          button.setAttribute("aria-expanded", String(isActive));
+        });
+
+        document.querySelectorAll(".drawer-group-panel").forEach(function (panel) {
+          const expectedId = `drawerPanel${normalizedSection.charAt(0).toUpperCase()}${normalizedSection.slice(1)}`;
+          panel.classList.toggle("is-open", panel.id === expectedId);
+        });
+      }
+
+      function openDrawer(sectionId) {
+        const overlay = document.getElementById("menuDrawerOverlay");
+        const menuButton = document.getElementById("menuToggleButton");
+        if (!overlay) return;
+
+        overlay.hidden = false;
+        overlay.setAttribute("aria-hidden", "false");
+        overlay.classList.add("is-open");
+
+        if (menuButton) {
+          menuButton.setAttribute("aria-expanded", "true");
+        }
+
+        setDrawerSection(sectionId || "chapters");
+      }
+
+      function closeDrawer() {
+        const overlay = document.getElementById("menuDrawerOverlay");
+        const menuButton = document.getElementById("menuToggleButton");
+        if (!overlay) return;
+
+        overlay.classList.remove("is-open");
+        overlay.setAttribute("aria-hidden", "true");
+        if (menuButton) {
+          menuButton.setAttribute("aria-expanded", "false");
+        }
+
+        window.setTimeout(function () {
+          if (!overlay.classList.contains("is-open")) {
+            overlay.hidden = true;
+          }
+        }, 220);
+      }
+
+      const menuButton = document.getElementById("menuToggleButton");
+      if (menuButton) {
+        menuButton.addEventListener("click", function (event) {
+          if (window.TermoIndexReady) return;
+          event.preventDefault();
+          openDrawer("chapters");
+        });
+      }
+
+      const drawerCloseButton = document.getElementById("menuDrawerClose");
+      if (drawerCloseButton) {
+        drawerCloseButton.addEventListener("click", function (event) {
+          if (window.TermoIndexReady) return;
+          event.preventDefault();
+          closeDrawer();
+        });
+      }
+
+      const drawerOverlay = document.getElementById("menuDrawerOverlay");
+      if (drawerOverlay) {
+        drawerOverlay.addEventListener("click", function (event) {
+          if (window.TermoIndexReady || event.target !== drawerOverlay) return;
+          closeDrawer();
+        });
+      }
+
+      function navigateToView(button) {
+        const viewId = button.dataset.viewId || "chapters";
+        const chapterId = button.dataset.chapterId || "";
+        const targetUrl = new URL("index.html", window.location.href);
+        targetUrl.searchParams.set("view", viewId);
+        if (chapterId) {
+          targetUrl.searchParams.set("chapter", chapterId);
+        } else {
+          targetUrl.searchParams.delete("chapter");
+        }
+        window.location.href = targetUrl.href;
+      }
+
+      document.addEventListener("click", function (event) {
+        const target = event.target;
+        const button = target && target.closest
+          ? target.closest('[data-role="open-drawer-section"], [data-role="open-view"]')
+          : null;
+
+        if (!button) return;
+
+        if (button.matches('[data-role="open-view"]')) {
+          if (window.TermoIndexReady) return;
+          if (button.matches("a[href]")) return;
+          event.preventDefault();
+          navigateToView(button);
+          return;
+        }
+
+        event.preventDefault();
+        openDrawer(button.dataset.sectionId || "chapters");
+      });
+
+      window.TermoLandingFallback = { openDrawer, closeDrawer, setDrawerSection };
+    })();
+  </script>
+
+  <script>
+    /*
+      Stable central page for GitHub Pages.
+
+      To avoid editing this file when adding topics:
+      1. Keep the chapter list here as the fixed course/book structure.
+      2. For each chapter, create an external JSON file in /data.
+      3. Each JSON points to the topic HTML files.
+
+      Example: data/chapter-02.json
+      {
+        "description": "Core concepts built from the chapter HTML presentation.",
+        "topics": [
+          {
+            "id": "2.1",
+            "title": "Introduction",
+            "note": "General presentation of the core concepts.",
+            "url": "slides/chapter-02/introduction.html"
+          }
+        ]
+      }
+    */
+
+    const chapters = [
+      { id: "01", title: "Old quantum physics", summary: "Experimental foundations, Bohr model, de Broglie hypothesis and semi-classical quantization.", data: "data/chapter-01.json" },
+      { id: "02", title: "Construction of quantum theory I: wave mechanics", summary: "Schrödinger equation, wave functions, postulates and uncertainty.", data: "data/chapter-02.json" },
+      { id: "03", title: "Construction of quantum theory II: matrix mechanics", summary: "State vectors, observables, commutation relations and time evolution.", data: "data/chapter-03.json" },
+      { id: "04", title: "One-dimensional problems: bound and unbound states", summary: "Harmonic oscillator, finite wells, scattering coefficients and one-dimensional potentials.", data: "data/chapter-04.json" },
+      { id: "05", title: "Traditional problems with central potential", summary: "Separation of variables, Hydrogen atom and three-dimensional harmonic oscillator.", data: "data/chapter-05.json" },
+      { id: "06", title: "Angular momentum", summary: "Angular momentum algebra, matrix representation and position-space representation.", data: "data/chapter-06.json" },
+      { id: "07", title: "Addition of angular momenta", summary: "Coupled bases, Clebsch-Gordan coefficients and applications to atomic angular momentum.", data: "data/chapter-07.json" },
+      { id: "08", title: "Time-independent perturbation theory", summary: "Non-degenerate and degenerate perturbation theory with physical applications.", data: "data/chapter-08.json" },
+      { id: "09", title: "Time-dependent perturbation theory", summary: "Interaction picture, coupled equations, Dyson series and magnetic resonance.", data: "data/chapter-09.json" },
+      { id: "10", title: "Scattering: partial waves", summary: "Scattering quantities, partial-wave expansion and spherical examples.", data: "data/chapter-10.json" },
+      { id: "11", title: "Density operator", summary: "Pure and mixed states, bipartite systems, partial trace and statistical mechanics connections.", data: "data/chapter-11.json" },
+      { id: "12", title: "Entangled states", summary: "Classical and quantum correlations, concurrence and entanglement of formation.", data: "data/chapter-12.json" },
+      { id: "13", title: "Relativistic quantum mechanics", summary: "Klein-Gordon and Dirac approaches, spinors, potentials and the Klein paradox.", data: "data/chapter-13.json" }
+    ];
+
+    const embeddedChapterData = {
+      "01": {
+        description: "Chapter 1 — Old quantum physics. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "02": {
+        description: "Chapter 2 — Construction of quantum theory I: wave mechanics. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "03": {
+        description: "Chapter 3 — Construction of quantum theory II: matrix mechanics. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "04": {
+        description: "Chapter 4 — One-dimensional problems: bound and unbound states. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "05": {
+        description: "Chapter 5 — Traditional problems with central potential. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "06": {
+        description: "Chapter 6 — Angular momentum. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "07": {
+        description: "Chapter 7 — Addition of angular momenta. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "08": {
+        description: "Chapter 8 — Time-independent perturbation theory. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "09": {
+        description: "Chapter 9 — Time-dependent perturbation theory. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "10": {
+        description: "Chapter 10 — Scattering: partial waves. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "11": {
+        description: "Chapter 11 — Density operator. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "12": {
+        description: "Chapter 12 — Entangled states. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      },
+      "13": {
+        description: "Chapter 13 — Relativistic quantum mechanics. Structure prepared to receive this chapter's HTML pages.",
+        topics: []
+      }
+    };
+
+    const JSPDF_CDN_URL = "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
+    const releaseInfo = {
+      version: "v0614.1",
+      date: "2026-06-14",
+      label: "14/06/2026"
+    };
+
+    const exerciseGenerationEnabled = false;
+
+    const personalViews = [
+      ...(exerciseGenerationEnabled ? [{
+        id: "saved",
+        label: "My exercises",
+        icon: "fa-book-bookmark",
+        note: "Open your personal list of generated exercises."
+      }] : []),
+      {
+        id: "favorites",
+        label: "Favorite items",
+        icon: "fa-star",
+        note: "Quick shortcuts to course items you starred."
+      },
+      ...(exerciseGenerationEnabled ? [{
+        id: "validation-review",
+        label: "Pending validations",
+        icon: "fa-clipboard-check",
+        note: "Review reports submitted by users.",
+        requiresValidator: true
+      }] : [])
+    ];
+
+    const extraViews = [];
+
+    const viewIds = new Set([
+      "chapters",
+      ...personalViews.map((view) => view.id),
+      ...extraViews.map((view) => view.id)
+    ]);
+
+    const chapterList = document.getElementById("chapterList");
+    const personalList = document.getElementById("personalList");
+    const personalHint = document.getElementById("personalHint");
+    const personalDrawerActions = document.getElementById("personalDrawerActions");
+    const extrasList = document.getElementById("extrasList");
+    const menuToggleButton = document.getElementById("menuToggleButton");
+    const menuDrawerOverlay = document.getElementById("menuDrawerOverlay");
+    const menuDrawerClose = document.getElementById("menuDrawerClose");
+    const chapterPanel = document.querySelector(".chapter-panel");
+    const panelKicker = document.getElementById("panelKicker");
+    const panelTitle = document.getElementById("panelTitle");
+    const panelDescription = document.getElementById("panelDescription");
+    const panelActions = document.getElementById("panelActions");
+    const topicContainer = document.getElementById("topicContainer");
+    const params = new URLSearchParams(window.location.search);
+    const requestedView = params.get("view");
+
+    const state = {
+      view: viewIds.has(requestedView) ? requestedView : "chapters",
+      chapterId: params.get("chapter") || "",
+      simulatorId: requestedView === "simulators" ? "" : (params.get("sim") || ""),
+      loggedIn: false,
+      canReviewValidations: false,
+      favoriteItems: [],
+      favoriteExercises: [],
+      savedExercises: [],
+      validationReports: [],
+      exerciseModal: null,
+      selectedExerciseId: null,
+      jsPdfPromise: null,
+      chapterLoadToken: 0,
+      drawerSection: "chapters"
+    };
+
+    function getCurrentAppReference() {
+      return `${window.location.pathname}${window.location.search}${window.location.hash}` || "/";
+    }
+
+    function getPreferredCourseOrigin() {
+      return /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname)
+        ? "https://qm-theta.vercel.app"
+        : window.location.origin;
+    }
+
+    function normalizeAppRelativeUrl(value, fallbackValue) {
+      const fallback = String(fallbackValue || getCurrentAppReference()).trim() || "/";
+      const raw = String(value || "").trim();
+
+      if (!raw) return fallback;
+
+      try {
+        const parsed = new URL(raw, window.location.origin);
+        return `${parsed.pathname}${parsed.search}${parsed.hash}` || fallback;
+      } catch (_error) {
+        if (raw.startsWith("/")) return raw;
+        if (raw.startsWith("?")) return `${window.location.pathname}${raw}`;
+        if (raw.startsWith("#")) return `${window.location.pathname}${window.location.search}${raw}`;
+        return fallback;
+      }
+    }
+
+    function buildAbsoluteCourseUrl(value, fallbackValue) {
+      const normalized = normalizeAppRelativeUrl(value, fallbackValue);
+      try {
+        return new URL(normalized, getPreferredCourseOrigin()).toString();
+      } catch (_error) {
+        return new URL(getCurrentAppReference(), getPreferredCourseOrigin()).toString();
+      }
+    }
+
+    function waitForAppGlobal(name, predicate, timeoutMs) {
+      const timeout = Number(timeoutMs || 2600);
+      const validate = typeof predicate === "function"
+        ? predicate
+        : function (value) { return Boolean(value); };
+
+      return new Promise(function (resolve) {
+        const startedAt = Date.now();
+
+        function check() {
+          const value = window[name];
+          if (validate(value)) {
+            resolve(value);
+            return;
+          }
+
+          if (Date.now() - startedAt >= timeout) {
+            resolve(null);
+            return;
+          }
+
+          window.setTimeout(check, 80);
+        }
+
+        check();
+      });
+    }
+
+    async function ensureAuthModules() {
+      const auth = await waitForAppGlobal("TermoAuth", function (value) {
+        return value && typeof value.openModal === "function";
+      }, 3200);
+      const userData = await waitForAppGlobal("TermoUserData", function (value) {
+        return value && typeof value.listExercises === "function";
+      }, 3200);
+
+      return {
+        auth: auth || null,
+        userData: userData || null
+      };
+    }
+
+    async function ensureAuthOnly(timeoutMs) {
+      return waitForAppGlobal("TermoAuth", function (value) {
+        return value && typeof value.openModal === "function";
+      }, timeoutMs || 1800);
+    }
+
+    function renderReleaseInfo() {
+      const lastUpdated = document.getElementById("lastUpdated");
+      const appVersion = document.getElementById("appVersion");
+
+      if (lastUpdated) {
+        lastUpdated.dateTime = releaseInfo.date;
+        lastUpdated.textContent = releaseInfo.label;
+      }
+
+      if (appVersion) {
+        appVersion.textContent = releaseInfo.version;
+      }
+    }
+
+    function getDrawerSectionForView(viewId) {
+      if (viewId === "saved" || viewId === "favorites" || viewId === "validation-review") return "personal";
+      if (viewId === "simulators") return "extras";
+      return "chapters";
+    }
+
+    function setLandingMode(isLanding) {
+      if (!chapterPanel) return;
+      chapterPanel.classList.toggle("chapter-panel--landing", Boolean(isLanding));
+    }
+
+    state.drawerSection = getDrawerSectionForView(state.view);
+
+    const savedPanelCopy = {
+      title: "My exercises",
+      description: "All automatic exercises you generated are organized here. Click an item to open the complete statement and solution."
+    };
+
+    const favoritesPanelCopy = {
+      title: "Favorite items",
+      description: "Keep both course pages and saved exercises you starred here."
+    };
+
+    const simulatorsPanelCopy = {
+      title: "Complementary resources",
+      description: "Reserved area for interactive Quantum Mechanics resources."
+    };
+
+    const simulatorsCatalog = [];
+
+    const simulatorsBySlug = simulatorsCatalog.reduce(function (accumulator, simulator) {
+      accumulator[simulator.slug] = simulator;
+      return accumulator;
+    }, {});
+
+    function escapeHtml(value) {
+      return String(value || "").replace(/[&<>"']/g, function (char) {
+        return ({
+          "&": "&amp;",
+          "<": "&lt;",
+          ">": "&gt;",
+          "\"": "&quot;",
+          "'": "&#039;"
+        })[char];
+      });
+    }
+
+    function truncate(value, maxLength) {
+      const text = String(value || "").trim();
+      if (text.length <= maxLength) return text;
+      return `${text.slice(0, maxLength - 1).trimEnd()}...`;
+    }
+
+    function difficultyLabel(value) {
+      return ({
+        facil: "Easy",
+        medio: "Medium",
+        dificil: "Hard"
+      })[value] || "Medium";
+    }
+
+    function formatDate(value) {
+      if (!value) return "";
+
+      try {
+        return new Intl.DateTimeFormat("pt-BR", {
+          dateStyle: "short",
+          timeStyle: "short"
+        }).format(new Date(value));
+      } catch {
+        return value;
+      }
+    }
+
+    async function ensureJsPdf() {
+      if (window.jspdf && window.jspdf.jsPDF) {
+        return window.jspdf.jsPDF;
+      }
+
+      if (!state.jsPdfPromise) {
+        state.jsPdfPromise = new Promise(function (resolve, reject) {
+          const existing = document.querySelector('script[data-termo-jspdf="true"]');
+          if (existing) {
+            existing.addEventListener("load", function () {
+              if (window.jspdf && window.jspdf.jsPDF) {
+                resolve(window.jspdf.jsPDF);
+              } else {
+                reject(new Error("jsPDF is not available after loading."));
+              }
+            }, { once: true });
+            existing.addEventListener("error", function () {
+              reject(new Error("Could not load jsPDF."));
+            }, { once: true });
+            return;
+          }
+
+          const script = document.createElement("script");
+          script.src = JSPDF_CDN_URL;
+          script.async = true;
+          script.setAttribute("data-termo-jspdf", "true");
+          script.onload = function () {
+            if (window.jspdf && window.jspdf.jsPDF) {
+              resolve(window.jspdf.jsPDF);
+              return;
+            }
+            reject(new Error("jsPDF is not available after loading."));
+          };
+          script.onerror = function () {
+            reject(new Error("Could not load jsPDF."));
+          };
+          document.head.appendChild(script);
+        }).finally(function () {
+          state.jsPdfPromise = null;
+        });
+      }
+
+      return state.jsPdfPromise;
+    }
+
+    function findChapterById(id) {
+      return chapters.find((chapter) => chapter.id === id) || chapters[0];
+    }
+
+    function cloneChapterData(data) {
+      return {
+        description: data && data.description ? String(data.description) : "",
+        topics: Array.isArray(data?.topics)
+          ? data.topics.map((topic) => ({ ...topic }))
+          : []
+      };
+    }
+
+    function getEmbeddedChapterData(chapterId) {
+      return cloneChapterData(embeddedChapterData[chapterId]);
+    }
+
+    async function fetchChapterData(chapter, timeoutMs) {
+      const url = new URL(chapter.data, window.location.href);
+      url.searchParams.set("v", releaseInfo.version);
+
+      const controller = typeof AbortController !== "undefined"
+        ? new AbortController()
+        : null;
+      let timeoutId = 0;
+
+      const timeoutPromise = new Promise(function (_resolve, reject) {
+        timeoutId = window.setTimeout(function () {
+          if (controller) controller.abort();
+          reject(new Error(`Timed out while loading ${chapter.data}`));
+        }, Number(timeoutMs || 2600));
+      });
+
+      const fetchOptions = {
+        cache: "no-cache",
+        credentials: "same-origin"
+      };
+      if (controller) fetchOptions.signal = controller.signal;
+
+      try {
+        const response = await Promise.race([
+          fetch(url.toString(), fetchOptions),
+          timeoutPromise
+        ]);
+        if (!response.ok) throw new Error("File not available yet");
+        return cloneChapterData(await response.json());
+      } finally {
+        if (timeoutId) window.clearTimeout(timeoutId);
+      }
+    }
+
+    function setDrawerSection(sectionId) {
+      const normalizedSection = sectionId || "";
+      state.drawerSection = normalizedSection;
+
+      document.querySelectorAll("[data-drawer-trigger]").forEach((button) => {
+        const isActive = button.dataset.drawerTrigger === normalizedSection;
+        button.classList.toggle("is-open", isActive);
+        button.setAttribute("aria-expanded", String(isActive));
+      });
+
+      document.querySelectorAll(".drawer-group-panel").forEach((panel) => {
+        const expectedId = normalizedSection
+          ? `drawerPanel${normalizedSection.charAt(0).toUpperCase()}${normalizedSection.slice(1)}`
+          : "";
+        panel.classList.toggle("is-open", panel.id === expectedId);
+      });
+    }
+
+    function openDrawer(sectionId) {
+      state.drawerSection = sectionId || state.drawerSection || getDrawerSectionForView(state.view);
+      menuDrawerOverlay.hidden = false;
+      menuDrawerOverlay.setAttribute("aria-hidden", "false");
+      menuDrawerOverlay.classList.add("is-open");
+      menuToggleButton.setAttribute("aria-expanded", "true");
+      setDrawerSection(state.drawerSection);
+    }
+
+    function closeDrawer() {
+      menuDrawerOverlay.classList.remove("is-open");
+      menuDrawerOverlay.setAttribute("aria-hidden", "true");
+      menuToggleButton.setAttribute("aria-expanded", "false");
+      window.setTimeout(() => {
+        if (!menuDrawerOverlay.classList.contains("is-open")) {
+          menuDrawerOverlay.hidden = true;
+        }
+      }, 220);
+    }
+
+    function syncUrl() {
+      const url = new URL(window.location.href);
+      url.searchParams.set("view", state.view);
+      if (state.chapterId) {
+        url.searchParams.set("chapter", state.chapterId);
+      } else {
+        url.searchParams.delete("chapter");
+      }
+      if (state.view === "simulators" && state.simulatorId) {
+        url.searchParams.set("sim", state.simulatorId);
+      } else {
+        url.searchParams.delete("sim");
+      }
+      window.history.replaceState({}, "", url);
+    }
+
+    function renderChapterMenu() {
+      chapterList.innerHTML = "";
+
+      chapters.forEach((chapter) => {
+        const li = document.createElement("li");
+        const button = document.createElement("button");
+        button.className = "chapter-button";
+        button.type = "button";
+        button.dataset.chapterId = chapter.id;
+        button.innerHTML = `
+          <span class="chapter-number">${chapter.id}</span>
+          <span class="chapter-name">${chapter.title}</span>
+        `;
+        button.addEventListener("click", function () {
+          closeDrawer();
+          void activateView("chapters", chapter.id);
+        });
+        li.appendChild(button);
+        chapterList.appendChild(li);
+      });
+    }
+
+    function renderPersonalMenu() {
+      personalList.innerHTML = "";
+      personalDrawerActions.innerHTML = "";
+
+      personalViews.forEach((view) => {
+        if (view.requiresValidator && !state.canReviewValidations) return;
+
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `personal-button${state.view === view.id ? " active" : ""}`;
+        button.dataset.viewId = view.id;
+        button.setAttribute("aria-disabled", String(!state.loggedIn));
+        button.innerHTML = `
+          <span class="extras-icon"><i class="fa-solid ${view.icon}"></i></span>
+          <span class="extras-text">
+            <span class="extras-label">${view.label}</span>
+            <span class="extras-note">${view.note}</span>
+          </span>
+        `;
+        button.addEventListener("click", function () {
+          if (!state.loggedIn) {
+            closeDrawer();
+            ensureAuthModules().then(function (modules) {
+              if (modules.auth && typeof modules.auth.openModal === "function") {
+                modules.auth.openModal();
+              }
+            });
+            return;
+          }
+          closeDrawer();
+          void activateView(view.id);
+        });
+        personalList.appendChild(button);
+      });
+
+      personalHint.textContent = state.loggedIn
+        ? "Your personal area is active. The subtopics above open your history and saved shortcuts."
+        : "Sign in with Google to enable your personal area.";
+
+      if (!state.loggedIn) {
+        const loginButton = document.createElement("button");
+        loginButton.type = "button";
+        loginButton.className = "drawer-inline-action";
+        loginButton.innerHTML = `<i class="fa-brands fa-google"></i><span>Sign in with Google</span>`;
+        loginButton.addEventListener("click", function () {
+          closeDrawer();
+          ensureAuthModules().then(function (modules) {
+            if (modules.auth && typeof modules.auth.openModal === "function") {
+              modules.auth.openModal();
+            }
+          });
+        });
+        personalDrawerActions.appendChild(loginButton);
+      }
+    }
+
+    function renderExtrasMenu() {
+      extrasList.innerHTML = "";
+      const extrasGroup = extrasList.closest("[data-drawer-group='extras']");
+      if (extrasGroup) extrasGroup.hidden = extraViews.length === 0;
+      if (extraViews.length === 0) return;
+
+      extraViews.forEach((view) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `extras-button${state.view === view.id ? " active" : ""}`;
+        button.dataset.viewId = view.id;
+        button.innerHTML = `
+          <span class="extras-icon"><i class="fa-solid ${view.icon}"></i></span>
+          <span class="extras-text">
+            <span class="extras-label">${view.label}</span>
+            <span class="extras-note">${view.note}</span>
+          </span>
+        `;
+        button.addEventListener("click", function () {
+          closeDrawer();
+          state.simulatorId = "";
+          void activateView(view.id);
+        });
+        extrasList.appendChild(button);
+      });
+    }
+
+    function setActiveChapter(id) {
+      document.querySelectorAll(".chapter-button").forEach((button) => {
+        const isActive = state.view === "chapters" && button.dataset.chapterId === id;
+        button.classList.toggle("active", isActive);
+        if (isActive) {
+          button.setAttribute("aria-current", "page");
+        } else {
+          button.removeAttribute("aria-current");
+        }
+      });
+      if (state.view === "chapters") {
+        setDrawerSection("chapters");
+      }
+    }
+
+    function setActivePersonal(viewId) {
+      document.querySelectorAll(".personal-button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.viewId === viewId);
+      });
+      if (viewId) {
+        setDrawerSection("personal");
+      }
+    }
+
+    function setActiveExtra(viewId) {
+      document.querySelectorAll(".extras-button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.viewId === viewId);
+      });
+      if (viewId) {
+        setDrawerSection("extras");
+      }
+    }
+
+    function renderTopicGrid(topics) {
+      setLandingMode(false);
+      const grid = document.createElement("div");
+      grid.className = "topic-grid";
+
+      topics.forEach((topic) => {
+        const link = document.createElement("a");
+        link.className = `topic-card${topic.aiExercise ? " ai-exercise" : ""}`;
+        link.href = topic.url || "#";
+        link.innerHTML = `
+          <div class="topic-card-top">
+            <div class="topic-id">${escapeHtml(topic.id || "")}</div>
+            ${topic.aiExercise ? `<div class="topic-badge ai-exercise"><i class="fa-solid fa-wand-magic-sparkles"></i> Exercise IA</div>` : ""}
+          </div>
+          <div class="topic-title">${escapeHtml(topic.title || "Untitled topic")}</div>
+          <div class="topic-note">${escapeHtml(topic.note || "Open page HTML deste topic.")}</div>
+        `;
+        grid.appendChild(link);
+      });
+
+      topicContainer.innerHTML = "";
+      topicContainer.appendChild(grid);
+    }
+
+    function renderDiscoveryLanding() {
+      setLandingMode(true);
+      panelKicker.textContent = "Living Book";
+      panelTitle.textContent = "Use the menu to navigate";
+      panelDescription.textContent = "";
+      setActiveChapter("");
+      setActivePersonal("");
+      setActiveExtra("");
+      panelActions.innerHTML = "";
+
+      topicContainer.innerHTML = `
+        <div class="discovery-shell">
+          <section class="discovery-grid">
+            <button type="button" class="discovery-card" data-role="open-drawer-section" data-section-id="chapters">
+              <div class="discovery-card__title"><i class="fa-solid fa-list-ul"></i> Chapters</div>
+              <div class="discovery-card__meta">Open chapter menu</div>
+            </button>
+            <a class="discovery-card" href="#" data-landing-login-target="index.html?view=favorites">
+              <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
+              <div class="discovery-card__meta">Open Personal Area</div>
+            </a>
+          </section>
+        </div>
+      `;
+
+      attachDiscoveryHandlers(topicContainer);
+    }
+
+    function attachDiscoveryHandlers(scope) {
+      scope.querySelectorAll('[data-role="open-view"], [data-role="open-drawer-section"]').forEach((button) => {
+        button.setAttribute("data-discovery-bound", "true");
+      });
+    }
+
+    function handleDiscoveryAction(button) {
+      if (!button) return false;
+
+      if (button.matches('[data-role="open-drawer-section"]')) {
+        openDrawer(button.dataset.sectionId || "chapters");
+        return true;
+      }
+
+      if (button.matches('[data-role="open-view"]')) {
+        const viewId = button.dataset.viewId || "chapters";
+        const chapterId = button.dataset.chapterId;
+        void activateView(viewId, chapterId);
+        return true;
+      }
+
+      return false;
+    }
+
+    function buildExercisePlainText(exercise) {
+      const pageUrl = buildAbsoluteCourseUrl(exercise.page_path || exercise.page_url);
+      const itemLabel = exercise.item_id || exercise.chapter_id || "Course";
+      const exerciseCodeLine = exercise.exercise_code ? [`Exercise ID: ${exercise.exercise_code}`] : [];
+
+      return [
+        "Quantum Mechanics",
+        "",
+        exercise.exercise_title || "Exercise",
+        "",
+        `Page: ${exercise.page_title || "Course page"}`,
+        `Chapter/Item: ${itemLabel}`,
+        ...exerciseCodeLine,
+        `Level: ${difficultyLabel(exercise.difficulty)}`,
+        `Page link: ${pageUrl}`,
+        "",
+        "Credits",
+        "All teaching content on the pages and in the associated book was created by Prof. Mario Reis.",
+        "Institute of Physics — Fluminense Federal University.",
+        "",
+        "Experimental AI notice",
+        "The exercise generator is a teaching experiment; exercises and solutions are generated automatically by an experimental AI agent and may contain conceptual, mathematical, or pedagogical errors.",
+        "",
+        "Statement",
+        exercise.statement || "",
+        "",
+        "Solution",
+        exercise.solution || "",
+      ].join("\n");
+    }
+
+    async function copyTextFallback(text) {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+          await navigator.clipboard.writeText(text);
+          return true;
+        } catch (_error) {
+          // fall back to the legacy method
+        }
+      }
+
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "true");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      textarea.style.pointerEvents = "none";
+      textarea.style.top = "-9999px";
+      document.body.appendChild(textarea);
+      textarea.focus();
+      textarea.select();
+
+      let copied = false;
+      try {
+        copied = document.execCommand("copy");
+      } catch (_error) {
+        copied = false;
+      }
+
+      textarea.remove();
+      return copied;
+    }
+
+    function updateExerciseModalFavoriteButton(exercise) {
+      const modal = state.exerciseModal;
+      if (!modal) return;
+
+      const button = modal.querySelector('[data-role="exercise-favorite"]');
+      if (!button) return;
+
+      const isFavorite = Boolean(exercise?.is_favorite);
+      button.classList.toggle("is-active", isFavorite);
+      button.innerHTML = `<i class="fa-${isFavorite ? "solid" : "regular"} fa-star"></i>`;
+      button.setAttribute("aria-label", isFavorite ? "Remove exercise from favorites" : "Save exercise as favorite");
+      button.setAttribute("title", isFavorite ? "Remove from favorites" : "Save as favorite");
+    }
+
+    function setExerciseModalStatus(message, isError) {
+      const modal = state.exerciseModal;
+      if (!modal) return;
+
+      const status = modal.querySelector('[data-role="exercise-status"]');
+      if (!status) return;
+
+      status.textContent = message || "";
+      status.classList.toggle("is-error", Boolean(isError));
+    }
+
+    function ensureExerciseModal() {
+      if (state.exerciseModal) return state.exerciseModal;
+
+      const overlay = document.createElement("div");
+      overlay.className = "exercise-modal-overlay";
+      overlay.innerHTML = `
+        <div class="exercise-modal" role="dialog" aria-modal="true" aria-labelledby="exerciseModalTitle">
+          <div class="exercise-modal__header">
+            <div>
+              <div class="exercise-modal__kicker" id="exerciseModalKicker">My exercise</div>
+              <div class="exercise-modal__title" id="exerciseModalTitle">Exercise</div>
+            </div>
+            <div class="exercise-modal__header-actions">
+              <button class="exercise-modal__favorite" data-role="exercise-favorite" type="button" aria-label="Save exercise as favorite" title="Save as favorite">
+                <i class="fa-regular fa-star"></i>
+              </button>
+              <button class="exercise-modal__close" type="button" aria-label="Close exercise">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+          </div>
+          <div class="exercise-modal__body">
+            <div class="exercise-modal__meta" data-role="exercise-meta"></div>
+            <div class="exercise-modal__section">
+              <div class="exercise-modal__section-title">Statement</div>
+              <div class="exercise-modal__content" data-role="exercise-statement"></div>
+            </div>
+            <div class="exercise-modal__section exercise-modal__section--solution">
+              <div class="exercise-modal__section-title">Solution</div>
+              <div class="exercise-modal__content" data-role="exercise-solution"></div>
+            </div>
+            <div class="exercise-modal__actions">
+              <button class="saved-card__button saved-card__button--primary" data-role="exercise-open-page" type="button">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                Open page
+              </button>
+              <button class="saved-card__button" data-role="exercise-share" type="button">
+                <i class="fa-solid fa-paper-plane"></i>
+                Send
+              </button>
+              <button class="saved-card__button" data-role="exercise-export" type="button">
+                <i class="fa-solid fa-file-export"></i>
+                Export
+              </button>
+            </div>
+            <div class="exercise-modal__status" data-role="exercise-status" aria-live="polite"></div>
+          </div>
+        </div>
+      `;
+
+      overlay.addEventListener("click", function (event) {
+        if (event.target === overlay) {
+          closeExerciseModal();
+        }
+      });
+
+      overlay.querySelector(".exercise-modal__close").addEventListener("click", closeExerciseModal);
+      document.body.appendChild(overlay);
+      state.exerciseModal = overlay;
+      return overlay;
+    }
+
+    function closeExerciseModal() {
+      if (!state.exerciseModal) return;
+      state.exerciseModal.classList.remove("is-open");
+    }
+
+    async function typesetExerciseModal(modal) {
+      if (!window.MathJax || typeof window.MathJax.typesetPromise !== "function") return;
+
+      const elements = Array.from(modal.querySelectorAll(".exercise-modal__content"));
+      if (!elements.length) return;
+
+      try {
+        if (typeof window.MathJax.typesetClear === "function") {
+          window.MathJax.typesetClear(elements);
+        }
+        await window.MathJax.typesetPromise(elements);
+      } catch (error) {
+        console.warn("Could not compose equations in the exercise modal.", error);
+      }
+    }
+
+    async function typesetValidationReview(root, attempts = 0) {
+      const elements = Array.from((root || document).querySelectorAll(".validation-review-card__content"));
+      if (!elements.length) return;
+
+      if (!window.MathJax || typeof window.MathJax.typesetPromise !== "function") {
+        if (attempts >= 8) return;
+        window.setTimeout(function () {
+          void typesetValidationReview(root, attempts + 1);
+        }, 300);
+        return;
+      }
+
+      try {
+        if (typeof window.MathJax.typesetClear === "function") {
+          window.MathJax.typesetClear(elements);
+        }
+        await window.MathJax.typesetPromise(elements);
+      } catch (error) {
+        console.warn("Could not compose equations in validation review.", error);
+      }
+    }
+
+    async function shareExercise(exercise) {
+      const title = `Saved exercise · ${exercise.exercise_title || "Exercise"}`;
+      const text = buildExercisePlainText(exercise);
+      const url = buildAbsoluteCourseUrl(exercise.page_path || exercise.page_url);
+
+      if (navigator.share) {
+        try {
+          await navigator.share({ title, text, url });
+          return "shared";
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            return "cancelled";
+          }
+        }
+      }
+
+      if (await copyTextFallback(`${text}\n\n${url}`)) {
+        return "copied";
+      }
+
+      const mailLink = document.createElement("a");
+      mailLink.href = `mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent(`${text}\n\n${url}`)}`;
+      document.body.appendChild(mailLink);
+      mailLink.click();
+      mailLink.remove();
+      return "mail";
+    }
+
+    async function exportExercise(exercise) {
+      const jsPDF = await ensureJsPdf();
+      const doc = new jsPDF({
+        orientation: "portrait",
+        unit: "pt",
+        format: "a4"
+      });
+      const pageWidth = doc.internal.pageSize.getWidth();
+      const pageHeight = doc.internal.pageSize.getHeight();
+      const margin = 48;
+      const contentWidth = pageWidth - (margin * 2);
+      const lineHeight = 16;
+      const filename = `exercise-${String(exercise.item_id || exercise.chapter_id || "curso").replace(/[^a-z0-9.-]+/gi, "-").toLowerCase()}.pdf`;
+
+      const bodyText = buildExercisePlainText(exercise);
+      let cursorY = margin;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(18);
+      doc.text("Quantum Mechanics", margin, cursorY);
+      cursorY += 26;
+
+      doc.setFont("helvetica", "bold");
+      doc.setFontSize(14);
+      const titleLines = doc.splitTextToSize(exercise.exercise_title || "Exercise", contentWidth);
+      doc.text(titleLines, margin, cursorY);
+      cursorY += (titleLines.length * 18) + 10;
+
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(11);
+      const lines = doc.splitTextToSize(bodyText, contentWidth);
+
+      for (const line of lines) {
+        if (cursorY > pageHeight - margin) {
+          doc.addPage();
+          cursorY = margin;
+          doc.setFont("helvetica", "normal");
+          doc.setFontSize(11);
+        }
+        doc.text(String(line), margin, cursorY);
+        cursorY += lineHeight;
+      }
+
+      const pdfArrayBuffer = doc.output("arraybuffer");
+
+      if (window.showSaveFilePicker) {
+        try {
+          const handle = await window.showSaveFilePicker({
+            suggestedName: filename,
+            types: [{
+              description: "PDF file",
+              accept: {
+                "application/pdf": [".pdf"]
+              }
+            }]
+          });
+          const writable = await handle.createWritable();
+          await writable.write(pdfArrayBuffer);
+          await writable.close();
+          return "saved";
+        } catch (error) {
+          if (error && error.name === "AbortError") {
+            return "cancelled";
+          }
+        }
+      }
+
+      const blob = new Blob([pdfArrayBuffer], { type: "application/pdf" });
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = filename;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      window.setTimeout(function () {
+        URL.revokeObjectURL(link.href);
+      }, 1000);
+      return "pdf";
+    }
+
+    async function openExerciseModal(exerciseId) {
+      const exercise = state.savedExercises.find((entry) => String(entry.id) === String(exerciseId));
+      if (!exercise) return;
+
+      state.selectedExerciseId = exercise.id;
+      const modal = ensureExerciseModal();
+      modal.querySelector("#exerciseModalKicker").textContent = exercise.page_title || "My exercise";
+      modal.querySelector("#exerciseModalTitle").textContent = exercise.exercise_title || "Exercise";
+      modal.querySelector('[data-role="exercise-meta"]').innerHTML = `
+        ${exercise.exercise_code ? `<span class="saved-chip"><i class="fa-solid fa-fingerprint"></i>${escapeHtml(exercise.exercise_code)}</span>` : ""}
+        <span class="saved-chip"><i class="fa-solid fa-layer-group"></i>${escapeHtml(exercise.item_id || exercise.chapter_id || "Course")}</span>
+        <span class="saved-chip saved-chip--difficulty"><i class="fa-solid fa-signal"></i>${escapeHtml(difficultyLabel(exercise.difficulty))}</span>
+        <span class="saved-chip"><i class="fa-solid fa-clock-rotate-left"></i>${escapeHtml(formatDate(exercise.created_at))}</span>
+      `;
+      modal.querySelector('[data-role="exercise-statement"]').innerHTML = window.TermoAIExercise?.formatGeneratedText
+        ? window.TermoAIExercise.formatGeneratedText(exercise.statement || "")
+        : `<p>${escapeHtml(exercise.statement || "")}</p>`;
+      modal.querySelector('[data-role="exercise-solution"]').innerHTML = window.TermoAIExercise?.formatGeneratedText
+        ? window.TermoAIExercise.formatGeneratedText(exercise.solution || "")
+        : `<p>${escapeHtml(exercise.solution || "")}</p>`;
+      setExerciseModalStatus("");
+      updateExerciseModalFavoriteButton(exercise);
+
+      modal.querySelector('[data-role="exercise-open-page"]').onclick = function () {
+        window.location.href = normalizeAppRelativeUrl(exercise.page_path || exercise.page_url);
+      };
+      modal.querySelector('[data-role="exercise-favorite"]').onclick = async function () {
+        const button = modal.querySelector('[data-role="exercise-favorite"]');
+        if (!window.TermoUserData?.updateFavorite) return;
+
+        try {
+          button.disabled = true;
+          const result = await window.TermoUserData.updateFavorite(exercise.id, !exercise.is_favorite).catch(function (error) {
+            return { ok: false, error };
+          });
+          if (!result.ok) {
+            setExerciseModalStatus("Could not update this exercise favorite right now.", true);
+            return;
+          }
+          exercise.is_favorite = Boolean(result.record?.is_favorite);
+          updateExerciseModalFavoriteButton(exercise);
+          const listStar = document.querySelector(`[data-role="toggle-exercise-favorite"][data-exercise-id="${String(exercise.id)}"]`);
+          if (listStar) {
+            listStar.classList.toggle("is-active", exercise.is_favorite);
+            listStar.setAttribute("aria-label", exercise.is_favorite ? "Remove exercise from favorites" : "Save exercise as favorite");
+            listStar.setAttribute("title", exercise.is_favorite ? "Remove from favorites" : "Save as favorite");
+            listStar.innerHTML = `<i class="fa-${exercise.is_favorite ? "solid" : "regular"} fa-star"></i>`;
+          }
+          setExerciseModalStatus(exercise.is_favorite ? "Exercise added to favorites." : "Exercise removed from favorites.");
+          if (state.view === "favorites") {
+            await refreshUserState();
+            await renderFavorites();
+          }
+        } finally {
+          button.disabled = false;
+        }
+      };
+      modal.querySelector('[data-role="exercise-share"]').onclick = async function () {
+        const button = modal.querySelector('[data-role="exercise-share"]');
+        try {
+          button.disabled = true;
+          setExerciseModalStatus("Preparing to send...");
+          const method = await shareExercise(exercise);
+          if (method === "cancelled") {
+            setExerciseModalStatus("");
+            return;
+          }
+          setExerciseModalStatus(
+            method === "shared"
+              ? "Exercise sent."
+              : method === "copied"
+                ? "Text copied so you can share it in your preferred app."
+                : "Trying to open your email app.",
+            false
+          );
+        } catch (error) {
+          console.warn("Could not share the exercise.", error);
+          setExerciseModalStatus("Could not send this exercise right now.", true);
+        } finally {
+          button.disabled = false;
+        }
+      };
+      modal.querySelector('[data-role="exercise-export"]').onclick = async function () {
+        const button = modal.querySelector('[data-role="exercise-export"]');
+        try {
+          button.disabled = true;
+          setExerciseModalStatus("Preparing export...");
+          const method = await exportExercise(exercise);
+          if (method === "cancelled") {
+            setExerciseModalStatus("");
+            return;
+          }
+          setExerciseModalStatus("File exported.");
+        } catch (error) {
+          console.warn("Could not export the exercise.", error);
+          setExerciseModalStatus("Could not export this exercise right now.", true);
+        } finally {
+          button.disabled = false;
+        }
+      };
+
+      modal.classList.add("is-open");
+      await typesetExerciseModal(modal);
+    }
+
+    function renderSavedExerciseListItem(exercise) {
+      return `
+        <article
+          class="saved-item"
+          data-exercise-id="${escapeHtml(exercise.id)}"
+          role="button"
+          tabindex="0"
+          aria-label="Open exercise ${escapeHtml(exercise.exercise_title || "Exercise")}"
+        >
+          <div class="saved-item__top">
+            <div class="saved-item__meta">
+              ${exercise.exercise_code ? `<span class="saved-chip"><i class="fa-solid fa-fingerprint"></i>${escapeHtml(exercise.exercise_code)}</span>` : ""}
+              <span class="saved-chip"><i class="fa-solid fa-layer-group"></i>${escapeHtml(exercise.item_id || exercise.chapter_id || "Course")}</span>
+              <span class="saved-chip saved-chip--difficulty"><i class="fa-solid fa-signal"></i>${escapeHtml(difficultyLabel(exercise.difficulty))}</span>
+              <span class="saved-chip"><i class="fa-solid fa-clock-rotate-left"></i>${escapeHtml(formatDate(exercise.created_at))}</span>
+            </div>
+            <button
+              class="saved-item__favorite${exercise.is_favorite ? " is-active" : ""}"
+              data-role="toggle-exercise-favorite"
+              data-exercise-id="${escapeHtml(exercise.id)}"
+              type="button"
+              aria-label="${exercise.is_favorite ? "Remove exercise from favorites" : "Save exercise as favorite"}"
+              title="${exercise.is_favorite ? "Remove from favorites" : "Save as favorite"}"
+            >
+              <i class="fa-${exercise.is_favorite ? "solid" : "regular"} fa-star"></i>
+            </button>
+          </div>
+          <div class="saved-item__title">${escapeHtml(exercise.exercise_title || "Exercise")}</div>
+          <div class="saved-item__source">${escapeHtml(exercise.page_title || "Course page")}</div>
+          <div class="saved-item__preview">${escapeHtml(truncate(exercise.statement || "", 190))}</div>
+        </article>
+      `;
+    }
+
+    function attachCommonHandlers(scope) {
+      scope.querySelectorAll('[data-role="open-login"]').forEach((button) => {
+        button.addEventListener("click", async function () {
+          const modules = await ensureAuthModules();
+          if (modules.auth && typeof modules.auth.openModal === "function") {
+            modules.auth.openModal();
+          }
+        });
+      });
+    }
+
+    function attachSavedListHandlers(scope) {
+      scope.querySelectorAll('[data-role="toggle-exercise-favorite"]').forEach((button) => {
+        button.addEventListener("click", async function (event) {
+          event.preventDefault();
+          event.stopPropagation();
+
+          if (!window.TermoUserData?.updateFavorite) return;
+
+          const exerciseId = button.dataset.exerciseId;
+          const exercise = state.savedExercises.find((entry) => String(entry.id) === String(exerciseId));
+          if (!exercise) return;
+
+          button.disabled = true;
+
+          const result = await window.TermoUserData.updateFavorite(exercise.id, !exercise.is_favorite).catch(function (error) {
+            return { ok: false, error };
+          });
+
+          button.disabled = false;
+
+          if (!result.ok) return;
+
+          exercise.is_favorite = Boolean(result.record?.is_favorite);
+          button.classList.toggle("is-active", exercise.is_favorite);
+          button.setAttribute("aria-label", exercise.is_favorite ? "Remove exercise from favorites" : "Save exercise as favorite");
+          button.setAttribute("title", exercise.is_favorite ? "Remove from favorites" : "Save as favorite");
+          button.innerHTML = `<i class="fa-${exercise.is_favorite ? "solid" : "regular"} fa-star"></i>`;
+          await refreshFavoriteCollections();
+
+          if (state.selectedExerciseId && String(state.selectedExerciseId) === String(exercise.id)) {
+            updateExerciseModalFavoriteButton(exercise);
+          }
+
+          if (state.view === "favorites") {
+            await refreshUserState();
+            await renderFavorites();
+          }
+        });
+      });
+
+      scope.querySelectorAll("[data-exercise-id]").forEach((button) => {
+        button.addEventListener("click", function () {
+          void openExerciseModal(button.dataset.exerciseId);
+        });
+        button.addEventListener("keydown", function (event) {
+          if (event.key !== "Enter" && event.key !== " ") return;
+          event.preventDefault();
+          void openExerciseModal(button.dataset.exerciseId);
+        });
+      });
+    }
+
+    function renderFavoriteList(items, favoriteExercises) {
+      const favorites = Array.isArray(items) ? items : [];
+      const exercises = Array.isArray(favoriteExercises) ? favoriteExercises : [];
+      const favoriteMarkup = favorites.map(function (item) {
+        const favoriteUrl = normalizeAppRelativeUrl(item.url || item.pagePath);
+        return `
+          <button class="favorite-item" data-favorite-url="${escapeHtml(favoriteUrl)}" type="button">
+            <div class="favorite-item__top"><i class="fa-solid fa-star"></i> Page favorita</div>
+            <div class="favorite-item__title">${escapeHtml(item.label || `Item ${item.itemId || ""}`)} · ${escapeHtml(item.title || "Course page")}</div>
+            <div class="favorite-item__note">${escapeHtml(item.note || "Open this item directly and resume reading.")}</div>
+          </button>
+        `;
+      }).join("");
+      const exerciseMarkup = exercises.map(renderSavedExerciseListItem).join("");
+
+      topicContainer.innerHTML = `
+        <div class="favorite-section">
+          <div class="favorite-section__title"><i class="fa-solid fa-star"></i> Favorite pages</div>
+          <div class="favorite-list">${favoriteMarkup || `<div class="empty-state"><strong>No favorite pages yet.</strong><br />Open a course item and use the star in the upper-right corner.</div>`}</div>
+        </div>
+        <div class="favorite-section">
+          <div class="favorite-section__title"><i class="fa-solid fa-file-lines"></i> Favorite exercises</div>
+          <div class="saved-list">${exerciseMarkup || `<div class="empty-state"><strong>No favorite exercise yet.</strong><br />Use the star in the list or inside the saved exercise to keep it here.</div>`}</div>
+        </div>
+      `;
+
+      topicContainer.querySelectorAll("[data-favorite-url]").forEach((button) => {
+        button.addEventListener("click", function () {
+          window.location.href = button.dataset.favoriteUrl || "#";
+        });
+      });
+
+      attachSavedListHandlers(topicContainer);
+    }
+
+    function validationChoiceLabel(value) {
+      const labels = {
+        sim: "Yes",
+        nao: "No",
+        nao_sei: "Not sure"
+      };
+      return labels[value] || "Not provided";
+    }
+
+    function renderValidationChoicePill(label, value) {
+      return `
+        <span class="validation-review-card__choice">
+          ${escapeHtml(label)}: <strong>${escapeHtml(validationChoiceLabel(value))}</strong>
+        </span>
+      `;
+    }
+
+    function renderValidationReviewText(value) {
+      const text = String(value || "").trim();
+      if (!text) return "<p>Not provided.</p>";
+      if (window.TermoAIExercise && typeof window.TermoAIExercise.formatGeneratedText === "function") {
+        return window.TermoAIExercise.formatGeneratedText(text);
+      }
+      return `<p>${escapeHtml(text)}</p>`;
+    }
+
+    function renderValidationReportItem(report) {
+      const issueLabels = [
+        report.statement_status === "sim" ? "Statement may contain an error" : "",
+        report.solution_status === "sim" ? "Solution may contain an error" : ""
+      ].filter(Boolean);
+      const notes = [report.statement_note, report.solution_note].filter(Boolean).join(" / ");
+
+      return `
+        <article class="validation-review-card" data-report-id="${escapeHtml(report.id)}">
+          <div class="validation-review-card__top">
+            <div>
+              <div class="saved-card__meta">
+                <span class="saved-chip"><i class="fa-solid fa-fingerprint"></i>${escapeHtml(report.exercise_id || "No ID")}</span>
+                <span class="saved-chip"><i class="fa-solid fa-layer-group"></i>${escapeHtml(report.item_id || report.chapter_id || "Course")}</span>
+                <span class="saved-chip"><i class="fa-solid fa-clock-rotate-left"></i>${escapeHtml(formatDate(report.created_at))}</span>
+              </div>
+              <div class="validation-review-card__title">${escapeHtml(report.exercise_title || "Exercise")}</div>
+              <div class="validation-review-card__source">${escapeHtml(report.page_title || "Course page")}</div>
+            </div>
+          </div>
+          <div class="validation-review-card__notice">${escapeHtml(issueLabels.join(" · ") || "Report with no marked error")}</div>
+          <div class="validation-review-card__choices">
+            ${renderValidationChoicePill("Statement", report.statement_status)}
+            ${renderValidationChoicePill("Solution", report.solution_status)}
+          </div>
+          ${notes ? `<div class="validation-review-card__note">${escapeHtml(notes)}</div>` : ""}
+          <div class="validation-review-card__decision-help">Approving or rejecting here evaluates the user's report. It is not a public certification of the entire exercise.</div>
+          <details class="validation-review-card__details">
+            <summary>View statement and solution</summary>
+            <div class="validation-review-card__section">
+              <strong>Statement</strong>
+              <div class="validation-review-card__content">${renderValidationReviewText(report.statement_excerpt || "")}</div>
+            </div>
+            <div class="validation-review-card__section">
+              <strong>Solution</strong>
+              <div class="validation-review-card__content">${renderValidationReviewText(report.solution_excerpt || "")}</div>
+            </div>
+          </details>
+          <label class="validation-review-card__admin-note">
+            Professor note
+            <textarea data-role="review-admin-note" rows="2" maxlength="280" placeholder="Optional: write a short instruction for the AI."></textarea>
+          </label>
+          <div class="validation-review-card__actions">
+            <button class="saved-card__button saved-card__button--primary" data-role="review-validation" data-decision="approved" type="button">
+              <i class="fa-solid fa-check"></i>
+              Approve report
+            </button>
+            <button class="saved-card__button" data-role="review-validation" data-decision="rejected" type="button">
+              <i class="fa-solid fa-xmark"></i>
+              Reject report
+            </button>
+            <a class="saved-card__button" href="${escapeHtml(normalizeAppRelativeUrl(report.page_path || report.page_url))}" target="_blank" rel="noopener noreferrer">
+              <i class="fa-solid fa-arrow-up-right-from-square"></i>
+              Open page
+            </a>
+          </div>
+          <div class="exercise-modal__status" data-role="review-status" aria-live="polite"></div>
+        </article>
+      `;
+    }
+
+    function attachValidationReviewHandlers(scope) {
+      scope.querySelectorAll(".validation-review-card__details").forEach((details) => {
+        details.addEventListener("toggle", function () {
+          if (details.open) {
+            void typesetValidationReview(details);
+          }
+        });
+      });
+
+      scope.querySelectorAll('[data-role="review-validation"]').forEach((button) => {
+        button.addEventListener("click", async function () {
+          const card = button.closest("[data-report-id]");
+          const reportId = card?.dataset.reportId || "";
+          const decision = button.dataset.decision || "";
+          const note = card?.querySelector('[data-role="review-admin-note"]')?.value || "";
+          const status = card?.querySelector('[data-role="review-status"]');
+
+          if (!window.TermoUserData?.reviewValidationReport || !reportId || !decision) return;
+
+          button.disabled = true;
+          if (status) {
+            status.textContent = "Saving review...";
+            status.classList.remove("is-error");
+          }
+
+          const result = await window.TermoUserData.reviewValidationReport(reportId, decision, note).catch(function (error) {
+            return { ok: false, error };
+          });
+
+          button.disabled = false;
+
+          if (!result.ok) {
+            if (status) {
+              status.textContent = result.error?.error || result.error?.message || "Could not save the review.";
+              status.classList.add("is-error");
+            }
+            return;
+          }
+
+          if (status) {
+            status.textContent = result.message || "Review saved.";
+            status.classList.remove("is-error");
+          }
+          card?.classList.add("is-reviewed");
+          window.setTimeout(function () {
+            void renderValidationReview();
+          }, 650);
+        });
+      });
+    }
+
+    async function refreshFavoriteCollections() {
+      if (!state.loggedIn) {
+        state.favoriteItems = [];
+        state.favoriteExercises = [];
+        return;
+      }
+
+      if (window.TermoUserData?.listFavoriteItems) {
+        const favoriteItemsResult = await window.TermoUserData.listFavoriteItems().catch(function () {
+          return { ok: false, items: [] };
+        });
+        state.favoriteItems = favoriteItemsResult.ok ? favoriteItemsResult.items : [];
+      } else {
+        state.favoriteItems = [];
+      }
+
+      if (window.TermoUserData?.listExercises) {
+        const favoriteExercisesResult = await window.TermoUserData.listExercises({ limit: 120, favoritesOnly: true }).catch(function () {
+          return { ok: false, exercises: [] };
+        });
+        state.favoriteExercises = favoriteExercisesResult.ok ? (favoriteExercisesResult.exercises || []) : [];
+      } else {
+        state.favoriteExercises = [];
+      }
+    }
+
+    async function canCurrentUserReviewValidations(session) {
+      const email = String(session?.user?.email || "").trim().toLowerCase();
+      if (!email || !window.TermoAuth?.fetchConfig) return false;
+
+      const config = await window.TermoAuth.fetchConfig().catch(function () {
+        return null;
+      });
+      const validatorEmails = Array.isArray(config?.validatorEmails)
+        ? config.validatorEmails.map(function (value) {
+            return String(value || "").trim().toLowerCase();
+          }).filter(Boolean)
+        : [];
+
+      return validatorEmails.includes(email);
+    }
+
+    async function refreshUserState() {
+      const sessionPromise = window.TermoAuth && typeof window.TermoAuth.getSession === "function"
+        ? window.TermoAuth.getSession()
+        : Promise.resolve(null);
+      const session = await sessionPromise.catch(function () {
+        return null;
+      });
+
+      state.loggedIn = Boolean(session?.user);
+      state.canReviewValidations = await canCurrentUserReviewValidations(session);
+      await refreshFavoriteCollections();
+
+      renderPersonalMenu();
+      renderExtrasMenu();
+      await renderPanelActions();
+    }
+
+    async function renderPanelActions() {
+      panelActions.innerHTML = "";
+    }
+
+    async function loadChapter(chapterId) {
+      setLandingMode(false);
+      const chapter = findChapterById(chapterId);
+      const loadToken = state.chapterLoadToken + 1;
+      state.chapterLoadToken = loadToken;
+      const isCurrentLoad = function () {
+        return state.view === "chapters" && state.chapterId === chapter.id && state.chapterLoadToken === loadToken;
+      };
+      const embeddedData = getEmbeddedChapterData(chapter.id);
+      state.chapterId = chapter.id;
+      setActiveChapter(chapter.id);
+      setActivePersonal("");
+      setActiveExtra("");
+      syncUrl();
+
+      panelKicker.textContent = `Chapter ${chapter.id}`;
+      panelTitle.textContent = chapter.title;
+      panelDescription.textContent = "";
+      if (embeddedData.topics.length > 0) {
+        renderTopicGrid(embeddedData.topics);
+      } else {
+        topicContainer.innerHTML = `<div class="empty-state"><strong>Please wait:</strong> fetching the external file <code>${chapter.data}</code>.</div>`;
+      }
+      await renderPanelActions();
+
+      if (embeddedData.topics.length > 0) {
+        window.setTimeout(function () {
+          void fetchChapterData(chapter, 1600).then(function (data) {
+            if (!isCurrentLoad()) return;
+            const topics = Array.isArray(data.topics) ? data.topics : [];
+            if (topics.length > 0) {
+              panelDescription.textContent = "";
+              renderTopicGrid(topics);
+            }
+          }).catch(function () {
+            return;
+          });
+        }, 0);
+        return;
+      }
+
+      try {
+        const data = await fetchChapterData(chapter, 3600);
+        if (!isCurrentLoad()) return;
+        const topics = Array.isArray(data.topics) ? data.topics : [];
+
+        panelDescription.textContent = "";
+
+        if (topics.length === 0) {
+          topicContainer.innerHTML = `
+            <div class="empty-state">
+              <strong>No topic has been registered yet.</strong><br />
+              Add topics in <code>${chapter.data}</code>. You do not need to edit this central page.
+            </div>
+          `;
+          return;
+        }
+
+        renderTopicGrid(topics);
+      } catch (error) {
+        if (!isCurrentLoad() || embeddedData.topics.length > 0) return;
+        panelDescription.textContent = "";
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Branch not created yet.</strong><br />This area is ready to receive topics when <code>${chapter.data}</code> is filled in.
+          </div>
+        `;
+      }
+    }
+
+    async function renderSavedExercises() {
+      setLandingMode(false);
+      panelKicker.textContent = "Personal Area";
+      panelTitle.textContent = savedPanelCopy.title;
+      panelDescription.textContent = savedPanelCopy.description;
+      setActiveChapter(state.chapterId);
+      setActivePersonal("saved");
+      setActiveExtra("");
+      panelActions.innerHTML = "";
+
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () {
+        return null;
+      });
+      state.loggedIn = Boolean(session?.user);
+
+      if (!window.TermoAuth || typeof window.TermoAuth.isConfigured !== "function") {
+        topicContainer.innerHTML = `<div class="empty-state"><strong>Auth not loaded.</strong><br />Reload the page to mount the personal area.</div>`;
+        return;
+      }
+
+      const configured = await window.TermoAuth.isConfigured().catch(function () {
+        return false;
+      });
+
+      if (!configured) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>My exercises is ready to be activated.</strong><br />
+            The public Supabase and Google variables still need to be configured before optional sign-in can work.
+          </div>
+        `;
+        return;
+      }
+
+      if (!state.loggedIn) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Sign in with Google to view your exercises.</strong><br />
+            Once you sign in, this tab will list everything generated during your study.<br /><br />
+            <button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button">
+              <i class="fa-solid fa-bookmark"></i>
+              Sign in to enable the personal area
+            </button>
+          </div>
+        `;
+        attachCommonHandlers(topicContainer);
+        return;
+      }
+
+      topicContainer.innerHTML = `<div class="empty-state"><strong>Loading your history...</strong><br />Fetching the exercises saved in your account.</div>`;
+
+      const result = await window.TermoUserData.listExercises({ limit: 80 }).catch(function (error) {
+        return { ok: false, reason: "query_failed", error, exercises: [] };
+      });
+
+      if (!result.ok) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Could not load your exercises.</strong><br />
+            Check whether the <code>saved_exercises</code> table was created in Supabase and whether the RLS policies were applied.
+          </div>
+        `;
+        return;
+      }
+
+      state.savedExercises = result.exercises || [];
+
+      if (!state.savedExercises.length) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>There are no saved exercises yet.</strong><br />
+            Generate an exercise on any course page and it will appear here automatically.
+          </div>
+        `;
+        return;
+      }
+
+      topicContainer.innerHTML = `<div class="saved-list">${state.savedExercises.map(renderSavedExerciseListItem).join("")}</div>`;
+      attachSavedListHandlers(topicContainer);
+    }
+
+    async function renderFavorites() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () {
+        return null;
+      });
+      state.loggedIn = Boolean(session?.user);
+      await refreshFavoriteCollections();
+
+      panelKicker.textContent = "Personal Area";
+      panelTitle.textContent = favoritesPanelCopy.title;
+      panelDescription.textContent = favoritesPanelCopy.description;
+      setActiveChapter(state.chapterId);
+      setActivePersonal("favorites");
+      setActiveExtra("");
+      panelActions.innerHTML = "";
+
+      if (!state.loggedIn) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Sign in with Google to enable your favorites.</strong><br />
+            After signing in, you can save specific course items and return to them directly from here.<br /><br />
+            <button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button">
+              <i class="fa-solid fa-star"></i>
+              Sign in to activate favorites
+            </button>
+          </div>
+        `;
+        attachCommonHandlers(topicContainer);
+        return;
+      }
+
+      if (!state.favoriteItems.length && !state.favoriteExercises.length) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>There are no favorites yet.</strong><br />
+            You can favorite both a course item and a saved exercise using the <strong>star</strong>.
+          </div>
+        `;
+        return;
+      }
+
+      renderFavoriteList(state.favoriteItems, state.favoriteExercises);
+    }
+
+    async function renderValidationReview() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () {
+        return null;
+      });
+      state.loggedIn = Boolean(session?.user);
+      state.canReviewValidations = await canCurrentUserReviewValidations(session);
+      panelKicker.textContent = "Personal Area";
+      panelTitle.textContent = "Pending validations";
+      panelDescription.textContent = "Review reports sent by users and decide which comments should inform future generations.";
+      setActiveChapter(state.chapterId);
+      setActivePersonal("validation-review");
+      setActiveExtra("");
+      panelActions.innerHTML = "";
+
+      if (!state.loggedIn) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Sign in with Google to review validations.</strong><br />
+            This area is restricted to the professor responsible for the material.
+          </div>
+        `;
+        return;
+      }
+
+      if (!state.canReviewValidations) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Restricted area.</strong><br />
+            Validation review is available only to the responsible professor.
+          </div>
+        `;
+        return;
+      }
+
+      topicContainer.innerHTML = `<div class="empty-state"><strong>Loading pending reports...</strong><br />Fetching validations sent by users.</div>`;
+
+      const result = await window.TermoUserData.listValidationReports({ status: "pending" }).catch(function (error) {
+        return { ok: false, error, reports: [] };
+      });
+
+      if (!result.ok) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>Could not load validations.</strong><br />
+            Check the RLS policies for the <code>exercise_validation_reports</code>.
+          </div>
+        `;
+        return;
+      }
+
+      state.validationReports = result.reports || [];
+
+      if (!state.validationReports.length) {
+        topicContainer.innerHTML = `
+          <div class="empty-state">
+            <strong>No pending validation.</strong><br />
+            New reports sent by users will appear here.
+          </div>
+        `;
+        return;
+      }
+
+      topicContainer.innerHTML = `<div class="validation-review-list">${state.validationReports.map(renderValidationReportItem).join("")}</div>`;
+      attachValidationReviewHandlers(topicContainer);
+      await typesetValidationReview(topicContainer);
+    }
+
+    function attachYesulatorFrameAutoResize(frame) {
+      if (!(frame instanceof HTMLIFrameElement)) return;
+
+      function resizeFrame() {
+        try {
+          const documentRef = frame.contentDocument;
+          if (!documentRef) return;
+          const bodyHeight = documentRef.body ? documentRef.body.scrollHeight : 0;
+          const docHeight = documentRef.documentElement ? documentRef.documentElement.scrollHeight : 0;
+          const nextHeight = Math.max(bodyHeight, docHeight, 720);
+          frame.style.height = `${nextHeight}px`;
+        } catch (_error) {
+          // Same origin is expected; if this fails, keep the CSS minimum height.
+        }
+      }
+
+      frame.addEventListener("load", function () {
+        resizeFrame();
+        window.setTimeout(resizeFrame, 120);
+        window.setTimeout(resizeFrame, 360);
+        window.setTimeout(resizeFrame, 900);
+      });
+    }
+
+    function renderYesulatorCatalog() {
+      topicContainer.innerHTML = `
+        <div class="simulator-grid">
+          ${simulatorsCatalog.map(function (simulator) {
+            return `
+              <a
+                class="simulator-card"
+                href="${escapeHtml(simulator.standaloneUrl)}"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <div class="simulator-card__top">
+                  <div>
+                    <div class="simulator-card__eyebrow">${escapeHtml(simulator.id)}</div>
+                    <div class="simulator-card__title">${escapeHtml(simulator.title)}</div>
+                  </div>
+                  <span class="simulator-card__icon" aria-hidden="true">
+                    <i class="fa-solid ${escapeHtml(simulator.icon)}"></i>
+                  </span>
+                </div>
+                <div class="simulator-card__description">${escapeHtml(simulator.description)}</div>
+                <div class="simulator-card__footer">
+                  <i class="fa-solid fa-arrow-right"></i>
+                  <span>Open simulator</span>
+                </div>
+              </a>
+            `;
+          }).join("")}
+        </div>
+      `;
+    }
+
+    function renderYesulatorDetail(simulator) {
+      topicContainer.innerHTML = `
+        <div class="simulator-detail">
+          <section class="simulator-detail__intro">
+            <div class="simulator-detail__eyebrow">${escapeHtml(simulator.id)}</div>
+            <h2 class="simulator-detail__title">${escapeHtml(simulator.title)}</h2>
+            <div class="simulator-detail__description">${escapeHtml(simulator.description)}</div>
+            <div class="simulator-detail__actions">
+              <a class="simulator-detail__button" href="index.html?view=simulators">
+                <i class="fa-solid fa-arrow-left"></i>
+                <span>Back to catalog</span>
+              </a>
+              <a class="simulator-detail__button simulator-detail__button--primary" href="${escapeHtml(simulator.standaloneUrl)}" target="_blank" rel="noopener noreferrer">
+                <i class="fa-solid fa-up-right-from-square"></i>
+                <span>Open in a new tab without the header</span>
+              </a>
+            </div>
+          </section>
+          <section class="simulator-detail__frame">
+            <iframe id="simulatorEmbeddedFrame" src="${escapeHtml(simulator.standaloneUrl)}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" title="${escapeHtml(simulator.title)}"></iframe>
+          </section>
+        </div>
+      `;
+
+      attachYesulatorFrameAutoResize(topicContainer.querySelector("#simulatorEmbeddedFrame"));
+    }
+
+    function renderYesulators() {
+      setLandingMode(false);
+      panelKicker.textContent = "Interactive resources";
+      panelTitle.textContent = simulatorsPanelCopy.title;
+      panelDescription.textContent = simulatorsPanelCopy.description;
+      setActiveChapter(state.chapterId);
+      setActivePersonal("");
+      setActiveExtra("simulators");
+      panelActions.innerHTML = "";
+
+      if (state.simulatorId) {
+        state.simulatorId = "";
+        syncUrl();
+      }
+
+      renderYesulatorCatalog();
+    }
+
+    async function activateView(viewId, chapterId, simulatorId) {
+      state.view = viewId;
+      state.drawerSection = getDrawerSectionForView(viewId);
+      if (typeof chapterId !== "undefined") {
+        state.chapterId = chapterId || "";
+      }
+      if (typeof simulatorId !== "undefined") {
+        state.simulatorId = simulatorId || "";
+      } else {
+        state.simulatorId = "";
+      }
+
+      syncUrl();
+
+      if (viewId === "saved") {
+        await renderSavedExercises();
+        return;
+      }
+
+      if (viewId === "favorites") {
+        await renderFavorites();
+        return;
+      }
+
+      if (viewId === "validation-review") {
+        await renderValidationReview();
+        return;
+      }
+
+      if (viewId === "simulators") {
+        renderYesulators();
+        return;
+      }
+
+      if (!state.chapterId) {
+        renderDiscoveryLanding();
+        return;
+      }
+
+      await loadChapter(state.chapterId);
+    }
+
+    const landingLoginTargetKey = "termoLandingPostLoginTarget";
+    let landingAuthCompletionBound = false;
+
+    function readLandingLoginTarget() {
+      try {
+        return window.sessionStorage ? window.sessionStorage.getItem(landingLoginTargetKey) || "" : "";
+      } catch (_error) {
+        return "";
+      }
+    }
+
+    function writeLandingLoginTarget(value) {
+      try {
+        if (!window.sessionStorage) return;
+        if (value) {
+          window.sessionStorage.setItem(landingLoginTargetKey, value);
+        } else {
+          window.sessionStorage.removeItem(landingLoginTargetKey);
+        }
+      } catch (_error) {
+        return;
+      }
+    }
+
+    function normalizeLandingTarget(target) {
+      try {
+        const url = new URL(target || "index.html?view=favorites", window.location.origin);
+        return (url.pathname || "/index.html") + (url.search || "") + (url.hash || "");
+      } catch (_error) {
+        return "/index.html?view=favorites";
+      }
+    }
+
+    function bindLandingAuthCompletion() {
+      if (landingAuthCompletionBound) return;
+      landingAuthCompletionBound = true;
+
+      window.addEventListener("termo-auth-state-change", function (event) {
+        const target = readLandingLoginTarget();
+        if (!target || !event?.detail?.user) return;
+
+        writeLandingLoginTarget("");
+        window.location.assign(target);
+      });
+    }
+
+    async function handleLandingLoginRequest(target) {
+      const normalizedTarget = normalizeLandingTarget(target);
+      writeLandingLoginTarget(normalizedTarget);
+      bindLandingAuthCompletion();
+
+      const auth = await ensureAuthOnly();
+      if (!auth) return;
+
+      if (typeof auth.openModal === "function") {
+        auth.openModal();
+      }
+
+      if (typeof auth.whenReady === "function") {
+        await auth.whenReady(2600).catch(function () {
+          return null;
+        });
+      }
+
+      if (typeof auth.getSession === "function") {
+        const session = await auth.getSession().catch(function () {
+          return null;
+        });
+        if (session?.user) {
+          writeLandingLoginTarget("");
+          window.location.assign(normalizedTarget);
+          return;
+        }
+      }
+    }
+
+    async function resumeLandingLoginFlow() {
+      const pendingTarget = readLandingLoginTarget();
+      if (!pendingTarget) return;
+
+      bindLandingAuthCompletion();
+      const auth = await ensureAuthOnly();
+      if (!auth) return;
+
+      if (typeof auth.whenReady === "function") {
+        await auth.whenReady(2600).catch(function () {
+          return null;
+        });
+      }
+
+      if (typeof auth.getSession !== "function") return;
+      const session = await auth.getSession().catch(function () {
+        return null;
+      });
+      if (session?.user) {
+        writeLandingLoginTarget("");
+        window.location.replace(pendingTarget);
+      }
+    }
+
+    window.handleLandingLoginRequest = handleLandingLoginRequest;
+
+    if (!window.__termoLandingStaticMode) {
+      window.addEventListener("termo-open-personal-area", function () {
+        if (!state.loggedIn) return;
+        void activateView("saved");
+      });
+
+      menuToggleButton.addEventListener("click", function (event) {
+        event.preventDefault();
+        if (menuDrawerOverlay.hidden || !menuDrawerOverlay.classList.contains("is-open")) {
+          openDrawer(getDrawerSectionForView(state.view));
+          return;
+        }
+        closeDrawer();
+      });
+
+      menuDrawerClose.addEventListener("click", closeDrawer);
+      menuDrawerOverlay.addEventListener("click", function (event) {
+        if (event.target === menuDrawerOverlay) {
+          closeDrawer();
+        }
+      });
+
+      document.addEventListener("click", function (event) {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const authButton = target.closest("[data-termo-auth-button]");
+        if (authButton && window.TermoAuth && typeof window.TermoAuth.openModal === "function") {
+          event.preventDefault();
+          event.stopPropagation();
+          window.TermoAuth.openModal();
+          return;
+        }
+
+        const landingLoginTarget = target.closest("[data-landing-login-target]");
+        if (landingLoginTarget) {
+          event.preventDefault();
+          closeDrawer();
+          if (typeof window.handleLandingLoginRequest === "function") {
+            void window.handleLandingLoginRequest(
+              landingLoginTarget.getAttribute("data-landing-login-target") ||
+              landingLoginTarget.getAttribute("href") ||
+              "index.html?view=favorites"
+            );
+          } else {
+            void ensureAuthModules().then(function (modules) {
+              if (modules.auth && typeof modules.auth.openModal === "function") {
+                modules.auth.openModal();
+              }
+            });
+          }
+          return;
+        }
+
+        const discoveryButton = target.closest('[data-role="open-view"], [data-role="open-drawer-section"]');
+        if (!discoveryButton) return;
+
+        if (discoveryButton.matches('a[href][data-role="open-view"]')) {
+          return;
+        }
+
+        event.preventDefault();
+        handleDiscoveryAction(discoveryButton);
+      });
+
+      document.querySelectorAll("[data-drawer-trigger]").forEach((button) => {
+        button.addEventListener("click", function () {
+          const targetSection = button.dataset.drawerTrigger;
+          const isOpen = button.getAttribute("aria-expanded") === "true";
+          const nextSection = isOpen ? "" : targetSection;
+          setDrawerSection(nextSection);
+        });
+      });
+
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+          closeDrawer();
+        }
+      });
+
+      window.TermoIndexReady = true;
+
+      function bindAuthStateListener(attempts) {
+        const tries = Number(attempts || 0);
+
+        if (!(window.TermoUserData && typeof window.TermoUserData.onAuthStateChange === "function")) {
+          if (tries < 40) {
+            window.setTimeout(function () {
+              bindAuthStateListener(tries + 1);
+            }, 100);
+          }
+          return;
+        }
+
+        window.TermoUserData.onAuthStateChange(async function () {
+          await refreshUserState();
+
+          if (state.view === "saved") {
+            await renderSavedExercises();
+            return;
+          }
+
+          if (state.view === "favorites") {
+            await renderFavorites();
+            return;
+          }
+
+          if (state.view === "validation-review") {
+            await renderValidationReview();
+            return;
+          }
+
+          if (state.view === "chapters") {
+            await renderPanelActions();
+          }
+        });
+      }
+
+      async function bootIndexPage() {
+        renderReleaseInfo();
+        renderChapterMenu();
+        renderPersonalMenu();
+        renderExtrasMenu();
+        setDrawerSection(state.drawerSection);
+        bindAuthStateListener();
+        await activateView(state.view, state.chapterId);
+        await refreshUserState();
+      }
+
+      if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
+          void bootIndexPage();
+          if (window.__termoLandingAuthResume) {
+            void resumeLandingLoginFlow();
+          }
+        }, { once: true });
+      } else {
+        void bootIndexPage();
+        if (window.__termoLandingAuthResume) {
+          void resumeLandingLoginFlow();
+        }
+      }
+    } else {
+      renderReleaseInfo();
+
+      const landingLoginTargetKey = "termoLandingPostLoginTarget";
+      let landingAuthLoader = null;
+      let landingAuthListenerBound = false;
+
+      function readLandingLoginTarget() {
+        try {
+          return window.sessionStorage ? window.sessionStorage.getItem(landingLoginTargetKey) || "" : "";
+        } catch (_error) {
+          return "";
+        }
+      }
+
+      function writeLandingLoginTarget(value) {
+        try {
+          if (!window.sessionStorage) return;
+          if (value) {
+            window.sessionStorage.setItem(landingLoginTargetKey, value);
+          } else {
+            window.sessionStorage.removeItem(landingLoginTargetKey);
+          }
+        } catch (_error) {
+          return;
+        }
+      }
+
+      function normalizeLandingTarget(target) {
+        try {
+          var url = new URL(target || "index.html?view=favorites", window.location.origin);
+          return (url.pathname || "/index.html") + (url.search || "") + (url.hash || "");
+        } catch (_error) {
+          return "index.html?view=favorites";
+        }
+      }
+
+      function ensureLandingAuth() {
+        if (window.TermoAuth && typeof window.TermoAuth.openModal === "function") {
+          return Promise.resolve(window.TermoAuth);
+        }
+
+        if (landingAuthLoader) {
+          return landingAuthLoader;
+        }
+
+        landingAuthLoader = new Promise(function (resolve, reject) {
+          let attempts = 0;
+          let settled = false;
+
+          function finishWithAuth() {
+            if (settled) return true;
+            if (window.TermoAuth && typeof window.TermoAuth.openModal === "function") {
+              settled = true;
+              resolve(window.TermoAuth);
+              return true;
+            }
+            return false;
+          }
+
+          function checkReady() {
+            attempts += 1;
+            if (finishWithAuth()) return;
+            if (attempts >= 50) {
+              settled = true;
+              reject(new Error("Auth loader timeout"));
+              return;
+            }
+            window.setTimeout(checkReady, 100);
+          }
+
+          const existingScript = Array.from(document.scripts).find(function (node) {
+            return typeof node.src === "string" && node.src.indexOf("assets/termo-auth.js") !== -1;
+          });
+
+          if (!existingScript) {
+            const script = document.createElement("script");
+            script.src = "assets/termo-auth.js?v=0614.1";
+            script.async = true;
+            script.onerror = function () {
+              if (settled) return;
+              settled = true;
+              reject(new Error("Auth loader failed"));
+            };
+            document.head.appendChild(script);
+          }
+
+          checkReady();
+        });
+
+        return landingAuthLoader;
+      }
+
+      async function getLandingSession() {
+        const auth = await ensureLandingAuth();
+        if (auth && typeof auth.whenReady === "function") {
+          await auth.whenReady(2600);
+        }
+        if (auth && typeof auth.getSession === "function") {
+          return auth.getSession().catch(function () {
+            return null;
+          });
+        }
+        return null;
+      }
+
+      function bindLandingAuthCompletion() {
+        if (landingAuthListenerBound) return;
+        landingAuthListenerBound = true;
+
+        window.addEventListener("termo-auth-state-change", function (event) {
+          const target = readLandingLoginTarget();
+          if (!target || !event?.detail?.user) return;
+
+          writeLandingLoginTarget("");
+          window.location.assign(target);
+        });
+      }
+
+      async function handleLandingLoginRequest(target) {
+        const normalizedTarget = normalizeLandingTarget(target);
+        writeLandingLoginTarget(normalizedTarget);
+        bindLandingAuthCompletion();
+
+        try {
+          const session = await getLandingSession();
+          if (session?.user) {
+            writeLandingLoginTarget("");
+            window.location.assign(normalizedTarget);
+            return;
+          }
+
+          if (window.TermoAuth && typeof window.TermoAuth.openModal === "function") {
+            window.TermoAuth.openModal();
+            return;
+          }
+        } catch (_error) {
+          return;
+        }
+      }
+
+      window.handleLandingLoginRequest = handleLandingLoginRequest;
+
+      function bindLandingLoginTargets() {
+        document.querySelectorAll("[data-landing-login-target]").forEach(function (anchor) {
+          anchor.addEventListener("click", function (event) {
+            event.preventDefault();
+            void handleLandingLoginRequest(anchor.getAttribute("data-landing-login-target") || anchor.getAttribute("href") || "index.html?view=favorites");
+          });
+        });
+      }
+
+      async function resumeLandingLoginFlow() {
+        const pendingTarget = readLandingLoginTarget();
+        if (!pendingTarget) return;
+
+        bindLandingAuthCompletion();
+
+        try {
+          const session = await getLandingSession();
+          if (session?.user) {
+            writeLandingLoginTarget("");
+            window.location.replace(pendingTarget);
+          }
+        } catch (_error) {
+          return;
+        }
+      }
+
+      bindLandingLoginTargets();
+      if (window.__termoLandingAuthResume) {
+        void resumeLandingLoginFlow();
+      }
+    }
+  </script>
+</body>
+</html>
