@@ -3,9 +3,18 @@
 
   const CONFIG_ENDPOINT = "/api/public-config";
   const SUPABASE_ESM_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-  const AUTH_SITE_URL = "https://qm-theta.vercel.app";
+  const DEFAULT_AUTH_SITE_URL = "https://qm-theta.vercel.app";
+  const AUTH_SITE_URL = /^(http|https):$/i.test(window.location.protocol)
+    ? window.location.origin
+    : DEFAULT_AUTH_SITE_URL;
   const LANDING_LOGIN_TARGET_KEY = "termoLandingPostLoginTarget";
   const EXERCISE_GENERATION_ENABLED = false;
+  const PROGRESS_METADATA_KEYS = {
+    url: "qm_last_page_url",
+    title: "qm_last_page_title",
+    label: "qm_last_page_label",
+    seenAt: "qm_last_seen_at"
+  };
   const AUTH_CLEANUP_KEYS = [
     "code",
     "state",
@@ -237,7 +246,7 @@
       return {
         kicker: "Optional access",
         title: "Save your page bookmark",
-        copy: "Sign in with Google to save your page bookmark, favorites, and exercises without blocking the content."
+        copy: "Sign in with Google to save your page bookmark and favorite items without blocking the content."
       };
     }
 
@@ -566,8 +575,8 @@
     const email = user?.email || "";
     const metadata = user?.user_metadata || {};
     const provider = user?.app_metadata?.provider || "google";
-    const savedTitle = metadata.termo_last_page_title || "";
-    const savedLabel = metadata.termo_last_page_label || "";
+    const savedTitle = metadata[PROGRESS_METADATA_KEYS.title] || "";
+    const savedLabel = metadata[PROGRESS_METADATA_KEYS.label] || "";
     const savedPoint = savedTitle
       ? `<div class="termo-auth-muted">Last saved bookmark: ${savedLabel ? `${escapeHtml(savedLabel)} · ` : ""}${escapeHtml(savedTitle)}</div>`
       : "";
@@ -849,10 +858,10 @@
 
     await supabase.auth.updateUser({
       data: {
-        termo_last_page_url: snapshot.url,
-        termo_last_page_title: snapshot.title,
-        termo_last_page_label: snapshot.label,
-        termo_last_seen_at: snapshot.seenAt
+        [PROGRESS_METADATA_KEYS.url]: snapshot.url,
+        [PROGRESS_METADATA_KEYS.title]: snapshot.title,
+        [PROGRESS_METADATA_KEYS.label]: snapshot.label,
+        [PROGRESS_METADATA_KEYS.seenAt]: snapshot.seenAt
       }
     });
   }

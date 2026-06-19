@@ -1,4 +1,4 @@
-create or replace function public.is_exercise_validator()
+create or replace function public.is_qm_exercise_validator()
 returns boolean
 language sql
 security definer
@@ -13,11 +13,11 @@ as $$
   );
 $$;
 
-drop policy if exists "Professor can insert validation reports" on public.exercise_validation_reports;
-create policy "Professor can insert validation reports"
-on public.exercise_validation_reports
+drop policy if exists "Professor can insert QM validation reports" on public.qm_exercise_validation_reports;
+create policy "Professor can insert QM validation reports"
+on public.qm_exercise_validation_reports
 for insert
 to authenticated
 with check (
-  public.is_exercise_validator()
+  public.is_qm_exercise_validator()
 );

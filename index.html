@@ -1142,6 +1142,16 @@
       background: var(--blue-soft);
     }
 
+    .topic-card--planned {
+      cursor: default;
+    }
+
+    .topic-card--planned:hover {
+      transform: none;
+      box-shadow: none;
+      background: #F8F9FA;
+    }
+
     .topic-card.ai-exercise {
       background: linear-gradient(180deg, #FCF8FF 0%, #F7F0FF 100%);
       border-color: #E5D4FA;
@@ -1197,6 +1207,11 @@
     .topic-badge.ai-exercise {
       background: #E9D5FF;
       color: #5B21B6;
+    }
+
+    .topic-badge.planned {
+      background: #E2E8F0;
+      color: #475569;
     }
 
     .empty-state {
@@ -2205,14 +2220,14 @@
   window.__termoLandingAuthResume = Boolean(hasAuthParams || hasPendingTarget);
 })();
 </script>
-<link rel="stylesheet" href="assets/termo-share.css?v=0614.1">
-<link rel="stylesheet" href="assets/termo-auth.css?v=0614.1">
+<link rel="stylesheet" href="assets/termo-share.css?v=0619.2">
+<link rel="stylesheet" href="assets/termo-auth.css?v=0619.2">
 <script>
 (function () {
   const scripts = [
-    "assets/termo-share.js?v=0614.1",
-    "assets/termo-auth.js?v=0614.1",
-    "assets/termo-user-data.js?v=0614.1"
+    "assets/termo-share.js?v=0619.2",
+    "assets/termo-auth.js?v=0619.2",
+    "assets/termo-user-data.js?v=0619.2"
   ];
 
   scripts.forEach(function (src) {
@@ -3041,9 +3056,7 @@
     }
 
     function getPreferredCourseOrigin() {
-      return /^(localhost|127\.0\.0\.1)$/i.test(window.location.hostname)
-        ? "https://qm-theta.vercel.app"
-        : window.location.origin;
+      return window.location.origin;
     }
 
     function normalizeAppRelativeUrl(value, fallbackValue) {
@@ -3154,7 +3167,7 @@
 
     const favoritesPanelCopy = {
       title: "Favorite items",
-      description: "Keep both course pages and saved exercises you starred here."
+      description: "Keep the course pages and items you starred here."
     };
 
     const simulatorsPanelCopy = {
@@ -3502,18 +3515,24 @@
       grid.className = "topic-grid";
 
       topics.forEach((topic) => {
-        const link = document.createElement("a");
-        link.className = `topic-card${topic.aiExercise ? " ai-exercise" : ""}`;
-        link.href = topic.url || "#";
-        link.innerHTML = `
+        const isPlanned = topic.status === "planned";
+        const card = document.createElement(isPlanned ? "div" : "a");
+        card.className = `topic-card${topic.aiExercise ? " ai-exercise" : ""}${isPlanned ? " topic-card--planned" : ""}`;
+        if (isPlanned) {
+          card.setAttribute("aria-disabled", "true");
+        } else {
+          card.href = topic.url || "#";
+        }
+        card.innerHTML = `
           <div class="topic-card-top">
             <div class="topic-id">${escapeHtml(topic.id || "")}</div>
-            ${topic.aiExercise ? `<div class="topic-badge ai-exercise"><i class="fa-solid fa-wand-magic-sparkles"></i> Exercise IA</div>` : ""}
+            ${isPlanned ? `<div class="topic-badge planned"><i class="fa-solid fa-screwdriver-wrench"></i> Planned</div>` : ""}
+            ${!isPlanned && topic.aiExercise ? `<div class="topic-badge ai-exercise"><i class="fa-solid fa-wand-magic-sparkles"></i> Exercise IA</div>` : ""}
           </div>
           <div class="topic-title">${escapeHtml(topic.title || "Untitled topic")}</div>
-          <div class="topic-note">${escapeHtml(topic.note || "Open page HTML deste topic.")}</div>
+          <div class="topic-note">${escapeHtml(topic.note || "Open this topic page.")}</div>
         `;
-        grid.appendChild(link);
+        grid.appendChild(card);
       });
 
       topicContainer.innerHTML = "";
@@ -4082,23 +4101,30 @@
         const favoriteUrl = normalizeAppRelativeUrl(item.url || item.pagePath);
         return `
           <button class="favorite-item" data-favorite-url="${escapeHtml(favoriteUrl)}" type="button">
-            <div class="favorite-item__top"><i class="fa-solid fa-star"></i> Page favorita</div>
+            <div class="favorite-item__top"><i class="fa-solid fa-star"></i> Favorite page</div>
             <div class="favorite-item__title">${escapeHtml(item.label || `Item ${item.itemId || ""}`)} · ${escapeHtml(item.title || "Course page")}</div>
             <div class="favorite-item__note">${escapeHtml(item.note || "Open this item directly and resume reading.")}</div>
           </button>
         `;
       }).join("");
-      const exerciseMarkup = exercises.map(renderSavedExerciseListItem).join("");
+      const exerciseMarkup = exerciseGenerationEnabled
+        ? exercises.map(renderSavedExerciseListItem).join("")
+        : "";
+      const exerciseSection = exerciseGenerationEnabled
+        ? `
+        <div class="favorite-section">
+          <div class="favorite-section__title"><i class="fa-solid fa-file-lines"></i> Favorite exercises</div>
+          <div class="saved-list">${exerciseMarkup || `<div class="empty-state"><strong>No favorite exercise yet.</strong><br />Use the star in the list or inside the saved exercise to keep it here.</div>`}</div>
+        </div>
+      `
+        : "";
 
       topicContainer.innerHTML = `
         <div class="favorite-section">
           <div class="favorite-section__title"><i class="fa-solid fa-star"></i> Favorite pages</div>
           <div class="favorite-list">${favoriteMarkup || `<div class="empty-state"><strong>No favorite pages yet.</strong><br />Open a course item and use the star in the upper-right corner.</div>`}</div>
         </div>
-        <div class="favorite-section">
-          <div class="favorite-section__title"><i class="fa-solid fa-file-lines"></i> Favorite exercises</div>
-          <div class="saved-list">${exerciseMarkup || `<div class="empty-state"><strong>No favorite exercise yet.</strong><br />Use the star in the list or inside the saved exercise to keep it here.</div>`}</div>
-        </div>
+        ${exerciseSection}
       `;
 
       topicContainer.querySelectorAll("[data-favorite-url]").forEach((button) => {
@@ -4264,7 +4290,7 @@
         state.favoriteItems = [];
       }
 
-      if (window.TermoUserData?.listExercises) {
+      if (exerciseGenerationEnabled && window.TermoUserData?.listExercises) {
         const favoriteExercisesResult = await window.TermoUserData.listExercises({ limit: 120, favoritesOnly: true }).catch(function () {
           return { ok: false, exercises: [] };
         });
@@ -4441,7 +4467,7 @@
         topicContainer.innerHTML = `
           <div class="empty-state">
             <strong>Could not load your exercises.</strong><br />
-            Check whether the <code>saved_exercises</code> table was created in Supabase and whether the RLS policies were applied.
+            Check whether the <code>qm_saved_exercises</code> table was created in Supabase and whether the RLS policies were applied.
           </div>
         `;
         return;
@@ -4495,11 +4521,11 @@
         return;
       }
 
-      if (!state.favoriteItems.length && !state.favoriteExercises.length) {
+      if (!state.favoriteItems.length && (!exerciseGenerationEnabled || !state.favoriteExercises.length)) {
         topicContainer.innerHTML = `
           <div class="empty-state">
             <strong>There are no favorites yet.</strong><br />
-            You can favorite both a course item and a saved exercise using the <strong>star</strong>.
+            You can favorite a course item using the <strong>star</strong>.
           </div>
         `;
         return;
@@ -4554,7 +4580,7 @@
         topicContainer.innerHTML = `
           <div class="empty-state">
             <strong>Could not load validations.</strong><br />
-            Check the RLS policies for the <code>exercise_validation_reports</code>.
+            Check the RLS policies for the <code>qm_exercise_validation_reports</code>.
           </div>
         `;
         return;
@@ -5041,7 +5067,7 @@
 
           if (!existingScript) {
             const script = document.createElement("script");
-            script.src = "assets/termo-auth.js?v=0614.1";
+            script.src = "assets/termo-auth.js?v=0619.2";
             script.async = true;
             script.onerror = function () {
               if (settled) return;

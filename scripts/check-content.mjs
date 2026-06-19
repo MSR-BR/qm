@@ -70,8 +70,9 @@ async function validateChapterFile(fileName) {
       continue;
     }
 
+    const isPlanned = topic.status === "planned";
     const targetPath = path.join(rootDir, topic.url);
-    if (!(await exists(targetPath))) {
+    if (!isPlanned && !(await exists(targetPath))) {
       fail(`${label} points to a missing file: ${topic.url}`);
     }
   }

@@ -1,8 +1,10 @@
 (function () {
   if (window.TermoUserData) return;
 
-  const TABLE_NAME = "saved_exercises";
-  const FAVORITE_ITEMS_KEY = "termo_favorite_items";
+  const EXERCISE_DATA_ENABLED = false;
+  const TABLE_NAME = "qm_saved_exercises";
+  const FAVORITE_ITEMS_KEY = "qm_favorite_items";
+  const FAVORITE_CHAPTERS_KEY = "qm_favorite_chapters";
   const MAX_FAVORITE_ITEMS = 120;
 
   function getCurrentPageReference() {
@@ -63,6 +65,10 @@
   }
 
   async function saveExercise(record) {
+    if (!EXERCISE_DATA_ENABLED) {
+      return { saved: false, reason: "exercise_data_disabled" };
+    }
+
     const supabase = await ensureSupabase();
     const session = await getSession();
 
@@ -101,6 +107,10 @@
   }
 
   async function listExercises(options) {
+    if (!EXERCISE_DATA_ENABLED) {
+      return { ok: true, reason: "exercise_data_disabled", exercises: [] };
+    }
+
     const config = options || {};
     const limit = Number(config.limit || 80);
     const favoritesOnly = Boolean(config.favoritesOnly);
@@ -143,6 +153,10 @@
   }
 
   async function updateFavorite(id, isFavorite) {
+    if (!EXERCISE_DATA_ENABLED) {
+      return { ok: false, reason: "exercise_data_disabled" };
+    }
+
     const supabase = await ensureSupabase();
     const session = await getSession();
 
@@ -187,6 +201,10 @@
   }
 
   async function listValidationReports(options) {
+    if (!EXERCISE_DATA_ENABLED) {
+      return { ok: true, reason: "exercise_data_disabled", reports: [] };
+    }
+
     const config = options || {};
     const token = await getAccessToken();
 
@@ -220,6 +238,10 @@
   }
 
   async function reviewValidationReport(reportId, decision, adminNote) {
+    if (!EXERCISE_DATA_ENABLED) {
+      return { ok: false, reason: "exercise_data_disabled" };
+    }
+
     const token = await getAccessToken();
 
     if (!token) {
@@ -386,8 +408,8 @@
     }
 
     const metadata = session.user.user_metadata || {};
-    const chapterIds = Array.isArray(metadata.termo_favorite_chapters)
-      ? metadata.termo_favorite_chapters.filter(Boolean).map(function (value) {
+    const chapterIds = Array.isArray(metadata[FAVORITE_CHAPTERS_KEY])
+      ? metadata[FAVORITE_CHAPTERS_KEY].filter(Boolean).map(function (value) {
           return String(value).padStart(2, "0");
         })
       : [];
@@ -412,8 +434,8 @@
 
     const normalizedId = String(chapterId || "").padStart(2, "0");
     const metadata = session.user.user_metadata || {};
-    const current = Array.isArray(metadata.termo_favorite_chapters)
-      ? metadata.termo_favorite_chapters.map(function (value) {
+    const current = Array.isArray(metadata[FAVORITE_CHAPTERS_KEY])
+      ? metadata[FAVORITE_CHAPTERS_KEY].map(function (value) {
           return String(value).padStart(2, "0");
         })
       : [];
@@ -425,7 +447,7 @@
 
     const result = await supabase.auth.updateUser({
       data: {
-        termo_favorite_chapters: next
+        [FAVORITE_CHAPTERS_KEY]: next
       }
     });
 

@@ -1,4 +1,95 @@
 {
-  "description": "Chapter 1 — Old quantum physics. Structure prepared to receive this chapter's HTML pages.",
-  "topics": []
+  "description": "Chapter 1 — Old quantum physics. A guided auxiliary structure for historical experiments, early quantum hypotheses, atomic models and semi-classical quantization.",
+  "topics": [
+    {
+      "id": "1.1",
+      "title": "Why old quantum physics matters",
+      "note": "Historical map of the classical clues that forced a new description of radiation, atoms and matter.",
+      "url": "slides/chapter-01/why-old-quantum-physics-matters.html"
+    },
+    {
+      "id": "1.2",
+      "title": "Wave optics as the classical benchmark",
+      "note": "Young's double-slit experiment, Maxwell's wave picture and the reference point for later wave-particle duality.",
+      "url": "slides/chapter-01/wave-optics-classical-benchmark.html"
+    },
+    {
+      "id": "1.3",
+      "title": "Hydrogen spectral lines",
+      "note": "From prisms and discrete colors to the Balmer and Rydberg formulas as empirical fingerprints of atomic structure.",
+      "url": "slides/chapter-01/hydrogen-spectral-lines.html"
+    },
+    {
+      "id": "1.4",
+      "title": "Cathode rays and the electron",
+      "note": "Thomson's charge-to-mass measurement, atomic divisibility and the first subatomic particle picture.",
+      "url": "slides/chapter-01/cathode-rays-and-electron.html"
+    },
+    {
+      "id": "1.5",
+      "title": "Black-body radiation",
+      "note": "Thermal spectra, the ultraviolet catastrophe and Planck's quantum hypothesis as a turning point.",
+      "url": "slides/chapter-01/black-body-radiation.html"
+    },
+    {
+      "id": "1.6",
+      "title": "Photoelectric effect",
+      "note": "Einstein's photon interpretation and the experimental signatures that connect light frequency with emitted electrons.",
+      "url": "slides/chapter-01/photoelectric-effect.html"
+    },
+    {
+      "id": "1.7",
+      "title": "Elementary charge",
+      "note": "Millikan's oil-drop experiment and the quantization of electric charge.",
+      "url": "slides/chapter-01/elementary-charge.html"
+    },
+    {
+      "id": "1.8",
+      "title": "Electron diffraction",
+      "note": "Matter behaving like a wave: diffraction evidence and its connection with de Broglie's idea.",
+      "url": "slides/chapter-01/electron-diffraction.html"
+    },
+    {
+      "id": "1.9",
+      "title": "Bohr model: postulates",
+      "note": "Stationary states, angular momentum quantization and quantum jumps in the early atomic model.",
+      "url": "slides/chapter-01/bohr-model-postulates.html"
+    },
+    {
+      "id": "1.10",
+      "title": "Bohr model: hydrogen spectrum",
+      "note": "Energy levels, orbital radii and how the Bohr model explains Hydrogen spectral series.",
+      "url": "slides/chapter-01/bohr-model-hydrogen-spectrum.html"
+    },
+    {
+      "id": "1.11",
+      "title": "de Broglie hypothesis",
+      "note": "The matter-wave proposal and its role as a bridge from old quantum physics to wave mechanics.",
+      "url": "slides/chapter-01/de-broglie-hypothesis.html"
+    },
+    {
+      "id": "1.12",
+      "title": "Semi-classical quantization rule",
+      "note": "Action integrals, allowed orbits and the logic behind early quantization rules.",
+      "url": "slides/chapter-01/semi-classical-quantization-rule.html"
+    },
+    {
+      "id": "1.13",
+      "title": "SCQR examples",
+      "note": "Harmonic oscillator, infinite well and power-law potentials as compact examples of semi-classical reasoning.",
+      "url": "slides/chapter-01/scqr-examples.html"
+    },
+    {
+      "id": "1.14",
+      "title": "Sommerfeld orbits and ellipse geometry",
+      "note": "A complementary bridge between Bohr-Sommerfeld quantization and geometric properties of elliptical motion.",
+      "url": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html"
+    },
+    {
+      "id": "1.15",
+      "title": "Timeline and conceptual synthesis",
+      "note": "A compact chronology and summary of the ideas that prepare the transition to Schrödinger's equation.",
+      "url": "slides/chapter-01/timeline-conceptual-synthesis.html"
+    }
+  ]
 }

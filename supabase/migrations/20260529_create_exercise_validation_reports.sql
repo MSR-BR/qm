@@ -1,8 +1,8 @@
-create table if not exists public.exercise_validation_reports (
+create table if not exists public.qm_exercise_validation_reports (
   id uuid primary key default gen_random_uuid(),
   validator_user_id uuid references auth.users(id) on delete set null,
   validator_email text not null,
-  saved_exercise_id uuid references public.saved_exercises(id) on delete set null,
+  saved_exercise_id uuid references public.qm_saved_exercises(id) on delete set null,
   chapter_id text,
   item_id text,
   page_path text not null,
@@ -24,16 +24,16 @@ create table if not exists public.exercise_validation_reports (
   updated_at timestamptz not null default timezone('utc', now())
 );
 
-create index if not exists exercise_validation_reports_topic_idx
-  on public.exercise_validation_reports (chapter_id, item_id, created_at desc);
+create index if not exists qm_exercise_validation_reports_topic_idx
+  on public.qm_exercise_validation_reports (chapter_id, item_id, created_at desc);
 
-create index if not exists exercise_validation_reports_page_idx
-  on public.exercise_validation_reports (page_path, created_at desc);
+create index if not exists qm_exercise_validation_reports_page_idx
+  on public.qm_exercise_validation_reports (page_path, created_at desc);
 
-create index if not exists exercise_validation_reports_memory_idx
-  on public.exercise_validation_reports (avoid_propagation, ai_review_state, created_at desc);
+create index if not exists qm_exercise_validation_reports_memory_idx
+  on public.qm_exercise_validation_reports (avoid_propagation, ai_review_state, created_at desc);
 
-create or replace function public.set_exercise_validation_reports_updated_at()
+create or replace function public.set_qm_exercise_validation_reports_updated_at()
 returns trigger
 language plpgsql
 set search_path = ''
@@ -44,23 +44,23 @@ begin
 end;
 $$;
 
-drop trigger if exists exercise_validation_reports_set_updated_at on public.exercise_validation_reports;
+drop trigger if exists qm_exercise_validation_reports_set_updated_at on public.qm_exercise_validation_reports;
 
-create trigger exercise_validation_reports_set_updated_at
-before update on public.exercise_validation_reports
+create trigger qm_exercise_validation_reports_set_updated_at
+before update on public.qm_exercise_validation_reports
 for each row
-execute function public.set_exercise_validation_reports_updated_at();
+execute function public.set_qm_exercise_validation_reports_updated_at();
 
-alter table public.exercise_validation_reports enable row level security;
+alter table public.qm_exercise_validation_reports enable row level security;
 
-drop policy if exists "Anyone can read confirmed validation memory" on public.exercise_validation_reports;
-create policy "Anyone can read confirmed validation memory"
-on public.exercise_validation_reports
+drop policy if exists "Anyone can read confirmed QM validation memory" on public.qm_exercise_validation_reports;
+create policy "Anyone can read confirmed QM validation memory"
+on public.qm_exercise_validation_reports
 for select
 to anon, authenticated
 using (avoid_propagation is true and ai_review_state = 'confirmed_error');
 
-create or replace function public.is_exercise_validator()
+create or replace function public.is_qm_exercise_validator()
 returns boolean
 language sql
 security definer
@@ -75,11 +75,11 @@ as $$
   );
 $$;
 
-drop policy if exists "Professor can insert validation reports" on public.exercise_validation_reports;
-create policy "Professor can insert validation reports"
-on public.exercise_validation_reports
+drop policy if exists "Professor can insert QM validation reports" on public.qm_exercise_validation_reports;
+create policy "Professor can insert QM validation reports"
+on public.qm_exercise_validation_reports
 for insert
 to authenticated
 with check (
-  public.is_exercise_validator()
+  public.is_qm_exercise_validator()
 );
