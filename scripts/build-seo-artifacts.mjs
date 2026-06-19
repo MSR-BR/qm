@@ -8,7 +8,7 @@ const rootDir = path.resolve(__dirname, "..");
 const slidesDir = path.join(rootDir, "slides");
 const dataDir = path.join(rootDir, "data");
 
-const SITE_URL = "https://qm-theta.vercel.app";
+const SITE_URL = "https://qm-beta.vercel.app";
 const SEO_ASSET_VERSION = "0614.1";
 const COURSE_TITLE = "Quantum Mechanics";
 const AUTHOR_NAME = "Prof. Mario Reis";

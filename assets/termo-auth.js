@@ -3,7 +3,7 @@
 
   const CONFIG_ENDPOINT = "/api/public-config";
   const SUPABASE_ESM_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
-  const DEFAULT_AUTH_SITE_URL = "https://qm-theta.vercel.app";
+  const DEFAULT_AUTH_SITE_URL = "https://qm-beta.vercel.app";
   const AUTH_SITE_URL = /^(http|https):$/i.test(window.location.protocol)
     ? window.location.origin
     : DEFAULT_AUTH_SITE_URL;

@@ -1,5 +1,5 @@
 (() => {
-  const SITE_URL = "https://qm-theta.vercel.app";
+  const SITE_URL = "https://qm-beta.vercel.app";
   const COURSE_TITLE = "Quantum Mechanics";
   const AUTHOR_NAME = "Prof. Mario Reis";
   const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
