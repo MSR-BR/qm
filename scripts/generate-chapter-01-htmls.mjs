@@ -72,7 +72,7 @@ const pages = [
         title: "Equations to keep in memory",
         body: String.raw`
           <div class="eq key-eq">\[E=hf,\qquad \lambda=\frac{h}{p},\qquad L=n\hbar,\qquad \oint p_i\,dq_i=n_i h\]</div>
-          <p>These formulas are not isolated facts. They are four ways of saying that microscopic physics is constrained by phase, action and discrete exchange.</p>
+          <p>Together, these relations show the central lesson of old quantum physics: at microscopic scales, energy, momentum, angular momentum and wavelength cannot be treated as fully independent classical quantities. They are tied together by Planck's constant, revealing that nature selects only certain exchanges, orbits and wave patterns.</p>
         `
       },
       {
@@ -80,8 +80,8 @@ const pages = [
         color: "purple",
         title: "What makes this app useful",
         body: String.raw`
-          <p>For each topic, the app should give a working summary: the physical setup, the key relation, the conceptual point and the limitation of the old model. Later, AI exercises can turn these summaries into guided practice.</p>
-          <div class="callout">Use the pages as a fast conceptual notebook: enough detail to solve problems and recognize the historical logic, without reproducing the full textbook.</div>
+          <p>For each topic, the app gives a working summary: the physical setup, the key relation, the conceptual point and the limitation of the old model.</p>
+          <p>Use the pages as a fast conceptual notebook.</p>
         `
       }
     ]
