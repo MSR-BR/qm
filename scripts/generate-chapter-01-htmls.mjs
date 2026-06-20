@@ -300,12 +300,12 @@ const pages = [
       {
         icon: "fa-solid fa-sliders",
         color: "green",
-        title: "What changes with intensity?",
+        title: "Experimental observations",
         body: String.raw`
           <ul class="bullet">
-            <li>Frequency controls whether emission occurs and how energetic the emitted electrons can be.</li>
-            <li>Intensity mainly changes the number of emitted electrons when the frequency is above threshold.</li>
-            <li>Below threshold, increasing intensity does not solve the problem.</li>
+            <li>No electrons are emitted below a threshold frequency, no matter how intense the light is.</li>
+            <li>Above threshold, the stopping potential grows with frequency, so emitted electrons have larger maximum kinetic energy.</li>
+            <li>At fixed frequency above threshold, intensity mainly increases the photocurrent, that is, the number of emitted electrons.</li>
           </ul>
         `
       },
@@ -757,7 +757,7 @@ const guidedThreads = {
   `,
   "1.6": String.raw`
     <p>The photoelectric effect converts Planck's quantum into a direct energy balance. The stopping potential measures the maximum kinetic energy of emitted electrons, so \(T_{\max}=eV_c\). Einstein's step is to write the incoming light energy as \(hf\), giving \(eV_c=hf-W\).</p>
-    <p>This equation guides the interpretation. Increasing frequency raises the electron kinetic energy; increasing intensity mainly changes how many electrons are emitted. The threshold frequency appears because photons with \(hf<W\) cannot eject electrons, no matter how many of them arrive.</p>
+    <p>This equation guides the interpretation. Increasing frequency raises the electron kinetic energy; increasing intensity mainly changes how many electrons are emitted. The threshold frequency appears because photons with \(hf&lt;W\) cannot eject electrons, no matter how many of them arrive.</p>
   `,
   "1.7": String.raw`
     <p>Millikan's experiment is a force-balance argument. Without the electric field, the falling drop reaches terminal speed when gravity is balanced by viscous drag, \(mg=6\pi\eta Rv_f\), allowing the radius \(R\) to be estimated. With the electric field on, the upward electric force is added to the balance.</p>
