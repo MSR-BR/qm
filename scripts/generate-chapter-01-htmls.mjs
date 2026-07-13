@@ -10,7 +10,8 @@ const dataPath = path.join(rootDir, "data", "chapter-01.json");
 const figureDir = "../../assets/chapter-01/figures";
 const figureAssetVersion = "0619.3";
 const figureAssetVersions = {
-  "fig-1-8-bohr-atom.png": "0713.1"
+  "fig-1-8-bohr-atom.png": "0713.1",
+  "fig-1-9-bohr-spectrum.png": "0713.2"
 };
 
 const originalLinks = [
