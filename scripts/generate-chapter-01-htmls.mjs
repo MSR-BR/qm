@@ -612,7 +612,7 @@ const pages = [
           <div class="eq key-eq">\[1=\frac{p^2}{2mE}+\frac{x^2}{2E/(m\omega^2)}\]</div>
           <div class="eq key-eq">\[\oint p\,dx=A=\pi\sqrt{2mE}\sqrt{\frac{2E}{m\omega^2}}=\frac{2\pi E}{\omega}\]</div>
           <div class="eq key-eq">\[\frac{2\pi E}{\omega}=nh\quad\Rightarrow\quad E_n=n\hbar\omega\]</div>
-          <p>The SCQR result explains the equal spacing. Full quantum mechanics later adds the zero-point shift, \(E_n=(n+1/2)\hbar\omega\).</p>
+          <p>The SCQR result explains the equal spacing. Full quantum mechanics gives the exact spectrum, \(E_n=(n+1/2)\hbar\omega\), including the zero-point energy missing from the semiclassical rule.</p>
         `
       },
       {
@@ -676,17 +676,6 @@ const pages = [
           <div class="eq key-eq">\[\oint p_\theta\,d\theta=n_\theta h,\qquad \oint p_r\,dr=n_r h\]</div>
           <div class="eq key-eq">\[n=n_r+n_\theta\]</div>
           <p>The circular Bohr orbit is recovered when the radial motion is absent.</p>
-        `
-      },
-      {
-        icon: "fa-solid fa-draw-polygon",
-        color: "green",
-        title: "Ellipse geometry",
-        body: String.raw`
-          ${figure("fig-1-13-ellipse-geometry.png", "Fig. 1.13, adapted from the original chapter: geometric parameters of an ellipse used in the Sommerfeld model.")}
-          <div class="eq key-eq">\[b=a\sqrt{1-\varepsilon^2}\]</div>
-          <div class="eq key-eq">\[\varepsilon=\sqrt{1-\frac{n_\theta^2}{n^2}}\]</div>
-          <p>The eccentricity connects orbital shape with the quantum labels.</p>
         `
       },
       {
