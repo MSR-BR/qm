@@ -692,14 +692,14 @@ const pages = [
   {
     id: "1.15",
     file: "timeline-conceptual-synthesis.html",
-    title: "Timeline and conceptual synthesis",
+    title: "Chapter synthesis",
     subtitle: "From empirical clues to wave mechanics",
     cards: [
       {
-        icon: "fa-solid fa-timeline",
-        title: "Historical flow",
+        icon: "fa-solid fa-route",
+        title: "Conceptual chain",
         body: String.raw`
-          <p>The chapter is a chain of constraints, not a loose list of discoveries. Each experiment removes one classical freedom and replaces it with a quantum condition.</p>
+          <p>The chapter is best read as a chain of constraints, not as a loose list of discoveries. Each experiment removes one classical freedom and replaces it with a quantum condition.</p>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Classical expectation</th><th>Experimental pressure</th><th>Quantum move</th></tr></thead>
@@ -795,8 +795,8 @@ const guidedThreads = {
     <p>The geometry then connects the quantum labels to orbital shape through eccentricity. The energy remains \(E_n=-E_0/n^2\) in the nonrelativistic treatment, but the model introduces a key idea that survives in a different form: a state may need more than one quantum number.</p>
   `,
   "1.15": String.raw`
-    <p>Use this page as the chapter's map. The timeline should be read from left to right as a causal chain: experiments expose a classical failure, a quantum rule repairs that failure, and the rule later becomes part of wave mechanics.</p>
-    <p>The central lesson is that old quantum physics finds the correct constraints before it has the correct language. Spectra, photons, matter waves and action quantization all point to the same destination: allowed states must be obtained from wave equations, boundary conditions and eigenvalues.</p>
+    <p>Use this page as the chapter's final map. The point is not to memorize a sequence of names, but to connect each classical failure with the quantum rule that repairs it.</p>
+    <p>The central lesson is that old quantum physics finds the correct constraints before it has the correct language. Spectra, photons, matter waves and action quantization all point to the same destination: allowed states should be obtained from wave equations, boundary conditions and eigenvalues.</p>
   `
 };
 
