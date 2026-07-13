@@ -9,6 +9,9 @@ const chapterDir = path.join(rootDir, "slides", "chapter-01");
 const dataPath = path.join(rootDir, "data", "chapter-01.json");
 const figureDir = "../../assets/chapter-01/figures";
 const figureAssetVersion = "0619.3";
+const figureAssetVersions = {
+  "fig-1-8-bohr-atom.png": "0713.1"
+};
 
 const originalLinks = [
   ["Elsevier shop", "https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8"],
@@ -26,9 +29,10 @@ function escapeHtml(value) {
 }
 
 function figure(file, caption, alt = caption) {
+  const version = figureAssetVersions[file] || figureAssetVersion;
   return `
           <figure class="book-figure">
-            <img src="${figureDir}/${escapeHtml(file)}?v=${figureAssetVersion}" alt="${escapeHtml(alt)}" loading="lazy" />
+            <img src="${figureDir}/${escapeHtml(file)}?v=${version}" alt="${escapeHtml(alt)}" loading="lazy" />
             <figcaption>${escapeHtml(caption)} Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>`;
 }
