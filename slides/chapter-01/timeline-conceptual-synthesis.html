@@ -143,8 +143,8 @@
 
       <div class="card orange guide-card">
         <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-        <p>Read the timeline as a cause-and-effect chain. Hydrogen spectra require discrete atomic energies; Planck introduces \(hf\) to fix thermal radiation; Einstein uses the same quantum in \(eV_c=hf-W\); Bohr turns discreteness into atomic levels; de Broglie turns orbits into matter waves; SCQR turns the wave condition into an action integral.</p>
-    <p>The synthesis is that old quantum physics finds many correct constraints but lacks one unified language. Chapter 2 supplies that language by replacing imposed rules with wave equations, boundary conditions and eigenvalues.</p>
+        <p>Use this page as the chapter's map. The timeline should be read from left to right as a causal chain: experiments expose a classical failure, a quantum rule repairs that failure, and the rule later becomes part of wave mechanics.</p>
+    <p>The central lesson is that old quantum physics finds the correct constraints before it has the correct language. Spectra, photons, matter waves and action quantization all point to the same destination: allowed states must be obtained from wave equations, boundary conditions and eigenvalues.</p>
       </div>
       <div class="col">
 
@@ -154,21 +154,32 @@
             <img src="../../assets/chapter-01/figures/fig-1-16-old-quantum-timeline.png?v=0619.3" alt="Fig. 1.16, adapted from the original chapter: the transition from classical physics to old quantum physics." loading="lazy" />
             <figcaption>Fig. 1.16, adapted from the original chapter: the transition from classical physics to old quantum physics. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
-          <p>The chapter is a chain of constraints, not a loose list of discoveries. Each experiment narrows the room available to classical physics.</p>
+          <p>The chapter is a chain of constraints, not a loose list of discoveries. Each experiment removes one classical freedom and replaces it with a quantum condition.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Classical expectation</th><th>Experimental pressure</th><th>Quantum move</th></tr></thead>
+              <tbody>
+                <tr><td>Radiation can exchange any energy</td><td>Black-body spectrum stays finite</td><td>Energy packets \(E=hf\)</td></tr>
+                <tr><td>Light is only a wave</td><td>Photoelectrons need a threshold frequency</td><td>Photons with energy \(hf\)</td></tr>
+                <tr><td>Atomic orbits are arbitrary</td><td>Hydrogen emits discrete lines</td><td>Stationary states and transitions</td></tr>
+                <tr><td>Particles have no wavelength</td><td>Electrons diffract</td><td>Matter waves \(\lambda=h/p\)</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="card green">
-          <div class="ch green"><i class="fa-solid fa-table"></i> Compact synthesis</div>
+          <div class="ch green"><i class="fa-solid fa-table"></i> Central results table</div>
           <div class="table-wrap">
             <table>
-              <thead><tr><th>Step</th><th>Key idea</th><th>Survives as</th></tr></thead>
+              <thead><tr><th>Topic</th><th>Central information</th><th>Key relation</th><th>What to remember</th></tr></thead>
               <tbody>
-                <tr><td>Hydrogen spectra</td><td>Discrete transitions</td><td>Energy eigenvalues</td></tr>
-                <tr><td>Planck</td><td>Energy exchange \(hf\)</td><td>Quantum scale \(h\)</td></tr>
-                <tr><td>Einstein</td><td>Photons</td><td>Quantized field excitations</td></tr>
-                <tr><td>Bohr</td><td>Stationary states</td><td>Bound-state spectra</td></tr>
-                <tr><td>de Broglie</td><td>Matter waves</td><td>Wave mechanics</td></tr>
-                <tr><td>SCQR</td><td>Quantized action</td><td>Semiclassical approximation</td></tr>
+                <tr><td>Hydrogen spectra</td><td>Lines are not continuous</td><td>\(1/\lambda=R(1/n^2-1/m^2)\)</td><td>Integers appear before the theory explains them</td></tr>
+                <tr><td>Black-body radiation</td><td>High-frequency modes are suppressed</td><td>\(\langle\epsilon\rangle=hf/(e^{hf/k_BT}-1)\)</td><td>\(h\) sets the energy scale</td></tr>
+                <tr><td>Photoelectric effect</td><td>Frequency controls electron energy</td><td>\(eV_c=hf-W\)</td><td>Intensity changes current, not the threshold</td></tr>
+                <tr><td>Bohr model</td><td>Allowed states explain spectral lines</td><td>\(L=n\hbar,\ E_n=-E_0/n^2\)</td><td>Useful model, but postulated rules</td></tr>
+                <tr><td>de Broglie</td><td>Particles carry wavelength</td><td>\(\lambda=h/p\)</td><td>Quantization becomes a wave condition</td></tr>
+                <tr><td>SCQR</td><td>Closed classical cycles select states</td><td>\(\oint p_i\,dq_i=n_i h\)</td><td>Bridge from orbits to boundary conditions</td></tr>
               </tbody>
             </table>
           </div>
@@ -177,15 +188,35 @@
       <div class="col">
 
         <div class="card orange">
-          <div class="ch orange"><i class="fa-solid fa-check"></i> Equations that summarize the chapter</div>
-          <div class="eq key-eq">\[\frac{1}{\lambda}=R\left(\frac{1}{n^2}-\frac{1}{m^2}\right)\]</div>
-          <div class="eq key-eq">\[eV_c=hf-W,\qquad \lambda=\frac{h}{p}\]</div>
-          <div class="eq key-eq">\[E_n=-\frac{E_0}{n^2},\qquad \oint p_i\,dq_i=n_i h\]</div>
+          <div class="ch orange"><i class="fa-solid fa-check"></i> Equation map</div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Equation</th><th>Physical meaning</th><th>Conceptual role</th></tr></thead>
+              <tbody>
+                <tr><td>\(E=hf\)</td><td>Radiation exchanges energy in quanta</td><td>Introduces Planck's constant</td></tr>
+                <tr><td>\(eV_c=hf-W\)</td><td>Photon energy becomes electron kinetic energy plus work function</td><td>Turns \(hf\) into a measurable balance</td></tr>
+                <tr><td>\(L=n\hbar\)</td><td>Only selected atomic orbits are allowed</td><td>Bohr's imposed quantization</td></tr>
+                <tr><td>\(\lambda=h/p\)</td><td>Momentum corresponds to wavelength</td><td>Connects particles to waves</td></tr>
+                <tr><td>\(\oint p_i\,dq_i=n_i h\)</td><td>Allowed states come from closed-cycle action</td><td>Semiclassical bridge to eigenvalues</td></tr>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class="card purple">
-          <div class="ch purple"><i class="fa-solid fa-forward"></i> What changes in Chapter 2</div>
-          <p>Old quantum physics selects allowed quantities through rules. Wave mechanics explains allowed states as solutions of an equation with boundary conditions. That is the conceptual upgrade: from imposed quantization to eigenvalue problems.</p>
+          <div class="ch purple"><i class="fa-solid fa-forward"></i> Conceptual diagram for Chapter 2</div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Old quantum physics</th><th>Conceptual upgrade</th><th>Wave mechanics language</th></tr></thead>
+              <tbody>
+                <tr><td>Allowed orbits are imposed</td><td>Allowed states are solved</td><td>Eigenfunctions</td></tr>
+                <tr><td>Integers label empirical patterns</td><td>Integers count boundary-condition modes</td><td>Quantum numbers</td></tr>
+                <tr><td>Energy levels are selected by rules</td><td>Energy levels are eigenvalues</td><td>Hamiltonian spectrum</td></tr>
+                <tr><td>Action quantization is a recipe</td><td>Phase consistency becomes a wave equation</td><td>Schrodinger equation</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>The upgrade is not that Chapter 1 was wrong. It found the right constraints, but Chapter 2 supplies the language that explains why those constraints exist.</p>
         </div>
       </div>
 
