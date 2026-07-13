@@ -421,35 +421,39 @@ const pages = [
         title: "Bohr's picture",
         body: String.raw`
           ${figure("fig-1-8-bohr-atom.png", "Fig. 1.8, adapted from the original chapter: spectral series are interpreted as transitions between allowed atomic levels.")}
-          <p>Bohr keeps the planetary intuition but forbids arbitrary orbits. The electron occupies stationary states and emits or absorbs radiation only when changing state.</p>
+          <p>Bohr keeps the planetary picture of an electron orbiting the nucleus, but changes the rules that decide which orbits and transitions are physically allowed.</p>
+        `
+      },
+      {
+        icon: "fa-solid fa-list-ol",
+        color: "orange",
+        title: "The three postulates",
+        body: String.raw`
+          <ol class="numbered">
+            <li><strong>Stationary states:</strong> the electron can occupy certain circular orbits without continuously radiating energy.</li>
+            <li><strong>Angular-momentum quantization:</strong> only orbits satisfying \(L=mvr=n\hbar\) are allowed.</li>
+            <li><strong>Quantum jumps:</strong> light is emitted or absorbed only when the electron moves between two allowed states.</li>
+          </ol>
         `
       },
       {
         icon: "fa-solid fa-circle-nodes",
-        color: "orange",
-        title: "Postulates in equations",
+        color: "green",
+        title: "Equations attached to the postulates",
         body: String.raw`
           <div class="eq key-eq">\[L=mvr=n\hbar\]</div>
           <div class="eq key-eq">\[hf=\Delta E=E_i-E_f\]</div>
-          <p>Angular momentum quantization selects the allowed states; the transition rule connects spectral frequencies to energy differences.</p>
+          <p>The first equation selects the allowed orbits. The second equation connects a spectral line to the energy difference between two stationary states.</p>
         `
       },
       {
         icon: "fa-solid fa-scale-balanced",
-        color: "green",
+        color: "purple",
         title: "Classical mechanics still inside",
         body: String.raw`
           <div class="eq key-eq">\[E=\frac{1}{2}mv^2-\frac{\kappa e^2}{r}\]</div>
           <div class="eq key-eq">\[mv^2=\frac{\kappa e^2}{r}\]</div>
-          <p>The model is hybrid: classical circular motion plus quantum restrictions imposed by postulate.</p>
-        `
-      },
-      {
-        icon: "fa-solid fa-circle-exclamation",
-        color: "purple",
-        title: "Conceptual discussion",
-        body: String.raw`
-          <p>The model solves the classical instability problem by decree: stationary states do not radiate continuously. This is historically productive, but it signals that a deeper theory must explain stationary states rather than simply assume them.</p>
+          <p>The model is hybrid. Classical circular motion supplies the force balance and mechanical energy, while the postulates select the allowed values and explain why radiation appears only during transitions.</p>
         `
       }
     ]
@@ -772,8 +776,8 @@ const guidedThreads = {
     <p>The new ingredient is de Broglie's relation \(\lambda=h/p\). Once an electron beam has momentum \(p\), the equation predicts a wavelength; the diffraction pattern tests whether that wavelength is real. This is why the topic is the bridge from particles to wave mechanics.</p>
   `,
   "1.9": String.raw`
-    <p>Bohr's model starts from a classical problem: an orbiting electron should radiate and spiral inward. Bohr avoids the collapse by postulating stationary states. The mathematical selection rule is \(L=mvr=n\hbar\), which permits only certain circular orbits.</p>
-    <p>The second key equation, \(hf=\Delta E\), explains spectral lines: radiation is emitted or absorbed only during transitions between allowed states. The page should be read as a hybrid construction: classical orbit mechanics supplies \(E\) and force balance, while quantum postulates select the allowed values.</p>
+    <p>Read Bohr's model as three explicit postulates, not as a single formula. First, the electron may occupy special stationary states without radiating. Second, the allowed circular orbits satisfy \(L=mvr=n\hbar\). Third, radiation is emitted or absorbed only when the electron jumps between two allowed states, with \(hf=\Delta E\).</p>
+    <p>After those rules are stated, classical mechanics enters as a calculator: Coulomb attraction supplies the circular force balance and the mechanical energy, while the postulates select which radii, energies and spectral frequencies are allowed.</p>
   `,
   "1.10": String.raw`
     <p>This topic follows the consequences of Bohr's postulates. Combining Coulomb attraction with angular-momentum quantization gives \(r_n=a_0n^2\), so atomic radii are no longer arbitrary. Substituting the allowed radii into the mechanical energy gives \(E_n=-E_0/n^2\).</p>
