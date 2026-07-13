@@ -143,30 +143,35 @@
 
       <div class="card orange guide-card">
         <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-        <p>The examples are variations on one recipe. For any bound one-dimensional motion, write \(p(x)=\sqrt{2m[E-V(x)]}\), find the turning points and apply \(\oint p\,dx=nh\). The harmonic oscillator, infinite well and power-law potentials differ mainly in the shape of \(V(x)\) and therefore in the integral.</p>
-    <p>The equations show what the old rule captures and what it misses. It gives the spacing trend for the oscillator and the \(n^2\) scaling for the infinite well, but the exact zero-point correction belongs to full wave mechanics. This makes the examples practical preparation, not final theory.</p>
+        <p>Read these examples as applications of one recipe, not as a list of orange formulas. First identify the classically allowed region. Then write \(p(x)=\sqrt{2m[E-V(x)]}\). Finally integrate over a complete classical cycle and impose \(\oint p\,dx=nh\).</p>
+    <p>For the harmonic oscillator, the closed curve in phase space is an ellipse whose area is \(2\pi E/\omega\), so SCQR gives \(E_n=n\hbar\omega\). For the infinite well, the particle moves with constant momentum across the box and back, giving \(2pa=nh\) and \(E_n=n^2h^2/(8ma^2)\). The method is therefore a logical chain from classical motion to allowed energies.</p>
       </div>
       <div class="col">
 
         <div class="card">
-          <div class="ch"><i class="fa-solid fa-wave-square"></i> Harmonic oscillator</div>
+          <div class="ch"><i class="fa-solid fa-wave-square"></i> Harmonic oscillator: phase-space area</div>
           <figure class="book-figure">
-            <img src="../../assets/chapter-01/figures/fig-1-11-harmonic-oscillator-scqr.png?v=0619.3" alt="Fig. 1.11, adapted from the original chapter: the classical oscillator potential and the semiclassical energy ladder." loading="lazy" />
+            <img src="../../assets/chapter-01/figures/fig-1-11-harmonic-oscillator-scqr.png?v=0713.3" alt="Fig. 1.11, adapted from the original chapter: the classical oscillator potential and the semiclassical energy ladder." loading="lazy" />
             <figcaption>Fig. 1.11, adapted from the original chapter: the classical oscillator potential and the semiclassical energy ladder. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
-          <div class="eq key-eq">\[E=\frac{p^2}{2m}+\frac{1}{2}kx^2,\qquad x_0^2=\frac{2E}{k}\]</div>
-          <div class="eq key-eq">\[E_n=n\hbar\omega\]</div>
-          <p>The semiclassical result captures equally spaced levels but does not include the exact zero-point energy.</p>
+          <p>Start with \(E=p^2/(2m)+m\omega^2x^2/2\). For fixed \(E\), this is an ellipse in phase space \((x,p)\).</p>
+          <div class="eq key-eq">\[1=\frac{p^2}{2mE}+\frac{x^2}{2E/(m\omega^2)}\]</div>
+          <div class="eq key-eq">\[\oint p\,dx=A=\pi\sqrt{2mE}\sqrt{\frac{2E}{m\omega^2}}=\frac{2\pi E}{\omega}\]</div>
+          <div class="eq key-eq">\[\frac{2\pi E}{\omega}=nh\quad\Rightarrow\quad E_n=n\hbar\omega\]</div>
+          <p>The SCQR result explains the equal spacing. Full quantum mechanics later adds the zero-point shift, \(E_n=(n+1/2)\hbar\omega\).</p>
         </div>
 
         <div class="card green">
-          <div class="ch green"><i class="fa-solid fa-box"></i> Infinite potential well</div>
+          <div class="ch green"><i class="fa-solid fa-box"></i> Infinite potential well: closed classical cycle</div>
           <figure class="book-figure">
-            <img src="../../assets/chapter-01/figures/fig-1-14-infinite-well.png?v=0619.3" alt="Fig. 1.14, adapted from the original chapter: allowed levels in an infinite potential well." loading="lazy" />
+            <img src="../../assets/chapter-01/figures/fig-1-14-infinite-well.png?v=0713.3" alt="Fig. 1.14, adapted from the original chapter: allowed levels in an infinite potential well." loading="lazy" />
             <figcaption>Fig. 1.14, adapted from the original chapter: allowed levels in an infinite potential well. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
-          <div class="eq key-eq">\[L=\frac{n\lambda}{2},\qquad E_n=\frac{n^2h^2}{8mL^2}\]</div>
-          <p>The boundary conditions force standing waves, so the energy grows as \(n^2\).</p>
+          <p>Inside the box, \(V=0\), so the momentum is constant. The closed classical path goes from one wall to the other and back.</p>
+          <div class="eq key-eq">\[p=\sqrt{2mE},\qquad \oint p\,dx=2pa\]</div>
+          <div class="eq key-eq">\[2pa=nh\quad\Rightarrow\quad p_n=\frac{nh}{2a}\]</div>
+          <div class="eq key-eq">\[E_n=\frac{p_n^2}{2m}=\frac{n^2h^2}{8ma^2}\]</div>
+          <p>The same result can be read as a standing-wave condition, \(a=n\lambda/2\). The walls select wavelengths, and the wavelengths select energies.</p>
         </div>
       </div>
       <div class="col">
@@ -182,9 +187,14 @@
         </div>
 
         <div class="card purple">
-          <div class="ch purple"><i class="fa-solid fa-clipboard-check"></i> Practical summary</div>
-          <p>All examples share the same workflow: find the classically allowed region, write \(p(x)=\sqrt{2m(E-V(x))}\), integrate over a full cycle and solve the quantization condition.</p>
-          <div class="callout">The app should later turn this card into exercises where the student identifies turning points before doing any algebra.</div>
+          <div class="ch purple"><i class="fa-solid fa-clipboard-check"></i> How to read these examples</div>
+          <ol class="numbered">
+            <li>Find the classically allowed region.</li>
+            <li>Write \(p(x)=\sqrt{2m[E-V(x)]}\).</li>
+            <li>Integrate over one complete classical cycle.</li>
+            <li>Set \(\oint p\,dx=nh\) and solve for \(E_n\).</li>
+          </ol>
+          <p>The equations make sense only in this order. The orange boxes are the calculation path, not isolated formulas.</p>
         </div>
       </div>
 
