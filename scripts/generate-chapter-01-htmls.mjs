@@ -699,7 +699,6 @@ const pages = [
         icon: "fa-solid fa-timeline",
         title: "Historical flow",
         body: String.raw`
-          ${figure("fig-1-16-old-quantum-timeline.png", "Fig. 1.16, adapted from the original chapter: the transition from classical physics to old quantum physics.")}
           <p>The chapter is a chain of constraints, not a loose list of discoveries. Each experiment removes one classical freedom and replaces it with a quantum condition.</p>
           <div class="table-wrap">
             <table>
@@ -732,44 +731,6 @@ const pages = [
               </tbody>
             </table>
           </div>
-        `
-      },
-      {
-        icon: "fa-solid fa-check",
-        color: "orange",
-        title: "Equation map",
-        body: String.raw`
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Equation</th><th>Physical meaning</th><th>Conceptual role</th></tr></thead>
-              <tbody>
-                <tr><td>\(E=hf\)</td><td>Radiation exchanges energy in quanta</td><td>Introduces Planck's constant</td></tr>
-                <tr><td>\(eV_c=hf-W\)</td><td>Photon energy becomes electron kinetic energy plus work function</td><td>Turns \(hf\) into a measurable balance</td></tr>
-                <tr><td>\(L=n\hbar\)</td><td>Only selected atomic orbits are allowed</td><td>Bohr's imposed quantization</td></tr>
-                <tr><td>\(\lambda=h/p\)</td><td>Momentum corresponds to wavelength</td><td>Connects particles to waves</td></tr>
-                <tr><td>\(\oint p_i\,dq_i=n_i h\)</td><td>Allowed states come from closed-cycle action</td><td>Semiclassical bridge to eigenvalues</td></tr>
-              </tbody>
-            </table>
-          </div>
-        `
-      },
-      {
-        icon: "fa-solid fa-forward",
-        color: "purple",
-        title: "Conceptual diagram for Chapter 2",
-        body: String.raw`
-          <div class="table-wrap">
-            <table>
-              <thead><tr><th>Old quantum physics</th><th>Conceptual upgrade</th><th>Wave mechanics language</th></tr></thead>
-              <tbody>
-                <tr><td>Allowed orbits are imposed</td><td>Allowed states are solved</td><td>Eigenfunctions</td></tr>
-                <tr><td>Integers label empirical patterns</td><td>Integers count boundary-condition modes</td><td>Quantum numbers</td></tr>
-                <tr><td>Energy levels are selected by rules</td><td>Energy levels are eigenvalues</td><td>Hamiltonian spectrum</td></tr>
-                <tr><td>Action quantization is a recipe</td><td>Phase consistency becomes a wave equation</td><td>Schrodinger equation</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <p>The upgrade is not that Chapter 1 was wrong. It found the right constraints, but Chapter 2 supplies the language that explains why those constraints exist.</p>
         `
       }
     ]
