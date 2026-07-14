@@ -15,9 +15,9 @@
 }
 
 .termo-share-button{
-  --share-accent:var(--blue, #004B87);
-  --share-surface:var(--blue-soft, #EAF2FD);
-  --share-border:rgba(0, 75, 135, 0.18);
+  --share-accent:var(--blue, #C66A1A);
+  --share-surface:var(--blue-soft, #FFF7ED);
+  --share-border:rgba(198, 106, 26, 0.22);
   appearance:none;
   -webkit-appearance:none;
   min-height:40px;
@@ -35,13 +35,13 @@
   gap:8px;
   cursor:pointer;
   transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, opacity .18s ease;
-  box-shadow:0 8px 18px rgba(0, 75, 135, 0.10);
+  box-shadow:0 8px 18px rgba(198, 106, 26, 0.10);
   white-space:nowrap;
 }
 
 .termo-share-button:hover{
   transform:translateY(-1px);
-  box-shadow:0 10px 20px rgba(0, 75, 135, 0.14);
+  box-shadow:0 10px 20px rgba(198, 106, 26, 0.14);
 }
 
 .termo-share-button:disabled{

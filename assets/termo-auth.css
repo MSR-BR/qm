@@ -3,10 +3,10 @@
   -webkit-appearance:none;
   min-height:40px;
   padding:9px 14px;
-  border:1px solid rgba(0, 75, 135, 0.18);
+  border:1px solid rgba(198, 106, 26, 0.22);
   border-radius:999px;
   background:#FFFFFF;
-  color:#004B87;
+  color:#C66A1A;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -24,7 +24,7 @@
   height:1.45rem;
   border-radius:999px;
   object-fit:cover;
-  border:1px solid rgba(0, 75, 135, 0.14);
+  border:1px solid rgba(198, 106, 26, 0.14);
 }
 
 .termo-auth-trigger--compact{
@@ -33,7 +33,7 @@
   min-height:48px;
   padding:0;
   font-size:1.08rem;
-  border-color:#C7D8F3;
+  border-color:#F2C7A0;
   background:#FFFFFF;
 }
 
@@ -58,7 +58,7 @@
   min-width:40px;
   width:40px;
   padding:0;
-  border:1px solid rgba(0, 75, 135, 0.18);
+  border:1px solid rgba(198, 106, 26, 0.22);
   border-radius:999px;
   background:#FFFFFF;
   color:#7A8CA3;
@@ -110,7 +110,7 @@
   width:min(100%, 500px);
   max-height:min(88vh, 680px);
   background:#FFFFFF;
-  border:1px solid rgba(0, 75, 135, 0.10);
+  border:1px solid rgba(198, 106, 26, 0.10);
   border-radius:22px;
   box-shadow:0 22px 56px rgba(15, 23, 42, 0.18);
   overflow:auto;
@@ -147,7 +147,7 @@
   -webkit-appearance:none;
   width:42px;
   height:42px;
-  border:1px solid rgba(0, 75, 135, 0.12);
+  border:1px solid rgba(198, 106, 26, 0.18);
   border-radius:999px;
   background:#F8FBFF;
   color:#0B5EA8;
@@ -195,7 +195,7 @@
 .termo-auth-panel{
   margin-top:16px;
   padding:16px;
-  border:1px solid rgba(0, 75, 135, 0.10);
+  border:1px solid rgba(198, 106, 26, 0.10);
   border-radius:18px;
   background:linear-gradient(180deg, #F8FBFF 0%, #FFFFFF 100%);
 }
@@ -260,8 +260,8 @@
   height:52px;
   border-radius:999px;
   object-fit:cover;
-  background:#EAF2FD;
-  border:1px solid rgba(0, 75, 135, 0.12);
+  background:#FFF7ED;
+  border:1px solid rgba(198, 106, 26, 0.18);
 }
 
 .termo-auth-account-kicker{
@@ -356,7 +356,7 @@
   gap:12px;
   align-items:flex-start;
   padding:12px 14px;
-  border:1px solid rgba(0, 75, 135, 0.10);
+  border:1px solid rgba(198, 106, 26, 0.10);
   border-radius:14px;
   background:#FFFFFF;
   color:#123A63;
@@ -392,7 +392,7 @@
 .termo-auth-secondary{
   appearance:none;
   -webkit-appearance:none;
-  border:1px solid #C7D8F3;
+  border:1px solid #F2C7A0;
   background:#FFFFFF;
   color:#0B5EA8;
   border-radius:999px;

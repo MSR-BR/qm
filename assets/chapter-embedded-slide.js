@@ -130,7 +130,7 @@
       }
 
       .source-embed {
-        color: #2C3E50 !important;
+        color: #27313F !important;
         font-family: "Inter", sans-serif !important;
         line-height: 1.55 !important;
       }
@@ -144,7 +144,7 @@
       .source-embed [class*="description"],
       .source-embed [class*="caption"],
       .source-embed [class*="explanation"] {
-        color: #2C3E50 !important;
+        color: #27313F !important;
         font-family: "Lora", Georgia, serif !important;
         font-size: clamp(0.98rem, 1.1vw, 1.06rem) !important;
         line-height: 1.68 !important;
@@ -161,7 +161,7 @@
       .source-embed [class*="section-title"],
       .source-embed [class*="header-title"],
       .source-embed [class*="label"] {
-        color: #004B87 !important;
+        color: #C66A1A !important;
         font-family: "Inter", sans-serif !important;
         font-weight: 800 !important;
         line-height: 1.22 !important;
@@ -191,7 +191,7 @@
         max-width: 100% !important;
         min-width: 0 !important;
         background: #FFFFFF !important;
-        border: 1px solid #D9E2EC !important;
+        border: 1px solid #F2C7A0 !important;
         border-radius: 16px !important;
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.045) !important;
         padding: clamp(16px, 2.1vw, 24px) !important;
@@ -207,7 +207,7 @@
 
       .source-embed [class*="accent"],
       .source-embed [class*="highlight"] {
-        color: #C66A1B !important;
+        color: #C66A1A !important;
       }
 
       .source-embed [class*="math"],
@@ -261,7 +261,7 @@
       }
 
       .source-embed th {
-        color: #004B87 !important;
+        color: #C66A1A !important;
         background: #F0F6FF !important;
         font-family: "Inter", sans-serif !important;
         font-weight: 800 !important;

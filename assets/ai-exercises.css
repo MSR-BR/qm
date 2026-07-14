@@ -4,9 +4,9 @@
   --exercise-accent-border:#DDD6FE;
   --exercise-surface:#FFFFFF;
   --exercise-muted-surface:#F8FAFC;
-  --exercise-border:#D9E2EC;
-  --exercise-text:#2C3E50;
-  --exercise-muted:#5D6D7E;
+  --exercise-border:#F2C7A0;
+  --exercise-text:#27313F;
+  --exercise-muted:#6D6258;
   --exercise-danger:#B03A2E;
   display:block;
   width:100%;
@@ -22,9 +22,9 @@
 }
 
 .termo-exercise[data-exercise-theme="blue"]{
-  --exercise-accent:#004B87;
-  --exercise-accent-soft:#EAF2FD;
-  --exercise-accent-border:#C7D8F3;
+  --exercise-accent:#C66A1A;
+  --exercise-accent-soft:#FFF7ED;
+  --exercise-accent-border:#F2C7A0;
 }
 
 .termo-exercise[data-exercise-theme="green"]{
@@ -34,9 +34,9 @@
 }
 
 .termo-exercise[data-exercise-theme="orange"]{
-  --exercise-accent:#C66A1B;
-  --exercise-accent-soft:#FFF3E8;
-  --exercise-accent-border:#F4D3B5;
+  --exercise-accent:#C66A1A;
+  --exercise-accent-soft:#FFF7ED;
+  --exercise-accent-border:#F2C7A0;
 }
 
 .termo-exercise[data-exercise-theme="red"]{
@@ -109,7 +109,7 @@
 }
 
 .termo-exercise__btn{
-  background:#0F5A9B;
+  background:#C66A1A;
   color:#FFFFFF;
   font-weight:800;
   cursor:pointer;
@@ -118,7 +118,7 @@
 
 .termo-exercise__btn:hover:not(:disabled){
   transform:translateY(-1px);
-  background:#0B477A;
+  background:#9A4E10;
 }
 
 .termo-exercise__btn:disabled{
@@ -184,7 +184,7 @@
 .termo-exercise__save-status.is-warning{
   background:#FFF7E8;
   color:#A15C07;
-  border:1px solid #F4D3B5;
+  border:1px solid #F2C7A0;
 }
 
 .termo-exercise__save-status.is-error{
@@ -205,14 +205,14 @@
 
 .termo-exercise__memory-status.is-success{
   background:#EEF6FF;
-  color:#0F5A9B;
-  border:1px solid #C7D8F3;
+  color:#C66A1A;
+  border:1px solid #F2C7A0;
 }
 
 .termo-exercise__memory-status.is-warning{
   background:#FFF7E8;
   color:#A15C07;
-  border:1px solid #F4D3B5;
+  border:1px solid #F2C7A0;
 }
 
 .termo-exercise__validation-tools{
@@ -335,7 +335,7 @@
 .termo-exercise__validation-status.is-warning{
   background:#FFF7E8;
   color:#A15C07;
-  border:1px solid #F4D3B5;
+  border:1px solid #F2C7A0;
 }
 
 .termo-exercise__validation-status.is-error{

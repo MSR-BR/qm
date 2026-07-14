@@ -2,14 +2,14 @@
 :root{
   --cap2-bg:#FCFCFA;
   --cap2-page:#EDEDED;
-  --cap2-text:#2C3E50;
-  --cap2-muted:#5D6D7E;
-  --cap2-blue:#004B87;
-  --cap2-blue-soft:#E8F0FE;
+  --cap2-text:#27313F;
+  --cap2-muted:#6D6258;
+  --cap2-blue:#C66A1A;
+  --cap2-blue-soft:#FFF7ED;
   --cap2-red:#B03A2E;
   --cap2-green:#1A7A4A;
   --cap2-purple:#6D28D9;
-  --cap2-border:#DDE3ED;
+  --cap2-border:#F2C7A0;
   --cap2-card:#FFFFFF;
   --cap2-shadow:0 10px 28px rgba(0,0,0,.08);
   --cap2-title:clamp(1.32rem,2.2vw,1.72rem);
@@ -54,7 +54,7 @@ body{
 }
 
 .hero{
-  background:#F2F4F7!important;
+  background:#FFF7ED!important;
   border:0!important;
   border-left:5px solid var(--cap2-blue)!important;
   border-radius:6px!important;
@@ -96,8 +96,8 @@ body{
   font-size:.78rem!important;
   font-weight:700!important;
   color:var(--cap2-blue)!important;
-  background:#EEF3FC!important;
-  border:1px solid #C5D8F5!important;
+  background:#FFF7ED!important;
+  border:1px solid #F2C7A0!important;
   border-radius:7px!important;
   padding:5px 10px!important;
   margin:0 0 8px!important;
@@ -105,7 +105,7 @@ body{
 }
 
 .index-back-button:hover{
-  background:#DCEBFF!important;
+  background:#FFEAD5!important;
   transform:translateY(-1px)!important;
 }
 
@@ -211,7 +211,7 @@ td{
 .highlight,
 .footer-note{
   background:var(--cap2-blue-soft)!important;
-  border:1px solid #C5D8F5!important;
+  border:1px solid #F2C7A0!important;
   border-left:4px solid var(--cap2-blue)!important;
   border-radius:0 8px 8px 0!important;
   padding:clamp(12px,1.6vw,16px)!important;
