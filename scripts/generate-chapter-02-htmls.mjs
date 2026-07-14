@@ -9,7 +9,7 @@ const chapterDir = path.join(rootDir, "slides", "chapter-02");
 const dataPath = path.join(rootDir, "data", "chapter-02.json");
 const figureDir = "../../assets/chapter-02/figures";
 const figureAssetVersion = "0714.1";
-const layoutVersion = "0714.2";
+const layoutVersion = "0714.3";
 
 const originalLinks = [
   ["Elsevier shop", "https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8"],
@@ -942,11 +942,11 @@ function renderPage(page, index) {
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.2" />
-  <script defer src="../../assets/termo-share.js?v=0714.2"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.2" />
-  <script defer src="../../assets/termo-auth.js?v=0714.2"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0714.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.3" />
+  <script defer src="../../assets/termo-share.js?v=0714.3"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.3" />
+  <script defer src="../../assets/termo-auth.js?v=0714.3"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0714.3"></script>
 </head>
 <body>
   <div class="slide">

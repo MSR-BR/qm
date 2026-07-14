@@ -260,7 +260,7 @@
     ensureMetaByName("author").setAttribute("content", AUTHOR_NAME);
     ensureMetaByName("robots").setAttribute("content", meta.robots);
     ensureMetaByName("googlebot").setAttribute("content", meta.robots);
-    ensureMetaByName("theme-color").setAttribute("content", "#C66A1A");
+    ensureMetaByName("theme-color").setAttribute("content", "#2F6B4F");
 
     ensureMetaByProperty("og:locale").setAttribute("content", "pt_BR");
     ensureMetaByProperty("og:type").setAttribute("content", meta.ogType);

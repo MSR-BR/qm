@@ -278,7 +278,7 @@ function buildSeoBlock(meta) {
     `<meta name="author" content="${escapeHtml(AUTHOR_NAME)}"/>`,
     `<meta name="robots" content="${escapeHtml(meta.robots)}"/>`,
     `<meta name="googlebot" content="${escapeHtml(meta.robots)}"/>`,
-    `<meta name="theme-color" content="#C66A1A"/>`,
+    `<meta name="theme-color" content="#2F6B4F"/>`,
     `<link rel="canonical" href="${escapeHtml(meta.canonical)}"/>`,
     `<meta property="og:locale" content="en_US"/>`,
     `<meta property="og:type" content="${escapeHtml(meta.ogType)}"/>`,

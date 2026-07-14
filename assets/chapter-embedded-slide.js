@@ -161,7 +161,7 @@
       .source-embed [class*="section-title"],
       .source-embed [class*="header-title"],
       .source-embed [class*="label"] {
-        color: #C66A1A !important;
+        color: #2F6B4F !important;
         font-family: "Inter", sans-serif !important;
         font-weight: 800 !important;
         line-height: 1.22 !important;
@@ -191,7 +191,7 @@
         max-width: 100% !important;
         min-width: 0 !important;
         background: #FFFFFF !important;
-        border: 1px solid #F2C7A0 !important;
+        border: 1px solid #B8D8C4 !important;
         border-radius: 16px !important;
         box-shadow: 0 8px 22px rgba(0, 0, 0, 0.045) !important;
         padding: clamp(16px, 2.1vw, 24px) !important;
@@ -207,7 +207,7 @@
 
       .source-embed [class*="accent"],
       .source-embed [class*="highlight"] {
-        color: #C66A1A !important;
+        color: #2F6B4F !important;
       }
 
       .source-embed [class*="math"],
@@ -261,7 +261,7 @@
       }
 
       .source-embed th {
-        color: #C66A1A !important;
+        color: #2F6B4F !important;
         background: #F0F6FF !important;
         font-family: "Inter", sans-serif !important;
         font-weight: 800 !important;
