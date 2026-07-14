@@ -296,6 +296,18 @@ const pages = [
           <div class="eq">\[\int_0^a |\psi_n(x)|^2dx=1\quad\Rightarrow\quad \psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right).\]</div>
           <p>Each higher \(n\) adds nodes and raises the energy quadratically. The result is not a decorative standing wave: it is the first concrete example of an energy spectrum obtained from boundary conditions.</p>
         `
+      },
+      {
+        icon: "fa-solid fa-link",
+        color: "red",
+        title: "Compare with the semi-classical rule",
+        body: String.raw`
+          <p>This result is worth comparing with <a href="../chapter-01/scqr-examples.html">Chapter 1 · Item 1.13</a>. The semi-classical quantization rule treats the particle as moving classically from wall to wall and back, so the closed action is</p>
+          <div class="eq">\[\oint p\,dx=2pa=nh.\]</div>
+          <p>That gives \(p_n=nh/(2a)\) and therefore the same energy spectrum,</p>
+          <div class="eq key-eq">\[E_n=\frac{n^2h^2}{8ma^2}=\frac{n^2\pi^2\hbar^2}{2ma^2}.\]</div>
+          <p>The agreement is useful, but the wave-mechanics solution is richer: it gives \(\psi_n(x)\), nodes, normalization and the probability density \(|\psi_n(x)|^2\), not only the allowed energies.</p>
+        `
       }
     ]
   },
