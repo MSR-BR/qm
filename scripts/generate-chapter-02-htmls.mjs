@@ -694,8 +694,10 @@ const pages = [
           <div class="eq">\[\mathrm{var}(q)=\langle q^2\rangle-\langle q\rangle^2,\qquad \Delta q=\sqrt{\mathrm{var}(q)}.\]</div>
           <p>For the initial Gaussian, \(|\Psi(x,0)|^2\) is centered at zero. The odd integral vanishes, and the second moment gives</p>
           <div class="eq">\[\langle x\rangle=0,\qquad \langle x^2\rangle=\frac{a^2}{2},\qquad \mathrm{var}(x)=\frac{a^2}{2}.\]</div>
-          <p>The Fourier partner \(|\phi(k)|^2\) is centered at \(k_0\), so</p>
-          <div class="eq">\[\langle k\rangle=k_0,\qquad \mathrm{var}(k)=\frac{1}{2a^2}.\]</div>
+          <p>The Fourier partner \(|\phi(k)|^2\) is centered at \(k_0\). Equivalently, the shifted variable \(k-k_0\) has zero average:</p>
+          <div class="eq">\[\langle k\rangle=k_0,\qquad \langle k-k_0\rangle=0,\qquad \left\langle (k-k_0)^2\right\rangle=\frac{1}{2a^2}.\]</div>
+          <p>Therefore the wave-number variance is</p>
+          <div class="eq">\[\mathrm{var}(k)=\left\langle (k-\langle k\rangle)^2\right\rangle=\left\langle (k-k_0)^2\right\rangle=\frac{1}{2a^2}.\]</div>
           <p>Since \(p=\hbar k\), the momentum variance is \(\mathrm{var}(p)=\hbar^2\mathrm{var}(k)\). Therefore</p>
           <div class="eq key-eq">\[\Delta x=\frac{a}{\sqrt2},\qquad \Delta p=\frac{\hbar}{\sqrt2\,a},\qquad \Delta x\,\Delta p=\frac{\hbar}{2}.\]</div>
           <p>This initial Gaussian is a minimum-uncertainty packet. Making it broader in position makes its momentum distribution narrower; the product cannot be pushed below \(\hbar/2\).</p>
@@ -732,7 +734,7 @@ const pages = [
         color: "green",
         title: "Phase and group velocities",
         body: String.raw`
-          <p>The phase velocity \(v_p\), also written \(v_{\mathrm{ph}}\), follows the motion of a constant phase point of one component. The group velocity \(v_g\) follows the envelope of the packet:</p>
+          <p>These quantities are obtained from the time-dependent packet in the previous card. The phase \(kx-\omega(k)t\) inside \(\Psi(x,t)\) gives the phase velocity \(v_p\), also written \(v_{\mathrm{ph}}\), while the \(k\)-dependence of \(\omega(k)\) gives the group velocity \(v_g\):</p>
           <div class="eq key-eq">\[v_p\equiv v_{\mathrm{ph}}=\frac{\omega}{k}=\frac{\hbar k}{2m},\qquad v_g=\frac{d\omega}{dk}=\frac{\hbar k}{m}.\]</div>
           <p>The packet center moves with \(v_g\). At the central wave number \(k_0\), this gives \(v_g=\hbar k_0/m=p_0/m\), the classical velocity associated with the mean momentum.</p>
         `
