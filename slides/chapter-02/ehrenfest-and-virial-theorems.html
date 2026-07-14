@@ -77,15 +77,16 @@
         <div class="card">
           <div class="ch"><i class="fa-solid fa-clock-rotate-left"></i> Time derivative of an expectation value</div>
           <p>The Schrodinger equation implies a compact equation for the time evolution of expectation values:</p>
-          <div class="eq key-eq">\[\frac{d}{dt}\langle A\rangle=\left\langle\frac{\partial A}{\partial t}\right\rangle+\frac{i}{\hbar}\langle[\hat H,\hat A]\rangle.\]</div>
+          <div class="eq key-eq">\[\frac{d}{dt}\langle \hat A\rangle=\left\langle\frac{\partial \hat A}{\partial t}\right\rangle+\frac{i}{\hbar}\langle[\hat H,\hat A]\rangle.\]</div>
           <p>The first term is explicit time dependence of the operator. The second term comes from the noncommuting relation between the observable and the Hamiltonian.</p>
+          <p>A direct consequence is important: if \(\hat A\) has no explicit time dependence and \([\hat H,\hat A]=0\), then \(\langle\hat A\rangle\) is constant in time. The commutator therefore tells which average quantities are conserved.</p>
         </div>
 
         <div class="card orange">
           <div class="ch orange"><i class="fa-solid fa-person-running"></i> Ehrenfest theorem</div>
           <p>For the usual Hamiltonian \(\hat H=\hat p^2/2m+V(\hat x)\), the position and momentum averages obey</p>
-          <div class="eq key-eq">\[\frac{d}{dt}\langle x\rangle=\frac{\langle p\rangle}{m},\qquad \frac{d}{dt}\langle p\rangle=-\left\langle\frac{dV}{dx}\right\rangle.\]</div>
-          <p>This resembles Newton's law for expectation values, but the force is averaged over the quantum state.</p>
+          <div class="eq key-eq">\[\frac{d}{dt}\langle \hat x\rangle=\frac{\langle \hat p\rangle}{m},\qquad \frac{d}{dt}\langle \hat p\rangle=-\left\langle V'(\hat x)\right\rangle.\]</div>
+          <p>This resembles Newton's law for expectation values, but the force is averaged over the quantum state. If the packet is narrow enough that \(\langle V'(\hat x)\rangle\approx V'(\langle\hat x\rangle)\), the mean position follows an approximately classical trajectory.</p>
         </div>
       </div>
       <div class="col">

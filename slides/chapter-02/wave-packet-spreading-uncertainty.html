@@ -84,28 +84,37 @@
         </div>
 
         <div class="card orange">
-          <div class="ch orange"><i class="fa-solid fa-person-walking-arrow-right"></i> Phase and group velocities</div>
-          <p>For a free particle with \(\omega(k)=\hbar k^2/2m\), the phase velocity and group velocity are</p>
-          <div class="eq key-eq">\[v_{\mathrm{ph}}=\frac{\omega}{k}=\frac{\hbar k}{2m},\qquad v_g=\frac{d\omega}{dk}=\frac{\hbar k}{m}.\]</div>
-          <p>The group velocity is the velocity of the packet center; it matches the classical velocity \(p/m\).</p>
+          <div class="ch orange"><i class="fa-solid fa-forward"></i> Time evolution of the packet</div>
+          <p>The initial packet from Item 2.13 evolves by giving each plane-wave component its free-particle phase:</p>
+          <div class="eq key-eq">\[\Psi(x,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\phi(k)\,e^{i[kx-\omega(k)t]}\,dk,\qquad \omega(k)=\frac{\hbar k^2}{2m}.\]</div>
+          <p>This form is used because each component \(e^{ikx}\) has energy \(E=\hbar\omega(k)=\hbar^2k^2/2m\). Time evolution changes the relative phases of the components, and those changing phases reshape the packet in \(x\)-space.</p>
+        </div>
+
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-person-walking-arrow-right"></i> Phase and group velocities</div>
+          <p>The phase velocity \(v_p\), also written \(v_{\mathrm{ph}}\), follows the motion of a constant phase point of one component. The group velocity \(v_g\) follows the envelope of the packet:</p>
+          <div class="eq key-eq">\[v_p\equiv v_{\mathrm{ph}}=\frac{\omega}{k}=\frac{\hbar k}{2m},\qquad v_g=\frac{d\omega}{dk}=\frac{\hbar k}{m}.\]</div>
+          <p>The packet center moves with \(v_g\). At the central wave number \(k_0\), this gives \(v_g=\hbar k_0/m=p_0/m\), the classical velocity associated with the mean momentum.</p>
         </div>
       </div>
       <div class="col">
 
-        <div class="card green">
-          <div class="ch green"><i class="fa-solid fa-clock"></i> Spreading in time</div>
-          <p>Different \(k\) components move with different phase rates. The result is packet spreading. For the Gaussian packet, the position variance evolves as</p>
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-clock"></i> Spreading in time</div>
+          <p>Different \(k\) components have different \(\omega(k)\), so their phases do not remain locked together. The result is packet spreading. For the Gaussian packet,</p>
           <div class="eq key-eq">\[\mathrm{var}(x,t)=\frac{a^2}{2}\left[1+\left(\frac{t}{\tau}\right)^2\right],\qquad \tau=\frac{ma^2}{\hbar}.\]</div>
-          <p>The wave-number variance stays fixed for a free particle because the distribution \(|\phi(k)|^2\) does not change shape.</p>
+          <p>The wave-number distribution \(|\phi(k)|^2\) does not change shape for a free particle, so</p>
+          <div class="eq">\[\mathrm{var}(k,t)=\frac{1}{2a^2},\qquad \mathrm{var}(p,t)=\frac{\hbar^2}{2a^2}.\]</div>
+          <p>Position spreads with time, but the momentum spread stays fixed.</p>
         </div>
 
-        <div class="card purple">
-          <div class="ch purple"><i class="fa-solid fa-triangle-exclamation"></i> Uncertainty principle</div>
-          <p>Using \(p=\hbar k\), the Gaussian result becomes</p>
-          <div class="eq">\[\Delta x\,\Delta p=\hbar\sqrt{\mathrm{var}(x)\mathrm{var}(k)}=\frac{\hbar}{2}.\]</div>
-          <p>The general Heisenberg relation is</p>
+        <div class="card red">
+          <div class="ch red"><i class="fa-solid fa-triangle-exclamation"></i> Uncertainty principle</div>
+          <p>Combining the time-dependent position variance with the fixed momentum variance gives</p>
+          <div class="eq">\[\Delta x(t)\Delta p(t)=\sqrt{\mathrm{var}(x,t)\mathrm{var}(p,t)}=\frac{\hbar}{2}\sqrt{1+\left(\frac{t}{\tau}\right)^2}.\]</div>
+          <p>At \(t=0\), the product is exactly \(\hbar/2\). For later times it is larger, consistent with the general Heisenberg relation:</p>
           <div class="eq key-eq">\[\Delta x\,\Delta p\ge \frac{\hbar}{2}.\]</div>
-          <p>The Gaussian is a minimum-uncertainty packet at the initial instant.</p>
+          <p>The initial Gaussian saturates the bound; free evolution preserves the momentum width but increases the position width.</p>
         </div>
       </div>
 

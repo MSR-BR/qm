@@ -452,6 +452,8 @@ const pages = [
         title: "Hermitian operators and real averages",
         body: String.raw`
           <p>An operator is Hermitian when</p>
+          <div class="eq key-eq">\[\hat A^\dagger=(\hat A^*)^T,\qquad \hat A^\dagger=\hat A.\]</div>
+          <p>In a matrix representation, the dagger means transpose plus complex conjugation. The Hermitian condition says that the operator is equal to its own adjoint.</p>
           <div class="eq">\[\int \psi^*(\hat A\phi)\,dx=\int (\hat A\psi)^*\phi\,dx\]</div>
           <p>for allowed functions satisfying the boundary conditions. In practice, Hermitian operators have real eigenvalues and orthogonal eigenfunctions, which is why they can represent observables.</p>
         `
@@ -518,8 +520,8 @@ const pages = [
         icon: "fa-solid fa-flag",
         title: "Measurement postulate",
         body: String.raw`
-          <p>When a measurement of observable \(\hat A\) gives the eigenvalue \(a_n\), the state immediately after the measurement is the corresponding eigenstate \(\psi_n\), apart from normalization and phase.</p>
-          <div class="eq key-eq">\[\Psi=\sum_n C_n\psi_n\quad \xrightarrow{\mathrm{measure}\ a_n}\quad \psi_n.\]</div>
+          <p>When a measurement of observable \(\hat A\) gives the eigenvalue \(a_m\), the state immediately after the measurement is the corresponding eigenstate \(\psi_m\), apart from normalization and phase.</p>
+          <div class="eq key-eq">\[\Psi=\sum_n C_n\psi_n\quad \xrightarrow{\mathrm{measure}\ a_m}\quad \psi_m.\]</div>
           <p>This is the collapse rule. It connects a probabilistic state before measurement to a definite state after a recorded result.</p>
         `
       },
@@ -529,7 +531,7 @@ const pages = [
         title: "Expectation value as ensemble average",
         body: String.raw`
           <p>If many identical preparations are measured, the average result is</p>
-          <div class="eq key-eq">\[\langle A\rangle=\sum_n |C_n|^2 a_n.\]</div>
+          <div class="eq key-eq">\[\langle \hat A\rangle=\sum_n |C_n|^2 a_n.\]</div>
           <p>This average is not necessarily one of the possible individual outcomes. It is the weighted mean over repeated measurements.</p>
         `
       },
@@ -539,7 +541,7 @@ const pages = [
         title: "Integral form",
         body: String.raw`
           <p>In the position representation, the expectation value is computed by inserting the operator between \(\Psi^*\) and \(\Psi\):</p>
-          <div class="eq key-eq">\[\langle A\rangle=\int \Psi^*(x,t)\,\hat A\,\Psi(x,t)\,dx.\]</div>
+          <div class="eq key-eq">\[\langle \hat A\rangle=\int \Psi^*(x,t)\,\hat A\,\Psi(x,t)\,dx.\]</div>
           <p>For position, \(\hat A=\hat x=x\). For momentum, \(\hat A=\hat p=-i\hbar\,d/dx\).</p>
         `
       },
@@ -565,8 +567,9 @@ const pages = [
         title: "Time derivative of an expectation value",
         body: String.raw`
           <p>The Schrodinger equation implies a compact equation for the time evolution of expectation values:</p>
-          <div class="eq key-eq">\[\frac{d}{dt}\langle A\rangle=\left\langle\frac{\partial A}{\partial t}\right\rangle+\frac{i}{\hbar}\langle[\hat H,\hat A]\rangle.\]</div>
+          <div class="eq key-eq">\[\frac{d}{dt}\langle \hat A\rangle=\left\langle\frac{\partial \hat A}{\partial t}\right\rangle+\frac{i}{\hbar}\langle[\hat H,\hat A]\rangle.\]</div>
           <p>The first term is explicit time dependence of the operator. The second term comes from the noncommuting relation between the observable and the Hamiltonian.</p>
+          <p>A direct consequence is important: if \(\hat A\) has no explicit time dependence and \([\hat H,\hat A]=0\), then \(\langle\hat A\rangle\) is constant in time. The commutator therefore tells which average quantities are conserved.</p>
         `
       },
       {
@@ -575,8 +578,8 @@ const pages = [
         title: "Ehrenfest theorem",
         body: String.raw`
           <p>For the usual Hamiltonian \(\hat H=\hat p^2/2m+V(\hat x)\), the position and momentum averages obey</p>
-          <div class="eq key-eq">\[\frac{d}{dt}\langle x\rangle=\frac{\langle p\rangle}{m},\qquad \frac{d}{dt}\langle p\rangle=-\left\langle\frac{dV}{dx}\right\rangle.\]</div>
-          <p>This resembles Newton's law for expectation values, but the force is averaged over the quantum state.</p>
+          <div class="eq key-eq">\[\frac{d}{dt}\langle \hat x\rangle=\frac{\langle \hat p\rangle}{m},\qquad \frac{d}{dt}\langle \hat p\rangle=-\left\langle V'(\hat x)\right\rangle.\]</div>
+          <p>This resembles Newton's law for expectation values, but the force is averaged over the quantum state. If the packet is narrow enough that \(\langle V'(\hat x)\rangle\approx V'(\langle\hat x\rangle)\), the mean position follows an approximately classical trajectory.</p>
         `
       },
       {
@@ -656,9 +659,9 @@ const pages = [
         title: "A packet with carrier and envelope",
         body: String.raw`
           ${figure("fig-2-3-gaussian-wave-packet.png", "Fig. 2.3, adapted from the original chapter: Gaussian wave packet and its probability density.")}
-          <p>A useful localized wave packet is a plane-wave oscillation multiplied by a Gaussian envelope:</p>
+          <p>A useful localized wave packet is a plane-wave oscillation multiplied by a Gaussian envelope. Here it is the initial condition, specified at \(t=0\):</p>
           <div class="eq key-eq">\[\Psi(x,0)=\frac{1}{(a^2\pi)^{1/4}}\,e^{ik_0x}e^{-x^2/2a^2}.\]</div>
-          <p>The oscillating factor carries the average wave number \(k_0\). The Gaussian factor localizes the packet around \(x=0\).</p>
+          <p>The oscillating factor \(e^{ik_0x}\) carries the average wave number \(k_0\). The Gaussian factor localizes the packet around \(x=0\). The next step is to read from this initial state both its position width and its momentum width.</p>
         `
       },
       {
@@ -687,9 +690,15 @@ const pages = [
         color: "purple",
         title: "Width relation",
         body: String.raw`
-          <p>The same packet has the variances</p>
-          <div class="eq key-eq">\[\mathrm{var}(x)=\frac{a^2}{2},\qquad \mathrm{var}(k)=\frac{1}{2a^2}.\]</div>
-          <p>Making the packet broader in position makes its wave-number distribution narrower. This is not an experimental imperfection; it is a Fourier property of the state.</p>
+          <p>The width is computed from the variance. For any variable \(q\),</p>
+          <div class="eq">\[\mathrm{var}(q)=\langle q^2\rangle-\langle q\rangle^2,\qquad \Delta q=\sqrt{\mathrm{var}(q)}.\]</div>
+          <p>For the initial Gaussian, \(|\Psi(x,0)|^2\) is centered at zero. The odd integral vanishes, and the second moment gives</p>
+          <div class="eq">\[\langle x\rangle=0,\qquad \langle x^2\rangle=\frac{a^2}{2},\qquad \mathrm{var}(x)=\frac{a^2}{2}.\]</div>
+          <p>The Fourier partner \(|\phi(k)|^2\) is centered at \(k_0\), so</p>
+          <div class="eq">\[\langle k\rangle=k_0,\qquad \mathrm{var}(k)=\frac{1}{2a^2}.\]</div>
+          <p>Since \(p=\hbar k\), the momentum variance is \(\mathrm{var}(p)=\hbar^2\mathrm{var}(k)\). Therefore</p>
+          <div class="eq key-eq">\[\Delta x=\frac{a}{\sqrt2},\qquad \Delta p=\frac{\hbar}{\sqrt2\,a},\qquad \Delta x\,\Delta p=\frac{\hbar}{2}.\]</div>
+          <p>This initial Gaussian is a minimum-uncertainty packet. Making it broader in position makes its momentum distribution narrower; the product cannot be pushed below \(\hbar/2\).</p>
         `
       }
     ]
@@ -709,35 +718,47 @@ const pages = [
         `
       },
       {
-        icon: "fa-solid fa-person-walking-arrow-right",
+        icon: "fa-solid fa-forward",
         color: "orange",
+        title: "Time evolution of the packet",
+        body: String.raw`
+          <p>The initial packet from Item 2.13 evolves by giving each plane-wave component its free-particle phase:</p>
+          <div class="eq key-eq">\[\Psi(x,t)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\phi(k)\,e^{i[kx-\omega(k)t]}\,dk,\qquad \omega(k)=\frac{\hbar k^2}{2m}.\]</div>
+          <p>This form is used because each component \(e^{ikx}\) has energy \(E=\hbar\omega(k)=\hbar^2k^2/2m\). Time evolution changes the relative phases of the components, and those changing phases reshape the packet in \(x\)-space.</p>
+        `
+      },
+      {
+        icon: "fa-solid fa-person-walking-arrow-right",
+        color: "green",
         title: "Phase and group velocities",
         body: String.raw`
-          <p>For a free particle with \(\omega(k)=\hbar k^2/2m\), the phase velocity and group velocity are</p>
-          <div class="eq key-eq">\[v_{\mathrm{ph}}=\frac{\omega}{k}=\frac{\hbar k}{2m},\qquad v_g=\frac{d\omega}{dk}=\frac{\hbar k}{m}.\]</div>
-          <p>The group velocity is the velocity of the packet center; it matches the classical velocity \(p/m\).</p>
+          <p>The phase velocity \(v_p\), also written \(v_{\mathrm{ph}}\), follows the motion of a constant phase point of one component. The group velocity \(v_g\) follows the envelope of the packet:</p>
+          <div class="eq key-eq">\[v_p\equiv v_{\mathrm{ph}}=\frac{\omega}{k}=\frac{\hbar k}{2m},\qquad v_g=\frac{d\omega}{dk}=\frac{\hbar k}{m}.\]</div>
+          <p>The packet center moves with \(v_g\). At the central wave number \(k_0\), this gives \(v_g=\hbar k_0/m=p_0/m\), the classical velocity associated with the mean momentum.</p>
         `
       },
       {
         icon: "fa-solid fa-clock",
-        color: "green",
+        color: "purple",
         title: "Spreading in time",
         body: String.raw`
-          <p>Different \(k\) components move with different phase rates. The result is packet spreading. For the Gaussian packet, the position variance evolves as</p>
+          <p>Different \(k\) components have different \(\omega(k)\), so their phases do not remain locked together. The result is packet spreading. For the Gaussian packet,</p>
           <div class="eq key-eq">\[\mathrm{var}(x,t)=\frac{a^2}{2}\left[1+\left(\frac{t}{\tau}\right)^2\right],\qquad \tau=\frac{ma^2}{\hbar}.\]</div>
-          <p>The wave-number variance stays fixed for a free particle because the distribution \(|\phi(k)|^2\) does not change shape.</p>
+          <p>The wave-number distribution \(|\phi(k)|^2\) does not change shape for a free particle, so</p>
+          <div class="eq">\[\mathrm{var}(k,t)=\frac{1}{2a^2},\qquad \mathrm{var}(p,t)=\frac{\hbar^2}{2a^2}.\]</div>
+          <p>Position spreads with time, but the momentum spread stays fixed.</p>
         `
       },
       {
         icon: "fa-solid fa-triangle-exclamation",
-        color: "purple",
+        color: "red",
         title: "Uncertainty principle",
         body: String.raw`
-          <p>Using \(p=\hbar k\), the Gaussian result becomes</p>
-          <div class="eq">\[\Delta x\,\Delta p=\hbar\sqrt{\mathrm{var}(x)\mathrm{var}(k)}=\frac{\hbar}{2}.\]</div>
-          <p>The general Heisenberg relation is</p>
+          <p>Combining the time-dependent position variance with the fixed momentum variance gives</p>
+          <div class="eq">\[\Delta x(t)\Delta p(t)=\sqrt{\mathrm{var}(x,t)\mathrm{var}(p,t)}=\frac{\hbar}{2}\sqrt{1+\left(\frac{t}{\tau}\right)^2}.\]</div>
+          <p>At \(t=0\), the product is exactly \(\hbar/2\). For later times it is larger, consistent with the general Heisenberg relation:</p>
           <div class="eq key-eq">\[\Delta x\,\Delta p\ge \frac{\hbar}{2}.\]</div>
-          <p>The Gaussian is a minimum-uncertainty packet at the initial instant.</p>
+          <p>The initial Gaussian saturates the bound; free evolution preserves the momentum width but increases the position width.</p>
         `
       }
     ]
