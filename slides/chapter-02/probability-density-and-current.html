@@ -87,8 +87,6 @@
           <p>For a single particle somewhere on the line, the total probability must be one:</p>
           <div class="eq key-eq">\[\int_{-\infty}^{+\infty}|\Psi(x,t)|^2\,dx=1.\]</div>
         </div>
-      </div>
-      <div class="col">
 
         <div class="card green">
           <div class="ch green"><i class="fa-solid fa-water"></i> Continuity equation</div>
@@ -96,6 +94,8 @@
           <div class="eq key-eq">\[\frac{\partial\rho}{\partial t}+\frac{\partial j}{\partial x}=0,\qquad j=\frac{\hbar}{2mi}\left(\Psi^*\frac{\partial\Psi}{\partial x}-\Psi\frac{\partial\Psi^*}{\partial x}\right).\]</div>
           <p>The current \(j\) tells how probability flows across position, just as a fluid current tells how mass flows through space.</p>
         </div>
+      </div>
+      <div class="col">
 
         <div class="card purple">
           <div class="ch purple"><i class="fa-solid fa-circle-check"></i> Conceptual checkpoint</div>
@@ -105,6 +105,15 @@
             <li>Normalization makes the wave function predictive.</li>
             <li>The continuity equation protects total probability during time evolution.</li>
           </ul>
+        </div>
+
+        <div class="card red">
+          <div class="ch red"><i class="fa-solid fa-pen-nib"></i> Challenge: derive the continuity equation</div>
+          <p><strong>Challenge (see the book for solution).</strong> Starting from the TDSE and its complex conjugate, derive the continuity equation instead of taking \(\rho\) and \(j\) as definitions.</p>
+          <div class="eq">\[i\hbar\frac{\partial\Psi}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V\Psi,\qquad -i\hbar\frac{\partial\Psi^*}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^2\Psi^*}{\partial x^2}+V\Psi^*.\]</div>
+          <p>Multiply the first equation by \(\Psi^*\), the second by \(\Psi\), subtract the two expressions and rearrange the result as</p>
+          <div class="eq key-eq">\[\frac{\partial}{\partial t}(\Psi^*\Psi)+\frac{\partial}{\partial x}\left[\frac{\hbar}{2mi}\left(\Psi^*\frac{\partial\Psi}{\partial x}-\Psi\frac{\partial\Psi^*}{\partial x}\right)\right]=0.\]</div>
+          <p>This verifies \(\rho=\Psi^*\Psi\) and \(j=\frac{\hbar}{2mi}\left(\Psi^*\partial_x\Psi-\Psi\partial_x\Psi^*\right)\).</p>
         </div>
       </div>
 

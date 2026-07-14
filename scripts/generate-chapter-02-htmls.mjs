@@ -232,6 +232,18 @@ const pages = [
             <li>The continuity equation protects total probability during time evolution.</li>
           </ul>
         `
+      },
+      {
+        icon: "fa-solid fa-pen-nib",
+        color: "red",
+        title: "Challenge: derive the continuity equation",
+        body: String.raw`
+          <p><strong>Challenge (see the book for solution).</strong> Starting from the TDSE and its complex conjugate, derive the continuity equation instead of taking \(\rho\) and \(j\) as definitions.</p>
+          <div class="eq">\[i\hbar\frac{\partial\Psi}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}+V\Psi,\qquad -i\hbar\frac{\partial\Psi^*}{\partial t}=-\frac{\hbar^2}{2m}\frac{\partial^2\Psi^*}{\partial x^2}+V\Psi^*.\]</div>
+          <p>Multiply the first equation by \(\Psi^*\), the second by \(\Psi\), subtract the two expressions and rearrange the result as</p>
+          <div class="eq key-eq">\[\frac{\partial}{\partial t}(\Psi^*\Psi)+\frac{\partial}{\partial x}\left[\frac{\hbar}{2mi}\left(\Psi^*\frac{\partial\Psi}{\partial x}-\Psi\frac{\partial\Psi^*}{\partial x}\right)\right]=0.\]</div>
+          <p>This verifies \(\rho=\Psi^*\Psi\) and \(j=\frac{\hbar}{2mi}\left(\Psi^*\partial_x\Psi-\Psi\partial_x\Psi^*\right)\).</p>
+        `
       }
     ]
   },
