@@ -60,14 +60,14 @@
     {
       "id": "2.9",
       "title": "Measurement probabilities",
-      "note": "Measurement probability postulate: expansion coefficients give outcome probabilities, P_n = |C_n|^2, when measuring in an eigenstate basis.",
+      "note": "Postulate of probability: expansion coefficients give outcome probabilities, P_n = |C_n|^2, when measuring in an eigenstate basis.",
       "url": "slides/chapter-02/measurement-probabilities.html",
       "status": "planned"
     },
     {
       "id": "2.10",
       "title": "Expectation values and collapse",
-      "note": "Measurement postulate continued: expectation values are ensemble averages, and after a definite result the state collapses to the measured eigenstate.",
+      "note": "Measurement postulate: expectation values are ensemble averages, and after a definite result the state collapses to the measured eigenstate.",
       "url": "slides/chapter-02/expectation-values-and-collapse.html",
       "status": "planned"
     },
