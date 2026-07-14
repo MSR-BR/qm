@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Observables, operators and commutators | Chapter 2 | Quantum Mechanics</title>
+  <meta name="description" content="Observables, operators and commutators. Practical auxiliary summary for Chapter 2 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-02/page-layout.css?v=0714.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0619.2" />
+  <script defer src="../../assets/termo-share.js?v=0619.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0619.2" />
+  <script defer src="../../assets/termo-auth.js?v=0619.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0619.2"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty. Interactive material from t..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#004B87"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-02/observables-operators-commutators.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Observables, operators and commutators | Chapter 2 | Quantum Mechanics"/>
+<meta property="og:description" content="Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty. Interactive material from t..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-02/observables-operators-commutators.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Observables, operators and commutators | Chapter 2 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty. Interactive material from t..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Observables, operators and commutators | Chapter 2 | Quantum Mechanics","description":"Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty. Interactive material from t...","url":"https://qm-beta.vercel.app/slides/chapter-02/observables-operators-commutators.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+<script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=02" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 2 · Item 2.8
+        </div>
+        <div class="hdr-title">Observables, operators and commutators</div>
+        <div class="hdr-sub">The operator postulate and compatibility of measurements</div>
+      </div>
+      <div class="slide-num">8 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+        <p>Operators are the bridge from a wave function to measurable quantities. Eigenvalues are possible results, Hermiticity guarantees real results, and commutators tell whether two measurement questions can be answered simultaneously with sharp values.</p>
+      </div>
+      <div class="col">
+
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-flag"></i> Postulate for observables</div>
+          <p>Each observable quantity is represented by a Hermitian operator. The possible results of measuring that quantity are the operator eigenvalues.</p>
+          <div class="eq key-eq">\[\hat A\psi_n=a_n\psi_n.\]</div>
+          <p>Hermiticity is essential because measured values must be real.</p>
+        </div>
+
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-toolbox"></i> Basic operators in one dimension</div>
+          <div class="eq">\[\hat x=x,\qquad \hat p=-i\hbar\frac{d}{dx},\qquad \hat H=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x).\]</div>
+          <p>The Hamiltonian operator \(\hat H\) represents total energy. Solving \(\hat H\psi=E\psi\) is exactly the TISE written as an eigenvalue problem.</p>
+        </div>
+      </div>
+      <div class="col">
+
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-arrows-rotate"></i> Commutators encode order</div>
+          <p>The commutator of two operators is</p>
+          <div class="eq">\[[\hat A,\hat B]=\hat A\hat B-\hat B\hat A.\]</div>
+          <p>Position and momentum do not commute:</p>
+          <div class="eq key-eq">\[[\hat x,\hat p]=i\hbar.\]</div>
+          <p>This algebraic fact is the seed of the position-momentum uncertainty principle.</p>
+        </div>
+
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-scale-balanced"></i> Hermitian operators and real averages</div>
+          <p>An operator is Hermitian when</p>
+          <div class="eq">\[\int \psi^*(\hat A\phi)\,dx=\int (\hat A\psi)^*\phi\,dx\]</div>
+          <p>for allowed functions satisfying the boundary conditions. In practice, Hermitian operators have real eigenvalues and orthogonal eigenfunctions, which is why they can represent observables.</p>
+        </div>
+      </div>
+
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 2 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. No original book figure is reproduced on this page.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

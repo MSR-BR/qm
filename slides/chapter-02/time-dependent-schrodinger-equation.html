@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time-dependent Schrodinger equation | Chapter 2 | Quantum Mechanics</title>
+  <meta name="description" content="Time-dependent Schrodinger equation. Practical auxiliary summary for Chapter 2 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-02/page-layout.css?v=0714.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0619.2" />
+  <script defer src="../../assets/termo-share.js?v=0619.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0619.2" />
+  <script defer src="../../assets/termo-auth.js?v=0619.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0619.2"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="From the plane wave, de Broglie's relation and the classical energy balance to the TDSE. Interactive material from the book Quantum Mechanics, with teaching authorship b..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#004B87"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-02/time-dependent-schrodinger-equation.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Time-dependent Schrodinger equation | Chapter 2 | Quantum Mechanics"/>
+<meta property="og:description" content="From the plane wave, de Broglie's relation and the classical energy balance to the TDSE. Interactive material from the book Quantum Mechanics, with teaching authorship b..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-02/time-dependent-schrodinger-equation.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Time-dependent Schrodinger equation | Chapter 2 | Quantum Mechanics"/>
+<meta name="twitter:description" content="From the plane wave, de Broglie's relation and the classical energy balance to the TDSE. Interactive material from the book Quantum Mechanics, with teaching authorship b..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Time-dependent Schrodinger equation | Chapter 2 | Quantum Mechanics","description":"From the plane wave, de Broglie's relation and the classical energy balance to the TDSE. Interactive material from the book Quantum Mechanics, with teaching authorship b...","url":"https://qm-beta.vercel.app/slides/chapter-02/time-dependent-schrodinger-equation.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+<script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=02" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 2 · Item 2.2
+        </div>
+        <div class="hdr-title">Time-dependent Schrodinger equation</div>
+        <div class="hdr-sub">Building the wave equation from energy balance</div>
+      </div>
+      <div class="slide-num">2 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+        <p>The TDSE is easier to follow when each derivative is tied to a physical quantity. Spatial curvature of the wave function produces kinetic energy; time variation produces total energy. The equation is the quantum version of \(E=p^2/2m+V\).</p>
+      </div>
+      <div class="col">
+
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-wave-square"></i> Start from a plane wave</div>
+          <p>A free matter wave with definite wave number and angular frequency can be written as</p>
+          <div class="eq">\[\Psi(x,t)=A e^{i(kx-\omega t)}.\]</div>
+          <p>de Broglie's relations identify \(p=\hbar k\) and \(E=\hbar\omega\). The task is to find a differential equation for which this wave is a solution and whose coefficients reproduce the classical energy relation.</p>
+        </div>
+
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-arrow-right-long"></i> The kinetic-energy part</div>
+          <p>Differentiate the plane wave twice in space:</p>
+          <div class="eq">\[\frac{\partial^2\Psi}{\partial x^2}=-k^2\Psi.\]</div>
+          <p>Multiplying by \(-\hbar^2/2m\) converts the wave number into momentum:</p>
+          <div class="eq key-eq">\[-\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2}=\frac{\hbar^2 k^2}{2m}\Psi=\frac{p^2}{2m}\Psi.\]</div>
+        </div>
+      </div>
+      <div class="col">
+
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-clock"></i> The total-energy part</div>
+          <p>Differentiate once in time:</p>
+          <div class="eq">\[\frac{\partial\Psi}{\partial t}=-i\omega\Psi.\]</div>
+          <p>Multiplying by \(i\hbar\) converts angular frequency into energy:</p>
+          <div class="eq key-eq">\[i\hbar\frac{\partial\Psi}{\partial t}=\hbar\omega\Psi=E\Psi.\]</div>
+        </div>
+
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-equals"></i> Assemble the energy balance</div>
+          <p>For a particle in a potential \(V(x,t)\), the classical energy is \(E=p^2/2m+V\). Replacing the energy and momentum pieces by the differential actions above gives</p>
+          <div class="eq key-eq">\[\left[-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}+V(x,t)\right]\Psi(x,t)=i\hbar\frac{\partial\Psi(x,t)}{\partial t}.\]</div>
+          <p>This is the one-dimensional time-dependent Schrodinger equation. It is a dynamical law for the wave function, not a rule for a particle trajectory.</p>
+        </div>
+      </div>
+
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 2 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. No original book figure is reproduced on this page.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

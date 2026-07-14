@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quantum states as superpositions | Chapter 2 | Quantum Mechanics</title>
+  <meta name="description" content="Quantum states as superpositions. Practical auxiliary summary for Chapter 2 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-02/page-layout.css?v=0714.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0619.2" />
+  <script defer src="../../assets/termo-share.js?v=0619.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0619.2" />
+  <script defer src="../../assets/termo-auth.js?v=0619.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0619.2"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis. Interactive material from the book Quantum..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#004B87"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-02/quantum-states-superpositions.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Quantum states as superpositions | Chapter 2 | Quantum Mechanics"/>
+<meta property="og:description" content="Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis. Interactive material from the book Quantum..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-02/quantum-states-superpositions.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Quantum states as superpositions | Chapter 2 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis. Interactive material from the book Quantum..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Quantum states as superpositions | Chapter 2 | Quantum Mechanics","description":"Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis. Interactive material from the book Quantum...","url":"https://qm-beta.vercel.app/slides/chapter-02/quantum-states-superpositions.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+<script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=02" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 2 · Item 2.7
+        </div>
+        <div class="hdr-title">Quantum states as superpositions</div>
+        <div class="hdr-sub">The state postulate and expansion in a basis</div>
+      </div>
+      <div class="slide-num">7 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+        <p>The state postulate is the conceptual center of wave mechanics. A state can be a superposition of several basis states, and the coefficients are not optional bookkeeping: they are the amplitudes that later become probabilities.</p>
+      </div>
+      <div class="col">
+
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-flag"></i> Postulate for quantum states</div>
+          <p>A physical state is represented by a wave function \(\Psi(x,t)\), or more abstractly by a state vector. The wave function contains all the information needed to predict the probabilities of possible measurement outcomes.</p>
+          <p>Two valid state solutions can be combined to form another valid state whenever the Schrodinger equation is linear.</p>
+        </div>
+
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-layer-group"></i> Superposition principle</div>
+          <div class="eq key-eq">\[\Psi(x)=\sum_{n} C_n\psi_n(x).\]</div>
+          <p>The functions \(\psi_n\) are basis states. The complex numbers \(C_n\) are amplitudes. The state is not secretly one term before measurement; it is the full superposition until a measurement selects an outcome.</p>
+        </div>
+      </div>
+      <div class="col">
+
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-ruler-combined"></i> Orthonormal basis and coefficients</div>
+          <p>For a convenient basis, the states are orthonormal:</p>
+          <div class="eq">\[\int \psi_m^*(x)\psi_n(x)\,dx=\delta_{mn}.\]</div>
+          <p>Multiplying \(\Psi=\sum_n C_n\psi_n\) by \(\psi_m^*\) and integrating isolates one coefficient:</p>
+          <div class="eq key-eq">\[C_m=\int \psi_m^*(x)\Psi(x)\,dx.\]</div>
+        </div>
+
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-vial"></i> Small example</div>
+          <p>In the infinite well, a state such as</p>
+          <div class="eq">\[\Psi(x)=\frac{1}{\sqrt{3}}\psi_1(x)+\sqrt{\frac{2}{3}}\psi_2(x)\]</div>
+          <p>is not an eigenstate of energy. It is a normalized superposition of two energy eigenstates, so an energy measurement can return either \(E_1\) or \(E_2\).</p>
+        </div>
+      </div>
+
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 2 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. No original book figure is reproduced on this page.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -5,106 +5,91 @@
       "id": "2.1",
       "title": "Why wave mechanics is needed",
       "note": "Chapter map: how de Broglie's matter waves become a dynamical theory for quantum states.",
-      "url": "slides/chapter-02/why-wave-mechanics-is-needed.html",
-      "status": "planned"
+      "url": "slides/chapter-02/why-wave-mechanics-is-needed.html"
     },
     {
       "id": "2.2",
       "title": "Time-dependent Schrodinger equation",
       "note": "From the plane wave, de Broglie's relation and the classical energy balance to the TDSE.",
-      "url": "slides/chapter-02/time-dependent-schrodinger-equation.html",
-      "status": "planned"
+      "url": "slides/chapter-02/time-dependent-schrodinger-equation.html"
     },
     {
       "id": "2.3",
       "title": "Stationary states and the TISE",
       "note": "Separation of variables, time-independent potentials and the energy eigenvalue equation.",
-      "url": "slides/chapter-02/stationary-states-and-tise.html",
-      "status": "planned"
+      "url": "slides/chapter-02/stationary-states-and-tise.html"
     },
     {
       "id": "2.4",
       "title": "Probability density and current",
       "note": "Born interpretation, continuity equation, normalization and probability in a spatial interval.",
-      "url": "slides/chapter-02/probability-density-and-current.html",
-      "status": "planned"
+      "url": "slides/chapter-02/probability-density-and-current.html"
     },
     {
       "id": "2.5",
       "title": "Infinite potential well",
       "note": "Boundary conditions, allowed sine functions, normalized eigenstates, nodes, probability densities and the quadratic energy spectrum.",
-      "url": "slides/chapter-02/infinite-potential-well.html",
-      "status": "planned"
+      "url": "slides/chapter-02/infinite-potential-well.html"
     },
     {
       "id": "2.6",
       "title": "Postulates of quantum mechanics: the rules ahead",
       "note": "Bridge card: after solving one model, the chapter states the rules for states, observables, probabilities and measurement.",
-      "url": "slides/chapter-02/postulates-rules-ahead.html",
-      "status": "planned"
+      "url": "slides/chapter-02/postulates-rules-ahead.html"
     },
     {
       "id": "2.7",
       "title": "Quantum states as superpositions",
       "note": "Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis.",
-      "url": "slides/chapter-02/quantum-states-superpositions.html",
-      "status": "planned"
+      "url": "slides/chapter-02/quantum-states-superpositions.html"
     },
     {
       "id": "2.8",
       "title": "Observables, operators and commutators",
       "note": "Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty.",
-      "url": "slides/chapter-02/observables-operators-commutators.html",
-      "status": "planned"
+      "url": "slides/chapter-02/observables-operators-commutators.html"
     },
     {
       "id": "2.9",
       "title": "Measurement probabilities",
       "note": "Postulate of probability: expansion coefficients give outcome probabilities, P_n = |C_n|^2, when measuring in an eigenstate basis.",
-      "url": "slides/chapter-02/measurement-probabilities.html",
-      "status": "planned"
+      "url": "slides/chapter-02/measurement-probabilities.html"
     },
     {
       "id": "2.10",
       "title": "Expectation values and collapse",
       "note": "Measurement postulate: expectation values are ensemble averages, and after a definite result the state collapses to the measured eigenstate.",
-      "url": "slides/chapter-02/expectation-values-and-collapse.html",
-      "status": "planned"
+      "url": "slides/chapter-02/expectation-values-and-collapse.html"
     },
     {
       "id": "2.11",
       "title": "Equations of motion: Ehrenfest and Virial",
       "note": "Time evolution of expectation values, the classical limit and the Virial theorem.",
-      "url": "slides/chapter-02/ehrenfest-and-virial-theorems.html",
-      "status": "planned"
+      "url": "slides/chapter-02/ehrenfest-and-virial-theorems.html"
     },
     {
       "id": "2.12",
       "title": "Plane waves and localized packets",
       "note": "Why a single plane wave has sharp momentum but poor localization, and why packets are needed.",
-      "url": "slides/chapter-02/plane-waves-and-localized-packets.html",
-      "status": "planned"
+      "url": "slides/chapter-02/plane-waves-and-localized-packets.html"
     },
     {
       "id": "2.13",
       "title": "Gaussian wave packet and Fourier width",
       "note": "Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths.",
-      "url": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
-      "status": "planned"
+      "url": "slides/chapter-02/gaussian-wave-packet-fourier-width.html"
     },
     {
       "id": "2.14",
       "title": "Wave packet spreading and uncertainty",
       "note": "Group velocity, phase velocity, time-dependent variance and the Heisenberg uncertainty principle.",
-      "url": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
-      "status": "planned"
+      "url": "slides/chapter-02/wave-packet-spreading-uncertainty.html"
     },
     {
       "id": "2.15",
       "title": "Chapter synthesis",
       "note": "Conceptual bridge from wave mechanics to the more abstract formulation of quantum theory.",
-      "url": "slides/chapter-02/chapter-synthesis.html",
-      "status": "planned"
+      "url": "slides/chapter-02/chapter-synthesis.html"
     }
   ]
 }

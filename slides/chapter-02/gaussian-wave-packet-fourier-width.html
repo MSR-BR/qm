@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gaussian wave packet and Fourier width | Chapter 2 | Quantum Mechanics</title>
+  <meta name="description" content="Gaussian wave packet and Fourier width. Practical auxiliary summary for Chapter 2 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-02/page-layout.css?v=0714.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0619.2" />
+  <script defer src="../../assets/termo-share.js?v=0619.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0619.2" />
+  <script defer src="../../assets/termo-auth.js?v=0619.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0619.2"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths. Interactive material from the book Quantum Mechanics, with teaching author..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#004B87"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-02/gaussian-wave-packet-fourier-width.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Gaussian wave packet and Fourier width | Chapter 2 | Quantum Mechanics"/>
+<meta property="og:description" content="Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths. Interactive material from the book Quantum Mechanics, with teaching author..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-02/gaussian-wave-packet-fourier-width.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Gaussian wave packet and Fourier width | Chapter 2 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths. Interactive material from the book Quantum Mechanics, with teaching author..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Gaussian wave packet and Fourier width | Chapter 2 | Quantum Mechanics","description":"Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths. Interactive material from the book Quantum Mechanics, with teaching author...","url":"https://qm-beta.vercel.app/slides/chapter-02/gaussian-wave-packet-fourier-width.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+<script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=02" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 2 · Item 2.13
+        </div>
+        <div class="hdr-title">Gaussian wave packet and Fourier width</div>
+        <div class="hdr-sub">A localized packet and its momentum-space partner</div>
+      </div>
+      <div class="slide-num">13 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+        <p>The Gaussian packet is the best example because the Fourier transform is also Gaussian. This makes the inverse relation between position width and wave-number width completely explicit.</p>
+      </div>
+      <div class="col">
+
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-chart-line"></i> A packet with carrier and envelope</div>
+          <figure class="book-figure">
+            <img src="../../assets/chapter-02/figures/fig-2-3-gaussian-wave-packet.png?v=0714.1" alt="Fig. 2.3, adapted from the original chapter: Gaussian wave packet and its probability density." loading="lazy" />
+            <figcaption>Fig. 2.3, adapted from the original chapter: Gaussian wave packet and its probability density. Copyright &copy; 2026 Elsevier Inc.</figcaption>
+          </figure>
+          <p>A useful localized wave packet is a plane-wave oscillation multiplied by a Gaussian envelope:</p>
+          <div class="eq key-eq">\[\Psi(x,0)=\frac{1}{(a^2\pi)^{1/4}}\,e^{ik_0x}e^{-x^2/2a^2}.\]</div>
+          <p>The oscillating factor carries the average wave number \(k_0\). The Gaussian factor localizes the packet around \(x=0\).</p>
+        </div>
+
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-chart-area"></i> Position probability</div>
+          <p>The probability density removes the phase \(e^{ik_0x}\):</p>
+          <div class="eq">\[|\Psi(x,0)|^2=\frac{1}{a\sqrt{\pi}}e^{-x^2/a^2}.\]</div>
+          <p>The parameter \(a\) controls spatial width. Larger \(a\) means a broader packet in \(x\).</p>
+        </div>
+      </div>
+      <div class="col">
+
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-right-left"></i> Fourier partner in wave-number space</div>
+          <p>The wave-number distribution is obtained by Fourier transform:</p>
+          <div class="eq">\[\phi(k)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{+\infty}\Psi(x,0)e^{-ikx}\,dx.\]</div>
+          <p>For the Gaussian packet, this gives another Gaussian centered at \(k_0\):</p>
+          <div class="eq key-eq">\[\phi(k)=\frac{\sqrt{a}}{\pi^{1/4}}e^{-a^2(k-k_0)^2/2}.\]</div>
+        </div>
+
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-ruler"></i> Width relation</div>
+          <p>The same packet has the variances</p>
+          <div class="eq key-eq">\[\mathrm{var}(x)=\frac{a^2}{2},\qquad \mathrm{var}(k)=\frac{1}{2a^2}.\]</div>
+          <p>Making the packet broader in position makes its wave-number distribution narrower. This is not an experimental imperfection; it is a Fourier property of the state.</p>
+        </div>
+      </div>
+
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 2 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Selected figure material is reproduced/adapted from Chapter 2 of the original book and carries a visible copyright caption.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
