@@ -154,7 +154,8 @@
             <img src="../../assets/chapter-01/figures/fig-1-3-black-body-cavity.png?v=0619.3" alt="Fig. 1.3, adapted from the original chapter: a cavity with a small hole models black-body radiation." loading="lazy" />
             <figcaption>Fig. 1.3, adapted from the original chapter: a cavity with a small hole models black-body radiation. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
-          <p>A black body absorbs incident radiation and emits a spectrum determined by temperature. A cavity with a small aperture provides a clean model because the interior modes repeatedly reflect and equilibrate.</p>
+          <p>A black body absorbs incident radiation and emits a spectrum determined by temperature. A cavity with a small aperture provides a clean model because radiation reflects many times inside, so the escaping light samples the equilibrium radiation field.</p>
+          <p>The calculation begins by counting electromagnetic modes in the cavity; the dispute is not the mode count, but the energy assigned to each mode.</p>
         </div>
 
         <div class="card red">
@@ -163,6 +164,7 @@
             <img src="../../assets/chapter-01/figures/fig-1-4-black-body-radiance.png?v=0619.3" alt="Fig. 1.4, adapted from the original chapter: Rayleigh-Jeans succeeds at low frequency but fails at high frequency." loading="lazy" />
             <figcaption>Fig. 1.4, adapted from the original chapter: Rayleigh-Jeans succeeds at low frequency but fails at high frequency. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
+          <p>Classically, each mode receives an average energy \(k_BT\). Combining that with the mode density gives</p>
           <div class="eq key-eq">\[\frac{du}{df}=\frac{8\pi}{c^3}k_B T f^2,\qquad R(f,T)=\frac{c}{4}\frac{du}{df}\]</div>
           <p>The Rayleigh-Jeans result grows without bound as frequency increases. This ultraviolet catastrophe shows that classical equipartition cannot be the full story.</p>
         </div>
@@ -171,10 +173,11 @@
 
         <div class="card orange">
           <div class="ch orange"><i class="fa-solid fa-cubes-stacked"></i> Planck's rule</div>
+          <p>Planck's step is to restrict the energy exchanged by a mode to multiples of \(hf\). The average energy is no longer \(k_BT\); it is a temperature-weighted average over discrete values.</p>
           <div class="eq key-eq">\[\epsilon=hf\]</div>
           <div class="eq key-eq">\[\langle \epsilon\rangle=\frac{hf}{e^{hf/k_BT}-1}\]</div>
           <div class="eq key-eq">\[R(f,T)\propto \frac{f^3}{e^{hf/k_BT}-1}\]</div>
-          <p>Planck did not merely adjust a curve. He changed the allowed energy exchange between matter and radiation.</p>
+          <p>At low frequency, this average approaches \(k_BT\), recovering Rayleigh-Jeans. At high frequency, the exponential suppresses the radiation and removes the divergence.</p>
         </div>
 
         <div class="card purple">

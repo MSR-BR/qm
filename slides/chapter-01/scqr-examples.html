@@ -154,8 +154,10 @@
             <img src="../../assets/chapter-01/figures/fig-1-11-harmonic-oscillator-scqr.png?v=0713.3" alt="Fig. 1.11, adapted from the original chapter: the classical oscillator potential and the semiclassical energy ladder." loading="lazy" />
             <figcaption>Fig. 1.11, adapted from the original chapter: the classical oscillator potential and the semiclassical energy ladder. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
-          <p>Start with \(E=p^2/(2m)+m\omega^2x^2/2\). For fixed \(E\), this is an ellipse in phase space \((x,p)\).</p>
+          <p>Start with the classical oscillator energy. At fixed \(E\), position and momentum cannot vary independently; they trace a closed ellipse in phase space:</p>
+          <div class="eq">\[E=\frac{p^2}{2m}+\frac{m\omega^2x^2}{2}.\]</div>
           <div class="eq key-eq">\[1=\frac{p^2}{2mE}+\frac{x^2}{2E/(m\omega^2)}\]</div>
+          <p>The closed action \(\oint p\,dx\) is the area enclosed by this ellipse:</p>
           <div class="eq key-eq">\[\oint p\,dx=A=\pi\sqrt{2mE}\sqrt{\frac{2E}{m\omega^2}}=\frac{2\pi E}{\omega}\]</div>
           <div class="eq key-eq">\[\frac{2\pi E}{\omega}=nh\quad\Rightarrow\quad E_n=n\hbar\omega\]</div>
           <p>The SCQR result explains the equal spacing. Full quantum mechanics gives the exact spectrum, \(E_n=(n+1/2)\hbar\omega\), including the zero-point energy missing from the semiclassical rule.</p>
@@ -169,6 +171,7 @@
           </figure>
           <p>Inside the box, \(V=0\), so the momentum is constant. The closed classical path goes from one wall to the other and back.</p>
           <div class="eq key-eq">\[p=\sqrt{2mE},\qquad \oint p\,dx=2pa\]</div>
+          <p>Applying the quantization rule gives the allowed momenta:</p>
           <div class="eq key-eq">\[2pa=nh\quad\Rightarrow\quad p_n=\frac{nh}{2a}\]</div>
           <div class="eq key-eq">\[E_n=\frac{p_n^2}{2m}=\frac{n^2h^2}{8ma^2}\]</div>
           <p>The same result can be read as a standing-wave condition, \(a=n\lambda/2\). The walls select wavelengths, and the wavelengths select energies.</p>
@@ -183,7 +186,9 @@
             <figcaption>Fig. 1.15, adapted from the original chapter: power-law potentials approach the infinite well shape as the exponent grows. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
           <div class="eq key-eq">\[V(x)=V_0\left(\frac{x}{a}\right)^q,\qquad q=\text{even}\]</div>
-          <p>The action integral changes with the turning points. As \(q\) becomes large, the potential approaches the infinite-well limit.</p>
+          <p>The action integral changes with the turning points, determined by \(E=V(x)\). Between those points,</p>
+          <div class="eq">\[p(x)=\sqrt{2m\left[E-V_0\left(\frac{x}{a}\right)^q\right]}.\]</div>
+          <p>As \(q\) becomes large, the potential approaches the infinite-well limit, so the allowed spectrum gradually resembles the box spectrum.</p>
         </div>
 
         <div class="card purple">

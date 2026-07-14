@@ -52,8 +52,8 @@ const pages = [
         icon: "fa-solid fa-compass",
         title: "The chapter's real question",
         body: String.raw`
-          <p>Old quantum physics is not a museum of failed models. It is the shortest practical path to the questions that force quantum mechanics to exist: why spectra are discrete, why radiation exchanges energy in packets, and why matter can behave as a wave.</p>
-          <p>The important skill is to identify the classical expectation, the experimental contradiction and the new quantum rule introduced to repair it.</p>
+          <p>Old quantum physics is not a museum of failed models. It is the practical path from classical success to microscopic failure. The chapter asks why classical continuity breaks down in spectra, radiation, electron emission, atomic orbits and diffraction.</p>
+          <p>The useful reading pattern is always the same: identify the classical expectation, locate the experimental contradiction, and then ask what new restriction must be imposed on energy, momentum, angular momentum or action.</p>
         `
       },
       {
@@ -61,6 +61,7 @@ const pages = [
         color: "green",
         title: "Reading map",
         body: String.raw`
+          <p>The chapter is easier to follow if each topic is treated as one link in a chain, not as an isolated historical episode.</p>
           <div class="table-wrap">
             <table>
               <thead><tr><th>Clue</th><th>Classical tension</th><th>Quantum response</th></tr></thead>
@@ -79,8 +80,9 @@ const pages = [
         color: "orange",
         title: "Equations to keep in memory",
         body: String.raw`
+          <p>These are the relations that will later be absorbed into wave mechanics. Each one says that a classical variable is tied to a wave or phase condition.</p>
           <div class="eq key-eq">\[E=hf,\qquad \lambda=\frac{h}{p},\qquad L=n\hbar,\qquad \oint p_i\,dq_i=n_i h\]</div>
-          <p>Together, these relations show the central lesson of old quantum physics: at microscopic scales, energy, momentum, angular momentum and wavelength cannot be treated as fully independent classical quantities. They are tied together by Planck's constant, revealing that nature selects only certain exchanges, orbits and wave patterns.</p>
+          <p>Together, they show the central lesson of old quantum physics: at microscopic scales, energy, momentum, angular momentum and wavelength cannot be treated as fully independent continuous quantities. They are tied together by Planck's constant, revealing that nature selects only certain exchanges, orbits and wave patterns.</p>
         `
       },
       {
@@ -105,7 +107,7 @@ const pages = [
         title: "Why start with waves?",
         body: String.raw`
           <p>Young's double-slit experiment established a diagnostic for wave behavior: a spatial pattern made of constructive and destructive interference. Maxwell later placed light inside electromagnetic field theory, making the wave description of light extremely successful.</p>
-          <p>This success is exactly why the later photon idea is so disruptive. Quantum theory must preserve interference while explaining particle-like energy transfer.</p>
+          <p>This success is exactly why the later photon idea is disruptive. Quantum theory must keep the phase and interference structure of waves while also explaining particle-like energy transfer.</p>
         `
       },
       {
@@ -113,6 +115,8 @@ const pages = [
         color: "orange",
         title: "Interference condition",
         body: String.raw`
+          <p>For two slits separated by \(d\), the path difference to a point on the screen is approximately \(d\sin\theta\). Bright fringes occur when the two waves arrive in phase:</p>
+          <div class="eq">\[\Delta r=d\sin\theta,\qquad \Delta r=m\lambda.\]</div>
           <div class="eq key-eq">\[d\sin\theta=m\lambda\quad (m=0,\pm1,\pm2,\ldots)\]</div>
           <p>The equation connects a measurable fringe angle to a wavelength. In quantum mechanics, this same logic reappears whenever boundary conditions select allowed wavelengths.</p>
         `
@@ -135,6 +139,7 @@ const pages = [
         title: "Why this benchmark matters",
         body: String.raw`
           <p>The double-slit experiment gives the chapter a reference point. The photoelectric effect will show that light cannot be only a classical wave; electron diffraction will show that matter cannot be only a classical particle.</p>
+          <p>The old wave rule \(d\sin\theta=m\lambda\) therefore becomes a conceptual template: quantum systems also produce allowed patterns when phase closes consistently.</p>
         `
       }
     ]
@@ -150,7 +155,8 @@ const pages = [
         title: "Continuous versus discrete spectra",
         body: String.raw`
           ${figure("fig-1-1-hydrogen-spectra.png", "Fig. 1.1, adapted in layout from the original chapter: white light gives a continuous spectrum, while Hydrogen emits separated lines.")}
-          <p>The contrast is the point: a heated or excited gas does not radiate arbitrary wavelengths. Hydrogen emits a structured set of lines, which means the atom has internal constraints.</p>
+          <p>The contrast is the point: a heated solid can produce a broad continuum, while excited Hydrogen emits a structured set of separated lines. The atom is not radiating arbitrary wavelengths.</p>
+          <p>If light with wavelength \(\lambda\) carries energy \(hc/\lambda\), then each line already suggests an energy difference inside the atom, even before the atomic model is known.</p>
         `
       },
       {
@@ -158,9 +164,10 @@ const pages = [
         color: "orange",
         title: "Balmer and Rydberg formulas",
         body: String.raw`
+          <p>Balmer first organized the visible Hydrogen lines with a formula involving integers. Rydberg rewrote the pattern in the more general inverse-wavelength form:</p>
           <div class="eq key-eq">\[\lambda=B\left(\frac{m^2}{m^2-n^2}\right),\qquad n=2,\ m>2\]</div>
           <div class="eq key-eq">\[\frac{1}{\lambda}=R\left(\frac{1}{n^2}-\frac{1}{m^2}\right),\qquad m>n\]</div>
-          <p>The integers first appear as empirical labels. Bohr later gives them a physical meaning: they label atomic levels involved in a transition.</p>
+          <p>The integers first appear as empirical labels. Bohr later gives them a physical meaning: they label atomic levels involved in a transition, so \(hc/\lambda=E_m-E_n\).</p>
         `
       },
       {
@@ -187,7 +194,7 @@ const pages = [
         title: "Conceptual discussion",
         body: String.raw`
           <p>The formulas are powerful because they are too simple to be accidental. A continuous classical orbit would not naturally produce integer patterns of this kind. The spectrum is therefore a code for the internal structure of the atom.</p>
-          <div class="callout">Practical reading: whenever a spectral line appears, think "energy difference", not "color emitted at random".</div>
+          <div class="callout">Practical reading: whenever a spectral line appears, think "energy difference", not "color emitted at random". The line is a measurement of \(\Delta E=hc/\lambda\).</div>
         `
       }
     ]
@@ -203,7 +210,7 @@ const pages = [
         title: "Experimental setup",
         body: String.raw`
           ${figure("fig-1-2-cathode-ray-tube.png", "Fig. 1.2, adapted from the original chapter: a cathode-ray tube uses electric and magnetic fields to select and deflect the beam.")}
-          <p>The cathode-ray tube turns a qualitative observation into a measurement. The beam is accelerated, velocity-selected and then deflected, allowing the charge-to-mass ratio to be inferred.</p>
+          <p>The cathode-ray tube turns a qualitative observation into a measurement. The beam is accelerated, velocity-selected and then deflected. Each stage removes one unknown until the charge-to-mass ratio can be inferred.</p>
         `
       },
       {
@@ -212,8 +219,10 @@ const pages = [
         title: "Forces and velocity selection",
         body: String.raw`
           <div class="eq key-eq">\[\vec F=q(\vec E+\vec v\times \vec B)\]</div>
+          <p>In the selector region, the electric and magnetic forces point in opposite directions. A particle goes straight only when their magnitudes cancel:</p>
+          <div class="eq">\[|q|E_{yA}=|q|v_xB_z.\]</div>
           <div class="eq key-eq">\[v_x=\frac{E_{yA}}{B_z}\]</div>
-          <p>When the electric and magnetic deflections cancel, only particles with the selected speed pass through the collimator.</p>
+          <p>Only particles with this selected speed pass through the collimator, so the later deflection can be interpreted without also solving for \(v_x\).</p>
         `
       },
       {
@@ -221,6 +230,7 @@ const pages = [
         color: "green",
         title: "Measured ratio",
         body: String.raw`
+          <p>In the second capacitor, the electric field gives a vertical acceleration \(a_y=|q|E_{yB}/m\). The observed displacement depends on this acceleration and on the time the beam spends in and after the plates.</p>
           <div class="eq key-eq">\[\frac{|q|}{m}=\frac{2d\,v_x^2}{E_{yB}\,l(l+2L)}\]</div>
           <p>The ratio is much larger than the corresponding value for Hydrogen ions. Thomson interpreted this as evidence for a much smaller mass carrier: the electron.</p>
         `
@@ -230,7 +240,7 @@ const pages = [
         color: "purple",
         title: "Conceptual consequence",
         body: String.raw`
-          <p>The atom is no longer indivisible. Cathode rays introduce a charged microscopic constituent and force atomic models to include internal structure. This is a prerequisite for Bohr's later atomic model.</p>
+          <p>The atom is no longer indivisible. Cathode rays introduce a charged microscopic constituent and force atomic models to include internal structure. This is a prerequisite for Bohr's later atomic model, where the electron becomes the moving charge whose allowed states must be explained.</p>
         `
       }
     ]
@@ -246,7 +256,8 @@ const pages = [
         title: "Cavity model",
         body: String.raw`
           ${figure("fig-1-3-black-body-cavity.png", "Fig. 1.3, adapted from the original chapter: a cavity with a small hole models black-body radiation.")}
-          <p>A black body absorbs incident radiation and emits a spectrum determined by temperature. A cavity with a small aperture provides a clean model because the interior modes repeatedly reflect and equilibrate.</p>
+          <p>A black body absorbs incident radiation and emits a spectrum determined by temperature. A cavity with a small aperture provides a clean model because radiation reflects many times inside, so the escaping light samples the equilibrium radiation field.</p>
+          <p>The calculation begins by counting electromagnetic modes in the cavity; the dispute is not the mode count, but the energy assigned to each mode.</p>
         `
       },
       {
@@ -255,6 +266,7 @@ const pages = [
         title: "Classical failure",
         body: String.raw`
           ${figure("fig-1-4-black-body-radiance.png", "Fig. 1.4, adapted from the original chapter: Rayleigh-Jeans succeeds at low frequency but fails at high frequency.")}
+          <p>Classically, each mode receives an average energy \(k_BT\). Combining that with the mode density gives</p>
           <div class="eq key-eq">\[\frac{du}{df}=\frac{8\pi}{c^3}k_B T f^2,\qquad R(f,T)=\frac{c}{4}\frac{du}{df}\]</div>
           <p>The Rayleigh-Jeans result grows without bound as frequency increases. This ultraviolet catastrophe shows that classical equipartition cannot be the full story.</p>
         `
@@ -264,10 +276,11 @@ const pages = [
         color: "orange",
         title: "Planck's rule",
         body: String.raw`
+          <p>Planck's step is to restrict the energy exchanged by a mode to multiples of \(hf\). The average energy is no longer \(k_BT\); it is a temperature-weighted average over discrete values.</p>
           <div class="eq key-eq">\[\epsilon=hf\]</div>
           <div class="eq key-eq">\[\langle \epsilon\rangle=\frac{hf}{e^{hf/k_BT}-1}\]</div>
           <div class="eq key-eq">\[R(f,T)\propto \frac{f^3}{e^{hf/k_BT}-1}\]</div>
-          <p>Planck did not merely adjust a curve. He changed the allowed energy exchange between matter and radiation.</p>
+          <p>At low frequency, this average approaches \(k_BT\), recovering Rayleigh-Jeans. At high frequency, the exponential suppresses the radiation and removes the divergence.</p>
         `
       },
       {
@@ -292,7 +305,8 @@ const pages = [
         title: "Experimental idea",
         body: String.raw`
           ${figure("fig-1-5-photoelectric-setup.png", "Fig. 1.5, adapted from the original chapter: light incident on a metal can eject electrons and close a circuit.")}
-          <p>Light incident on a metal surface can eject electrons. The stopping potential measures the maximum kinetic energy of the emitted electrons.</p>
+          <p>Light incident on a metal surface can eject electrons. The experiment becomes quantitative by applying a reverse voltage until even the fastest emitted electrons are stopped.</p>
+          <p>That stopping voltage is not just an electrical detail; it measures the maximum kinetic energy carried away by the electrons.</p>
         `
       },
       {
@@ -301,8 +315,9 @@ const pages = [
         title: "Einstein's energy balance",
         body: String.raw`
           <div class="eq key-eq">\[T_{\max}=eV_c\]</div>
+          <p>If each photon contributes one packet of energy \(hf\), part of that energy pays the work function \(W\), and the remainder becomes electron kinetic energy:</p>
           <div class="eq key-eq">\[hf=eV_c+W\qquad \Rightarrow \qquad eV_c=hf-W\]</div>
-          <p>The slope of \(V_c\) versus frequency determines \(h/e\), while the intercept gives the work function scale.</p>
+          <p>Solving for the stopping potential gives a straight line, \(V_c=(h/e)f-W/e\). The slope determines \(h/e\), while the intercept gives the work-function scale.</p>
         `
       },
       {
@@ -310,11 +325,13 @@ const pages = [
         color: "green",
         title: "Experimental observations",
         body: String.raw`
+          <p>The energy balance explains the observations in the order they appear experimentally:</p>
           <ul class="bullet">
             <li>No electrons are emitted below a threshold frequency, no matter how intense the light is.</li>
             <li>Above threshold, the stopping potential grows with frequency, so emitted electrons have larger maximum kinetic energy.</li>
             <li>At fixed frequency above threshold, intensity mainly increases the photocurrent, that is, the number of emitted electrons.</li>
           </ul>
+          <div class="eq">\[f_0=\frac{W}{h},\qquad f>f_0\ \Rightarrow\ T_{\max}=hf-W.\]</div>
         `
       },
       {
@@ -323,6 +340,7 @@ const pages = [
         title: "Conceptual discussion",
         body: String.raw`
           <p>The photoelectric effect is a turning point because it treats light as localized energy packets while interference still requires wave behavior. The quantum description must therefore be richer than either classical wave optics or classical particles alone.</p>
+          <div class="callout">The key distinction is frequency versus intensity: frequency changes the energy per photon; intensity changes how many photons arrive per unit time.</div>
         `
       }
     ]
@@ -338,7 +356,8 @@ const pages = [
         title: "Oil-drop apparatus",
         body: String.raw`
           ${figure("fig-1-6-millikan-oil-drop.png", "Fig. 1.6, adapted from the original chapter: Millikan's oil-drop method balances weight, electric force and drag.")}
-          <p>Millikan's experiment follows individual oil drops. Their terminal velocities, with and without electric field, give enough information to infer the charge carried by each drop.</p>
+          <p>Millikan's experiment follows individual oil drops. Their terminal velocities, first falling without the electric field and then rising with the field, give enough information to infer the charge carried by each drop.</p>
+          <p>The logic is mechanical: infer the drop radius from a drag balance, then use the electric-field balance to infer \(q\).</p>
         `
       },
       {
@@ -346,7 +365,9 @@ const pages = [
         color: "orange",
         title: "Force balance",
         body: String.raw`
+          <p>At terminal speed the acceleration is zero, so the forces balance. During the fall, gravity is balanced by viscous drag:</p>
           <div class="eq key-eq">\[F_a=6\pi\eta Rv,\qquad mg=6\pi\eta Rv_f\]</div>
+          <p>Using \(m=(4/3)\pi R^3\rho\), the drop radius can be extracted from the falling speed:</p>
           <div class="eq key-eq">\[R=\sqrt{\frac{9\eta v_f}{2\rho g}}\]</div>
           <p>The falling motion estimates the radius. The rising motion with an electric field then gives the charge magnitude.</p>
         `
@@ -356,9 +377,10 @@ const pages = [
         color: "green",
         title: "Charge comes in units",
         body: String.raw`
+          <p>When the electric field is applied, the upward electric force must overcome both weight and drag. The result is</p>
           <div class="eq key-eq">\[|q|=6\pi\eta R(v_r+v_f)\,\frac{1}{E}\]</div>
           <div class="eq key-eq">\[q=ne,\qquad n\in\mathbb{Z}\]</div>
-          <p>The measured charges cluster around integer multiples of one elementary value.</p>
+          <p>The measured charges cluster around integer multiples of one elementary value. The discreteness is in the data, not imposed after the fact.</p>
         `
       },
       {
@@ -366,7 +388,9 @@ const pages = [
         color: "purple",
         title: "Connection with Thomson",
         body: String.raw`
-          <p>Thomson gives \(|q|/m\). Millikan gives \(|q|=e\). Together they determine the electron mass and turn the electron into a quantitative object, not merely an inferred beam constituent.</p>
+          <p>Thomson gives \(|q|/m\). Millikan gives \(|q|=e\). Together they determine the electron mass:</p>
+          <div class="eq">\[m_e=\frac{e}{(|q|/m)_\text{Thomson}}.\]</div>
+          <p>The electron becomes a quantitative object, not merely an inferred beam constituent.</p>
         `
       }
     ]
@@ -382,7 +406,8 @@ const pages = [
         title: "Crystal as a diffraction grating",
         body: String.raw`
           ${figure("fig-1-7-electron-diffraction.png", "Fig. 1.7, adapted from the original chapter: lattice planes create path differences that select constructive interference.")}
-          <p>A crystal has regularly spaced atomic planes. For suitable electron energies, the electron wavelength is comparable to those spacings, so diffraction maxima can appear.</p>
+          <p>A crystal has regularly spaced atomic planes. For suitable electron energies, the electron wavelength is comparable to those spacings, so different reflected paths can interfere.</p>
+          <p>The experiment asks whether a beam made of particles can produce the same angular selection expected from waves.</p>
         `
       },
       {
@@ -390,6 +415,7 @@ const pages = [
         color: "orange",
         title: "Bragg condition",
         body: String.raw`
+          <p>The extra path traveled by one reflected wave relative to a neighboring plane is \(AB+BC\). For the symmetric geometry, each piece contributes \(d\sin\theta\):</p>
           <div class="eq key-eq">\[AB=d\sin\theta\]</div>
           <div class="eq key-eq">\[2d\sin\theta=n\lambda\]</div>
           <p>The condition is the same wave logic used for X-ray diffraction, now applied to electrons.</p>
@@ -401,6 +427,8 @@ const pages = [
         title: "Matter wavelength",
         body: String.raw`
           <div class="eq key-eq">\[\lambda=\frac{h}{p}\]</div>
+          <p>If the electrons are accelerated through a voltage \(V\), their nonrelativistic kinetic energy is approximately \(eV=p^2/(2m)\). Thus</p>
+          <div class="eq">\[p=\sqrt{2meV},\qquad \lambda=\frac{h}{\sqrt{2meV}}.\]</div>
           <p>Davisson-Germer and related experiments made de Broglie's proposal physically measurable: a beam of particles can carry a wavelength.</p>
         `
       },
@@ -410,6 +438,7 @@ const pages = [
         title: "Conceptual discussion",
         body: String.raw`
           <p>Electron diffraction is the mirror image of the photoelectric effect. Light had looked wave-like and then showed particle-like transfer; electrons had looked particle-like and then showed wave-like propagation.</p>
+          <div class="callout">This is the bridge to Chapter 2: if matter has wavelength, a wave equation for matter becomes a natural next step.</div>
         `
       }
     ]
@@ -425,7 +454,7 @@ const pages = [
         title: "Bohr's picture",
         body: String.raw`
           ${figure("fig-1-8-bohr-atom.png", "Fig. 1.8, adapted from the original chapter: spectral series are interpreted as transitions between allowed atomic levels.")}
-          <p>Bohr keeps the planetary picture of an electron orbiting the nucleus, but changes the rules that decide which orbits and transitions are physically allowed.</p>
+          <p>Bohr keeps the planetary picture of an electron orbiting the nucleus, but changes the rules that decide which orbits and transitions are physically allowed. The model is deliberately hybrid: classical circular motion plus quantum restrictions.</p>
         `
       },
       {
@@ -433,6 +462,7 @@ const pages = [
         color: "orange",
         title: "The three postulates",
         body: String.raw`
+          <p>The postulates should be read separately, because each one repairs a different classical problem.</p>
           <ol class="numbered">
             <li><strong>Stationary states:</strong> the electron can occupy certain circular orbits without continuously radiating energy.</li>
             <li><strong>Angular-momentum quantization:</strong> only orbits satisfying \(L=mvr=n\hbar\) are allowed.</li>
@@ -448,6 +478,7 @@ const pages = [
           <div class="eq key-eq">\[L=mvr=n\hbar\]</div>
           <div class="eq key-eq">\[hf=\Delta E=E_i-E_f\]</div>
           <p>The first equation selects the allowed orbits. The second equation connects a spectral line to the energy difference between two stationary states.</p>
+          <p>The model therefore turns a color into a level difference: measuring \(\lambda\) gives \(hf=hc/\lambda\), and that equals \(\Delta E\).</p>
         `
       },
       {
@@ -455,9 +486,10 @@ const pages = [
         color: "purple",
         title: "Classical mechanics still inside",
         body: String.raw`
+          <p>The electron is still treated as moving in a circular Coulomb orbit. The inward electric force supplies the centripetal force:</p>
           <div class="eq key-eq">\[E=\frac{1}{2}mv^2-\frac{\kappa e^2}{r}\]</div>
           <div class="eq key-eq">\[mv^2=\frac{\kappa e^2}{r}\]</div>
-          <p>The model is hybrid. Classical circular motion supplies the force balance and mechanical energy, while the postulates select the allowed values and explain why radiation appears only during transitions.</p>
+          <p>Using the force balance in the energy expression gives \(E=-\kappa e^2/(2r)\). Quantization then restricts which radii, and therefore which energies, are possible.</p>
         `
       }
     ]
@@ -473,7 +505,8 @@ const pages = [
         title: "Energy ladder",
         body: String.raw`
           ${figure("fig-1-9-bohr-spectrum.png", "Fig. 1.9, adapted from the original chapter: Bohr energy levels organize the Hydrogen spectral series.")}
-          <p>Hydrogen levels become a ladder of bound states. Transitions between them generate the observed spectral lines.</p>
+          <p>Hydrogen levels become a ladder of bound states. The ground state is the most tightly bound, and higher \(n\) levels approach the ionization limit \(E=0\).</p>
+          <p>Spectral lines arise when the atom moves between two rungs of this ladder.</p>
         `
       },
       {
@@ -481,7 +514,9 @@ const pages = [
         color: "orange",
         title: "Radii and energy",
         body: String.raw`
+          <p>Combining \(mvr=n\hbar\) with \(mv^2=\kappa e^2/r\) gives the allowed radii:</p>
           <div class="eq key-eq">\[r_n=a_0n^2,\qquad a_0=0.529\ \text{\AA}\]</div>
+          <p>Substituting these radii into \(E=-\kappa e^2/(2r)\) gives the energy spectrum:</p>
           <div class="eq key-eq">\[E_n=-\frac{E_0}{n^2},\qquad E_0=13.6\ \mathrm{eV}\]</div>
           <p>The radius grows as \(n^2\), while the energy approaches zero from below as \(n\) increases.</p>
         `
@@ -491,6 +526,8 @@ const pages = [
         color: "green",
         title: "Recovering Rydberg",
         body: String.raw`
+          <p>For a transition from \(m\) to \(n\), the photon energy is</p>
+          <div class="eq">\[hf=\frac{hc}{\lambda}=E_m-E_n.\]</div>
           <div class="eq key-eq">\[\frac{1}{\lambda}=\frac{E_0}{hc}\left(\frac{1}{n^2}-\frac{1}{m^2}\right)\]</div>
           <div class="eq key-eq">\[R=\frac{E_0}{hc}=1.097\times 10^7\ \mathrm{m^{-1}}\]</div>
           <p>What was empirical in Rydberg's formula becomes a consequence of energy quantization.</p>
@@ -517,7 +554,8 @@ const pages = [
         title: "Orbit as a wave condition",
         body: String.raw`
           ${figure("fig-1-10-de-broglie-orbit.png", "Fig. 1.10, adapted from the original chapter: a stable orbit can be pictured as a standing matter wave.")}
-          <p>de Broglie's hypothesis gives Bohr's quantization a wave interpretation: the orbit is allowed only when the matter wave fits itself after a full cycle.</p>
+          <p>de Broglie's hypothesis gives Bohr's quantization a wave interpretation. Instead of saying that angular momentum is mysteriously restricted, we ask whether the electron wave closes consistently after one full orbit.</p>
+          <p>If the wave does not fit an integer number of wavelengths around the circumference, it destructively interferes with itself and cannot represent a stable stationary orbit.</p>
         `
       },
       {
@@ -526,6 +564,7 @@ const pages = [
         title: "Matter wavelength",
         body: String.raw`
           <div class="eq key-eq">\[\lambda=\frac{h}{p}\]</div>
+          <p>For an electron in a circular orbit, \(p=mv\). The closure condition is then</p>
           <div class="eq key-eq">\[2\pi r=n\lambda\]</div>
           <p>The circumference must contain an integer number of wavelengths.</p>
         `
@@ -535,8 +574,11 @@ const pages = [
         color: "green",
         title: "Recovering Bohr's rule",
         body: String.raw`
-          <div class="eq key-eq">\[2\pi r=n\frac{h}{mv}\quad \Rightarrow \quad mvr=n\hbar\]</div>
-          <p>The angular momentum rule is no longer an isolated postulate; it becomes a standing-wave condition.</p>
+          <p>Substitute \(\lambda=h/(mv)\) into the closure condition:</p>
+          <div class="eq">\[2\pi r=n\frac{h}{mv}.\]</div>
+          <p>Multiplying by \(mv/(2\pi)\) gives</p>
+          <div class="eq key-eq">\[mvr=n\frac{h}{2\pi}=n\hbar.\]</div>
+          <p>The angular-momentum rule is no longer an isolated postulate; it becomes a standing-wave condition.</p>
         `
       },
       {
@@ -545,6 +587,7 @@ const pages = [
         title: "Conceptual discussion",
         body: String.raw`
           <p>The idea shifts the problem from "which orbit is allowed?" to "which wave states satisfy the boundary conditions?" This is the conceptual entrance to Schrodinger's equation in Chapter 2.</p>
+          <div class="callout">The orbit is still an old-quantum picture, but the reasoning is already wave-mechanical: allowed states are the ones whose phase closes consistently.</div>
         `
       }
     ]
@@ -559,7 +602,7 @@ const pages = [
         icon: "fa-solid fa-repeat",
         title: "The rule",
         body: String.raw`
-          <p>The Sommerfeld-Wilson-Ishiwara rule quantizes the action accumulated over one complete cycle of a periodic coordinate.</p>
+          <p>The Sommerfeld-Wilson-Ishiwara rule quantizes the action accumulated over one complete cycle of a periodic coordinate. It is the natural generalization of "an integer number of wavelengths must fit" when the momentum is not constant.</p>
           <div class="eq key-eq">\[\oint p_i\,dq_i=n_i h,\qquad n_i=1,2,3,\ldots\]</div>
           <p>The index \(i\) allows more than one coordinate to be quantized, which is essential for orbital problems beyond a single circular motion.</p>
         `
@@ -569,9 +612,10 @@ const pages = [
         color: "orange",
         title: "Why action?",
         body: String.raw`
+          <p>If momentum is constant, the standing-wave count is simply length divided by wavelength. Using de Broglie's relation gives</p>
           <div class="eq key-eq">\[n=\frac{\text{closed path length}}{\lambda}\]</div>
           <div class="eq key-eq">\[\lambda=\frac{h}{p}\quad \Rightarrow \quad \oint p\,dq=nh\]</div>
-          <p>Action is the classical quantity that naturally measures accumulated phase. Quantizing action is an early way to impose wave self-consistency.</p>
+          <p>When \(p\) changes along the path, the product \(p\,dq\) must be integrated. Action is the classical quantity that naturally measures accumulated phase, so quantizing action is an early way to impose wave self-consistency.</p>
         `
       },
       {
@@ -579,12 +623,14 @@ const pages = [
         color: "green",
         title: "Practical recipe",
         body: String.raw`
+          <p>The rule should be used as a calculation sequence:</p>
           <ol class="numbered">
             <li>Identify the periodic coordinate \(q\).</li>
             <li>Write the conjugate momentum \(p(q)\).</li>
             <li>Evaluate the closed integral over one cycle.</li>
             <li>Set the result equal to \(nh\) and solve for the allowed energies or radii.</li>
           </ol>
+          <p>This recipe is why the next examples focus on \(p(x)=\sqrt{2m[E-V(x)]}\): the potential determines the momentum along the classical path.</p>
         `
       },
       {
@@ -593,6 +639,7 @@ const pages = [
         title: "Conceptual discussion",
         body: String.raw`
           <p>The rule is useful but not final. It gives good intuition for bound periodic systems, yet it misses effects that require full wave mechanics: zero-point shifts, degeneracy structure, spin and operator-based selection rules.</p>
+          <div class="callout">Use SCQR as a bridge: it teaches that allowed energies come from phase closure, but Chapter 2 replaces the orbit by a wave function.</div>
         `
       }
     ]
@@ -608,8 +655,10 @@ const pages = [
         title: "Harmonic oscillator: phase-space area",
         body: String.raw`
           ${figure("fig-1-11-harmonic-oscillator-scqr.png", "Fig. 1.11, adapted from the original chapter: the classical oscillator potential and the semiclassical energy ladder.")}
-          <p>Start with \(E=p^2/(2m)+m\omega^2x^2/2\). For fixed \(E\), this is an ellipse in phase space \((x,p)\).</p>
+          <p>Start with the classical oscillator energy. At fixed \(E\), position and momentum cannot vary independently; they trace a closed ellipse in phase space:</p>
+          <div class="eq">\[E=\frac{p^2}{2m}+\frac{m\omega^2x^2}{2}.\]</div>
           <div class="eq key-eq">\[1=\frac{p^2}{2mE}+\frac{x^2}{2E/(m\omega^2)}\]</div>
+          <p>The closed action \(\oint p\,dx\) is the area enclosed by this ellipse:</p>
           <div class="eq key-eq">\[\oint p\,dx=A=\pi\sqrt{2mE}\sqrt{\frac{2E}{m\omega^2}}=\frac{2\pi E}{\omega}\]</div>
           <div class="eq key-eq">\[\frac{2\pi E}{\omega}=nh\quad\Rightarrow\quad E_n=n\hbar\omega\]</div>
           <p>The SCQR result explains the equal spacing. Full quantum mechanics gives the exact spectrum, \(E_n=(n+1/2)\hbar\omega\), including the zero-point energy missing from the semiclassical rule.</p>
@@ -623,6 +672,7 @@ const pages = [
           ${figure("fig-1-14-infinite-well.png", "Fig. 1.14, adapted from the original chapter: allowed levels in an infinite potential well.")}
           <p>Inside the box, \(V=0\), so the momentum is constant. The closed classical path goes from one wall to the other and back.</p>
           <div class="eq key-eq">\[p=\sqrt{2mE},\qquad \oint p\,dx=2pa\]</div>
+          <p>Applying the quantization rule gives the allowed momenta:</p>
           <div class="eq key-eq">\[2pa=nh\quad\Rightarrow\quad p_n=\frac{nh}{2a}\]</div>
           <div class="eq key-eq">\[E_n=\frac{p_n^2}{2m}=\frac{n^2h^2}{8ma^2}\]</div>
           <p>The same result can be read as a standing-wave condition, \(a=n\lambda/2\). The walls select wavelengths, and the wavelengths select energies.</p>
@@ -635,7 +685,9 @@ const pages = [
         body: String.raw`
           ${figure("fig-1-15-power-law-potential.png", "Fig. 1.15, adapted from the original chapter: power-law potentials approach the infinite well shape as the exponent grows.")}
           <div class="eq key-eq">\[V(x)=V_0\left(\frac{x}{a}\right)^q,\qquad q=\text{even}\]</div>
-          <p>The action integral changes with the turning points. As \(q\) becomes large, the potential approaches the infinite-well limit.</p>
+          <p>The action integral changes with the turning points, determined by \(E=V(x)\). Between those points,</p>
+          <div class="eq">\[p(x)=\sqrt{2m\left[E-V_0\left(\frac{x}{a}\right)^q\right]}.\]</div>
+          <p>As \(q\) becomes large, the potential approaches the infinite-well limit, so the allowed spectrum gradually resembles the box spectrum.</p>
         `
       },
       {
@@ -665,7 +717,8 @@ const pages = [
         title: "Beyond circular orbits",
         body: String.raw`
           ${figure("fig-1-12-sommerfeld-orbits.png", "Fig. 1.12, adapted from the original chapter: Sommerfeld orbits for fixed principal quantum number and different angular labels.")}
-          <p>Sommerfeld generalized Bohr's model by allowing elliptical orbits. The price is that more than one periodic coordinate must be quantized.</p>
+          <p>Sommerfeld generalized Bohr's model by allowing elliptical orbits. In an ellipse, the electron has angular motion and radial motion, so one quantum condition is no longer enough.</p>
+          <p>The model is still orbital, but it introduces a lesson that survives: one state may require more than one quantum label.</p>
         `
       },
       {
@@ -673,9 +726,19 @@ const pages = [
         color: "orange",
         title: "Two action conditions",
         body: String.raw`
+          <p>The angular cycle and radial oscillation are quantized separately:</p>
           <div class="eq key-eq">\[\oint p_\theta\,d\theta=n_\theta h,\qquad \oint p_r\,dr=n_r h\]</div>
           <div class="eq key-eq">\[n=n_r+n_\theta\]</div>
-          <p>The circular Bohr orbit is recovered when the radial motion is absent.</p>
+          <p>The circular Bohr orbit is recovered when the radial motion is absent, so \(n_r=0\). Elliptical orbits appear when radial motion contributes to the total principal quantum number.</p>
+        `
+      },
+      {
+        icon: "fa-solid fa-shapes",
+        color: "green",
+        title: "What the extra label means",
+        body: String.raw`
+          <p>For fixed \(n\), different values of the angular label correspond to different orbital shapes. More angular motion means a less elongated orbit; more radial motion means a more eccentric one.</p>
+          <p>This is not the modern picture of an electron path, but it anticipates the need for multiple quantum numbers in atomic states.</p>
         `
       },
       {
@@ -685,6 +748,7 @@ const pages = [
         body: String.raw`
           <div class="eq key-eq">\[E_n=-\frac{E_0}{n^2}\]</div>
           <p>The nonrelativistic Sommerfeld energy has the same \(n\)-dependence as Bohr's model. The new value is conceptual: it shows that additional quantum labels can describe different orbital shapes at the same energy.</p>
+          <div class="callout">Old quantum theory is stretching here. It gains structure, but it still lacks the wave-function language needed to replace orbits by states.</div>
         `
       }
     ]
@@ -711,6 +775,7 @@ const pages = [
               </tbody>
             </table>
           </div>
+          <p>The sequence matters: Planck introduces energy packets, Einstein gives them experimental force, Bohr uses discrete energies to explain spectra, and de Broglie turns quantization into a wave condition.</p>
         `
       },
       {
@@ -731,6 +796,16 @@ const pages = [
               </tbody>
             </table>
           </div>
+          <p>These results point in the same direction. The next theory must handle waves, boundary conditions, discrete energies and probabilistic measurement in a single framework.</p>
+        `
+      },
+      {
+        icon: "fa-solid fa-arrow-right-long",
+        color: "purple",
+        title: "Why Chapter 2 is necessary",
+        body: String.raw`
+          <p>Old quantum physics succeeds when it identifies the right constraint, but it often has to impose that constraint by hand. Bohr postulates stationary states; SCQR postulates action quantization; de Broglie suggests waves but does not yet provide the equation that those waves obey.</p>
+          <p>Chapter 2 supplies the missing language: a state becomes a wave function, allowed energies become eigenvalues, and boundary conditions become part of a systematic calculation.</p>
         `
       }
     ]

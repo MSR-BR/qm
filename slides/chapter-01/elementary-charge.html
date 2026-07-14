@@ -154,12 +154,15 @@
             <img src="../../assets/chapter-01/figures/fig-1-6-millikan-oil-drop.png?v=0619.3" alt="Fig. 1.6, adapted from the original chapter: Millikan's oil-drop method balances weight, electric force and drag." loading="lazy" />
             <figcaption>Fig. 1.6, adapted from the original chapter: Millikan's oil-drop method balances weight, electric force and drag. Copyright &copy; 2026 Elsevier Inc.</figcaption>
           </figure>
-          <p>Millikan's experiment follows individual oil drops. Their terminal velocities, with and without electric field, give enough information to infer the charge carried by each drop.</p>
+          <p>Millikan's experiment follows individual oil drops. Their terminal velocities, first falling without the electric field and then rising with the field, give enough information to infer the charge carried by each drop.</p>
+          <p>The logic is mechanical: infer the drop radius from a drag balance, then use the electric-field balance to infer \(q\).</p>
         </div>
 
         <div class="card orange">
           <div class="ch orange"><i class="fa-solid fa-weight-hanging"></i> Force balance</div>
+          <p>At terminal speed the acceleration is zero, so the forces balance. During the fall, gravity is balanced by viscous drag:</p>
           <div class="eq key-eq">\[F_a=6\pi\eta Rv,\qquad mg=6\pi\eta Rv_f\]</div>
+          <p>Using \(m=(4/3)\pi R^3\rho\), the drop radius can be extracted from the falling speed:</p>
           <div class="eq key-eq">\[R=\sqrt{\frac{9\eta v_f}{2\rho g}}\]</div>
           <p>The falling motion estimates the radius. The rising motion with an electric field then gives the charge magnitude.</p>
         </div>
@@ -168,14 +171,17 @@
 
         <div class="card green">
           <div class="ch green"><i class="fa-solid fa-list-ol"></i> Charge comes in units</div>
+          <p>When the electric field is applied, the upward electric force must overcome both weight and drag. The result is</p>
           <div class="eq key-eq">\[|q|=6\pi\eta R(v_r+v_f)\,\frac{1}{E}\]</div>
           <div class="eq key-eq">\[q=ne,\qquad n\in\mathbb{Z}\]</div>
-          <p>The measured charges cluster around integer multiples of one elementary value.</p>
+          <p>The measured charges cluster around integer multiples of one elementary value. The discreteness is in the data, not imposed after the fact.</p>
         </div>
 
         <div class="card purple">
           <div class="ch purple"><i class="fa-solid fa-link"></i> Connection with Thomson</div>
-          <p>Thomson gives \(|q|/m\). Millikan gives \(|q|=e\). Together they determine the electron mass and turn the electron into a quantitative object, not merely an inferred beam constituent.</p>
+          <p>Thomson gives \(|q|/m\). Millikan gives \(|q|=e\). Together they determine the electron mass:</p>
+          <div class="eq">\[m_e=\frac{e}{(|q|/m)_\text{Thomson}}.\]</div>
+          <p>The electron becomes a quantitative object, not merely an inferred beam constituent.</p>
         </div>
       </div>
 

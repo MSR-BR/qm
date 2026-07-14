@@ -150,33 +150,37 @@
 
         <div class="card">
           <div class="ch"><i class="fa-solid fa-repeat"></i> The rule</div>
-          <p>The Sommerfeld-Wilson-Ishiwara rule quantizes the action accumulated over one complete cycle of a periodic coordinate.</p>
+          <p>The Sommerfeld-Wilson-Ishiwara rule quantizes the action accumulated over one complete cycle of a periodic coordinate. It is the natural generalization of "an integer number of wavelengths must fit" when the momentum is not constant.</p>
           <div class="eq key-eq">\[\oint p_i\,dq_i=n_i h,\qquad n_i=1,2,3,\ldots\]</div>
           <p>The index \(i\) allows more than one coordinate to be quantized, which is essential for orbital problems beyond a single circular motion.</p>
         </div>
 
         <div class="card orange">
           <div class="ch orange"><i class="fa-solid fa-bridge"></i> Why action?</div>
+          <p>If momentum is constant, the standing-wave count is simply length divided by wavelength. Using de Broglie's relation gives</p>
           <div class="eq key-eq">\[n=\frac{\text{closed path length}}{\lambda}\]</div>
           <div class="eq key-eq">\[\lambda=\frac{h}{p}\quad \Rightarrow \quad \oint p\,dq=nh\]</div>
-          <p>Action is the classical quantity that naturally measures accumulated phase. Quantizing action is an early way to impose wave self-consistency.</p>
+          <p>When \(p\) changes along the path, the product \(p\,dq\) must be integrated. Action is the classical quantity that naturally measures accumulated phase, so quantizing action is an early way to impose wave self-consistency.</p>
         </div>
       </div>
       <div class="col">
 
         <div class="card green">
           <div class="ch green"><i class="fa-solid fa-clipboard-list"></i> Practical recipe</div>
+          <p>The rule should be used as a calculation sequence:</p>
           <ol class="numbered">
             <li>Identify the periodic coordinate \(q\).</li>
             <li>Write the conjugate momentum \(p(q)\).</li>
             <li>Evaluate the closed integral over one cycle.</li>
             <li>Set the result equal to \(nh\) and solve for the allowed energies or radii.</li>
           </ol>
+          <p>This recipe is why the next examples focus on \(p(x)=\sqrt{2m[E-V(x)]}\): the potential determines the momentum along the classical path.</p>
         </div>
 
         <div class="card purple">
           <div class="ch purple"><i class="fa-solid fa-triangle-exclamation"></i> Conceptual discussion</div>
           <p>The rule is useful but not final. It gives good intuition for bound periodic systems, yet it misses effects that require full wave mechanics: zero-point shifts, degeneracy structure, spin and operator-based selection rules.</p>
+          <div class="callout">Use SCQR as a bridge: it teaches that allowed energies come from phase closure, but Chapter 2 replaces the orbit by a wave function.</div>
         </div>
       </div>
 
