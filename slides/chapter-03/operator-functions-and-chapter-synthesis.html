@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operator functions and chapter synthesis | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics. Interactive material from the book Quantum Mechanics, wit..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/operator-functions-and-chapter-synthesis.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Operator functions and chapter synthesis | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics. Interactive material from the book Quantum Mechanics, wit..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/operator-functions-and-chapter-synthesis.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Operator functions and chapter synthesis | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics. Interactive material from the book Quantum Mechanics, wit..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Operator functions and chapter synthesis | Chapter 3 | Quantum Mechanics","description":"Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics. Interactive material from the book Quantum Mechanics, wit...","url":"https://qm-beta.vercel.app/slides/chapter-03/operator-functions-and-chapter-synthesis.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.15
+        </div>
+        <div class="hdr-title">Operator functions and chapter synthesis</div>
+        <div class="hdr-sub">Matrix exponentials and the bridge back to wave mechanics</div>
+      </div>
+      <div class="slide-num">15 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-diagram-project"></i> Guided reading</div><p>The final technical tool is the idea of applying functions to operators. This is needed for time evolution, rotations and many later calculations. The chapter then closes the loop: matrix mechanics is wave mechanics written in another basis.</p></div>
+      <div class="col">
+        <div class="card"><div class="ch"><i class="fa-solid fa-calculator"></i> Functions of operators</div><p>If \(\hat A\) has spectral decomposition \(\hat A=\sum_n a_n|a_n\rangle\langle a_n|\), then a function of \(\hat A\) is defined by applying the function to its eigenvalues:</p><div class="eq key-eq">\[f(\hat A)=\sum_n f(a_n)|a_n\rangle\langle a_n|.\]</div><p>This definition is what makes expressions such as \(e^{-i\hat Ht/\hbar}\) precise.</p></div>
+        <div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> Pauli exponential</div><p>Because \(\hat\sigma_x^2=\hat 1\), the exponential separates into even and odd powers:</p><div class="eq">\[e^{\alpha\hat\sigma_x}=\cosh(\alpha)\hat 1+\sinh(\alpha)\hat\sigma_x.\]</div><p>With \(\alpha=-i\theta\), this becomes the familiar unitary form</p><div class="eq key-eq">\[e^{-i\theta\hat\sigma_x}=\cos\theta\,\hat 1-i\sin\theta\,\hat\sigma_x.\]</div></div>
+      </div>
+      <div class="col">
+        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-bridge"></i> Matrix mechanics and wave mechanics</div><div class="table-wrap"><table><thead><tr><th>Wave mechanics</th><th>Matrix mechanics</th></tr></thead><tbody>
+          <tr><td>Wave function \(\Psi(x)\)</td><td>State vector \(|\Psi\rangle\)</td></tr>
+          <tr><td>Integral overlaps</td><td>Inner products \(\langle n|\Psi\rangle\)</td></tr>
+          <tr><td>Differential operators</td><td>Matrices/operators in a basis</td></tr>
+          <tr><td>Probability density or coefficients</td><td>Squared projection amplitudes</td></tr>
+          <tr><td>TDSE</td><td>Unitary evolution</td></tr>
+        </tbody></table></div><p>The physics is the same. The representation is chosen for the problem.</p></div>
+        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-key"></i> Chapter 3 in one sentence</div><p>Matrix mechanics says: represent the state by a vector, represent measurable questions by Hermitian operators, use projections for probabilities, and use unitary transformations for time evolution and basis changes.</p><div class="callout">The Stern-Gerlach experiment is the running laboratory where each of these rules becomes visible.</div></div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

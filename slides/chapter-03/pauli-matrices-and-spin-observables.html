@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pauli matrices and spin observables | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics. Interactive material from the book Quantum Mechanics, with teac..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/pauli-matrices-and-spin-observables.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Pauli matrices and spin observables | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics. Interactive material from the book Quantum Mechanics, with teac..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/pauli-matrices-and-spin-observables.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Pauli matrices and spin observables | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics. Interactive material from the book Quantum Mechanics, with teac..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Pauli matrices and spin observables | Chapter 3 | Quantum Mechanics","description":"Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics. Interactive material from the book Quantum Mechanics, with teac...","url":"https://qm-beta.vercel.app/slides/chapter-03/pauli-matrices-and-spin-observables.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.7
+        </div>
+        <div class="hdr-title">Pauli matrices and spin observables</div>
+        <div class="hdr-sub">The matrix form of Stern-Gerlach spin measurements</div>
+      </div>
+      <div class="slide-num">7 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-atom"></i> Guided reading</div><p>The Pauli matrices are the concrete operators behind the spin examples. They turn the two-beam Stern-Gerlach picture into algebra.</p></div>
+      <div class="col">
+        <div class="card"><div class="ch"><i class="fa-solid fa-up-down"></i> Spin along z</div><p>The \(z\)-oriented apparatus has two eigenstates. Using the spectral form,</p><div class="eq">\[\hat\sigma_z=+|+\rangle\langle+|-|-\rangle\langle-|.\]</div><p>In the \(z\)-basis this becomes</p><div class="eq key-eq">\[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.\]</div><p>The diagonal entries are the two possible dimensionless outcomes of the SG(Z) measurement.</p></div>
+        <div class="card green"><div class="ch green"><i class="fa-solid fa-left-right"></i> Spin along x</div><p>The \(x\)-oriented apparatus has eigenstates \(|+\rangle_x\) and \(|-\rangle_x\). Using the same spectral idea and rewriting in the \(z\)-basis gives</p><div class="eq key-eq">\[\hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div><p>The operator is not diagonal in the \(z\)-basis, which already announces that sharp \(z\) information and sharp \(x\) information are not the same thing.</p></div>
+      </div>
+      <div class="col">
+        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-check"></i> Checking the eigenvalue equation</div><p>The matrices reproduce the two Stern-Gerlach outcomes:</p><div class="eq">\[\hat\sigma_z|\pm\rangle=\pm|\pm\rangle,\qquad \hat\sigma_x|\pm\rangle_x=\pm|\pm\rangle_x.\]</div><p>This is the cleanest way to read the experiment: each magnet orientation corresponds to a spin operator, and the emerging beams correspond to its eigenstates.</p></div>
+        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-book-open"></i> What this page prepares</div><p>Once the spin operators are known, the rest of the chapter can compute probabilities, expectation values, variances and the effect of changing the measurement order.</p><div class="callout">The Pauli matrices are small enough to calculate by hand, but rich enough to display the logic of quantum measurement.</div></div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

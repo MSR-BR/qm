@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dirac notation: kets, bras and inner products | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space. Interactive material from the book Quantum Mechanics, with teachi..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/dirac-notation-kets-bras-inner-products.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Dirac notation: kets, bras and inner products | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space. Interactive material from the book Quantum Mechanics, with teachi..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/dirac-notation-kets-bras-inner-products.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Dirac notation: kets, bras and inner products | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space. Interactive material from the book Quantum Mechanics, with teachi..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Dirac notation: kets, bras and inner products | Chapter 3 | Quantum Mechanics","description":"Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space. Interactive material from the book Quantum Mechanics, with teachi...","url":"https://qm-beta.vercel.app/slides/chapter-03/dirac-notation-kets-bras-inner-products.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.3
+        </div>
+        <div class="hdr-title">Dirac notation: kets, bras and inner products</div>
+        <div class="hdr-sub">The state postulate in vector form</div>
+      </div>
+      <div class="slide-num">3 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-code"></i> Guided reading</div><p>Dirac notation gives a compact way to write the same ideas that appeared in wave mechanics. The ket is the state; the bra is its dual; the inner product gives overlaps, normalization and eventually measurement probabilities.</p></div>
+      <div class="col">
+        <div class="card"><div class="ch"><i class="fa-solid fa-flag"></i> Postulate for quantum states</div><p>A physical state is represented by a vector in Hilbert space. In Dirac notation this vector is written as a ket, \(|\Psi\rangle\). For the Stern-Gerlach spin example, the natural basis along \(z\) is made of two states:</p><div class="eq key-eq">\[|+\rangle=\begin{pmatrix}1\\0\end{pmatrix},\qquad |-\rangle=\begin{pmatrix}0\\1\end{pmatrix}.\]</div><p>These are not positions in ordinary space. They are basis vectors in the abstract space of possible spin states.</p></div>
+        <div class="card green"><div class="ch green"><i class="fa-solid fa-left-right"></i> Bras and inner products</div><p>The bra \(\langle\Psi|\) is the dual of the ket. If \(|\Psi\rangle\) is a column vector, \(\langle\Psi|\) is the conjugate-transposed row vector.</p><div class="eq">\[|\Psi\rangle=\begin{pmatrix}C_+\\C_-\end{pmatrix}\quad \Rightarrow \quad \langle\Psi|=\begin{pmatrix}C_+^*&C_-^*\end{pmatrix}.\]</div><p>The inner product \(\langle\Phi|\Psi\rangle\) measures the overlap between two states. Orthogonal Stern-Gerlach outcomes have zero overlap.</p></div>
+      </div>
+      <div class="col">
+        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-check-double"></i> Normalization and orthogonality</div><p>Because probabilities must add to one, the state vector must be normalized:</p><div class="eq key-eq">\[\langle\Psi|\Psi\rangle=1.\]</div><p>For the \(z\)-basis of spin, the basis vectors satisfy</p><div class="eq">\[\langle+|+\rangle=1,\quad \langle-| -\rangle=1,\quad \langle+|-\rangle=0.\]</div><p>That is the vector version of a clean experimental distinction: the upper and lower beams are mutually exclusive outcomes of the same measurement.</p></div>
+        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-eye"></i> Physical meaning</div><p>In Stern-Gerlach language, \(\langle+|\Psi\rangle\) is the amplitude for the incoming state to be found in the upper \(z\)-beam. The probability will be its squared modulus, but the amplitude itself can be complex. This is why the vector notation must keep phases, not just intensities.</p><div class="callout">The algebra stores more information than a probability table: it stores the phases that matter when a later measurement uses another basis.</div></div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

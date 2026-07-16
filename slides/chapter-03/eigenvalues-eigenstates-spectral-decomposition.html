@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Eigenvalues, eigenstates and spectral decomposition | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis. Interactive material from the book Quantum Mechanics, with te..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Eigenvalues, eigenstates and spectral decomposition | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis. Interactive material from the book Quantum Mechanics, with te..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Eigenvalues, eigenstates and spectral decomposition | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis. Interactive material from the book Quantum Mechanics, with te..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Eigenvalues, eigenstates and spectral decomposition | Chapter 3 | Quantum Mechanics","description":"How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis. Interactive material from the book Quantum Mechanics, with te...","url":"https://qm-beta.vercel.app/slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.6
+        </div>
+        <div class="hdr-title">Eigenvalues, eigenstates and spectral decomposition</div>
+        <div class="hdr-sub">Possible results are encoded in an operator eigenbasis</div>
+      </div>
+      <div class="slide-num">6 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-list-check"></i> Guided reading</div><p>The eigenvalue equation is where the mathematical object becomes a measurement rule. Eigenvalues are possible results; eigenstates are states that give those results with certainty.</p></div>
+      <div class="col">
+        <div class="card"><div class="ch"><i class="fa-solid fa-bullseye"></i> Eigenvalue equation</div><p>For an observable \(\hat A\), the eigenvalue equation is</p><div class="eq key-eq">\[\hat A|a_n\rangle=a_n|a_n\rangle.\]</div><p>If the state entering the apparatus is \(|a_n\rangle\), the result \(a_n\) is certain. Stern-Gerlach makes this concrete: \(|+\rangle\) entering an SG(Z) device exits only in the upper \(z\)-beam.</p></div>
+        <div class="card green"><div class="ch green"><i class="fa-solid fa-diagram-successor"></i> Spectral decomposition</div><p>For a non-degenerate observable with orthonormal eigenstates, the operator can be rebuilt from its eigenvalues and projectors:</p><div class="eq">\[\hat A=\sum_n a_n |a_n\rangle\langle a_n|.\]</div><p>This form is powerful because it separates the two ingredients of a measurement: the values \(a_n\) and the projectors \(|a_n\rangle\langle a_n|\) that select the corresponding component of the state.</p></div>
+      </div>
+      <div class="col">
+        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-filter"></i> Projectors as beam selectors</div><p>The projector onto one outcome is</p><div class="eq key-eq">\[\hat P_n=|a_n\rangle\langle a_n|.\]</div><p>Physically, it behaves like an ideal filter: it keeps the component of the state aligned with \(|a_n\rangle\) and removes the orthogonal components. This is exactly how the book uses blocked Stern-Gerlach beams to discuss preparation.</p></div>
+        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-scale-balanced"></i> Why Hermitian operators enter</div><p>A measurement result must be real, and different sharp outcomes must be distinguishable. Hermitian operators supply both properties: real eigenvalues and orthogonal eigenvectors for distinct eigenvalues.</p></div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

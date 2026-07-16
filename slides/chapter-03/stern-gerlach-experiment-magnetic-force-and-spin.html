@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stern-Gerlach experiment: magnetic force and spin | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable. Interactive material from the book Quantum Mechanics..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Stern-Gerlach experiment: magnetic force and spin | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable. Interactive material from the book Quantum Mechanics..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Stern-Gerlach experiment: magnetic force and spin | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable. Interactive material from the book Quantum Mechanics..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Stern-Gerlach experiment: magnetic force and spin | Chapter 3 | Quantum Mechanics","description":"Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable. Interactive material from the book Quantum Mechanics...","url":"https://qm-beta.vercel.app/slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.2
+        </div>
+        <div class="hdr-title">Stern-Gerlach experiment: magnetic force and spin</div>
+        <div class="hdr-sub">From beam deflection to a two-level quantum degree of freedom</div>
+      </div>
+      <div class="slide-num">2 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-magnet"></i> Guided reading</div>
+        <p>The Stern-Gerlach experiment is the physical anchor of Chapter 3. It starts like a classical force problem, but its result requires the quantum language of states, observables, probabilities and measurement.</p>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-diagram-project"></i> The apparatus</div>
+          <figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-1-stern-gerlach-setup.png" alt="Figure 3.1, cropped from the book: Stern-Gerlach experimental setup. Book figure copyright/source indicated in the image; see the original book for the full caption." /><figcaption>Figure 3.1, cropped from the book: Stern-Gerlach experimental setup. Book figure copyright/source indicated in the image; see the original book for the full caption.</figcaption></figure>
+          <p>Silver atoms leave the oven, pass through a collimator and enter a region with an inhomogeneous magnetic field. The field gradient is essential: a uniform field would mainly exert a torque on a magnetic moment, while a gradient produces a net deflecting force.</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-arrow-down-up-across-line"></i> Why a gradient matters</div>
+          <p>The magnetic interaction energy is approximately \(U=-\boldsymbol{\mu}\cdot\mathbf B\). A force appears when this energy changes with position. If the dominant variation is along \(z\), the useful approximation is</p>
+          <div class="eq key-eq">\[F_z\simeq \mu_z\frac{\partial B_z}{\partial z}.\]</div>
+          <p>Classically, different orientations of \(\mu_z\) would give a continuous band of deflections. The observed pattern is instead discrete.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-circle-dot"></i> The quantum surprise</div>
+          <p>The original expectation was to test angular-momentum quantization. The modern interpretation is sharper: silver has one valence electron in an \(s\) state, so the orbital angular momentum is zero. The two observed beams are associated with the electron spin component.</p>
+          <div class="eq">\[\hat\sigma_z|+\rangle=+|+\rangle,\qquad \hat\sigma_z|-\rangle=-|-\rangle.\]</div>
+          <p>The two spots are therefore not merely experimental details. They are the visual form of an eigenvalue problem.</p>
+        </div>
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-flag"></i> Postulates already in the background</div>
+          <ul class="bullet">
+            <li>The incoming beam is represented by a quantum state.</li>
+            <li>The magnet orientation selects the observable to be measured.</li>
+            <li>The possible results are eigenvalues of the corresponding operator.</li>
+            <li>The relative intensities of outgoing beams are probabilities.</li>
+          </ul>
+          <div class="callout">The rest of the chapter makes this physical story algebraic.</div>
+        </div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Operators as matrices | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/operators-as-matrices.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Operators as matrices | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/operators-as-matrices.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Operators as matrices | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Operators as matrices | Chapter 3 | Quantum Mechanics","description":"Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum...","url":"https://qm-beta.vercel.app/slides/chapter-03/operators-as-matrices.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.5
+        </div>
+        <div class="hdr-title">Operators as matrices</div>
+        <div class="hdr-sub">The observable postulate in a finite-dimensional basis</div>
+      </div>
+      <div class="slide-num">5 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-table-cells"></i> Guided reading</div><p>Once states are vectors, observables become operators acting on those vectors. In a chosen basis, each operator becomes a matrix. The matrix entries tell how the operator maps one basis direction into another.</p></div>
+      <div class="col">
+        <div class="card"><div class="ch"><i class="fa-solid fa-flag"></i> Postulate for observables and operators</div><p>Every measurable quantity is represented by a Hermitian operator. In a basis \(\{|n\rangle\}\), the matrix elements of \(\hat A\) are</p><div class="eq key-eq">\[A_{nm}=\langle n|\hat A|m\rangle.\]</div><p>Knowing all matrix elements is equivalent to knowing the operator in that basis.</p></div>
+        <div class="card green"><div class="ch green"><i class="fa-solid fa-gears"></i> How the operator acts</div><p>If \(|\Psi\rangle=\sum_m C_m|m\rangle\), then</p><div class="eq">\[\hat A|\Psi\rangle=\sum_{n,m}A_{nm}C_m|n\rangle.\]</div><p>The output is another vector. In the Stern-Gerlach problem, applying a spin operator to a spin state tells how that observable is represented before a measurement is interpreted.</p></div>
+      </div>
+      <div class="col">
+        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-ruler"></i> Diagonal versus non-diagonal</div><p>When an operator is diagonal in a basis, each basis vector is already an eigenstate. For \(\sigma_z\), the \(z\)-basis is diagonal. For \(\sigma_x\), the same \(z\)-basis is not diagonal.</p><div class="eq key-eq">\[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div><p>This is why a beam prepared along \(z\) does not behave as a definite \(x\)-beam.</p></div>
+        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-lightbulb"></i> Practical reading rule</div><p>A matrix is not merely a table of numbers. It is a description of a measurement question in a chosen basis. If the basis changes, the matrix representation changes, but the physical predictions do not.</p></div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

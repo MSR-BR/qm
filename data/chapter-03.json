@@ -1,4 +1,95 @@
 {
-  "description": "Chapter 3 — Construction of quantum theory II: matrix mechanics. Structure prepared to receive this chapter's HTML pages.",
-  "topics": []
+  "description": "Chapter 3 - Construction of quantum theory II: matrix mechanics. A guided auxiliary structure for Stern-Gerlach physics, Dirac notation, Hilbert-space vectors, matrix operators, probabilities, commutators, time evolution and the bridge back to wave mechanics.",
+  "topics": [
+    {
+      "id": "3.1",
+      "title": "Why matrix mechanics is needed",
+      "note": "Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin.",
+      "url": "slides/chapter-03/why-matrix-mechanics-is-needed.html"
+    },
+    {
+      "id": "3.2",
+      "title": "Stern-Gerlach experiment: magnetic force and spin",
+      "note": "Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable.",
+      "url": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html"
+    },
+    {
+      "id": "3.3",
+      "title": "Dirac notation: kets, bras and inner products",
+      "note": "Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space.",
+      "url": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html"
+    },
+    {
+      "id": "3.4",
+      "title": "Hilbert space, bases, superposition and completeness",
+      "note": "Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections.",
+      "url": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html"
+    },
+    {
+      "id": "3.5",
+      "title": "Operators as matrices",
+      "note": "Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors.",
+      "url": "slides/chapter-03/operators-as-matrices.html"
+    },
+    {
+      "id": "3.6",
+      "title": "Eigenvalues, eigenstates and spectral decomposition",
+      "note": "How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis.",
+      "url": "slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html"
+    },
+    {
+      "id": "3.7",
+      "title": "Pauli matrices and spin observables",
+      "note": "Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics.",
+      "url": "slides/chapter-03/pauli-matrices-and-spin-observables.html"
+    },
+    {
+      "id": "3.8",
+      "title": "Born rule in vector notation",
+      "note": "Postulate of probability: amplitudes are inner products, and probabilities are squared moduli of projections.",
+      "url": "slides/chapter-03/born-rule-vector-notation.html"
+    },
+    {
+      "id": "3.9",
+      "title": "Expectation value, variance and preparation",
+      "note": "Ensemble averages, uncertainty of an observable and how repeated Stern-Gerlach measurements prepare a state.",
+      "url": "slides/chapter-03/expectation-value-variance-and-preparation.html"
+    },
+    {
+      "id": "3.10",
+      "title": "Hermitian operators and real outcomes",
+      "note": "Why observables must have real eigenvalues, and how Hermitian conjugation controls the matrix representation.",
+      "url": "slides/chapter-03/hermitian-operators-and-real-outcomes.html"
+    },
+    {
+      "id": "3.11",
+      "title": "Commutators, compatibility and measurement order",
+      "note": "Non-commuting spin components, compatible observables and why an intermediate measurement can erase information.",
+      "url": "slides/chapter-03/commutators-compatibility-and-measurement-order.html"
+    },
+    {
+      "id": "3.12",
+      "title": "Schrodinger picture: unitary time evolution",
+      "note": "Time-dependent state vectors, the unitary evolution operator and phase evolution in the energy basis.",
+      "url": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html"
+    },
+    {
+      "id": "3.13",
+      "title": "Heisenberg picture: operator evolution",
+      "note": "Fixed state vectors, time-dependent operators and the Heisenberg equation of motion.",
+      "url": "slides/chapter-03/heisenberg-picture-operator-evolution.html"
+    },
+    {
+      "id": "3.14",
+      "title": "Unitary transformations and change of basis",
+      "note": "How states and operators transform between bases while probabilities and expectation values remain invariant.",
+      "url": "slides/chapter-03/unitary-transformations-and-change-of-basis.html"
+    },
+    {
+      "id": "3.15",
+      "title": "Operator functions and chapter synthesis",
+      "note": "Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics.",
+      "url": "slides/chapter-03/operator-functions-and-chapter-synthesis.html"
+    }
+  ]
 }

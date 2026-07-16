@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hilbert space, bases, superposition and completeness | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections. Interactive material from the book Quantum Mechanics..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/hilbert-space-bases-superposition-completeness.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Hilbert space, bases, superposition and completeness | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections. Interactive material from the book Quantum Mechanics..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/hilbert-space-bases-superposition-completeness.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Hilbert space, bases, superposition and completeness | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections. Interactive material from the book Quantum Mechanics..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Hilbert space, bases, superposition and completeness | Chapter 3 | Quantum Mechanics","description":"Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections. Interactive material from the book Quantum Mechanics...","url":"https://qm-beta.vercel.app/slides/chapter-03/hilbert-space-bases-superposition-completeness.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.4
+        </div>
+        <div class="hdr-title">Hilbert space, bases, superposition and completeness</div>
+        <div class="hdr-sub">How a spin state is expanded in different measurement bases</div>
+      </div>
+      <div class="slide-num">4 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-layer-group"></i> Guided reading</div><p>The same incoming beam can be described in different bases. A basis is tied to a measurement question: \(z\)-oriented magnets ask about \(\sigma_z\), while \(x\)-oriented magnets ask about \(\sigma_x\).</p></div>
+      <div class="col">
+        <div class="card"><div class="ch"><i class="fa-solid fa-expand"></i> Expansion in a basis</div><p>In any orthonormal basis \(\{|n\rangle\}\), the state can be expanded as</p><div class="eq key-eq">\[|\Psi\rangle=\sum_n C_n|n\rangle,\qquad C_n=\langle n|\Psi\rangle.\]</div><p>The coefficient is a projection amplitude. In wave mechanics the same idea appears when a wave function is expanded in eigenfunctions.</p></div>
+        <div class="card green"><div class="ch green"><i class="fa-solid fa-puzzle-piece"></i> Completeness</div><p>A complete basis resolves the identity operator:</p><div class="eq">\[\sum_n |n\rangle\langle n|=\hat 1.\]</div><p>Inserting this identity into a state gives the expansion above. This is not a trick; it says the chosen measurement basis is enough to reconstruct the state.</p></div>
+      </div>
+      <div class="col">
+        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-arrows-left-right"></i> Spin bases along z and x</div><p>For spin-1/2, the \(z\)-basis and the \(x\)-basis are related by superposition:</p><div class="eq key-eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2},\qquad |-\rangle_x=\frac{|+\rangle-|-\rangle}{\sqrt2}.\]</div><p>This single relation explains a major Stern-Gerlach observation: a beam prepared as \(|+\rangle\) along \(z\) splits into two equal parts when measured along \(x\).</p></div>
+        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-compass"></i> Conceptual point</div><p>Superposition does not mean the atom secretly took two paths in a classical sense. It means that a state sharp for one measurement can be a linear combination of possible outcomes for another measurement.</p><div class="callout">Changing the magnet direction changes the basis in which the same vector is decomposed.</div></div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>

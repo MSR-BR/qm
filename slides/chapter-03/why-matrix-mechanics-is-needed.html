@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why matrix mechanics is needed | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
+      startup: { typeset: true }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.va = window.va || function () {
+      (window.vaq = window.vaq || []).push(arguments);
+    };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
+  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
+  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+<!-- termo-seo:start -->
+<meta name="description" content="Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin. Interactive material from the book Quantum Mechanics, with teaching aut..."/>
+<meta name="author" content="Prof. Mario Reis"/>
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
+<meta name="theme-color" content="#2F6B4F"/>
+<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-03/why-matrix-mechanics-is-needed.html"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:type" content="article"/>
+<meta property="og:site_name" content="Quantum Mechanics"/>
+<meta property="og:title" content="Why matrix mechanics is needed | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin. Interactive material from the book Quantum Mechanics, with teaching aut..."/>
+<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/why-matrix-mechanics-is-needed.html"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Why matrix mechanics is needed | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin. Interactive material from the book Quantum Mechanics, with teaching aut..."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Why matrix mechanics is needed | Chapter 3 | Quantum Mechanics","description":"Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin. Interactive material from the book Quantum Mechanics, with teaching aut...","url":"https://qm-beta.vercel.app/slides/chapter-03/why-matrix-mechanics-is-needed.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<!-- termo-seo:end -->
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr">
+      <div class="hdr-inner">
+        <a href="../../index.html?view=chapters&chapter=03" class="index-back-button">
+          <i class="fa-solid fa-arrow-left"></i>
+          Index
+        </a>
+        <div class="chapter-label">
+          <i class="fa-solid fa-layer-group"></i>
+          Chapter 3 · Item 3.1
+        </div>
+        <div class="hdr-title">Why matrix mechanics is needed</div>
+        <div class="hdr-sub">Discrete quantum systems need a vector language</div>
+      </div>
+      <div class="slide-num">1 / 15</div>
+    </div>
+    <div class="body">
+
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+        <p>Chapter 2 built quantum mechanics with wave functions. Chapter 3 keeps the same physical postulates, but rewrites the theory in a form better suited to discrete systems. The guiding example is the Stern-Gerlach experiment: a beam enters an apparatus, and the result is not a continuous smear but a small set of possible outcomes.</p>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-link"></i> Same physics, different representation</div>
+          <p>Wave mechanics and matrix mechanics are equivalent. The state can be written as a wave function \(\Psi(x,t)\) when position is the convenient basis, or as a vector of coefficients when the system is naturally described by a finite set of alternatives.</p>
+          <div class="eq">\[\Psi(x,t)=\sum_n C_n(t)\psi_n(x) \quad \Longleftrightarrow \quad |\Psi(t)\rangle=\sum_n C_n(t)|n\rangle.\]</div>
+          <p>The right side is not a new theory. It is the same state written in the language of Hilbert-space vectors. This is the language that makes spin, two-level systems and measurement sequences compact.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-route"></i> The storyline of the chapter</div>
+          <div class="table-wrap"><table><thead><tr><th>Question</th><th>Matrix-mechanics answer</th><th>Postulate nearby</th></tr></thead><tbody>
+            <tr><td>What is the state?</td><td>A ket \(|\Psi\rangle\) in Hilbert space</td><td>Quantum state</td></tr>
+            <tr><td>What can be measured?</td><td>Hermitian operators and eigenvalues</td><td>Observables</td></tr>
+            <tr><td>With what probability?</td><td>Squared projection amplitudes</td><td>Born rule</td></tr>
+            <tr><td>What happens after measurement?</td><td>The selected beam is a prepared eigenstate</td><td>Measurement</td></tr>
+            <tr><td>How does the state evolve?</td><td>Unitary evolution</td><td>Time evolution</td></tr>
+          </tbody></table></div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-layer-group"></i> Why spin is the perfect example</div>
+          <p>A spin-1/2 degree of freedom has only two outcomes along a chosen axis. This makes the algebra visible: a state is a two-component vector, an observable is a \(2\times 2\) matrix, and a measurement is a projection onto one of two basis vectors.</p>
+          <div class="eq key-eq">\[|\Psi\rangle=C_+|+\rangle+C_-|-\rangle,\qquad |C_+|^2+|C_-|^2=1.\]</div>
+          <p>The Stern-Gerlach apparatus gives the physical interpretation: the coefficients tell how the incoming beam divides into possible outgoing beams.</p>
+        </div>
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-compass"></i> How to read this chapter</div>
+          <p>Each page should be read as a translation exercise. A physical operation in the Stern-Gerlach setup becomes a vector operation; a possible spot on the screen becomes an eigenvalue; a blocked beam becomes state preparation.</p>
+          <div class="callout">The central skill is to connect the algebra \(|\Psi\rangle\), \(\hat A\), \(\langle n|\Psi\rangle\) with what the apparatus does to the beam.</div>
+        </div>
+      </div>
+      <div class="resource-links">
+        <strong>Original book and previews:</strong>
+        <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>
+      </div>
+      <div class="source-note">
+        <strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 3 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc. Cropped figures are shown here with source indication for educational review; consult the original book for the complete presentation.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
