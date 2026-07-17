@@ -1,7 +1,7 @@
 (function () {
   if (window.TermoUserData) return;
 
-  const EXERCISE_DATA_ENABLED = false;
+  const EXERCISE_DATA_ENABLED = true;
   const TABLE_NAME = "qm_saved_exercises";
   const FAVORITE_ITEMS_KEY = "qm_favorite_items";
   const FAVORITE_CHAPTERS_KEY = "qm_favorite_chapters";

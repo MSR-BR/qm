@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Non-commuting spin components, compatible observables and why an intermediate measurement can erase information. Interactive material from the book Quantum Mechanics, wi..."/>
@@ -68,17 +72,89 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-arrows-rotate"></i> Guided reading</div><p>The order of measurements matters when the corresponding operators do not commute. The Stern-Gerlach sequences in this section show the physical meaning of that algebraic statement.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-not-equal"></i> Commutator</div><p>The commutator is</p><div class="eq">\[[\hat A,\hat B]=\hat A\hat B-\hat B\hat A.\]</div><p>For the two spin components represented in the \(z\)-basis,</p><div class="eq key-eq">\[[\hat\sigma_z,\hat\sigma_x]\ne 0.\]</div><p>Nonzero commutator means the two observables cannot generally be diagonalized in the same basis.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-right-left"></i> SG(Z) followed by SG(X)</div><figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-4-sg-z-then-x.png" alt="Figure 3.4, cropped from the book: a prepared SG(Z) beam enters an SG(X) device and splits again." /><figcaption>Figure 3.4, cropped from the book: a prepared SG(Z) beam enters an SG(X) device and splits again.</figcaption></figure>
-          <p>After filtering the beam into \(|+\rangle\), an SG(X) device does not give a single certain result. Since</p><div class="eq">\[|+\rangle=\frac{|+\rangle_x+|-\rangle_x}{\sqrt2},\]</div><p>the probabilities are</p><div class="eq key-eq">\[P_{+x}=P_{-x}=\frac12.\]</div></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-arrows-rotate"></i> Guided reading</div>
+        <p>The chapter now uses the Stern-Gerlach setup to give physical meaning to non-commuting operators. If two observables do not commute, their measurement order matters. A measurement in one basis can prepare a state that is no longer sharp in the previous basis.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-triangle-exclamation"></i> The intermediate measurement erases information</div><figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-5-sg-z-x-z.png" alt="Figure 3.5, cropped from the book: SG(Z), then SG(X), then SG(Z). The middle measurement changes the state entering the final device." /><figcaption>Figure 3.5, cropped from the book: SG(Z), then SG(X), then SG(Z). The middle measurement changes the state entering the final device.</figcaption></figure>
-          <p>If the \(x\)-up beam is selected, the state before the third magnet is \(|+\rangle_x\). Rewriting it in the \(z\)-basis gives</p><div class="eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2}.\]</div><p>Therefore a final SG(Z) measurement again gives</p><div class="eq key-eq">\[P_{+z}=P_{-z}=\frac12.\]</div><p>The original certainty about \(z\) was lost because the intervening \(x\)-measurement prepared a new state.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-lightbulb"></i> Compatibility</div><p>Compatible observables can share eigenstates and be measured with sharp values in the same preparation. Incompatible observables force a choice of basis, and a measurement in one basis can disturb certainty in another.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-not-equal"></i> The commutator</div>
+          <p>The commutator of two operators is</p>
+          <div class="eq">\[[\hat A,\hat B]=\hat A\hat B-\hat B\hat A.\]</div>
+          <p>For the spin matrices constructed earlier,</p>
+          <div class="eq">\[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div>
+          <p>Multiplying in the two orders gives different matrices, so</p>
+          <div class="eq key-eq">\[[\hat\sigma_z,\hat\sigma_x]\ne0.\]</div>
+          <p>This algebraic nonzero result means that the same basis cannot diagonalize both operators.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-right-left"></i> Example 3.7: SG(Z) followed by SG(X)</div>
+          <figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-4-sg-z-then-x.png" alt="Figure 3.4, cropped from the book: a prepared SG(Z) beam enters an SG(X) device and splits again." /><figcaption>Figure 3.4, cropped from the book: a prepared SG(Z) beam enters an SG(X) device and splits again.</figcaption></figure>
+          <p>First, an SG(Z) device prepares the state \(|\Psi'\rangle=|+\rangle\). If the second device is aligned along \(x\), this state must be rewritten in the \(x\)-basis:</p>
+          <div class="eq">\[|+\rangle=\frac{|+\rangle_x+|-\rangle_x}{\sqrt2}.\]</div>
+          <p>The Born rule then gives</p>
+          <div class="eq key-eq">\[P_{+x}=|{}_x\langle+|+\rangle|^2=\frac12,
+\qquad P_{-x}=|{}_x\langle-|+\rangle|^2=\frac12.\]</div>
+          <p>A state that was definite for SG(Z) is not definite for SG(X).</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-triangle-exclamation"></i> Example 3.8: inserting a third SG(Z)</div>
+          <figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-5-sg-z-x-z.png" alt="Figure 3.5, cropped from the book: SG(Z), then SG(X), then SG(Z). The middle measurement changes the state entering the final device." /><figcaption>Figure 3.5, cropped from the book: SG(Z), then SG(X), then SG(Z). The middle measurement changes the state entering the final device.</figcaption></figure>
+          <p>Now select the \(x\)-up beam after the second apparatus. The state entering the third device is</p>
+          <div class="eq">\[|\Psi''\rangle=|+\rangle_x.\]</div>
+          <p>For the final SG(Z), rewrite this state in the \(z\)-basis:</p>
+          <div class="eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2}.\]</div>
+          <p>Thus the final SG(Z) probabilities are again</p>
+          <div class="eq key-eq">\[P_{+z}=P_{-z}=\frac12.\]</div>
+          <p>The middle SG(X) measurement destroyed the certainty produced by the first SG(Z) selection.</p>
+        </div>
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-scale-balanced"></i> Compatibility</div>
+          <p>When two observables commute, they can share eigenvectors and can be sharp simultaneously. When they do not commute, a state prepared as an eigenstate of one observable is generally a superposition in the eigenbasis of the other.</p>
+          <p>This is the physical meaning of non-commutation in the chapter: it is not only an algebraic statement. It predicts what happens when real measurement devices are arranged in sequence.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-lightbulb"></i> What the sequence teaches</div>
+          <p>The SG(Z)-SG(X)-SG(Z) sequence is one of the clearest ways to understand quantum measurement. The first device prepares a state; the second asks an incompatible question and prepares a new state; the third shows that the original sharp information is no longer present.</p>
+          <div class="callout">Non-commuting observables are not just hard to measure together; their measurements define different preparations.</div>
+        </div>
+      </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-code-compare"></i> Commutators predict sequence behavior</div>
+        <p>For two observables, the commutator compares the two possible orders of action. If the two orders differ, the order of measurement can matter physically:</p>
+        <div class="eq">\[[\hat A,\hat B]\ne0.\]</div>
+        <p>In the Stern-Gerlach sequence, SG(Z) prepares a \(z\)-eigenstate. SG(X) then asks an incompatible question and prepares an \(x\)-eigenstate. A final SG(Z) no longer receives the original \(z\)-eigenstate.</p>
+        <p>That story is what an exercise should test: algebraic non-commutation, basis change and state preparation are three views of the same phenomenon.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Non-commuting spin components, compatible observables and why an intermediate measurement can erase information.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Non-commuting spin components, compatible observables and why an intermediate measurement can erase information.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[[\hat A,\hat B]=\hat A\hat B-\hat B\hat A.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</li>
+<li><span class="practice-label">Equation:</span> \[[\hat\sigma_z,\hat\sigma_x]\ne0.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

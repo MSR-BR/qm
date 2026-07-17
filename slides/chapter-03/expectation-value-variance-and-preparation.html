@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Ensemble averages, uncertainty of an observable and how repeated Stern-Gerlach measurements prepare a state. Interactive material from the book Quantum Mechanics, with t..."/>
@@ -68,16 +72,82 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-chart-simple"></i> Guided reading</div><p>Probabilities predict distributions of results. Expectation values summarize the average result over many identically prepared systems, while variance measures how spread out those results are.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-calculator"></i> From weighted average to bracket notation</div><p>If \(a_n\) are possible values with probabilities \(P_n\), the average value is</p><div class="eq">\[\langle \hat A\rangle=\sum_n P_n a_n.\]</div><p>Using \(P_n=|\langle n|\Psi\rangle|^2\) and the spectral decomposition of \(\hat A\), this becomes</p><div class="eq key-eq">\[\langle \hat A\rangle=\langle\Psi|\hat A|\Psi\rangle.\]</div><p>The compact formula is not magic; it is the weighted average written in vector language.</p></div>
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-chart-area"></i> Variance</div><p>The spread of possible measurement results is</p><div class="eq key-eq">\[\operatorname{var}(A)=\langle \hat A^2\rangle-\langle \hat A\rangle^2.\]</div><p>If a state is an eigenstate of \(\hat A\), repeated measurements of \(A\) give the same value and the variance is zero.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-chart-simple"></i> Guided reading</div>
+        <p>Probabilities tell how often outcomes occur. Expectation values summarize the average result in an ensemble, while variance measures how dispersed those results are. The Stern-Gerlach sequence in the book then adds a crucial measurement idea: selecting one output beam prepares a new state.</p>
       </div>
       <div class="col">
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-filter"></i> Measurement as preparation</div><figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-3-repeated-sg-z.png" alt="Figure 3.3, cropped from the book: repeated SG(Z) devices. Blocking one beam prepares the surviving beam in an eigenstate." /><figcaption>Figure 3.3, cropped from the book: repeated SG(Z) devices. Blocking one beam prepares the surviving beam in an eigenstate.</figcaption></figure>
-          <p>If the first SG(Z) device blocks the \(-\) beam, the transmitted state is no longer the original superposition. The prepared state is</p><div class="eq">\[|\Psi'\rangle=|+\rangle.\]</div><p>A second SG(Z) measurement is then certain:</p><div class="eq">\[P_+=1,\qquad P_-=0,\qquad \langle\hat\sigma_z\rangle=1,\qquad \operatorname{var}(\sigma_z)=0.\]</div></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-flag"></i> Measurement postulate</div><p>After a definite result is selected, the state is projected into the corresponding eigenstate. The apparatus does not merely reveal a number; it prepares the state used by the next apparatus.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-calculator"></i> From weighted average to operator average</div>
+          <p>If the possible results of \(\hat A\) are \(a_n\) with probabilities \(P_n\), the ensemble average is</p>
+          <div class="eq">\[\langle\hat A\rangle=\sum_n P_n a_n.\]</div>
+          <p>Using \(P_n=|\langle n|\Psi\rangle|^2\), this can be rewritten step by step:</p>
+          <div class="eq">\[\langle\hat A\rangle=\sum_n \langle\Psi|n\rangle\langle n|\Psi\rangle a_n=\langle\Psi|\left(\sum_n a_n|n\rangle\langle n|\right)|\Psi\rangle.\]</div>
+          <p>The sum in parentheses is the spectral decomposition of \(\hat A\), so</p>
+          <div class="eq key-eq">\[\langle\hat A\rangle=\langle\Psi|\hat A|\Psi\rangle.\]</div>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-chart-area"></i> Variance</div>
+          <p>The variance of an observable is the expectation value of the square minus the square of the expectation value:</p>
+          <div class="eq key-eq">\[\operatorname{var}(A)=\langle\hat A^2\rangle-\langle\hat A\rangle^2.\]</div>
+          <p>A zero variance means that repeated measurements on identically prepared systems give the same result. In other words, the state is sharp with respect to that observable.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-filter"></i> Measurement as preparation</div>
+          <figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-3-repeated-sg-z.png" alt="Figure 3.3, cropped from the book: repeated SG(Z) devices. Blocking one beam prepares the surviving beam in an eigenstate." /><figcaption>Figure 3.3, cropped from the book: repeated SG(Z) devices. Blocking one beam prepares the surviving beam in an eigenstate.</figcaption></figure>
+          <p>Start with the balanced state \(|\Psi\rangle=(|+\rangle+|-\rangle)/\sqrt2\). The first SG(Z) device separates the two beams. If the \(-\) beam is blocked, the surviving beam is no longer the original superposition. It must be renormalized to</p>
+          <div class="eq key-eq">\[|\Psi'\rangle=|+\rangle.\]</div>
+          <p>This state enters the second SG(Z) device.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-check-double"></i> Repeated SG(Z) result</div>
+          <p>Because the prepared state is already an eigenstate of \(\hat\sigma_z\), the second SG(Z) measurement is certain:</p>
+          <div class="eq">\[P_+=|\langle+|\Psi'\rangle|^2=1,\qquad P_-=|\langle-|\Psi'\rangle|^2=0.\]</div>
+          <p>The expectation value is</p>
+          <div class="eq">\[\langle\hat\sigma_z\rangle=\langle+|\hat\sigma_z|+\rangle=1.\]</div>
+          <p>Also, since \(\hat\sigma_z^2=\hat 1\),</p>
+          <div class="eq key-eq">\[\langle\hat\sigma_z^2\rangle=1,
+\qquad \operatorname{var}(\sigma_z)=1-1^2=0.\]</div>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-flag"></i> Measurement postulate</div>
+          <p>The example is the experimental face of the measurement postulate. After a result is selected, the state is projected into the corresponding eigenstate. A later device does not interact with the old superposition; it interacts with the newly prepared state.</p>
+          <p>This is why the blocked beam is not a minor detail. It changes the preparation, and therefore changes the probabilities for all later measurements.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-lightbulb"></i> Practical takeaway</div>
+          <p>Expectation value, variance and projection are three views of the same measurement structure. First compute the outcome probabilities, then average the eigenvalues, and finally interpret what state is left after an outcome is selected.</p>
+          <div class="callout">The sequence of Stern-Gerlach devices turns abstract formulas into a laboratory protocol.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Ensemble averages, uncertainty of an observable and how repeated Stern-Gerlach measurements prepare a state.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Ensemble averages, uncertainty of an observable and how repeated Stern-Gerlach measurements prepare a state.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\langle\hat A\rangle=\sum_n P_n a_n.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle\hat A\rangle=\sum_n \langle\Psi|n\rangle\langle n|\Psi\rangle a_n=\langle\Psi|\left(\sum_n a_n|n\rangle\langle n|\right)|\Psi\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle\hat A\rangle=\langle\Psi|\hat A|\Psi\rangle.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

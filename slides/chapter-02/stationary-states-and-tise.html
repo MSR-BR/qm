@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.3" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
   <script defer src="../../assets/termo-share.js?v=0714.3"></script>
   <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.3" />
-  <script defer src="../../assets/termo-auth.js?v=0714.3"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0714.3"></script>
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Separation of variables, time-independent potentials and the energy eigenvalue equation. Interactive material from the book Quantum Mechanics, with teaching authorship b..."/>
 <meta name="author" content="Prof. Mario Reis"/>
@@ -104,6 +108,41 @@
           <div class="eq">\[|\Psi(x,t)|^2=|\psi(x)|^2.\]</div>
         </div>
       </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-clock"></i> Separating space and time</div>
+        <p>When the potential is time independent, try a separated solution:</p>
+        <div class="eq">\[\Psi(x,t)=\psi(x)\phi(t).\]</div>
+        <p>Substitution into the TDSE makes the time part a phase and leaves the spatial part as an eigenvalue problem:</p>
+        <div class="eq">\[\Psi_n(x,t)=\psi_n(x)e^{-iE_nt/\hbar},\qquad \hat H\psi_n=E_n\psi_n.\]</div>
+        <p>The measurable probability density of a single stationary state does not change with time because the phase cancels in \(|\Psi_n|^2\). That is the physical reason these states are called stationary.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Separation of variables, time-independent potentials and the energy eigenvalue equation.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Separation of variables, time-independent potentials and the energy eigenvalue equation.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\Psi(x,t)=\psi(x)\,\phi(t).\]</li>
+<li><span class="practice-label">Equation:</span> \[-\frac{\hbar^2}{2m}\frac{1}{\psi}\frac{d^2\psi}{dx^2}+V(x)=i\hbar\frac{1}{\phi}\frac{d\phi}{dt}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\left[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x)\right]\psi(x)=E\psi(x).\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
 
       <div class="resource-links">
         <strong>Original book and previews:</strong>

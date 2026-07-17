@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Why observables must have real eigenvalues, and how Hermitian conjugation controls the matrix representation. Interactive material from the book Quantum Mechanics, with..."/>
@@ -68,15 +72,77 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-scale-balanced"></i> Guided reading</div><p>Observables must give real measurement results. Hermitian operators are the mathematical class that guarantees this property and provides orthogonal eigenstates for distinct outcomes.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-dagger"></i> Dagger operation</div><p>For a matrix operator, the adjoint is the transpose plus complex conjugation:</p><div class="eq key-eq">\[\hat A^\dagger=(\hat A^*)^T.\]</div><p>An operator is Hermitian when it equals its own adjoint:</p><div class="eq">\[\hat A^\dagger=\hat A.\]</div><p>The Pauli matrices used for Stern-Gerlach spin components satisfy this condition.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-square-root-variable"></i> Real eigenvalues</div><p>Suppose \(\hat A|a\rangle=a|a\rangle\) and \(\hat A\) is Hermitian. Then</p><div class="eq">\[\langle a|\hat A|a\rangle=a\langle a|a\rangle,\]</div><p>but Hermiticity also implies that this expectation value equals its own complex conjugate. For a normalized eigenstate,</p><div class="eq key-eq">\[a=a^*.\]</div><p>Thus the eigenvalue is real, as a measurement result must be.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-scale-balanced"></i> Guided reading</div>
+        <p>The book states the key physical requirement after constructing the spin operators: observables must be represented by operators whose eigenvalues can be measurement results. Since measurement results are real, the relevant operators must be Hermitian. This page expands that point and connects it to the matrix notation already introduced.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-eye"></i> Real expectation values</div><p>For any normalized state, the expectation value of a Hermitian operator is real:</p><div class="eq">\[\langle \hat A\rangle^*=\left(\langle\Psi|\hat A|\Psi\rangle\right)^*=\langle\Psi|\hat A^\dagger|\Psi\rangle=\langle\hat A\rangle.\]</div><p>This is why the postulate for observables requires Hermitian operators rather than arbitrary matrices.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-magnet"></i> Back to Stern-Gerlach</div><p>The outcomes \(+1\) and \(-1\) of \(\hat\sigma_z\) or \(\hat\sigma_x\) are real eigenvalues. The apparatus can display them as separate beams because the corresponding eigenstates are orthogonal.</p><div class="callout">Hermiticity is the algebraic reason that a measurement has real, distinguishable outcomes.</div></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-dagger"></i> Adjoint and Hermitian condition</div>
+          <p>For a matrix, the adjoint is the conjugate transpose:</p>
+          <div class="eq key-eq">\[\hat A^\dagger=(\hat A^*)^T.\]</div>
+          <p>An operator is Hermitian when it equals its adjoint:</p>
+          <div class="eq">\[\hat A^\dagger=\hat A.\]</div>
+          <p>The Pauli matrices \(\hat\sigma_z\) and \(\hat\sigma_x\) satisfy this condition. That is why they are valid candidates for spin observables.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-square-root-variable"></i> Real eigenvalues</div>
+          <p>Suppose \(\hat A|a\rangle=a|a\rangle\) and \(\hat A\) is Hermitian. Consider the expectation value in the normalized eigenstate:</p>
+          <div class="eq">\[\langle a|\hat A|a\rangle=a\langle a|a\rangle=a.\]</div>
+          <p>Taking the complex conjugate and using \(\hat A^\dagger=\hat A\) gives the same number. Therefore</p>
+          <div class="eq key-eq">\[a=a^*.\]</div>
+          <p>The eigenvalue is real, as required for a measurement result.</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-eye"></i> Real expectation values</div>
+          <p>The same logic applies to any normalized state. If \(\hat A\) is Hermitian, then</p>
+          <div class="eq">\[\langle\hat A\rangle^*=\left(\langle\Psi|\hat A|\Psi\rangle\right)^*=\langle\Psi|\hat A^\dagger|\Psi\rangle=\langle\hat A\rangle.\]</div>
+          <p>So expectation values of observables are real even when the state vector has complex components.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-diagram-project"></i> Orthogonality and distinguishability</div>
+          <p>For Hermitian operators, eigenvectors with different eigenvalues are orthogonal. This matters physically: different sharp measurement results must be distinguishable. In a Stern-Gerlach apparatus, the upper and lower beams are different channels, represented by orthogonal states.</p>
+          <div class="eq">\[a_m\ne a_n\quad \Rightarrow \quad \langle a_m|a_n\rangle=0.\]</div>
+          <p>This orthogonality is what makes it meaningful to treat the outgoing beams as separate alternatives in the Born rule.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-magnet"></i> Back to Stern-Gerlach</div>
+          <p>The possible results of the dimensionless spin measurement are \(+1\) and \(-1\). The matrices \(\hat\sigma_z\) and \(\hat\sigma_x\) have exactly those real eigenvalues. They therefore satisfy the physical requirement emphasized by the chapter: observables must have real values that an apparatus can record.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-flag"></i> Postulate connection</div>
+          <p>The postulate for observables is not simply a naming convention. It says that the measurable content of the theory is encoded in Hermitian operators. Their eigenvalues are the possible measurement results, and their eigenvectors define the states with definite values.</p>
+          <div class="callout">Hermiticity is the mathematical form of the demand that measurements produce real, distinguishable outcomes.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Why observables must have real eigenvalues, and how Hermitian conjugation controls the matrix representation.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Why observables must have real eigenvalues, and how Hermitian conjugation controls the matrix representation.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\hat A^\dagger=(\hat A^*)^T.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat A^\dagger=\hat A.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle a|\hat A|a\rangle=a\langle a|a\rangle=a.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

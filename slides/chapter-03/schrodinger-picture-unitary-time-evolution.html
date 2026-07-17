@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Time-dependent state vectors, the unitary evolution operator and phase evolution in the energy basis. Interactive material from the book Quantum Mechanics, with teaching..."/>
@@ -68,15 +72,82 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-clock"></i> Guided reading</div><p>In the Schrodinger picture, the state vector carries time dependence. The rule is the same physical rule as the TDSE of wave mechanics, now written in vector form.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-flag"></i> Postulate for time evolution</div><p>Between measurements, the state evolves according to the time-dependent Schrodinger equation:</p><div class="eq key-eq">\[i\hbar\frac{d}{dt}|\Psi(t)\rangle=\hat H|\Psi(t)\rangle.\]</div><p>If \(\hat H\) is time independent, this evolution can be written with a unitary operator:</p><div class="eq">\[|\Psi(t)\rangle=\hat U(t)|\Psi(0)\rangle,\qquad \hat U(t)=e^{-i\hat Ht/\hbar}.\]</div></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-shield-halved"></i> Why unitary?</div><p>Normalization must be preserved, because total probability must remain one:</p><div class="eq">\[\langle\Psi(t)|\Psi(t)\rangle=\langle\Psi(0)|\hat U^\dagger(t)\hat U(t)|\Psi(0)\rangle=1.\]</div><p>This is guaranteed if</p><div class="eq key-eq">\[\hat U^\dagger(t)\hat U(t)=\hat 1.\]</div></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-clock"></i> Guided reading</div>
+        <p>After discussing measurement, the chapter returns to dynamics. In the Schrodinger picture, the state vector carries the time dependence. Operators are usually fixed unless the observable itself has explicit time dependence, such as a time-dependent external field.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-atom"></i> Spin Hamiltonian example</div><p>For a spin-1/2 system with \(\hat H=\alpha\hat\sigma_z\), the \(z\)-basis diagonalizes the Hamiltonian. Starting from</p><div class="eq">\[|\Psi(0)\rangle=\frac{1}{\sqrt2}\left(|+\rangle+|-\rangle\right),\]</div><p>the evolved state is</p><div class="eq key-eq">\[|\Psi(t)\rangle=\frac{1}{\sqrt2}\left(e^{-i\alpha t/\hbar}|+\rangle+e^{i\alpha t/\hbar}|-\rangle\right).\]</div><p>The probabilities in the \(z\)-basis stay \(1/2\) and \(1/2\), but the relative phase changes. That phase can affect later measurements in another basis.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-magnet"></i> Measurement connection</div><p>Time evolution tells what state arrives at the Stern-Gerlach device. The device then asks a measurement question in a chosen basis and converts the state into outcome probabilities.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-flag"></i> TDSE in vector form</div>
+          <p>The time-dependent Schrodinger equation can be written directly in Hilbert-space notation:</p>
+          <div class="eq key-eq">\[i\hbar\frac{d}{dt}|\Psi(t)\rangle=\hat H|\Psi(t)\rangle.\]</div>
+          <p>This is the same dynamical postulate introduced in wave mechanics, but now the state is a vector rather than a position-space wave function. The Hamiltonian \(\hat H\) is the energy operator.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-arrow-right"></i> Evolution operator</div>
+          <p>The chapter writes the time-evolved state as</p>
+          <div class="eq">\[|\Psi(t)\rangle=\hat U(t)|\Psi(0)\rangle.\]</div>
+          <p>Substituting this into the TDSE gives a differential equation for the evolution operator:</p>
+          <div class="eq">\[i\hbar\frac{d\hat U(t)}{dt}=\hat H\hat U(t).\]</div>
+          <p>For a time-independent Hamiltonian, the solution is</p>
+          <div class="eq key-eq">\[\hat U(t)=e^{-i\hat Ht/\hbar}.\]</div>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-shield-halved"></i> Why the evolution must be unitary</div>
+          <p>The state must remain normalized. If \(|\Psi(t)\rangle=\hat U(t)|\Psi(0)\rangle\), then</p>
+          <div class="eq">\[\langle\Psi(t)|\Psi(t)\rangle=\langle\Psi(0)|\hat U^\dagger(t)\hat U(t)|\Psi(0)\rangle.\]</div>
+          <p>For this to equal \(\langle\Psi(0)|\Psi(0)\rangle\) for every initial state, the operator must satisfy</p>
+          <div class="eq key-eq">\[\hat U^\dagger(t)\hat U(t)=\hat 1.\]</div>
+          <p>Unitary time evolution is therefore the mathematical statement that probability is conserved between measurements.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-atom"></i> Energy eigenstates</div>
+          <p>If \(\hat H|E_n\rangle=E_n|E_n\rangle\), then the exponential acts simply on that eigenstate:</p>
+          <div class="eq">\[e^{-i\hat Ht/\hbar}|E_n\rangle=e^{-iE_nt/\hbar}|E_n\rangle.\]</div>
+          <p>A general superposition of energy eigenstates therefore evolves by acquiring relative phases:</p>
+          <div class="eq key-eq">\[|\Psi(t)\rangle=\sum_n C_n(0)e^{-iE_nt/\hbar}|E_n\rangle.\]</div>
+          <p>The probabilities in the energy basis remain fixed, but relative phases can affect measurements in other bases.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-magnet"></i> Spin example</div>
+          <p>For a spin Hamiltonian proportional to \(\hat\sigma_z\), the \(z\)-basis diagonalizes the Hamiltonian. A balanced initial state evolves as</p>
+          <div class="eq key-eq">\[|\Psi(t)\rangle=\frac{1}{\sqrt2}\left(e^{-i\alpha t/\hbar}|+\rangle+e^{i\alpha t/\hbar}|-\rangle\right).\]</div>
+          <p>An SG(Z) device would still see equal probabilities, but an SG(X) device can be sensitive to the changing relative phase.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-flag"></i> Time-evolution postulate</div>
+          <p>The chapter states the postulate in this language: the vector representing the quantum state evolves in a way that preserves normalization, and its evolution is ruled by the time-dependent Schrodinger equation.</p>
+          <div class="callout">Measurement changes the state discontinuously by projection; between measurements, unitary evolution carries it smoothly in time.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Time-dependent state vectors, the unitary evolution operator and phase evolution in the energy basis.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Time-dependent state vectors, the unitary evolution operator and phase evolution in the energy basis.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[i\hbar\frac{d}{dt}|\Psi(t)\rangle=\hat H|\Psi(t)\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[|\Psi(t)\rangle=\hat U(t)|\Psi(0)\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[i\hbar\frac{d\hat U(t)}{dt}=\hat H\hat U(t).\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis. Interactive material from the book Quantum Mechanics, with te..."/>
@@ -68,15 +72,75 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-list-check"></i> Guided reading</div><p>The eigenvalue equation is where the mathematical object becomes a measurement rule. Eigenvalues are possible results; eigenstates are states that give those results with certainty.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-bullseye"></i> Eigenvalue equation</div><p>For an observable \(\hat A\), the eigenvalue equation is</p><div class="eq key-eq">\[\hat A|a_n\rangle=a_n|a_n\rangle.\]</div><p>If the state entering the apparatus is \(|a_n\rangle\), the result \(a_n\) is certain. Stern-Gerlach makes this concrete: \(|+\rangle\) entering an SG(Z) device exits only in the upper \(z\)-beam.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-diagram-successor"></i> Spectral decomposition</div><p>For a non-degenerate observable with orthonormal eigenstates, the operator can be rebuilt from its eigenvalues and projectors:</p><div class="eq">\[\hat A=\sum_n a_n |a_n\rangle\langle a_n|.\]</div><p>This form is powerful because it separates the two ingredients of a measurement: the values \(a_n\) and the projectors \(|a_n\rangle\langle a_n|\) that select the corresponding component of the state.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-list-check"></i> Guided reading</div>
+        <p>This section slows down the meaning of the eigenvalue equation. In matrix mechanics, measurement is not introduced after the algebra; it is already encoded in the operator. The eigenvectors are the states that pass through the apparatus with a definite result, and the eigenvalues are the possible numbers associated with those results.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-filter"></i> Projectors as beam selectors</div><p>The projector onto one outcome is</p><div class="eq key-eq">\[\hat P_n=|a_n\rangle\langle a_n|.\]</div><p>Physically, it behaves like an ideal filter: it keeps the component of the state aligned with \(|a_n\rangle\) and removes the orthogonal components. This is exactly how the book uses blocked Stern-Gerlach beams to discuss preparation.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-scale-balanced"></i> Why Hermitian operators enter</div><p>A measurement result must be real, and different sharp outcomes must be distinguishable. Hermitian operators supply both properties: real eigenvalues and orthogonal eigenvectors for distinct eigenvalues.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-bullseye"></i> Definite-value states</div>
+          <p>The eigenvalue equation is</p>
+          <div class="eq key-eq">\[\hat A|a_n\rangle=a_n|a_n\rangle.\]</div>
+          <p>If the incoming state is \(|a_n\rangle\), the measurement of \(\hat A\) gives \(a_n\) with certainty. That is the algebraic version of a beam that exits through only one channel of the apparatus.</p>
+          <p>The chapter assumes non-degenerate examples at this stage. That means each observed result corresponds to a single state in the simplified discussion. Degeneracy will require more care in later chapters.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-layer-group"></i> Spectral decomposition</div>
+          <p>When the eigenstates form a complete orthonormal basis, the operator can be written as a sum over eigenvalues multiplied by projectors:</p>
+          <div class="eq key-eq">\[\hat A=\sum_n a_n|a_n\rangle\langle a_n|.\]</div>
+          <p>This formula is one of the most useful in the chapter. It separates the measurement into two ingredients: the value \(a_n\) and the projector \(|a_n\rangle\langle a_n|\) that extracts the corresponding component of the state.</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-filter"></i> Projectors as experimental filters</div>
+          <p>A projector behaves like an idealized filter. Acting on a state, it keeps only the part aligned with the selected eigenstate:</p>
+          <div class="eq">\[\hat P_n|\Psi\rangle=|a_n\rangle\langle a_n|\Psi\rangle.\]</div>
+          <p>In a Stern-Gerlach sequence, blocking one beam is the laboratory version of applying a projector and then renormalizing the surviving state.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-magnet"></i> Two-level Stern-Gerlach case</div>
+          <p>For a spin projection along an axis \(u\), the dimensionless observable has two eigenvalues:</p>
+          <div class="eq key-eq">\[\hat\sigma_u|+\rangle_u=+|+\rangle_u,\\qquad \hat\sigma_u|-\rangle_u=-|-\rangle_u.\]</div>
+          <p>The two output beams are not arbitrary branches. They correspond to the two eigenstates of the operator selected by the magnet orientation.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-scale-balanced"></i> Why observables must be Hermitian</div>
+          <p>The book points out that physical observables must be represented by operators with real eigenvalues. Hermitian operators supply this property. Thus the operator postulate is not merely formal: it guarantees that measured quantities can be represented by real outcomes.</p>
+          <div class="eq">\[\hat A^\dagger=\hat A \quad \Rightarrow \quad a_n\in\mathbb R.\]</div>
+          <p>The Pauli matrices are the first concrete examples of such operators in this chapter.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-book-open"></i> What this prepares</div>
+          <p>Once spectral decomposition is understood, the derivations of probability and expectation value become natural. The Born rule uses the projector amplitude \(\langle a_n|\Psi\rangle\), and the expectation value uses the weighted sum of eigenvalues.</p>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\hat A|a_n\rangle=a_n|a_n\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat A=\sum_n a_n|a_n\rangle\langle a_n|.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat P_n|\Psi\rangle=|a_n\rangle\langle a_n|\Psi\rangle.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

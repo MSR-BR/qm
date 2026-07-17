@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space. Interactive material from the book Quantum Mechanics, with teachi..."/>
@@ -68,15 +72,75 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-code"></i> Guided reading</div><p>Dirac notation gives a compact way to write the same ideas that appeared in wave mechanics. The ket is the state; the bra is its dual; the inner product gives overlaps, normalization and eventually measurement probabilities.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-flag"></i> Postulate for quantum states</div><p>A physical state is represented by a vector in Hilbert space. In Dirac notation this vector is written as a ket, \(|\Psi\rangle\). For the Stern-Gerlach spin example, the natural basis along \(z\) is made of two states:</p><div class="eq key-eq">\[|+\rangle=\begin{pmatrix}1\\0\end{pmatrix},\qquad |-\rangle=\begin{pmatrix}0\\1\end{pmatrix}.\]</div><p>These are not positions in ordinary space. They are basis vectors in the abstract space of possible spin states.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-left-right"></i> Bras and inner products</div><p>The bra \(\langle\Psi|\) is the dual of the ket. If \(|\Psi\rangle\) is a column vector, \(\langle\Psi|\) is the conjugate-transposed row vector.</p><div class="eq">\[|\Psi\rangle=\begin{pmatrix}C_+\\C_-\end{pmatrix}\quad \Rightarrow \quad \langle\Psi|=\begin{pmatrix}C_+^*&C_-^*\end{pmatrix}.\]</div><p>The inner product \(\langle\Phi|\Psi\rangle\) measures the overlap between two states. Orthogonal Stern-Gerlach outcomes have zero overlap.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-code"></i> Guided reading</div>
+        <p>The chapter now changes language. Instead of writing a state as a wave function from the start, it first defines the abstract vector notation that will be used for spin. The notation is compact, but each symbol has a clear role: kets are state vectors, bras are their dual vectors, and inner products measure overlaps.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-check-double"></i> Normalization and orthogonality</div><p>Because probabilities must add to one, the state vector must be normalized:</p><div class="eq key-eq">\[\langle\Psi|\Psi\rangle=1.\]</div><p>For the \(z\)-basis of spin, the basis vectors satisfy</p><div class="eq">\[\langle+|+\rangle=1,\quad \langle-| -\rangle=1,\quad \langle+|-\rangle=0.\]</div><p>That is the vector version of a clean experimental distinction: the upper and lower beams are mutually exclusive outcomes of the same measurement.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-eye"></i> Physical meaning</div><p>In Stern-Gerlach language, \(\langle+|\Psi\rangle\) is the amplitude for the incoming state to be found in the upper \(z\)-beam. The probability will be its squared modulus, but the amplitude itself can be complex. This is why the vector notation must keep phases, not just intensities.</p><div class="callout">The algebra stores more information than a probability table: it stores the phases that matter when a later measurement uses another basis.</div></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-grip-lines-vertical"></i> Kets as column vectors</div>
+          <p>A ket \(|n\rangle\) is a vector in a \(d\)-dimensional Hilbert space. In a chosen basis, it can be represented as a column vector:</p>
+          <div class="eq key-eq">\[|n\rangle=\begin{pmatrix}n_1\\ n_2\\ \vdots\\ n_d\end{pmatrix}.\]</div>
+          <p>For Stern-Gerlach spin, the relevant Hilbert space is two-dimensional because the chosen spin component has two possible outcomes. That is why spin-1/2 is the natural first example for matrix mechanics.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-right-left"></i> Bras as conjugate transposes</div>
+          <p>The corresponding bra is the adjoint of the ket. It is a row vector obtained by transposing and complex conjugating the ket:</p>
+          <div class="eq">\[\langle n|=|n\rangle^\dagger=\begin{pmatrix}n_1^*&n_2^*&\cdots&n_d^*\end{pmatrix}.\]</div>
+          <p>This is why Dirac notation is efficient: the symbol \(\langle n|\) automatically reminds us that complex conjugation is part of the dual vector. That matters because quantum amplitudes can be complex.</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-compress"></i> Inner products</div>
+          <p>The product \(\langle m|n\rangle\) is an inner product. It is the matrix-mechanics version of the overlap between two states. For an orthonormal basis, the result is the Kronecker delta:</p>
+          <div class="eq key-eq">\[\langle m|n\rangle=\delta_{mn}.\]</div>
+          <p>If \(m=n\), the overlap is one; if the basis states are different, the overlap is zero. In Stern-Gerlach language, this says that the two output beams for a fixed magnet orientation represent mutually exclusive basis states.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-check-double"></i> Normalization and physical states</div>
+          <p>A physical state must be normalized, because the total probability of all possible outcomes must be one. In vector notation this reads</p>
+          <div class="eq key-eq">\[\langle\Psi|\Psi\rangle=1.\]</div>
+          <p>This compact condition replaces a familiar wave-mechanics integral. Instead of \(\int |\Psi(x)|^2dx=1\), the finite-dimensional spin example uses a finite sum of squared amplitudes.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-magnet"></i> Spin basis along z</div>
+          <p>For a Stern-Gerlach device aligned along \(z\), it is convenient to choose the two outcome states as the basis:</p>
+          <div class="eq key-eq">\[|+\rangle=\begin{pmatrix}1\\0\end{pmatrix},\qquad |-\rangle=\begin{pmatrix}0\\1\end{pmatrix}.\]</div>
+          <p>These vectors are normalized and orthogonal. They are not little arrows in ordinary space; they are abstract labels for the two possible outcomes of the spin measurement along \(z\).</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-flag"></i> Postulate for quantum states</div>
+          <p>The state postulate can now be stated in matrix language: a quantum state is completely represented by a vector \(|\Psi(t)\rangle\) in Hilbert space. The word completely is important. Once the vector is known, the theory tells us how to compute all probabilities for measurements represented in that space.</p>
+          <div class="callout">Dirac notation is the grammar; Stern-Gerlach supplies the physical vocabulary.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[|n\rangle=\begin{pmatrix}n_1\\ n_2\\ \vdots\\ n_d\end{pmatrix}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle n|=|n\rangle^\dagger=\begin{pmatrix}n_1^*&n_2^*&\cdots&n_d^*\end{pmatrix}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle m|n\rangle=\delta_{mn}.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

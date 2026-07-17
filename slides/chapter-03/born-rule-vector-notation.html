@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Postulate of probability: amplitudes are inner products, and probabilities are squared moduli of projections. Interactive material from the book Quantum Mechanics, with..."/>
@@ -68,15 +72,77 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-percent"></i> Guided reading</div><p>The Born rule tells how a state vector becomes a probability statement. In the Stern-Gerlach setup, it predicts how the incoming beam divides between outgoing beams.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-wave-square"></i> From expansion to probabilities</div><p>Start with the expansion</p><div class="eq">\[|\Psi\rangle=\sum_n C_n|n\rangle,\qquad C_n=\langle n|\Psi\rangle.\]</div><p>Normalization gives</p><div class="eq">\[\langle\Psi|\Psi\rangle=\sum_n |C_n|^2=1.\]</div><p>The probability of finding the result associated with \(|n\rangle\) is therefore</p><div class="eq key-eq">\[P_n=|C_n|^2=|\langle n|\Psi\rangle|^2.\]</div></div>
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-flag"></i> Postulate of probability</div><p>When a measurement of \(\hat A\) is performed in a state \(|\Psi\rangle\), the probability of obtaining eigenvalue \(a_n\) is the squared modulus of the projection of the state onto the corresponding eigenstate.</p><div class="callout">Amplitude first, probability second: \(\langle n|\Psi\rangle\) can carry phase information that may matter in a later measurement.</div></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-percent"></i> Guided reading</div>
+        <p>The chapter now turns amplitudes into probabilities. The key point is that normalization plus orthonormality already force the coefficients in a state expansion to behave like probability amplitudes. The Stern-Gerlach screen then provides the physical interpretation: probability is measured by the relative amount of beam intensity in each output channel.</p>
       </div>
       <div class="col">
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-magnet"></i> Stern-Gerlach example</div><figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-2-single-sg-z.png" alt="Figure 3.2, cropped from the book: one SG(Z) measurement. The outgoing intensities are the probabilities predicted by the Born rule." /><figcaption>Figure 3.2, cropped from the book: one SG(Z) measurement. The outgoing intensities are the probabilities predicted by the Born rule.</figcaption></figure>
-          <p>If the incoming spin state is</p><div class="eq">\[|\Psi\rangle=\frac{1}{\sqrt2}\left(|+\rangle+|-\rangle\right),\]</div><p>then the SG(Z) probabilities are</p><div class="eq key-eq">\[P_+=|\langle+|\Psi\rangle|^2=\frac12,\qquad P_-=|\langle-|\Psi\rangle|^2=\frac12.\]</div><p>The beam splitting is therefore the experimental image of the vector projection formula.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-wave-square"></i> Start from a normalized state</div>
+          <p>Write the state in an orthonormal basis:</p>
+          <div class="eq">\[|\Psi\rangle=\sum_n C_n|n\rangle.\]</div>
+          <p>The state must satisfy \(\langle\Psi|\Psi\rangle=1\). Substituting the expansion gives</p>
+          <div class="eq">\[\langle\Psi|\Psi\rangle=\left(\sum_n C_n^*\langle n|\right)\left(\sum_m C_m|m\rangle\right)=\sum_{n,m}C_n^*C_m\langle n|m\rangle.\]</div>
+          <p>Using orthonormality \(\langle n|m\rangle=\delta_{nm}\), only equal-index terms survive:</p>
+          <div class="eq key-eq">\[\sum_n |C_n|^2=1.\]</div>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-flag"></i> Postulate of probability</div>
+          <p>The coefficient \(C_n\) is the projection amplitude \(\langle n|\Psi\rangle\). The probability of finding the system in the state \(|n\rangle\) is its squared modulus:</p>
+          <div class="eq key-eq">\[P_n=|C_n|^2=|\langle n|\Psi\rangle|^2.\]</div>
+          <p>This is the Born rule in vector notation. The probability is not the amplitude itself, because amplitudes can be negative or complex. The measurable probability is the squared modulus.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-diagram-project"></i> Projector form</div>
+          <p>The same probability can be written with a projector:</p>
+          <div class="eq">\[P_n=\langle\Psi|\hat P_n|\Psi\rangle,\qquad \hat P_n=|n\rangle\langle n|.\]</div>
+          <p>This form is useful because it connects the probability postulate with the operator language. A measurement channel is represented by a projector, and the probability is the expectation value of that projector.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-magnet"></i> Example 3.5: one SG(Z) device</div>
+          <figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-2-single-sg-z.png" alt="Figure 3.2, cropped from the book: one SG(Z) measurement. The outgoing intensities are the probabilities predicted by the Born rule." /><figcaption>Figure 3.2, cropped from the book: one SG(Z) measurement. The outgoing intensities are the probabilities predicted by the Born rule.</figcaption></figure>
+          <p>Suppose the electron spin state in the silver beam is</p>
+          <div class="eq">\[|\Psi\rangle=\frac{1}{\sqrt2}\left(|+\rangle+|-\rangle\right).\]</div>
+          <p>The projection amplitudes onto the SG(Z) eigenstates are</p>
+          <div class="eq">\[\langle+|\Psi\rangle=\frac{1}{\sqrt2},\qquad \langle-|\Psi\rangle=\frac{1}{\sqrt2}.\]</div>
+          <p>Therefore</p>
+          <div class="eq key-eq">\[P_+=P_-=\frac12.\]</div>
+          <p>In the apparatus, this means equal intensities in the two output beams.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-eye"></i> What the probability does not say</div>
+          <p>The probabilities do not fully specify the state. Two states may have the same probabilities in one basis and still differ by phases that affect a later measurement in another basis. This is why matrix mechanics keeps amplitudes until the moment a measurement probability is needed.</p>
+          <div class="callout">In quantum mechanics, amplitudes carry the information; probabilities are what the apparatus reveals in a chosen basis.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Postulate of probability: amplitudes are inner products, and probabilities are squared moduli of projections.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Postulate of probability: amplitudes are inner products, and probabilities are squared moduli of projections.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[|\Psi\rangle=\sum_n C_n|n\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle\Psi|\Psi\rangle=\left(\sum_n C_n^*\langle n|\right)\left(\sum_m C_m|m\rangle\right)=\sum_{n,m}C_n^*C_m\langle n|m\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[\sum_n |C_n|^2=1.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

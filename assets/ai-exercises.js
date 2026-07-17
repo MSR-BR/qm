@@ -6,7 +6,7 @@
   const mathLikePattern =
     /(?:\\[A-Za-z]+|[A-Za-z]_[A-Za-z0-9]+|[A-Za-z]\^[A-Za-z0-9]+|\b(?:sum|ln|exp|lim|frac|partial|sin|cos|tan|sinh|cosh)\b|[=+\-*/^_]|[Σ∑∂ΔΩβλμ→≤≥±≠∞])/;
   const DEFAULT_VALIDATOR_EMAILS = ["marioreis@id.uff.br"];
-  const EXERCISE_GENERATION_ENABLED = false;
+  const EXERCISE_GENERATION_ENABLED = true;
 
   function getCurrentPageReference() {
     return `${window.location.pathname}${window.location.search}${window.location.hash}` || "/";
@@ -717,7 +717,7 @@
       if (button) button.disabled = true;
       setValidationStatus(host, "Sending for professor review...", "warning");
 
-      const response = await fetch("/api/exercise-validacao", {
+      const response = await fetch("/api/exercicio-validacao", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

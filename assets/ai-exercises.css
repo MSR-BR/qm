@@ -9,6 +9,7 @@
   --exercise-muted:#6D6258;
   --exercise-danger:#B03A2E;
   display:block;
+  grid-column:1 / -1;
   width:100%;
   max-width:100%;
   min-width:0;

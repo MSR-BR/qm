@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections. Interactive material from the book Quantum Mechanics..."/>
@@ -68,15 +72,84 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-layer-group"></i> Guided reading</div><p>The same incoming beam can be described in different bases. A basis is tied to a measurement question: \(z\)-oriented magnets ask about \(\sigma_z\), while \(x\)-oriented magnets ask about \(\sigma_x\).</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-expand"></i> Expansion in a basis</div><p>In any orthonormal basis \(\{|n\rangle\}\), the state can be expanded as</p><div class="eq key-eq">\[|\Psi\rangle=\sum_n C_n|n\rangle,\qquad C_n=\langle n|\Psi\rangle.\]</div><p>The coefficient is a projection amplitude. In wave mechanics the same idea appears when a wave function is expanded in eigenfunctions.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-puzzle-piece"></i> Completeness</div><p>A complete basis resolves the identity operator:</p><div class="eq">\[\sum_n |n\rangle\langle n|=\hat 1.\]</div><p>Inserting this identity into a state gives the expansion above. This is not a trick; it says the chosen measurement basis is enough to reconstruct the state.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-layer-group"></i> Guided reading</div>
+        <p>This section is the heart of the state description. Hilbert space is the arena, a basis is a set of possible outcomes for a chosen measurement, and superposition is the statement that a state can be expanded in that basis. The Stern-Gerlach device makes the abstract idea concrete: changing the magnet direction changes the basis used to describe the same spin state.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-arrows-left-right"></i> Spin bases along z and x</div><p>For spin-1/2, the \(z\)-basis and the \(x\)-basis are related by superposition:</p><div class="eq key-eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2},\qquad |-\rangle_x=\frac{|+\rangle-|-\rangle}{\sqrt2}.\]</div><p>This single relation explains a major Stern-Gerlach observation: a beam prepared as \(|+\rangle\) along \(z\) splits into two equal parts when measured along \(x\).</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-compass"></i> Conceptual point</div><p>Superposition does not mean the atom secretly took two paths in a classical sense. It means that a state sharp for one measurement can be a linear combination of possible outcomes for another measurement.</p><div class="callout">Changing the magnet direction changes the basis in which the same vector is decomposed.</div></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-vector-square"></i> Hilbert space as the state space</div>
+          <p>The book defines Hilbert space as a generalization of Euclidean vector space equipped with an inner product. It may be finite-dimensional or infinite-dimensional. For spin-1/2, the space is finite and two-dimensional, which makes all the basic ideas visible with simple column vectors.</p>
+          <p>An orthonormal basis \(\{|n\rangle\}\) lets us write any state as</p>
+          <div class="eq key-eq">\[|\Psi\rangle=\sum_n C_n|n\rangle.\]</div>
+          <p>This is the vector version of expanding a wave function in eigenfunctions. Physically, the expansion says that the state is a superposition of eigenstates of the chosen measurement.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-magnifying-glass"></i> Coefficients as projections</div>
+          <p>The coefficients are not arbitrary labels. Multiply the expansion by \(\langle m|\) on the left:</p>
+          <div class="eq">\[\langle m|\Psi\rangle=\sum_n C_n\langle m|n\rangle.\]</div>
+          <p>Using orthonormality, only the term \(n=m\) survives, so</p>
+          <div class="eq key-eq">\[C_m=\langle m|\Psi\rangle.\]</div>
+          <p>The coefficient is therefore a projection amplitude of the state onto the basis vector \(|m\rangle\).</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-border-all"></i> Completeness</div>
+          <p>Substituting the projection formula back into the expansion gives</p>
+          <div class="eq">\[|\Psi\rangle=\sum_n |n\rangle\langle n|\Psi\rangle=\left(\sum_n |n\rangle\langle n|\right)|\Psi\rangle.\]</div>
+          <p>Because this must hold for any state, the expression in parentheses is the identity operator:</p>
+          <div class="eq key-eq">\[\sum_n |n\rangle\langle n|=\hat 1.\]</div>
+          <p>This completeness relation will be used repeatedly to build matrix operators and expectation values.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-magnet"></i> Example 3.1: the z and x spin bases</div>
+          <p>The Stern-Gerlach experiment gives a two-level system. Along the \(z\)-axis, the basis is chosen as</p>
+          <div class="eq">\[|+\rangle=\begin{pmatrix}1\\0\end{pmatrix},\qquad |-\rangle=\begin{pmatrix}0\\1\end{pmatrix}.\]</div>
+          <p>A different magnet direction corresponds to a different basis. For the \(x\)-axis, a convenient choice is</p>
+          <div class="eq key-eq">\[|+\rangle_x=\frac{1}{\sqrt2}\begin{pmatrix}1\\1\end{pmatrix},\qquad |-\rangle_x=\frac{1}{\sqrt2}\begin{pmatrix}1\\-1\end{pmatrix}.\]</div>
+          <p>The normalization and orthogonality conditions are satisfied in both bases. The difference is not the dimension of the space, but the measurement question being asked.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-right-left"></i> Relations between bases</div>
+          <p>The \(x\)-basis can be written in terms of the \(z\)-basis:</p>
+          <div class="eq key-eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2},\qquad |-\rangle_x=\frac{|+\rangle-|-\rangle}{\sqrt2}.\]</div>
+          <p>The inverse relations are equally important:</p>
+          <div class="eq">\[|+\rangle=\frac{|+\rangle_x+|-\rangle_x}{\sqrt2},\qquad |-\rangle=\frac{|+\rangle_x-|-\rangle_x}{\sqrt2}.\]</div>
+          <p>These formulas are what make the later Stern-Gerlach sequences understandable. A state that is definite for SG(Z) becomes a superposition when described in the SG(X) basis.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-lightbulb"></i> Conceptual consequence</div>
+          <p>Superposition is basis-dependent in its appearance. The state \(|+\rangle\) is a single basis vector for a \(z\)-measurement, but it is a balanced superposition for an \(x\)-measurement. This is why a beam prepared by SG(Z) can split again when it enters SG(X).</p>
+          <div class="callout">A basis is not merely a mathematical convenience; in this chapter it corresponds to a physical orientation of the Stern-Gerlach device.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[|\Psi\rangle=\sum_n C_n|n\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[\langle m|\Psi\rangle=\sum_n C_n\langle m|n\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[C_m=\langle m|\Psi\rangle.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

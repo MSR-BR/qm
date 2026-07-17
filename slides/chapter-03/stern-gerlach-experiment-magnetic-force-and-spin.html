@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable. Interactive material from the book Quantum Mechanics..."/>
@@ -70,39 +74,81 @@
 
       <div class="card orange guide-card">
         <div class="ch orange"><i class="fa-solid fa-magnet"></i> Guided reading</div>
-        <p>The Stern-Gerlach experiment is the physical anchor of Chapter 3. It starts like a classical force problem, but its result requires the quantum language of states, observables, probabilities and measurement.</p>
+        <p>The Stern-Gerlach experiment is not just an illustration; it is the physical thread that organizes the whole chapter. The analysis begins as classical mechanics of a magnetic moment in a field gradient, but the result of the experiment forces a discrete quantum description. The important point is that the apparatus translates a microscopic degree of freedom into spatially separated beams.</p>
       </div>
       <div class="col">
         <div class="card">
-          <div class="ch"><i class="fa-solid fa-diagram-project"></i> The apparatus</div>
+          <div class="ch"><i class="fa-solid fa-diagram-project"></i> The experimental arrangement</div>
           <figure class="book-figure"><img src="../../assets/chapter-03/figures/fig-3-1-stern-gerlach-setup.png" alt="Figure 3.1, cropped from the book: Stern-Gerlach experimental setup. Book figure copyright/source indicated in the image; see the original book for the full caption." /><figcaption>Figure 3.1, cropped from the book: Stern-Gerlach experimental setup. Book figure copyright/source indicated in the image; see the original book for the full caption.</figcaption></figure>
-          <p>Silver atoms leave the oven, pass through a collimator and enter a region with an inhomogeneous magnetic field. The field gradient is essential: a uniform field would mainly exert a torque on a magnetic moment, while a gradient produces a net deflecting force.</p>
+          <p>Silver atoms are evaporated in an oven, collimated into a narrow beam, and sent through a region where the magnetic field is inhomogeneous. The beam direction is taken as the \(y\)-axis; the useful separation happens in the \(z\)-direction. The glass plate at the end records where the atoms land.</p>
+          <p>The use of silver is physically convenient because the atom behaves like a system with one relevant valence electron. Modern atomic physics tells us that the orbital angular momentum of that electron in the ground configuration is zero, so the observed splitting is associated with spin rather than ordinary orbital motion.</p>
         </div>
         <div class="card orange">
-          <div class="ch orange"><i class="fa-solid fa-arrow-down-up-across-line"></i> Why a gradient matters</div>
-          <p>The magnetic interaction energy is approximately \(U=-\boldsymbol{\mu}\cdot\mathbf B\). A force appears when this energy changes with position. If the dominant variation is along \(z\), the useful approximation is</p>
-          <div class="eq key-eq">\[F_z\simeq \mu_z\frac{\partial B_z}{\partial z}.\]</div>
-          <p>Classically, different orientations of \(\mu_z\) would give a continuous band of deflections. The observed pattern is instead discrete.</p>
+          <div class="ch orange"><i class="fa-solid fa-arrow-down-up-across-line"></i> From magnetic energy to force</div>
+          <p>A magnetic moment in a magnetic field has an interaction energy that depends on position when the field is not uniform. Taking the field as \(\mathbf B=(B_x,0,B_z)\), with the dominant variation along \(z\), the force component that matters for separation is obtained from the spatial derivative of the interaction:</p>
+          <div class="eq">\[F_x=\frac{\partial}{\partial x}(\mu_xB_x+\mu_zB_z),\qquad F_y=0,\qquad F_z=\frac{\partial}{\partial z}(\mu_xB_x+\mu_zB_z).\]</div>
+          <p>With the simplifying assumptions used in the chapter, the cross derivatives vanish and the \(x\)-gradient is negligible. The result is the working Stern-Gerlach force law:</p>
+          <div class="eq key-eq">\[F_x\simeq0,\qquad F_y=0,\qquad F_z\simeq \mu_z\frac{\partial B_z}{\partial z}.\]</div>
+          <p>This equation is the classical gateway into the quantum problem: measuring the deflection is effectively measuring a component of the magnetic moment.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-rotate"></i> The old expectation</div>
+          <p>In the early interpretation, the atomic magnetic moment was related to orbital motion. A current loop of charge \(q\), speed \(v\), and orbital radius \(r\) gives</p>
+          <div class="eq">\[\mu=IA=\frac{q}{2}vr.\]</div>
+          <p>Since the orbital angular momentum is \(L=mvr\), this becomes</p>
+          <div class="eq key-eq">\[\mu=\frac{q}{2m}L.\]</div>
+          <p>If the orbital angular momentum were continuously oriented, a continuous trace would be expected. If it were quantized, separated spots would appear. The experiment was historically read as evidence for angular-momentum quantization.</p>
         </div>
       </div>
       <div class="col">
-        <div class="card green">
-          <div class="ch green"><i class="fa-solid fa-circle-dot"></i> The quantum surprise</div>
-          <p>The original expectation was to test angular-momentum quantization. The modern interpretation is sharper: silver has one valence electron in an \(s\) state, so the orbital angular momentum is zero. The two observed beams are associated with the electron spin component.</p>
-          <div class="eq">\[\hat\sigma_z|+\rangle=+|+\rangle,\qquad \hat\sigma_z|-\rangle=-|-\rangle.\]</div>
-          <p>The two spots are therefore not merely experimental details. They are the visual form of an eigenvalue problem.</p>
-        </div>
         <div class="card purple">
-          <div class="ch purple"><i class="fa-solid fa-flag"></i> Postulates already in the background</div>
-          <ul class="bullet">
-            <li>The incoming beam is represented by a quantum state.</li>
-            <li>The magnet orientation selects the observable to be measured.</li>
-            <li>The possible results are eigenvalues of the corresponding operator.</li>
-            <li>The relative intensities of outgoing beams are probabilities.</li>
-          </ul>
-          <div class="callout">The rest of the chapter makes this physical story algebraic.</div>
+          <div class="ch purple"><i class="fa-solid fa-circle-dot"></i> The modern interpretation</div>
+          <p>The observed discrete splitting survives, but its interpretation changes. Silver atoms have closed inner shells and one valence electron in an \(s\)-state. Because that orbital angular momentum is zero, the two-beam pattern is associated with an intrinsic degree of freedom: electron spin.</p>
+          <p>This is why the chapter later represents the relevant observable by a dimensionless spin operator \(\hat\sigma_u\), where \(u\) is the axis selected by the magnetic-field gradient. For a spin-1/2 system, the two possible dimensionless outcomes are</p>
+          <div class="eq key-eq">\[\sigma_u=+1\quad \hbox{or}\quad \sigma_u=-1.\]</div>
+          <p>The apparatus therefore turns spin into a two-level measurement problem.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-timeline"></i> Why the history matters</div>
+          <p>The book emphasizes that the experiment was first connected to the Bohr-era search for quantized angular momentum. Later developments, including Pauli's exclusion principle, Hund's rules, the proposal of spin by Uhlenbeck and Goudsmit, and Dirac's relativistic theory, clarified the interpretation. This history matters because it shows how experimental discreteness led to a new intrinsic quantum number.</p>
+          <div class="table-wrap"><table><thead><tr><th>Level</th><th>Meaning</th></tr></thead><tbody>
+            <tr><td>Classical expectation</td><td>A continuous distribution if magnetic moments can point in arbitrary directions.</td></tr>
+            <tr><td>Old quantum reading</td><td>Separated spots as evidence for angular-momentum quantization.</td></tr>
+            <tr><td>Modern reading</td><td>Two spots as evidence of a spin projection with two eigenvalues.</td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-flag"></i> Postulates hiding inside the apparatus</div>
+          <p>The experiment already contains the postulates that the chapter will formalize. The incoming beam has a state; the magnet orientation defines the observable; the screen spots identify eigenvalues; the beam intensities give probabilities; and a selected outgoing beam becomes a prepared state for a later device.</p>
+          <div class="callout">The rest of Chapter 3 converts each of these experimental statements into Dirac notation and matrix algebra.</div>
         </div>
       </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[F_x=\frac{\partial}{\partial x}(\mu_xB_x+\mu_zB_z),\qquad F_y=0,\qquad F_z=\frac{\partial}{\partial z}(\mu_xB_x+\mu_zB_z).\]</li>
+<li><span class="practice-label">Equation:</span> \[F_x\simeq0,\qquad F_y=0,\qquad F_z\simeq \mu_z\frac{\partial B_z}{\partial z}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\mu=IA=\frac{q}{2}vr.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

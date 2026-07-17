@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics. Interactive material from the book Quantum Mechanics, with teac..."/>
@@ -68,15 +72,88 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-atom"></i> Guided reading</div><p>The Pauli matrices are the concrete operators behind the spin examples. They turn the two-beam Stern-Gerlach picture into algebra.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-up-down"></i> Spin along z</div><p>The \(z\)-oriented apparatus has two eigenstates. Using the spectral form,</p><div class="eq">\[\hat\sigma_z=+|+\rangle\langle+|-|-\rangle\langle-|.\]</div><p>In the \(z\)-basis this becomes</p><div class="eq key-eq">\[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.\]</div><p>The diagonal entries are the two possible dimensionless outcomes of the SG(Z) measurement.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-left-right"></i> Spin along x</div><p>The \(x\)-oriented apparatus has eigenstates \(|+\rangle_x\) and \(|-\rangle_x\). Using the same spectral idea and rewriting in the \(z\)-basis gives</p><div class="eq key-eq">\[\hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div><p>The operator is not diagonal in the \(z\)-basis, which already announces that sharp \(z\) information and sharp \(x\) information are not the same thing.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-atom"></i> Guided reading</div>
+        <p>The Pauli matrices are not introduced as isolated famous matrices. In the logic of the chapter, they are built from the spectral decomposition of the Stern-Gerlach spin observables. The two eigenvalues are \(\pm1\); the eigenvectors are the outgoing spin states selected by the apparatus.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-check"></i> Checking the eigenvalue equation</div><p>The matrices reproduce the two Stern-Gerlach outcomes:</p><div class="eq">\[\hat\sigma_z|\pm\rangle=\pm|\pm\rangle,\qquad \hat\sigma_x|\pm\rangle_x=\pm|\pm\rangle_x.\]</div><p>This is the cleanest way to read the experiment: each magnet orientation corresponds to a spin operator, and the emerging beams correspond to its eigenstates.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-book-open"></i> What this page prepares</div><p>Once the spin operators are known, the rest of the chapter can compute probabilities, expectation values, variances and the effect of changing the measurement order.</p><div class="callout">The Pauli matrices are small enough to calculate by hand, but rich enough to display the logic of quantum measurement.</div></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-up-down"></i> Building \(\hat\sigma_z\)</div>
+          <p>For a magnet aligned along \(z\), the eigenstates are \(|+\rangle\) and \(|-\rangle\). The spectral form gives</p>
+          <div class="eq">\[\hat\sigma_z=+|+\rangle\langle+|-|-\rangle\langle-|.\]</div>
+          <p>Using the \(z\)-basis vectors, the outer products are</p>
+          <div class="eq">\[|+\rangle\langle+|=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad |-\rangle\langle-|=\begin{pmatrix}0&0\\0&1\end{pmatrix}.\]</div>
+          <p>Therefore</p>
+          <div class="eq key-eq">\[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.\]</div>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-left-right"></i> Building \(\hat\sigma_x\)</div>
+          <p>For a magnet aligned along \(x\), the eigenstates are \(|+\rangle_x\) and \(|-\rangle_x\). The spectral form begins as</p>
+          <div class="eq">\[\hat\sigma_x=+|+\rangle_x{}_x\langle+|-|-\rangle_x{}_x\langle-|.\]</div>
+          <p>Substitute the basis relations \(|\pm\rangle_x=(|+\rangle\pm|-\rangle)/\sqrt2\). The diagonal contributions cancel and the off-diagonal contributions remain:</p>
+          <div class="eq">\[\hat\sigma_x=|+\rangle\langle-|+|-\rangle\langle+|.\]</div>
+          <p>In the \(z\)-basis, this becomes</p>
+          <div class="eq key-eq">\[\hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-check"></i> Checking the eigenvalue equations</div>
+          <p>The matrices must reproduce the Stern-Gerlach outcomes. For \(z\), the check is immediate:</p>
+          <div class="eq">\[\hat\sigma_z|+\rangle=+|+\rangle,\\qquad \hat\sigma_z|-\rangle=-|-\rangle.\]</div>
+          <p>For \(x\), the matrix is not diagonal in the \(z\)-basis, but it is diagonal in its own eigenbasis:</p>
+          <div class="eq key-eq">\[\hat\sigma_x|+\rangle_x=+|+\rangle_x,\\qquad \hat\sigma_x|-\rangle_x=-|-\rangle_x.\]</div>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-table-cells"></i> Why one matrix is diagonal and the other is not</div>
+          <p>In the \(z\)-basis, \(\hat\sigma_z\) is diagonal because the basis vectors are already the possible results of SG(Z). The operator \(\hat\sigma_x\) is not diagonal in that same basis because an SG(X) device asks a different question. Its eigenvectors are balanced superpositions of \(|+\rangle\) and \(|-\rangle\).</p>
+          <p>This is the first algebraic sign of measurement incompatibility. The apparatuses SG(Z) and SG(X) do not simply reveal two preexisting labels at once; they correspond to different bases.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-circle-info"></i> About \(\hat\sigma_y\)</div>
+          <p>The chapter does not construct \(\hat\sigma_y\) at this point because the \(y\)-basis vectors have not yet been introduced. The full angular-momentum algebra will be developed later. For now, \(\hat\sigma_z\) and \(\hat\sigma_x\) are enough to show how matrix mechanics encodes measurements and non-commuting observables.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-magnet"></i> Experimental reading</div>
+          <p>The Pauli matrix does not draw the apparatus, but it contains what the apparatus can output. Its eigenvalues label the separated beams, while its eigenvectors describe the states carried by those beams after the measurement.</p>
+          <div class="callout">A Pauli matrix is a compact algebraic model of a Stern-Gerlach measurement along a chosen axis.</div>
+        </div>
+      </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-magnet"></i> Spin matrices as compact measurement devices</div>
+        <p>The Pauli matrices encode spin measurements along different axes. In the \(z\)-basis, \(\hat\sigma_z\) is diagonal because \(|+\rangle\) and \(|-\rangle\) are already its eigenstates:</p>
+        <div class="eq">\[\hat\sigma_z|\pm\rangle=\pm|\pm\rangle.\]</div>
+        <p>The \(x\)-spin operator is not diagonal in that same basis, but its eigenvectors are the \(x\)-basis states:</p>
+        <div class="eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2},\qquad |-\rangle_x=\frac{|+\rangle-|-\rangle}{\sqrt2}.\]</div>
+        <p>This prepares students for Stern-Gerlach exercises: choose the apparatus axis, choose the matching operator, then use the appropriate eigenbasis.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\hat\sigma_z=+|+\rangle\langle+|-|-\rangle\langle-|.\]</li>
+<li><span class="practice-label">Equation:</span> \[|+\rangle\langle+|=\begin{pmatrix}1&0\\0&0\end{pmatrix},\qquad |-\rangle\langle-|=\begin{pmatrix}0&0\\0&1\end{pmatrix}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

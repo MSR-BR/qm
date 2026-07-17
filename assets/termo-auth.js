@@ -8,7 +8,7 @@
     ? window.location.origin
     : DEFAULT_AUTH_SITE_URL;
   const LANDING_LOGIN_TARGET_KEY = "termoLandingPostLoginTarget";
-  const EXERCISE_GENERATION_ENABLED = false;
+  const EXERCISE_GENERATION_ENABLED = true;
   const PROGRESS_METADATA_KEYS = {
     url: "qm_last_page_url",
     title: "qm_last_page_title",

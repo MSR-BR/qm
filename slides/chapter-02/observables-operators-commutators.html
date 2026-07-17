@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.3" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
   <script defer src="../../assets/termo-share.js?v=0714.3"></script>
   <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.3" />
-  <script defer src="../../assets/termo-auth.js?v=0714.3"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0714.3"></script>
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty. Interactive material from t..."/>
 <meta name="author" content="Prof. Mario Reis"/>
@@ -107,6 +111,41 @@
           <p>for allowed functions satisfying the boundary conditions. In practice, Hermitian operators have real eigenvalues and orthogonal eigenfunctions, which is why they can represent observables.</p>
         </div>
       </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-scale-balanced"></i> Reading operators as measurement rules</div>
+        <p>An observable is represented by an operator because measurement outcomes come from an eigenvalue equation:</p>
+        <div class="eq">\[\hat A\psi_n=a_n\psi_n.\]</div>
+        <p>Hermitian operators are selected because their eigenvalues are real and their eigenstates can form the basis used for probability calculations. Commutators then test whether two measurement questions are compatible:</p>
+        <div class="eq">\[[\hat A,\hat B]=0\quad \hbox{compatible in the shared-eigenbasis sense}.\]</div>
+        <p>Short exercises should ask students to connect this algebra to measurement meaning, rather than merely compute symbols.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\hat A\psi_n=a_n\psi_n.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat x=x,\qquad \hat p=-i\hbar\frac{d}{dx},\qquad \hat H=-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x).\]</li>
+<li><span class="practice-label">Equation:</span> \[[\hat A,\hat B]=\hat A\hat B-\hat B\hat A.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
 
       <div class="resource-links">
         <strong>Original book and previews:</strong>

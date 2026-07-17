@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.3" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
   <script defer src="../../assets/termo-share.js?v=0714.3"></script>
   <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.3" />
-  <script defer src="../../assets/termo-auth.js?v=0714.3"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0714.3"></script>
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Time evolution of expectation values, the classical limit and the Virial theorem. Interactive material from the book Quantum Mechanics, with teaching authorship by Prof...."/>
 <meta name="author" content="Prof. Mario Reis"/>
@@ -103,6 +107,40 @@
           <p>Ehrenfest's theorem does not restore classical trajectories for individual particles. It shows that certain averages can follow classical-looking equations when the state is sufficiently localized or when the potential is smooth over the spread of the wave packet.</p>
         </div>
       </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-route"></i> Why expectation values can look classical</div>
+        <p>Ehrenfest's theorem tracks the time evolution of averages, not individual particle trajectories. For position and momentum it gives the quantum analogue of Newton's equations:</p>
+        <div class="eq">\[\frac{d\langle x\rangle}{dt}=\frac{\langle p\rangle}{m},\qquad \frac{d\langle p\rangle}{dt}=-\left\langle\frac{dV}{dx}\right\rangle.\]</div>
+        <p>The result becomes classically transparent when the wave packet is narrow enough that the average force is close to the force at the average position.</p>
+        <p>The Virial theorem is a separate average-energy statement; exercises should not mix the two without stating which average is being studied.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Time evolution of expectation values, the classical limit and the Virial theorem.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Time evolution of expectation values, the classical limit and the Virial theorem.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\frac{d}{dt}\langle \hat A\rangle=\left\langle\frac{\partial \hat A}{\partial t}\right\rangle+\frac{i}{\hbar}\langle[\hat H,\hat A]\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[\frac{d}{dt}\langle \hat x\rangle=\frac{\langle \hat p\rangle}{m},\qquad \frac{d}{dt}\langle \hat p\rangle=-\left\langle V'(\hat x)\right\rangle.\]</li>
+<li><span class="practice-label">Equation:</span> \[2\langle T\rangle=\left\langle x\frac{dV}{dx}\right\rangle.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
 
       <div class="resource-links">
         <strong>Original book and previews:</strong>

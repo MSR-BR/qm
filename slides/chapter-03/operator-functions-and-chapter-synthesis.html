@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics. Interactive material from the book Quantum Mechanics, wit..."/>
@@ -68,21 +72,88 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-diagram-project"></i> Guided reading</div><p>The final technical tool is the idea of applying functions to operators. This is needed for time evolution, rotations and many later calculations. The chapter then closes the loop: matrix mechanics is wave mechanics written in another basis.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-calculator"></i> Functions of operators</div><p>If \(\hat A\) has spectral decomposition \(\hat A=\sum_n a_n|a_n\rangle\langle a_n|\), then a function of \(\hat A\) is defined by applying the function to its eigenvalues:</p><div class="eq key-eq">\[f(\hat A)=\sum_n f(a_n)|a_n\rangle\langle a_n|.\]</div><p>This definition is what makes expressions such as \(e^{-i\hat Ht/\hbar}\) precise.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> Pauli exponential</div><p>Because \(\hat\sigma_x^2=\hat 1\), the exponential separates into even and odd powers:</p><div class="eq">\[e^{\alpha\hat\sigma_x}=\cosh(\alpha)\hat 1+\sinh(\alpha)\hat\sigma_x.\]</div><p>With \(\alpha=-i\theta\), this becomes the familiar unitary form</p><div class="eq key-eq">\[e^{-i\theta\hat\sigma_x}=\cos\theta\,\hat 1-i\sin\theta\,\hat\sigma_x.\]</div></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-diagram-project"></i> Guided reading</div>
+        <p>The closing ideas of the chapter and appendices show how matrix mechanics becomes a flexible computational language. Functions of operators are needed for time evolution and rotations, while the correspondence with wave mechanics shows that kets and wave functions are two representations of the same state.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-bridge"></i> Matrix mechanics and wave mechanics</div><div class="table-wrap"><table><thead><tr><th>Wave mechanics</th><th>Matrix mechanics</th></tr></thead><tbody>
-          <tr><td>Wave function \(\Psi(x)\)</td><td>State vector \(|\Psi\rangle\)</td></tr>
-          <tr><td>Integral overlaps</td><td>Inner products \(\langle n|\Psi\rangle\)</td></tr>
-          <tr><td>Differential operators</td><td>Matrices/operators in a basis</td></tr>
-          <tr><td>Probability density or coefficients</td><td>Squared projection amplitudes</td></tr>
-          <tr><td>TDSE</td><td>Unitary evolution</td></tr>
-        </tbody></table></div><p>The physics is the same. The representation is chosen for the problem.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-key"></i> Chapter 3 in one sentence</div><p>Matrix mechanics says: represent the state by a vector, represent measurable questions by Hermitian operators, use projections for probabilities, and use unitary transformations for time evolution and basis changes.</p><div class="callout">The Stern-Gerlach experiment is the running laboratory where each of these rules becomes visible.</div></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-calculator"></i> Functions of operators</div>
+          <p>If an operator has spectral decomposition</p>
+          <div class="eq">\[\hat A=\sum_n a_n|a_n\rangle\langle a_n|,\]</div>
+          <p>then a function of the operator is defined by applying the function to its eigenvalues:</p>
+          <div class="eq key-eq">\[f(\hat A)=\sum_n f(a_n)|a_n\rangle\langle a_n|.\]</div>
+          <p>This rule makes expressions such as \(e^{-i\hat Ht/\hbar}\) precise. In the energy basis, the exponential simply multiplies each energy eigenstate by a phase.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-wave-square"></i> Pauli matrix exponential</div>
+          <p>For Pauli matrices, the algebra is simple because \(\hat\sigma_x^2=\hat 1\). Split the exponential series into even and odd powers:</p>
+          <div class="eq">\[e^{\alpha\hat\sigma_x}=\left(1+\frac{\alpha^2}{2!}+\cdots\right)\hat 1+\left(\alpha+\frac{\alpha^3}{3!}+\cdots\right)\hat\sigma_x.\]</div>
+          <p>Therefore</p>
+          <div class="eq key-eq">\[e^{\alpha\hat\sigma_x}=\cosh\alpha\,\hat 1+\sinh\alpha\,\hat\sigma_x.\]</div>
+          <p>For imaginary \(\alpha=-i\theta\), this becomes a unitary rotation-like operator:</p>
+          <div class="eq">\[e^{-i\theta\hat\sigma_x}=\cos\theta\,\hat 1-i\sin\theta\,\hat\sigma_x.\]</div>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-location-dot"></i> Position basis and wave functions</div>
+          <p>Appendix 3.B connects matrix mechanics back to wave mechanics. A wave function is the projection of a state vector onto the position basis:</p>
+          <div class="eq key-eq">\[\psi_n(x)=\langle x|n\rangle.\]</div>
+          <p>The position basis is continuous, so orthogonality and completeness use the Dirac delta and an integral:</p>
+          <div class="eq">\[\langle x|x'\rangle=\delta(x-x'),\qquad \int dx\,|x\rangle\langle x|=\hat 1.\]</div>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-bridge"></i> Normalization in both languages</div>
+          <p>Insert the continuous completeness relation into \(\langle n|n\rangle\):</p>
+          <div class="eq">\[\langle n|n\rangle=\int dx\,\langle n|x\rangle\langle x|n\rangle.\]</div>
+          <p>Using \(\psi_n(x)=\langle x|n\rangle\), this becomes</p>
+          <div class="eq key-eq">\[\langle n|n\rangle=\int dx\,\psi_n^*(x)\psi_n(x).\]</div>
+          <p>This equation shows explicitly that the vector notation and the wave-function notation describe the same normalization condition.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-table"></i> Dictionary between the two mechanics</div>
+          <div class="table-wrap"><table><thead><tr><th>Wave mechanics</th><th>Matrix mechanics</th><th>Physical meaning</th></tr></thead><tbody>
+            <tr><td>Wave function \(\psi(x)\)</td><td>Ket \(|\Psi\rangle\)</td><td>State of the system</td></tr>
+            <tr><td>Integral overlap</td><td>Inner product</td><td>Projection amplitude</td></tr>
+            <tr><td>Operator acting on functions</td><td>Matrix/operator acting on kets</td><td>Observable or transformation</td></tr>
+            <tr><td>Expansion in eigenfunctions</td><td>Expansion in basis kets</td><td>Superposition</td></tr>
+            <tr><td>TDSE</td><td>Unitary evolution</td><td>Time dependence</td></tr>
+          </tbody></table></div>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-key"></i> Chapter synthesis</div>
+          <p>Chapter 3 turns the postulates into a compact matrix language. A quantum state is a ket in Hilbert space. An observable is a Hermitian operator. Possible results are eigenvalues. Probabilities are squared projection amplitudes. Expectation values are bracket expressions. Measurement prepares new states. Time evolution is unitary. Basis changes are unitary transformations.</p>
+          <p>The Stern-Gerlach experiment is the running laboratory in which these ideas become visible: changing magnet orientation changes the basis, blocking a beam prepares a state, and repeated devices reveal the consequences of non-commuting observables.</p>
+          <div class="callout">Matrix mechanics is not less physical than wave mechanics; it is the physical story written in the language best suited to discrete quantum alternatives.</div>
+        </div>
+      </div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\hat A=\sum_n a_n|a_n\rangle\langle a_n|,\]</li>
+<li><span class="practice-label">Equation:</span> \[f(\hat A)=\sum_n f(a_n)|a_n\rangle\langle a_n|.\]</li>
+<li><span class="practice-label">Equation:</span> \[e^{\alpha\hat\sigma_x}=\left(1+\frac{\alpha^2}{2!}+\cdots\right)\hat 1+\left(\alpha+\frac{\alpha^3}{3!}+\cdots\right)\hat\sigma_x.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

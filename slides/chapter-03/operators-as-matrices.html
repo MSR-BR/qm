@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
@@ -68,15 +72,85 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-table-cells"></i> Guided reading</div><p>Once states are vectors, observables become operators acting on those vectors. In a chosen basis, each operator becomes a matrix. The matrix entries tell how the operator maps one basis direction into another.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-flag"></i> Postulate for observables and operators</div><p>Every measurable quantity is represented by a Hermitian operator. In a basis \(\{|n\rangle\}\), the matrix elements of \(\hat A\) are</p><div class="eq key-eq">\[A_{nm}=\langle n|\hat A|m\rangle.\]</div><p>Knowing all matrix elements is equivalent to knowing the operator in that basis.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-gears"></i> How the operator acts</div><p>If \(|\Psi\rangle=\sum_m C_m|m\rangle\), then</p><div class="eq">\[\hat A|\Psi\rangle=\sum_{n,m}A_{nm}C_m|n\rangle.\]</div><p>The output is another vector. In the Stern-Gerlach problem, applying a spin operator to a spin state tells how that observable is represented before a measurement is interpreted.</p></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-table-cells"></i> Guided reading</div>
+        <p>Once states are vectors, observables must be represented by objects that act on vectors. In a chosen basis, those objects are matrices. The book builds this result from the completeness relation rather than simply declaring it; that construction explains why matrix elements have the form \(\langle m|\hat A|n\rangle\).</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-ruler"></i> Diagonal versus non-diagonal</div><p>When an operator is diagonal in a basis, each basis vector is already an eigenstate. For \(\sigma_z\), the \(z\)-basis is diagonal. For \(\sigma_x\), the same \(z\)-basis is not diagonal.</p><div class="eq key-eq">\[\hat\sigma_z=\begin{pmatrix}1&0\\0&-1\end{pmatrix},\qquad \hat\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div><p>This is why a beam prepared along \(z\) does not behave as a definite \(x\)-beam.</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-lightbulb"></i> Practical reading rule</div><p>A matrix is not merely a table of numbers. It is a description of a measurement question in a chosen basis. If the basis changes, the matrix representation changes, but the physical predictions do not.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-border-all"></i> Inner product versus outer product</div>
+          <p>The expression \(\langle n|\Psi\rangle\) is an inner product: it returns a number, the projection amplitude. The expression \(|n\rangle\langle n|\) is an outer product: it returns an operator, or matrix, that projects onto the state \(|n\rangle\).</p>
+          <div class="eq">\[\langle n|\Psi\rangle \;\hbox{is a number},\qquad |n\rangle\langle n|\;\hbox{is a matrix}.\]</div>
+          <p>This distinction is essential. Projection amplitudes become probabilities, while projectors become the building blocks of observables and measurements.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-cubes"></i> Building an operator from identities</div>
+          <p>Insert the completeness relation on both sides of an operator:</p>
+          <div class="eq">\[\hat A=\hat 1\hat A\hat 1=\left(\sum_m |m\rangle\langle m|\right)\hat A\left(\sum_n |n\rangle\langle n|\right).\]</div>
+          <p>Expanding this expression gives</p>
+          <div class="eq key-eq">\[\hat A=\sum_{m,n}\langle m|\hat A|n\rangle |m\rangle\langle n|.\]</div>
+          <p>The numbers \(A_{mn}=\langle m|\hat A|n\rangle\) are the matrix elements of the operator in the basis \(\{|n\rangle\}\).</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-table"></i> Matrix representation</div>
+          <p>In the standard basis, each outer product \(|m\rangle\langle n|\) contributes to one row and one column of the matrix. Thus a \(d\)-dimensional operator can be written as</p>
+          <div class="eq key-eq">\[\hat A=\begin{pmatrix}A_{11}&A_{12}&\cdots&A_{1d}\\A_{21}&A_{22}&\cdots&A_{2d}\\\vdots&\vdots&\ddots&\vdots\\A_{d1}&A_{d2}&\cdots&A_{dd}\end{pmatrix}.\]</div>
+          <p>This is the formal reason matrix mechanics is called matrix mechanics: the observable is represented by the table of all its actions between basis states.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-flag"></i> Postulate for observables</div>
+          <p>The postulate for observables says that every measurable quantity is represented by a Hermitian operator. In the Stern-Gerlach case, the measurable quantity is a spin projection along the axis selected by the magnet. The possible results are obtained from the eigenvalue equation.</p>
+          <div class="eq key-eq">\[\hat A|n\rangle=a_n|n\rangle.\]</div>
+          <p>The operator is not an optional mathematical decoration. It is the object that contains both the possible measurement results and the basis in which those results are sharp.</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-filter"></i> Spectral form begins here</div>
+          <p>If the basis vectors are eigenvectors of \(\hat A\), then \(\hat A|n\rangle=a_n|n\rangle\). Substituting this into the matrix expansion collapses the double sum into a simpler expression:</p>
+          <div class="eq key-eq">\[\hat A=\sum_n a_n|n\rangle\langle n|.\]</div>
+          <p>This spectral form is the bridge to measurement. The projectors select the outcome channels; the numbers \(a_n\) label the values displayed by the apparatus.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-magnet"></i> Stern-Gerlach interpretation</div>
+          <p>For SG(Z), the basis \(\{|+\rangle,|-\rangle\}\) is already the eigenbasis of the measured observable. For SG(X), the eigenbasis is \(\{|+\rangle_x,|-\rangle_x\}\). The same physical spin space is being used; the operator changes because the measurement axis changes.</p>
+          <div class="callout">An operator is a measurement question written in a basis.</div>
+        </div>
+      </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-table"></i> What a matrix element means</div>
+        <p>A matrix element \(A_{mn}=\langle m|\hat A|n\rangle\) tells how much of the output along \(|m\rangle\) is produced when \(\hat A\) acts on the input basis state \(|n\rangle\).</p>
+        <div class="eq">\[\hat A|n\rangle=\sum_m A_{mn}|m\rangle.\]</div>
+        <p>Columns therefore describe the transformed basis vectors. This interpretation helps students read matrices physically rather than treating them as arrays of disconnected numbers.</p>
+        <p>For observables, the special basis is the eigenbasis, where the matrix becomes diagonal and the diagonal entries are possible measurement outcomes.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[\langle n|\Psi\rangle \;\hbox{is a number},\qquad |n\rangle\langle n|\;\hbox{is a matrix}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat A=\hat 1\hat A\hat 1=\left(\sum_m |m\rangle\langle m|\right)\hat A\left(\sum_n |n\rangle\langle n|\right).\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat A=\sum_{m,n}\langle m|\hat A|n\rangle |m\rangle\langle n|.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

@@ -16,8 +16,8 @@
     };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <link rel="stylesheet" href="assets/ai-exercises.css?v=0714.3">
-  <script defer src="assets/ai-exercises.js?v=0714.3"></script>
+  <link rel="stylesheet" href="assets/ai-exercises.css?v=0717.2">
+  <script defer src="assets/ai-exercises.js?v=0717.2"></script>
 
   <style>
     :root {
@@ -2226,8 +2226,8 @@
 (function () {
   const scripts = [
     "assets/termo-share.js?v=0714.3",
-    "assets/termo-auth.js?v=0714.3",
-    "assets/termo-user-data.js?v=0714.3"
+    "assets/termo-auth.js?v=0717.2",
+    "assets/termo-user-data.js?v=0717.2"
   ];
 
   scripts.forEach(function (src) {
@@ -2985,7 +2985,7 @@
       label: "14/06/2026"
     };
 
-    const exerciseGenerationEnabled = false;
+    const exerciseGenerationEnabled = true;
 
     const personalViews = [
       ...(exerciseGenerationEnabled ? [{
@@ -5067,7 +5067,7 @@
 
           if (!existingScript) {
             const script = document.createElement("script");
-            script.src = "assets/termo-auth.js?v=0714.3";
+            script.src = "assets/termo-auth.js?v=0717.2";
             script.async = true;
             script.onerror = function () {
               if (settled) return;

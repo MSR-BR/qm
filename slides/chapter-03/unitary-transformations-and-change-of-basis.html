@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0716.1" />
+  <link rel="stylesheet" href="../../assets/chapter-03/page-layout.css?v=0717.1" />
   <script>
     window.MathJax = {
       tex: { inlineMath: [["\\(", "\\)"]], displayMath: [["\\[", "\\]"]] },
@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0716.1" />
-  <script defer src="../../assets/termo-share.js?v=0716.1"></script>
-  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0716.1" />
-  <script defer src="../../assets/termo-auth.js?v=0716.1"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0716.1"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="How states and operators transform between bases while probabilities and expectation values remain invariant. Interactive material from the book Quantum Mechanics, with..."/>
@@ -68,15 +72,91 @@
     </div>
     <div class="body">
 
-      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-repeat"></i> Guided reading</div><p>A basis change is a change in representation, not a change in the physical state. Unitary transformations are the transformations that preserve inner products, normalization and probabilities.</p></div>
-      <div class="col">
-        <div class="card"><div class="ch"><i class="fa-solid fa-shield"></i> Unitary condition</div><p>A transformation \(\hat U\) is unitary when</p><div class="eq key-eq">\[\hat U^\dagger\hat U=\hat U\hat U^\dagger=\hat 1.\]</div><p>This condition preserves lengths and overlaps:</p><div class="eq">\[\langle\Phi'|\Psi'\rangle=\langle\Phi|\Psi\rangle.\]</div><p>Because probabilities are squared overlaps, a unitary change of basis cannot change predictions.</p></div>
-        <div class="card green"><div class="ch green"><i class="fa-solid fa-table-cells"></i> States and operators</div><p>Under a change of basis, the state components and operator matrix both transform:</p><div class="eq">\[|\Psi'\rangle=\hat U^\dagger|\Psi\rangle,\qquad \hat A'=\hat U^\dagger\hat A\hat U.\]</div><p>The expectation value is invariant:</p><div class="eq key-eq">\[\langle\Psi'|\hat A'|\Psi'\rangle=\langle\Psi|\hat A|\Psi\rangle.\]</div></div>
+      <div class="card orange guide-card">
+        <div class="ch orange"><i class="fa-solid fa-repeat"></i> Guided reading</div>
+        <p>Appendix 3.A develops the basis-change machinery used throughout matrix mechanics. A change of basis is a rotation of the vector-space description. It changes the components of vectors and the matrices representing operators, but not the physical predictions.</p>
       </div>
       <div class="col">
-        <div class="card orange"><div class="ch orange"><i class="fa-solid fa-magnet"></i> z basis and x basis</div><p>For spin-1/2, the transformation from the \(z\)-basis to the \(x\)-basis can be represented by</p><div class="eq key-eq">\[U=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.\]</div><p>This matrix contains the same information as</p><div class="eq">\[|+\rangle_x=\frac{|+\rangle+|-\rangle}{\sqrt2},\qquad |-\rangle_x=\frac{|+\rangle-|-\rangle}{\sqrt2}.\]</div><p>Thus the algebraic change of basis is exactly the physical change from SG(Z) to SG(X).</p></div>
-        <div class="card purple"><div class="ch purple"><i class="fa-solid fa-eye"></i> What stays fixed</div><p>The numbers displayed by a correct calculation are basis-independent. What changes is the coordinate description used to compute them.</p></div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-shield"></i> Unitary transformations</div>
+          <p>A unitary operator \(\hat U\) connects two representations of the same vector:</p>
+          <div class="eq">\[|n\rangle_{a}=\hat U|n\rangle_{b}.\]</div>
+          <p>Unitarity means</p>
+          <div class="eq key-eq">\[\hat U^{-1}=\hat U^\dagger,
+\qquad \hat U^\dagger\hat U=\hat U\hat U^\dagger=\hat 1.\]</div>
+          <p>This condition preserves inner products. Since probabilities are squared inner products, a unitary basis change cannot alter measurable probabilities.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-table-cells"></i> Operator transformation</div>
+          <p>If the basis changes, an operator's matrix representation must also change. The appendix writes the relation as</p>
+          <div class="eq key-eq">\[\hat A_b=\hat U^\dagger\hat A_a\hat U,
+\qquad \hat A_a=\hat U\hat A_b\hat U^\dagger.\]</div>
+          <p>The physical operator is the same; only its coordinate expression changes. This is exactly like rotating axes in ordinary vector analysis, except now the vectors live in Hilbert space.</p>
+        </div>
+        <div class="card orange">
+          <div class="ch orange"><i class="fa-solid fa-scale-balanced"></i> Invariant expectation value</div>
+          <p>Transform the state and operator together. The expectation value stays fixed:</p>
+          <div class="eq">\[\langle\Psi'|\hat A'|\Psi'\rangle=\langle\Psi|\hat A|\Psi\rangle.\]</div>
+          <p>This is why basis changes are allowed. They simplify calculations without changing what the apparatus would measure.</p>
+        </div>
       </div>
+      <div class="col">
+        <div class="card purple">
+          <div class="ch purple"><i class="fa-solid fa-magnet"></i> Example 3.9: z basis to x basis</div>
+          <p>The relations between \(z\)- and \(x\)-spin bases can be collected into the unitary matrix</p>
+          <div class="eq key-eq">\[\hat U=\frac{1}{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.\]</div>
+          <p>This matrix maps the \(z\)-basis representation into the \(x\)-basis representation:</p>
+          <div class="eq">\[|\pm\rangle_x=\hat U|\pm\rangle.\]</div>
+          <p>Because \(\hat U\) is unitary, the inverse transformation is \(\hat U^\dagger\).</p>
+        </div>
+        <div class="card">
+          <div class="ch"><i class="fa-solid fa-diagram-successor"></i> Diagonalizing \(\hat\sigma_x\)</div>
+          <p>In the \(z\)-basis, \(\hat\sigma_x\) is off-diagonal:</p>
+          <div class="eq">\[\left(\hat\sigma_x\right)_z=\begin{pmatrix}0&1\\1&0\end{pmatrix}.\]</div>
+          <p>Changing to the \(x\)-basis gives</p>
+          <div class="eq key-eq">\[\left(\hat\sigma_x\right)_x=\hat U\left(\hat\sigma_x\right)_z\hat U^\dagger=\begin{pmatrix}1&0\\0&-1\end{pmatrix}.\]</div>
+          <p>The same observable becomes diagonal in its own eigenbasis. This is the matrix form of orienting the Stern-Gerlach device along the axis whose spin component is being measured.</p>
+        </div>
+        <div class="card green">
+          <div class="ch green"><i class="fa-solid fa-lightbulb"></i> What changes and what does not</div>
+          <p>Components, matrices and labels may change when the basis changes. Inner products, probabilities and expectation values do not. This is the operational meaning of equivalence between bases.</p>
+          <div class="callout">A basis change is a better coordinate system, not a new physical system.</div>
+        </div>
+      </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-rotate"></i> How to transform without changing physics</div>
+        <p>A basis change is useful only if it preserves the inner products that become probabilities. That is why the transformation must be unitary:</p>
+        <div class="eq">\[\langle\phi'|\psi'\rangle=\langle\phi|\hat U^\dagger\hat U|\psi\rangle=\langle\phi|\psi\rangle.\]</div>
+        <p>States and operators must be transformed consistently. If a state vector changes coordinates, the operator matrix must change coordinates too, so that expectation values remain invariant.</p>
+        <p>Exercises should focus on this invariant structure: different matrices can represent the same physical observable in different bases.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: How states and operators transform between bases while probabilities and expectation values remain invariant.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> How states and operators transform between bases while probabilities and expectation values remain invariant.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[|n\rangle_{a}=\hat U|n\rangle_{b}.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat U^{-1}=\hat U^\dagger, \qquad \hat U^\dagger\hat U=\hat U\hat U^\dagger=\hat 1.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat A_b=\hat U^\dagger\hat A_a\hat U, \qquad \hat A_a=\hat U\hat A_b\hat U^\dagger.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
       <div class="resource-links">
         <strong>Original book and previews:</strong>
         <div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ&amp;lpg=PA6&amp;hl=pt-BR&amp;pg=PA109#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div>

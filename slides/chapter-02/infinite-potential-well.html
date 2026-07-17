@@ -24,11 +24,15 @@
     };
   </script>
   <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.3" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+
   <script defer src="../../assets/termo-share.js?v=0714.3"></script>
   <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.3" />
-  <script defer src="../../assets/termo-auth.js?v=0714.3"></script>
-  <script defer src="../../assets/termo-user-data.js?v=0714.3"></script>
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
 <!-- termo-seo:start -->
 <meta name="description" content="Boundary conditions, allowed sine functions, normalized eigenstates, nodes, probability densities and the quadratic energy spectrum. Interactive material from the book Q..."/>
 <meta name="author" content="Prof. Mario Reis"/>
@@ -121,6 +125,41 @@
           <p>The agreement is useful, but the wave-mechanics solution is richer: it gives \(\psi_n(x)\), nodes, normalization and the probability density \(|\psi_n(x)|^2\), not only the allowed energies.</p>
         </div>
       </div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
+        <div class="ch orange"><i class="fa-solid fa-border-top-left"></i> Boundary conditions drive the result</div>
+        <p>The infinite well is an exercise in translating walls into boundary conditions. Inside the well, the particle is free; at the walls, the wave function must vanish:</p>
+        <div class="eq">\[\psi(0)=\psi(a)=0.\]</div>
+        <p>The allowed spatial functions are sine waves that fit an integer number of half-wavelengths into the box:</p>
+        <div class="eq">\[\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),\qquad n=1,2,3,\ldots\]</div>
+        <p>The energy spectrum follows from the curvature of these functions. Higher \(n\) means more nodes, shorter wavelength, larger momentum scale and larger energy.</p>
+      </div>
+
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+        <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+        <p>This page is designed to support short guided exercises on: Boundary conditions, allowed sine functions, normalized eigenstates, nodes, probability densities and the quadratic energy spectrum.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
+          <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
+          <li><span class="practice-label">Good exercise balance:</span> ask the student to identify assumptions, apply one relation, and interpret the result physically, without requiring material not introduced on this page.</li>
+        </ul>
+      </div>
+
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+        <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+        <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
+        <ul class="bullet practice-list">
+          <li><span class="practice-label">Focus:</span> Boundary conditions, allowed sine functions, normalized eigenstates, nodes, probability densities and the quadratic energy spectrum.</li>
+          <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
+          <li><span class="practice-label">Equation:</span> \[V(x)=0\quad(0\lt x\lt a),\qquad V(x)=+\infty\quad(x\le 0\ \mathrm{or}\ x\ge a).\]</li>
+<li><span class="practice-label">Equation:</span> \[\psi(0)=\psi(a)=0.\]</li>
+<li><span class="practice-label">Equation:</span> \[\frac{d^2\psi}{dx^2}+k^2\psi=0,\qquad k^2=\frac{2mE}{\hbar^2}.\]</li>
+          <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
+          <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
+        </ul>
+      </div>
+
+      <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+
 
       <div class="resource-links">
         <strong>Original book and previews:</strong>
