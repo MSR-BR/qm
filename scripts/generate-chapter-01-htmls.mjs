@@ -661,7 +661,7 @@ const pages = [
           <p>The closed action \(\oint p\,dx\) is the area enclosed by this ellipse:</p>
           <div class="eq key-eq">\[\oint p\,dx=A=\pi\sqrt{2mE}\sqrt{\frac{2E}{m\omega^2}}=\frac{2\pi E}{\omega}\]</div>
           <div class="eq key-eq">\[\frac{2\pi E}{\omega}=nh\quad\Rightarrow\quad E_n=n\hbar\omega\]</div>
-          <p>The SCQR result explains the equal spacing. Full quantum mechanics gives the exact spectrum, \(E_n=(n+1/2)\hbar\omega\), including the zero-point energy missing from the semiclassical rule.</p>
+          <p>The SCQR result explains the equal spacing. Full quantum mechanics gives the exact spectrum, \(E_n=(n+1/2)\hbar\omega\).</p>
         `
       },
       {
