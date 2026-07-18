@@ -97,6 +97,7 @@
         <div class="card green">
           <div class="ch green"><i class="fa-solid fa-bullseye"></i> The spatial eigenvalue equation</div>
           <div class="eq key-eq">\[\left[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x)\right]\psi(x)=E\psi(x).\]</div>
+          <div class="eq key-eq">\[\hat H\psi_n=E_n\psi_n.\]</div>
           <p>This is the time-independent Schrodinger equation. It is an eigenvalue problem: boundary conditions select allowed functions \(\psi_n(x)\) and allowed energies \(E_n\).</p>
         </div>
 
@@ -108,15 +109,6 @@
           <div class="eq">\[|\Psi(x,t)|^2=|\psi(x)|^2.\]</div>
         </div>
       </div>
-      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;">
-        <div class="ch orange"><i class="fa-solid fa-clock"></i> Separating space and time</div>
-        <p>When the potential is time independent, try a separated solution:</p>
-        <div class="eq">\[\Psi(x,t)=\psi(x)\phi(t).\]</div>
-        <p>Substitution into the TDSE makes the time part a phase and leaves the spatial part as an eigenvalue problem:</p>
-        <div class="eq">\[\Psi_n(x,t)=\psi_n(x)e^{-iE_nt/\hbar},\qquad \hat H\psi_n=E_n\psi_n.\]</div>
-        <p>The measurable probability density of a single stationary state does not change with time because the phase cancels in \(|\Psi_n|^2\). That is the physical reason these states are called stationary.</p>
-      </div>
-
       <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
         <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
         <p>This page is designed to support short guided exercises on: Separation of variables, time-independent potentials and the energy eigenvalue equation.</p>

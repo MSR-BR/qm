@@ -169,6 +169,7 @@ const pages = [
         title: "The spatial eigenvalue equation",
         body: String.raw`
           <div class="eq key-eq">\[\left[-\frac{\hbar^2}{2m}\frac{d^2}{dx^2}+V(x)\right]\psi(x)=E\psi(x).\]</div>
+          <div class="eq key-eq">\[\hat H\psi_n=E_n\psi_n.\]</div>
           <p>This is the time-independent Schrodinger equation. It is an eigenvalue problem: boundary conditions select allowed functions \(\psi_n(x)\) and allowed energies \(E_n\).</p>
         `
       },
