@@ -59,7 +59,7 @@
     {
       "id": "2.9",
       "title": "Measurement probabilities",
-      "note": "Postulate of probability: expansion coefficients give outcome probabilities, P_n = |C_n|^2, when measuring in an eigenstate basis.",
+      "note": "Postulate of probability: expansion coefficients give outcome probabilities, Pₙ = |Cₙ|², when measuring in an eigenstate basis.",
       "url": "slides/chapter-02/measurement-probabilities.html",
       "aiExercise": true
     },
