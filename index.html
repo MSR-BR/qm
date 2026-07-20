@@ -3009,7 +3009,14 @@
       }] : [])
     ];
 
-    const extraViews = [];
+    const extraViews = [
+      {
+        id: "simulators",
+        label: "Simulators",
+        icon: "fa-flask-vial",
+        note: "Open interactive resources organized by chapter section."
+      }
+    ];
 
     const viewIds = new Set([
       "chapters",
@@ -3171,11 +3178,30 @@
     };
 
     const simulatorsPanelCopy = {
-      title: "Complementary resources",
-      description: "Reserved area for interactive Quantum Mechanics resources."
+      title: "Interactive simulators",
+      description: "Choose a simulator associated with a section of the course. Each resource opens in a new browser tab."
     };
 
-    const simulatorsCatalog = [];
+    const simulatorsCatalog = [
+      {
+        id: "S01 · Section 1.5",
+        sectionId: "1.5",
+        slug: "blackbody-spectrum",
+        title: "Blackbody Spectrum",
+        description: "Explore how temperature changes the thermal-radiation spectrum, its intensity and the wavelength of maximum emission.",
+        standaloneUrl: "https://phet.colorado.edu/en/simulations/blackbody-spectrum",
+        icon: "fa-temperature-high"
+      },
+      {
+        id: "S02 · Section 1.6",
+        sectionId: "1.6",
+        slug: "photoelectric-effect",
+        title: "Photoelectric Effect",
+        description: "Investigate how light frequency, intensity, target material and applied voltage affect photoelectron emission.",
+        standaloneUrl: "https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric&locale=pt_BR",
+        icon: "fa-solar-panel"
+      }
+    ];
 
     const simulatorsBySlug = simulatorsCatalog.reduce(function (accumulator, simulator) {
       accumulator[simulator.slug] = simulator;
