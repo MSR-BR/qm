@@ -912,12 +912,14 @@ const simulatorsBySection = {
     id: "S01",
     title: "Blackbody Spectrum",
     description: "Vary the temperature and observe how the thermal-radiation spectrum and its peak wavelength change.",
+    source: "PhET Interactive Simulations, University of Colorado Boulder",
     url: "https://phet.colorado.edu/en/simulations/blackbody-spectrum"
   },
   "1.6": {
     id: "S02",
     title: "Photoelectric Effect",
     description: "Explore how frequency, intensity, target material and applied voltage affect photoelectron emission.",
+    source: "PhET Interactive Simulations, University of Colorado Boulder",
     url: "https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric&locale=pt_BR"
   }
 };
@@ -930,6 +932,7 @@ function renderSimulator(page) {
       <div class="card green simulator-resource-card" style="grid-column:1 / -1!important;">
         <div class="ch green"><i class="fa-solid fa-flask-vial"></i> Interactive simulator · ${escapeHtml(simulator.id)}</div>
         <p><strong>${escapeHtml(simulator.title)}</strong> — ${escapeHtml(simulator.description)}</p>
+        <p class="simulator-source"><i class="fa-solid fa-building-columns"></i> External simulator · Source: ${escapeHtml(simulator.source)}.</p>
         <a class="simulator-btn" href="${escapeHtml(simulator.url)}" target="_blank" rel="noopener noreferrer">
           <i class="fa-solid fa-arrow-up-right-from-square"></i>
           Open simulator
@@ -1021,6 +1024,7 @@ function renderPage(page, index) {
     .resource-link-list a{display:inline-flex!important;align-items:center!important;text-decoration:none!important;color:var(--blue)!important;background:#F0F7F3!important;border:1px solid #B8D8C4!important;border-radius:999px!important;padding:5px 10px!important;font-weight:700!important;}
     .simulator-btn{display:inline-flex!important;align-items:center!important;gap:8px!important;margin-top:10px!important;padding:10px 14px!important;border-radius:8px!important;text-decoration:none!important;font-family:"Inter",sans-serif!important;font-size:.9rem!important;font-weight:700!important;color:#FFFFFF!important;background:var(--green)!important;border:1px solid var(--green)!important;transition:.18s ease!important;}
     .simulator-btn:hover{background:#14663E!important;transform:translateY(-1px)!important;}
+    .simulator-source{font-family:"Inter",sans-serif!important;font-size:.8rem!important;color:var(--muted)!important;text-align:left!important;}
     .source-note{border-left:4px solid var(--orange)!important;border-radius:0 9px 9px 0!important;}
     .source-note strong{color:var(--orange)!important;}
     .index-back-button{width:fit-content!important;display:inline-flex!important;align-items:center!important;gap:6px!important;text-decoration:none!important;font-family:"Inter",sans-serif!important;font-size:0.78rem!important;font-weight:700!important;color:var(--blue)!important;background:#F0F7F3!important;border:1px solid #B8D8C4!important;padding:5px 10px!important;border-radius:7px!important;margin-bottom:8px!important;transition:0.18s ease!important;}

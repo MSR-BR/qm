@@ -1014,6 +1014,13 @@
       overflow-wrap: break-word;
     }
 
+    .simulator-card__source {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+      overflow-wrap: break-word;
+    }
+
     .simulator-card__footer {
       margin-top: auto;
       display: inline-flex;
@@ -3189,6 +3196,7 @@
         slug: "blackbody-spectrum",
         title: "Blackbody Spectrum",
         description: "Explore how temperature changes the thermal-radiation spectrum, its intensity and the wavelength of maximum emission.",
+        source: "PhET Interactive Simulations, University of Colorado Boulder",
         standaloneUrl: "https://phet.colorado.edu/en/simulations/blackbody-spectrum",
         icon: "fa-temperature-high"
       },
@@ -3198,6 +3206,7 @@
         slug: "photoelectric-effect",
         title: "Photoelectric Effect",
         description: "Investigate how light frequency, intensity, target material and applied voltage affect photoelectron emission.",
+        source: "PhET Interactive Simulations, University of Colorado Boulder",
         standaloneUrl: "https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric&locale=pt_BR",
         icon: "fa-solar-panel"
       }
@@ -4674,6 +4683,7 @@
                   </span>
                 </div>
                 <div class="simulator-card__description">${escapeHtml(simulator.description)}</div>
+                <div class="simulator-card__source"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> External simulator · Source: ${escapeHtml(simulator.source)}.</div>
                 <div class="simulator-card__footer">
                   <i class="fa-solid fa-arrow-right"></i>
                   <span>Open simulator</span>
