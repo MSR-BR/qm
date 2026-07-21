@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Probability Density and Current | Quantum Mechanics</title>
+  <meta name="description" content="Interactive comparison of probability density and probability current for traveling, standing and localized quantum states." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+</head>
+<body>
+  <main class="sim-shell">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">S06 · Chapter 2 · Sections 2.2 and 2.4</div>
+        <h1 class="sim-title">Probability Density and Current</h1>
+        <p class="sim-subtitle">Compare what a state looks like with how probability flows. A constant density can carry a nonzero current, while a standing wave can have spatial structure and zero net current.</p>
+      </div>
+      <div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+
+    <div class="sim-layout">
+      <aside class="sim-panel sim-controls" aria-label="Probability current controls">
+        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State model</h2>
+        <div class="control-group"><label class="control-label" for="stateType">Choose a state</label><select id="stateType"><option value="right">Right-moving plane wave</option><option value="left">Left-moving plane wave</option><option value="standing">Standing wave</option><option value="counter">Unequal counter-propagating waves</option><option value="packet">Localized moving packet</option></select></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="waveNumber">Wave number k</label><output class="control-value" id="waveNumberValue">2.00</output></div><input id="waveNumber" type="range" min="0.5" max="5" step="0.05" value="2" /></div>
+        <div class="control-group" id="mixGroup"><div class="control-row"><label class="control-label" for="rightWeight">Right-moving weight</label><output class="control-value" id="rightWeightValue">0.75</output></div><input id="rightWeight" type="range" min="0" max="1" step="0.01" value="0.75" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="timeControl">Time t</label><output class="control-value" id="timeControlValue">0.00</output></div><input id="timeControl" type="range" min="0" max="8" step="0.01" value="0" /></div>
+        <div class="button-row"><button class="sim-button" id="playButton" type="button"><i class="fa-solid fa-play"></i> Play</button><button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button></div>
+        <div class="insight-box" id="stateInsight" style="margin-top:14px;"></div>
+      </aside>
+
+      <section class="sim-workspace">
+        <div class="sim-panel metrics-grid">
+          <div class="metric"><div class="metric-label">Mean current ⟨j⟩</div><div class="metric-value" id="meanCurrentMetric"></div></div>
+          <div class="metric"><div class="metric-label">Current direction</div><div class="metric-value" id="directionMetric"></div></div>
+          <div class="metric"><div class="metric-label">Integrated probability</div><div class="metric-value" id="normalizationMetric">1.0000</div></div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> Wave function and density</h2>
+          <div class="canvas-wrap tall"><canvas id="stateCanvas" aria-label="Wave function and probability density"></canvas></div>
+          <div class="legend"><span class="legend-item"><span class="legend-swatch" style="--swatch:#2f6b4f"></span> Re ψ</span><span class="legend-item"><span class="legend-swatch" style="--swatch:#376b8c"></span> Im ψ</span><span class="legend-item"><span class="legend-swatch" style="--swatch:#a64b35"></span> ρ = |ψ|²</span></div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> Probability current j(x,t)</h2>
+          <div class="canvas-wrap"><canvas id="currentCanvas" aria-label="Probability current plot"></canvas></div>
+        </div>
+        <div class="equation-box">ρ(x,t) = |ψ(x,t)|²<br />j(x,t) = (ℏ/2mi)[ψ*∂ψ/∂x − ψ∂ψ*/∂x] &nbsp;&nbsp;·&nbsp;&nbsp; ∂ρ/∂t + ∂j/∂x = 0</div>
+      </section>
+    </div>
+    <footer class="sim-footer">Natural units are used: ℏ = m = 1. Plane-wave models are normalized over the displayed interval; the localized packet is normalized on the real line.</footer>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id); let playing=false,lastFrame=0;
+      const colors={green:"#2f6b4f",blue:"#376b8c",rust:"#a64b35",gold:"#d5b260",grid:"#dbe5dd",muted:"#6b756f"};
+      function fitCanvas(canvas){const ratio=Math.max(1,window.devicePixelRatio||1),rect=canvas.getBoundingClientRect(),width=Math.max(300,Math.round(rect.width)),height=Math.max(220,Math.round(rect.height));canvas.width=width*ratio;canvas.height=height*ratio;const ctx=canvas.getContext("2d");ctx.setTransform(ratio,0,0,ratio,0,0);return{ctx,width,height}}
+      function state(){return{type:$("stateType").value,k:Number($("waveNumber").value),w:Number($("rightWeight").value),t:Number($("timeControl").value)}}
+      function values(x,s){const omega=s.k*s.k/2,phase=s.k*x-omega*s.t,L=20,planeNorm=1/Math.sqrt(L);
+        if(s.type==="right")return{re:planeNorm*Math.cos(phase),im:planeNorm*Math.sin(phase),rho:1/L,j:s.k/L};
+        if(s.type==="left"){const q=-s.k*x-omega*s.t;return{re:planeNorm*Math.cos(q),im:planeNorm*Math.sin(q),rho:1/L,j:-s.k/L}}
+        if(s.type==="standing"){const norm=1/Math.sqrt(10+Math.sin(20*s.k)/(2*s.k)),amp=norm*Math.cos(s.k*x),time=-omega*s.t;return{re:amp*Math.cos(time),im:amp*Math.sin(time),rho:amp*amp,j:0}}
+        if(s.type==="counter"){const ar=Math.sqrt(s.w),al=Math.sqrt(1-s.w),norm=1/Math.sqrt(L+2*ar*al*Math.sin(20*s.k)/s.k),q=-s.k*x-omega*s.t,re=norm*(ar*Math.cos(phase)+al*Math.cos(q)),im=norm*(ar*Math.sin(phase)+al*Math.sin(q));return{re,im,rho:re*re+im*im,j:norm*norm*s.k*(s.w-(1-s.w))}}
+        const sigma=1.15,x0=-5+s.k*s.t,center=x-x0,rho=Math.exp(-center*center/(2*sigma*sigma))/(Math.sqrt(2*Math.PI)*sigma),amp=Math.sqrt(rho),packetPhase=s.k*(x+5)-omega*s.t;return{re:amp*Math.cos(packetPhase),im:amp*Math.sin(packetPhase),rho,j:s.k*rho};
+      }
+      function drawState(s){const{ctx,width,height}=fitCanvas($("stateCanvas"));ctx.clearRect(0,0,width,height);const pad={l:48,r:22,t:22,b:30},xMin=-10,xMax=10,plotW=width-pad.l-pad.r,xMap=x=>pad.l+(x-xMin)/(xMax-xMin)*plotW,mid=height*.4,base=height*.82;ctx.strokeStyle=colors.grid;ctx.beginPath();ctx.moveTo(pad.l,mid);ctx.lineTo(width-pad.r,mid);ctx.moveTo(pad.l,base);ctx.lineTo(width-pad.r,base);ctx.stroke();const samples=[];let maxPsi=.01,maxRho=.01;for(let i=0;i<=800;i++){const x=xMin+(xMax-xMin)*i/800,v=values(x,s);samples.push({x,...v});maxPsi=Math.max(maxPsi,Math.abs(v.re),Math.abs(v.im));maxRho=Math.max(maxRho,v.rho)}const ps=Math.min(72,height*.18)/maxPsi,rs=Math.min(86,height*.21)/maxRho;[["re",colors.green],["im",colors.blue]].forEach(([key,c])=>{ctx.strokeStyle=c;ctx.lineWidth=2;ctx.beginPath();samples.forEach((v,i)=>{const y=mid-v[key]*ps;i?ctx.lineTo(xMap(v.x),y):ctx.moveTo(xMap(v.x),y)});ctx.stroke()});ctx.strokeStyle=colors.rust;ctx.lineWidth=2.5;ctx.beginPath();samples.forEach((v,i)=>{const y=base-v.rho*rs;i?ctx.lineTo(xMap(v.x),y):ctx.moveTo(xMap(v.x),y)});ctx.stroke();ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("ψ",17,mid+4);ctx.fillText("ρ",20,base+4);ctx.fillText("−10",pad.l-10,height-9);ctx.fillText("10",width-pad.r-7,height-9)}
+      function drawCurrent(s){const{ctx,width,height}=fitCanvas($("currentCanvas"));ctx.clearRect(0,0,width,height);const pad={l:48,r:22,t:22,b:30},xMin=-10,xMax=10,plotW=width-pad.l-pad.r,xMap=x=>pad.l+(x-xMin)/(xMax-xMin)*plotW,mid=height*.53;ctx.strokeStyle=colors.grid;ctx.beginPath();ctx.moveTo(pad.l,mid);ctx.lineTo(width-pad.r,mid);ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,height-pad.b);ctx.stroke();const samples=[];let maxJ=.01;for(let i=0;i<=700;i++){const x=xMin+(xMax-xMin)*i/700,j=values(x,s).j;samples.push({x,j});maxJ=Math.max(maxJ,Math.abs(j))}const scale=Math.min(85,height*.36)/maxJ;ctx.strokeStyle=colors.gold;ctx.lineWidth=2.7;ctx.beginPath();samples.forEach((v,i)=>{const y=mid-v.j*scale;i?ctx.lineTo(xMap(v.x),y):ctx.moveTo(xMap(v.x),y)});ctx.stroke();ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("j",20,mid-8);ctx.fillText("−10",pad.l-10,height-9);ctx.fillText("10",width-pad.r-7,height-9)}
+      function integratedValues(s){let probability=0,current=0,previous=values(-10,s),steps=2000,dx=20/steps;for(let i=1;i<=steps;i++){const next=values(-10+i*dx,s);probability+=(previous.rho+next.rho)*dx/2;current+=(previous.j+next.j)*dx/2;previous=next}return{probability,meanCurrent:current/20}}
+      function render(){const s=state(),integrals=integratedValues(s),mean=integrals.meanCurrent;$("waveNumberValue").textContent=s.k.toFixed(2);$("rightWeightValue").textContent=s.w.toFixed(2);$("timeControlValue").textContent=s.t.toFixed(2);$("mixGroup").style.display=s.type==="counter"?"grid":"none";$("meanCurrentMetric").textContent=mean.toFixed(4);$("directionMetric").textContent=Math.abs(mean)<1e-8?"None":mean>0?"Right":"Left";$("normalizationMetric").textContent=integrals.probability.toFixed(4);const insights={right:"The density is constant, but the phase gradient produces a uniform current to the right.",left:"The density is constant, while the negative phase gradient reverses the current.",standing:"Equal counter-propagating components form a standing wave. Their currents cancel exactly.",counter:"The density contains an interference pattern, but the net current depends on the imbalance between right- and left-moving components.",packet:"For a packet with uniform phase gradient k, the local current follows the moving probability density: j = vρ."};$("stateInsight").textContent=insights[s.type];drawState(s);drawCurrent(s)}
+      ["stateType","waveNumber","rightWeight","timeControl"].forEach(id=>$(id).addEventListener("input",render));$("playButton").addEventListener("click",()=>{playing=!playing;$("playButton").innerHTML=playing?'<i class="fa-solid fa-pause"></i> Pause':'<i class="fa-solid fa-play"></i> Play'});$("resetButton").addEventListener("click",()=>{$("stateType").value="right";$("waveNumber").value=2;$("rightWeight").value=.75;$("timeControl").value=0;playing=false;$("playButton").innerHTML='<i class="fa-solid fa-play"></i> Play';render()});function animate(ts){if(playing&&ts-lastFrame>30){const next=Number($("timeControl").value)+.014;$("timeControl").value=next>8?0:next.toFixed(3);lastFrame=ts;render()}requestAnimationFrame(animate)}window.addEventListener("resize",render);render();requestAnimationFrame(animate);
+    })();
+  </script>
+</body>
+</html>

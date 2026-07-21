@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Infinite Potential Well Explorer | Quantum Mechanics</title>
+  <meta name="description" content="Interactive exploration of eigenstates, probability density and energy levels in a one-dimensional infinite potential well." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+</head>
+<body>
+  <main class="sim-shell">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">S03 · Chapter 2 · Sections 2.3–2.5</div>
+        <h1 class="sim-title">Infinite Potential Well Explorer</h1>
+        <p class="sim-subtitle">Change the quantum number, well width and particle mass. Compare the wave function, probability density, nodes and discrete energy spectrum.</p>
+      </div>
+      <div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+
+    <div class="sim-layout">
+      <aside class="sim-panel sim-controls" aria-label="Simulation controls">
+        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Controls</h2>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="stateN">Quantum number n</label><output class="control-value" id="stateNValue">1</output></div>
+          <input id="stateN" type="range" min="1" max="8" step="1" value="1" />
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="wellWidth">Well width a</label><output class="control-value" id="wellWidthValue">1.00</output></div>
+          <input id="wellWidth" type="range" min="0.5" max="2" step="0.01" value="1" />
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="particleMass">Particle mass m</label><output class="control-value" id="particleMassValue">1.00</output></div>
+          <input id="particleMass" type="range" min="0.5" max="3" step="0.05" value="1" />
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="xLeft">Interval start x₁/a</label><output class="control-value" id="xLeftValue">0.20</output></div>
+          <input id="xLeft" type="range" min="0" max="0.99" step="0.01" value="0.2" />
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="xRight">Interval end x₂/a</label><output class="control-value" id="xRightValue">0.80</output></div>
+          <input id="xRight" type="range" min="0.01" max="1" step="0.01" value="0.8" />
+        </div>
+        <div class="button-row">
+          <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        </div>
+        <div class="insight-box" style="margin-top:14px;">Natural units are used: ℏ = 1. The spatial coordinate runs from 0 to a.</div>
+      </aside>
+
+      <section class="sim-workspace">
+        <div class="sim-panel metrics-grid" aria-label="Computed values">
+          <div class="metric"><div class="metric-label">Energy Eₙ</div><div class="metric-value" id="energyMetric"></div></div>
+          <div class="metric"><div class="metric-label">Nodes inside well</div><div class="metric-value" id="nodesMetric"></div></div>
+          <div class="metric"><div class="metric-label">Wavelength λₙ</div><div class="metric-value" id="wavelengthMetric"></div></div>
+          <div class="metric"><div class="metric-label">P(x₁ &lt; x &lt; x₂)</div><div class="metric-value" id="probabilityMetric"></div></div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> Eigenstate and probability density</h2>
+          <div class="canvas-wrap tall"><canvas id="wellCanvas" aria-label="Wave function and probability density plot"></canvas></div>
+          <div class="legend">
+            <span class="legend-item"><span class="legend-swatch" style="--swatch:#2f6b4f"></span> ψₙ(x)</span>
+            <span class="legend-item"><span class="legend-swatch" style="--swatch:#a64b35"></span> |ψₙ(x)|²</span>
+            <span class="legend-item"><span class="legend-swatch" style="--swatch:#d5b260"></span> Selected interval</span>
+          </div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-bars-staggered"></i> Discrete energy spectrum</h2>
+          <div class="canvas-wrap"><canvas id="energyCanvas" aria-label="Energy levels plot"></canvas></div>
+        </div>
+        <div class="equation-box">ψₙ(x) = √(2/a) sin(nπx/a) &nbsp;&nbsp;·&nbsp;&nbsp; Eₙ = n²π²ℏ²/(2ma²)</div>
+      </section>
+    </div>
+    <footer class="sim-footer">This model represents an ideal one-dimensional infinite well. Values are calculated in natural units unless stated otherwise.</footer>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const controls = ["stateN", "wellWidth", "particleMass", "xLeft", "xRight"];
+      const colors = { green: "#2f6b4f", rust: "#a64b35", gold: "#d5b260", grid: "#dbe5dd", ink: "#26332c", muted: "#6b756f" };
+
+      function fitCanvas(canvas) {
+        const ratio = Math.max(1, window.devicePixelRatio || 1);
+        const rect = canvas.getBoundingClientRect();
+        const width = Math.max(300, Math.round(rect.width));
+        const height = Math.max(220, Math.round(rect.height));
+        if (canvas.width !== width * ratio || canvas.height !== height * ratio) {
+          canvas.width = width * ratio;
+          canvas.height = height * ratio;
+        }
+        const ctx = canvas.getContext("2d");
+        ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        return { ctx, width, height };
+      }
+
+      function state() {
+        let left = Number($("xLeft").value);
+        let right = Number($("xRight").value);
+        if (left >= right) {
+          if (document.activeElement === $("xLeft")) left = Math.max(0, right - 0.01);
+          else right = Math.min(1, left + 0.01);
+          $("xLeft").value = left;
+          $("xRight").value = right;
+        }
+        return { n: Number($("stateN").value), a: Number($("wellWidth").value), m: Number($("particleMass").value), left, right };
+      }
+
+      function intervalProbability(n, u1, u2) {
+        return (u2 - u1) - (Math.sin(2 * n * Math.PI * u2) - Math.sin(2 * n * Math.PI * u1)) / (2 * n * Math.PI);
+      }
+
+      function axes(ctx, width, height, x0, y0, x1, y1) {
+        ctx.strokeStyle = colors.grid; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(x0, y0); ctx.lineTo(x1, y0); ctx.moveTo(x0, y1); ctx.lineTo(x0, y0); ctx.stroke();
+      }
+
+      function drawWell(s) {
+        const { ctx, width, height } = fitCanvas($("wellCanvas"));
+        ctx.clearRect(0, 0, width, height);
+        const pad = { l: 48, r: 22, t: 24, b: 34 };
+        const plotW = width - pad.l - pad.r;
+        const mid = height * 0.43;
+        const lowerBase = height * 0.78;
+        const amp = Math.min(78, height * 0.2);
+        const rhoAmp = Math.min(75, height * 0.19);
+        const xMap = (u) => pad.l + u * plotW;
+        ctx.fillStyle = "rgba(213,178,96,.18)";
+        ctx.fillRect(xMap(s.left), pad.t, xMap(s.right) - xMap(s.left), height - pad.t - pad.b);
+        axes(ctx, width, height, pad.l, mid, width - pad.r, height - pad.b);
+        ctx.strokeStyle = colors.grid; ctx.beginPath(); ctx.moveTo(pad.l, lowerBase); ctx.lineTo(width - pad.r, lowerBase); ctx.stroke();
+
+        ctx.strokeStyle = colors.green; ctx.lineWidth = 2.5; ctx.beginPath();
+        for (let i = 0; i <= 600; i++) {
+          const u = i / 600;
+          const y = mid - amp * Math.sin(s.n * Math.PI * u);
+          if (i === 0) ctx.moveTo(xMap(u), y); else ctx.lineTo(xMap(u), y);
+        }
+        ctx.stroke();
+
+        ctx.strokeStyle = colors.rust; ctx.lineWidth = 2.5; ctx.beginPath();
+        for (let i = 0; i <= 600; i++) {
+          const u = i / 600;
+          const rho = Math.sin(s.n * Math.PI * u) ** 2;
+          const y = lowerBase - rhoAmp * rho;
+          if (i === 0) ctx.moveTo(xMap(u), y); else ctx.lineTo(xMap(u), y);
+        }
+        ctx.stroke();
+
+        ctx.fillStyle = colors.rust;
+        for (let k = 1; k < s.n; k++) {
+          const x = xMap(k / s.n);
+          ctx.beginPath(); ctx.arc(x, mid, 3.5, 0, Math.PI * 2); ctx.fill();
+        }
+
+        ctx.fillStyle = colors.muted; ctx.font = "12px Inter, sans-serif";
+        ctx.fillText("ψₙ(x)", 8, mid + 4); ctx.fillText("|ψₙ|²", 8, lowerBase + 4);
+        ctx.fillText("0", pad.l - 4, height - 12); ctx.fillText("a", width - pad.r - 2, height - 12);
+      }
+
+      function drawEnergies(s) {
+        const { ctx, width, height } = fitCanvas($("energyCanvas"));
+        ctx.clearRect(0, 0, width, height);
+        const pad = { l: 52, r: 24, t: 22, b: 28 };
+        const maxE = 64 * Math.PI * Math.PI / (2 * s.m * s.a * s.a);
+        const yMap = (e) => height - pad.b - (e / maxE) * (height - pad.t - pad.b);
+        ctx.strokeStyle = colors.grid; ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, height - pad.b); ctx.lineTo(width - pad.r, height - pad.b); ctx.stroke();
+        for (let n = 1; n <= 8; n++) {
+          const e = n * n * Math.PI * Math.PI / (2 * s.m * s.a * s.a);
+          const y = yMap(e);
+          ctx.strokeStyle = n === s.n ? colors.rust : colors.green;
+          ctx.lineWidth = n === s.n ? 4 : 2;
+          ctx.beginPath(); ctx.moveTo(pad.l + 18, y); ctx.lineTo(width - pad.r, y); ctx.stroke();
+          ctx.fillStyle = n === s.n ? colors.rust : colors.muted; ctx.font = `${n === s.n ? "700" : "600"} 11px Inter, sans-serif`;
+          ctx.fillText(`n=${n}`, 9, y + 4);
+        }
+      }
+
+      function render() {
+        const s = state();
+        $("stateNValue").textContent = s.n;
+        $("wellWidthValue").textContent = s.a.toFixed(2);
+        $("particleMassValue").textContent = s.m.toFixed(2);
+        $("xLeftValue").textContent = s.left.toFixed(2);
+        $("xRightValue").textContent = s.right.toFixed(2);
+        const energy = s.n * s.n * Math.PI * Math.PI / (2 * s.m * s.a * s.a);
+        $("energyMetric").textContent = energy.toFixed(4);
+        $("nodesMetric").textContent = String(s.n - 1);
+        $("wavelengthMetric").textContent = (2 * s.a / s.n).toFixed(4);
+        $("probabilityMetric").textContent = `${(100 * intervalProbability(s.n, s.left, s.right)).toFixed(2)}%`;
+        drawWell(s); drawEnergies(s);
+      }
+
+      controls.forEach((id) => $(id).addEventListener("input", render));
+      $("resetButton").addEventListener("click", () => {
+        Object.entries({ stateN: 1, wellWidth: 1, particleMass: 1, xLeft: 0.2, xRight: 0.8 }).forEach(([id, value]) => { $(id).value = value; });
+        render();
+      });
+      window.addEventListener("resize", render);
+      render();
+    })();
+  </script>
+</body>
+</html>

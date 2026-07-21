@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Superposition and Measurement Lab | Quantum Mechanics</title>
+  <meta name="description" content="Interactive lab for quantum superposition, energy probabilities, expectation values and state collapse." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+</head>
+<body>
+  <main class="sim-shell">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">S04 · Chapter 2 · Sections 2.7, 2.9 and 2.10</div>
+        <h1 class="sim-title">Superposition and Measurement Lab</h1>
+        <p class="sim-subtitle">Prepare a two-state superposition in an infinite well, watch its probability density evolve, and compare predicted energy probabilities with repeated measurements.</p>
+      </div>
+      <div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+
+    <div class="sim-layout">
+      <aside class="sim-panel sim-controls" aria-label="State preparation controls">
+        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State preparation</h2>
+        <div class="control-group">
+          <label class="control-label" for="stateOne">First basis state</label>
+          <select id="stateOne"><option value="1">n = 1</option><option value="2">n = 2</option><option value="3">n = 3</option><option value="4">n = 4</option><option value="5">n = 5</option><option value="6">n = 6</option></select>
+        </div>
+        <div class="control-group">
+          <label class="control-label" for="stateTwo">Second basis state</label>
+          <select id="stateTwo"><option value="1">n = 1</option><option value="2" selected>n = 2</option><option value="3">n = 3</option><option value="4">n = 4</option><option value="5">n = 5</option><option value="6">n = 6</option></select>
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="probabilityOne">P(n₁) = |C₁|²</label><output class="control-value" id="probabilityOneValue">0.50</output></div>
+          <input id="probabilityOne" type="range" min="0" max="1" step="0.01" value="0.5" />
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="relativePhase">Relative phase φ</label><output class="control-value" id="relativePhaseValue">0.00π</output></div>
+          <input id="relativePhase" type="range" min="0" max="2" step="0.01" value="0" />
+        </div>
+        <div class="control-group">
+          <div class="control-row"><label class="control-label" for="timeControl">Time t</label><output class="control-value" id="timeControlValue">0.00</output></div>
+          <input id="timeControl" type="range" min="0" max="4" step="0.01" value="0" />
+        </div>
+        <div class="button-row">
+          <button class="sim-button" id="playButton" type="button"><i class="fa-solid fa-play"></i> Play</button>
+          <button class="sim-button secondary" id="prepareButton" type="button"><i class="fa-solid fa-wand-magic-sparkles"></i> Prepare state</button>
+          <button class="sim-button danger" id="measureButton" type="button"><i class="fa-solid fa-crosshairs"></i> Measure energy</button>
+          <button class="sim-button secondary" id="ensembleButton" type="button"><i class="fa-solid fa-chart-column"></i> Run 100</button>
+          <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        </div>
+      </aside>
+
+      <section class="sim-workspace">
+        <div class="sim-panel metrics-grid">
+          <div class="metric"><div class="metric-label">C₁</div><div class="metric-value" id="coefficientOne"></div></div>
+          <div class="metric"><div class="metric-label">C₂</div><div class="metric-value" id="coefficientTwo"></div></div>
+          <div class="metric"><div class="metric-label">Expected energy ⟨E⟩</div><div class="metric-value" id="expectedEnergy"></div></div>
+          <div class="metric"><div class="metric-label">Normalization</div><div class="metric-value" id="normalization">1.0000</div></div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> Prepared state</h2>
+          <div class="canvas-wrap tall"><canvas id="stateCanvas" aria-label="Superposed wave function and probability density"></canvas></div>
+          <div class="legend">
+            <span class="legend-item"><span class="legend-swatch" style="--swatch:#2f6b4f"></span> Re ψ(x,t)</span>
+            <span class="legend-item"><span class="legend-swatch" style="--swatch:#376b8c"></span> Im ψ(x,t)</span>
+            <span class="legend-item"><span class="legend-swatch" style="--swatch:#a64b35"></span> |ψ(x,t)|²</span>
+          </div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-chart-column"></i> Energy outcomes</h2>
+          <div class="histogram" id="histogram"></div>
+        </div>
+        <div class="status-box" id="measurementStatus">The state is prepared. No measurement has been performed.</div>
+        <div class="equation-box">ψ(x,t) = C₁ψₙ₁(x)e<sup>−iEₙ₁t</sup> + C₂e<sup>iφ</sup>ψₙ₂(x)e<sup>−iEₙ₂t</sup><br />P(Eₙ) = |Cₙ|² &nbsp;&nbsp;·&nbsp;&nbsp; ⟨E⟩ = Σₙ |Cₙ|²Eₙ</div>
+      </section>
+    </div>
+    <footer class="sim-footer">Natural units are used: ℏ = m = a = 1. “Run 100” models an ensemble of identically prepared systems; a single measurement collapses only the displayed system.</footer>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      let collapsedState = null;
+      let counts = { one: 0, two: 0 };
+      let playing = false;
+      let lastFrame = 0;
+      const colors = { green: "#2f6b4f", blue: "#376b8c", rust: "#a64b35", grid: "#dbe5dd", muted: "#6b756f" };
+
+      function fitCanvas(canvas) {
+        const ratio = Math.max(1, window.devicePixelRatio || 1);
+        const rect = canvas.getBoundingClientRect();
+        const width = Math.max(300, Math.round(rect.width));
+        const height = Math.max(280, Math.round(rect.height));
+        canvas.width = width * ratio; canvas.height = height * ratio;
+        const ctx = canvas.getContext("2d"); ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+        return { ctx, width, height };
+      }
+
+      const energy = (n) => n * n * Math.PI * Math.PI / 2;
+
+      function currentState() {
+        let n1 = Number($("stateOne").value);
+        let n2 = Number($("stateTwo").value);
+        if (n1 === n2) {
+          n2 = n1 === 6 ? 5 : n1 + 1;
+          $("stateTwo").value = String(n2);
+        }
+        const p1 = Number($("probabilityOne").value);
+        return { n1, n2, p1, p2: 1 - p1, phase: Number($("relativePhase").value) * Math.PI, t: Number($("timeControl").value) };
+      }
+
+      function amplitudesAt(u, s) {
+        const basis1 = Math.sqrt(2) * Math.sin(s.n1 * Math.PI * u);
+        const basis2 = Math.sqrt(2) * Math.sin(s.n2 * Math.PI * u);
+        if (collapsedState === s.n1) {
+          const angle = -energy(s.n1) * s.t;
+          return { re: basis1 * Math.cos(angle), im: basis1 * Math.sin(angle) };
+        }
+        if (collapsedState === s.n2) {
+          const angle = -energy(s.n2) * s.t;
+          return { re: basis2 * Math.cos(angle), im: basis2 * Math.sin(angle) };
+        }
+        const a1 = Math.sqrt(s.p1), a2 = Math.sqrt(s.p2);
+        const angle1 = -energy(s.n1) * s.t;
+        const angle2 = s.phase - energy(s.n2) * s.t;
+        return { re: a1 * basis1 * Math.cos(angle1) + a2 * basis2 * Math.cos(angle2), im: a1 * basis1 * Math.sin(angle1) + a2 * basis2 * Math.sin(angle2) };
+      }
+
+      function draw(s) {
+        const { ctx, width, height } = fitCanvas($("stateCanvas"));
+        ctx.clearRect(0, 0, width, height);
+        const pad = { l: 50, r: 22, t: 24, b: 30 };
+        const plotW = width - pad.l - pad.r;
+        const mid = height * 0.4, densityBase = height * 0.82;
+        const xMap = (u) => pad.l + u * plotW;
+        ctx.strokeStyle = colors.grid; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(pad.l, mid); ctx.lineTo(width - pad.r, mid); ctx.moveTo(pad.l, densityBase); ctx.lineTo(width - pad.r, densityBase); ctx.stroke();
+        const samples = [];
+        let maxPsi = 0, maxRho = 0;
+        for (let i = 0; i <= 700; i++) {
+          const u = i / 700, z = amplitudesAt(u, s), rho = z.re * z.re + z.im * z.im;
+          samples.push({ u, ...z, rho }); maxPsi = Math.max(maxPsi, Math.abs(z.re), Math.abs(z.im)); maxRho = Math.max(maxRho, rho);
+        }
+        const psiScale = Math.min(70, height * 0.18) / Math.max(0.1, maxPsi);
+        const rhoScale = Math.min(90, height * 0.22) / Math.max(0.1, maxRho);
+        [["re", colors.green], ["im", colors.blue]].forEach(([key, color]) => {
+          ctx.strokeStyle = color; ctx.lineWidth = 2.2; ctx.beginPath();
+          samples.forEach((point, i) => { const y = mid - point[key] * psiScale; if (!i) ctx.moveTo(xMap(point.u), y); else ctx.lineTo(xMap(point.u), y); }); ctx.stroke();
+        });
+        ctx.strokeStyle = colors.rust; ctx.lineWidth = 2.6; ctx.beginPath();
+        samples.forEach((point, i) => { const y = densityBase - point.rho * rhoScale; if (!i) ctx.moveTo(xMap(point.u), y); else ctx.lineTo(xMap(point.u), y); }); ctx.stroke();
+        ctx.fillStyle = colors.muted; ctx.font = "12px Inter, sans-serif"; ctx.fillText("ψ", 17, mid + 4); ctx.fillText("|ψ|²", 11, densityBase + 4); ctx.fillText("0", pad.l - 3, height - 9); ctx.fillText("a", width - pad.r - 2, height - 9);
+      }
+
+      function renderHistogram(s) {
+        const total = counts.one + counts.two;
+        const rows = [
+          { label: `E${s.n1}`, predicted: s.p1, count: counts.one },
+          { label: `E${s.n2}`, predicted: s.p2, count: counts.two }
+        ];
+        $("histogram").innerHTML = rows.map((row) => {
+          const observed = total ? row.count / total : 0;
+          return `<div class="hist-row"><strong>${row.label}</strong><div class="hist-track"><div class="hist-fill" style="width:${(100 * observed).toFixed(1)}%"></div></div><span>${row.count} (${(100 * observed).toFixed(0)}%)</span></div><div style="margin:-5px 0 3px 66px;color:#6b756f;font-size:.7rem">Predicted: ${(100 * row.predicted).toFixed(0)}%</div>`;
+        }).join("");
+      }
+
+      function render() {
+        const s = currentState();
+        $("probabilityOneValue").textContent = s.p1.toFixed(2);
+        $("relativePhaseValue").textContent = `${(s.phase / Math.PI).toFixed(2)}π`;
+        $("timeControlValue").textContent = s.t.toFixed(2);
+        const effectiveP1 = collapsedState === s.n1 ? 1 : collapsedState === s.n2 ? 0 : s.p1;
+        const effectiveP2 = 1 - effectiveP1;
+        $("coefficientOne").textContent = Math.sqrt(effectiveP1).toFixed(4);
+        $("coefficientTwo").textContent = collapsedState ? Math.sqrt(effectiveP2).toFixed(4) : `${Math.sqrt(effectiveP2).toFixed(4)}eⁱφ`;
+        $("expectedEnergy").textContent = (effectiveP1 * energy(s.n1) + effectiveP2 * energy(s.n2)).toFixed(4);
+        draw(s); renderHistogram(s);
+      }
+
+      function prepare() {
+        collapsedState = null; counts = { one: 0, two: 0 };
+        $("measurementStatus").textContent = "The state has been prepared again. Energy probabilities are determined by |C₁|² and |C₂|².";
+        render();
+      }
+
+      ["stateOne", "stateTwo", "probabilityOne", "relativePhase", "timeControl"].forEach((id) => $(id).addEventListener("input", () => { if (id !== "timeControl") { collapsedState = null; $("measurementStatus").textContent = "The preparation controls changed. The displayed state is again an unmeasured superposition."; } render(); }));
+      $("prepareButton").addEventListener("click", prepare);
+      $("measureButton").addEventListener("click", () => {
+        const s = currentState();
+        if (collapsedState === null) collapsedState = Math.random() < s.p1 ? s.n1 : s.n2;
+        $("measurementStatus").innerHTML = `<strong>Measurement result: E${collapsedState}.</strong> The displayed state has collapsed to ψ${collapsedState}(x). Select “Prepare state” to restore the superposition.`;
+        render();
+      });
+      $("ensembleButton").addEventListener("click", () => {
+        const s = currentState();
+        for (let i = 0; i < 100; i++) Math.random() < s.p1 ? counts.one++ : counts.two++;
+        $("measurementStatus").textContent = `${counts.one + counts.two} measurements have been performed on identically prepared systems.`;
+        render();
+      });
+      $("playButton").addEventListener("click", () => {
+        playing = !playing;
+        $("playButton").innerHTML = playing ? '<i class="fa-solid fa-pause"></i> Pause' : '<i class="fa-solid fa-play"></i> Play';
+      });
+      $("resetButton").addEventListener("click", () => {
+        $("stateOne").value = "1"; $("stateTwo").value = "2"; $("probabilityOne").value = "0.5"; $("relativePhase").value = "0"; $("timeControl").value = "0"; playing = false;
+        $("playButton").innerHTML = '<i class="fa-solid fa-play"></i> Play'; prepare();
+      });
+      function animate(timestamp) {
+        if (playing && timestamp - lastFrame > 30) {
+          const next = (Number($("timeControl").value) + 0.01) % 4;
+          $("timeControl").value = next.toFixed(2); lastFrame = timestamp; render();
+        }
+        requestAnimationFrame(animate);
+      }
+      window.addEventListener("resize", render);
+      render(); requestAnimationFrame(animate);
+    })();
+  </script>
+</body>
+</html>

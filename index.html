@@ -3196,6 +3196,7 @@
         slug: "blackbody-spectrum",
         title: "Blackbody Spectrum",
         description: "Explore how temperature changes the thermal-radiation spectrum, its intensity and the wavelength of maximum emission.",
+        sourceLabel: "External simulator",
         source: "PhET Interactive Simulations, University of Colorado Boulder",
         standaloneUrl: "https://phet.colorado.edu/en/simulations/blackbody-spectrum",
         icon: "fa-temperature-high"
@@ -3206,9 +3207,54 @@
         slug: "photoelectric-effect",
         title: "Photoelectric Effect",
         description: "Investigate how light frequency, intensity, target material and applied voltage affect photoelectron emission.",
+        sourceLabel: "External simulator",
         source: "PhET Interactive Simulations, University of Colorado Boulder",
         standaloneUrl: "https://phet.colorado.edu/sims/cheerpj/photoelectric/latest/photoelectric.html?simulation=photoelectric&locale=pt_BR",
         icon: "fa-solar-panel"
+      },
+      {
+        id: "S03 · Sections 2.3–2.5",
+        sectionId: "2.3–2.5",
+        slug: "infinite-well",
+        title: "Infinite Potential Well Explorer",
+        description: "Explore eigenstates, nodes, probability in a selected interval and the discrete energy spectrum of a one-dimensional infinite well.",
+        sourceLabel: "Original simulator",
+        source: "Quantum Mechanics book-app · Prof. Mario Reis",
+        standaloneUrl: "simulators/infinite-well.html",
+        icon: "fa-arrows-left-right-to-line"
+      },
+      {
+        id: "S04 · Sections 2.7, 2.9–2.10",
+        sectionId: "2.7, 2.9–2.10",
+        slug: "superposition-measurement",
+        title: "Superposition and Measurement Lab",
+        description: "Prepare a two-state superposition, compare amplitudes with energy probabilities, run an ensemble and observe state collapse.",
+        sourceLabel: "Original simulator",
+        source: "Quantum Mechanics book-app · Prof. Mario Reis",
+        standaloneUrl: "simulators/superposition-measurement.html",
+        icon: "fa-chart-column"
+      },
+      {
+        id: "S05 · Sections 2.12–2.14",
+        sectionId: "2.12–2.14",
+        slug: "gaussian-wave-packet",
+        title: "Gaussian Wave Packet and Uncertainty",
+        description: "Follow a free Gaussian packet in position and momentum space while tracking group motion, spreading and uncertainty.",
+        sourceLabel: "Original simulator",
+        source: "Quantum Mechanics book-app · Prof. Mario Reis",
+        standaloneUrl: "simulators/gaussian-wave-packet.html",
+        icon: "fa-wave-square"
+      },
+      {
+        id: "S06 · Sections 2.2 and 2.4",
+        sectionId: "2.2 and 2.4",
+        slug: "probability-current",
+        title: "Probability Density and Current",
+        description: "Compare density and probability flow for traveling waves, standing waves, counter-propagating states and a localized packet.",
+        sourceLabel: "Original simulator",
+        source: "Quantum Mechanics book-app · Prof. Mario Reis",
+        standaloneUrl: "simulators/probability-current.html",
+        icon: "fa-arrow-right-arrow-left"
       }
     ];
 
@@ -4683,7 +4729,7 @@
                   </span>
                 </div>
                 <div class="simulator-card__description">${escapeHtml(simulator.description)}</div>
-                <div class="simulator-card__source"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> External simulator · Source: ${escapeHtml(simulator.source)}.</div>
+                <div class="simulator-card__source"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> ${escapeHtml(simulator.sourceLabel)} · Source: ${escapeHtml(simulator.source)}.</div>
                 <div class="simulator-card__footer">
                   <i class="fa-solid fa-arrow-right"></i>
                   <span>Open simulator</span>

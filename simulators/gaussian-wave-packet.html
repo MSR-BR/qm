@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gaussian Wave Packet and Uncertainty | Quantum Mechanics</title>
+  <meta name="description" content="Interactive free Gaussian wave packet showing position and momentum widths, group motion, spreading and uncertainty." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+</head>
+<body>
+  <main class="sim-shell">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">S05 · Chapter 2 · Sections 2.12–2.14</div>
+        <h1 class="sim-title">Gaussian Wave Packet and Uncertainty</h1>
+        <p class="sim-subtitle">Prepare a minimum-uncertainty packet and follow its free evolution. Compare localization in position with spread in momentum and watch the packet broaden in time.</p>
+      </div>
+      <div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+
+    <div class="sim-layout">
+      <aside class="sim-panel sim-controls" aria-label="Wave packet controls">
+        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Initial packet</h2>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="initialPosition">Position x₀</label><output class="control-value" id="initialPositionValue">−4.00</output></div><input id="initialPosition" type="range" min="-8" max="4" step="0.1" value="-4" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="meanMomentum">Mean momentum p₀</label><output class="control-value" id="meanMomentumValue">3.00</output></div><input id="meanMomentum" type="range" min="-5" max="5" step="0.1" value="3" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="initialWidth">Initial width Δx₀</label><output class="control-value" id="initialWidthValue">1.00</output></div><input id="initialWidth" type="range" min="0.35" max="3" step="0.05" value="1" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="particleMass">Particle mass m</label><output class="control-value" id="particleMassValue">1.00</output></div><input id="particleMass" type="range" min="0.5" max="4" step="0.05" value="1" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="timeControl">Time t</label><output class="control-value" id="timeControlValue">0.00</output></div><input id="timeControl" type="range" min="0" max="8" step="0.01" value="0" /></div>
+        <div class="button-row">
+          <button class="sim-button" id="playButton" type="button"><i class="fa-solid fa-play"></i> Play</button>
+          <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
+        </div>
+        <div class="insight-box" style="margin-top:14px;">Try making Δx₀ smaller. The packet becomes more localized, but its momentum distribution becomes wider.</div>
+      </aside>
+
+      <section class="sim-workspace">
+        <div class="sim-panel metrics-grid">
+          <div class="metric"><div class="metric-label">⟨x⟩</div><div class="metric-value" id="meanPositionMetric"></div></div>
+          <div class="metric"><div class="metric-label">Group velocity</div><div class="metric-value" id="groupVelocityMetric"></div></div>
+          <div class="metric"><div class="metric-label">Δx(t)</div><div class="metric-value" id="positionWidthMetric"></div></div>
+          <div class="metric"><div class="metric-label">Δp</div><div class="metric-value" id="momentumWidthMetric"></div></div>
+          <div class="metric"><div class="metric-label">ΔxΔp</div><div class="metric-value" id="uncertaintyMetric"></div></div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> Position representation</h2>
+          <div class="canvas-wrap tall"><canvas id="positionCanvas" aria-label="Gaussian wave packet in position space"></canvas></div>
+          <div class="legend"><span class="legend-item"><span class="legend-swatch" style="--swatch:#2f6b4f"></span> Re ψ(x,t)</span><span class="legend-item"><span class="legend-swatch" style="--swatch:#a64b35"></span> |ψ(x,t)|²</span><span class="legend-item"><span class="legend-swatch" style="--swatch:#d5b260"></span> ⟨x⟩ ± Δx</span></div>
+        </div>
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-chart-area"></i> Momentum representation</h2>
+          <div class="canvas-wrap"><canvas id="momentumCanvas" aria-label="Gaussian momentum distribution"></canvas></div>
+          <div class="legend"><span class="legend-item"><span class="legend-swatch" style="--swatch:#376b8c"></span> |φ(p)|²</span><span class="legend-item"><span class="legend-swatch" style="--swatch:#d5b260"></span> ⟨p⟩ ± Δp</span></div>
+        </div>
+        <div class="equation-box">Δx(t) = Δx₀√[1 + (ℏt/2mΔx₀²)²] &nbsp;&nbsp;·&nbsp;&nbsp; Δp = ℏ/(2Δx₀)<br />⟨x⟩ = x₀ + (p₀/m)t &nbsp;&nbsp;·&nbsp;&nbsp; Δx(t)Δp ≥ ℏ/2</div>
+      </section>
+    </div>
+    <footer class="sim-footer">The packet is a free, one-dimensional minimum-uncertainty Gaussian at t = 0. Natural units are used: ℏ = 1.</footer>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      let playing = false, lastFrame = 0;
+      const colors = { green: "#2f6b4f", rust: "#a64b35", blue: "#376b8c", gold: "#d5b260", grid: "#dbe5dd", muted: "#6b756f" };
+      function fitCanvas(canvas) {
+        const ratio = Math.max(1, window.devicePixelRatio || 1), rect = canvas.getBoundingClientRect();
+        const width = Math.max(300, Math.round(rect.width)), height = Math.max(220, Math.round(rect.height));
+        canvas.width = width * ratio; canvas.height = height * ratio;
+        const ctx = canvas.getContext("2d"); ctx.setTransform(ratio, 0, 0, ratio, 0, 0); return { ctx, width, height };
+      }
+      function state() {
+        const x0 = Number($("initialPosition").value), p0 = Number($("meanMomentum").value), sigma0 = Number($("initialWidth").value), m = Number($("particleMass").value), t = Number($("timeControl").value);
+        const tau = t / (2 * m * sigma0 * sigma0), sigmaT = sigma0 * Math.sqrt(1 + tau * tau), dp = 1 / (2 * sigma0), xc = x0 + p0 * t / m;
+        return { x0, p0, sigma0, m, t, tau, sigmaT, dp, xc, velocity: p0 / m };
+      }
+      function axes(ctx, width, height, pad, y) { ctx.strokeStyle = colors.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(width - pad.r, y); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, height - pad.b); ctx.stroke(); }
+      function drawPosition(s) {
+        const { ctx, width, height } = fitCanvas($("positionCanvas")); ctx.clearRect(0, 0, width, height);
+        const pad = { l: 48, r: 22, t: 22, b: 32 }, xMin = Math.min(-12, s.xc - 5 * s.sigmaT), xMax = Math.max(18, s.xc + 5 * s.sigmaT), plotW = width - pad.l - pad.r, mid = height * .42, densityBase = height * .82;
+        const xMap = (x) => pad.l + (x - xMin) / (xMax - xMin) * plotW;
+        axes(ctx, width, height, pad, mid); ctx.strokeStyle = colors.grid; ctx.beginPath(); ctx.moveTo(pad.l, densityBase); ctx.lineTo(width-pad.r, densityBase); ctx.stroke();
+        ctx.fillStyle = "rgba(213,178,96,.16)"; ctx.fillRect(xMap(s.xc - s.sigmaT), pad.t, xMap(s.xc + s.sigmaT)-xMap(s.xc-s.sigmaT), height-pad.t-pad.b);
+        const samples=[]; let maxRho=0;
+        for(let i=0;i<=800;i++){const x=xMin+(xMax-xMin)*i/800,y=x-s.xc,rho=Math.exp(-y*y/(2*s.sigmaT*s.sigmaT))/(Math.sqrt(2*Math.PI)*s.sigmaT);const phase=s.p0*(x-s.x0)-s.p0*s.p0*s.t/(2*s.m)+s.tau*y*y/(4*s.sigma0*s.sigma0*(1+s.tau*s.tau))-0.5*Math.atan(s.tau);const re=Math.sqrt(rho)*Math.cos(phase);samples.push({x,rho,re});maxRho=Math.max(maxRho,rho);}
+        const psiMax=Math.max(...samples.map(q=>Math.abs(q.re)),.01), psiScale=Math.min(74,height*.19)/psiMax, rhoScale=Math.min(88,height*.22)/maxRho;
+        ctx.strokeStyle=colors.green;ctx.lineWidth=2;ctx.beginPath();samples.forEach((q,i)=>{const y=mid-q.re*psiScale;i?ctx.lineTo(xMap(q.x),y):ctx.moveTo(xMap(q.x),y)});ctx.stroke();
+        ctx.strokeStyle=colors.rust;ctx.lineWidth=2.6;ctx.beginPath();samples.forEach((q,i)=>{const y=densityBase-q.rho*rhoScale;i?ctx.lineTo(xMap(q.x),y):ctx.moveTo(xMap(q.x),y)});ctx.stroke();
+        ctx.strokeStyle=colors.gold;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(xMap(s.xc),pad.t);ctx.lineTo(xMap(s.xc),height-pad.b);ctx.stroke();ctx.setLineDash([]);
+        ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("ψ",17,mid+4);ctx.fillText("|ψ|²",10,densityBase+4);ctx.fillText(xMin.toFixed(0),pad.l-8,height-10);ctx.fillText(xMax.toFixed(0),width-pad.r-14,height-10);
+      }
+      function drawMomentum(s) {
+        const { ctx, width, height } = fitCanvas($("momentumCanvas")); ctx.clearRect(0,0,width,height);
+        const pad={l:48,r:22,t:22,b:32},pMin=-8,pMax=8,base=height-pad.b,plotW=width-pad.l-pad.r,pMap=(p)=>pad.l+(p-pMin)/(pMax-pMin)*plotW;
+        axes(ctx,width,height,pad,base);ctx.fillStyle="rgba(213,178,96,.16)";ctx.fillRect(pMap(s.p0-s.dp),pad.t,pMap(s.p0+s.dp)-pMap(s.p0-s.dp),height-pad.t-pad.b);
+        const peak=1/(Math.sqrt(2*Math.PI)*s.dp);ctx.strokeStyle=colors.blue;ctx.lineWidth=2.6;ctx.beginPath();for(let i=0;i<=700;i++){const p=pMin+(pMax-pMin)*i/700,d=Math.exp(-((p-s.p0)**2)/(2*s.dp*s.dp))/(Math.sqrt(2*Math.PI)*s.dp),y=base-d/peak*(height-pad.t-pad.b)*.88;i?ctx.lineTo(pMap(p),y):ctx.moveTo(pMap(p),y)}ctx.stroke();
+        ctx.strokeStyle=colors.gold;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(pMap(s.p0),pad.t);ctx.lineTo(pMap(s.p0),base);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("p",width-pad.r-5,height-9);ctx.fillText(String(pMin),pad.l-6,height-9);ctx.fillText(String(pMax),width-pad.r-7,height-9);
+      }
+      function render(){const s=state();$("initialPositionValue").textContent=s.x0.toFixed(2).replace("-","−");$("meanMomentumValue").textContent=s.p0.toFixed(2).replace("-","−");$("initialWidthValue").textContent=s.sigma0.toFixed(2);$("particleMassValue").textContent=s.m.toFixed(2);$("timeControlValue").textContent=s.t.toFixed(2);$("meanPositionMetric").textContent=s.xc.toFixed(4);$("groupVelocityMetric").textContent=s.velocity.toFixed(4);$("positionWidthMetric").textContent=s.sigmaT.toFixed(4);$("momentumWidthMetric").textContent=s.dp.toFixed(4);$("uncertaintyMetric").textContent=(s.sigmaT*s.dp).toFixed(4);drawPosition(s);drawMomentum(s);}
+      ["initialPosition","meanMomentum","initialWidth","particleMass","timeControl"].forEach(id=>$(id).addEventListener("input",render));
+      $("playButton").addEventListener("click",()=>{playing=!playing;$("playButton").innerHTML=playing?'<i class="fa-solid fa-pause"></i> Pause':'<i class="fa-solid fa-play"></i> Play'});
+      $("resetButton").addEventListener("click",()=>{Object.entries({initialPosition:-4,meanMomentum:3,initialWidth:1,particleMass:1,timeControl:0}).forEach(([id,v])=>$(id).value=v);playing=false;$("playButton").innerHTML='<i class="fa-solid fa-play"></i> Play';render()});
+      function animate(ts){if(playing&&ts-lastFrame>30){const next=Number($("timeControl").value)+.012;$("timeControl").value=next>8?0:next.toFixed(3);lastFrame=ts;render()}requestAnimationFrame(animate)}
+      window.addEventListener("resize",render);render();requestAnimationFrame(animate);
+    })();
+  </script>
+</body>
+</html>
