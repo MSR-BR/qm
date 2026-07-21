@@ -2454,15 +2454,7 @@
                 <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
               </button>
               <div class="drawer-group-panel" id="drawerPanelSimulators">
-                <div class="extras-list">
-                  <button type="button" class="extras-button" id="simulatorsMenuButton">
-                    <span class="extras-icon"><i class="fa-solid fa-flask-vial"></i></span>
-                    <span class="extras-text">
-                      <span class="extras-label">Simulator catalog</span>
-                      <span class="extras-note">Browse interactive resources grouped by chapter.</span>
-                    </span>
-                  </button>
-                </div>
+                <ul class="chapter-list" id="simulatorsChapterList"></ul>
               </div>
             </section>
 
@@ -2582,7 +2574,7 @@
                   <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
                   <div class="discovery-card__meta">Open Personal Area</div>
                 </a>
-                <button type="button" class="discovery-card" data-role="open-view" data-view-id="simulators">
+                <button type="button" class="discovery-card" data-role="open-drawer-section" data-section-id="simulators">
                   <div class="discovery-card__title"><i class="fa-solid fa-flask-vial"></i> Simulators</div>
                   <div class="discovery-card__meta">Open simulator catalog</div>
                 </button>
@@ -3144,7 +3136,7 @@
     const personalHint = document.getElementById("personalHint");
     const personalDrawerActions = document.getElementById("personalDrawerActions");
     const extrasList = document.getElementById("extrasList");
-    const simulatorsMenuButton = document.getElementById("simulatorsMenuButton");
+    const simulatorsChapterList = document.getElementById("simulatorsChapterList");
     const menuToggleButton = document.getElementById("menuToggleButton");
     const menuDrawerOverlay = document.getElementById("menuDrawerOverlay");
     const menuDrawerClose = document.getElementById("menuDrawerClose");
@@ -3680,13 +3672,33 @@
     }
 
     function renderSimulatorsMenu() {
-      if (!simulatorsMenuButton) return;
-      simulatorsMenuButton.classList.toggle("active", state.view === "simulators");
-      simulatorsMenuButton.onclick = function () {
-        closeDrawer();
-        state.simulatorId = "";
-        void activateView("simulators");
-      };
+      if (!simulatorsChapterList) return;
+      const availableChapterIds = [...new Set(simulatorsCatalog.map(function (simulator) {
+        return String(Number(simulator.chapter) || 0).padStart(2, "0");
+      }))].filter(function (chapterId) { return chapterId !== "00"; }).sort();
+
+      simulatorsChapterList.innerHTML = "";
+      availableChapterIds.forEach(function (chapterId) {
+        const chapter = chapters.find(function (item) { return item.id === chapterId; });
+        const simulatorCount = simulatorsCatalog.filter(function (simulator) {
+          return String(Number(simulator.chapter) || 0).padStart(2, "0") === chapterId;
+        }).length;
+        const li = document.createElement("li");
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `chapter-button simulator-chapter-button${state.view === "simulators" && state.chapterId === chapterId ? " active" : ""}`;
+        button.dataset.simulatorChapterId = chapterId;
+        button.innerHTML = `
+          <span class="chapter-number">${chapterId}</span>
+          <span class="chapter-name">${escapeHtml(chapter ? chapter.title : `Chapter ${chapterId}`)} · ${simulatorCount} ${simulatorCount === 1 ? "simulator" : "simulators"}</span>
+        `;
+        button.addEventListener("click", function () {
+          closeDrawer();
+          void activateView("simulators", chapterId);
+        });
+        li.appendChild(button);
+        simulatorsChapterList.appendChild(li);
+      });
     }
 
     function setActiveChapter(id) {
@@ -3782,7 +3794,7 @@
               <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
               <div class="discovery-card__meta">Open Personal Area</div>
             </a>
-            <button type="button" class="discovery-card" data-role="open-view" data-view-id="simulators">
+            <button type="button" class="discovery-card" data-role="open-drawer-section" data-section-id="simulators">
               <div class="discovery-card__title"><i class="fa-solid fa-flask-vial"></i> Simulators</div>
               <div class="discovery-card__meta">Open simulator catalog</div>
             </button>
@@ -4854,20 +4866,17 @@
     }
 
     function renderYesulatorCatalog() {
-      const simulatorsByChapter = simulatorsCatalog.reduce(function (groups, simulator) {
-        const chapterNumber = Number(simulator.chapter) || 0;
-        if (!groups[chapterNumber]) groups[chapterNumber] = [];
-        groups[chapterNumber].push(simulator);
-        return groups;
-      }, {});
+      const selectedChapterNumber = Number(state.chapterId) || Number(simulatorsCatalog[0]?.chapter) || 1;
+      const selectedChapterId = String(selectedChapterNumber).padStart(2, "0");
+      const selectedChapter = chapters.find(function (item) { return item.id === selectedChapterId; });
+      const selectedSimulators = simulatorsCatalog.filter(function (simulator) {
+        return Number(simulator.chapter) === selectedChapterNumber;
+      });
       topicContainer.innerHTML = `
-        ${Object.keys(simulatorsByChapter).sort(function (a, b) { return Number(a) - Number(b); }).map(function (chapterNumber) {
-          const chapterId = String(chapterNumber).padStart(2, "0");
-          const chapter = chapters.find(function (item) { return item.id === chapterId; });
-          return `<section class="simulator-chapter-group" id="simulators-chapter-${escapeHtml(chapterNumber)}">
-            <h3 class="simulator-chapter-heading"><span>Chapter ${escapeHtml(chapterId)}</span>${escapeHtml(chapter ? chapter.title : "Quantum Mechanics")}</h3>
+          <section class="simulator-chapter-group" id="simulators-chapter-${escapeHtml(selectedChapterNumber)}">
+            <h3 class="simulator-chapter-heading"><span>Chapter ${escapeHtml(selectedChapterId)}</span>${escapeHtml(selectedChapter ? selectedChapter.title : "Quantum Mechanics")}</h3>
             <div class="simulator-grid">
-          ${simulatorsByChapter[chapterNumber].map(function (simulator) {
+          ${selectedSimulators.map(function (simulator) {
             return `
               <article class="simulator-card">
                 <div class="simulator-card__top">
@@ -4890,8 +4899,7 @@
             `;
           }).join("")}
             </div>
-          </section>`;
-        }).join("")}
+          </section>
       `;
     }
 
@@ -4923,10 +4931,15 @@
     }
 
     function renderYesulators() {
+      if (!state.chapterId || !simulatorsCatalog.some(function (simulator) { return Number(simulator.chapter) === Number(state.chapterId); })) {
+        state.chapterId = String(Number(simulatorsCatalog[0]?.chapter) || 1).padStart(2, "0");
+        syncUrl();
+      }
+      const selectedChapter = chapters.find(function (chapter) { return chapter.id === state.chapterId; });
       setLandingMode(false);
-      panelKicker.textContent = "Interactive resources";
-      panelTitle.textContent = simulatorsPanelCopy.title;
-      panelDescription.textContent = simulatorsPanelCopy.description;
+      panelKicker.textContent = `Chapter ${state.chapterId}`;
+      panelTitle.textContent = selectedChapter ? `${selectedChapter.title} — simulators` : simulatorsPanelCopy.title;
+      panelDescription.textContent = "Choose one of the simulators available for this chapter. Each resource opens in a new browser tab.";
       setActiveChapter(state.chapterId);
       setActivePersonal("");
       setActiveExtra("");
