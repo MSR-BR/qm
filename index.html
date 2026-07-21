@@ -4908,7 +4908,7 @@
                 <div class="simulator-card__sections"><i class="fa-solid fa-book-open" aria-hidden="true"></i> ${escapeHtml(simulator.sections.length === 1 ? "Related section" : "Related sections")}: ${escapeHtml(simulator.sections.join(" · "))}</div>
                 <div class="simulator-card__source"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> ${escapeHtml(simulator.sourceLabel)} · Source: ${escapeHtml(simulator.source)}.</div>
                 <div class="simulator-card__footer">
-                  <a class="simulator-card__button" href="${escapeHtml(simulator.standaloneUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open simulator</a>
+                  <a class="simulator-card__button" href="${escapeHtml(simulator.standaloneUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${escapeHtml(simulator.buttonLabel || "Open simulator")}</a>
                   ${simulator.alternateUrl ? `<a class="simulator-card__button" href="${escapeHtml(simulator.alternateUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${escapeHtml(simulator.alternateLabel || "Open external")}</a>` : ""}
                 </div>
               </article>
