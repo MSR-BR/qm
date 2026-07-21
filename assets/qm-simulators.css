@@ -375,18 +375,32 @@ canvas {
 .hist-fill { height: 100%; border-radius: inherit; background: var(--sim-green); transition: width 0.25s ease; }
 
 @media (max-width: 640px) {
+  body { padding-bottom: 76px; }
   .sim-header { flex-direction: column; }
-  .sim-source { max-width: none; }
+  .sim-subtitle, .sim-source { display: none; }
   .sim-layout { grid-template-columns: 1fr; }
-  .sim-sidebar { position: static; }
+  .sim-sidebar { position: static; display: contents; }
+  .sim-workspace { order: 1; }
+  .sim-sidebar > .metrics-grid { order: 2; }
+  .sim-sidebar > .equation-panel { order: 3; }
   .sim-controls {
+    position: fixed;
+    z-index: 30;
+    right: 8px;
+    bottom: max(8px, env(safe-area-inset-bottom));
+    left: 8px;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 12px;
+    width: auto;
+    max-height: 46dvh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    box-shadow: 0 16px 44px rgba(28, 54, 40, 0.26);
   }
   .sim-controls .sim-panel-title,
-  .sim-controls .button-row,
-  .sim-controls .insight-box { grid-column: 1 / -1; }
+  .sim-controls .button-row { grid-column: 1 / -1; }
+  .sim-controls .insight-box { display: none; }
   .sim-controls .control-group { margin-bottom: 0; }
 }
 
