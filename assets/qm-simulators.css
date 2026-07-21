@@ -402,6 +402,47 @@ canvas {
   .sim-controls .button-row { grid-column: 1 / -1; }
   .sim-controls .insight-box { display: none; }
   .sim-controls .control-group { margin-bottom: 0; }
+  .sim-controls.has-mobile-numerics {
+    padding-right: calc(50% + 8px);
+  }
+  .sim-controls > .mobile-numerics {
+    position: absolute;
+    top: 52px;
+    right: 12px;
+    bottom: 12px;
+    display: grid;
+    grid-template-columns: 1fr;
+    align-content: start;
+    gap: 7px;
+    width: calc(50% - 18px);
+    min-width: 0;
+    padding: 0 0 0 10px;
+    overflow-y: auto;
+    border: 0;
+    border-left: 1px solid var(--sim-border);
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .sim-controls > .mobile-numerics > .sim-panel-title {
+    grid-column: 1;
+    padding: 0 0 3px;
+    font-size: 0.76rem;
+    line-height: 1.25;
+  }
+  .sim-controls > .mobile-numerics .metric {
+    padding: 7px 8px;
+  }
+  .sim-controls > .mobile-numerics .metric-label {
+    font-size: 0.66rem;
+    line-height: 1.25;
+  }
+  .sim-controls > .mobile-numerics .metric-value {
+    margin-top: 2px;
+    overflow-wrap: anywhere;
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
 }
 
 @media (max-width: 520px) {
