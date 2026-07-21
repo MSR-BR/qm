@@ -25,19 +25,20 @@
     </header>
 
     <div class="sim-layout">
-      <aside class="sim-panel sim-controls" aria-label="Simulation controls">
+      <aside class="sim-sidebar" aria-label="Simulation controls and values">
+      <div class="sim-panel sim-controls">
         <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Controls</h2>
         <div class="control-group">
           <div class="control-row"><label class="control-label" for="stateN">Quantum number n</label><output class="control-value" id="stateNValue">1</output></div>
           <input id="stateN" type="range" min="1" max="8" step="1" value="1" />
         </div>
         <div class="control-group">
-          <div class="control-row"><label class="control-label" for="wellWidth">Well width a</label><output class="control-value" id="wellWidthValue">1.00</output></div>
-          <input id="wellWidth" type="range" min="0.5" max="2" step="0.01" value="1" />
+          <div class="control-row"><label class="control-label" for="wellWidth">Well width a</label><output class="control-value" id="wellWidthValue">1.00 nm</output></div>
+          <input id="wellWidth" type="range" min="0.1" max="5" step="0.01" value="1" />
         </div>
         <div class="control-group">
-          <div class="control-row"><label class="control-label" for="particleMass">Particle mass m</label><output class="control-value" id="particleMassValue">1.00</output></div>
-          <input id="particleMass" type="range" min="0.5" max="3" step="0.05" value="1" />
+          <div class="control-row"><label class="control-label" for="particleMass">Mass ratio m/mₑ</label><output class="control-value" id="particleMassValue">1.00 mₑ</output></div>
+          <input id="particleMass" type="range" min="0.1" max="5" step="0.05" value="1" />
         </div>
         <div class="control-group">
           <div class="control-row"><label class="control-label" for="xLeft">Interval start x₁/a</label><output class="control-value" id="xLeftValue">0.20</output></div>
@@ -50,16 +51,22 @@
         <div class="button-row">
           <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
         </div>
-        <div class="insight-box" style="margin-top:14px;">Natural units are used: ℏ = 1. The spatial coordinate runs from 0 to a.</div>
-      </aside>
-
-      <section class="sim-workspace">
+        <div class="insight-box" style="margin-top:14px;">Physical SI constants are used. The default particle is an electron in a 1 nm (10 Å) wide well.</div>
+      </div>
         <div class="sim-panel metrics-grid" aria-label="Computed values">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</h2>
           <div class="metric"><div class="metric-label">Energy Eₙ</div><div class="metric-value" id="energyMetric"></div></div>
           <div class="metric"><div class="metric-label">Nodes inside well</div><div class="metric-value" id="nodesMetric"></div></div>
           <div class="metric"><div class="metric-label">Wavelength λₙ</div><div class="metric-value" id="wavelengthMetric"></div></div>
           <div class="metric"><div class="metric-label">P(x₁ &lt; x &lt; x₂)</div><div class="metric-value" id="probabilityMetric"></div></div>
         </div>
+        <details class="sim-panel equation-panel">
+          <summary>Equations</summary>
+          <div class="equation-box">\[\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),\qquad E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}=\frac{n^2h^2}{8ma^2}\]\[h=6.62607015\times10^{-34}\ \mathrm{J\,s},\quad \hbar=1.054571817\times10^{-34}\ \mathrm{J\,s}\]\[m_e=9.1093837139\times10^{-31}\ \mathrm{kg},\quad 1\ \mathrm{eV}=1.602176634\times10^{-19}\ \mathrm{J}\]</div>
+        </details>
+      </aside>
+
+      <section class="sim-workspace">
         <div class="sim-panel">
           <h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> Eigenstate and probability density</h2>
           <div class="canvas-wrap tall"><canvas id="wellCanvas" aria-label="Wave function and probability density plot"></canvas></div>
@@ -73,10 +80,9 @@
           <h2 class="sim-panel-title"><i class="fa-solid fa-bars-staggered"></i> Discrete energy spectrum</h2>
           <div class="canvas-wrap"><canvas id="energyCanvas" aria-label="Energy levels plot"></canvas></div>
         </div>
-        <div class="equation-box">\[\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),\qquad E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}\]</div>
       </section>
     </div>
-    <footer class="sim-footer">This model represents an ideal one-dimensional infinite well. Values are calculated in natural units unless stated otherwise.</footer>
+    <footer class="sim-footer">This model represents an ideal one-dimensional infinite well. Calculations use SI constants; lengths are entered in nm and energies are displayed in eV.</footer>
   </main>
 
   <script>
@@ -84,6 +90,10 @@
       const $ = (id) => document.getElementById(id);
       const controls = ["stateN", "wellWidth", "particleMass", "xLeft", "xRight"];
       const colors = { green: "#2f6b4f", rust: "#a64b35", gold: "#d5b260", grid: "#dbe5dd", ink: "#26332c", muted: "#6b756f" };
+      const H = 6.62607015e-34;
+      const HBAR = H / (2 * Math.PI);
+      const ELECTRON_MASS = 9.1093837139e-31;
+      const ELECTRON_VOLT = 1.602176634e-19;
 
       function fitCanvas(canvas) {
         const ratio = Math.max(1, window.devicePixelRatio || 1);
@@ -108,7 +118,13 @@
           $("xLeft").value = left;
           $("xRight").value = right;
         }
-        return { n: Number($("stateN").value), a: Number($("wellWidth").value), m: Number($("particleMass").value), left, right };
+        const aNm = Number($("wellWidth").value);
+        const massRatio = Number($("particleMass").value);
+        return { n: Number($("stateN").value), aNm, a: aNm * 1e-9, massRatio, m: massRatio * ELECTRON_MASS, left, right };
+      }
+
+      function energyEV(n, s) {
+        return n * n * Math.PI * Math.PI * HBAR * HBAR / (2 * s.m * s.a * s.a) / ELECTRON_VOLT;
       }
 
       function intervalProbability(n, u1, u2) {
@@ -167,11 +183,11 @@
         const { ctx, width, height } = fitCanvas($("energyCanvas"));
         ctx.clearRect(0, 0, width, height);
         const pad = { l: 52, r: 24, t: 22, b: 28 };
-        const maxE = 64 * Math.PI * Math.PI / (2 * s.m * s.a * s.a);
+        const maxE = energyEV(8, s);
         const yMap = (e) => height - pad.b - (e / maxE) * (height - pad.t - pad.b);
         ctx.strokeStyle = colors.grid; ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, height - pad.b); ctx.lineTo(width - pad.r, height - pad.b); ctx.stroke();
         for (let n = 1; n <= 8; n++) {
-          const e = n * n * Math.PI * Math.PI / (2 * s.m * s.a * s.a);
+          const e = energyEV(n, s);
           const y = yMap(e);
           ctx.strokeStyle = n === s.n ? colors.rust : colors.green;
           ctx.lineWidth = n === s.n ? 4 : 2;
@@ -179,19 +195,21 @@
           ctx.fillStyle = n === s.n ? colors.rust : colors.muted; ctx.font = `${n === s.n ? "700" : "600"} 11px Inter, sans-serif`;
           ctx.fillText(`n=${n}`, 9, y + 4);
         }
+        ctx.fillStyle = colors.muted; ctx.font = "11px Inter, sans-serif";
+        ctx.fillText("Energy (eV)", pad.l + 8, 14);
       }
 
       function render() {
         const s = state();
         $("stateNValue").textContent = s.n;
-        $("wellWidthValue").textContent = s.a.toFixed(2);
-        $("particleMassValue").textContent = s.m.toFixed(2);
+        $("wellWidthValue").textContent = `${s.aNm.toFixed(2)} nm`;
+        $("particleMassValue").textContent = `${s.massRatio.toFixed(2)} mₑ`;
         $("xLeftValue").textContent = s.left.toFixed(2);
         $("xRightValue").textContent = s.right.toFixed(2);
-        const energy = s.n * s.n * Math.PI * Math.PI / (2 * s.m * s.a * s.a);
-        $("energyMetric").textContent = energy.toFixed(4);
+        const energy = energyEV(s.n, s);
+        $("energyMetric").textContent = `${energy.toFixed(4)} eV`;
         $("nodesMetric").textContent = String(s.n - 1);
-        $("wavelengthMetric").textContent = (2 * s.a / s.n).toFixed(4);
+        $("wavelengthMetric").textContent = `${(2 * s.aNm / s.n).toFixed(4)} nm`;
         $("probabilityMetric").textContent = `${(100 * intervalProbability(s.n, s.left, s.right)).toFixed(2)}%`;
         drawWell(s); drawEnergies(s);
       }

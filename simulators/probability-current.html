@@ -25,22 +25,30 @@
     </header>
 
     <div class="sim-layout">
-      <aside class="sim-panel sim-controls" aria-label="Probability current controls">
+      <aside class="sim-sidebar" aria-label="Probability current controls and values">
+      <div class="sim-panel sim-controls">
         <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State model</h2>
         <div class="control-group"><label class="control-label" for="stateType">Choose a state</label><select id="stateType"><option value="right">Right-moving plane wave</option><option value="left">Left-moving plane wave</option><option value="standing">Standing wave</option><option value="counter">Unequal counter-propagating waves</option><option value="packet">Localized moving packet</option></select></div>
-        <div class="control-group"><div class="control-row"><label class="control-label" for="waveNumber">Wave number k</label><output class="control-value" id="waveNumberValue">2.00</output></div><input id="waveNumber" type="range" min="0.5" max="5" step="0.05" value="2" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="waveNumber">Wave number k</label><output class="control-value" id="waveNumberValue">2.00 nm⁻¹</output></div><input id="waveNumber" type="range" min="0.5" max="5" step="0.05" value="2" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="particleMass">Mass ratio m/mₑ</label><output class="control-value" id="particleMassValue">1.00 mₑ</output></div><input id="particleMass" type="range" min="0.1" max="5" step="0.05" value="1" /></div>
         <div class="control-group" id="mixGroup"><div class="control-row"><label class="control-label" for="rightWeight">Right-moving weight</label><output class="control-value" id="rightWeightValue">0.75</output></div><input id="rightWeight" type="range" min="0" max="1" step="0.01" value="0.75" /></div>
-        <div class="control-group"><div class="control-row"><label class="control-label" for="timeControl">Time t</label><output class="control-value" id="timeControlValue">0.00</output></div><input id="timeControl" type="range" min="0" max="8" step="0.01" value="0" /></div>
+        <div class="control-group"><div class="control-row"><label class="control-label" for="timeControl">Time t</label><output class="control-value" id="timeControlValue">0.00 fs</output></div><input id="timeControl" type="range" min="0" max="20" step="0.05" value="0" /></div>
         <div class="button-row"><button class="sim-button" id="playButton" type="button"><i class="fa-solid fa-play"></i> Play</button><button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button></div>
         <div class="insight-box" id="stateInsight" style="margin-top:14px;"></div>
-      </aside>
-
-      <section class="sim-workspace">
+      </div>
         <div class="sim-panel metrics-grid">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</h2>
           <div class="metric"><div class="metric-label">Mean current ⟨j⟩</div><div class="metric-value" id="meanCurrentMetric"></div></div>
           <div class="metric"><div class="metric-label">Current direction</div><div class="metric-value" id="directionMetric"></div></div>
           <div class="metric"><div class="metric-label">Integrated probability</div><div class="metric-value" id="normalizationMetric">1.0000</div></div>
         </div>
+        <details class="sim-panel equation-panel">
+          <summary>Equations</summary>
+          <div class="equation-box">\[\rho(x,t)=|\psi(x,t)|^2\]\[j(x,t)=\frac{\hbar}{2mi}\left(\psi^*\frac{\partial\psi}{\partial x}-\psi\frac{\partial\psi^*}{\partial x}\right),\qquad \frac{\partial\rho}{\partial t}+\frac{\partial j}{\partial x}=0\]\[\omega=\frac{\hbar k^2}{2m},\qquad v=\frac{\hbar k}{m},\qquad \hbar=1.054571817\times10^{-34}\ \mathrm{J\,s}\]</div>
+        </details>
+      </aside>
+
+      <section class="sim-workspace">
         <div class="sim-panel">
           <h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> Wave function and density</h2>
           <div class="canvas-wrap tall"><canvas id="stateCanvas" aria-label="Wave function and probability density"></canvas></div>
@@ -50,30 +58,30 @@
           <h2 class="sim-panel-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> Probability current j(x,t)</h2>
           <div class="canvas-wrap"><canvas id="currentCanvas" aria-label="Probability current plot"></canvas></div>
         </div>
-        <div class="equation-box">\[\rho(x,t)=|\psi(x,t)|^2\]\[j(x,t)=\frac{\hbar}{2mi}\left(\psi^*\frac{\partial\psi}{\partial x}-\psi\frac{\partial\psi^*}{\partial x}\right),\qquad \frac{\partial\rho}{\partial t}+\frac{\partial j}{\partial x}=0\]</div>
       </section>
     </div>
-    <footer class="sim-footer">Natural units are used: ℏ = m = 1. Plane-wave models are normalized over the displayed interval; the localized packet is normalized on the real line.</footer>
+    <footer class="sim-footer">SI constants are used. Position is shown in nm, time in fs, mass relative to mₑ, and probability current in s⁻¹. Plane waves are normalized over the displayed 20 nm interval.</footer>
   </main>
 
   <script>
     (() => {
       const $ = (id) => document.getElementById(id); let playing=false,lastFrame=0;
       const colors={green:"#2f6b4f",blue:"#376b8c",rust:"#a64b35",gold:"#d5b260",grid:"#dbe5dd",muted:"#6b756f"};
+      const HBAR=1.054571817e-34,ELECTRON_MASS=9.1093837139e-31;
       function fitCanvas(canvas){const ratio=Math.max(1,window.devicePixelRatio||1),rect=canvas.getBoundingClientRect(),width=Math.max(300,Math.round(rect.width)),height=Math.max(220,Math.round(rect.height));canvas.width=width*ratio;canvas.height=height*ratio;const ctx=canvas.getContext("2d");ctx.setTransform(ratio,0,0,ratio,0,0);return{ctx,width,height}}
-      function state(){return{type:$("stateType").value,k:Number($("waveNumber").value),w:Number($("rightWeight").value),t:Number($("timeControl").value)}}
-      function values(x,s){const omega=s.k*s.k/2,phase=s.k*x-omega*s.t,L=20,planeNorm=1/Math.sqrt(L);
-        if(s.type==="right")return{re:planeNorm*Math.cos(phase),im:planeNorm*Math.sin(phase),rho:1/L,j:s.k/L};
-        if(s.type==="left"){const q=-s.k*x-omega*s.t;return{re:planeNorm*Math.cos(q),im:planeNorm*Math.sin(q),rho:1/L,j:-s.k/L}}
+      function state(){const k=Number($("waveNumber").value),massRatio=Number($("particleMass").value),m=massRatio*ELECTRON_MASS,t=Number($("timeControl").value),velocity=HBAR*k*1e9/m;return{type:$("stateType").value,k,w:Number($("rightWeight").value),t,massRatio,m,velocity,omegaFs:HBAR*(k*1e9)**2/(2*m)*1e-15}}
+      function values(x,s){const omega=s.omegaFs,phase=s.k*x-omega*s.t,L=20,planeNorm=1/Math.sqrt(L),fluxScale=s.velocity*1e9;
+        if(s.type==="right")return{re:planeNorm*Math.cos(phase),im:planeNorm*Math.sin(phase),rho:1/L,j:fluxScale/L};
+        if(s.type==="left"){const q=-s.k*x-omega*s.t;return{re:planeNorm*Math.cos(q),im:planeNorm*Math.sin(q),rho:1/L,j:-fluxScale/L}}
         if(s.type==="standing"){const norm=1/Math.sqrt(10+Math.sin(20*s.k)/(2*s.k)),amp=norm*Math.cos(s.k*x),time=-omega*s.t;return{re:amp*Math.cos(time),im:amp*Math.sin(time),rho:amp*amp,j:0}}
-        if(s.type==="counter"){const ar=Math.sqrt(s.w),al=Math.sqrt(1-s.w),norm=1/Math.sqrt(L+2*ar*al*Math.sin(20*s.k)/s.k),q=-s.k*x-omega*s.t,re=norm*(ar*Math.cos(phase)+al*Math.cos(q)),im=norm*(ar*Math.sin(phase)+al*Math.sin(q));return{re,im,rho:re*re+im*im,j:norm*norm*s.k*(s.w-(1-s.w))}}
-        const sigma=1.15,x0=-5+s.k*s.t,center=x-x0,rho=Math.exp(-center*center/(2*sigma*sigma))/(Math.sqrt(2*Math.PI)*sigma),amp=Math.sqrt(rho),packetPhase=s.k*(x+5)-omega*s.t;return{re:amp*Math.cos(packetPhase),im:amp*Math.sin(packetPhase),rho,j:s.k*rho};
+        if(s.type==="counter"){const ar=Math.sqrt(s.w),al=Math.sqrt(1-s.w),norm=1/Math.sqrt(L+2*ar*al*Math.sin(20*s.k)/s.k),q=-s.k*x-omega*s.t,re=norm*(ar*Math.cos(phase)+al*Math.cos(q)),im=norm*(ar*Math.sin(phase)+al*Math.sin(q));return{re,im,rho:re*re+im*im,j:fluxScale*norm*norm*(s.w-(1-s.w))}}
+        const sigma=1.15,x0=-5+s.velocity*1e-6*s.t,center=x-x0,rho=Math.exp(-center*center/(2*sigma*sigma))/(Math.sqrt(2*Math.PI)*sigma),amp=Math.sqrt(rho),packetPhase=s.k*(x+5)-omega*s.t;return{re:amp*Math.cos(packetPhase),im:amp*Math.sin(packetPhase),rho,j:fluxScale*rho};
       }
       function drawState(s){const{ctx,width,height}=fitCanvas($("stateCanvas"));ctx.clearRect(0,0,width,height);const pad={l:48,r:22,t:22,b:30},xMin=-10,xMax=10,plotW=width-pad.l-pad.r,xMap=x=>pad.l+(x-xMin)/(xMax-xMin)*plotW,mid=height*.4,base=height*.82;ctx.strokeStyle=colors.grid;ctx.beginPath();ctx.moveTo(pad.l,mid);ctx.lineTo(width-pad.r,mid);ctx.moveTo(pad.l,base);ctx.lineTo(width-pad.r,base);ctx.stroke();const samples=[];let maxPsi=.01,maxRho=.01;for(let i=0;i<=800;i++){const x=xMin+(xMax-xMin)*i/800,v=values(x,s);samples.push({x,...v});maxPsi=Math.max(maxPsi,Math.abs(v.re),Math.abs(v.im));maxRho=Math.max(maxRho,v.rho)}const ps=Math.min(72,height*.18)/maxPsi,rs=Math.min(86,height*.21)/maxRho;[["re",colors.green],["im",colors.blue]].forEach(([key,c])=>{ctx.strokeStyle=c;ctx.lineWidth=2;ctx.beginPath();samples.forEach((v,i)=>{const y=mid-v[key]*ps;i?ctx.lineTo(xMap(v.x),y):ctx.moveTo(xMap(v.x),y)});ctx.stroke()});ctx.strokeStyle=colors.rust;ctx.lineWidth=2.5;ctx.beginPath();samples.forEach((v,i)=>{const y=base-v.rho*rs;i?ctx.lineTo(xMap(v.x),y):ctx.moveTo(xMap(v.x),y)});ctx.stroke();ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("ψ",17,mid+4);ctx.fillText("ρ",20,base+4);ctx.fillText("−10",pad.l-10,height-9);ctx.fillText("10",width-pad.r-7,height-9)}
       function drawCurrent(s){const{ctx,width,height}=fitCanvas($("currentCanvas"));ctx.clearRect(0,0,width,height);const pad={l:48,r:22,t:22,b:30},xMin=-10,xMax=10,plotW=width-pad.l-pad.r,xMap=x=>pad.l+(x-xMin)/(xMax-xMin)*plotW,mid=height*.53;ctx.strokeStyle=colors.grid;ctx.beginPath();ctx.moveTo(pad.l,mid);ctx.lineTo(width-pad.r,mid);ctx.moveTo(pad.l,pad.t);ctx.lineTo(pad.l,height-pad.b);ctx.stroke();const samples=[];let maxJ=.01;for(let i=0;i<=700;i++){const x=xMin+(xMax-xMin)*i/700,j=values(x,s).j;samples.push({x,j});maxJ=Math.max(maxJ,Math.abs(j))}const scale=Math.min(85,height*.36)/maxJ;ctx.strokeStyle=colors.gold;ctx.lineWidth=2.7;ctx.beginPath();samples.forEach((v,i)=>{const y=mid-v.j*scale;i?ctx.lineTo(xMap(v.x),y):ctx.moveTo(xMap(v.x),y)});ctx.stroke();ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("j",20,mid-8);ctx.fillText("−10",pad.l-10,height-9);ctx.fillText("10",width-pad.r-7,height-9)}
       function integratedValues(s){let probability=0,current=0,previous=values(-10,s),steps=2000,dx=20/steps;for(let i=1;i<=steps;i++){const next=values(-10+i*dx,s);probability+=(previous.rho+next.rho)*dx/2;current+=(previous.j+next.j)*dx/2;previous=next}return{probability,meanCurrent:current/20}}
-      function render(){const s=state(),integrals=integratedValues(s),mean=integrals.meanCurrent;$("waveNumberValue").textContent=s.k.toFixed(2);$("rightWeightValue").textContent=s.w.toFixed(2);$("timeControlValue").textContent=s.t.toFixed(2);$("mixGroup").style.display=s.type==="counter"?"grid":"none";$("meanCurrentMetric").textContent=mean.toFixed(4);$("directionMetric").textContent=Math.abs(mean)<1e-8?"None":mean>0?"Right":"Left";$("normalizationMetric").textContent=integrals.probability.toFixed(4);const insights={right:"The density is constant, but the phase gradient produces a uniform current to the right.",left:"The density is constant, while the negative phase gradient reverses the current.",standing:"Equal counter-propagating components form a standing wave. Their currents cancel exactly.",counter:"The density contains an interference pattern, but the net current depends on the imbalance between right- and left-moving components.",packet:"For a packet with uniform phase gradient k, the local current follows the moving probability density: j = vρ."};$("stateInsight").textContent=insights[s.type];drawState(s);drawCurrent(s)}
-      ["stateType","waveNumber","rightWeight","timeControl"].forEach(id=>$(id).addEventListener("input",render));$("playButton").addEventListener("click",()=>{playing=!playing;$("playButton").innerHTML=playing?'<i class="fa-solid fa-pause"></i> Pause':'<i class="fa-solid fa-play"></i> Play'});$("resetButton").addEventListener("click",()=>{$("stateType").value="right";$("waveNumber").value=2;$("rightWeight").value=.75;$("timeControl").value=0;playing=false;$("playButton").innerHTML='<i class="fa-solid fa-play"></i> Play';render()});function animate(ts){if(playing&&ts-lastFrame>30){const next=Number($("timeControl").value)+.014;$("timeControl").value=next>8?0:next.toFixed(3);lastFrame=ts;render()}requestAnimationFrame(animate)}window.addEventListener("resize",render);render();requestAnimationFrame(animate);
+      function render(){const s=state(),integrals=integratedValues(s),mean=integrals.meanCurrent;$("waveNumberValue").textContent=`${s.k.toFixed(2)} nm⁻¹`;$("particleMassValue").textContent=`${s.massRatio.toFixed(2)} mₑ`;$("rightWeightValue").textContent=s.w.toFixed(2);$("timeControlValue").textContent=`${s.t.toFixed(2)} fs`;$("mixGroup").style.display=s.type==="counter"?"grid":"none";$("meanCurrentMetric").textContent=`${mean.toExponential(3)} s⁻¹`;$("directionMetric").textContent=Math.abs(mean)<1e-6?"None":mean>0?"Right":"Left";$("normalizationMetric").textContent=integrals.probability.toFixed(4);const insights={right:"The density is constant, but the phase gradient produces a uniform current to the right.",left:"The density is constant, while the negative phase gradient reverses the current.",standing:"Equal counter-propagating components form a standing wave. Their currents cancel exactly.",counter:"The density contains an interference pattern, but the net current depends on the imbalance between right- and left-moving components.",packet:"For a packet with uniform phase gradient k, the local current follows the moving probability density: j = vρ."};$("stateInsight").textContent=insights[s.type];drawState(s);drawCurrent(s)}
+      ["stateType","waveNumber","particleMass","rightWeight","timeControl"].forEach(id=>$(id).addEventListener("input",render));$("playButton").addEventListener("click",()=>{playing=!playing;$("playButton").innerHTML=playing?'<i class="fa-solid fa-pause"></i> Pause':'<i class="fa-solid fa-play"></i> Play'});$("resetButton").addEventListener("click",()=>{$("stateType").value="right";$("waveNumber").value=2;$("particleMass").value=1;$("rightWeight").value=.75;$("timeControl").value=0;playing=false;$("playButton").innerHTML='<i class="fa-solid fa-play"></i> Play';render()});function animate(ts){if(playing&&ts-lastFrame>30){const next=Number($("timeControl").value)+.05;$("timeControl").value=next>20?0:next.toFixed(2);lastFrame=ts;render()}requestAnimationFrame(animate)}window.addEventListener("resize",render);render();requestAnimationFrame(animate);
     })();
   </script>
 </body>

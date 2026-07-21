@@ -108,8 +108,23 @@ button, input, select { font: inherit; }
 
 .sim-controls {
   align-self: start;
+}
+
+.sim-sidebar {
   position: sticky;
   top: 14px;
+  display: grid;
+  min-width: 0;
+  gap: 12px;
+}
+
+.sim-sidebar .metrics-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.sim-sidebar .metrics-grid .sim-panel-title {
+  grid-column: 1 / -1;
+  margin-bottom: 2px;
 }
 
 .sim-panel-title {
@@ -199,8 +214,6 @@ select {
   gap: 18px;
 }
 
-.sim-workspace > .metrics-grid { order: 2; }
-.sim-workspace > .equation-box,
 .sim-workspace > .insight-box,
 .sim-workspace > .status-box { order: 3; }
 
@@ -274,13 +287,41 @@ canvas {
 }
 
 .equation-box {
+  width: 100%;
+  min-width: 0;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
   border: 1px solid #ead8b4;
   background: #fff9ed;
   color: #5f491f;
   font-family: "Lora", Georgia, serif;
   text-align: center;
 }
+
+.equation-panel {
+  min-width: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.equation-panel summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 15px 18px;
+  color: var(--sim-green-dark);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 800;
+  list-style: none;
+}
+
+.equation-panel summary::-webkit-details-marker { display: none; }
+.equation-panel summary::after { content: "+"; font-size: 1.2rem; line-height: 1; }
+.equation-panel[open] summary::after { content: "−"; }
+.equation-panel[open] summary { border-bottom: 1px solid var(--sim-border); }
+.equation-panel .equation-box { border: 0; border-radius: 0; text-align: left; }
 
 .insight-box {
   border-left: 4px solid var(--sim-blue);
@@ -319,8 +360,8 @@ canvas {
   .sim-header { flex-direction: column; }
   .sim-source { max-width: none; }
   .sim-layout { grid-template-columns: 1fr; }
+  .sim-sidebar { position: static; }
   .sim-controls {
-    position: static;
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px 12px;
