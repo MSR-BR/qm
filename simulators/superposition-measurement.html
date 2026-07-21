@@ -108,6 +108,7 @@
       let lastFrame = 0;
       const colors = { green: "#2f6b4f", blue: "#376b8c", rust: "#a64b35", grid: "#dbe5dd", muted: "#6b756f", ink: "#26332c" };
       const HBAR = 1.054571817e-34, ELECTRON_MASS = 9.1093837139e-31, ELECTRON_VOLT = 1.602176634e-19;
+      const decimal = (value, digits) => Number(value).toLocaleString("pt-BR", { minimumFractionDigits: digits, maximumFractionDigits: digits });
 
       function fitCanvas(canvas) {
         const ratio = Math.max(1, window.devicePixelRatio || 1);
@@ -177,7 +178,7 @@
         samples.forEach((point, i) => { const y = densityBase - point.rho * rhoScale; if (!i) ctx.moveTo(xMap(point.u * s.aNm), y); else ctx.lineTo(xMap(point.u * s.aNm), y); }); ctx.stroke();
         const wallRight = xMap(s.aNm); ctx.strokeStyle = colors.muted; ctx.lineWidth = 3; ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, height - pad.b); ctx.moveTo(wallRight, pad.t); ctx.lineTo(wallRight, height - pad.b); ctx.stroke();
         ctx.fillStyle = colors.muted; ctx.font = "12px Inter, sans-serif"; ctx.fillText("ψ", 17, mid + 4); ctx.fillText("|ψ|²", 11, densityBase + 4); ctx.fillText("0", pad.l - 3, height - 9); ctx.fillText("5 nm", width - pad.r - 27, height - 9);
-        ctx.fillStyle = colors.ink; ctx.font = "700 11px Inter, sans-serif"; ctx.fillText(`a = ${s.aNm.toFixed(2)} nm`, Math.min(wallRight + 6, width - 106), pad.t + 12);
+        ctx.fillStyle = colors.ink; ctx.font = "700 11px Inter, sans-serif"; ctx.fillText(`a = ${decimal(s.aNm, 2)} nm`, Math.min(wallRight + 6, width - 106), pad.t + 12);
       }
 
       function renderHistogram(s) {
@@ -188,22 +189,22 @@
         ];
         $("histogram").innerHTML = rows.map((row) => {
           const observed = total ? row.count / total : 0;
-          return `<div class="hist-row"><strong>${row.label}</strong><div class="hist-track"><div class="hist-fill" style="width:${(100 * observed).toFixed(1)}%"></div></div><span>${row.count} (${(100 * observed).toFixed(0)}%)</span></div><div style="margin:-5px 0 3px 66px;color:#6b756f;font-size:.7rem">${row.energy.toFixed(4)} eV · Predicted: ${(100 * row.predicted).toFixed(0)}%</div>`;
+          return `<div class="hist-row"><strong>${row.label}</strong><div class="hist-track"><div class="hist-fill" style="width:${(100 * observed).toFixed(1)}%"></div></div><span>${row.count} (${decimal(100 * observed, 0)}%)</span></div><div style="margin:-5px 0 3px 66px;color:#6b756f;font-size:.7rem">${decimal(row.energy, 4)} eV · Predicted: ${decimal(100 * row.predicted, 0)}%</div>`;
         }).join("");
       }
 
       function render() {
         const s = currentState();
-        $("probabilityOneValue").textContent = s.p1.toFixed(2);
-        $("relativePhaseValue").textContent = `${(s.phase / Math.PI).toFixed(2)}π`;
-        $("timeControlValue").textContent = `${s.tFs.toFixed(2)} fs`;
-        $("wellWidthValue").textContent = `${s.aNm.toFixed(2)} nm`;
-        $("particleMassValue").textContent = `${s.massRatio.toFixed(2)} mₑ`;
+        $("probabilityOneValue").textContent = decimal(s.p1, 2);
+        $("relativePhaseValue").textContent = `${decimal(s.phase / Math.PI, 2)}π`;
+        $("timeControlValue").textContent = `${decimal(s.tFs, 2)} fs`;
+        $("wellWidthValue").textContent = `${decimal(s.aNm, 2)} nm`;
+        $("particleMassValue").textContent = `${decimal(s.massRatio, 2)} mₑ`;
         const effectiveP1 = collapsedState === s.n1 ? 1 : collapsedState === s.n2 ? 0 : s.p1;
         const effectiveP2 = 1 - effectiveP1;
-        $("coefficientOne").textContent = Math.sqrt(effectiveP1).toFixed(4);
-        $("coefficientTwo").textContent = collapsedState ? Math.sqrt(effectiveP2).toFixed(4) : `${Math.sqrt(effectiveP2).toFixed(4)}eⁱφ`;
-        $("expectedEnergy").textContent = `${(effectiveP1 * energyEV(s.n1, s) + effectiveP2 * energyEV(s.n2, s)).toFixed(4)} eV`;
+        $("coefficientOne").textContent = decimal(Math.sqrt(effectiveP1), 4);
+        $("coefficientTwo").textContent = collapsedState ? decimal(Math.sqrt(effectiveP2), 4) : `${decimal(Math.sqrt(effectiveP2), 4)}eⁱφ`;
+        $("expectedEnergy").textContent = `${decimal(effectiveP1 * energyEV(s.n1, s) + effectiveP2 * energyEV(s.n2, s), 4)} eV`;
         draw(s); renderHistogram(s);
       }
 

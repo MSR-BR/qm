@@ -77,6 +77,8 @@
       let playing = false, lastFrame = 0;
       const colors = { green: "#2f6b4f", rust: "#a64b35", blue: "#376b8c", gold: "#d5b260", grid: "#dbe5dd", muted: "#6b756f" };
       const HBAR = 1.054571817e-34, ELECTRON_MASS = 9.1093837139e-31;
+      const decimal=(value,digits)=>Number(value).toLocaleString("pt-BR",{minimumFractionDigits:digits,maximumFractionDigits:digits});
+      const scientific=(value,digits=3)=>Number(value).toExponential(digits).replace(".",",");
       const POSITION_VIEW_NM = { min: -12, max: 12 };
       const WAVE_NUMBER_VIEW_NM = { min: -12, max: 12 };
       function fitCanvas(canvas) {
@@ -104,16 +106,16 @@
         ctx.strokeStyle=colors.green;ctx.lineWidth=2;ctx.beginPath();samples.forEach((q,i)=>{const y=mid-q.re*psiScale;i?ctx.lineTo(xMap(q.x),y):ctx.moveTo(xMap(q.x),y)});ctx.stroke();
         ctx.strokeStyle=colors.rust;ctx.lineWidth=2.6;ctx.beginPath();samples.forEach((q,i)=>{const y=densityBase-q.rho*rhoScale;i?ctx.lineTo(xMap(q.x),y):ctx.moveTo(xMap(q.x),y)});ctx.stroke();
         ctx.strokeStyle=colors.gold;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(xMap(s.xcNm),pad.t);ctx.lineTo(xMap(s.xcNm),height-pad.b);ctx.stroke();ctx.setLineDash([]);
-        ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("ψ",17,mid+4);ctx.fillText("|ψ|²",10,densityBase+4);ctx.fillText(xMin.toFixed(1),pad.l-8,height-10);ctx.fillText(`${xMax.toFixed(1)} nm`,width-pad.r-42,height-10);
+        ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("ψ",17,mid+4);ctx.fillText("|ψ|²",10,densityBase+4);ctx.fillText(decimal(xMin,1),pad.l-8,height-10);ctx.fillText(`${decimal(xMax,1)} nm`,width-pad.r-42,height-10);
       }
       function drawMomentum(s) {
         const { ctx, width, height } = fitCanvas($("momentumCanvas")); ctx.clearRect(0,0,width,height);
         const pad={l:48,r:22,t:22,b:32},pMin=WAVE_NUMBER_VIEW_NM.min,pMax=WAVE_NUMBER_VIEW_NM.max,base=height-pad.b,plotW=width-pad.l-pad.r,pMap=(p)=>pad.l+(p-pMin)/(pMax-pMin)*plotW;
         axes(ctx,width,height,pad,base);ctx.fillStyle="rgba(213,178,96,.16)";ctx.fillRect(pMap(s.k0Nm-s.dkNm),pad.t,pMap(s.k0Nm+s.dkNm)-pMap(s.k0Nm-s.dkNm),height-pad.t-pad.b);
         const peak=1/(Math.sqrt(2*Math.PI)*s.dkNm);ctx.strokeStyle=colors.blue;ctx.lineWidth=2.6;ctx.beginPath();for(let i=0;i<=700;i++){const p=pMin+(pMax-pMin)*i/700,d=Math.exp(-((p-s.k0Nm)**2)/(2*s.dkNm*s.dkNm))/(Math.sqrt(2*Math.PI)*s.dkNm),y=base-d/peak*(height-pad.t-pad.b)*.88;i?ctx.lineTo(pMap(p),y):ctx.moveTo(pMap(p),y)}ctx.stroke();
-        ctx.strokeStyle=colors.gold;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(pMap(s.k0Nm),pad.t);ctx.lineTo(pMap(s.k0Nm),base);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("k (nm⁻¹)",width-pad.r-50,height-9);ctx.fillText(pMin.toFixed(1),pad.l-12,height-9);ctx.fillText(pMax.toFixed(1),width-pad.r-18,height-9);
+        ctx.strokeStyle=colors.gold;ctx.setLineDash([5,4]);ctx.beginPath();ctx.moveTo(pMap(s.k0Nm),pad.t);ctx.lineTo(pMap(s.k0Nm),base);ctx.stroke();ctx.setLineDash([]);ctx.fillStyle=colors.muted;ctx.font="11px Inter, sans-serif";ctx.fillText("k (nm⁻¹)",width-pad.r-50,height-9);ctx.fillText(decimal(pMin,1),pad.l-12,height-9);ctx.fillText(decimal(pMax,1),width-pad.r-18,height-9);
       }
-      function render(){const s=state();$("initialPositionValue").textContent=`${s.x0Nm.toFixed(2).replace("-","−")} nm`;$("meanMomentumValue").textContent=`${s.k0Nm.toFixed(2).replace("-","−")} nm⁻¹`;$("initialWidthValue").textContent=`${s.sigma0Nm.toFixed(2)} nm`;$("particleMassValue").textContent=`${s.massRatio.toFixed(2)} mₑ`;$("timeControlValue").textContent=`${s.tFs.toFixed(2)} fs`;$("meanPositionMetric").textContent=`${s.xcNm.toFixed(4)} nm`;$("groupVelocityMetric").textContent=`${s.velocity.toExponential(3)} m/s`;$("positionWidthMetric").textContent=`${s.sigmaTNm.toFixed(4)} nm`;$("momentumWidthMetric").textContent=`${s.dp.toExponential(3)} kg·m/s`;$("uncertaintyMetric").textContent=`${(s.sigmaT*s.dp).toExponential(3)} J·s`;drawPosition(s);drawMomentum(s);}
+      function render(){const s=state();$("initialPositionValue").textContent=`${decimal(s.x0Nm,2).replace("-","−")} nm`;$("meanMomentumValue").textContent=`${decimal(s.k0Nm,2).replace("-","−")} nm⁻¹`;$("initialWidthValue").textContent=`${decimal(s.sigma0Nm,2)} nm`;$("particleMassValue").textContent=`${decimal(s.massRatio,2)} mₑ`;$("timeControlValue").textContent=`${decimal(s.tFs,2)} fs`;$("meanPositionMetric").textContent=`${decimal(s.xcNm,4)} nm`;$("groupVelocityMetric").textContent=`${scientific(s.velocity)} m/s`;$("positionWidthMetric").textContent=`${decimal(s.sigmaTNm,4)} nm`;$("momentumWidthMetric").textContent=`${scientific(s.dp)} kg·m/s`;$("uncertaintyMetric").textContent=`${scientific(s.sigmaT*s.dp)} J·s`;drawPosition(s);drawMomentum(s);}
       ["initialPosition","meanMomentum","initialWidth","particleMass","timeControl"].forEach(id=>$(id).addEventListener("input",render));
       $("playButton").addEventListener("click",()=>{playing=!playing;$("playButton").innerHTML=playing?'<i class="fa-solid fa-pause"></i> Pause':'<i class="fa-solid fa-play"></i> Play'});
       $("resetButton").addEventListener("click",()=>{Object.entries({initialPosition:-2,meanMomentum:3,initialWidth:.5,particleMass:1,timeControl:0}).forEach(([id,v])=>$(id).value=v);playing=false;$("playButton").innerHTML='<i class="fa-solid fa-play"></i> Play';render()});

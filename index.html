@@ -946,6 +946,33 @@
       gap: 16px;
     }
 
+    .simulator-chapter-group {
+      display: grid;
+      gap: 14px;
+    }
+
+    .simulator-chapter-group + .simulator-chapter-group {
+      margin-top: 30px;
+      padding-top: 26px;
+      border-top: 1px solid #DDE8E1;
+    }
+
+    .simulator-chapter-heading {
+      color: var(--blue);
+      font-size: 20px;
+      line-height: 1.3;
+      font-weight: 700;
+    }
+
+    .simulator-chapter-heading span {
+      color: var(--red);
+      font-size: 13px;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 3px;
+    }
+
     .simulator-card {
       display: flex;
       flex-direction: column;
@@ -961,13 +988,6 @@
       color: var(--text);
       box-shadow: 0 6px 18px rgba(15, 23, 42, 0.04);
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
-    }
-
-    .simulator-card:focus-visible {
-      outline: none;
-      border-color: #B8D8C4;
-      box-shadow: 0 10px 24px rgba(47, 107, 79, 0.10);
-      transform: translateY(-2px);
     }
 
     .simulator-card__top {
@@ -1035,12 +1055,30 @@
 
     .simulator-card__footer {
       margin-top: auto;
-      display: inline-flex;
+      display: flex;
+      flex-wrap: wrap;
       align-items: center;
       gap: 8px;
+    }
+
+    .simulator-card__button {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 8px 11px;
+      border: 1px solid #B8D8C4;
+      border-radius: 9px;
+      background: #F0F7F3;
       color: var(--blue);
       font-size: 13px;
       font-weight: 700;
+      text-decoration: none;
+    }
+
+    .simulator-card__button:hover,
+    .simulator-card__button:focus-visible {
+      background: #DDEEE3;
+      border-color: var(--blue);
     }
 
     .simulator-detail {
@@ -2410,6 +2448,24 @@
               </div>
             </section>
 
+            <section class="drawer-group" data-drawer-group="simulators">
+              <button type="button" class="drawer-group-trigger" data-drawer-trigger="simulators" aria-expanded="false" aria-controls="drawerPanelSimulators">
+                <span class="drawer-group-title"><i class="fa-solid fa-flask-vial"></i> Simulators</span>
+                <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
+              </button>
+              <div class="drawer-group-panel" id="drawerPanelSimulators">
+                <div class="extras-list">
+                  <button type="button" class="extras-button" id="simulatorsMenuButton">
+                    <span class="extras-icon"><i class="fa-solid fa-flask-vial"></i></span>
+                    <span class="extras-text">
+                      <span class="extras-label">Simulator catalog</span>
+                      <span class="extras-note">Browse interactive resources grouped by chapter.</span>
+                    </span>
+                  </button>
+                </div>
+              </div>
+            </section>
+
             <section class="drawer-group" data-drawer-group="chapters">
               <button type="button" class="drawer-group-trigger is-open" data-drawer-trigger="chapters" aria-expanded="true" aria-controls="drawerPanelChapters">
                 <span class="drawer-group-title"><i class="fa-solid fa-list-ul"></i> Chapters</span>
@@ -2526,6 +2582,10 @@
                   <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
                   <div class="discovery-card__meta">Open Personal Area</div>
                 </a>
+                <button type="button" class="discovery-card" data-role="open-view" data-view-id="simulators">
+                  <div class="discovery-card__title"><i class="fa-solid fa-flask-vial"></i> Simulators</div>
+                  <div class="discovery-card__meta">Open simulator catalog</div>
+                </button>
               </section>
             </div>
           </div>
@@ -3070,17 +3130,11 @@
       }] : [])
     ];
 
-    const extraViews = [
-      {
-        id: "simulators",
-        label: "Simulators",
-        icon: "fa-flask-vial",
-        note: "Open interactive resources organized by chapter section."
-      }
-    ];
+    const extraViews = [];
 
     const viewIds = new Set([
       "chapters",
+      "simulators",
       ...personalViews.map((view) => view.id),
       ...extraViews.map((view) => view.id)
     ]);
@@ -3090,6 +3144,7 @@
     const personalHint = document.getElementById("personalHint");
     const personalDrawerActions = document.getElementById("personalDrawerActions");
     const extrasList = document.getElementById("extrasList");
+    const simulatorsMenuButton = document.getElementById("simulatorsMenuButton");
     const menuToggleButton = document.getElementById("menuToggleButton");
     const menuDrawerOverlay = document.getElementById("menuDrawerOverlay");
     const menuDrawerClose = document.getElementById("menuDrawerClose");
@@ -3217,7 +3272,7 @@
 
     function getDrawerSectionForView(viewId) {
       if (viewId === "saved" || viewId === "favorites" || viewId === "validation-review") return "personal";
-      if (viewId === "simulators") return "extras";
+      if (viewId === "simulators") return "simulators";
       return "chapters";
     }
 
@@ -3624,6 +3679,16 @@
       });
     }
 
+    function renderSimulatorsMenu() {
+      if (!simulatorsMenuButton) return;
+      simulatorsMenuButton.classList.toggle("active", state.view === "simulators");
+      simulatorsMenuButton.onclick = function () {
+        closeDrawer();
+        state.simulatorId = "";
+        void activateView("simulators");
+      };
+    }
+
     function setActiveChapter(id) {
       document.querySelectorAll(".chapter-button").forEach((button) => {
         const isActive = state.view === "chapters" && button.dataset.chapterId === id;
@@ -3717,6 +3782,10 @@
               <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
               <div class="discovery-card__meta">Open Personal Area</div>
             </a>
+            <button type="button" class="discovery-card" data-role="open-view" data-view-id="simulators">
+              <div class="discovery-card__title"><i class="fa-solid fa-flask-vial"></i> Simulators</div>
+              <div class="discovery-card__meta">Open simulator catalog</div>
+            </button>
           </section>
         </div>
       `;
@@ -4785,16 +4854,22 @@
     }
 
     function renderYesulatorCatalog() {
+      const simulatorsByChapter = simulatorsCatalog.reduce(function (groups, simulator) {
+        const chapterNumber = Number(simulator.chapter) || 0;
+        if (!groups[chapterNumber]) groups[chapterNumber] = [];
+        groups[chapterNumber].push(simulator);
+        return groups;
+      }, {});
       topicContainer.innerHTML = `
-        <div class="simulator-grid">
-          ${simulatorsCatalog.map(function (simulator) {
+        ${Object.keys(simulatorsByChapter).sort(function (a, b) { return Number(a) - Number(b); }).map(function (chapterNumber) {
+          const chapterId = String(chapterNumber).padStart(2, "0");
+          const chapter = chapters.find(function (item) { return item.id === chapterId; });
+          return `<section class="simulator-chapter-group" id="simulators-chapter-${escapeHtml(chapterNumber)}">
+            <h3 class="simulator-chapter-heading"><span>Chapter ${escapeHtml(chapterId)}</span>${escapeHtml(chapter ? chapter.title : "Quantum Mechanics")}</h3>
+            <div class="simulator-grid">
+          ${simulatorsByChapter[chapterNumber].map(function (simulator) {
             return `
-              <a
-                class="simulator-card"
-                href="${escapeHtml(simulator.standaloneUrl)}"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <article class="simulator-card">
                 <div class="simulator-card__top">
                   <div>
                     <div class="simulator-card__eyebrow">${escapeHtml(simulator.id)}</div>
@@ -4808,13 +4883,15 @@
                 <div class="simulator-card__sections"><i class="fa-solid fa-book-open" aria-hidden="true"></i> ${escapeHtml(simulator.sections.length === 1 ? "Related section" : "Related sections")}: ${escapeHtml(simulator.sections.join(" · "))}</div>
                 <div class="simulator-card__source"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> ${escapeHtml(simulator.sourceLabel)} · Source: ${escapeHtml(simulator.source)}.</div>
                 <div class="simulator-card__footer">
-                  <i class="fa-solid fa-arrow-right"></i>
-                  <span>Open simulator</span>
+                  <a class="simulator-card__button" href="${escapeHtml(simulator.standaloneUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open simulator</a>
+                  ${simulator.alternateUrl ? `<a class="simulator-card__button" href="${escapeHtml(simulator.alternateUrl)}" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-arrow-up-right-from-square"></i> ${escapeHtml(simulator.alternateLabel || "Open external")}</a>` : ""}
                 </div>
-              </a>
+              </article>
             `;
           }).join("")}
-        </div>
+            </div>
+          </section>`;
+        }).join("")}
       `;
     }
 
@@ -4852,7 +4929,8 @@
       panelDescription.textContent = simulatorsPanelCopy.description;
       setActiveChapter(state.chapterId);
       setActivePersonal("");
-      setActiveExtra("simulators");
+      setActiveExtra("");
+      renderSimulatorsMenu();
       panelActions.innerHTML = "";
 
       if (state.simulatorId) {
@@ -5128,8 +5206,9 @@
       async function bootIndexPage() {
         renderReleaseInfo();
         renderChapterMenu();
-        renderPersonalMenu();
-        renderExtrasMenu();
+      renderPersonalMenu();
+      renderExtrasMenu();
+      renderSimulatorsMenu();
         setDrawerSection(state.drawerSection);
         bindAuthStateListener();
         await activateView(state.view, state.chapterId);

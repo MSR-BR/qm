@@ -70,6 +70,8 @@
       const $ = (id) => document.getElementById(id); let playing=false,lastFrame=0;
       const colors={green:"#2f6b4f",blue:"#376b8c",rust:"#a64b35",gold:"#d5b260",grid:"#dbe5dd",muted:"#6b756f"};
       const HBAR=1.054571817e-34,ELECTRON_MASS=9.1093837139e-31;
+      const decimal=(value,digits)=>Number(value).toLocaleString("pt-BR",{minimumFractionDigits:digits,maximumFractionDigits:digits});
+      const scientific=(value,digits=3)=>Number(value).toExponential(digits).replace(".",",");
       function fitCanvas(canvas){const ratio=Math.max(1,window.devicePixelRatio||1),rect=canvas.getBoundingClientRect(),width=Math.max(300,Math.round(rect.width)),height=Math.max(220,Math.round(rect.height));canvas.width=width*ratio;canvas.height=height*ratio;const ctx=canvas.getContext("2d");ctx.setTransform(ratio,0,0,ratio,0,0);return{ctx,width,height}}
       function state(){const k=Number($("waveNumber").value),massRatio=Number($("particleMass").value),m=massRatio*ELECTRON_MASS,t=Number($("timeControl").value),velocity=HBAR*k*1e9/m;return{type:$("stateType").value,k,t,massRatio,m,velocity,omegaFs:HBAR*(k*1e9)**2/(2*m)*1e-15}}
       function values(x,s){const omega=s.omegaFs,phase=s.k*x-omega*s.t,L=20,planeNorm=1/Math.sqrt(L),fluxScale=s.velocity*1e9;
@@ -84,7 +86,7 @@
       function render(){
         const s=state(),integrals=integratedValues(s),mean=integrals.meanCurrent;
         const currentProfiles={right:"Uniform, j > 0",left:"Uniform, j < 0",standing:"Uniform, j = 0",packet:"Varies with x and t"};
-        $("waveNumberValue").textContent=`${s.k.toFixed(2)} nm⁻¹`;$("particleMassValue").textContent=`${s.massRatio.toFixed(2)} mₑ`;$("timeControlValue").textContent=`${s.t.toFixed(2)} fs`;$("meanCurrentMetric").textContent=`${mean.toExponential(3)} s⁻¹`;$("directionMetric").textContent=Math.abs(mean)<1e-6?"None":mean>0?"Right":"Left";$("currentProfileMetric").textContent=currentProfiles[s.type];$("normalizationMetric").textContent=integrals.probability.toFixed(4);
+        $("waveNumberValue").textContent=`${decimal(s.k,2)} nm⁻¹`;$("particleMassValue").textContent=`${decimal(s.massRatio,2)} mₑ`;$("timeControlValue").textContent=`${decimal(s.t,2)} fs`;$("meanCurrentMetric").textContent=`${scientific(mean)} s⁻¹`;$("directionMetric").textContent=Math.abs(mean)<1e-6?"None":mean>0?"Right":"Left";$("currentProfileMetric").textContent=currentProfiles[s.type];$("normalizationMetric").textContent=decimal(integrals.probability,4);
         const insights={right:"The density is constant, but the phase gradient produces a uniform current to the right.",left:"The density is constant, while the negative phase gradient reverses the current.",standing:"Equal right- and left-moving waves form a standing wave. Their currents cancel exactly.",packet:"For a packet with uniform phase gradient k, the local current follows the moving probability density: j = vρ."};
         $("stateInsight").textContent=insights[s.type];drawState(s);drawCurrent(s)
       }
