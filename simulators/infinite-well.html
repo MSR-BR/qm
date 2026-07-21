@@ -33,19 +33,19 @@
           <input id="stateN" type="range" min="1" max="8" step="1" value="1" />
         </div>
         <div class="control-group">
-          <div class="control-row"><label class="control-label" for="wellWidth">Well width a</label><output class="control-value" id="wellWidthValue">1.00 nm</output></div>
+          <div class="control-row"><label class="control-label" for="wellWidth">Well width a</label><output class="control-value" id="wellWidthValue">1,00 nm</output></div>
           <input id="wellWidth" type="range" min="0.1" max="5" step="0.01" value="1" />
         </div>
         <div class="control-group">
-          <div class="control-row"><label class="control-label" for="particleMass">Mass ratio m/mₑ</label><output class="control-value" id="particleMassValue">1.00 mₑ</output></div>
+          <div class="control-row"><label class="control-label" for="particleMass">Mass ratio m/mₑ</label><output class="control-value" id="particleMassValue">1,00 mₑ</output></div>
           <input id="particleMass" type="range" min="0.1" max="5" step="0.05" value="1" />
         </div>
         <div class="control-group">
-          <div class="control-row"><label class="control-label" for="xLeft">Interval start x₁/a</label><output class="control-value" id="xLeftValue">0.20</output></div>
+          <div class="control-row"><label class="control-label" for="xLeft">Interval start x₁/a</label><output class="control-value" id="xLeftValue">0,20</output></div>
           <input id="xLeft" type="range" min="0" max="0.99" step="0.01" value="0.2" />
         </div>
         <div class="control-group">
-          <div class="control-row"><label class="control-label" for="xRight">Interval end x₂/a</label><output class="control-value" id="xRightValue">0.80</output></div>
+          <div class="control-row"><label class="control-label" for="xRight">Interval end x₂/a</label><output class="control-value" id="xRightValue">0,80</output></div>
           <input id="xRight" type="range" min="0.01" max="1" step="0.01" value="0.8" />
         </div>
         <div class="button-row">
@@ -55,7 +55,7 @@
       </details>
         <details class="sim-panel metrics-grid collapsible-panel" aria-label="Computed values">
           <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
-          <div class="metric"><div class="metric-label">Energy Eₙ</div><div class="metric-value" id="energyMetric"></div></div>
+          <div class="metric"><div class="metric-label">Energy of selected state Eₙ</div><div class="metric-value" id="energyMetric"></div></div>
           <div class="metric"><div class="metric-label">Nodes inside well</div><div class="metric-value" id="nodesMetric"></div></div>
           <div class="metric"><div class="metric-label">Wavelength λₙ</div><div class="metric-value" id="wavelengthMetric"></div></div>
           <div class="metric"><div class="metric-label">P(x₁ &lt; x &lt; x₂)</div><div class="metric-value" id="probabilityMetric"></div></div>
@@ -94,6 +94,7 @@
       const HBAR = H / (2 * Math.PI);
       const ELECTRON_MASS = 9.1093837139e-31;
       const ELECTRON_VOLT = 1.602176634e-19;
+      const decimal = (value, digits) => Number(value).toFixed(digits).replace(".", ",");
 
       function fitCanvas(canvas) {
         const ratio = Math.max(1, window.devicePixelRatio || 1);
@@ -186,7 +187,7 @@
         ctx.fillText("ψₙ(x)", 8, mid + 4); ctx.fillText("|ψₙ|²", 8, lowerBase + 4);
         ctx.fillText("0", pad.l - 3, height - 13); ctx.fillText("5 nm", width - pad.r - 25, height - 13);
         ctx.fillStyle = colors.ink; ctx.font = "700 11px Inter, sans-serif";
-        ctx.fillText(`a = ${s.aNm.toFixed(2)} nm`, Math.min(wallRight + 6, width - 106), pad.t + 12);
+        ctx.fillText(`a = ${decimal(s.aNm, 2)} nm`, Math.min(wallRight + 6, width - 106), pad.t + 12);
       }
 
       function drawEnergies(s) {
@@ -200,7 +201,8 @@
         ctx.strokeStyle = colors.grid; ctx.beginPath(); ctx.moveTo(pad.l, pad.t); ctx.lineTo(pad.l, height - pad.b); ctx.lineTo(width - pad.r, height - pad.b); ctx.stroke();
         [0.01, 0.1, 1, 10, 100, 1000, 10000].forEach((tick) => {
           const y = yMap(tick); ctx.strokeStyle = colors.grid; ctx.lineWidth = 1; ctx.beginPath(); ctx.moveTo(pad.l, y); ctx.lineTo(width - pad.r, y); ctx.stroke();
-          ctx.fillStyle = colors.muted; ctx.font = "10px Inter, sans-serif"; ctx.fillText(`${tick < 1 ? tick : tick.toLocaleString()} eV`, 5, y + 3);
+          const tickLabel = tick < 1 ? String(tick).replace(".", ",") : tick.toLocaleString("fr-FR");
+          ctx.fillStyle = colors.muted; ctx.font = "10px Inter, sans-serif"; ctx.fillText(`${tickLabel} eV`, 5, y + 3);
         });
         for (let n = 1; n <= 8; n++) {
           const e = energyEV(n, s);
@@ -218,15 +220,15 @@
       function render() {
         const s = state();
         $("stateNValue").textContent = s.n;
-        $("wellWidthValue").textContent = `${s.aNm.toFixed(2)} nm`;
-        $("particleMassValue").textContent = `${s.massRatio.toFixed(2)} mₑ`;
-        $("xLeftValue").textContent = s.left.toFixed(2);
-        $("xRightValue").textContent = s.right.toFixed(2);
+        $("wellWidthValue").textContent = `${decimal(s.aNm, 2)} nm`;
+        $("particleMassValue").textContent = `${decimal(s.massRatio, 2)} mₑ`;
+        $("xLeftValue").textContent = decimal(s.left, 2);
+        $("xRightValue").textContent = decimal(s.right, 2);
         const energy = energyEV(s.n, s);
-        $("energyMetric").textContent = `${energy.toFixed(4)} eV`;
+        $("energyMetric").textContent = `${decimal(energy, 4)} eV`;
         $("nodesMetric").textContent = String(s.n - 1);
-        $("wavelengthMetric").textContent = `${(2 * s.aNm / s.n).toFixed(4)} nm`;
-        $("probabilityMetric").textContent = `${(100 * intervalProbability(s.n, s.left, s.right)).toFixed(2)}%`;
+        $("wavelengthMetric").textContent = `${decimal(2 * s.aNm / s.n, 4)} nm`;
+        $("probabilityMetric").textContent = `${decimal(100 * intervalProbability(s.n, s.left, s.right), 2)}%`;
         drawWell(s); drawEnergies(s);
       }
 
