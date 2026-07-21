@@ -127,6 +127,24 @@ button, input, select { font: inherit; }
   margin-bottom: 2px;
 }
 
+.collapsible-panel > summary {
+  cursor: pointer;
+  list-style: none;
+}
+
+.collapsible-panel > summary::-webkit-details-marker { display: none; }
+.collapsible-panel:not([open]) > :not(summary) { display: none; }
+
+.collapsible-panel > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+.collapsible-panel[open] > summary::after { content: "−"; }
+.collapsible-panel[open] > summary.sim-panel-title { margin-bottom: 14px; }
+
 .sim-panel-title {
   display: flex;
   align-items: center;

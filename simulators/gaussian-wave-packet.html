@@ -26,8 +26,8 @@
 
     <div class="sim-layout">
       <aside class="sim-sidebar" aria-label="Wave packet controls and values">
-      <div class="sim-panel sim-controls">
-        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Initial packet</h2>
+      <details class="sim-panel sim-controls collapsible-panel" open>
+        <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Initial packet</summary>
         <div class="control-group"><div class="control-row"><label class="control-label" for="initialPosition">Position x₀</label><output class="control-value" id="initialPositionValue">−2.00 nm</output></div><input id="initialPosition" type="range" min="-6" max="2" step="0.05" value="-2" /></div>
         <div class="control-group"><div class="control-row"><label class="control-label" for="meanMomentum">Wave number k₀</label><output class="control-value" id="meanMomentumValue">3.00 nm⁻¹</output></div><input id="meanMomentum" type="range" min="-8" max="8" step="0.1" value="3" /></div>
         <div class="control-group"><div class="control-row"><label class="control-label" for="initialWidth">Initial width Δx₀</label><output class="control-value" id="initialWidthValue">0.50 nm</output></div><input id="initialWidth" type="range" min="0.1" max="2" step="0.02" value="0.5" /></div>
@@ -38,15 +38,15 @@
           <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
         </div>
         <div class="insight-box" style="margin-top:14px;">Try making Δx₀ smaller. The packet becomes more localized, but its momentum distribution becomes wider.</div>
-      </div>
-        <div class="sim-panel metrics-grid">
-          <h2 class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</h2>
+      </details>
+        <details class="sim-panel metrics-grid collapsible-panel">
+          <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
           <div class="metric"><div class="metric-label">⟨x⟩</div><div class="metric-value" id="meanPositionMetric"></div></div>
           <div class="metric"><div class="metric-label">Group velocity</div><div class="metric-value" id="groupVelocityMetric"></div></div>
           <div class="metric"><div class="metric-label">Δx(t)</div><div class="metric-value" id="positionWidthMetric"></div></div>
           <div class="metric"><div class="metric-label">Δp</div><div class="metric-value" id="momentumWidthMetric"></div></div>
           <div class="metric"><div class="metric-label">ΔxΔp</div><div class="metric-value" id="uncertaintyMetric"></div></div>
-        </div>
+        </details>
         <details class="sim-panel equation-panel">
           <summary>Equations</summary>
           <div class="equation-box">\[p_0=\hbar k_0,\qquad \Delta x(t)=\Delta x_0\sqrt{1+\left(\frac{\hbar t}{2m\Delta x_0^2}\right)^2},\qquad \Delta p=\frac{\hbar}{2\Delta x_0}\]\[\langle x\rangle=x_0+\frac{p_0}{m}t,\qquad \Delta x(t)\Delta p\geq\frac{\hbar}{2}\]\[\hbar=1.054571817\times10^{-34}\ \mathrm{J\,s},\quad m_e=9.1093837139\times10^{-31}\ \mathrm{kg}\]</div>

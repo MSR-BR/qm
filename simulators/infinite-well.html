@@ -26,8 +26,8 @@
 
     <div class="sim-layout">
       <aside class="sim-sidebar" aria-label="Simulation controls and values">
-      <div class="sim-panel sim-controls">
-        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Controls</h2>
+      <details class="sim-panel sim-controls collapsible-panel" open>
+        <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Controls</summary>
         <div class="control-group">
           <div class="control-row"><label class="control-label" for="stateN">Quantum number n</label><output class="control-value" id="stateNValue">1</output></div>
           <input id="stateN" type="range" min="1" max="8" step="1" value="1" />
@@ -52,14 +52,14 @@
           <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
         </div>
         <div class="insight-box" style="margin-top:14px;">Physical SI constants are used. The default particle is an electron in a 1 nm (10 Å) wide well.</div>
-      </div>
-        <div class="sim-panel metrics-grid" aria-label="Computed values">
-          <h2 class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</h2>
+      </details>
+        <details class="sim-panel metrics-grid collapsible-panel" aria-label="Computed values">
+          <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
           <div class="metric"><div class="metric-label">Energy Eₙ</div><div class="metric-value" id="energyMetric"></div></div>
           <div class="metric"><div class="metric-label">Nodes inside well</div><div class="metric-value" id="nodesMetric"></div></div>
           <div class="metric"><div class="metric-label">Wavelength λₙ</div><div class="metric-value" id="wavelengthMetric"></div></div>
           <div class="metric"><div class="metric-label">P(x₁ &lt; x &lt; x₂)</div><div class="metric-value" id="probabilityMetric"></div></div>
-        </div>
+        </details>
         <details class="sim-panel equation-panel">
           <summary>Equations</summary>
           <div class="equation-box">\[\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),\qquad E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}=\frac{n^2h^2}{8ma^2}\]\[h=6.62607015\times10^{-34}\ \mathrm{J\,s},\quad \hbar=1.054571817\times10^{-34}\ \mathrm{J\,s}\]\[m_e=9.1093837139\times10^{-31}\ \mathrm{kg},\quad 1\ \mathrm{eV}=1.602176634\times10^{-19}\ \mathrm{J}\]</div>

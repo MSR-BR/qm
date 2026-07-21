@@ -26,8 +26,8 @@
 
     <div class="sim-layout">
       <aside class="sim-sidebar" aria-label="State preparation controls and values">
-      <div class="sim-panel sim-controls">
-        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State preparation</h2>
+      <details class="sim-panel sim-controls collapsible-panel" open>
+        <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State preparation</summary>
         <div class="control-group">
           <label class="control-label" for="stateOne">First basis state</label>
           <select id="stateOne"><option value="1">n = 1</option><option value="2">n = 2</option><option value="3">n = 3</option><option value="4">n = 4</option><option value="5">n = 5</option><option value="6">n = 6</option></select>
@@ -63,14 +63,14 @@
           <button class="sim-button secondary" id="ensembleButton" type="button"><i class="fa-solid fa-chart-column"></i> Run 100</button>
           <button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button>
         </div>
-      </div>
-        <div class="sim-panel metrics-grid">
-          <h2 class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</h2>
+      </details>
+        <details class="sim-panel metrics-grid collapsible-panel">
+          <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
           <div class="metric"><div class="metric-label">C₁</div><div class="metric-value" id="coefficientOne"></div></div>
           <div class="metric"><div class="metric-label">C₂</div><div class="metric-value" id="coefficientTwo"></div></div>
           <div class="metric"><div class="metric-label">Expected energy ⟨E⟩</div><div class="metric-value" id="expectedEnergy"></div></div>
           <div class="metric"><div class="metric-label">Normalization</div><div class="metric-value" id="normalization">1.0000</div></div>
-        </div>
+        </details>
         <details class="sim-panel equation-panel">
           <summary>Equations</summary>
           <div class="equation-box">\[\psi(x,t)=C_1\psi_{n_1}(x)e^{-iE_{n_1}t/\hbar}+C_2e^{i\phi}\psi_{n_2}(x)e^{-iE_{n_2}t/\hbar}\]\[E_n=\frac{n^2\pi^2\hbar^2}{2ma^2},\qquad P(E_n)=|C_n|^2,\qquad \langle E\rangle=\sum_n |C_n|^2E_n\]\[\hbar=1.054571817\times10^{-34}\ \mathrm{J\,s},\quad m_e=9.1093837139\times10^{-31}\ \mathrm{kg}\]</div>

@@ -26,8 +26,8 @@
 
     <div class="sim-layout">
       <aside class="sim-sidebar" aria-label="Probability current controls and values">
-      <div class="sim-panel sim-controls">
-        <h2 class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State model</h2>
+      <details class="sim-panel sim-controls collapsible-panel" open>
+        <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> State model</summary>
         <div class="control-group"><label class="control-label" for="stateType">Choose a state</label><select id="stateType"><option value="right">Right-moving plane wave</option><option value="left">Left-moving plane wave</option><option value="standing">Standing wave</option><option value="counter">Unequal counter-propagating waves</option><option value="packet">Localized moving packet</option></select></div>
         <div class="control-group"><div class="control-row"><label class="control-label" for="waveNumber">Wave number k</label><output class="control-value" id="waveNumberValue">2.00 nm⁻¹</output></div><input id="waveNumber" type="range" min="0.5" max="5" step="0.05" value="2" /></div>
         <div class="control-group"><div class="control-row"><label class="control-label" for="particleMass">Mass ratio m/mₑ</label><output class="control-value" id="particleMassValue">1.00 mₑ</output></div><input id="particleMass" type="range" min="0.1" max="5" step="0.05" value="1" /></div>
@@ -35,13 +35,13 @@
         <div class="control-group"><div class="control-row"><label class="control-label" for="timeControl">Time t</label><output class="control-value" id="timeControlValue">0.00 fs</output></div><input id="timeControl" type="range" min="0" max="20" step="0.05" value="0" /></div>
         <div class="button-row"><button class="sim-button" id="playButton" type="button"><i class="fa-solid fa-play"></i> Play</button><button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button></div>
         <div class="insight-box" id="stateInsight" style="margin-top:14px;"></div>
-      </div>
-        <div class="sim-panel metrics-grid">
-          <h2 class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</h2>
+      </details>
+        <details class="sim-panel metrics-grid collapsible-panel">
+          <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
           <div class="metric"><div class="metric-label">Mean current ⟨j⟩</div><div class="metric-value" id="meanCurrentMetric"></div></div>
           <div class="metric"><div class="metric-label">Current direction</div><div class="metric-value" id="directionMetric"></div></div>
           <div class="metric"><div class="metric-label">Integrated probability</div><div class="metric-value" id="normalizationMetric">1.0000</div></div>
-        </div>
+        </details>
         <details class="sim-panel equation-panel">
           <summary>Equations</summary>
           <div class="equation-box">\[\rho(x,t)=|\psi(x,t)|^2\]\[j(x,t)=\frac{\hbar}{2mi}\left(\psi^*\frac{\partial\psi}{\partial x}-\psi\frac{\partial\psi^*}{\partial x}\right),\qquad \frac{\partial\rho}{\partial t}+\frac{\partial j}{\partial x}=0\]\[\omega=\frac{\hbar k^2}{2m},\qquad v=\frac{\hbar k}{m},\qquad \hbar=1.054571817\times10^{-34}\ \mathrm{J\,s}\]</div>
