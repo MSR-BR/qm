@@ -12,7 +12,7 @@
       "title": "Time-dependent Schrodinger equation",
       "note": "From the plane wave, de Broglie's relation and the classical energy balance to the TDSE.",
       "url": "slides/chapter-02/time-dependent-schrodinger-equation.html",
-      "simulators": ["S06"],
+      "simulators": ["probability-current"],
       "aiExercise": true
     },
     {
@@ -20,7 +20,7 @@
       "title": "Stationary states and the TISE",
       "note": "Separation of variables, time-independent potentials and the energy eigenvalue equation.",
       "url": "slides/chapter-02/stationary-states-and-tise.html",
-      "simulators": ["S03"],
+      "simulators": ["infinite-well"],
       "aiExercise": true
     },
     {
@@ -28,7 +28,7 @@
       "title": "Probability density and current",
       "note": "Born interpretation, continuity equation, normalization and probability in a spatial interval.",
       "url": "slides/chapter-02/probability-density-and-current.html",
-      "simulators": ["S03", "S06"],
+      "simulators": ["infinite-well", "probability-current"],
       "aiExercise": true
     },
     {
@@ -36,7 +36,7 @@
       "title": "Infinite potential well",
       "note": "Boundary conditions, allowed sine functions, normalized eigenstates, nodes, probability densities and the quadratic energy spectrum.",
       "url": "slides/chapter-02/infinite-potential-well.html",
-      "simulators": ["S03"],
+      "simulators": ["infinite-well"],
       "aiExercise": true
     },
     {
@@ -51,7 +51,7 @@
       "title": "Quantum states as superpositions",
       "note": "Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis.",
       "url": "slides/chapter-02/quantum-states-superpositions.html",
-      "simulators": ["S04"],
+      "simulators": ["superposition-measurement"],
       "aiExercise": true
     },
     {
@@ -66,7 +66,7 @@
       "title": "Measurement probabilities",
       "note": "Postulate of probability: expansion coefficients give outcome probabilities, Pₙ = |Cₙ|², when measuring in an eigenstate basis.",
       "url": "slides/chapter-02/measurement-probabilities.html",
-      "simulators": ["S04"],
+      "simulators": ["superposition-measurement"],
       "aiExercise": true
     },
     {
@@ -74,7 +74,7 @@
       "title": "Expectation values and collapse",
       "note": "Measurement postulate: expectation values are ensemble averages, and after a definite result the state collapses to the measured eigenstate.",
       "url": "slides/chapter-02/expectation-values-and-collapse.html",
-      "simulators": ["S04"],
+      "simulators": ["superposition-measurement"],
       "aiExercise": true
     },
     {
@@ -89,7 +89,7 @@
       "title": "Plane waves and localized packets",
       "note": "Why a single plane wave has sharp momentum but poor localization, and why packets are needed.",
       "url": "slides/chapter-02/plane-waves-and-localized-packets.html",
-      "simulators": ["S05", "S06"],
+      "simulators": ["gaussian-wave-packet", "probability-current"],
       "aiExercise": true
     },
     {
@@ -97,7 +97,7 @@
       "title": "Gaussian wave packet and Fourier width",
       "note": "Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths.",
       "url": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
-      "simulators": ["S05"],
+      "simulators": ["gaussian-wave-packet"],
       "aiExercise": true
     },
     {
@@ -105,7 +105,7 @@
       "title": "Wave packet spreading and uncertainty",
       "note": "Group velocity, phase velocity, time-dependent variance and the Heisenberg uncertainty principle.",
       "url": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
-      "simulators": ["S05"],
+      "simulators": ["gaussian-wave-packet"],
       "aiExercise": true
     },
     {

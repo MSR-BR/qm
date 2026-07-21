@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Interactive Physics Lab | Quantum Mechanics</title>
+  <meta name="description" content="Interactive laboratory for the old quantum physics chapter." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0721.2" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="../assets/qm-simulator-catalog.js?v=0721.1"></script>
+  <script defer src="../assets/qm-classical-simulators.js?v=0721.1"></script>
+  <script defer src="../assets/qm-simulator-mobile.js?v=0721.1"></script>
+</head>
+<body>
+  <main class="sim-shell" data-simulator-slug="">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">Chapter 1 simulator</div>
+        <h1 class="sim-title" id="simTitle">Interactive Physics Lab</h1>
+        <p class="sim-subtitle" id="simSubtitle"></p>
+      </div>
+      <div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+    <div class="sim-layout">
+      <aside class="sim-sidebar" aria-label="Simulation controls and values">
+        <details class="sim-panel sim-controls collapsible-panel" open>
+          <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Controls</summary>
+          <div id="controlFields"></div>
+          <div class="button-row"><button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button></div>
+        </details>
+        <details class="sim-panel metrics-grid collapsible-panel" id="metricPanel">
+          <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
+        </details>
+        <details class="sim-panel equation-panel">
+          <summary>Equations</summary>
+          <div class="equation-box" id="equationBox"></div>
+        </details>
+      </aside>
+      <section class="sim-workspace">
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-chart-line"></i> <span id="plotTitle">Visualization</span></h2>
+          <div class="canvas-wrap tall"><canvas id="primaryCanvas" aria-label="Interactive physics visualization"></canvas></div>
+        </div>
+      </section>
+    </div>
+    <footer class="sim-footer">Calculations use SI constants and physically meaningful parameter ranges.</footer>
+  </main>
+</body>
+</html>

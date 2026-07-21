@@ -12,6 +12,7 @@
       "title": "Wave optics as the classical benchmark",
       "note": "Young's double-slit experiment, Maxwell's wave picture and the reference point for later wave-particle duality.",
       "url": "slides/chapter-01/wave-optics-classical-benchmark.html",
+      "simulators": ["double-slit"],
       "aiExercise": true
     },
     {
@@ -19,6 +20,7 @@
       "title": "Hydrogen spectral lines",
       "note": "From prisms and discrete colors to the Balmer and Rydberg formulas as empirical fingerprints of atomic structure.",
       "url": "slides/chapter-01/hydrogen-spectral-lines.html",
+      "simulators": ["hydrogen-bohr"],
       "aiExercise": true
     },
     {
@@ -26,6 +28,7 @@
       "title": "Cathode rays and the electron",
       "note": "Thomson's charge-to-mass measurement, atomic divisibility and the first subatomic particle picture.",
       "url": "slides/chapter-01/cathode-rays-and-electron.html",
+      "simulators": ["thomson-em"],
       "aiExercise": true
     },
     {
@@ -33,7 +36,7 @@
       "title": "Black-body radiation",
       "note": "Thermal spectra, the ultraviolet catastrophe and Planck's quantum hypothesis as a turning point.",
       "url": "slides/chapter-01/black-body-radiation.html",
-      "simulators": ["S01"],
+      "simulators": ["blackbody-radiation", "blackbody-spectrum"],
       "aiExercise": true
     },
     {
@@ -41,7 +44,7 @@
       "title": "Photoelectric effect",
       "note": "Einstein's photon interpretation and the experimental signatures that connect light frequency with emitted electrons.",
       "url": "slides/chapter-01/photoelectric-effect.html",
-      "simulators": ["S02"],
+      "simulators": ["photoelectric-effect"],
       "aiExercise": true
     },
     {
@@ -49,6 +52,7 @@
       "title": "Elementary charge",
       "note": "Millikan's oil-drop experiment and the quantization of electric charge.",
       "url": "slides/chapter-01/elementary-charge.html",
+      "simulators": ["millikan-oil-drop"],
       "aiExercise": true
     },
     {
@@ -56,6 +60,7 @@
       "title": "Electron diffraction",
       "note": "Matter behaving like a wave: diffraction evidence and its connection with de Broglie's idea.",
       "url": "slides/chapter-01/electron-diffraction.html",
+      "simulators": ["electron-diffraction"],
       "aiExercise": true
     },
     {
@@ -63,6 +68,7 @@
       "title": "Bohr model: postulates",
       "note": "Stationary states, angular momentum quantization and quantum jumps in the early atomic model.",
       "url": "slides/chapter-01/bohr-model-postulates.html",
+      "simulators": ["hydrogen-bohr"],
       "aiExercise": true
     },
     {
@@ -70,6 +76,7 @@
       "title": "Bohr model: hydrogen spectrum",
       "note": "Energy levels, orbital radii and how the Bohr model explains Hydrogen spectral series.",
       "url": "slides/chapter-01/bohr-model-hydrogen-spectrum.html",
+      "simulators": ["hydrogen-bohr"],
       "aiExercise": true
     },
     {
@@ -77,6 +84,7 @@
       "title": "de Broglie hypothesis",
       "note": "The matter-wave proposal and its role as a bridge from old quantum physics to wave mechanics.",
       "url": "slides/chapter-01/de-broglie-hypothesis.html",
+      "simulators": ["electron-diffraction"],
       "aiExercise": true
     },
     {
@@ -84,6 +92,7 @@
       "title": "Semi-classical quantization rule",
       "note": "Action integrals, allowed orbits and the logic behind early quantization rules.",
       "url": "slides/chapter-01/semi-classical-quantization-rule.html",
+      "simulators": ["bohr-sommerfeld"],
       "aiExercise": true
     },
     {
@@ -91,6 +100,7 @@
       "title": "SCQR examples",
       "note": "Harmonic oscillator, infinite well and power-law potentials as compact examples of semi-classical reasoning.",
       "url": "slides/chapter-01/scqr-examples.html",
+      "simulators": ["bohr-sommerfeld"],
       "aiExercise": true
     },
     {
@@ -98,6 +108,7 @@
       "title": "Sommerfeld orbits and ellipse geometry",
       "note": "A complementary bridge between Bohr-Sommerfeld quantization and geometric properties of elliptical motion.",
       "url": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html",
+      "simulators": ["bohr-sommerfeld"],
       "aiExercise": true
     },
     {

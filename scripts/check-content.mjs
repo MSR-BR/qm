@@ -7,8 +7,16 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 const dataDir = path.join(rootDir, "data");
+const simulatorCatalogPath = path.join(rootDir, "assets", "qm-simulator-catalog.js");
 
 let hasErrors = false;
+const simulatorCatalogSource = await readFile(simulatorCatalogPath, "utf8");
+const simulatorSlugs = [...simulatorCatalogSource.matchAll(/slug:\s*"([^"]+)"/g)].map((match) => match[1]);
+const knownSimulatorSlugs = new Set(simulatorSlugs);
+
+if (knownSimulatorSlugs.size !== simulatorSlugs.length) {
+  fail("The simulator catalog contains duplicate slugs.");
+}
 
 async function exists(filePath) {
   try {
@@ -74,6 +82,16 @@ async function validateChapterFile(fileName) {
     const targetPath = path.join(rootDir, topic.url);
     if (!isPlanned && !(await exists(targetPath))) {
       fail(`${label} points to a missing file: ${topic.url}`);
+    }
+
+    if (topic.simulators !== undefined && !Array.isArray(topic.simulators)) {
+      fail(`${label} must use an array for "simulators".`);
+    }
+
+    for (const simulatorSlug of topic.simulators || []) {
+      if (!knownSimulatorSlugs.has(simulatorSlug)) {
+        fail(`${label} references an unknown simulator slug: ${simulatorSlug}`);
+      }
     }
   }
 }
