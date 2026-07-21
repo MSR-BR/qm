@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
   <main class="sim-shell">
@@ -71,7 +73,7 @@
           <h2 class="sim-panel-title"><i class="fa-solid fa-bars-staggered"></i> Discrete energy spectrum</h2>
           <div class="canvas-wrap"><canvas id="energyCanvas" aria-label="Energy levels plot"></canvas></div>
         </div>
-        <div class="equation-box">ψₙ(x) = √(2/a) sin(nπx/a) &nbsp;&nbsp;·&nbsp;&nbsp; Eₙ = n²π²ℏ²/(2ma²)</div>
+        <div class="equation-box">\[\psi_n(x)=\sqrt{\frac{2}{a}}\sin\left(\frac{n\pi x}{a}\right),\qquad E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}\]</div>
       </section>
     </div>
     <footer class="sim-footer">This model represents an ideal one-dimensional infinite well. Values are calculated in natural units unless stated otherwise.</footer>

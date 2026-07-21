@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
   <main class="sim-shell">
@@ -48,7 +50,7 @@
           <h2 class="sim-panel-title"><i class="fa-solid fa-arrow-right-arrow-left"></i> Probability current j(x,t)</h2>
           <div class="canvas-wrap"><canvas id="currentCanvas" aria-label="Probability current plot"></canvas></div>
         </div>
-        <div class="equation-box">ρ(x,t) = |ψ(x,t)|²<br />j(x,t) = (ℏ/2mi)[ψ*∂ψ/∂x − ψ∂ψ*/∂x] &nbsp;&nbsp;·&nbsp;&nbsp; ∂ρ/∂t + ∂j/∂x = 0</div>
+        <div class="equation-box">\[\rho(x,t)=|\psi(x,t)|^2\]\[j(x,t)=\frac{\hbar}{2mi}\left(\psi^*\frac{\partial\psi}{\partial x}-\psi\frac{\partial\psi^*}{\partial x}\right),\qquad \frac{\partial\rho}{\partial t}+\frac{\partial j}{\partial x}=0\]</div>
       </section>
     </div>
     <footer class="sim-footer">Natural units are used: ℏ = m = 1. Plane-wave models are normalized over the displayed interval; the localized packet is normalized on the real line.</footer>

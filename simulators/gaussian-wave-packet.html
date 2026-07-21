@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
   <main class="sim-shell">
@@ -55,7 +57,7 @@
           <div class="canvas-wrap"><canvas id="momentumCanvas" aria-label="Gaussian momentum distribution"></canvas></div>
           <div class="legend"><span class="legend-item"><span class="legend-swatch" style="--swatch:#376b8c"></span> |φ(p)|²</span><span class="legend-item"><span class="legend-swatch" style="--swatch:#d5b260"></span> ⟨p⟩ ± Δp</span></div>
         </div>
-        <div class="equation-box">Δx(t) = Δx₀√[1 + (ℏt/2mΔx₀²)²] &nbsp;&nbsp;·&nbsp;&nbsp; Δp = ℏ/(2Δx₀)<br />⟨x⟩ = x₀ + (p₀/m)t &nbsp;&nbsp;·&nbsp;&nbsp; Δx(t)Δp ≥ ℏ/2</div>
+        <div class="equation-box">\[\Delta x(t)=\Delta x_0\sqrt{1+\left(\frac{\hbar t}{2m\Delta x_0^2}\right)^2},\qquad \Delta p=\frac{\hbar}{2\Delta x_0}\]\[\langle x\rangle=x_0+\frac{p_0}{m}t,\qquad \Delta x(t)\Delta p\geq\frac{\hbar}{2}\]</div>
       </section>
     </div>
     <footer class="sim-footer">The packet is a free, one-dimensional minimum-uncertainty Gaussian at t = 0. Natural units are used: ℏ = 1.</footer>

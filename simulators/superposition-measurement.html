@@ -10,6 +10,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 </head>
 <body>
   <main class="sim-shell">
@@ -75,7 +77,7 @@
           <div class="histogram" id="histogram"></div>
         </div>
         <div class="status-box" id="measurementStatus">The state is prepared. No measurement has been performed.</div>
-        <div class="equation-box">ψ(x,t) = C₁ψₙ₁(x)e<sup>−iEₙ₁t</sup> + C₂e<sup>iφ</sup>ψₙ₂(x)e<sup>−iEₙ₂t</sup><br />P(Eₙ) = |Cₙ|² &nbsp;&nbsp;·&nbsp;&nbsp; ⟨E⟩ = Σₙ |Cₙ|²Eₙ</div>
+        <div class="equation-box">\[\psi(x,t)=C_1\psi_{n_1}(x)e^{-iE_{n_1}t/\hbar}+C_2e^{i\phi}\psi_{n_2}(x)e^{-iE_{n_2}t/\hbar}\]\[P(E_n)=|C_n|^2,\qquad \langle E\rangle=\sum_n |C_n|^2E_n\]</div>
       </section>
     </div>
     <footer class="sim-footer">Natural units are used: ℏ = m = a = 1. “Run 100” models an ensemble of identically prepared systems; a single measurement collapses only the displayed system.</footer>
