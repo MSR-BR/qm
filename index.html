@@ -516,6 +516,19 @@
       line-height: 1.25;
     }
 
+    .simulator-chapter-copy {
+      min-width: 0;
+    }
+
+    .simulator-chapter-count {
+      display: block;
+      margin-top: 3px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 1.25;
+    }
+
     .layout {
       width: 100%;
       max-width: 1280px;
@@ -3690,7 +3703,10 @@
         button.dataset.simulatorChapterId = chapterId;
         button.innerHTML = `
           <span class="chapter-number">${chapterId}</span>
-          <span class="chapter-name">${escapeHtml(chapter ? chapter.title : `Chapter ${chapterId}`)} · ${simulatorCount} ${simulatorCount === 1 ? "simulator" : "simulators"}</span>
+          <span class="simulator-chapter-copy">
+            <span class="chapter-name">${escapeHtml(chapter ? chapter.title : `Chapter ${chapterId}`)}</span>
+            <span class="simulator-chapter-count">${simulatorCount} ${simulatorCount === 1 ? "simulator" : "simulators"}</span>
+          </span>
         `;
         button.addEventListener("click", function () {
           closeDrawer();
