@@ -1021,6 +1021,22 @@
       overflow-wrap: break-word;
     }
 
+    .simulator-card__sections,
+    .topic-simulators {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--blue);
+      font-family: "Inter", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+
+    .topic-simulators {
+      margin-top: 9px;
+    }
+
     .simulator-card__footer {
       margin-top: auto;
       display: inline-flex;
@@ -3191,8 +3207,9 @@
 
     const simulatorsCatalog = [
       {
-        id: "S01 · Section 1.5",
+        id: "S01",
         sectionId: "1.5",
+        sections: ["1.5"],
         slug: "blackbody-spectrum",
         title: "Blackbody Spectrum",
         description: "Explore how temperature changes the thermal-radiation spectrum, its intensity and the wavelength of maximum emission.",
@@ -3202,8 +3219,9 @@
         icon: "fa-temperature-high"
       },
       {
-        id: "S02 · Section 1.6",
+        id: "S02",
         sectionId: "1.6",
+        sections: ["1.6"],
         slug: "photoelectric-effect",
         title: "Photoelectric Effect",
         description: "Investigate how light frequency, intensity, target material and applied voltage affect photoelectron emission.",
@@ -3213,8 +3231,9 @@
         icon: "fa-solar-panel"
       },
       {
-        id: "S03 · Sections 2.3–2.5",
+        id: "S03",
         sectionId: "2.3–2.5",
+        sections: ["2.3", "2.4", "2.5"],
         slug: "infinite-well",
         title: "Infinite Potential Well Explorer",
         description: "Explore eigenstates, nodes, probability in a selected interval and the discrete energy spectrum of a one-dimensional infinite well.",
@@ -3224,8 +3243,9 @@
         icon: "fa-arrows-left-right-to-line"
       },
       {
-        id: "S04 · Sections 2.7, 2.9–2.10",
+        id: "S04",
         sectionId: "2.7, 2.9–2.10",
+        sections: ["2.7", "2.9", "2.10"],
         slug: "superposition-measurement",
         title: "Superposition and Measurement Lab",
         description: "Prepare a two-state superposition, compare amplitudes with energy probabilities, run an ensemble and observe state collapse.",
@@ -3235,8 +3255,9 @@
         icon: "fa-chart-column"
       },
       {
-        id: "S05 · Sections 2.12–2.14",
+        id: "S05",
         sectionId: "2.12–2.14",
+        sections: ["2.12", "2.13", "2.14"],
         slug: "gaussian-wave-packet",
         title: "Gaussian Wave Packet and Uncertainty",
         description: "Follow a free Gaussian packet in position and momentum space while tracking group motion, spreading and uncertainty.",
@@ -3246,11 +3267,12 @@
         icon: "fa-wave-square"
       },
       {
-        id: "S06 · Sections 2.2 and 2.4",
-        sectionId: "2.2 and 2.4",
+        id: "S06",
+        sectionId: "2.2, 2.4 and 2.12",
+        sections: ["2.2", "2.4", "2.12"],
         slug: "probability-current",
         title: "Probability Density and Current",
-        description: "Compare density and probability flow for traveling waves, standing waves, counter-propagating states and a localized packet.",
+        description: "Compare density and probability flow for traveling plane waves, a standing wave and a localized moving packet.",
         sourceLabel: "Original simulator",
         source: "Quantum Mechanics book-app · Prof. Mario Reis",
         standaloneUrl: "simulators/probability-current.html",
@@ -3612,6 +3634,7 @@
           </div>
           <div class="topic-title">${escapeHtml(topic.title || "Untitled topic")}</div>
           <div class="topic-note">${escapeHtml(topic.note || "Open this topic page.")}</div>
+          ${Array.isArray(topic.simulators) && topic.simulators.length ? `<div class="topic-simulators"><i class="fa-solid fa-flask" aria-hidden="true"></i> ${escapeHtml(topic.simulators.length === 1 ? "Simulator" : "Simulators")}: ${escapeHtml(topic.simulators.join(" · "))}</div>` : ""}
         `;
         grid.appendChild(card);
       });
@@ -4729,6 +4752,7 @@
                   </span>
                 </div>
                 <div class="simulator-card__description">${escapeHtml(simulator.description)}</div>
+                <div class="simulator-card__sections"><i class="fa-solid fa-book-open" aria-hidden="true"></i> ${escapeHtml(simulator.sections.length === 1 ? "Related section" : "Related sections")}: ${escapeHtml(simulator.sections.join(" · "))}</div>
                 <div class="simulator-card__source"><i class="fa-solid fa-building-columns" aria-hidden="true"></i> ${escapeHtml(simulator.sourceLabel)} · Source: ${escapeHtml(simulator.source)}.</div>
                 <div class="simulator-card__footer">
                   <i class="fa-solid fa-arrow-right"></i>

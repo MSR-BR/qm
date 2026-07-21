@@ -33,6 +33,7 @@
       "title": "Black-body radiation",
       "note": "Thermal spectra, the ultraviolet catastrophe and Planck's quantum hypothesis as a turning point.",
       "url": "slides/chapter-01/black-body-radiation.html",
+      "simulators": ["S01"],
       "aiExercise": true
     },
     {
@@ -40,6 +41,7 @@
       "title": "Photoelectric effect",
       "note": "Einstein's photon interpretation and the experimental signatures that connect light frequency with emitted electrons.",
       "url": "slides/chapter-01/photoelectric-effect.html",
+      "simulators": ["S02"],
       "aiExercise": true
     },
     {
