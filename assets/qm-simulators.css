@@ -257,6 +257,10 @@ select {
   text-transform: uppercase;
 }
 
+.metric-label .case-sensitive {
+  text-transform: none;
+}
+
 .metric-value {
   margin-top: 5px;
   color: var(--sim-green-dark);
