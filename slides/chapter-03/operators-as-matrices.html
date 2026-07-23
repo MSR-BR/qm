@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Operators as matrices | Chapter 3 | Quantum Mechanics</title>
-  <meta name="description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Practical auxiliary summary for Chapter 3 of the Quantum Mechanics book-app." />
+  <title>Operators, eigenvalues and spectral decomposition | Chapter 3 | Quantum Mechanics</title>
+  <meta name="description" content="How observables become matrices, how eigenvalues encode possible measurement outcomes, and how an operator is rebuilt from its eigenbasis." />
   <meta name="author" content="Prof. Mario Reis" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +35,7 @@
   <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
   <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
-<meta name="description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
+<meta name="description" content="How observables become matrices, how eigenvalues encode possible measurement outcomes, and how an operator is rebuilt from its eigenbasis."/>
 <meta name="author" content="Prof. Mario Reis"/>
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
 <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
@@ -44,13 +44,13 @@
 <meta property="og:locale" content="en_US"/>
 <meta property="og:type" content="article"/>
 <meta property="og:site_name" content="Quantum Mechanics"/>
-<meta property="og:title" content="Operators as matrices | Chapter 3 | Quantum Mechanics"/>
-<meta property="og:description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
+<meta property="og:title" content="Operators, eigenvalues and spectral decomposition | Chapter 3 | Quantum Mechanics"/>
+<meta property="og:description" content="How observables become matrices, how eigenvalues encode possible measurement outcomes, and how an operator is rebuilt from its eigenbasis."/>
 <meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-03/operators-as-matrices.html"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Operators as matrices | Chapter 3 | Quantum Mechanics"/>
-<meta name="twitter:description" content="Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum..."/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Operators as matrices | Chapter 3 | Quantum Mechanics","description":"Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors. Interactive material from the book Quantum...","url":"https://qm-beta.vercel.app/slides/chapter-03/operators-as-matrices.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
+<meta name="twitter:title" content="Operators, eigenvalues and spectral decomposition | Chapter 3 | Quantum Mechanics"/>
+<meta name="twitter:description" content="How observables become matrices, how eigenvalues encode possible measurement outcomes, and how an operator is rebuilt from its eigenbasis."/>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Operators, eigenvalues and spectral decomposition | Chapter 3 | Quantum Mechanics","description":"How observables become matrices, how eigenvalues encode possible measurement outcomes, and how an operator is rebuilt from its eigenbasis.","url":"https://qm-beta.vercel.app/slides/chapter-03/operators-as-matrices.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
 <!-- termo-seo:end -->
 </head>
 <body>
@@ -65,16 +65,16 @@
           <i class="fa-solid fa-layer-group"></i>
           Chapter 3 · Item 3.5
         </div>
-        <div class="hdr-title">Operators as matrices</div>
-        <div class="hdr-sub">The observable postulate in a finite-dimensional basis</div>
+        <div class="hdr-title">Operators, eigenvalues and spectral decomposition</div>
+        <div class="hdr-sub">From matrix elements to the possible outcomes of a measurement</div>
       </div>
-      <div class="slide-num">5 / 15</div>
+      <div class="slide-num">5 / 14</div>
     </div>
     <div class="body">
 
       <div class="card orange guide-card">
         <div class="ch orange"><i class="fa-solid fa-table-cells"></i> Guided reading</div>
-        <p>Once states are vectors, observables must be represented by objects that act on vectors. In a chosen basis, those objects are matrices. The book builds this result from the completeness relation rather than simply declaring it; that construction explains why matrix elements have the form \(\langle m|\hat A|n\rangle\).</p>
+        <p>Once states are vectors, observables must be represented by objects that act on vectors. In a chosen basis, those objects are matrices. This section follows one continuous chain: construct the matrix elements, identify the eigenstates with definite outcomes, and then rebuild the operator from those outcomes through its spectral decomposition.</p>
       </div>
       <div class="col">
         <div class="card">
@@ -102,18 +102,19 @@
         <div class="card purple">
           <div class="ch purple"><i class="fa-solid fa-flag"></i> Postulate for observables</div>
           <p>The postulate for observables says that every measurable quantity is represented by a Hermitian operator. In the Stern-Gerlach case, the measurable quantity is a spin projection along the axis selected by the magnet. The possible results are obtained from the eigenvalue equation.</p>
-          <div class="eq key-eq">\[\hat A|n\rangle=a_n|n\rangle.\]</div>
-          <p>The operator is not an optional mathematical decoration. It is the object that contains both the possible measurement results and the basis in which those results are sharp.</p>
+          <div class="eq key-eq">\[\hat A|a_n\rangle=a_n|a_n\rangle.\]</div>
+          <p>If the incoming state is \(|a_n\rangle\), the measurement gives \(a_n\) with certainty. Thus the eigenvectors are the definite-value states and the eigenvalues are the numbers that the apparatus can display.</p>
         </div>
         <div class="card">
           <div class="ch"><i class="fa-solid fa-filter"></i> Spectral form begins here</div>
-          <p>If the basis vectors are eigenvectors of \(\hat A\), then \(\hat A|n\rangle=a_n|n\rangle\). Substituting this into the matrix expansion collapses the double sum into a simpler expression:</p>
-          <div class="eq key-eq">\[\hat A=\sum_n a_n|n\rangle\langle n|.\]</div>
+          <p>If the basis vectors are eigenvectors of \(\hat A\), then \(\hat A|a_n\rangle=a_n|a_n\rangle\). Substituting this into the matrix expansion collapses the double sum into a simpler expression:</p>
+          <div class="eq key-eq">\[\hat A=\sum_n a_n|a_n\rangle\langle a_n|.\]</div>
           <p>This spectral form is the bridge to measurement. The projectors select the outcome channels; the numbers \(a_n\) label the values displayed by the apparatus.</p>
         </div>
         <div class="card green">
           <div class="ch green"><i class="fa-solid fa-magnet"></i> Stern-Gerlach interpretation</div>
           <p>For SG(Z), the basis \(\{|+\rangle,|-\rangle\}\) is already the eigenbasis of the measured observable. For SG(X), the eigenbasis is \(\{|+\rangle_x,|-\rangle_x\}\). The same physical spin space is being used; the operator changes because the measurement axis changes.</p>
+          <div class="eq">\[\hat\sigma_u|+\rangle_u=+|+\rangle_u,\qquad \hat\sigma_u|-\rangle_u=-|-\rangle_u.\]</div>
           <div class="callout">An operator is a measurement question written in a basis.</div>
         </div>
       </div>
@@ -127,7 +128,7 @@
 
       <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
         <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
-        <p>This page is designed to support short guided exercises on: Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors.</p>
+        <p>This page is designed to support short guided exercises on: matrix representations, definite-value states and spectral decomposition.</p>
         <ul class="bullet practice-list">
           <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed to start a first calculation or explanation.</li>
           <li><span class="practice-label">Keep in the book:</span> complete derivations, extended historical discussion, worked solutions and the full textbook narrative remain in the original chapter and linked book resources.</li>
@@ -139,11 +140,12 @@
         <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
         <p>Use these anchors to design compact exercises. The exercise should be answerable from this page plus standard algebra, while longer derivations, full worked examples and broader context should point back to the original book.</p>
         <ul class="bullet practice-list">
-          <li><span class="practice-label">Focus:</span> Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors.</li>
+          <li><span class="practice-label">Focus:</span> connect matrix elements, the eigenvalue equation and the spectral form of an observable.</li>
           <li><span class="practice-label">Conceptual check:</span> state what the main result says physically before using it algebraically.</li>
           <li><span class="practice-label">Equation:</span> \[\langle n|\Psi\rangle \;\hbox{is a number},\qquad |n\rangle\langle n|\;\hbox{is a matrix}.\]</li>
 <li><span class="practice-label">Equation:</span> \[\hat A=\hat 1\hat A\hat 1=\left(\sum_m |m\rangle\langle m|\right)\hat A\left(\sum_n |n\rangle\langle n|\right).\]</li>
 <li><span class="practice-label">Equation:</span> \[\hat A=\sum_{m,n}\langle m|\hat A|n\rangle |m\rangle\langle n|.\]</li>
+<li><span class="practice-label">Equation:</span> \[\hat A|a_n\rangle=a_n|a_n\rangle,\qquad \hat A=\sum_n a_n|a_n\rangle\langle a_n|.\]</li>
           <li><span class="practice-label">Boundary:</span> use this page for setup and first-step reasoning; cite the book for longer derivations, complete experimental history or solved-problem detail.</li>
           <li><span class="practice-label">Typical task:</span> derive, interpret, or apply the relation above to a simple case without introducing topics outside this page.</li>
         </ul>

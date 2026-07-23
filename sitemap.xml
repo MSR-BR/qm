@@ -295,12 +295,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://qm-beta.vercel.app/slides/chapter-03/pauli-matrices-and-spin-observables.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>

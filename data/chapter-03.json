@@ -30,76 +30,69 @@
     },
     {
       "id": "3.5",
-      "title": "Operators as matrices",
-      "note": "Postulate for observables and operators: measurable quantities are represented by Hermitian operators acting on state vectors.",
+      "title": "Operators, eigenvalues and spectral decomposition",
+      "note": "How observables become matrices, how their eigenvalues encode possible outcomes, and how an operator is rebuilt from its eigenbasis.",
       "url": "slides/chapter-03/operators-as-matrices.html",
       "aiExercise": true
     },
     {
       "id": "3.6",
-      "title": "Eigenvalues, eigenstates and spectral decomposition",
-      "note": "How measurement outcomes enter the eigenvalue equation, and how an operator is rebuilt from its eigenbasis.",
-      "url": "slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html",
-      "aiExercise": true
-    },
-    {
-      "id": "3.7",
       "title": "Pauli matrices and spin observables",
       "note": "Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics.",
       "url": "slides/chapter-03/pauli-matrices-and-spin-observables.html",
       "aiExercise": true
     },
     {
-      "id": "3.8",
+      "id": "3.7",
       "title": "Born rule in vector notation",
       "note": "Postulate of probability: amplitudes are inner products, and probabilities are squared moduli of projections.",
       "url": "slides/chapter-03/born-rule-vector-notation.html",
       "aiExercise": true
     },
     {
-      "id": "3.9",
+      "id": "3.8",
       "title": "Expectation value, variance and preparation",
       "note": "Ensemble averages, uncertainty of an observable and how repeated Stern-Gerlach measurements prepare a state.",
       "url": "slides/chapter-03/expectation-value-variance-and-preparation.html",
       "aiExercise": true
     },
     {
-      "id": "3.10",
+      "id": "3.9",
       "title": "Hermitian operators and real outcomes",
       "note": "Why observables must have real eigenvalues, and how Hermitian conjugation controls the matrix representation.",
       "url": "slides/chapter-03/hermitian-operators-and-real-outcomes.html",
       "aiExercise": true
     },
     {
-      "id": "3.11",
+      "id": "3.10",
       "title": "Commutators, compatibility and measurement order",
       "note": "Non-commuting spin components, compatible observables and why an intermediate measurement can erase information.",
       "url": "slides/chapter-03/commutators-compatibility-and-measurement-order.html",
       "aiExercise": true
     },
     {
-      "id": "3.12",
+      "id": "3.11",
       "title": "Schrodinger picture: unitary time evolution",
       "note": "Time-dependent state vectors, the unitary evolution operator and phase evolution in the energy basis.",
       "url": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html",
       "aiExercise": true
     },
     {
-      "id": "3.13",
+      "id": "3.12",
       "title": "Heisenberg picture: operator evolution",
       "note": "Fixed state vectors, time-dependent operators and the Heisenberg equation of motion.",
       "url": "slides/chapter-03/heisenberg-picture-operator-evolution.html",
       "aiExercise": true
     },
     {
-      "id": "3.14",
+      "id": "3.13",
       "title": "Unitary transformations and change of basis",
       "note": "How states and operators transform between bases while probabilities and expectation values remain invariant.",
       "url": "slides/chapter-03/unitary-transformations-and-change-of-basis.html",
       "aiExercise": true
     },
     {
-      "id": "3.15",
+      "id": "3.14",
       "title": "Operator functions and chapter synthesis",
       "note": "Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics.",
       "url": "slides/chapter-03/operator-functions-and-chapter-synthesis.html",
