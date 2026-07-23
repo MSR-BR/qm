@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scattering from an attractive finite well | Chapter 4 | Quantum Mechanics</title>
+  <meta name="description" content="Positive-energy solutions, boundary coefficients, exact transmission and resonant transparency. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-04/scattering-from-an-attractive-finite-well.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Quantum Mechanics" />
+  <meta property="og:title" content="Scattering from an attractive finite well | Chapter 4 | Quantum Mechanics" />
+  <meta property="og:description" content="Positive-energy solutions, boundary coefficients, exact transmission and resonant transparency. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-04/scattering-from-an-attractive-finite-well.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-04/page-layout.css?v=0723.1" />
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr"><div class="hdr-inner">
+      <a href="../../index.html?view=chapters&chapter=04" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a>
+      <div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 4 · Item 4.11</div>
+      <div class="hdr-title">Scattering from an attractive finite well</div>
+      <div class="hdr-sub">Interference inside the well produces resonant transparency</div>
+    </div><div class="slide-num">11 / 15</div></div>
+    <div class="body">
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>For positive incident energy, an attractive finite well no longer traps the particle; it becomes a scattering region. The wave number is larger inside the well, and multiple internal reflections interfere.</p></div>
+      <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-layer-group"></i> Three-region solution</div><p>For a well of width \(L\), \(V=-V_0\) inside and \(V=0\) outside:</p><div class="eq">\[k=\frac{\sqrt{2mE}}{\hbar},\qquad q=\frac{\sqrt{2m(E+V_0)}}{\hbar}\]</div><div class="eq">\[\psi_I=Ae^{ikx}+Be^{-ikx},\quad \psi_{II}=Ce^{iqx}+De^{-iqx},\quad \psi_{III}=Fe^{ikx}\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-bullseye"></i> Exact transmission</div><div class="eq key-eq">\[T=\left[1+\frac{V_0^2}{4E(E+V_0)}\sin^2(qL)\right]^{-1}\]</div><p>Even though the potential is attractive, abrupt changes in wavelength cause reflection.</p></div></div>
+      <div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-wave-square"></i> Resonant transparency</div><p>Whenever the internal phase is an integer multiple of \(\pi\),</p><div class="eq">\[qL=n\pi\quad\Longrightarrow\quad T=1\]</div><p>The internal round trips interfere destructively in the reflected channel. The well becomes transparent at discrete incident energies.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-gauge-high"></i> Useful limits</div><ul class="bullet"><li>As \(E\gg V_0\), wavelength mismatch becomes small and \(T\to1\).</li><li>At resonance, \(T=1\) even when the well is deep.</li><li>Between resonances, \(T\) oscillates with \(E\), \(L\) and \(V_0\).</li><li>Always verify \(0\le R,T\le1\) and \(R+T=1\).</li></ul></div></div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;"><div class="ch orange"><i class="fa-solid fa-code-compare"></i> A phase-matching phenomenon</div><p>Transmission resonances are the scattering analogue of standing-wave quantization: both occur when the phase accumulated across a finite region is compatible with boundary matching.</p></div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports short guided exercises on: Positive-energy solutions, boundary coefficients, exact transmission and resonant transparency.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, setup, highlighted equations and physical checks needed for a first calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> full derivations, extended examples, end-of-chapter problems and complete solutions remain in the original resources.</li><li><span class="practice-label">Good exercise balance:</span> identify the regime, apply one central relation, and interpret the result without importing later material.</li></ul></div>
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;"><div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use these anchors to design a compact exercise answerable from this page plus standard algebra.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> Positive-energy solutions, boundary coefficients, exact transmission and resonant transparency.</li><li><span class="practice-label">Conceptual check:</span> explain the physical meaning of the main result before substituting numbers.</li><li><span class="practice-label">Typical task:</span> derive, compare or apply one relation and verify a limiting case.</li><li><span class="practice-label">Boundary:</span> cite the book for lengthy derivations and complete worked solutions.</li></ul></div><section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+      <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div>
+      <div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 4 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, derivations and exercises.</div>
+    </div>
+  </div>
+</body>
+</html>

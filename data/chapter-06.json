@@ -1,4 +1,110 @@
 {
-  "description": "Chapter 6 — Angular momentum. Structure prepared to receive this chapter's HTML pages.",
-  "topics": []
+  "description": "Chapter 6 - Angular momentum. A guided structure for commutation relations, ladder algebra, spectra, matrices, differential operators and uncertainty.",
+  "topics": [
+    {
+      "id": "6.1",
+      "title": "Angular momentum: chapter roadmap",
+      "note": "From the classical cross product to a quantum observable with noncommuting components and discrete projections.",
+      "status": "planned",
+      "url": "slides/chapter-06/angular-momentum-chapter-roadmap.html"
+    },
+    {
+      "id": "6.2",
+      "title": "Angular momentum and Levi-Civita notation",
+      "note": "Operator components, index notation and the tensor identities used throughout the angular momentum algebra.",
+      "status": "planned",
+      "url": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html"
+    },
+    {
+      "id": "6.3",
+      "title": "Commutation relations and physical meaning",
+      "note": "Deriving the cyclic commutators and understanding why different components cannot be sharp simultaneously.",
+      "status": "planned",
+      "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html"
+    },
+    {
+      "id": "6.4",
+      "title": "Compatible observables: L squared and Lz",
+      "note": "Why total magnitude commutes with every component and how a common eigenbasis is selected.",
+      "status": "planned",
+      "url": "slides/chapter-06/compatible-observables-l-squared-and-lz.html"
+    },
+    {
+      "id": "6.5",
+      "title": "Raising and lowering operators",
+      "note": "Definitions, commutators, operator products and the ladder action that preserves total angular momentum.",
+      "status": "planned",
+      "url": "slides/chapter-06/raising-and-lowering-operators.html"
+    },
+    {
+      "id": "6.6",
+      "title": "Quantization of l and m",
+      "note": "Ladder termination, endpoint states and the derivation of integer or half-integer angular momentum.",
+      "status": "planned",
+      "url": "slides/chapter-06/quantization-of-l-and-m.html"
+    },
+    {
+      "id": "6.7",
+      "title": "Angular momentum spectrum",
+      "note": "Eigenvalues of L squared and Lz, multiplet dimension and the geometry of magnitude and projection.",
+      "status": "planned",
+      "url": "slides/chapter-06/angular-momentum-spectrum.html"
+    },
+    {
+      "id": "6.8",
+      "title": "Normalized ladder action",
+      "note": "Transition amplitudes between neighboring m states and the endpoint coefficients of a finite multiplet.",
+      "status": "planned",
+      "url": "slides/chapter-06/normalized-ladder-action.html"
+    },
+    {
+      "id": "6.9",
+      "title": "Expectation values and transverse variance",
+      "note": "Mean transverse components, quantum spread and the vector-cone interpretation of an angular momentum state.",
+      "status": "planned",
+      "url": "slides/chapter-06/expectation-values-and-transverse-variance.html"
+    },
+    {
+      "id": "6.10",
+      "title": "General matrix representation",
+      "note": "Matrix elements of Lz, L squared and the ladder operators for arbitrary l.",
+      "status": "planned",
+      "url": "slides/chapter-06/general-matrix-representation.html"
+    },
+    {
+      "id": "6.11",
+      "title": "Worked matrices and change of basis",
+      "note": "Explicit l = 1 and l = 1/2 examples, eigenvectors of transverse components and unitary basis transformations.",
+      "status": "planned",
+      "url": "slides/chapter-06/worked-matrices-and-change-of-basis.html"
+    },
+    {
+      "id": "6.12",
+      "title": "Angular momentum in position space",
+      "note": "Orbital angular momentum as a differential operator and its purely angular character in spherical coordinates.",
+      "status": "planned",
+      "url": "slides/chapter-06/angular-momentum-in-position-space.html"
+    },
+    {
+      "id": "6.13",
+      "title": "Spherical harmonics as angular momentum eigenfunctions",
+      "note": "Differential eigenvalue equations, ladder construction and normalized angular wave functions.",
+      "status": "planned",
+      "url": "slides/chapter-06/spherical-harmonics-as-angular-momentum-eigenfunctions.html"
+    },
+    {
+      "id": "6.14",
+      "title": "Generalized uncertainty for angular momentum",
+      "note": "Schwartz inequality, covariance and the uncertainty relation between noncommuting angular components.",
+      "status": "planned",
+      "url": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html"
+    },
+    {
+      "id": "6.15",
+      "title": "Chapter synthesis: angular momentum toolkit",
+      "note": "A compact bridge from commutators and multiplets to matrices, spherical harmonics and addition of angular momenta.",
+      "status": "planned",
+      "url": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html"
+    }
+  ]
 }

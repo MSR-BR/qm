@@ -1,4 +1,110 @@
 {
-  "description": "Chapter 5 — Traditional problems with central potential. Structure prepared to receive this chapter's HTML pages.",
-  "topics": []
+  "description": "Chapter 5 - Traditional problems with central potential. A guided structure for separation of variables, spherical harmonics, the Hydrogen atom and the three-dimensional harmonic oscillator.",
+  "topics": [
+    {
+      "id": "5.1",
+      "title": "Central potentials: chapter roadmap",
+      "note": "Why spherical symmetry separates universal angular physics from the radial dynamics of each potential.",
+      "status": "planned",
+      "url": "slides/chapter-05/central-potentials-chapter-roadmap.html"
+    },
+    {
+      "id": "5.2",
+      "title": "Separation of variables in spherical coordinates",
+      "note": "The spherical Laplacian, radial and angular equations and the separation constants that become quantum numbers.",
+      "status": "planned",
+      "url": "slides/chapter-05/separation-of-variables-in-spherical-coordinates.html"
+    },
+    {
+      "id": "5.3",
+      "title": "Azimuthal and polar equations",
+      "note": "Periodic boundary conditions, the magnetic quantum number and the associated Legendre equation.",
+      "status": "planned",
+      "url": "slides/chapter-05/azimuthal-and-polar-equations.html"
+    },
+    {
+      "id": "5.4",
+      "title": "Spherical harmonics",
+      "note": "Normalized angular eigenfunctions, allowed values of l and m, orthogonality and angular probability patterns.",
+      "status": "planned",
+      "url": "slides/chapter-05/spherical-harmonics.html"
+    },
+    {
+      "id": "5.5",
+      "title": "Hydrogen atom and effective potential",
+      "note": "Coulomb attraction, the centrifugal contribution and the radial equation for a one-electron atom.",
+      "status": "planned",
+      "url": "slides/chapter-05/hydrogen-atom-and-effective-potential.html"
+    },
+    {
+      "id": "5.6",
+      "title": "Hydrogen radial equation and Laguerre solutions",
+      "note": "Asymptotic behavior, associated Laguerre polynomials and the normalizable radial wave functions.",
+      "status": "planned",
+      "url": "slides/chapter-05/hydrogen-radial-equation-and-laguerre-solutions.html"
+    },
+    {
+      "id": "5.7",
+      "title": "Hydrogen spectrum and degeneracy",
+      "note": "Principal quantum number, Bohr energy scale, subshells and the n-squared degeneracy of the ideal atom.",
+      "status": "planned",
+      "url": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html"
+    },
+    {
+      "id": "5.8",
+      "title": "Hydrogen orbitals and radial probability",
+      "note": "Total wave functions, radial nodes, most probable radii and the physical meaning of orbital labels.",
+      "status": "planned",
+      "url": "slides/chapter-05/hydrogen-orbitals-and-radial-probability.html"
+    },
+    {
+      "id": "5.9",
+      "title": "Three-dimensional harmonic oscillator",
+      "note": "Cartesian and spherical descriptions, central confinement and the effective radial potential.",
+      "status": "planned",
+      "url": "slides/chapter-05/three-dimensional-harmonic-oscillator.html"
+    },
+    {
+      "id": "5.10",
+      "title": "3D oscillator radial equation",
+      "note": "Boundary behavior, associated Laguerre functions and the allowed relation between radial and orbital labels.",
+      "status": "planned",
+      "url": "slides/chapter-05/3d-oscillator-radial-equation.html"
+    },
+    {
+      "id": "5.11",
+      "title": "3D oscillator spectrum and degeneracy",
+      "note": "Energy quantization, allowed l values and the equivalence between Cartesian and spherical state counting.",
+      "status": "planned",
+      "url": "slides/chapter-05/3d-oscillator-spectrum-and-degeneracy.html"
+    },
+    {
+      "id": "5.12",
+      "title": "3D oscillator wave functions and probability",
+      "note": "Normalized radial states, nodes, turning points and how orbital angular momentum shifts probability outward.",
+      "status": "planned",
+      "url": "slides/chapter-05/3d-oscillator-wave-functions-and-probability.html"
+    },
+    {
+      "id": "5.13",
+      "title": "Hydrogen atom and the periodic table",
+      "note": "Shells, subshells, orbital capacity, Madelung ordering and the quantum structure behind the periodic table.",
+      "status": "planned",
+      "url": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html"
+    },
+    {
+      "id": "5.14",
+      "title": "Hydrogen expectation values",
+      "note": "Radial moments, Kramers-Pasternack relations and Feynman-Hellmann methods for extracting observables.",
+      "status": "planned",
+      "url": "slides/chapter-05/hydrogen-expectation-values.html"
+    },
+    {
+      "id": "5.15",
+      "title": "Chapter synthesis: solving central potentials",
+      "note": "A comparative map of angular quantum numbers, radial equations, special functions, spectra and degeneracies.",
+      "status": "planned",
+      "url": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html"
+    }
+  ]
 }

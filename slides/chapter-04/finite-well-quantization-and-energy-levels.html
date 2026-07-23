@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finite-well quantization and energy levels | Chapter 4 | Quantum Mechanics</title>
+  <meta name="description" content="Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-04/finite-well-quantization-and-energy-levels.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Quantum Mechanics" />
+  <meta property="og:title" content="Finite-well quantization and energy levels | Chapter 4 | Quantum Mechanics" />
+  <meta property="og:description" content="Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-04/finite-well-quantization-and-energy-levels.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-04/page-layout.css?v=0723.1" />
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr"><div class="hdr-inner">
+      <a href="../../index.html?view=chapters&chapter=04" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a>
+      <div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 4 · Item 4.8</div>
+      <div class="hdr-title">Finite-well quantization and energy levels</div>
+      <div class="hdr-sub">Parity branches and graphical intersections select the allowed energies</div>
+    </div><div class="slide-num">8 / 15</div></div>
+    <div class="body">
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>Boundary matching produces transcendental equations rather than a simple integer formula. Their roots are the bound-state energies. A dimensionless graphical method makes the number and parity of the levels visible.</p></div>
+      <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-equals"></i> Quantization conditions</div><p>At \(x=a\), logarithmic-derivative matching gives</p><div class="eq key-eq">\[k\tan(ka)=\kappa\qquad\text{(even)}\]</div><div class="eq key-eq">\[-k\cot(ka)=\kappa\qquad\text{(odd)}\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-circle"></i> Dimensionless circle</div><p>Define \(z=ka\), \(y=\kappa a\) and \(z_0=a\sqrt{2mV_0}/\hbar\). Then</p><div class="eq">\[z^2+y^2=z_0^2\]</div><p>The allowed states are intersections of this quarter-circle with \(y=z\tan z\) or \(y=-z\cot z\).</p></div></div>
+      <div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-chart-line"></i> Reading the graph</div><ul class="bullet"><li>Each intersection corresponds to one bound energy.</li><li>Even and odd solutions alternate as energy increases.</li><li>Increasing \(V_0\), \(a\), or \(m\) increases \(z_0\) and usually adds levels.</li><li>In one dimension an attractive finite well supports at least one bound state.</li></ul></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-calculator"></i> Recover the energy</div><div class="eq">\[E=-\frac{\hbar^2\kappa^2}{2m}=-\frac{\hbar^2y^2}{2ma^2}\]</div><p>A shallow state has small \(\kappa\), a long exterior tail and energy close to zero. A deeply bound state has larger \(\kappa\) and stronger localization.</p></div></div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;"><div class="ch orange"><i class="fa-solid fa-code-compare"></i> Root-finding workflow</div><p>Choose a parity branch, bracket a root between tangent or cotangent singularities, solve numerically, then reconstruct \(E\). Always check that \(-V_0&lt;E&lt;0\) and that the corresponding tail decays.</p></div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports short guided exercises on: Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, setup, highlighted equations and physical checks needed for a first calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> full derivations, extended examples, end-of-chapter problems and complete solutions remain in the original resources.</li><li><span class="practice-label">Good exercise balance:</span> identify the regime, apply one central relation, and interpret the result without importing later material.</li></ul></div>
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;"><div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use these anchors to design a compact exercise answerable from this page plus standard algebra.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels.</li><li><span class="practice-label">Conceptual check:</span> explain the physical meaning of the main result before substituting numbers.</li><li><span class="practice-label">Typical task:</span> derive, compare or apply one relation and verify a limiting case.</li><li><span class="practice-label">Boundary:</span> cite the book for lengthy derivations and complete worked solutions.</li></ul></div><section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+      <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div>
+      <div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 4 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, derivations and exercises.</div>
+    </div>
+  </div>
+</body>
+</html>

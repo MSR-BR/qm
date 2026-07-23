@@ -1,4 +1,109 @@
 {
-  "description": "Chapter 4 — One-dimensional problems: bound and unbound states. Structure prepared to receive this chapter's HTML pages.",
-  "topics": []
+  "description": "Chapter 4 - One-dimensional problems: bound and unbound states. A guided structure for harmonic oscillators, finite wells, scattering, tunneling and uncertainty.",
+  "topics": [
+    {
+      "id": "4.1",
+      "title": "Bound and unbound states: chapter roadmap",
+      "note": "How confinement, discrete spectra, continuum states and tunneling organize the one-dimensional models in this chapter.",
+      "url": "slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html"
+    },
+    {
+      "id": "4.2",
+      "title": "Quantum harmonic oscillator (QHO): model and scaling",
+      "note": "Parabolic confinement, dimensionless variables and the route from the Schrodinger equation to the Hermite equation.",
+      "url": "slides/chapter-04/quantum-harmonic-oscillator-qho-model-and-scaling.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.3",
+      "title": "QHO: Hermite equation and energy quantization",
+      "note": "Normalizability, polynomial termination and the equally spaced oscillator spectrum.",
+      "url": "slides/chapter-04/qho-hermite-equation-and-energy-quantization.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.4",
+      "title": "QHO: eigenfunctions, parity and probability",
+      "note": "Hermite polynomials, nodes, probability densities, zero-point energy and the correspondence principle.",
+      "url": "slides/chapter-04/qho-eigenfunctions-parity-and-probability.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.5",
+      "title": "QHO: ladder operators and oscillator algebra",
+      "note": "Hamiltonian factorization, commutators, number states and the raising and lowering construction of the spectrum.",
+      "url": "slides/chapter-04/qho-ladder-operators-and-oscillator-algebra.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.6",
+      "title": "QHO: expectation values and uncertainty",
+      "note": "Position and momentum moments, variances and the Heisenberg uncertainty product for oscillator eigenstates.",
+      "url": "slides/chapter-04/qho-expectation-values-and-uncertainty.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.7",
+      "title": "Finite potential well: bound-state setup",
+      "note": "Piecewise wave functions, boundary matching, penetration depth and the conditions for negative-energy bound states.",
+      "url": "slides/chapter-04/finite-potential-well-bound-state-setup.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.8",
+      "title": "Finite-well quantization and energy levels",
+      "note": "Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels.",
+      "url": "slides/chapter-04/finite-well-quantization-and-energy-levels.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.9",
+      "title": "Finite-well wave functions and penetration",
+      "note": "Even and odd eigenfunctions, nodes, probability density and exponential leakage beyond the classical well.",
+      "url": "slides/chapter-04/finite-well-wave-functions-and-penetration.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.10",
+      "title": "Probability current, reflection and transmission",
+      "note": "Incident, reflected and transmitted waves and the current-based definitions of R and T.",
+      "url": "slides/chapter-04/probability-current-reflection-and-transmission.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.11",
+      "title": "Scattering from an attractive finite well",
+      "note": "Positive-energy solutions, boundary coefficients, exact transmission and resonant transparency.",
+      "url": "slides/chapter-04/scattering-from-an-attractive-finite-well.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.12",
+      "title": "Delta-function well and scattering",
+      "note": "The zero-width limit, derivative discontinuity and the energy dependence of reflection and transmission.",
+      "url": "slides/chapter-04/delta-function-well-and-scattering.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.13",
+      "title": "Rectangular barrier and quantum tunneling",
+      "note": "Evanescent waves inside a barrier, exact transmission and the exponential tunneling limit.",
+      "url": "slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.14",
+      "title": "Worked models and integrated practice",
+      "note": "Guided applications involving finite-well spectra, transmission limits, oscillator moments and barrier behavior.",
+      "url": "slides/chapter-04/worked-models-and-integrated-practice.html",
+      "aiExercise": true
+    },
+    {
+      "id": "4.15",
+      "title": "Chapter synthesis: one-dimensional quantum models",
+      "note": "A unified solve strategy connecting boundary conditions, spectra, wave functions, probability current and measurement.",
+      "url": "slides/chapter-04/chapter-synthesis-one-dimensional-quantum-models.html",
+      "aiExercise": true
+    }
+  ]
 }

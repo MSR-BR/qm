@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rectangular barrier and quantum tunneling | Chapter 4 | Quantum Mechanics</title>
+  <meta name="description" content="Evanescent waves inside a barrier, exact transmission and the exponential tunneling limit. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Quantum Mechanics" />
+  <meta property="og:title" content="Rectangular barrier and quantum tunneling | Chapter 4 | Quantum Mechanics" />
+  <meta property="og:description" content="Evanescent waves inside a barrier, exact transmission and the exponential tunneling limit. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-04/page-layout.css?v=0723.1" />
+  <link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+  <script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr"><div class="hdr-inner">
+      <a href="../../index.html?view=chapters&chapter=04" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a>
+      <div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 4 · Item 4.13</div>
+      <div class="hdr-title">Rectangular barrier and quantum tunneling</div>
+      <div class="hdr-sub">Evanescent waves carry amplitude through a classically forbidden region</div>
+    </div><div class="slide-num">13 / 15</div></div>
+    <div class="body">
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>For a rectangular barrier and \(0&lt;E&lt;V_0\), the wave inside is exponential rather than oscillatory. Both exponentials are needed in a finite barrier because the second boundary can reflect an evanescent component back toward the first.</p></div>
+      <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-road-barrier"></i> Barrier setup</div><div class="eq">\[V(x)=\begin{cases}V_0,&0<x<L\\0,&\text{otherwise}\end{cases},\qquad 0<E<V_0\]</div><div class="eq">\[k=\frac{\sqrt{2mE}}{\hbar},\qquad \kappa=\frac{\sqrt{2m(V_0-E)}}{\hbar}\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-layer-group"></i> Regional wave functions</div><div class="eq">\[\psi_I=Ae^{ikx}+Be^{-ikx}\]</div><div class="eq">\[\psi_{II}=Ce^{\kappa x}+De^{-\kappa x}\]</div><div class="eq">\[\psi_{III}=Fe^{ikx}\]</div></div></div>
+      <div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-person-through-window"></i> Exact tunneling probability</div><div class="eq key-eq">\[T=\left[1+\frac{V_0^2\sinh^2(\kappa L)}{4E(V_0-E)}\right]^{-1}\]</div><p>The result is nonzero for every finite \(L\) and finite \(V_0-E\): quantum mechanics permits transmission where classical mechanics predicts none.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-arrow-trend-down"></i> Opaque-barrier limit</div><p>When \(\kappa L\gg1\), \(\sinh(\kappa L)\approx e^{\kappa L}/2\), so</p><div class="eq">\[T\approx\frac{16E(V_0-E)}{V_0^2}e^{-2\kappa L}\]</div><p>The exponential factor explains the extreme sensitivity of tunneling to width, mass and energy deficit.</p></div></div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;"><div class="ch orange"><i class="fa-solid fa-code-compare"></i> Amplitude is not current</div><p>Inside the barrier the stationary evanescent components do not behave like independent traveling plane waves. Compute \(T\) from the asymptotic incident and transmitted currents after matching both boundaries.</p></div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports short guided exercises on: Evanescent waves inside a barrier, exact transmission and the exponential tunneling limit.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, setup, highlighted equations and physical checks needed for a first calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> full derivations, extended examples, end-of-chapter problems and complete solutions remain in the original resources.</li><li><span class="practice-label">Good exercise balance:</span> identify the regime, apply one central relation, and interpret the result without importing later material.</li></ul></div>
+      <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;"><div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use these anchors to design a compact exercise answerable from this page plus standard algebra.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> Evanescent waves inside a barrier, exact transmission and the exponential tunneling limit.</li><li><span class="practice-label">Conceptual check:</span> explain the physical meaning of the main result before substituting numbers.</li><li><span class="practice-label">Typical task:</span> derive, compare or apply one relation and verify a limiting case.</li><li><span class="practice-label">Boundary:</span> cite the book for lengthy derivations and complete worked solutions.</li></ul></div><section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+      <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div>
+      <div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 4 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, derivations and exercises.</div>
+    </div>
+  </div>
+</body>
+</html>

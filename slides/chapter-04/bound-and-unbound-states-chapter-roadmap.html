@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bound and unbound states: chapter roadmap | Chapter 4 | Quantum Mechanics</title>
+  <meta name="description" content="How confinement, discrete spectra, continuum states and tunneling organize the one-dimensional models in this chapter. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta name="author" content="Prof. Mario Reis" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Quantum Mechanics" />
+  <meta property="og:title" content="Bound and unbound states: chapter roadmap | Chapter 4 | Quantum Mechanics" />
+  <meta property="og:description" content="How confinement, discrete spectra, continuum states and tunneling organize the one-dimensional models in this chapter. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-04/page-layout.css?v=0723.1" />
+
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script>
+  <script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0717.1" />
+
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script>
+  <link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-user-data.js?v=0717.2"></script>
+  <script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head>
+<body>
+  <div class="slide">
+    <div class="hdr"><div class="hdr-inner">
+      <a href="../../index.html?view=chapters&chapter=04" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a>
+      <div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 4 · Item 4.1</div>
+      <div class="hdr-title">Bound and unbound states: chapter roadmap</div>
+      <div class="hdr-sub">Discrete spectra, continuum states and the logic of one-dimensional models</div>
+    </div><div class="slide-num">1 / 15</div></div>
+    <div class="body">
+      <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>Chapter 4 turns the general rules of wave mechanics into a systematic problem-solving method. The potential divides space into regions; the time-independent Schrödinger equation determines the local form of the wave function; boundary and normalizability conditions select the physically allowed solutions.</p></div>
+      <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-arrows-left-right"></i> Two energy regimes</div><p>A <strong>bound state</strong> is spatially localized and normalizable. Its wave function decays where the energy lies below the asymptotic potential, and its allowed energies form a discrete set.</p><p>An <strong>unbound state</strong> extends to infinity. It represents propagation or scattering and belongs to a continuous energy spectrum.</p><div class="eq">\[\int_{-\infty}^{\infty}|\psi(x)|^2\,dx=1\quad\text{(bound state)}\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> The master equation</div><p>Every model begins with</p><div class="eq key-eq">\[-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}+V(x)\psi=E\psi\]</div><p>The sign of \(E-V\) controls the local behavior: oscillatory when \(E&gt;V\), exponential when \(E&lt;V\). This single observation anticipates confinement, penetration and tunneling.</p></div></div>
+      <div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-route"></i> Five models, one strategy</div><div class="table-wrap"><table><thead><tr><th>Model</th><th>Central idea</th></tr></thead><tbody><tr><td>Harmonic oscillator</td><td>Smooth confinement and equally spaced energies</td></tr><tr><td>Finite well</td><td>Boundary matching and transcendental quantization</td></tr><tr><td>Attractive well, \(E>0\)</td><td>Reflection, transmission and resonances</td></tr><tr><td>Delta well</td><td>Derivative jump at a singular potential</td></tr><tr><td>Rectangular barrier</td><td>Evanescent waves and tunneling</td></tr></tbody></table></div></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-list-ol"></i> A reusable solve sequence</div><ul class="bullet"><li>Sketch \(V(x)\), mark the energy, and divide space into regions.</li><li>Write the correct local solution in each region.</li><li>Discard divergent terms and impose continuity conditions.</li><li>Use normalization for bound states or probability current for scattering states.</li><li>Check dimensions, limiting cases and physical interpretation.</li></ul></div></div>
+      <div class="card orange reasoning-bridge-card" data-reasoning-bridge="true" style="grid-column:1 / -1!important;"><div class="ch orange"><i class="fa-solid fa-code-compare"></i> Local form → global physics</div><p>Quantization and scattering are not separate rules. Both follow from joining local solutions into one acceptable global wave function. For a bound state, the matching conditions select isolated energies. For a scattering state, they determine amplitude ratios and therefore \(R\) and \(T\).</p></div>
+      <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports short guided exercises on: How confinement, discrete spectra, continuum states and tunneling organize the one-dimensional models in this chapter.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, setup, highlighted equations and physical checks needed for a first calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> full derivations, extended examples, end-of-chapter problems and complete solutions remain in the original resources.</li><li><span class="practice-label">Good exercise balance:</span> identify the regime, apply one central relation, and interpret the result without importing later material.</li></ul></div>
+
+      <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div>
+      <div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 4 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, derivations and exercises.</div>
+    </div>
+  </div>
+</body>
+</html>
