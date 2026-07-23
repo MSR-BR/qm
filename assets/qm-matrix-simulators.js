@@ -58,35 +58,59 @@
     return{ctx,width,height};
   }
   let displayedRun=null,ensemble=null;
+  function drawMagnet(ctx,x,y,axis,index){
+    ctx.fillStyle="rgba(55,107,140,.13)";ctx.strokeStyle=colors.blue;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.moveTo(x-28,y-76);ctx.lineTo(x+28,y-76);ctx.lineTo(x+18,y-24);ctx.lineTo(x-18,y-24);ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x-18,y+24);ctx.lineTo(x+18,y+24);ctx.lineTo(x+28,y+76);ctx.lineTo(x-28,y+76);ctx.closePath();ctx.fill();ctx.stroke();
+    ctx.fillStyle=colors.ink;ctx.font="700 12px Inter";ctx.fillText("N",x-5,y-44);ctx.fillText("S",x-4,y+53);
+    ctx.fillStyle=colors.green;ctx.font="700 13px Inter";ctx.fillText(`SG${index} · S${axis}`,x-28,y-91);
+    ctx.strokeStyle=colors.rust;ctx.lineWidth=1.5;ctx.beginPath();ctx.moveTo(x+38,y+18);ctx.lineTo(x+38,y-18);ctx.stroke();
+    ctx.beginPath();ctx.moveTo(x+38,y-18);ctx.lineTo(x+34,y-10);ctx.lineTo(x+42,y-10);ctx.closePath();ctx.fillStyle=colors.rust;ctx.fill();
+  }
+  function drawStop(ctx,x,y,label){
+    ctx.strokeStyle=colors.ink;ctx.lineWidth=5;ctx.beginPath();ctx.moveTo(x,y-13);ctx.lineTo(x,y+13);ctx.stroke();
+    ctx.fillStyle=colors.muted;ctx.font="10px Inter";ctx.fillText(label,x-18,y+29);
+  }
+  function drawDetector(ctx,x,y,active){
+    ctx.fillStyle=active?colors.gold:"#eef2ef";ctx.strokeStyle=active?colors.gold:colors.grid;ctx.lineWidth=1.5;
+    ctx.beginPath();ctx.arc(x,y,8,0,2*Math.PI);ctx.fill();ctx.stroke();
+  }
   function draw(){
     const s=state(),run=displayedRun||runSequence(s,false),final=enumerateFinal(s),{ctx,width,height}=fit(),stages=run.results;
-    const left=28,right=width-28,rowTop=45,rowGap=8,rowHeight=Math.min(82,(height-132)/Math.max(1,stages.length)),labelWidth=Math.min(245,width*.34),barX=left+labelWidth+28,barWidth=Math.max(100,right-barX);
-    ctx.fillStyle=colors.muted;ctx.font="12px Inter";ctx.fillText(displayedRun?"Measured particle — each selected result prepares the next input":"Illustrative outcomes — press “Send one” for an actual measurement",left,25);
-    let inputState=s.prepared==="unpolarized"?"mixed / unpolarized":s.prepared==="z+"?"|+⟩z":"|+⟩x";
+    const left=34,right=width-28,beamY=Math.min(225,height*.52),sourceEnd=112,usable=right-sourceEnd-95,spacing=usable/Math.max(1,stages.length),stageXs=stages.map((_,index)=>sourceEnd+spacing*(index+1));
+    ctx.fillStyle=colors.muted;ctx.font="12px Inter";ctx.fillText(displayedRun?"One measured atom is highlighted in gold":"Illustrative atom path — press “Send one” to perform a measurement",left,22);
+    ctx.fillStyle="rgba(166,75,53,.12)";ctx.strokeStyle=colors.rust;ctx.lineWidth=1.5;ctx.beginPath();ctx.roundRect(left,beamY-28,55,56,9);ctx.fill();ctx.stroke();
+    ctx.fillStyle=colors.ink;ctx.font="700 11px Inter";ctx.fillText("OVEN",left+10,beamY-4);ctx.fillStyle=colors.muted;ctx.font="10px Inter";ctx.fillText("Ag atoms",left+7,beamY+13);
+    ctx.fillStyle=colors.ink;ctx.fillRect(left+67,beamY-17,7,34);ctx.fillRect(left+83,beamY-10,7,20);
+    ctx.fillStyle=colors.muted;ctx.fillText("collimator",left+57,beamY+35);
+    ctx.strokeStyle=colors.gold;ctx.lineWidth=3.5;ctx.beginPath();ctx.moveTo(left+55,beamY);ctx.lineTo(stageXs[0]-28,beamY);ctx.stroke();
+    ctx.fillStyle=colors.ink;ctx.font="700 11px Inter";ctx.fillText(s.prepared==="unpolarized"?"unpolarized beam":`prepared ${s.prepared}`,left+58,beamY-18);
+    let incomingY=beamY;
     stages.forEach((stage,index)=>{
-      const y=rowTop+index*(rowHeight+rowGap),plusSelected=stage.outcome>0;
-      ctx.fillStyle=index%2?"rgba(55,107,140,.035)":"rgba(47,107,79,.045)";ctx.strokeStyle=colors.grid;ctx.lineWidth=1;
-      ctx.beginPath();ctx.roundRect(left,y,right-left,rowHeight,12);ctx.fill();ctx.stroke();
-      ctx.fillStyle=colors.ink;ctx.font="700 13px Inter";ctx.fillText(`${index+1}. SG measures S${stage.axis}`,left+14,y+24);
-      ctx.fillStyle=colors.muted;ctx.font="11px Inter";ctx.fillText(`input state: ${inputState}`,left+14,y+47);
-      ctx.fillText(`selected: ${stage.outcome>0?"+":"−"}${stage.axis}`,left+14,y+66);
-      [["+",stage.pPlus,colors.green,plusSelected],["−",stage.pMinus,colors.rust,!plusSelected]].forEach(([sign,p,color,selected],barIndex)=>{
-        const by=y+18+barIndex*32;
-        ctx.fillStyle="#edf1ed";ctx.beginPath();ctx.roundRect(barX,by,barWidth,20,6);ctx.fill();
-        ctx.fillStyle=selected?color:"rgba(107,117,111,.34)";ctx.beginPath();ctx.roundRect(barX,by,Math.max(2,barWidth*p),20,6);ctx.fill();
-        ctx.fillStyle=selected&&p>.28?"#fff":colors.ink;ctx.font=selected?"700 11px Inter":"11px Inter";ctx.fillText(`${sign}${stage.axis}  P = ${decimal(p*100)}%${selected?"  ← selected":""}`,barX+8,by+15);
-      });
-      inputState=`|${stage.outcome>0?"+":"−"}⟩${stage.axis}`;
-      if(index<stages.length-1){ctx.strokeStyle=colors.gold;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left+labelWidth*.52,y+rowHeight);ctx.lineTo(left+labelWidth*.52,y+rowHeight+rowGap);ctx.stroke()}
+      const x=stageXs[index],isLast=index===stages.length-1,selectedUp=stage.outcome>0,upY=incomingY-48,downY=incomingY+48,branchEnd=Math.min(x+82,right),selectedY=selectedUp?upY:downY,blockedY=selectedUp?downY:upY;
+      drawMagnet(ctx,x,incomingY,stage.axis,index+1);
+      ctx.strokeStyle=colors.grid;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x+18,incomingY);ctx.lineTo(branchEnd,blockedY);ctx.stroke();
+      ctx.strokeStyle=colors.gold;ctx.lineWidth=3.5;ctx.beginPath();ctx.moveTo(x+18,incomingY);ctx.lineTo(branchEnd,selectedY);ctx.stroke();
+      ctx.fillStyle=colors.green;ctx.font="700 10px Inter";ctx.fillText(`+${stage.axis}  ${decimal(stage.pPlus*100)}%`,x+34,upY-8);
+      ctx.fillStyle=colors.rust;ctx.fillText(`−${stage.axis}  ${decimal(stage.pMinus*100)}%`,x+34,downY+17);
+      drawDetector(ctx,branchEnd,selectedY,true);
+      if(isLast){
+        drawDetector(ctx,branchEnd,blockedY,false);
+        ctx.fillStyle=colors.muted;ctx.font="10px Inter";ctx.fillText("detector",branchEnd-18,incomingY+79);
+      }else{
+        drawStop(ctx,branchEnd,blockedY,"blocked");
+        const nextX=stageXs[index+1]-28;
+        ctx.strokeStyle=colors.gold;ctx.lineWidth=3.5;ctx.beginPath();ctx.moveTo(branchEnd+8,selectedY);ctx.lineTo(branchEnd+24,selectedY);ctx.lineTo(branchEnd+39,beamY);ctx.lineTo(nextX,beamY);ctx.stroke();
+        ctx.strokeStyle=colors.ink;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(branchEnd+20,selectedY-11);ctx.lineTo(branchEnd+20,selectedY+11);ctx.stroke();
+        ctx.fillStyle=colors.muted;ctx.font="10px Inter";ctx.fillText("selector",branchEnd+5,selectedY+(selectedUp?-18:28));
+      }
+      incomingY=beamY;
     });
-    const recordY=height-45;
-    ctx.fillStyle=colors.ink;ctx.font="700 12px Inter";ctx.fillText("Record:",left,recordY);
-    run.results.forEach((stage,index)=>{
-      const x=left+58+index*82;
-      ctx.fillStyle=stage.outcome>0?colors.green:colors.rust;ctx.beginPath();ctx.roundRect(x,recordY-18,68,26,8);ctx.fill();
-      ctx.fillStyle="#fff";ctx.fillText(`${stage.outcome>0?"+":"−"}${stage.axis}`,x+25,recordY);
-    });
-    ctx.fillStyle=colors.muted;ctx.font="12px Inter";ctx.fillText(`path probability: ${decimal(run.pathProbability*100,2)}%`,Math.min(width-185,left+320),recordY);
+    const legendY=height-52;
+    ctx.strokeStyle=colors.gold;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(left,legendY);ctx.lineTo(left+28,legendY);ctx.stroke();ctx.fillStyle=colors.muted;ctx.font="11px Inter";ctx.fillText("selected atom",left+36,legendY+4);
+    ctx.strokeStyle=colors.grid;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(left+145,legendY);ctx.lineTo(left+173,legendY);ctx.stroke();ctx.fillText("other possible output",left+181,legendY+4);
+    ctx.fillStyle=colors.ink;ctx.font="700 11px Inter";ctx.fillText(`Record: ${run.results.map(stage=>`${stage.outcome>0?"+":"−"}${stage.axis}`).join(" → ")}`,Math.min(width-205,left+350),legendY+4);
+    ctx.fillStyle=colors.muted;ctx.font="10px Inter";ctx.fillText(`path probability ${decimal(run.pathProbability*100,2)}%`,Math.min(width-180,left+350),legendY+22);
     const record=run.results.map(stage=>`${stage.outcome>0?"+":"−"}${stage.axis}`).join(" → ")||"—";
     set("record",record);set("pathProbability",`${decimal(run.pathProbability*100,2)}%`);
     if(ensemble){set("plusFraction",`${ensemble.plus}/100`);set("minusFraction",`${ensemble.minus}/100`)}else{set("plusFraction",`${decimal(final.plus*100)}%`);set("minusFraction",`${decimal(final.minus*100)}%`)}
