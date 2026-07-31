@@ -4,7 +4,7 @@
   const inlineMathPattern = /\\\(([\s\S]+?)\\\)/g;
   const mathSegmentPattern = /\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)/g;
   const mathLikePattern =
-    /(?:\\[A-Za-z]+|[A-Za-z]_[A-Za-z0-9]+|[A-Za-z]\^[A-Za-z0-9]+|\b(?:sum|ln|exp|lim|frac|partial|sin|cos|tan|sinh|cosh)\b|[=+\-*/^_]|[Σ∑∂ΔΩβλμ→≤≥±≠∞])/;
+    /(?:\\[A-Za-z]+|\b(?:psi|Psi|hbar)\b|[A-Za-z]_[A-Za-z0-9]+|[A-Za-z]\^[A-Za-z0-9]+|\b(?:sum|ln|exp|lim|frac|partial|nabla|int|bra|ket|braket|sin|cos|tan|sinh|cosh)\b|[=+\-*/^_]|[Σ∑∂∇ΔΩβλμψΨℏ→≤≥±≠∞])/;
   const DEFAULT_VALIDATOR_EMAILS = ["marioreis@id.uff.br"];
   const EXERCISE_GENERATION_ENABLED = true;
 
@@ -463,6 +463,7 @@
     const clone = sourceNode.cloneNode(true);
     clone.querySelectorAll([
       "[data-termo-ai-exercise]",
+      "[data-qm-ai-exercise]",
       ".termo-exercise",
       "#aiExerciseBox",
       ".ai-exercise-card",
@@ -588,7 +589,9 @@
       exerciseTitle: data.title || "Exercise",
       statement: data.statement || "",
       solution: data.solution || "",
-      sourceModel: data.model || null
+      sourceModel: data.model || null,
+      sourceReferences: data.sourceReferences || [],
+      contextPackageMeta: data.contextPackageMeta || {}
     };
   }
 
@@ -1081,7 +1084,7 @@
 
   function autoMount(root) {
     const scope = root || document;
-    scope.querySelectorAll("[data-termo-ai-exercise]").forEach(function (host) {
+    scope.querySelectorAll("[data-termo-ai-exercise], [data-qm-ai-exercise]").forEach(function (host) {
       mount(host);
     });
   }
@@ -1093,6 +1096,7 @@
     formatGeneratedText,
     normalizeGeneratedMath
   };
+  window.QmAIExercise = window.TermoAIExercise;
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", function () {

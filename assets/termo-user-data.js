@@ -44,6 +44,10 @@
       statement: record.statement || "",
       solution: record.solution || "",
       source_model: record.sourceModel || null,
+      source_references: Array.isArray(record.sourceReferences) ? record.sourceReferences : [],
+      context_package_meta: record.contextPackageMeta && typeof record.contextPackageMeta === "object"
+        ? record.contextPackageMeta
+        : {},
       is_favorite: Boolean(record.isFavorite)
     };
   }
@@ -86,11 +90,23 @@
       ...normalized
     };
 
-    const { data, error } = await supabase
+    let { data, error } = await supabase
       .from(TABLE_NAME)
       .insert(payload)
       .select("id, created_at")
       .single();
+
+    // Supports deployments during the one-time schema rollout without losing
+    // the ability to save an exercise. Once the migration is active, the first
+    // insert path preserves provenance automatically.
+    if (error && /source_references|context_package_meta|column/i.test(String(error.message || ""))) {
+      const { source_references, context_package_meta, ...legacyPayload } = payload;
+      ({ data, error } = await supabase
+        .from(TABLE_NAME)
+        .insert(legacyPayload)
+        .select("id, created_at")
+        .single());
+    }
 
     if (error) {
       return {

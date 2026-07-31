@@ -1,0 +1,2196 @@
+{
+  "version": "qm-book-topic-index-v1",
+  "generatedAt": "2026-07-31T22:27:44.673Z",
+  "sectionCount": 44,
+  "topicCount": 49,
+  "topics": [
+    {
+      "id": "why-old-quantum-physics-matters",
+      "label": "why old quantum physics matters",
+      "fragments": [
+        {
+          "sectionId": "1.1",
+          "chapterId": "01",
+          "itemId": "1.1",
+          "title": "Why old quantum physics matters",
+          "pagePath": "slides/chapter-01/why-old-quantum-physics-matters.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "2 1. Old quantum physics Appendix 1.E Exercises 52 In this first chapter, some experiments and theoretical models that started to form the first ideas and notions of the quantum and subatomic world will be presented. This set of ideas is currently known as old quan- tum physics and began at the very end of the 19th century (with the first observations of spectral lines of Hydrogen gas) until the early decades of the 20th century (with the de Broglie hypothesis, which proposed the wave nature of matter). The old qua"
+        }
+      ]
+    },
+    {
+      "id": "wave-particle-duality",
+      "label": "wave particle duality",
+      "fragments": [
+        {
+          "sectionId": "1.1",
+          "chapterId": "01",
+          "itemId": "1.1",
+          "title": "Why old quantum physics matters",
+          "pagePath": "slides/chapter-01/why-old-quantum-physics-matters.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "2 1. Old quantum physics Appendix 1.E Exercises 52 In this first chapter, some experiments and theoretical models that started to form the first ideas and notions of the quantum and subatomic world will be presented. This set of ideas is currently known as old quan- tum physics and began at the very end of the 19th century (with the first observations of spectral lines of Hydrogen gas) until the early decades of the 20th century (with the de Broglie hypothesis, which proposed the wave nature of matter). The old qua"
+        },
+        {
+          "sectionId": "1.2",
+          "chapterId": "01",
+          "itemId": "1.2",
+          "title": "Wave optics as the classical benchmark",
+          "pagePath": "slides/chapter-01/wave-optics-classical-benchmark.html",
+          "pageStart": 2,
+          "pageEnd": 3,
+          "excerpt": "2 1. Old quantum physics Appendix 1.E Exercises 52 In this first chapter, some experiments and theoretical models that started to form the first ideas and notions of the quantum and subatomic world will be presented. This set of ideas is currently known as old quan- tum physics and began at the very end of the 19th century (with the first observations of spectral lines of Hydrogen gas) until the early decades of the 20th century (with the de Broglie hypothesis, which proposed the wave nature of matter). The old qua"
+        },
+        {
+          "sectionId": "1.3",
+          "chapterId": "01",
+          "itemId": "1.3",
+          "title": "Hydrogen spectral lines",
+          "pagePath": "slides/chapter-01/hydrogen-spectral-lines.html",
+          "pageStart": 3,
+          "pageEnd": 5,
+          "excerpt": "1.1 Experimental basis 3 may be described by a wave equation. With this experimental and theo- retical evidence, the community accepted the wave behavior of light. ! The historical importance of these works lies in the establishment of the wave nature of light and, a century later, the counterpoint to the ideas of wave-particle duality. Moreover, Young’s experiments were the precursors of other experiments to verify the wave nature of matter. ! Thomas Young (1773–1829): Born in Milverton, England. He was an English"
+        },
+        {
+          "sectionId": "1.4",
+          "chapterId": "01",
+          "itemId": "1.4",
+          "title": "Cathode rays and the electron",
+          "pagePath": "slides/chapter-01/cathode-rays-and-electron.html",
+          "pageStart": 5,
+          "pageEnd": 8,
+          "excerpt": "1.1 Experimental basis 5 TABLE 1.1 (a) Balmer lines for Hydrogen, with indication of wavelength, color and atomic levels associated with the tran- sition. (b) First spectral series of Hydrogen, with indication of atomic levels involved. For better understanding, see Fig. 1.8 based on the Bohr model. Balmer series n m Serie of Wavelength Color (m, n) 1 >2 Lyman 656 nm Red (3, 2) 2 >3 Balmer 486 nm Light blue (4, 2) 3 >4 Paschen 434 nm Dark blue (5, 2) 4 >5 Brackett 410 nm Violet (6, 2) etc... (a) (b) ! The historica"
+        },
+        {
+          "sectionId": "1.5",
+          "chapterId": "01",
+          "itemId": "1.5",
+          "title": "Black-body radiation",
+          "pagePath": "slides/chapter-01/black-body-radiation.html",
+          "pageStart": 9,
+          "pageEnd": 15,
+          "excerpt": "1.1 Experimental basis 9 instead, given by: # d y1 ## y2 (x2 ) = x2 , (1.15) d x 1 #l where d y1 /d x1 |l is the derivative of the beam trajectory inside capacitor B at point l . This term can be calculated from Eq. (1.13): # d y1 ## |q |Ey B l # = . (1.16) d x1 l mvx2 Therefore, the beam displacement d2 at the region outside the capacitor B is given by: |q |Ey B l L d2 = y2 (L) = , (1.17) mvx2 where L is the distance from capacitor B to the projection screen. The vertical displacement of the beam is therefore: ! \""
+        },
+        {
+          "sectionId": "1.6",
+          "chapterId": "01",
+          "itemId": "1.6",
+          "title": "Photoelectric effect",
+          "pagePath": "slides/chapter-01/photoelectric-effect.html",
+          "pageStart": 16,
+          "pageEnd": 17,
+          "excerpt": "16 1. Old quantum physics FIGURE 1.5 Simplified scheme of the experimental setup for observing the photoelectric effect. by Philipp Lenard, from 1888, with his experiments on cathode rays. In a few words, the experiment on the photoelectric effect was carried out by emitting monochromatic light on a metal plate (cathode) which, in turn, is inserted in a vacuum tube. This light-matter interaction promotes the emission of electrons, closing a small circuit. See Fig. 1.5. The experimental results provided the followin"
+        },
+        {
+          "sectionId": "1.7",
+          "chapterId": "01",
+          "itemId": "1.7",
+          "title": "Elementary charge",
+          "pagePath": "slides/chapter-01/elementary-charge.html",
+          "pageStart": 18,
+          "pageEnd": 20,
+          "excerpt": "18 1. Old quantum physics FIGURE 1.6 (a) Scheme of the apparatus used by Millikan to measure the charge of the electron. Oil is sprayed through a hole in the upper part of the chamber and, in this pro- cess, the particles are electrically charged. The charge is determined from the falling velocity (without electric field) and rising velocity (with electric field), observed through a millimeter magnifying glass. Scheme of forces acting on the droplet (b) without and (c) with electric field. 1.1.6 Charge of electron "
+        },
+        {
+          "sectionId": "1.8",
+          "chapterId": "01",
+          "itemId": "1.8",
+          "title": "Electron diffraction",
+          "pagePath": "slides/chapter-01/electron-diffraction.html",
+          "pageStart": 21,
+          "pageEnd": 22,
+          "excerpt": "1.1 Experimental basis 21 FIGURE 1.7 (a) Atomic plans with incident waves. To obtain constructive interference, the difference in the optical path AB + B C = 2AB must be an integer multiple of the incident wavelength. (b) Highlight of the optical path AB and the corresponding geometry. where n is a positive integer (experimentally, the intensity of the maxima for n > 1 is very low). Particle-wave duality Based on these findings, a simple question arises: since there is a wave- particle duality for light, why not fo"
+        },
+        {
+          "sectionId": "1.9",
+          "chapterId": "01",
+          "itemId": "1.9",
+          "title": "Bohr model: postulates",
+          "pagePath": "slides/chapter-01/bohr-model-postulates.html",
+          "pageStart": 23,
+          "pageEnd": 24,
+          "excerpt": "1.2 Bohr model for the atom 23 FIGURE 1.8 Bohr atom with the consequences of the model postulates, such as the quan- tization of orbits and the emission of radiation with energy hf due to the transition between orbits. The spectral lines are also represented. are described). Therefore, Bohr’s planetary model needed adjustments. He then presented three postulates to solve these problems. However, before describing such postulates, let’s analyze the mechanics of this model. The total energy of the system is given by "
+        },
+        {
+          "sectionId": "1.10",
+          "chapterId": "01",
+          "itemId": "1.10",
+          "title": "Bohr model: hydrogen spectrum",
+          "pagePath": "slides/chapter-01/bohr-model-hydrogen-spectrum.html",
+          "pageStart": 25,
+          "pageEnd": 27,
+          "excerpt": "1.2 Bohr model for the atom 25 From Eq. (1.61), we observe that κ e2 = mv 2 r for any orbit, since κ e2 is a constant. Therefore, Eq. (1.66) can be written as: * +2 mv22 r2 v2 &E ≈ m 3 &L = &L. (1.67) (mv2 r2 ) r2 However, we know from Postulate (2) that the energy difference be- tween two orbits is given by &E = hf (see Fig. 1.8). We can also assume that the frequency of this radiation is the frequency of electron preces- sion around the nucleus. Thus: h v2 v2 &E ≈ =h =h , (1.68) ,2 l2 2π r2 where ,2 is the preces"
+        },
+        {
+          "sectionId": "1.11",
+          "chapterId": "01",
+          "itemId": "1.11",
+          "title": "de Broglie hypothesis",
+          "pagePath": "slides/chapter-01/de-broglie-hypothesis.html",
+          "pageStart": 28,
+          "pageEnd": 28,
+          "excerpt": "28 1. Old quantum physics FIGURE 1.10 Circular orbit (dashed line), referring to Bohr model and wave orbit (con- tinuous line), referring to de Broglie hypothesis. 1.3 de Broglie hypothesis Up to the date of the de Broglie hypothesis (1924), the dual behavior for light was well established, with the support of the double slit experiments (1801), for example, and the experiments and theory for the photoelectric effect (1905). Therefore, the hypothesis for a dual behavior for the matter emerged as a sustainable propo"
+        },
+        {
+          "sectionId": "1.12",
+          "chapterId": "01",
+          "itemId": "1.12",
+          "title": "Semi-classical quantization rule",
+          "pagePath": "slides/chapter-01/semi-classical-quantization-rule.html",
+          "pageStart": 29,
+          "pageEnd": 30,
+          "excerpt": "1.4 Semi-classical quantization rule 29 The transition from the classical physics to the modern quantum physics, passing by the old quantum physics, would naturally be related to the Lagrangian and/or Hamiltonian formalism, since the scientific com- munity at the beginning of the 20th century was very comfortable with the treatment and use of those tools. Therefore, it was natural to present a quantization rule using the conjugate variables of the problem. W. Wil- son (1915), J. Ishiwara (1915) and A. Sommerfeld (1"
+        },
+        {
+          "sectionId": "1.13",
+          "chapterId": "01",
+          "itemId": "1.13",
+          "title": "SCQR examples",
+          "pagePath": "slides/chapter-01/scqr-examples.html",
+          "pageStart": 30,
+          "pageEnd": 35,
+          "excerpt": "30 1. Old quantum physics FIGURE 1.11 Parabolic potential to which the mass m is submitted. The classical turning points ±x0 are identified, being those where the kinetic energy is zero. The quantized energy levels (Eq. (1.89)), from SCQR, are also represented. 1.4.1 Harmonic oscillator: SCQR Objective The purpose of this subsection is to develop the SCQR tech- nique using the harmonic oscillator as an example. It is worth mention- ing that the quantum harmonic oscillator problem will be discussed in details in Sec"
+        },
+        {
+          "sectionId": "1.14",
+          "chapterId": "01",
+          "itemId": "1.14",
+          "title": "Sommerfeld orbits and ellipse geometry",
+          "pagePath": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html",
+          "pageStart": 35,
+          "pageEnd": 40,
+          "excerpt": "1.4 Semi-classical quantization rule 35 / 2π Ld θ = nh ⇒ L = n!. (1.113) 0 Determining the radius r of the orbit: For this purpose, we can recall Eq. (1.61), which describes the forces involved in the problem. From that equation, we obtain: L2 = κ e2 mr. (1.114) Considering the quantization of the orbital angular momentum into the above result, we find: r = a0 n 2 , (1.115) where a0 is the Bohr radius, given by Eq. (1.73). Finally, combining Eqs. (1.115), (1.113), (1.112) and (1.110) results in: E0 E=− , (1.116) n2"
+        },
+        {
+          "sectionId": "1.15",
+          "chapterId": "01",
+          "itemId": "1.15",
+          "title": "Chapter synthesis",
+          "pagePath": "slides/chapter-01/timeline-conceptual-synthesis.html",
+          "pageStart": 47,
+          "pageEnd": 51,
+          "excerpt": "1.D Chapter summary FIGURE 1.16 Evolution of concepts and discoveries during the period of the old quantum physics, which ends with the experimental confirmation of de Broglie hypothesis and the development of the Schrödinger equation, initiating the Modern Quantum Theory. The squares containing the dates have two colors: red (experiments) and yellow (theory). Below the arrows, you can find the consequences of the respective discoveries or theories. 47 Old quantum physics 48 Exp/Model Author Brief description Conse"
+        }
+      ]
+    },
+    {
+      "id": "quantization",
+      "label": "quantization",
+      "fragments": [
+        {
+          "sectionId": "1.1",
+          "chapterId": "01",
+          "itemId": "1.1",
+          "title": "Why old quantum physics matters",
+          "pagePath": "slides/chapter-01/why-old-quantum-physics-matters.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "2 1. Old quantum physics Appendix 1.E Exercises 52 In this first chapter, some experiments and theoretical models that started to form the first ideas and notions of the quantum and subatomic world will be presented. This set of ideas is currently known as old quan- tum physics and began at the very end of the 19th century (with the first observations of spectral lines of Hydrogen gas) until the early decades of the 20th century (with the de Broglie hypothesis, which proposed the wave nature of matter). The old qua"
+        },
+        {
+          "sectionId": "1.2",
+          "chapterId": "01",
+          "itemId": "1.2",
+          "title": "Wave optics as the classical benchmark",
+          "pagePath": "slides/chapter-01/wave-optics-classical-benchmark.html",
+          "pageStart": 2,
+          "pageEnd": 3,
+          "excerpt": "2 1. Old quantum physics Appendix 1.E Exercises 52 In this first chapter, some experiments and theoretical models that started to form the first ideas and notions of the quantum and subatomic world will be presented. This set of ideas is currently known as old quan- tum physics and began at the very end of the 19th century (with the first observations of spectral lines of Hydrogen gas) until the early decades of the 20th century (with the de Broglie hypothesis, which proposed the wave nature of matter). The old qua"
+        },
+        {
+          "sectionId": "1.3",
+          "chapterId": "01",
+          "itemId": "1.3",
+          "title": "Hydrogen spectral lines",
+          "pagePath": "slides/chapter-01/hydrogen-spectral-lines.html",
+          "pageStart": 3,
+          "pageEnd": 5,
+          "excerpt": "1.1 Experimental basis 3 may be described by a wave equation. With this experimental and theo- retical evidence, the community accepted the wave behavior of light. ! The historical importance of these works lies in the establishment of the wave nature of light and, a century later, the counterpoint to the ideas of wave-particle duality. Moreover, Young’s experiments were the precursors of other experiments to verify the wave nature of matter. ! Thomas Young (1773–1829): Born in Milverton, England. He was an English"
+        },
+        {
+          "sectionId": "1.4",
+          "chapterId": "01",
+          "itemId": "1.4",
+          "title": "Cathode rays and the electron",
+          "pagePath": "slides/chapter-01/cathode-rays-and-electron.html",
+          "pageStart": 5,
+          "pageEnd": 8,
+          "excerpt": "1.1 Experimental basis 5 TABLE 1.1 (a) Balmer lines for Hydrogen, with indication of wavelength, color and atomic levels associated with the tran- sition. (b) First spectral series of Hydrogen, with indication of atomic levels involved. For better understanding, see Fig. 1.8 based on the Bohr model. Balmer series n m Serie of Wavelength Color (m, n) 1 >2 Lyman 656 nm Red (3, 2) 2 >3 Balmer 486 nm Light blue (4, 2) 3 >4 Paschen 434 nm Dark blue (5, 2) 4 >5 Brackett 410 nm Violet (6, 2) etc... (a) (b) ! The historica"
+        },
+        {
+          "sectionId": "1.5",
+          "chapterId": "01",
+          "itemId": "1.5",
+          "title": "Black-body radiation",
+          "pagePath": "slides/chapter-01/black-body-radiation.html",
+          "pageStart": 9,
+          "pageEnd": 15,
+          "excerpt": "1.1 Experimental basis 9 instead, given by: # d y1 ## y2 (x2 ) = x2 , (1.15) d x 1 #l where d y1 /d x1 |l is the derivative of the beam trajectory inside capacitor B at point l . This term can be calculated from Eq. (1.13): # d y1 ## |q |Ey B l # = . (1.16) d x1 l mvx2 Therefore, the beam displacement d2 at the region outside the capacitor B is given by: |q |Ey B l L d2 = y2 (L) = , (1.17) mvx2 where L is the distance from capacitor B to the projection screen. The vertical displacement of the beam is therefore: ! \""
+        },
+        {
+          "sectionId": "1.6",
+          "chapterId": "01",
+          "itemId": "1.6",
+          "title": "Photoelectric effect",
+          "pagePath": "slides/chapter-01/photoelectric-effect.html",
+          "pageStart": 16,
+          "pageEnd": 17,
+          "excerpt": "16 1. Old quantum physics FIGURE 1.5 Simplified scheme of the experimental setup for observing the photoelectric effect. by Philipp Lenard, from 1888, with his experiments on cathode rays. In a few words, the experiment on the photoelectric effect was carried out by emitting monochromatic light on a metal plate (cathode) which, in turn, is inserted in a vacuum tube. This light-matter interaction promotes the emission of electrons, closing a small circuit. See Fig. 1.5. The experimental results provided the followin"
+        },
+        {
+          "sectionId": "1.7",
+          "chapterId": "01",
+          "itemId": "1.7",
+          "title": "Elementary charge",
+          "pagePath": "slides/chapter-01/elementary-charge.html",
+          "pageStart": 18,
+          "pageEnd": 20,
+          "excerpt": "18 1. Old quantum physics FIGURE 1.6 (a) Scheme of the apparatus used by Millikan to measure the charge of the electron. Oil is sprayed through a hole in the upper part of the chamber and, in this pro- cess, the particles are electrically charged. The charge is determined from the falling velocity (without electric field) and rising velocity (with electric field), observed through a millimeter magnifying glass. Scheme of forces acting on the droplet (b) without and (c) with electric field. 1.1.6 Charge of electron "
+        },
+        {
+          "sectionId": "1.8",
+          "chapterId": "01",
+          "itemId": "1.8",
+          "title": "Electron diffraction",
+          "pagePath": "slides/chapter-01/electron-diffraction.html",
+          "pageStart": 21,
+          "pageEnd": 22,
+          "excerpt": "1.1 Experimental basis 21 FIGURE 1.7 (a) Atomic plans with incident waves. To obtain constructive interference, the difference in the optical path AB + B C = 2AB must be an integer multiple of the incident wavelength. (b) Highlight of the optical path AB and the corresponding geometry. where n is a positive integer (experimentally, the intensity of the maxima for n > 1 is very low). Particle-wave duality Based on these findings, a simple question arises: since there is a wave- particle duality for light, why not fo"
+        },
+        {
+          "sectionId": "1.9",
+          "chapterId": "01",
+          "itemId": "1.9",
+          "title": "Bohr model: postulates",
+          "pagePath": "slides/chapter-01/bohr-model-postulates.html",
+          "pageStart": 23,
+          "pageEnd": 24,
+          "excerpt": "1.2 Bohr model for the atom 23 FIGURE 1.8 Bohr atom with the consequences of the model postulates, such as the quan- tization of orbits and the emission of radiation with energy hf due to the transition between orbits. The spectral lines are also represented. are described). Therefore, Bohr’s planetary model needed adjustments. He then presented three postulates to solve these problems. However, before describing such postulates, let’s analyze the mechanics of this model. The total energy of the system is given by "
+        },
+        {
+          "sectionId": "1.10",
+          "chapterId": "01",
+          "itemId": "1.10",
+          "title": "Bohr model: hydrogen spectrum",
+          "pagePath": "slides/chapter-01/bohr-model-hydrogen-spectrum.html",
+          "pageStart": 25,
+          "pageEnd": 27,
+          "excerpt": "1.2 Bohr model for the atom 25 From Eq. (1.61), we observe that κ e2 = mv 2 r for any orbit, since κ e2 is a constant. Therefore, Eq. (1.66) can be written as: * +2 mv22 r2 v2 &E ≈ m 3 &L = &L. (1.67) (mv2 r2 ) r2 However, we know from Postulate (2) that the energy difference be- tween two orbits is given by &E = hf (see Fig. 1.8). We can also assume that the frequency of this radiation is the frequency of electron preces- sion around the nucleus. Thus: h v2 v2 &E ≈ =h =h , (1.68) ,2 l2 2π r2 where ,2 is the preces"
+        },
+        {
+          "sectionId": "1.11",
+          "chapterId": "01",
+          "itemId": "1.11",
+          "title": "de Broglie hypothesis",
+          "pagePath": "slides/chapter-01/de-broglie-hypothesis.html",
+          "pageStart": 28,
+          "pageEnd": 28,
+          "excerpt": "28 1. Old quantum physics FIGURE 1.10 Circular orbit (dashed line), referring to Bohr model and wave orbit (con- tinuous line), referring to de Broglie hypothesis. 1.3 de Broglie hypothesis Up to the date of the de Broglie hypothesis (1924), the dual behavior for light was well established, with the support of the double slit experiments (1801), for example, and the experiments and theory for the photoelectric effect (1905). Therefore, the hypothesis for a dual behavior for the matter emerged as a sustainable propo"
+        },
+        {
+          "sectionId": "1.12",
+          "chapterId": "01",
+          "itemId": "1.12",
+          "title": "Semi-classical quantization rule",
+          "pagePath": "slides/chapter-01/semi-classical-quantization-rule.html",
+          "pageStart": 29,
+          "pageEnd": 30,
+          "excerpt": "1.4 Semi-classical quantization rule 29 The transition from the classical physics to the modern quantum physics, passing by the old quantum physics, would naturally be related to the Lagrangian and/or Hamiltonian formalism, since the scientific com- munity at the beginning of the 20th century was very comfortable with the treatment and use of those tools. Therefore, it was natural to present a quantization rule using the conjugate variables of the problem. W. Wil- son (1915), J. Ishiwara (1915) and A. Sommerfeld (1"
+        },
+        {
+          "sectionId": "1.13",
+          "chapterId": "01",
+          "itemId": "1.13",
+          "title": "SCQR examples",
+          "pagePath": "slides/chapter-01/scqr-examples.html",
+          "pageStart": 30,
+          "pageEnd": 35,
+          "excerpt": "30 1. Old quantum physics FIGURE 1.11 Parabolic potential to which the mass m is submitted. The classical turning points ±x0 are identified, being those where the kinetic energy is zero. The quantized energy levels (Eq. (1.89)), from SCQR, are also represented. 1.4.1 Harmonic oscillator: SCQR Objective The purpose of this subsection is to develop the SCQR tech- nique using the harmonic oscillator as an example. It is worth mention- ing that the quantum harmonic oscillator problem will be discussed in details in Sec"
+        },
+        {
+          "sectionId": "1.14",
+          "chapterId": "01",
+          "itemId": "1.14",
+          "title": "Sommerfeld orbits and ellipse geometry",
+          "pagePath": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html",
+          "pageStart": 35,
+          "pageEnd": 40,
+          "excerpt": "1.4 Semi-classical quantization rule 35 / 2π Ld θ = nh ⇒ L = n!. (1.113) 0 Determining the radius r of the orbit: For this purpose, we can recall Eq. (1.61), which describes the forces involved in the problem. From that equation, we obtain: L2 = κ e2 mr. (1.114) Considering the quantization of the orbital angular momentum into the above result, we find: r = a0 n 2 , (1.115) where a0 is the Bohr radius, given by Eq. (1.73). Finally, combining Eqs. (1.115), (1.113), (1.112) and (1.110) results in: E0 E=− , (1.116) n2"
+        },
+        {
+          "sectionId": "1.15",
+          "chapterId": "01",
+          "itemId": "1.15",
+          "title": "Chapter synthesis",
+          "pagePath": "slides/chapter-01/timeline-conceptual-synthesis.html",
+          "pageStart": 47,
+          "pageEnd": 51,
+          "excerpt": "1.D Chapter summary FIGURE 1.16 Evolution of concepts and discoveries during the period of the old quantum physics, which ends with the experimental confirmation of de Broglie hypothesis and the development of the Schrödinger equation, initiating the Modern Quantum Theory. The squares containing the dates have two colors: red (experiments) and yellow (theory). Below the arrows, you can find the consequences of the respective discoveries or theories. 47 Old quantum physics 48 Exp/Model Author Brief description Conse"
+        }
+      ]
+    },
+    {
+      "id": "wave-optics-as-the-classical-benchmark",
+      "label": "wave optics as the classical benchmark",
+      "fragments": [
+        {
+          "sectionId": "1.2",
+          "chapterId": "01",
+          "itemId": "1.2",
+          "title": "Wave optics as the classical benchmark",
+          "pagePath": "slides/chapter-01/wave-optics-classical-benchmark.html",
+          "pageStart": 2,
+          "pageEnd": 3,
+          "excerpt": "2 1. Old quantum physics Appendix 1.E Exercises 52 In this first chapter, some experiments and theoretical models that started to form the first ideas and notions of the quantum and subatomic world will be presented. This set of ideas is currently known as old quan- tum physics and began at the very end of the 19th century (with the first observations of spectral lines of Hydrogen gas) until the early decades of the 20th century (with the de Broglie hypothesis, which proposed the wave nature of matter). The old qua"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-spectral-lines",
+      "label": "hydrogen spectral lines",
+      "fragments": [
+        {
+          "sectionId": "1.3",
+          "chapterId": "01",
+          "itemId": "1.3",
+          "title": "Hydrogen spectral lines",
+          "pagePath": "slides/chapter-01/hydrogen-spectral-lines.html",
+          "pageStart": 3,
+          "pageEnd": 5,
+          "excerpt": "1.1 Experimental basis 3 may be described by a wave equation. With this experimental and theo- retical evidence, the community accepted the wave behavior of light. ! The historical importance of these works lies in the establishment of the wave nature of light and, a century later, the counterpoint to the ideas of wave-particle duality. Moreover, Young’s experiments were the precursors of other experiments to verify the wave nature of matter. ! Thomas Young (1773–1829): Born in Milverton, England. He was an English"
+        }
+      ]
+    },
+    {
+      "id": "cathode-rays-and-the-electron",
+      "label": "cathode rays and the electron",
+      "fragments": [
+        {
+          "sectionId": "1.4",
+          "chapterId": "01",
+          "itemId": "1.4",
+          "title": "Cathode rays and the electron",
+          "pagePath": "slides/chapter-01/cathode-rays-and-electron.html",
+          "pageStart": 5,
+          "pageEnd": 8,
+          "excerpt": "1.1 Experimental basis 5 TABLE 1.1 (a) Balmer lines for Hydrogen, with indication of wavelength, color and atomic levels associated with the tran- sition. (b) First spectral series of Hydrogen, with indication of atomic levels involved. For better understanding, see Fig. 1.8 based on the Bohr model. Balmer series n m Serie of Wavelength Color (m, n) 1 >2 Lyman 656 nm Red (3, 2) 2 >3 Balmer 486 nm Light blue (4, 2) 3 >4 Paschen 434 nm Dark blue (5, 2) 4 >5 Brackett 410 nm Violet (6, 2) etc... (a) (b) ! The historica"
+        }
+      ]
+    },
+    {
+      "id": "black-body-radiation",
+      "label": "black body radiation",
+      "fragments": [
+        {
+          "sectionId": "1.5",
+          "chapterId": "01",
+          "itemId": "1.5",
+          "title": "Black-body radiation",
+          "pagePath": "slides/chapter-01/black-body-radiation.html",
+          "pageStart": 9,
+          "pageEnd": 15,
+          "excerpt": "1.1 Experimental basis 9 instead, given by: # d y1 ## y2 (x2 ) = x2 , (1.15) d x 1 #l where d y1 /d x1 |l is the derivative of the beam trajectory inside capacitor B at point l . This term can be calculated from Eq. (1.13): # d y1 ## |q |Ey B l # = . (1.16) d x1 l mvx2 Therefore, the beam displacement d2 at the region outside the capacitor B is given by: |q |Ey B l L d2 = y2 (L) = , (1.17) mvx2 where L is the distance from capacitor B to the projection screen. The vertical displacement of the beam is therefore: ! \""
+        }
+      ]
+    },
+    {
+      "id": "photoelectric-effect",
+      "label": "photoelectric effect",
+      "fragments": [
+        {
+          "sectionId": "1.6",
+          "chapterId": "01",
+          "itemId": "1.6",
+          "title": "Photoelectric effect",
+          "pagePath": "slides/chapter-01/photoelectric-effect.html",
+          "pageStart": 16,
+          "pageEnd": 17,
+          "excerpt": "16 1. Old quantum physics FIGURE 1.5 Simplified scheme of the experimental setup for observing the photoelectric effect. by Philipp Lenard, from 1888, with his experiments on cathode rays. In a few words, the experiment on the photoelectric effect was carried out by emitting monochromatic light on a metal plate (cathode) which, in turn, is inserted in a vacuum tube. This light-matter interaction promotes the emission of electrons, closing a small circuit. See Fig. 1.5. The experimental results provided the followin"
+        }
+      ]
+    },
+    {
+      "id": "elementary-charge",
+      "label": "elementary charge",
+      "fragments": [
+        {
+          "sectionId": "1.7",
+          "chapterId": "01",
+          "itemId": "1.7",
+          "title": "Elementary charge",
+          "pagePath": "slides/chapter-01/elementary-charge.html",
+          "pageStart": 18,
+          "pageEnd": 20,
+          "excerpt": "18 1. Old quantum physics FIGURE 1.6 (a) Scheme of the apparatus used by Millikan to measure the charge of the electron. Oil is sprayed through a hole in the upper part of the chamber and, in this pro- cess, the particles are electrically charged. The charge is determined from the falling velocity (without electric field) and rising velocity (with electric field), observed through a millimeter magnifying glass. Scheme of forces acting on the droplet (b) without and (c) with electric field. 1.1.6 Charge of electron "
+        }
+      ]
+    },
+    {
+      "id": "electron-diffraction",
+      "label": "electron diffraction",
+      "fragments": [
+        {
+          "sectionId": "1.8",
+          "chapterId": "01",
+          "itemId": "1.8",
+          "title": "Electron diffraction",
+          "pagePath": "slides/chapter-01/electron-diffraction.html",
+          "pageStart": 21,
+          "pageEnd": 22,
+          "excerpt": "1.1 Experimental basis 21 FIGURE 1.7 (a) Atomic plans with incident waves. To obtain constructive interference, the difference in the optical path AB + B C = 2AB must be an integer multiple of the incident wavelength. (b) Highlight of the optical path AB and the corresponding geometry. where n is a positive integer (experimentally, the intensity of the maxima for n > 1 is very low). Particle-wave duality Based on these findings, a simple question arises: since there is a wave- particle duality for light, why not fo"
+        }
+      ]
+    },
+    {
+      "id": "bohr-model-postulates",
+      "label": "bohr model postulates",
+      "fragments": [
+        {
+          "sectionId": "1.9",
+          "chapterId": "01",
+          "itemId": "1.9",
+          "title": "Bohr model: postulates",
+          "pagePath": "slides/chapter-01/bohr-model-postulates.html",
+          "pageStart": 23,
+          "pageEnd": 24,
+          "excerpt": "1.2 Bohr model for the atom 23 FIGURE 1.8 Bohr atom with the consequences of the model postulates, such as the quan- tization of orbits and the emission of radiation with energy hf due to the transition between orbits. The spectral lines are also represented. are described). Therefore, Bohr’s planetary model needed adjustments. He then presented three postulates to solve these problems. However, before describing such postulates, let’s analyze the mechanics of this model. The total energy of the system is given by "
+        }
+      ]
+    },
+    {
+      "id": "bohr-model-hydrogen-spectrum",
+      "label": "bohr model hydrogen spectrum",
+      "fragments": [
+        {
+          "sectionId": "1.10",
+          "chapterId": "01",
+          "itemId": "1.10",
+          "title": "Bohr model: hydrogen spectrum",
+          "pagePath": "slides/chapter-01/bohr-model-hydrogen-spectrum.html",
+          "pageStart": 25,
+          "pageEnd": 27,
+          "excerpt": "1.2 Bohr model for the atom 25 From Eq. (1.61), we observe that κ e2 = mv 2 r for any orbit, since κ e2 is a constant. Therefore, Eq. (1.66) can be written as: * +2 mv22 r2 v2 &E ≈ m 3 &L = &L. (1.67) (mv2 r2 ) r2 However, we know from Postulate (2) that the energy difference be- tween two orbits is given by &E = hf (see Fig. 1.8). We can also assume that the frequency of this radiation is the frequency of electron preces- sion around the nucleus. Thus: h v2 v2 &E ≈ =h =h , (1.68) ,2 l2 2π r2 where ,2 is the preces"
+        }
+      ]
+    },
+    {
+      "id": "de-broglie-hypothesis",
+      "label": "de broglie hypothesis",
+      "fragments": [
+        {
+          "sectionId": "1.11",
+          "chapterId": "01",
+          "itemId": "1.11",
+          "title": "de Broglie hypothesis",
+          "pagePath": "slides/chapter-01/de-broglie-hypothesis.html",
+          "pageStart": 28,
+          "pageEnd": 28,
+          "excerpt": "28 1. Old quantum physics FIGURE 1.10 Circular orbit (dashed line), referring to Bohr model and wave orbit (con- tinuous line), referring to de Broglie hypothesis. 1.3 de Broglie hypothesis Up to the date of the de Broglie hypothesis (1924), the dual behavior for light was well established, with the support of the double slit experiments (1801), for example, and the experiments and theory for the photoelectric effect (1905). Therefore, the hypothesis for a dual behavior for the matter emerged as a sustainable propo"
+        }
+      ]
+    },
+    {
+      "id": "semi-classical-quantization-rule",
+      "label": "semi classical quantization rule",
+      "fragments": [
+        {
+          "sectionId": "1.12",
+          "chapterId": "01",
+          "itemId": "1.12",
+          "title": "Semi-classical quantization rule",
+          "pagePath": "slides/chapter-01/semi-classical-quantization-rule.html",
+          "pageStart": 29,
+          "pageEnd": 30,
+          "excerpt": "1.4 Semi-classical quantization rule 29 The transition from the classical physics to the modern quantum physics, passing by the old quantum physics, would naturally be related to the Lagrangian and/or Hamiltonian formalism, since the scientific com- munity at the beginning of the 20th century was very comfortable with the treatment and use of those tools. Therefore, it was natural to present a quantization rule using the conjugate variables of the problem. W. Wil- son (1915), J. Ishiwara (1915) and A. Sommerfeld (1"
+        }
+      ]
+    },
+    {
+      "id": "scqr-examples",
+      "label": "scqr examples",
+      "fragments": [
+        {
+          "sectionId": "1.13",
+          "chapterId": "01",
+          "itemId": "1.13",
+          "title": "SCQR examples",
+          "pagePath": "slides/chapter-01/scqr-examples.html",
+          "pageStart": 30,
+          "pageEnd": 35,
+          "excerpt": "30 1. Old quantum physics FIGURE 1.11 Parabolic potential to which the mass m is submitted. The classical turning points ±x0 are identified, being those where the kinetic energy is zero. The quantized energy levels (Eq. (1.89)), from SCQR, are also represented. 1.4.1 Harmonic oscillator: SCQR Objective The purpose of this subsection is to develop the SCQR tech- nique using the harmonic oscillator as an example. It is worth mention- ing that the quantum harmonic oscillator problem will be discussed in details in Sec"
+        }
+      ]
+    },
+    {
+      "id": "sommerfeld-orbits-and-ellipse-geometry",
+      "label": "sommerfeld orbits and ellipse geometry",
+      "fragments": [
+        {
+          "sectionId": "1.14",
+          "chapterId": "01",
+          "itemId": "1.14",
+          "title": "Sommerfeld orbits and ellipse geometry",
+          "pagePath": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html",
+          "pageStart": 35,
+          "pageEnd": 40,
+          "excerpt": "1.4 Semi-classical quantization rule 35 / 2π Ld θ = nh ⇒ L = n!. (1.113) 0 Determining the radius r of the orbit: For this purpose, we can recall Eq. (1.61), which describes the forces involved in the problem. From that equation, we obtain: L2 = κ e2 mr. (1.114) Considering the quantization of the orbital angular momentum into the above result, we find: r = a0 n 2 , (1.115) where a0 is the Bohr radius, given by Eq. (1.73). Finally, combining Eqs. (1.115), (1.113), (1.112) and (1.110) results in: E0 E=− , (1.116) n2"
+        }
+      ]
+    },
+    {
+      "id": "chapter-synthesis",
+      "label": "chapter synthesis",
+      "fragments": [
+        {
+          "sectionId": "1.15",
+          "chapterId": "01",
+          "itemId": "1.15",
+          "title": "Chapter synthesis",
+          "pagePath": "slides/chapter-01/timeline-conceptual-synthesis.html",
+          "pageStart": 47,
+          "pageEnd": 51,
+          "excerpt": "1.D Chapter summary FIGURE 1.16 Evolution of concepts and discoveries during the period of the old quantum physics, which ends with the experimental confirmation of de Broglie hypothesis and the development of the Schrödinger equation, initiating the Modern Quantum Theory. The squares containing the dates have two colors: red (experiments) and yellow (theory). Below the arrows, you can find the consequences of the respective discoveries or theories. 47 Old quantum physics 48 Exp/Model Author Brief description Conse"
+        },
+        {
+          "sectionId": "2.15",
+          "chapterId": "02",
+          "itemId": "2.15",
+          "title": "Chapter synthesis",
+          "pagePath": "slides/chapter-02/chapter-synthesis.html",
+          "pageStart": 31,
+          "pageEnd": 34,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 85 The equation above is zero for the same reason as Eq. (2.151). The mean square reads as: + ∞ ,(k − k0 )2 - = (k − k0 )2 |φ (k )|2 d k −∞ + ∞ a 2 2 =√ (k − k0 )2 e−(k −k0 ) a d k . (2.157) π −∞ To solve the integral above, the following change of variables / = k − k0 should be made and then we obtain an integral analogous to that in Eq. (2.153), whose solution is: 1 ,(k − k0 )2 - = . (2.158) 2a 2 Consequently, the variance for |φ (k )|2 reads as: 1 var(k ) = . "
+        }
+      ]
+    },
+    {
+      "id": "why-wave-mechanics-is-needed",
+      "label": "why wave mechanics is needed",
+      "fragments": [
+        {
+          "sectionId": "2.1",
+          "chapterId": "02",
+          "itemId": "2.1",
+          "title": "Why wave mechanics is needed",
+          "pagePath": "slides/chapter-02/why-wave-mechanics-is-needed.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "56 2. Construction of quantum theory I: wave mechanics for describing systems of continuous variables, such as the position of the electron in atoms. Objective The goal of this chapter is to deduce the Schrödinger equation and explore key ideas in wave mechanics, such as the wave function. We will also delivery essential concepts of quantum mechanics, such as probability density, operators, measurements, and important theorems such as Virial and Ehrenfest – all based on the postulates of quantum mechanics. Addition"
+        }
+      ]
+    },
+    {
+      "id": "operator-formalism",
+      "label": "operator formalism",
+      "fragments": [
+        {
+          "sectionId": "2.1",
+          "chapterId": "02",
+          "itemId": "2.1",
+          "title": "Why wave mechanics is needed",
+          "pagePath": "slides/chapter-02/why-wave-mechanics-is-needed.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "56 2. Construction of quantum theory I: wave mechanics for describing systems of continuous variables, such as the position of the electron in atoms. Objective The goal of this chapter is to deduce the Schrödinger equation and explore key ideas in wave mechanics, such as the wave function. We will also delivery essential concepts of quantum mechanics, such as probability density, operators, measurements, and important theorems such as Virial and Ehrenfest – all based on the postulates of quantum mechanics. Addition"
+        },
+        {
+          "sectionId": "2.2",
+          "chapterId": "02",
+          "itemId": "2.2",
+          "title": "Time-dependent Schrodinger equation",
+          "pagePath": "slides/chapter-02/time-dependent-schrodinger-equation.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "56 2. Construction of quantum theory I: wave mechanics for describing systems of continuous variables, such as the position of the electron in atoms. Objective The goal of this chapter is to deduce the Schrödinger equation and explore key ideas in wave mechanics, such as the wave function. We will also delivery essential concepts of quantum mechanics, such as probability density, operators, measurements, and important theorems such as Virial and Ehrenfest – all based on the postulates of quantum mechanics. Addition"
+        },
+        {
+          "sectionId": "2.3",
+          "chapterId": "02",
+          "itemId": "2.3",
+          "title": "Stationary states and the TISE",
+          "pagePath": "slides/chapter-02/stationary-states-and-tise.html",
+          "pageStart": 3,
+          "pageEnd": 3,
+          "excerpt": "2.1 Formulation of Schrödinger equation 57 which leads to: !2 ∂ 2 − ψ(x , t ) = T ψ(x , t ). (2.6) 2m ∂ x 2 For now, let’s save the result above. Another differential equation that has as its solution the wave function of Eq. (2.2) can be written as follows: ∂ ψ(x , t ) + i ωψ(x , t ) = 0. (2.7) ∂t Considering E = hf = !ω, we obtain: ∂ i! ψ(x , t ) = E ψ(x , t ). (2.8) ∂t For now, let’s also save the result above. As a last step, let’s apply the wave function ψ(x , t ) by the right side of Eq. (2.1). We then find: "
+        },
+        {
+          "sectionId": "2.4",
+          "chapterId": "02",
+          "itemId": "2.4",
+          "title": "Probability density and current",
+          "pagePath": "slides/chapter-02/probability-density-and-current.html",
+          "pageStart": 4,
+          "pageEnd": 5,
+          "excerpt": "58 2. Construction of quantum theory I: wave mechanics Note we are considering V = V (x ). This condition is necessary in order to group only spatial variable x in the first braces, while in the second braces, only time variables t . For the above equation to be true, each brace must be equal to a constant, in this case γ . We then have: d i! φ (t ) = γ φ (t ). (2.14) dt Comparing the above equation with Eq. (2.8), we conclude that γ = E . Now, with the constant γ known, we can analyze the first set of braces in Eq"
+        },
+        {
+          "sectionId": "2.5",
+          "chapterId": "02",
+          "itemId": "2.5",
+          "title": "Infinite potential well",
+          "pagePath": "slides/chapter-02/infinite-potential-well.html",
+          "pageStart": 6,
+          "pageEnd": 9,
+          "excerpt": "60 2. Construction of quantum theory I: wave mechanics that the probability of finding the particle in an interval [a , b] is given by: + b Pa b = |ψ(x )|2 d x , (2.24) a while the integral over all space + +∞ |ψ(x )|2 d x = 1 (2.25) −∞ must be equal to the unit, thus guaranteeing the normalization of the prob- ability density. Therefore, we observe that the wave function is associated, through its module squared, with the probability of finding the particle in a certain region of the space. 2.3 Example: infinite p"
+        },
+        {
+          "sectionId": "2.6",
+          "chapterId": "02",
+          "itemId": "2.6",
+          "title": "Postulates of quantum mechanics: the rules ahead",
+          "pagePath": "slides/chapter-02/postulates-rules-ahead.html",
+          "pageStart": 9,
+          "pageEnd": 10,
+          "excerpt": "2.4 The postulates of quantum mechanics 63 It is also worth analyzing the probability density (n (x ) = |ψn (x )|2 pre- sented in Fig. 2.1(b). Note that: ! The minima of the probability density represent the nodes in the wave function. ! The maxima of the probability density represent the most likely val- ues to find the particle at certain positions in the well. The number of maxima increases for higher values of n. To think This same problem was discussed in Subsection 1.B.1, using the SCQR. Discuss the pros and "
+        },
+        {
+          "sectionId": "2.7",
+          "chapterId": "02",
+          "itemId": "2.7",
+          "title": "Quantum states as superpositions",
+          "pagePath": "slides/chapter-02/quantum-states-superpositions.html",
+          "pageStart": 11,
+          "pageEnd": 11,
+          "excerpt": "2.4 The postulates of quantum mechanics 65 Based on what was discussed above, we can then state: A quantum state must be completely represented by a wave function * (x , t ). ! This postulate will be revisited and further discussed in Section 3.2. 2.4.2 Observables and operators The plane wave considered in Eq. (2.2) can be rewritten as: ψ(x , t ) = Aei (px −E t )/! . (2.48) This is the easiest way to obtain the operators that we will study next. Linear momentum operator Let’s consider the stationary case, without "
+        },
+        {
+          "sectionId": "2.8",
+          "chapterId": "02",
+          "itemId": "2.8",
+          "title": "Observables, operators and commutators",
+          "pagePath": "slides/chapter-02/observables-operators-commutators.html",
+          "pageStart": 12,
+          "pageEnd": 17,
+          "excerpt": "66 2. Construction of quantum theory I: wave mechanics Hamiltonian operator To discuss this operator, we will rewrite the TISE (Eq. (2.15)): !2 ∂ 2 − ψ(x ) + V (x )ψ(x ) = E ψ(x ), (2.55) 2m ∂ x 2 and compare it with the eigenvalue equation for energy: Ĥψ(x ) = E ψ(x ) (2.56) We then conclude that E represents the energy eigenvalues and !2 ∂ 2 Ĥ = − + V (x̂ ) (2.57) 2m ∂ x 2 represents the Hamiltonian operator. From the above equation we can write Ĥ = T̂ + V̂ , where V̂ = V (x̂ ) represents the potential energy "
+        },
+        {
+          "sectionId": "2.9",
+          "chapterId": "02",
+          "itemId": "2.9",
+          "title": "Measurement probabilities",
+          "pagePath": "slides/chapter-02/measurement-probabilities.html",
+          "pageStart": 18,
+          "pageEnd": 19,
+          "excerpt": "72 2. Construction of quantum theory I: wave mechanics 2.4.3 Probability of finding a given state The total wave function * (x , t ) that represents the quantum state must be normalized: + ∞ * ∗ (x )* (x )d x = 1. (2.90) −∞ Note that in the equation above there is no temporal contribution, since we are considering the stationary states. Taking Eq. (2.41) into the above equation we find: + ∞ 92 :9 : 2 Cn∗ ψn∗ (x ) Cm ψm (x ) d x = 1, (2.91) −∞ n m which implies: 2 + ∞ Cn∗ Cm ψn∗ (x )ψm (x )d x = 1, (2.92) nm −∞ wher"
+        },
+        {
+          "sectionId": "2.10",
+          "chapterId": "02",
+          "itemId": "2.10",
+          "title": "Expectation values and collapse",
+          "pagePath": "slides/chapter-02/expectation-values-and-collapse.html",
+          "pageStart": 20,
+          "pageEnd": 20,
+          "excerpt": "74 2. Construction of quantum theory I: wave mechanics Let’s then consider two situations: before and after the measurement of a given observable Â. Before the measurement, the expectation value for the observable Â is given by Eq. (2.100). After the measurement, we come to know the measured eigenvalue – let’s say am . Schematically, we can write: 2 measurement ,Â- = Pn an −−−−−−−−→ ,Â- = am . (2.101) n The same occurs with the wave function of the system. Before the measure- ment, the total wave function is gi"
+        },
+        {
+          "sectionId": "2.11",
+          "chapterId": "02",
+          "itemId": "2.11",
+          "title": "Equations of motion: Ehrenfest and Virial",
+          "pagePath": "slides/chapter-02/ehrenfest-and-virial-theorems.html",
+          "pageStart": 21,
+          "pageEnd": 24,
+          "excerpt": "2.5 Equation of motion for the expectation value 75 2 ∗ Pn = Cm Cn δmn m 2 + ∞ ∗ ∗ = Cm Cn ψm (x )ψn (x )d x m −∞ + ∞ <2 = ∗ ∗ = Cm ψm (x ) [Cn ψn (x )] d x . (2.105) −∞ m Taking Eq. (2.105) back to Eq. (2.100), we find: + ∞ <2 =< = 2 ∗ ∗ ,Â- = Cm ψm (x ) Cn an ψn (x ) d x −∞ m n + ∞ <2 = < = 2 ∗ ∗ = Cm ψm (x ) Â Cn ψn (x ) d x , (2.106) −∞ m n and, consequently: + ∞ ,Â- = * ∗ (x )Â* (x )d x (2.107) −∞ Thus, the above equation represents the expectation value ,Â- of an ob- servable Â, given a system with tota"
+        },
+        {
+          "sectionId": "2.12",
+          "chapterId": "02",
+          "itemId": "2.12",
+          "title": "Plane waves and localized packets",
+          "pagePath": "slides/chapter-02/plane-waves-and-localized-packets.html",
+          "pageStart": 25,
+          "pageEnd": 26,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 79 FIGURE 2.2 Graphical representation of a one-dimensional plane wave. between our knowledge of the linear momentum and the position of the particle. Another important point refer to the phase of the plane wave, in which has a ω = ω (k ) dependence. Since: p2 E = !ω = , (2.130) 2m it is possible to write: !k 2 ω (k ) = (2.131) 2m To find the spatial location of the wave, we need to consider a su- perposition of waves, with different wavelengths and amplitudes. T"
+        },
+        {
+          "sectionId": "2.13",
+          "chapterId": "02",
+          "itemId": "2.13",
+          "title": "Gaussian wave packet and Fourier width",
+          "pagePath": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
+          "pageStart": 27,
+          "pageEnd": 30,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 81 To think Consider a Gaussian wave packet. What function φ (k ) gener- ates this Gaussian wave packet? To answer this question, we need to take the proposed wave packet it- self (normalized – Eq. (2.136)-left) into Eq. (2.134). As the result (see details in Box 2.5), we obtain: √ a 2 2 a 2 2 φ (k ) = 1/4 e−(k −k0 ) a /2 ⇒ |φ (k )|2 = 1/2 e−(k −k0 ) a (2.137) π π Note that, to obtain a wave packet, a distribution of plane waves with a maximum at k = k0 is requir"
+        },
+        {
+          "sectionId": "2.14",
+          "chapterId": "02",
+          "itemId": "2.14",
+          "title": "Wave packet spreading and uncertainty",
+          "pagePath": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
+          "pageStart": 31,
+          "pageEnd": 34,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 85 The equation above is zero for the same reason as Eq. (2.151). The mean square reads as: + ∞ ,(k − k0 )2 - = (k − k0 )2 |φ (k )|2 d k −∞ + ∞ a 2 2 =√ (k − k0 )2 e−(k −k0 ) a d k . (2.157) π −∞ To solve the integral above, the following change of variables / = k − k0 should be made and then we obtain an integral analogous to that in Eq. (2.153), whose solution is: 1 ,(k − k0 )2 - = . (2.158) 2a 2 Consequently, the variance for |φ (k )|2 reads as: 1 var(k ) = . "
+        },
+        {
+          "sectionId": "2.15",
+          "chapterId": "02",
+          "itemId": "2.15",
+          "title": "Chapter synthesis",
+          "pagePath": "slides/chapter-02/chapter-synthesis.html",
+          "pageStart": 31,
+          "pageEnd": 34,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 85 The equation above is zero for the same reason as Eq. (2.151). The mean square reads as: + ∞ ,(k − k0 )2 - = (k − k0 )2 |φ (k )|2 d k −∞ + ∞ a 2 2 =√ (k − k0 )2 e−(k −k0 ) a d k . (2.157) π −∞ To solve the integral above, the following change of variables / = k − k0 should be made and then we obtain an integral analogous to that in Eq. (2.153), whose solution is: 1 ,(k − k0 )2 - = . (2.158) 2a 2 Consequently, the variance for |φ (k )|2 reads as: 1 var(k ) = . "
+        }
+      ]
+    },
+    {
+      "id": "fourier-analysis",
+      "label": "fourier analysis",
+      "fragments": [
+        {
+          "sectionId": "2.1",
+          "chapterId": "02",
+          "itemId": "2.1",
+          "title": "Why wave mechanics is needed",
+          "pagePath": "slides/chapter-02/why-wave-mechanics-is-needed.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "56 2. Construction of quantum theory I: wave mechanics for describing systems of continuous variables, such as the position of the electron in atoms. Objective The goal of this chapter is to deduce the Schrödinger equation and explore key ideas in wave mechanics, such as the wave function. We will also delivery essential concepts of quantum mechanics, such as probability density, operators, measurements, and important theorems such as Virial and Ehrenfest – all based on the postulates of quantum mechanics. Addition"
+        },
+        {
+          "sectionId": "2.2",
+          "chapterId": "02",
+          "itemId": "2.2",
+          "title": "Time-dependent Schrodinger equation",
+          "pagePath": "slides/chapter-02/time-dependent-schrodinger-equation.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "56 2. Construction of quantum theory I: wave mechanics for describing systems of continuous variables, such as the position of the electron in atoms. Objective The goal of this chapter is to deduce the Schrödinger equation and explore key ideas in wave mechanics, such as the wave function. We will also delivery essential concepts of quantum mechanics, such as probability density, operators, measurements, and important theorems such as Virial and Ehrenfest – all based on the postulates of quantum mechanics. Addition"
+        },
+        {
+          "sectionId": "2.3",
+          "chapterId": "02",
+          "itemId": "2.3",
+          "title": "Stationary states and the TISE",
+          "pagePath": "slides/chapter-02/stationary-states-and-tise.html",
+          "pageStart": 3,
+          "pageEnd": 3,
+          "excerpt": "2.1 Formulation of Schrödinger equation 57 which leads to: !2 ∂ 2 − ψ(x , t ) = T ψ(x , t ). (2.6) 2m ∂ x 2 For now, let’s save the result above. Another differential equation that has as its solution the wave function of Eq. (2.2) can be written as follows: ∂ ψ(x , t ) + i ωψ(x , t ) = 0. (2.7) ∂t Considering E = hf = !ω, we obtain: ∂ i! ψ(x , t ) = E ψ(x , t ). (2.8) ∂t For now, let’s also save the result above. As a last step, let’s apply the wave function ψ(x , t ) by the right side of Eq. (2.1). We then find: "
+        },
+        {
+          "sectionId": "2.4",
+          "chapterId": "02",
+          "itemId": "2.4",
+          "title": "Probability density and current",
+          "pagePath": "slides/chapter-02/probability-density-and-current.html",
+          "pageStart": 4,
+          "pageEnd": 5,
+          "excerpt": "58 2. Construction of quantum theory I: wave mechanics Note we are considering V = V (x ). This condition is necessary in order to group only spatial variable x in the first braces, while in the second braces, only time variables t . For the above equation to be true, each brace must be equal to a constant, in this case γ . We then have: d i! φ (t ) = γ φ (t ). (2.14) dt Comparing the above equation with Eq. (2.8), we conclude that γ = E . Now, with the constant γ known, we can analyze the first set of braces in Eq"
+        },
+        {
+          "sectionId": "2.5",
+          "chapterId": "02",
+          "itemId": "2.5",
+          "title": "Infinite potential well",
+          "pagePath": "slides/chapter-02/infinite-potential-well.html",
+          "pageStart": 6,
+          "pageEnd": 9,
+          "excerpt": "60 2. Construction of quantum theory I: wave mechanics that the probability of finding the particle in an interval [a , b] is given by: + b Pa b = |ψ(x )|2 d x , (2.24) a while the integral over all space + +∞ |ψ(x )|2 d x = 1 (2.25) −∞ must be equal to the unit, thus guaranteeing the normalization of the prob- ability density. Therefore, we observe that the wave function is associated, through its module squared, with the probability of finding the particle in a certain region of the space. 2.3 Example: infinite p"
+        },
+        {
+          "sectionId": "2.6",
+          "chapterId": "02",
+          "itemId": "2.6",
+          "title": "Postulates of quantum mechanics: the rules ahead",
+          "pagePath": "slides/chapter-02/postulates-rules-ahead.html",
+          "pageStart": 9,
+          "pageEnd": 10,
+          "excerpt": "2.4 The postulates of quantum mechanics 63 It is also worth analyzing the probability density (n (x ) = |ψn (x )|2 pre- sented in Fig. 2.1(b). Note that: ! The minima of the probability density represent the nodes in the wave function. ! The maxima of the probability density represent the most likely val- ues to find the particle at certain positions in the well. The number of maxima increases for higher values of n. To think This same problem was discussed in Subsection 1.B.1, using the SCQR. Discuss the pros and "
+        },
+        {
+          "sectionId": "2.7",
+          "chapterId": "02",
+          "itemId": "2.7",
+          "title": "Quantum states as superpositions",
+          "pagePath": "slides/chapter-02/quantum-states-superpositions.html",
+          "pageStart": 11,
+          "pageEnd": 11,
+          "excerpt": "2.4 The postulates of quantum mechanics 65 Based on what was discussed above, we can then state: A quantum state must be completely represented by a wave function * (x , t ). ! This postulate will be revisited and further discussed in Section 3.2. 2.4.2 Observables and operators The plane wave considered in Eq. (2.2) can be rewritten as: ψ(x , t ) = Aei (px −E t )/! . (2.48) This is the easiest way to obtain the operators that we will study next. Linear momentum operator Let’s consider the stationary case, without "
+        },
+        {
+          "sectionId": "2.8",
+          "chapterId": "02",
+          "itemId": "2.8",
+          "title": "Observables, operators and commutators",
+          "pagePath": "slides/chapter-02/observables-operators-commutators.html",
+          "pageStart": 12,
+          "pageEnd": 17,
+          "excerpt": "66 2. Construction of quantum theory I: wave mechanics Hamiltonian operator To discuss this operator, we will rewrite the TISE (Eq. (2.15)): !2 ∂ 2 − ψ(x ) + V (x )ψ(x ) = E ψ(x ), (2.55) 2m ∂ x 2 and compare it with the eigenvalue equation for energy: Ĥψ(x ) = E ψ(x ) (2.56) We then conclude that E represents the energy eigenvalues and !2 ∂ 2 Ĥ = − + V (x̂ ) (2.57) 2m ∂ x 2 represents the Hamiltonian operator. From the above equation we can write Ĥ = T̂ + V̂ , where V̂ = V (x̂ ) represents the potential energy "
+        },
+        {
+          "sectionId": "2.9",
+          "chapterId": "02",
+          "itemId": "2.9",
+          "title": "Measurement probabilities",
+          "pagePath": "slides/chapter-02/measurement-probabilities.html",
+          "pageStart": 18,
+          "pageEnd": 19,
+          "excerpt": "72 2. Construction of quantum theory I: wave mechanics 2.4.3 Probability of finding a given state The total wave function * (x , t ) that represents the quantum state must be normalized: + ∞ * ∗ (x )* (x )d x = 1. (2.90) −∞ Note that in the equation above there is no temporal contribution, since we are considering the stationary states. Taking Eq. (2.41) into the above equation we find: + ∞ 92 :9 : 2 Cn∗ ψn∗ (x ) Cm ψm (x ) d x = 1, (2.91) −∞ n m which implies: 2 + ∞ Cn∗ Cm ψn∗ (x )ψm (x )d x = 1, (2.92) nm −∞ wher"
+        },
+        {
+          "sectionId": "2.10",
+          "chapterId": "02",
+          "itemId": "2.10",
+          "title": "Expectation values and collapse",
+          "pagePath": "slides/chapter-02/expectation-values-and-collapse.html",
+          "pageStart": 20,
+          "pageEnd": 20,
+          "excerpt": "74 2. Construction of quantum theory I: wave mechanics Let’s then consider two situations: before and after the measurement of a given observable Â. Before the measurement, the expectation value for the observable Â is given by Eq. (2.100). After the measurement, we come to know the measured eigenvalue – let’s say am . Schematically, we can write: 2 measurement ,Â- = Pn an −−−−−−−−→ ,Â- = am . (2.101) n The same occurs with the wave function of the system. Before the measure- ment, the total wave function is gi"
+        },
+        {
+          "sectionId": "2.11",
+          "chapterId": "02",
+          "itemId": "2.11",
+          "title": "Equations of motion: Ehrenfest and Virial",
+          "pagePath": "slides/chapter-02/ehrenfest-and-virial-theorems.html",
+          "pageStart": 21,
+          "pageEnd": 24,
+          "excerpt": "2.5 Equation of motion for the expectation value 75 2 ∗ Pn = Cm Cn δmn m 2 + ∞ ∗ ∗ = Cm Cn ψm (x )ψn (x )d x m −∞ + ∞ <2 = ∗ ∗ = Cm ψm (x ) [Cn ψn (x )] d x . (2.105) −∞ m Taking Eq. (2.105) back to Eq. (2.100), we find: + ∞ <2 =< = 2 ∗ ∗ ,Â- = Cm ψm (x ) Cn an ψn (x ) d x −∞ m n + ∞ <2 = < = 2 ∗ ∗ = Cm ψm (x ) Â Cn ψn (x ) d x , (2.106) −∞ m n and, consequently: + ∞ ,Â- = * ∗ (x )Â* (x )d x (2.107) −∞ Thus, the above equation represents the expectation value ,Â- of an ob- servable Â, given a system with tota"
+        },
+        {
+          "sectionId": "2.12",
+          "chapterId": "02",
+          "itemId": "2.12",
+          "title": "Plane waves and localized packets",
+          "pagePath": "slides/chapter-02/plane-waves-and-localized-packets.html",
+          "pageStart": 25,
+          "pageEnd": 26,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 79 FIGURE 2.2 Graphical representation of a one-dimensional plane wave. between our knowledge of the linear momentum and the position of the particle. Another important point refer to the phase of the plane wave, in which has a ω = ω (k ) dependence. Since: p2 E = !ω = , (2.130) 2m it is possible to write: !k 2 ω (k ) = (2.131) 2m To find the spatial location of the wave, we need to consider a su- perposition of waves, with different wavelengths and amplitudes. T"
+        },
+        {
+          "sectionId": "2.13",
+          "chapterId": "02",
+          "itemId": "2.13",
+          "title": "Gaussian wave packet and Fourier width",
+          "pagePath": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
+          "pageStart": 27,
+          "pageEnd": 30,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 81 To think Consider a Gaussian wave packet. What function φ (k ) gener- ates this Gaussian wave packet? To answer this question, we need to take the proposed wave packet it- self (normalized – Eq. (2.136)-left) into Eq. (2.134). As the result (see details in Box 2.5), we obtain: √ a 2 2 a 2 2 φ (k ) = 1/4 e−(k −k0 ) a /2 ⇒ |φ (k )|2 = 1/2 e−(k −k0 ) a (2.137) π π Note that, to obtain a wave packet, a distribution of plane waves with a maximum at k = k0 is requir"
+        },
+        {
+          "sectionId": "2.14",
+          "chapterId": "02",
+          "itemId": "2.14",
+          "title": "Wave packet spreading and uncertainty",
+          "pagePath": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
+          "pageStart": 31,
+          "pageEnd": 34,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 85 The equation above is zero for the same reason as Eq. (2.151). The mean square reads as: + ∞ ,(k − k0 )2 - = (k − k0 )2 |φ (k )|2 d k −∞ + ∞ a 2 2 =√ (k − k0 )2 e−(k −k0 ) a d k . (2.157) π −∞ To solve the integral above, the following change of variables / = k − k0 should be made and then we obtain an integral analogous to that in Eq. (2.153), whose solution is: 1 ,(k − k0 )2 - = . (2.158) 2a 2 Consequently, the variance for |φ (k )|2 reads as: 1 var(k ) = . "
+        },
+        {
+          "sectionId": "2.15",
+          "chapterId": "02",
+          "itemId": "2.15",
+          "title": "Chapter synthesis",
+          "pagePath": "slides/chapter-02/chapter-synthesis.html",
+          "pageStart": 31,
+          "pageEnd": 34,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 85 The equation above is zero for the same reason as Eq. (2.151). The mean square reads as: + ∞ ,(k − k0 )2 - = (k − k0 )2 |φ (k )|2 d k −∞ + ∞ a 2 2 =√ (k − k0 )2 e−(k −k0 ) a d k . (2.157) π −∞ To solve the integral above, the following change of variables / = k − k0 should be made and then we obtain an integral analogous to that in Eq. (2.153), whose solution is: 1 ,(k − k0 )2 - = . (2.158) 2a 2 Consequently, the variance for |φ (k )|2 reads as: 1 var(k ) = . "
+        }
+      ]
+    },
+    {
+      "id": "time-dependent-schrodinger-equation",
+      "label": "time dependent schrodinger equation",
+      "fragments": [
+        {
+          "sectionId": "2.2",
+          "chapterId": "02",
+          "itemId": "2.2",
+          "title": "Time-dependent Schrodinger equation",
+          "pagePath": "slides/chapter-02/time-dependent-schrodinger-equation.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "56 2. Construction of quantum theory I: wave mechanics for describing systems of continuous variables, such as the position of the electron in atoms. Objective The goal of this chapter is to deduce the Schrödinger equation and explore key ideas in wave mechanics, such as the wave function. We will also delivery essential concepts of quantum mechanics, such as probability density, operators, measurements, and important theorems such as Virial and Ehrenfest – all based on the postulates of quantum mechanics. Addition"
+        }
+      ]
+    },
+    {
+      "id": "stationary-states-and-the-tise",
+      "label": "stationary states and the tise",
+      "fragments": [
+        {
+          "sectionId": "2.3",
+          "chapterId": "02",
+          "itemId": "2.3",
+          "title": "Stationary states and the TISE",
+          "pagePath": "slides/chapter-02/stationary-states-and-tise.html",
+          "pageStart": 3,
+          "pageEnd": 3,
+          "excerpt": "2.1 Formulation of Schrödinger equation 57 which leads to: !2 ∂ 2 − ψ(x , t ) = T ψ(x , t ). (2.6) 2m ∂ x 2 For now, let’s save the result above. Another differential equation that has as its solution the wave function of Eq. (2.2) can be written as follows: ∂ ψ(x , t ) + i ωψ(x , t ) = 0. (2.7) ∂t Considering E = hf = !ω, we obtain: ∂ i! ψ(x , t ) = E ψ(x , t ). (2.8) ∂t For now, let’s also save the result above. As a last step, let’s apply the wave function ψ(x , t ) by the right side of Eq. (2.1). We then find: "
+        }
+      ]
+    },
+    {
+      "id": "probability-density-and-current",
+      "label": "probability density and current",
+      "fragments": [
+        {
+          "sectionId": "2.4",
+          "chapterId": "02",
+          "itemId": "2.4",
+          "title": "Probability density and current",
+          "pagePath": "slides/chapter-02/probability-density-and-current.html",
+          "pageStart": 4,
+          "pageEnd": 5,
+          "excerpt": "58 2. Construction of quantum theory I: wave mechanics Note we are considering V = V (x ). This condition is necessary in order to group only spatial variable x in the first braces, while in the second braces, only time variables t . For the above equation to be true, each brace must be equal to a constant, in this case γ . We then have: d i! φ (t ) = γ φ (t ). (2.14) dt Comparing the above equation with Eq. (2.8), we conclude that γ = E . Now, with the constant γ known, we can analyze the first set of braces in Eq"
+        }
+      ]
+    },
+    {
+      "id": "infinite-potential-well",
+      "label": "infinite potential well",
+      "fragments": [
+        {
+          "sectionId": "2.5",
+          "chapterId": "02",
+          "itemId": "2.5",
+          "title": "Infinite potential well",
+          "pagePath": "slides/chapter-02/infinite-potential-well.html",
+          "pageStart": 6,
+          "pageEnd": 9,
+          "excerpt": "60 2. Construction of quantum theory I: wave mechanics that the probability of finding the particle in an interval [a , b] is given by: + b Pa b = |ψ(x )|2 d x , (2.24) a while the integral over all space + +∞ |ψ(x )|2 d x = 1 (2.25) −∞ must be equal to the unit, thus guaranteeing the normalization of the prob- ability density. Therefore, we observe that the wave function is associated, through its module squared, with the probability of finding the particle in a certain region of the space. 2.3 Example: infinite p"
+        }
+      ]
+    },
+    {
+      "id": "postulates-of-quantum-mechanics-the-rules-ahead",
+      "label": "postulates of quantum mechanics the rules ahead",
+      "fragments": [
+        {
+          "sectionId": "2.6",
+          "chapterId": "02",
+          "itemId": "2.6",
+          "title": "Postulates of quantum mechanics: the rules ahead",
+          "pagePath": "slides/chapter-02/postulates-rules-ahead.html",
+          "pageStart": 9,
+          "pageEnd": 10,
+          "excerpt": "2.4 The postulates of quantum mechanics 63 It is also worth analyzing the probability density (n (x ) = |ψn (x )|2 pre- sented in Fig. 2.1(b). Note that: ! The minima of the probability density represent the nodes in the wave function. ! The maxima of the probability density represent the most likely val- ues to find the particle at certain positions in the well. The number of maxima increases for higher values of n. To think This same problem was discussed in Subsection 1.B.1, using the SCQR. Discuss the pros and "
+        }
+      ]
+    },
+    {
+      "id": "quantum-states-as-superpositions",
+      "label": "quantum states as superpositions",
+      "fragments": [
+        {
+          "sectionId": "2.7",
+          "chapterId": "02",
+          "itemId": "2.7",
+          "title": "Quantum states as superpositions",
+          "pagePath": "slides/chapter-02/quantum-states-superpositions.html",
+          "pageStart": 11,
+          "pageEnd": 11,
+          "excerpt": "2.4 The postulates of quantum mechanics 65 Based on what was discussed above, we can then state: A quantum state must be completely represented by a wave function * (x , t ). ! This postulate will be revisited and further discussed in Section 3.2. 2.4.2 Observables and operators The plane wave considered in Eq. (2.2) can be rewritten as: ψ(x , t ) = Aei (px −E t )/! . (2.48) This is the easiest way to obtain the operators that we will study next. Linear momentum operator Let’s consider the stationary case, without "
+        }
+      ]
+    },
+    {
+      "id": "observables-operators-and-commutators",
+      "label": "observables operators and commutators",
+      "fragments": [
+        {
+          "sectionId": "2.8",
+          "chapterId": "02",
+          "itemId": "2.8",
+          "title": "Observables, operators and commutators",
+          "pagePath": "slides/chapter-02/observables-operators-commutators.html",
+          "pageStart": 12,
+          "pageEnd": 17,
+          "excerpt": "66 2. Construction of quantum theory I: wave mechanics Hamiltonian operator To discuss this operator, we will rewrite the TISE (Eq. (2.15)): !2 ∂ 2 − ψ(x ) + V (x )ψ(x ) = E ψ(x ), (2.55) 2m ∂ x 2 and compare it with the eigenvalue equation for energy: Ĥψ(x ) = E ψ(x ) (2.56) We then conclude that E represents the energy eigenvalues and !2 ∂ 2 Ĥ = − + V (x̂ ) (2.57) 2m ∂ x 2 represents the Hamiltonian operator. From the above equation we can write Ĥ = T̂ + V̂ , where V̂ = V (x̂ ) represents the potential energy "
+        }
+      ]
+    },
+    {
+      "id": "measurement-probabilities",
+      "label": "measurement probabilities",
+      "fragments": [
+        {
+          "sectionId": "2.9",
+          "chapterId": "02",
+          "itemId": "2.9",
+          "title": "Measurement probabilities",
+          "pagePath": "slides/chapter-02/measurement-probabilities.html",
+          "pageStart": 18,
+          "pageEnd": 19,
+          "excerpt": "72 2. Construction of quantum theory I: wave mechanics 2.4.3 Probability of finding a given state The total wave function * (x , t ) that represents the quantum state must be normalized: + ∞ * ∗ (x )* (x )d x = 1. (2.90) −∞ Note that in the equation above there is no temporal contribution, since we are considering the stationary states. Taking Eq. (2.41) into the above equation we find: + ∞ 92 :9 : 2 Cn∗ ψn∗ (x ) Cm ψm (x ) d x = 1, (2.91) −∞ n m which implies: 2 + ∞ Cn∗ Cm ψn∗ (x )ψm (x )d x = 1, (2.92) nm −∞ wher"
+        }
+      ]
+    },
+    {
+      "id": "expectation-values-and-collapse",
+      "label": "expectation values and collapse",
+      "fragments": [
+        {
+          "sectionId": "2.10",
+          "chapterId": "02",
+          "itemId": "2.10",
+          "title": "Expectation values and collapse",
+          "pagePath": "slides/chapter-02/expectation-values-and-collapse.html",
+          "pageStart": 20,
+          "pageEnd": 20,
+          "excerpt": "74 2. Construction of quantum theory I: wave mechanics Let’s then consider two situations: before and after the measurement of a given observable Â. Before the measurement, the expectation value for the observable Â is given by Eq. (2.100). After the measurement, we come to know the measured eigenvalue – let’s say am . Schematically, we can write: 2 measurement ,Â- = Pn an −−−−−−−−→ ,Â- = am . (2.101) n The same occurs with the wave function of the system. Before the measure- ment, the total wave function is gi"
+        }
+      ]
+    },
+    {
+      "id": "equations-of-motion-ehrenfest-and-virial",
+      "label": "equations of motion ehrenfest and virial",
+      "fragments": [
+        {
+          "sectionId": "2.11",
+          "chapterId": "02",
+          "itemId": "2.11",
+          "title": "Equations of motion: Ehrenfest and Virial",
+          "pagePath": "slides/chapter-02/ehrenfest-and-virial-theorems.html",
+          "pageStart": 21,
+          "pageEnd": 24,
+          "excerpt": "2.5 Equation of motion for the expectation value 75 2 ∗ Pn = Cm Cn δmn m 2 + ∞ ∗ ∗ = Cm Cn ψm (x )ψn (x )d x m −∞ + ∞ <2 = ∗ ∗ = Cm ψm (x ) [Cn ψn (x )] d x . (2.105) −∞ m Taking Eq. (2.105) back to Eq. (2.100), we find: + ∞ <2 =< = 2 ∗ ∗ ,Â- = Cm ψm (x ) Cn an ψn (x ) d x −∞ m n + ∞ <2 = < = 2 ∗ ∗ = Cm ψm (x ) Â Cn ψn (x ) d x , (2.106) −∞ m n and, consequently: + ∞ ,Â- = * ∗ (x )Â* (x )d x (2.107) −∞ Thus, the above equation represents the expectation value ,Â- of an ob- servable Â, given a system with tota"
+        }
+      ]
+    },
+    {
+      "id": "plane-waves-and-localized-packets",
+      "label": "plane waves and localized packets",
+      "fragments": [
+        {
+          "sectionId": "2.12",
+          "chapterId": "02",
+          "itemId": "2.12",
+          "title": "Plane waves and localized packets",
+          "pagePath": "slides/chapter-02/plane-waves-and-localized-packets.html",
+          "pageStart": 25,
+          "pageEnd": 26,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 79 FIGURE 2.2 Graphical representation of a one-dimensional plane wave. between our knowledge of the linear momentum and the position of the particle. Another important point refer to the phase of the plane wave, in which has a ω = ω (k ) dependence. Since: p2 E = !ω = , (2.130) 2m it is possible to write: !k 2 ω (k ) = (2.131) 2m To find the spatial location of the wave, we need to consider a su- perposition of waves, with different wavelengths and amplitudes. T"
+        }
+      ]
+    },
+    {
+      "id": "gaussian-wave-packet-and-fourier-width",
+      "label": "gaussian wave packet and fourier width",
+      "fragments": [
+        {
+          "sectionId": "2.13",
+          "chapterId": "02",
+          "itemId": "2.13",
+          "title": "Gaussian wave packet and Fourier width",
+          "pagePath": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
+          "pageStart": 27,
+          "pageEnd": 30,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 81 To think Consider a Gaussian wave packet. What function φ (k ) gener- ates this Gaussian wave packet? To answer this question, we need to take the proposed wave packet it- self (normalized – Eq. (2.136)-left) into Eq. (2.134). As the result (see details in Box 2.5), we obtain: √ a 2 2 a 2 2 φ (k ) = 1/4 e−(k −k0 ) a /2 ⇒ |φ (k )|2 = 1/2 e−(k −k0 ) a (2.137) π π Note that, to obtain a wave packet, a distribution of plane waves with a maximum at k = k0 is requir"
+        }
+      ]
+    },
+    {
+      "id": "wave-packet-spreading-and-uncertainty",
+      "label": "wave packet spreading and uncertainty",
+      "fragments": [
+        {
+          "sectionId": "2.14",
+          "chapterId": "02",
+          "itemId": "2.14",
+          "title": "Wave packet spreading and uncertainty",
+          "pagePath": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
+          "pageStart": 31,
+          "pageEnd": 34,
+          "excerpt": "2.6 Wave packet and Heisenberg uncertainty principle 85 The equation above is zero for the same reason as Eq. (2.151). The mean square reads as: + ∞ ,(k − k0 )2 - = (k − k0 )2 |φ (k )|2 d k −∞ + ∞ a 2 2 =√ (k − k0 )2 e−(k −k0 ) a d k . (2.157) π −∞ To solve the integral above, the following change of variables / = k − k0 should be made and then we obtain an integral analogous to that in Eq. (2.153), whose solution is: 1 ,(k − k0 )2 - = . (2.158) 2a 2 Consequently, the variance for |φ (k )|2 reads as: 1 var(k ) = . "
+        }
+      ]
+    },
+    {
+      "id": "why-matrix-mechanics-is-needed",
+      "label": "why matrix mechanics is needed",
+      "fragments": [
+        {
+          "sectionId": "3.1",
+          "chapterId": "03",
+          "itemId": "3.1",
+          "title": "Why matrix mechanics is needed",
+          "pagePath": "slides/chapter-03/why-matrix-mechanics-is-needed.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "94 3. Construction of quantum theory II: matrix mechanics FIGURE 3.1 Stern–Gerlach experimental setup. The beam of Silver atoms leaves the oven (1) and passes through a collimator (2), to then enter the region of magnetic field gradient (3). Due to the quantization of the angular momentum, dots (4) on the screen should be observed, while in the classical prediction, without quantization of angular momentum, only a continuous line (5) would be observed. Adapted from reference [18]. Wikimedia Commons. Licensed under "
+        }
+      ]
+    },
+    {
+      "id": "spectral-theorem",
+      "label": "spectral theorem",
+      "fragments": [
+        {
+          "sectionId": "3.1",
+          "chapterId": "03",
+          "itemId": "3.1",
+          "title": "Why matrix mechanics is needed",
+          "pagePath": "slides/chapter-03/why-matrix-mechanics-is-needed.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "94 3. Construction of quantum theory II: matrix mechanics FIGURE 3.1 Stern–Gerlach experimental setup. The beam of Silver atoms leaves the oven (1) and passes through a collimator (2), to then enter the region of magnetic field gradient (3). Due to the quantization of the angular momentum, dots (4) on the screen should be observed, while in the classical prediction, without quantization of angular momentum, only a continuous line (5) would be observed. Adapted from reference [18]. Wikimedia Commons. Licensed under "
+        },
+        {
+          "sectionId": "3.2",
+          "chapterId": "03",
+          "itemId": "3.2",
+          "title": "Stern-Gerlach experiment: magnetic force and spin",
+          "pagePath": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html",
+          "pageStart": 2,
+          "pageEnd": 4,
+          "excerpt": "94 3. Construction of quantum theory II: matrix mechanics FIGURE 3.1 Stern–Gerlach experimental setup. The beam of Silver atoms leaves the oven (1) and passes through a collimator (2), to then enter the region of magnetic field gradient (3). Due to the quantization of the angular momentum, dots (4) on the screen should be observed, while in the classical prediction, without quantization of angular momentum, only a continuous line (5) would be observed. Adapted from reference [18]. Wikimedia Commons. Licensed under "
+        },
+        {
+          "sectionId": "3.3",
+          "chapterId": "03",
+          "itemId": "3.3",
+          "title": "Dirac notation: kets, bras and inner products",
+          "pagePath": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html",
+          "pageStart": 5,
+          "pageEnd": 6,
+          "excerpt": "3.2 Description of the quantum state 97 3.2 Description of the quantum state We begin this section defining some relevant mathematical objects. The vector |n$, called ket in Dirac notation, is the first of them, being equivalent to a vector n\" in Euclidean space. Considering a d -dimensional space, |n$ is a column vector with d rows × 1 column:   n1  n2    |n$ =  .  (3.7)  ..  nd On the other hand, &n| is also a vector, called bra in Dirac notation, this being the conjugate transpose of a ket |n$, that is"
+        },
+        {
+          "sectionId": "3.4",
+          "chapterId": "03",
+          "itemId": "3.4",
+          "title": "Hilbert space, bases, superposition and completeness",
+          "pagePath": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html",
+          "pageStart": 5,
+          "pageEnd": 6,
+          "excerpt": "3.2 Description of the quantum state 97 3.2 Description of the quantum state We begin this section defining some relevant mathematical objects. The vector |n$, called ket in Dirac notation, is the first of them, being equivalent to a vector n\" in Euclidean space. Considering a d -dimensional space, |n$ is a column vector with d rows × 1 column:   n1  n2    |n$ =  .  (3.7)  ..  nd On the other hand, &n| is also a vector, called bra in Dirac notation, this being the conjugate transpose of a ket |n$, that is"
+        },
+        {
+          "sectionId": "3.5",
+          "chapterId": "03",
+          "itemId": "3.5",
+          "title": "Operators, eigenvalues and spectral decomposition",
+          "pagePath": "slides/chapter-03/operators-as-matrices.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        },
+        {
+          "sectionId": "3.6",
+          "chapterId": "03",
+          "itemId": "3.6",
+          "title": "Pauli matrices and spin observables",
+          "pagePath": "slides/chapter-03/pauli-matrices-and-spin-observables.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        },
+        {
+          "sectionId": "3.7",
+          "chapterId": "03",
+          "itemId": "3.7",
+          "title": "Born rule in vector notation",
+          "pagePath": "slides/chapter-03/born-rule-vector-notation.html",
+          "pageStart": 11,
+          "pageEnd": 12,
+          "excerpt": "3.4 Probability of finding a given state 103 ! Example 3.4 In this example, we will take the Pauli matrices σ̂z and σ̂x , deter- mined in Example 3.3, and check if these satisfy the eigenvalue equation (Eq. (3.35)): + ,+ , 1 0 1 σ̂z |+$ = = +|+$, (3.43) 0 −1 0 + ,+ , 1 0 0 σ̂z |−$ = = −|−$. (3.44) 0 −1 1 We therefore have σ̂z |±$ = ±|±$, satisfying the eigenvalue equation. For the component x : + , + , 0 1 1 1 σ̂x |+$x = √ = +|+$x , (3.45) 1 0 2 1 + , + , 0 1 1 1 σ̂x |−$x = √ = −|−$x . (3.46) 1 0 2 −1 Thus, the ope"
+        },
+        {
+          "sectionId": "3.8",
+          "chapterId": "03",
+          "itemId": "3.8",
+          "title": "Expectation value, variance and preparation",
+          "pagePath": "slides/chapter-03/expectation-value-variance-and-preparation.html",
+          "pageStart": 13,
+          "pageEnd": 14,
+          "excerpt": "3.5 Expectation value 105 * &Â$ = Pn an (3.54) n where Pn is the probability (Eq. (3.51)) of finding the system in a given |n$ state, with eigenvalue an . As previously mentioned, we are considering a non-degenerate system. Eq. (3.54) can be rewritten as follows: * &Â$ = &n|# $∗ &n|# $an n * = &# |n$&n|# $an n * = &# |Â|n$&n|# $ n / 0 * = &# |Â |n$&n| |# $ (3.55) n and, consequently: &Â$ = &# |Â|# $ (3.56) The equation above represents the expectation value &Â$ of the observable Â for a system in the state "
+        },
+        {
+          "sectionId": "3.9",
+          "chapterId": "03",
+          "itemId": "3.9",
+          "title": "Hermitian operators and real outcomes",
+          "pagePath": "slides/chapter-03/hermitian-operators-and-real-outcomes.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        },
+        {
+          "sectionId": "3.10",
+          "chapterId": "03",
+          "itemId": "3.10",
+          "title": "Commutators, compatibility and measurement order",
+          "pagePath": "slides/chapter-03/commutators-compatibility-and-measurement-order.html",
+          "pageStart": 15,
+          "pageEnd": 16,
+          "excerpt": "3.6 Commutation relations 107 FIGURE 3.4 Simplified scheme of a sequence of Stern–Gerlach devices – Example 3.7. based on sequential Stern–Gerlach experiments, illustrate this concept, which will be further examined in Chapter 6. ! Example 3.7 Let’s consider an example similar to Example 3.6. However, the sec- ond Stern–Gerlach device is oriented along the x axis, as shown in Fig. 3.4. From Example 3.6, we know that |# , $ = |+$ and therefore we can calculate the probabilities of obtaining each eigenvalue after the"
+        },
+        {
+          "sectionId": "3.11",
+          "chapterId": "03",
+          "itemId": "3.11",
+          "title": "Schrodinger picture: unitary time evolution",
+          "pagePath": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html",
+          "pageStart": 17,
+          "pageEnd": 17,
+          "excerpt": "3.7 Time evolution 109 where Û † (t )Û (t ) = 1 (3.77) fulfills the condition of a unitary operator (Eq. (3.A.3)). We can take Eq. (3.75) into Eq. (3.74) to obtain a differential equation for Û (t ): d i! Û (t ) = ĤÛ (t ). (3.78) dt The solution is thus: Û (t ) = e−i Ĥt /! (3.79) and therefore, the time evolution of the vectors (Eq. (3.75)) can be rewritten as: |# (t )$ = e−i Ĥt /! |# (0)$ (3.80) From these considerations, we are ready to state a postulate, which was not detailed in the previous chapter, r"
+        },
+        {
+          "sectionId": "3.12",
+          "chapterId": "03",
+          "itemId": "3.12",
+          "title": "Heisenberg picture: operator evolution",
+          "pagePath": "slides/chapter-03/heisenberg-picture-operator-evolution.html",
+          "pageStart": 18,
+          "pageEnd": 18,
+          "excerpt": "110 3. Construction of quantum theory II: matrix mechanics Box 3.1 Detailed description of the Heisenberg equation of motion Let’s consider that the vector |# $H , in the Heisenberg picture, is equivalent to the initial vector |# (0)$S in the Schrödinger picture: |# $H = |# (0)$S = Û † (t )|# (t )$S . (3.84) Let us also consider that the expectation value of an operator &Â$ does not depend on the chosen picture. Thus: &Â$ = H &# |ÂH (t )|# $H = S &# (t )|ÂS |# (t )$S . (3.85) Taking Eq. (3.84) into Eq. (3.85) "
+        },
+        {
+          "sectionId": "3.13",
+          "chapterId": "03",
+          "itemId": "3.13",
+          "title": "Unitary transformations and change of basis",
+          "pagePath": "slides/chapter-03/unitary-transformations-and-change-of-basis.html",
+          "pageStart": 19,
+          "pageEnd": 20,
+          "excerpt": "3.A Unitary transformation and change of basis 111 1 4 5 = −Û † (t )ĤÛ (t )Û † (t )ÂS Û (t ) + Û † (t )ÂS Û (t )Û † (t )ĤÛ (t ) i! / 0 † ∂ ÂS + Û (t ) Û (t ). (3.91) ∂t By using Eq. (3.88), we obtain: / 0 d i 4 5 ∂ Â ÂH (t ) = Ĥ(t ), ÂH (t ) + (3.92) dt ! ∂t H where Ĥ(t ) = Û † (t )ĤÛ (t ) (3.93) and / 0 / 0 ∂ Â † ∂ ÂS = Û (t ) Û (t ). (3.94) ∂t ∂t H Appendix 3.A Unitary transformation and change of basis We can perform a rotation in the vector space with a unitary transfor- mation: |naf "
+        },
+        {
+          "sectionId": "3.14",
+          "chapterId": "03",
+          "itemId": "3.14",
+          "title": "Operator functions and chapter synthesis",
+          "pagePath": "slides/chapter-03/operator-functions-and-chapter-synthesis.html",
+          "pageStart": 21,
+          "pageEnd": 21,
+          "excerpt": "3.B Simple correspondence between wave mechanics and matrix mechanics 113 Appendix 3.B Simple correspondence between wave mechanics and matrix mechanics In the initial chapters of this book we described the wave mechanics of matter, where the wave functions ψn (x ) are solutions of the Schrödinger equation, and also represent eigenstates in which the system can be found. In this chapter, we introduced the matrix mechanics, which uses linear algebra to describe the same quantum phenomena. In this case, the vectors |"
+        }
+      ]
+    },
+    {
+      "id": "unitary-evolution",
+      "label": "unitary evolution",
+      "fragments": [
+        {
+          "sectionId": "3.1",
+          "chapterId": "03",
+          "itemId": "3.1",
+          "title": "Why matrix mechanics is needed",
+          "pagePath": "slides/chapter-03/why-matrix-mechanics-is-needed.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "94 3. Construction of quantum theory II: matrix mechanics FIGURE 3.1 Stern–Gerlach experimental setup. The beam of Silver atoms leaves the oven (1) and passes through a collimator (2), to then enter the region of magnetic field gradient (3). Due to the quantization of the angular momentum, dots (4) on the screen should be observed, while in the classical prediction, without quantization of angular momentum, only a continuous line (5) would be observed. Adapted from reference [18]. Wikimedia Commons. Licensed under "
+        },
+        {
+          "sectionId": "3.2",
+          "chapterId": "03",
+          "itemId": "3.2",
+          "title": "Stern-Gerlach experiment: magnetic force and spin",
+          "pagePath": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html",
+          "pageStart": 2,
+          "pageEnd": 4,
+          "excerpt": "94 3. Construction of quantum theory II: matrix mechanics FIGURE 3.1 Stern–Gerlach experimental setup. The beam of Silver atoms leaves the oven (1) and passes through a collimator (2), to then enter the region of magnetic field gradient (3). Due to the quantization of the angular momentum, dots (4) on the screen should be observed, while in the classical prediction, without quantization of angular momentum, only a continuous line (5) would be observed. Adapted from reference [18]. Wikimedia Commons. Licensed under "
+        },
+        {
+          "sectionId": "3.3",
+          "chapterId": "03",
+          "itemId": "3.3",
+          "title": "Dirac notation: kets, bras and inner products",
+          "pagePath": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html",
+          "pageStart": 5,
+          "pageEnd": 6,
+          "excerpt": "3.2 Description of the quantum state 97 3.2 Description of the quantum state We begin this section defining some relevant mathematical objects. The vector |n$, called ket in Dirac notation, is the first of them, being equivalent to a vector n\" in Euclidean space. Considering a d -dimensional space, |n$ is a column vector with d rows × 1 column:   n1  n2    |n$ =  .  (3.7)  ..  nd On the other hand, &n| is also a vector, called bra in Dirac notation, this being the conjugate transpose of a ket |n$, that is"
+        },
+        {
+          "sectionId": "3.4",
+          "chapterId": "03",
+          "itemId": "3.4",
+          "title": "Hilbert space, bases, superposition and completeness",
+          "pagePath": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html",
+          "pageStart": 5,
+          "pageEnd": 6,
+          "excerpt": "3.2 Description of the quantum state 97 3.2 Description of the quantum state We begin this section defining some relevant mathematical objects. The vector |n$, called ket in Dirac notation, is the first of them, being equivalent to a vector n\" in Euclidean space. Considering a d -dimensional space, |n$ is a column vector with d rows × 1 column:   n1  n2    |n$ =  .  (3.7)  ..  nd On the other hand, &n| is also a vector, called bra in Dirac notation, this being the conjugate transpose of a ket |n$, that is"
+        },
+        {
+          "sectionId": "3.5",
+          "chapterId": "03",
+          "itemId": "3.5",
+          "title": "Operators, eigenvalues and spectral decomposition",
+          "pagePath": "slides/chapter-03/operators-as-matrices.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        },
+        {
+          "sectionId": "3.6",
+          "chapterId": "03",
+          "itemId": "3.6",
+          "title": "Pauli matrices and spin observables",
+          "pagePath": "slides/chapter-03/pauli-matrices-and-spin-observables.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        },
+        {
+          "sectionId": "3.7",
+          "chapterId": "03",
+          "itemId": "3.7",
+          "title": "Born rule in vector notation",
+          "pagePath": "slides/chapter-03/born-rule-vector-notation.html",
+          "pageStart": 11,
+          "pageEnd": 12,
+          "excerpt": "3.4 Probability of finding a given state 103 ! Example 3.4 In this example, we will take the Pauli matrices σ̂z and σ̂x , deter- mined in Example 3.3, and check if these satisfy the eigenvalue equation (Eq. (3.35)): + ,+ , 1 0 1 σ̂z |+$ = = +|+$, (3.43) 0 −1 0 + ,+ , 1 0 0 σ̂z |−$ = = −|−$. (3.44) 0 −1 1 We therefore have σ̂z |±$ = ±|±$, satisfying the eigenvalue equation. For the component x : + , + , 0 1 1 1 σ̂x |+$x = √ = +|+$x , (3.45) 1 0 2 1 + , + , 0 1 1 1 σ̂x |−$x = √ = −|−$x . (3.46) 1 0 2 −1 Thus, the ope"
+        },
+        {
+          "sectionId": "3.8",
+          "chapterId": "03",
+          "itemId": "3.8",
+          "title": "Expectation value, variance and preparation",
+          "pagePath": "slides/chapter-03/expectation-value-variance-and-preparation.html",
+          "pageStart": 13,
+          "pageEnd": 14,
+          "excerpt": "3.5 Expectation value 105 * &Â$ = Pn an (3.54) n where Pn is the probability (Eq. (3.51)) of finding the system in a given |n$ state, with eigenvalue an . As previously mentioned, we are considering a non-degenerate system. Eq. (3.54) can be rewritten as follows: * &Â$ = &n|# $∗ &n|# $an n * = &# |n$&n|# $an n * = &# |Â|n$&n|# $ n / 0 * = &# |Â |n$&n| |# $ (3.55) n and, consequently: &Â$ = &# |Â|# $ (3.56) The equation above represents the expectation value &Â$ of the observable Â for a system in the state "
+        },
+        {
+          "sectionId": "3.9",
+          "chapterId": "03",
+          "itemId": "3.9",
+          "title": "Hermitian operators and real outcomes",
+          "pagePath": "slides/chapter-03/hermitian-operators-and-real-outcomes.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        },
+        {
+          "sectionId": "3.10",
+          "chapterId": "03",
+          "itemId": "3.10",
+          "title": "Commutators, compatibility and measurement order",
+          "pagePath": "slides/chapter-03/commutators-compatibility-and-measurement-order.html",
+          "pageStart": 15,
+          "pageEnd": 16,
+          "excerpt": "3.6 Commutation relations 107 FIGURE 3.4 Simplified scheme of a sequence of Stern–Gerlach devices – Example 3.7. based on sequential Stern–Gerlach experiments, illustrate this concept, which will be further examined in Chapter 6. ! Example 3.7 Let’s consider an example similar to Example 3.6. However, the sec- ond Stern–Gerlach device is oriented along the x axis, as shown in Fig. 3.4. From Example 3.6, we know that |# , $ = |+$ and therefore we can calculate the probabilities of obtaining each eigenvalue after the"
+        },
+        {
+          "sectionId": "3.11",
+          "chapterId": "03",
+          "itemId": "3.11",
+          "title": "Schrodinger picture: unitary time evolution",
+          "pagePath": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html",
+          "pageStart": 17,
+          "pageEnd": 17,
+          "excerpt": "3.7 Time evolution 109 where Û † (t )Û (t ) = 1 (3.77) fulfills the condition of a unitary operator (Eq. (3.A.3)). We can take Eq. (3.75) into Eq. (3.74) to obtain a differential equation for Û (t ): d i! Û (t ) = ĤÛ (t ). (3.78) dt The solution is thus: Û (t ) = e−i Ĥt /! (3.79) and therefore, the time evolution of the vectors (Eq. (3.75)) can be rewritten as: |# (t )$ = e−i Ĥt /! |# (0)$ (3.80) From these considerations, we are ready to state a postulate, which was not detailed in the previous chapter, r"
+        },
+        {
+          "sectionId": "3.12",
+          "chapterId": "03",
+          "itemId": "3.12",
+          "title": "Heisenberg picture: operator evolution",
+          "pagePath": "slides/chapter-03/heisenberg-picture-operator-evolution.html",
+          "pageStart": 18,
+          "pageEnd": 18,
+          "excerpt": "110 3. Construction of quantum theory II: matrix mechanics Box 3.1 Detailed description of the Heisenberg equation of motion Let’s consider that the vector |# $H , in the Heisenberg picture, is equivalent to the initial vector |# (0)$S in the Schrödinger picture: |# $H = |# (0)$S = Û † (t )|# (t )$S . (3.84) Let us also consider that the expectation value of an operator &Â$ does not depend on the chosen picture. Thus: &Â$ = H &# |ÂH (t )|# $H = S &# (t )|ÂS |# (t )$S . (3.85) Taking Eq. (3.84) into Eq. (3.85) "
+        },
+        {
+          "sectionId": "3.13",
+          "chapterId": "03",
+          "itemId": "3.13",
+          "title": "Unitary transformations and change of basis",
+          "pagePath": "slides/chapter-03/unitary-transformations-and-change-of-basis.html",
+          "pageStart": 19,
+          "pageEnd": 20,
+          "excerpt": "3.A Unitary transformation and change of basis 111 1 4 5 = −Û † (t )ĤÛ (t )Û † (t )ÂS Û (t ) + Û † (t )ÂS Û (t )Û † (t )ĤÛ (t ) i! / 0 † ∂ ÂS + Û (t ) Û (t ). (3.91) ∂t By using Eq. (3.88), we obtain: / 0 d i 4 5 ∂ Â ÂH (t ) = Ĥ(t ), ÂH (t ) + (3.92) dt ! ∂t H where Ĥ(t ) = Û † (t )ĤÛ (t ) (3.93) and / 0 / 0 ∂ Â † ∂ ÂS = Û (t ) Û (t ). (3.94) ∂t ∂t H Appendix 3.A Unitary transformation and change of basis We can perform a rotation in the vector space with a unitary transfor- mation: |naf "
+        },
+        {
+          "sectionId": "3.14",
+          "chapterId": "03",
+          "itemId": "3.14",
+          "title": "Operator functions and chapter synthesis",
+          "pagePath": "slides/chapter-03/operator-functions-and-chapter-synthesis.html",
+          "pageStart": 21,
+          "pageEnd": 21,
+          "excerpt": "3.B Simple correspondence between wave mechanics and matrix mechanics 113 Appendix 3.B Simple correspondence between wave mechanics and matrix mechanics In the initial chapters of this book we described the wave mechanics of matter, where the wave functions ψn (x ) are solutions of the Schrödinger equation, and also represent eigenstates in which the system can be found. In this chapter, we introduced the matrix mechanics, which uses linear algebra to describe the same quantum phenomena. In this case, the vectors |"
+        }
+      ]
+    },
+    {
+      "id": "stern-gerlach-experiment-magnetic-force-and-spin",
+      "label": "stern gerlach experiment magnetic force and spin",
+      "fragments": [
+        {
+          "sectionId": "3.2",
+          "chapterId": "03",
+          "itemId": "3.2",
+          "title": "Stern-Gerlach experiment: magnetic force and spin",
+          "pagePath": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html",
+          "pageStart": 2,
+          "pageEnd": 4,
+          "excerpt": "94 3. Construction of quantum theory II: matrix mechanics FIGURE 3.1 Stern–Gerlach experimental setup. The beam of Silver atoms leaves the oven (1) and passes through a collimator (2), to then enter the region of magnetic field gradient (3). Due to the quantization of the angular momentum, dots (4) on the screen should be observed, while in the classical prediction, without quantization of angular momentum, only a continuous line (5) would be observed. Adapted from reference [18]. Wikimedia Commons. Licensed under "
+        }
+      ]
+    },
+    {
+      "id": "dirac-notation-kets-bras-and-inner-products",
+      "label": "dirac notation kets bras and inner products",
+      "fragments": [
+        {
+          "sectionId": "3.3",
+          "chapterId": "03",
+          "itemId": "3.3",
+          "title": "Dirac notation: kets, bras and inner products",
+          "pagePath": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html",
+          "pageStart": 5,
+          "pageEnd": 6,
+          "excerpt": "3.2 Description of the quantum state 97 3.2 Description of the quantum state We begin this section defining some relevant mathematical objects. The vector |n$, called ket in Dirac notation, is the first of them, being equivalent to a vector n\" in Euclidean space. Considering a d -dimensional space, |n$ is a column vector with d rows × 1 column:   n1  n2    |n$ =  .  (3.7)  ..  nd On the other hand, &n| is also a vector, called bra in Dirac notation, this being the conjugate transpose of a ket |n$, that is"
+        }
+      ]
+    },
+    {
+      "id": "hilbert-space-bases-superposition-and-completeness",
+      "label": "hilbert space bases superposition and completeness",
+      "fragments": [
+        {
+          "sectionId": "3.4",
+          "chapterId": "03",
+          "itemId": "3.4",
+          "title": "Hilbert space, bases, superposition and completeness",
+          "pagePath": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html",
+          "pageStart": 5,
+          "pageEnd": 6,
+          "excerpt": "3.2 Description of the quantum state 97 3.2 Description of the quantum state We begin this section defining some relevant mathematical objects. The vector |n$, called ket in Dirac notation, is the first of them, being equivalent to a vector n\" in Euclidean space. Considering a d -dimensional space, |n$ is a column vector with d rows × 1 column:   n1  n2    |n$ =  .  (3.7)  ..  nd On the other hand, &n| is also a vector, called bra in Dirac notation, this being the conjugate transpose of a ket |n$, that is"
+        }
+      ]
+    },
+    {
+      "id": "operators-eigenvalues-and-spectral-decomposition",
+      "label": "operators eigenvalues and spectral decomposition",
+      "fragments": [
+        {
+          "sectionId": "3.5",
+          "chapterId": "03",
+          "itemId": "3.5",
+          "title": "Operators, eigenvalues and spectral decomposition",
+          "pagePath": "slides/chapter-03/operators-as-matrices.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        }
+      ]
+    },
+    {
+      "id": "pauli-matrices-and-spin-observables",
+      "label": "pauli matrices and spin observables",
+      "fragments": [
+        {
+          "sectionId": "3.6",
+          "chapterId": "03",
+          "itemId": "3.6",
+          "title": "Pauli matrices and spin observables",
+          "pagePath": "slides/chapter-03/pauli-matrices-and-spin-observables.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        }
+      ]
+    },
+    {
+      "id": "born-rule-in-vector-notation",
+      "label": "born rule in vector notation",
+      "fragments": [
+        {
+          "sectionId": "3.7",
+          "chapterId": "03",
+          "itemId": "3.7",
+          "title": "Born rule in vector notation",
+          "pagePath": "slides/chapter-03/born-rule-vector-notation.html",
+          "pageStart": 11,
+          "pageEnd": 12,
+          "excerpt": "3.4 Probability of finding a given state 103 ! Example 3.4 In this example, we will take the Pauli matrices σ̂z and σ̂x , deter- mined in Example 3.3, and check if these satisfy the eigenvalue equation (Eq. (3.35)): + ,+ , 1 0 1 σ̂z |+$ = = +|+$, (3.43) 0 −1 0 + ,+ , 1 0 0 σ̂z |−$ = = −|−$. (3.44) 0 −1 1 We therefore have σ̂z |±$ = ±|±$, satisfying the eigenvalue equation. For the component x : + , + , 0 1 1 1 σ̂x |+$x = √ = +|+$x , (3.45) 1 0 2 1 + , + , 0 1 1 1 σ̂x |−$x = √ = −|−$x . (3.46) 1 0 2 −1 Thus, the ope"
+        }
+      ]
+    },
+    {
+      "id": "expectation-value-variance-and-preparation",
+      "label": "expectation value variance and preparation",
+      "fragments": [
+        {
+          "sectionId": "3.8",
+          "chapterId": "03",
+          "itemId": "3.8",
+          "title": "Expectation value, variance and preparation",
+          "pagePath": "slides/chapter-03/expectation-value-variance-and-preparation.html",
+          "pageStart": 13,
+          "pageEnd": 14,
+          "excerpt": "3.5 Expectation value 105 * &Â$ = Pn an (3.54) n where Pn is the probability (Eq. (3.51)) of finding the system in a given |n$ state, with eigenvalue an . As previously mentioned, we are considering a non-degenerate system. Eq. (3.54) can be rewritten as follows: * &Â$ = &n|# $∗ &n|# $an n * = &# |n$&n|# $an n * = &# |Â|n$&n|# $ n / 0 * = &# |Â |n$&n| |# $ (3.55) n and, consequently: &Â$ = &# |Â|# $ (3.56) The equation above represents the expectation value &Â$ of the observable Â for a system in the state "
+        }
+      ]
+    },
+    {
+      "id": "hermitian-operators-and-real-outcomes",
+      "label": "hermitian operators and real outcomes",
+      "fragments": [
+        {
+          "sectionId": "3.9",
+          "chapterId": "03",
+          "itemId": "3.9",
+          "title": "Hermitian operators and real outcomes",
+          "pagePath": "slides/chapter-03/hermitian-operators-and-real-outcomes.html",
+          "pageStart": 7,
+          "pageEnd": 10,
+          "excerpt": "3.3 Observables and operators 99 Second case (u = x ): Another possible assumption for solving Eqs. (3.14)–(3.16) is to consider n1+ = n2+ . We then have: + , + , 1 1 1 1 |+$x = √ and |−$x = √ . (3.18) 2 1 2 −1 Similar to the previous case, studying the operators will help to understand the reason for choosing this solution for x -direction. It is worth mentioning that there is a relationship between these vectors: -+ , + ,. 1 1 0 1 |+$x = √ + = √ (|+$ + |−$) (3.19) 2 0 1 2 and -+ , + ,. 1 1 0 1 |−$x = √ − = √ (|+$"
+        }
+      ]
+    },
+    {
+      "id": "commutators-compatibility-and-measurement-order",
+      "label": "commutators compatibility and measurement order",
+      "fragments": [
+        {
+          "sectionId": "3.10",
+          "chapterId": "03",
+          "itemId": "3.10",
+          "title": "Commutators, compatibility and measurement order",
+          "pagePath": "slides/chapter-03/commutators-compatibility-and-measurement-order.html",
+          "pageStart": 15,
+          "pageEnd": 16,
+          "excerpt": "3.6 Commutation relations 107 FIGURE 3.4 Simplified scheme of a sequence of Stern–Gerlach devices – Example 3.7. based on sequential Stern–Gerlach experiments, illustrate this concept, which will be further examined in Chapter 6. ! Example 3.7 Let’s consider an example similar to Example 3.6. However, the sec- ond Stern–Gerlach device is oriented along the x axis, as shown in Fig. 3.4. From Example 3.6, we know that |# , $ = |+$ and therefore we can calculate the probabilities of obtaining each eigenvalue after the"
+        }
+      ]
+    },
+    {
+      "id": "schrodinger-picture-unitary-time-evolution",
+      "label": "schrodinger picture unitary time evolution",
+      "fragments": [
+        {
+          "sectionId": "3.11",
+          "chapterId": "03",
+          "itemId": "3.11",
+          "title": "Schrodinger picture: unitary time evolution",
+          "pagePath": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html",
+          "pageStart": 17,
+          "pageEnd": 17,
+          "excerpt": "3.7 Time evolution 109 where Û † (t )Û (t ) = 1 (3.77) fulfills the condition of a unitary operator (Eq. (3.A.3)). We can take Eq. (3.75) into Eq. (3.74) to obtain a differential equation for Û (t ): d i! Û (t ) = ĤÛ (t ). (3.78) dt The solution is thus: Û (t ) = e−i Ĥt /! (3.79) and therefore, the time evolution of the vectors (Eq. (3.75)) can be rewritten as: |# (t )$ = e−i Ĥt /! |# (0)$ (3.80) From these considerations, we are ready to state a postulate, which was not detailed in the previous chapter, r"
+        }
+      ]
+    },
+    {
+      "id": "heisenberg-picture-operator-evolution",
+      "label": "heisenberg picture operator evolution",
+      "fragments": [
+        {
+          "sectionId": "3.12",
+          "chapterId": "03",
+          "itemId": "3.12",
+          "title": "Heisenberg picture: operator evolution",
+          "pagePath": "slides/chapter-03/heisenberg-picture-operator-evolution.html",
+          "pageStart": 18,
+          "pageEnd": 18,
+          "excerpt": "110 3. Construction of quantum theory II: matrix mechanics Box 3.1 Detailed description of the Heisenberg equation of motion Let’s consider that the vector |# $H , in the Heisenberg picture, is equivalent to the initial vector |# (0)$S in the Schrödinger picture: |# $H = |# (0)$S = Û † (t )|# (t )$S . (3.84) Let us also consider that the expectation value of an operator &Â$ does not depend on the chosen picture. Thus: &Â$ = H &# |ÂH (t )|# $H = S &# (t )|ÂS |# (t )$S . (3.85) Taking Eq. (3.84) into Eq. (3.85) "
+        }
+      ]
+    },
+    {
+      "id": "unitary-transformations-and-change-of-basis",
+      "label": "unitary transformations and change of basis",
+      "fragments": [
+        {
+          "sectionId": "3.13",
+          "chapterId": "03",
+          "itemId": "3.13",
+          "title": "Unitary transformations and change of basis",
+          "pagePath": "slides/chapter-03/unitary-transformations-and-change-of-basis.html",
+          "pageStart": 19,
+          "pageEnd": 20,
+          "excerpt": "3.A Unitary transformation and change of basis 111 1 4 5 = −Û † (t )ĤÛ (t )Û † (t )ÂS Û (t ) + Û † (t )ÂS Û (t )Û † (t )ĤÛ (t ) i! / 0 † ∂ ÂS + Û (t ) Û (t ). (3.91) ∂t By using Eq. (3.88), we obtain: / 0 d i 4 5 ∂ Â ÂH (t ) = Ĥ(t ), ÂH (t ) + (3.92) dt ! ∂t H where Ĥ(t ) = Û † (t )ĤÛ (t ) (3.93) and / 0 / 0 ∂ Â † ∂ ÂS = Û (t ) Û (t ). (3.94) ∂t ∂t H Appendix 3.A Unitary transformation and change of basis We can perform a rotation in the vector space with a unitary transfor- mation: |naf "
+        }
+      ]
+    },
+    {
+      "id": "operator-functions-and-chapter-synthesis",
+      "label": "operator functions and chapter synthesis",
+      "fragments": [
+        {
+          "sectionId": "3.14",
+          "chapterId": "03",
+          "itemId": "3.14",
+          "title": "Operator functions and chapter synthesis",
+          "pagePath": "slides/chapter-03/operator-functions-and-chapter-synthesis.html",
+          "pageStart": 21,
+          "pageEnd": 21,
+          "excerpt": "3.B Simple correspondence between wave mechanics and matrix mechanics 113 Appendix 3.B Simple correspondence between wave mechanics and matrix mechanics In the initial chapters of this book we described the wave mechanics of matter, where the wave functions ψn (x ) are solutions of the Schrödinger equation, and also represent eigenstates in which the system can be found. In this chapter, we introduced the matrix mechanics, which uses linear algebra to describe the same quantum phenomena. In this case, the vectors |"
+        }
+      ]
+    }
+  ],
+  "sectionIndex": [
+    {
+      "sectionId": "1.1",
+      "chapterId": "01",
+      "itemId": "1.1",
+      "primaryTopic": "why-old-quantum-physics-matters",
+      "transversalTopics": [
+        "wave-optics-as-the-classical-benchmark"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.2",
+      "chapterId": "01",
+      "itemId": "1.2",
+      "primaryTopic": "wave-optics-as-the-classical-benchmark",
+      "transversalTopics": [
+        "hydrogen-spectral-lines"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.3",
+      "chapterId": "01",
+      "itemId": "1.3",
+      "primaryTopic": "hydrogen-spectral-lines",
+      "transversalTopics": [
+        "cathode-rays-and-the-electron"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.4",
+      "chapterId": "01",
+      "itemId": "1.4",
+      "primaryTopic": "cathode-rays-and-the-electron",
+      "transversalTopics": [
+        "black-body-radiation"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.5",
+      "chapterId": "01",
+      "itemId": "1.5",
+      "primaryTopic": "black-body-radiation",
+      "transversalTopics": [
+        "photoelectric-effect"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.6",
+      "chapterId": "01",
+      "itemId": "1.6",
+      "primaryTopic": "photoelectric-effect",
+      "transversalTopics": [
+        "elementary-charge"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.7",
+      "chapterId": "01",
+      "itemId": "1.7",
+      "primaryTopic": "elementary-charge",
+      "transversalTopics": [
+        "electron-diffraction"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.8",
+      "chapterId": "01",
+      "itemId": "1.8",
+      "primaryTopic": "electron-diffraction",
+      "transversalTopics": [
+        "bohr-model-postulates"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.9",
+      "chapterId": "01",
+      "itemId": "1.9",
+      "primaryTopic": "bohr-model-postulates",
+      "transversalTopics": [
+        "bohr-model-hydrogen-spectrum"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.10",
+      "chapterId": "01",
+      "itemId": "1.10",
+      "primaryTopic": "bohr-model-hydrogen-spectrum",
+      "transversalTopics": [
+        "de-broglie-hypothesis"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.11",
+      "chapterId": "01",
+      "itemId": "1.11",
+      "primaryTopic": "de-broglie-hypothesis",
+      "transversalTopics": [
+        "semi-classical-quantization-rule"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.12",
+      "chapterId": "01",
+      "itemId": "1.12",
+      "primaryTopic": "semi-classical-quantization-rule",
+      "transversalTopics": [
+        "scqr-examples"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.13",
+      "chapterId": "01",
+      "itemId": "1.13",
+      "primaryTopic": "scqr-examples",
+      "transversalTopics": [
+        "sommerfeld-orbits-and-ellipse-geometry"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.14",
+      "chapterId": "01",
+      "itemId": "1.14",
+      "primaryTopic": "sommerfeld-orbits-and-ellipse-geometry",
+      "transversalTopics": [
+        "chapter-synthesis"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "1.15",
+      "chapterId": "01",
+      "itemId": "1.15",
+      "primaryTopic": "chapter-synthesis",
+      "transversalTopics": [
+        "sommerfeld-orbits-and-ellipse-geometry"
+      ],
+      "advancedSupportTopics": [
+        "wave-particle-duality",
+        "quantization"
+      ]
+    },
+    {
+      "sectionId": "2.1",
+      "chapterId": "02",
+      "itemId": "2.1",
+      "primaryTopic": "why-wave-mechanics-is-needed",
+      "transversalTopics": [
+        "time-dependent-schrodinger-equation"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.2",
+      "chapterId": "02",
+      "itemId": "2.2",
+      "primaryTopic": "time-dependent-schrodinger-equation",
+      "transversalTopics": [
+        "stationary-states-and-the-tise"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.3",
+      "chapterId": "02",
+      "itemId": "2.3",
+      "primaryTopic": "stationary-states-and-the-tise",
+      "transversalTopics": [
+        "probability-density-and-current"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.4",
+      "chapterId": "02",
+      "itemId": "2.4",
+      "primaryTopic": "probability-density-and-current",
+      "transversalTopics": [
+        "infinite-potential-well"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.5",
+      "chapterId": "02",
+      "itemId": "2.5",
+      "primaryTopic": "infinite-potential-well",
+      "transversalTopics": [
+        "postulates-of-quantum-mechanics-the-rules-ahead"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.6",
+      "chapterId": "02",
+      "itemId": "2.6",
+      "primaryTopic": "postulates-of-quantum-mechanics-the-rules-ahead",
+      "transversalTopics": [
+        "quantum-states-as-superpositions"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.7",
+      "chapterId": "02",
+      "itemId": "2.7",
+      "primaryTopic": "quantum-states-as-superpositions",
+      "transversalTopics": [
+        "observables-operators-and-commutators"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.8",
+      "chapterId": "02",
+      "itemId": "2.8",
+      "primaryTopic": "observables-operators-and-commutators",
+      "transversalTopics": [
+        "measurement-probabilities"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.9",
+      "chapterId": "02",
+      "itemId": "2.9",
+      "primaryTopic": "measurement-probabilities",
+      "transversalTopics": [
+        "expectation-values-and-collapse"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.10",
+      "chapterId": "02",
+      "itemId": "2.10",
+      "primaryTopic": "expectation-values-and-collapse",
+      "transversalTopics": [
+        "equations-of-motion-ehrenfest-and-virial"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.11",
+      "chapterId": "02",
+      "itemId": "2.11",
+      "primaryTopic": "equations-of-motion-ehrenfest-and-virial",
+      "transversalTopics": [
+        "plane-waves-and-localized-packets"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.12",
+      "chapterId": "02",
+      "itemId": "2.12",
+      "primaryTopic": "plane-waves-and-localized-packets",
+      "transversalTopics": [
+        "gaussian-wave-packet-and-fourier-width"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.13",
+      "chapterId": "02",
+      "itemId": "2.13",
+      "primaryTopic": "gaussian-wave-packet-and-fourier-width",
+      "transversalTopics": [
+        "wave-packet-spreading-and-uncertainty"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.14",
+      "chapterId": "02",
+      "itemId": "2.14",
+      "primaryTopic": "wave-packet-spreading-and-uncertainty",
+      "transversalTopics": [
+        "chapter-synthesis"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "2.15",
+      "chapterId": "02",
+      "itemId": "2.15",
+      "primaryTopic": "chapter-synthesis",
+      "transversalTopics": [
+        "wave-packet-spreading-and-uncertainty"
+      ],
+      "advancedSupportTopics": [
+        "operator-formalism",
+        "fourier-analysis"
+      ]
+    },
+    {
+      "sectionId": "3.1",
+      "chapterId": "03",
+      "itemId": "3.1",
+      "primaryTopic": "why-matrix-mechanics-is-needed",
+      "transversalTopics": [
+        "stern-gerlach-experiment-magnetic-force-and-spin"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.2",
+      "chapterId": "03",
+      "itemId": "3.2",
+      "primaryTopic": "stern-gerlach-experiment-magnetic-force-and-spin",
+      "transversalTopics": [
+        "dirac-notation-kets-bras-and-inner-products"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.3",
+      "chapterId": "03",
+      "itemId": "3.3",
+      "primaryTopic": "dirac-notation-kets-bras-and-inner-products",
+      "transversalTopics": [
+        "hilbert-space-bases-superposition-and-completeness"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.4",
+      "chapterId": "03",
+      "itemId": "3.4",
+      "primaryTopic": "hilbert-space-bases-superposition-and-completeness",
+      "transversalTopics": [
+        "operators-eigenvalues-and-spectral-decomposition"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.5",
+      "chapterId": "03",
+      "itemId": "3.5",
+      "primaryTopic": "operators-eigenvalues-and-spectral-decomposition",
+      "transversalTopics": [
+        "pauli-matrices-and-spin-observables"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.6",
+      "chapterId": "03",
+      "itemId": "3.6",
+      "primaryTopic": "pauli-matrices-and-spin-observables",
+      "transversalTopics": [
+        "born-rule-in-vector-notation"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.7",
+      "chapterId": "03",
+      "itemId": "3.7",
+      "primaryTopic": "born-rule-in-vector-notation",
+      "transversalTopics": [
+        "expectation-value-variance-and-preparation"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.8",
+      "chapterId": "03",
+      "itemId": "3.8",
+      "primaryTopic": "expectation-value-variance-and-preparation",
+      "transversalTopics": [
+        "hermitian-operators-and-real-outcomes"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.9",
+      "chapterId": "03",
+      "itemId": "3.9",
+      "primaryTopic": "hermitian-operators-and-real-outcomes",
+      "transversalTopics": [
+        "commutators-compatibility-and-measurement-order"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.10",
+      "chapterId": "03",
+      "itemId": "3.10",
+      "primaryTopic": "commutators-compatibility-and-measurement-order",
+      "transversalTopics": [
+        "schrodinger-picture-unitary-time-evolution"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.11",
+      "chapterId": "03",
+      "itemId": "3.11",
+      "primaryTopic": "schrodinger-picture-unitary-time-evolution",
+      "transversalTopics": [
+        "heisenberg-picture-operator-evolution"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.12",
+      "chapterId": "03",
+      "itemId": "3.12",
+      "primaryTopic": "heisenberg-picture-operator-evolution",
+      "transversalTopics": [
+        "unitary-transformations-and-change-of-basis"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.13",
+      "chapterId": "03",
+      "itemId": "3.13",
+      "primaryTopic": "unitary-transformations-and-change-of-basis",
+      "transversalTopics": [
+        "operator-functions-and-chapter-synthesis"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.14",
+      "chapterId": "03",
+      "itemId": "3.14",
+      "primaryTopic": "operator-functions-and-chapter-synthesis",
+      "transversalTopics": [
+        "unitary-transformations-and-change-of-basis"
+      ],
+      "advancedSupportTopics": [
+        "spectral-theorem",
+        "unitary-evolution"
+      ]
+    }
+  ]
+}

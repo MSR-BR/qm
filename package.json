@@ -4,6 +4,15 @@
     "dev": "node dev-server.mjs",
     "dev:vercel": "vercel dev",
     "check": "node scripts/check-content.mjs",
+    "extract:qm-book-corpus": "node scripts/extract-qm-book-corpus.mjs",
+    "extract:book-sections": "node scripts/extract-qm-book-corpus.mjs",
+    "build:book-topic-index": "node scripts/build-qm-book-topic-index.mjs",
+    "validate:book-corpus": "node scripts/validate-qm-book-corpus.mjs",
+    "validate:book-topic-index": "node scripts/validate-qm-book-topic-index.mjs",
+    "upload:qm-book-sources": "node scripts/upload-qm-book-sources.mjs",
+    "smoke:math-contract": "node scripts/smoke-math-contract.mjs",
+    "smoke:ai-context": "node scripts/smoke-ai-context-package.mjs",
+    "audit:supabase": "node scripts/audit-qm-supabase.mjs",
     "seo": "node scripts/build-seo-artifacts.mjs",
     "deploy": "vercel --prod"
   }
