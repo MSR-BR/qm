@@ -14,6 +14,44 @@
   margin-bottom:0 !important;
 }
 
+.chapter-step-button{
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:1px solid rgba(47, 107, 79, 0.22);
+  background:linear-gradient(180deg, #FFFFFF 0%, #F0F7F3 100%);
+  color:var(--blue, #2F6B4F);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex:0 0 auto;
+  text-decoration:none;
+  font-family:"Inter", sans-serif;
+  font-weight:800;
+  font-size:.82rem;
+  box-shadow:0 6px 14px rgba(47, 107, 79, 0.08);
+  transition:transform .18s ease, box-shadow .18s ease, background-color .18s ease, border-color .18s ease;
+}
+
+.chapter-step-button:hover{
+  background:#E0F0E7;
+  border-color:#8EBDA1;
+  transform:translateY(-1px);
+  box-shadow:0 9px 18px rgba(47, 107, 79, 0.12);
+}
+
+.chapter-step-button.is-disabled{
+  opacity:.34;
+  pointer-events:none;
+  background:#F5F7FA;
+  color:#64748B;
+  box-shadow:none;
+}
+
+.chapter-step-button i{
+  pointer-events:none;
+}
+
 .termo-share-button{
   --share-accent:var(--blue, #2F6B4F);
   --share-surface:var(--blue-soft, #F0F7F3);
@@ -76,5 +114,11 @@
     min-height:38px;
     padding:8px 12px;
     font-size:.8rem;
+  }
+
+  .chapter-step-button{
+    width:32px;
+    height:32px;
+    font-size:.78rem;
   }
 }

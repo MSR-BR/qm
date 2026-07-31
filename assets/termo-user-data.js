@@ -478,6 +478,77 @@
     };
   }
 
+  function normalizePathname(value) {
+    return String(value || "").replace(/\/+$/, "") || "/";
+  }
+
+  function getSlideChapter() {
+    const match = window.location.pathname.match(/\/slides\/(chapter-\d{2})\/[^/]+\.html$/);
+    return match ? match[1] : null;
+  }
+
+  function createChapterStepButton(direction, topic) {
+    const isPrevious = direction === "prev";
+    const label = isPrevious ? "Previous section" : "Next section";
+    const icon = isPrevious ? "fa-chevron-left" : "fa-chevron-right";
+    const button = document.createElement(topic ? "a" : "span");
+
+    button.className = `chapter-step-button chapter-step-button--${direction}${topic ? "" : " is-disabled"}`;
+    button.setAttribute("aria-label", topic ? label : `${label} unavailable`);
+    button.setAttribute("title", topic ? label : isPrevious ? "First section" : "Last section");
+    button.innerHTML = `<i class="fa-solid ${icon}" aria-hidden="true"></i>`;
+
+    if (topic) {
+      button.href = new URL(`../../${topic.url}`, window.location.href).href;
+    } else {
+      button.setAttribute("aria-disabled", "true");
+    }
+
+    return button;
+  }
+
+  function ensureChapterStepStyles() {
+    if (document.querySelector('link[href*="assets/termo-share.css"]')) return;
+
+    const stylesheet = document.createElement("link");
+    stylesheet.rel = "stylesheet";
+    stylesheet.href = "../../assets/termo-share.css?v=0731.1";
+    document.head.appendChild(stylesheet);
+  }
+
+  async function mountChapterStepNavigation() {
+    const chapter = getSlideChapter();
+    const chapterLabel = document.querySelector(".chapter-label");
+
+    if (!chapter || !chapterLabel || document.querySelector(".chapter-step-button")) return;
+
+    ensureChapterStepStyles();
+
+    try {
+      const response = await fetch(`../../data/${chapter}.json`);
+      if (!response.ok) return;
+
+      const data = await response.json();
+      const topics = Array.isArray(data?.topics) ? data.topics : [];
+      const currentPath = normalizePathname(window.location.pathname);
+      const currentIndex = topics.findIndex(function (topic) {
+        const topicPath = normalizePathname(new URL(topic.url, window.location.origin).pathname);
+        return topicPath === currentPath;
+      });
+
+      if (currentIndex < 0) return;
+
+      const previousButton = createChapterStepButton("prev", topics[currentIndex - 1]);
+      const nextButton = createChapterStepButton("next", topics[currentIndex + 1]);
+      chapterLabel.insertAdjacentElement("beforebegin", previousButton);
+      chapterLabel.insertAdjacentElement("afterend", nextButton);
+    } catch (_error) {
+      // Navigation is an enhancement; the section remains fully usable without it.
+    }
+  }
+
+  void mountChapterStepNavigation();
+
   window.TermoUserData = {
     saveExercise,
     listExercises,
