@@ -439,22 +439,22 @@
   color:var(--exercise-muted);
 }
 
-.termo-exercise__panel mjx-container{
-  display:block;
+.termo-exercise__panel mjx-container:not([display="true"]){
+  display:inline-block;
   max-width:100%;
-  overflow-x:auto;
-  overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;
+  overflow:visible;
+  vertical-align:baseline;
 }
 
 .termo-exercise__math-block mjx-container[display="true"],
 .termo-exercise__panel mjx-container[display="true"]{
-  /* Do not make MathJax's internal equation as wide as the panel. Its own
-     centering then pushes a long equation outside the visible left edge on
-     narrow screens. The parent remains horizontally scrollable when needed. */
-  width:auto;
+  display:block;
+  width:100%;
+  max-width:100%;
   margin:0.4rem 0 !important;
-  text-align:left !important;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
 }
 
 .termo-exercise__math-block mjx-container{
