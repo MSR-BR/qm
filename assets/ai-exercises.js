@@ -267,10 +267,14 @@
   }
 
   function renderInlineMarkup(text) {
-    const mathAware = autoFormatPlainMath(text);
-    const protectedText = protectMathSegments(mathAware);
-    const escaped = escapeHtml(protectedText.masked)
-      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+    // Never run the plain-text formatter inside an already delimited MathJax
+    // segment. Otherwise an expression such as \(E_1 = \cdots\) can be
+    // wrapped a second time, producing the nested delimiters seen by MathJax.
+    const protectedText = protectMathSegments(text);
+    const mathAware = autoFormatPlainMath(protectedText.masked);
+    const escaped = escapeHtml(mathAware)
+      .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+      .replace(/(^|[^\w*])\*([^*\n]+)\*/g, "$1<em>$2</em>");
 
     return restoreMathSegments(escaped, protectedText.tokens);
   }

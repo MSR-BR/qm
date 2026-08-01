@@ -11,6 +11,7 @@
     "validate:book-topic-index": "node scripts/validate-qm-book-topic-index.mjs",
     "upload:qm-book-sources": "node scripts/upload-qm-book-sources.mjs",
     "smoke:math-contract": "node scripts/smoke-math-contract.mjs",
+    "smoke:ai-renderer": "node scripts/smoke-ai-renderer.mjs",
     "smoke:ai-context": "node scripts/smoke-ai-context-package.mjs",
     "audit:supabase": "node scripts/audit-qm-supabase.mjs",
     "seo": "node scripts/build-seo-artifacts.mjs",
