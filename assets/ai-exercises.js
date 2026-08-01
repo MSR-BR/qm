@@ -357,8 +357,55 @@
     return blocks;
   }
 
+  function isInlineMathOnly(value) {
+    return /^\\\([\s\S]*?\\\)$/.test(String(value || "").trim());
+  }
+
+  function joinFragmentedInlineMath(blocks) {
+    // The generation model occasionally puts a short inline expression in its
+    // own Markdown paragraph ("mass" / "\\(m\\)" / "moving...").  That is
+    // not a semantic paragraph boundary: it makes ordinary prose look broken,
+    // especially on a phone. Reattach those fragments to their surrounding
+    // sentence while leaving true display math (\\[ ... \\]) untouched.
+    const merged = [];
+
+    for (let index = 0; index < blocks.length; index += 1) {
+      const current = blocks[index];
+      const next = blocks[index + 1];
+
+      if (
+        current.type === "paragraph" &&
+        isInlineMathOnly(current.value) &&
+        next &&
+        next.type === "paragraph"
+      ) {
+        if (merged.length && merged[merged.length - 1].type === "paragraph") {
+          merged[merged.length - 1].value = `${merged[merged.length - 1].value.trim()} ${current.value.trim()} ${next.value.trim()}`;
+        } else {
+          merged.push({ type: "paragraph", value: `${current.value.trim()} ${next.value.trim()}` });
+        }
+        index += 1;
+        continue;
+      }
+
+      if (
+        current.type === "paragraph" &&
+        isInlineMathOnly(current.value) &&
+        merged.length &&
+        merged[merged.length - 1].type === "paragraph"
+      ) {
+        merged[merged.length - 1].value = `${merged[merged.length - 1].value.trim()} ${current.value.trim()}`;
+        continue;
+      }
+
+      merged.push(current);
+    }
+
+    return merged;
+  }
+
   function formatGeneratedText(value) {
-    return tokenizeGeneratedText(value)
+    return joinFragmentedInlineMath(tokenizeGeneratedText(value))
       .map(function (block) {
         if (block.type === "math") {
           return `<div class="termo-exercise__math-block">${escapeHtml(block.value)}</div>`;

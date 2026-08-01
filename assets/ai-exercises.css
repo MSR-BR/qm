@@ -422,6 +422,7 @@
 .termo-exercise__math-block{
   margin:14px 0 18px;
   padding:6px 0;
+  min-width:0;
   overflow-x:auto;
   overflow-y:hidden;
   max-width:100%;
@@ -448,8 +449,12 @@
 
 .termo-exercise__math-block mjx-container[display="true"],
 .termo-exercise__panel mjx-container[display="true"]{
-  width:100%;
+  /* Do not make MathJax's internal equation as wide as the panel. Its own
+     centering then pushes a long equation outside the visible left edge on
+     narrow screens. The parent remains horizontally scrollable when needed. */
+  width:auto;
   margin:0.4rem 0 !important;
+  text-align:left !important;
 }
 
 .termo-exercise__math-block mjx-container{
@@ -507,6 +512,12 @@
 
   .termo-exercise__math-block{
     margin:12px 0 16px;
+    padding:4px 0;
+    font-size:.92em;
+  }
+
+  .termo-exercise__math-block mjx-container[display="true"]{
+    margin:.25rem 0 !important;
   }
 
   .termo-exercise__validation-panel{
