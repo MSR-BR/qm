@@ -157,7 +157,7 @@
   }
 
   function normalizeGeneratedMath(value) {
-    return String(value || "")
+    return flattenNestedMathDelimiters(String(value || "")
       .replace(/\r\n?/g, "\n")
       .replace(/\\\\/g, "\\")
       .replace(/^\s*```(?:latex|tex)?\s*$/gim, "")
@@ -180,7 +180,23 @@
       })
       .join("\n")
       .replace(/\n{3,}/g, "\n\n")
-      .trim();
+      .trim());
+  }
+
+  function flattenNestedMathDelimiters(value) {
+    let text = String(value || "");
+    let previous = "";
+    while (text !== previous) {
+      previous = text;
+      text = text
+        .replace(/\\\[([\s\S]*?)\\\]/g, function (_match, content) {
+          return `\\[${String(content).replace(/\\\(([\s\S]*?)\\\)/g, "$1")}\\]`;
+        })
+        .replace(/\\\(([^\n]*?)\\\)/g, function (_match, content) {
+          return `\\(${String(content).replace(/\\\[([\s\S]*?)\\\]/g, "$1")}\\)`;
+        });
+    }
+    return text;
   }
 
   function latexifySnippet(snippet) {
@@ -224,10 +240,10 @@
     let formatted = paragraph;
 
     formatted = formatted.replace(
-      /\[\s*([^[\]\n]{3,180})\s*\]/g,
-      function (match, snippet) {
+      /(^|[^\\])\[\s*([^[\]\n]{3,180})\s*\]/g,
+      function (match, lead, snippet) {
         if (!isMathy(snippet)) return match;
-        return `\\(${latexifySnippet(snippet)}\\)`;
+        return `${lead}\\(${latexifySnippet(snippet)}\\)`;
       }
     );
 
@@ -348,7 +364,9 @@
           return `<div class="termo-exercise__math-block">${escapeHtml(block.value)}</div>`;
         }
 
-        return `<p>${renderInlineMarkup(block.value).replace(/\n/g, "<br>")}</p>`;
+        // Model line wraps are not semantic paragraph breaks. Keeping them as
+        // <br> made isolated inline symbols look like separate sentences.
+        return `<p>${renderInlineMarkup(block.value.replace(/\s*\n\s*/g, " "))}</p>`;
       })
       .join("");
   }

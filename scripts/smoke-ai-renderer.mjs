@@ -13,6 +13,7 @@ vm.runInNewContext(source, { window, document, console });
 
 const input = "where \\(E_1 = \\frac{\\pi^2\\hbar^2}{2mL^2}\\), \\(E_2 = \\frac{4\\pi^2\\hbar^2}{2mL^2}\\).";
 const rendered = window.QmAIExercise.formatGeneratedText(input);
+const nestedDisplay = window.QmAIExercise.formatGeneratedText("\\[\\frac{i}{\\hbar} \\(\\hat H, \\hat A_H(t)\\) = \\frac{\\hat p}{m}\\]");
 
 if (rendered.includes("\\(\\(") || rendered.includes("\\)\\)")) {
   throw new Error("The renderer nested MathJax delimiters inside a protected expression.");
@@ -20,6 +21,9 @@ if (rendered.includes("\\(\\(") || rendered.includes("\\)\\)")) {
 
 if (!rendered.includes("E_1") || !rendered.includes("E_2")) {
   throw new Error("The renderer did not preserve the quantum equations.");
+}
+if (nestedDisplay.includes("\\(\\hat H") || nestedDisplay.includes("\\)\\]")) {
+  throw new Error("The renderer did not flatten inline math nested in display math.");
 }
 
 console.log("AI exercise renderer passed.");

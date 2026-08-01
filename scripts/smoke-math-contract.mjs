@@ -1,4 +1,5 @@
 import { validateExerciseMathContract } from "../lib/math-format-validator.mjs";
+import { normalizeExerciseMathForTest } from "../lib/exercicio-handler.mjs";
 
 const cases = [
   {
@@ -75,4 +76,12 @@ for (const entry of cases) {
 
 if (failures > 0) {
   process.exitCode = 1;
+}
+
+const flattened = normalizeExerciseMathForTest({
+  statement: "\\[\\frac{i}{\\hbar} \\(\\hat H, \\hat A_H(t)\\) = \\frac{\\hat p}{m}\\]",
+  solution: ""
+});
+if (!/^\\\[/.test(flattened.statement) || /\\\[([\s\S]*?)\\\(/.test(flattened.statement) || /\\\)\s*\\\]/.test(flattened.statement)) {
+  throw new Error("Nested inline delimiters inside display math were not flattened.");
 }
