@@ -1,8 +1,8 @@
 {
   "version": "qm-book-topic-index-v1",
-  "generatedAt": "2026-07-31T22:27:44.673Z",
-  "sectionCount": 44,
-  "topicCount": 49,
+  "generatedAt": "2026-08-03T22:12:08.069Z",
+  "sectionCount": 58,
+  "topicCount": 63,
   "topics": [
     {
       "id": "why-old-quantum-physics-matters",
@@ -1617,6 +1617,230 @@
           "excerpt": "3.B Simple correspondence between wave mechanics and matrix mechanics 113 Appendix 3.B Simple correspondence between wave mechanics and matrix mechanics In the initial chapters of this book we described the wave mechanics of matter, where the wave functions ψn (x ) are solutions of the Schrödinger equation, and also represent eigenstates in which the system can be found. In this chapter, we introduced the matrix mechanics, which uses linear algebra to describe the same quantum phenomena. In this case, the vectors |"
         }
       ]
+    },
+    {
+      "id": "bound-and-unbound-states-chapter-roadmap",
+      "label": "bound and unbound states chapter roadmap",
+      "fragments": [
+        {
+          "sectionId": "4.1",
+          "chapterId": "04",
+          "itemId": "4.1",
+          "title": "Bound and unbound states: chapter roadmap",
+          "pagePath": "slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "118 4. One-dimensional problems: bound and unbound states 4.A.3 Standard deviation, uncertainty principle 164 Appendix 4.B Exercises 165 In this chapter, we discuss bound states, such as harmonic oscillators and potential wells, and unbound states, like tunneling through barri- ers. This conceptual basis is very important in condensed matter physics, for example. Bound states provide information about semiconductors and quantum dots used in optoelectronics, while unbound states with tunnel- ing are vital for unders"
+        }
+      ]
+    },
+    {
+      "id": "qho-differential-equation-variables-and-eigenstates",
+      "label": "qho differential equation variables and eigenstates",
+      "fragments": [
+        {
+          "sectionId": "4.2",
+          "chapterId": "04",
+          "itemId": "4.2",
+          "title": "QHO: differential equation, variables and eigenstates",
+          "pagePath": "slides/chapter-04/quantum-harmonic-oscillator-qho-model-and-scaling.html",
+          "pageStart": 2,
+          "pageEnd": 10,
+          "excerpt": "118 4. One-dimensional problems: bound and unbound states 4.A.3 Standard deviation, uncertainty principle 164 Appendix 4.B Exercises 165 In this chapter, we discuss bound states, such as harmonic oscillators and potential wells, and unbound states, like tunneling through barri- ers. This conceptual basis is very important in condensed matter physics, for example. Bound states provide information about semiconductors and quantum dots used in optoelectronics, while unbound states with tunnel- ing are vital for unders"
+        }
+      ]
+    },
+    {
+      "id": "qho-energy-eigenvalues",
+      "label": "qho energy eigenvalues",
+      "fragments": [
+        {
+          "sectionId": "4.3",
+          "chapterId": "04",
+          "itemId": "4.3",
+          "title": "QHO: energy eigenvalues",
+          "pagePath": "slides/chapter-04/qho-hermite-equation-and-energy-quantization.html",
+          "pageStart": 3,
+          "pageEnd": 6,
+          "excerpt": "4.1 Bound states I: harmonic oscillator 119 !2 d 2 1 − ψ(x ) + mω2 x 2 ψ(x ) = E ψ(x ). (4.2) 2m d x 2 2 After the changes of variables, which are described in detail in Box 4.1, we then obtain the Hermite differential equation: d2 d 2 χ (ξ ) − 2ξ χ (ξ ) + (2% − 1)χ (ξ ) = 0. (4.3) dξ dξ This differential equation has a solution for any value of % = E /!ω. How- ever, the solution can only be normalized (an essential physical condition for the wave function) if: 2% = 2n + 1, (4.4) where n = 0, 1, 2, 3, · · · . The s"
+        }
+      ]
+    },
+    {
+      "id": "qho-ladder-operators-and-oscillator-algebra",
+      "label": "qho ladder operators and oscillator algebra",
+      "fragments": [
+        {
+          "sectionId": "4.4",
+          "chapterId": "04",
+          "itemId": "4.4",
+          "title": "QHO: ladder operators and oscillator algebra",
+          "pagePath": "slides/chapter-04/qho-ladder-operators-and-oscillator-algebra.html",
+          "pageStart": 11,
+          "pageEnd": 18,
+          "excerpt": "4.1 Bound states I: harmonic oscillator 127 Taking the above equation into Eq. (4.35), we obtain the probability den- sity for a CHO: 1 ( (x ) = + . (4.39) π x02 − x 2 4.1.3 Solution II: raising and lowering operators Objective The goal of this subsection is to review the QHO concept; however, through an alternative mathematical approach. Assessing the ease or convenience of this methodology compared to the previous one depends on the specific nature of the problem at hand. Rewriting the Hamiltonian, new operators "
+        }
+      ]
+    },
+    {
+      "id": "qho-expectation-values-and-uncertainty",
+      "label": "qho expectation values and uncertainty",
+      "fragments": [
+        {
+          "sectionId": "4.5",
+          "chapterId": "04",
+          "itemId": "4.5",
+          "title": "QHO: expectation values and uncertainty",
+          "pagePath": "slides/chapter-04/qho-expectation-values-and-uncertainty.html",
+          "pageStart": 45,
+          "pageEnd": 48,
+          "excerpt": "4.A Harmonic oscillator: expectation value and uncertainty principle 161 Thus, Eq. (4.A.1) reads as: ( ∞ q 5ξ̂ q 6 ξ q 2 dξ 5x̂ 6 = q = ψ (ξ ) . q n (4.A.4) α −∞ α α Defining: √ ψn (z) = α f (z) ⇒ ψn2 (z) = αf 2 (z), (4.A.5) it is possible to write the expectation value for the position in terms of the dimensionless variable ξ : ( ∞ q 5q 6 = 5ξ̂ 6 = ξ q f 2 (ξ )d ξ . (4.A.6) −∞ The above integral is detailed solved in Box 4.12, and the result reads as: q (q + 2) (q − 1)5q − 26 + 2(2n + 1)5q 6 − 2 5q + 26 = 0 (4.A.7"
+        }
+      ]
+    },
+    {
+      "id": "finite-potential-well-bound-state-setup",
+      "label": "finite potential well bound state setup",
+      "fragments": [
+        {
+          "sectionId": "4.6",
+          "chapterId": "04",
+          "itemId": "4.6",
+          "title": "Finite potential well: bound-state setup",
+          "pagePath": "slides/chapter-04/finite-potential-well-bound-state-setup.html",
+          "pageStart": 19,
+          "pageEnd": 21,
+          "excerpt": "4.2 Bound states II: finite potential well (E < 0) 135 FIGURE 4.3 Graphical representation for the finite potential well – Eq. (4.94). This case has bound states, since −V0 < E < 0. which reads as: # % α 1 d ψ1 (x ) = √ x − 2 ψ0 (x ). (4.92) 2 α dx Thus, the wave function for the first excited state n = 1 results in: ! mω \"3/4 √ ! mω \" ψ1 (x ) = 2π x exp − x2 , (4.93) π! 2! also in accordance with the result obtained through the solution of the Hermite differential equation (Section 4.1.2). ! 4.2 Bound states II: f"
+        }
+      ]
+    },
+    {
+      "id": "finite-well-quantization-and-energy-levels",
+      "label": "finite well quantization and energy levels",
+      "fragments": [
+        {
+          "sectionId": "4.7",
+          "chapterId": "04",
+          "itemId": "4.7",
+          "title": "Finite-well quantization and energy levels",
+          "pagePath": "slides/chapter-04/finite-well-quantization-and-energy-levels.html",
+          "pageStart": 22,
+          "pageEnd": 26,
+          "excerpt": "138 4. One-dimensional problems: bound and unbound states Therefore, there are two transcendental equations to determine k̃ : Eqs. (4.111) and (4.112). Let’s explore these solutions, and then, using Eq. (4.100), determine the energy spectrum of the system. The left-hand side of Eqs. (4.111) and (4.112) can be rewritten as follows: & '1/2 (k0 a )2 − (k̃ a )2 y1 (k̃ a , k0 a ) = , (4.113) k̃ a while the right-hand side of Eq. (4.111) can be written as: 5 6 + k̃ a y2 (k̃ a ) = − cot , (4.114) 2 and the right-hand side"
+        }
+      ]
+    },
+    {
+      "id": "finite-well-wave-functions-and-penetration",
+      "label": "finite well wave functions and penetration",
+      "fragments": [
+        {
+          "sectionId": "4.8",
+          "chapterId": "04",
+          "itemId": "4.8",
+          "title": "Finite-well wave functions and penetration",
+          "pagePath": "slides/chapter-04/finite-well-wave-functions-and-penetration.html",
+          "pageStart": 27,
+          "pageEnd": 30,
+          "excerpt": "4.2 Bound states II: finite potential well (E < 0) 143 Wave functions 5 6 k̃n a x / l ψIodd n (x ) = −2i C ei k̃n a /2 sin e , (4.131) 2 ) # %* odd n i k̃n a /2 x 1 ψI I (x ) = 2i C e sin k̃n a − , (4.132) a 2 5 6 k̃n a −(x −a )/ l ψIodd n I I (x ) = 2i C e i k̃n a /2 sin e , (4.133) 2 5 6 k̃ a ψIeven n (x ) = 2C ei k̃n a /2 cos n ex / l , (4.134) 2 ) # %* x 1 ψIeven I n (x ) = 2C e i k̃n a /2 cos k̃ n a − , (4.135) a 2 5 6 even n i k̃n a /2 k̃n a −(x −a )/ l ψI I I (x ) = 2C e cos e . (4.136) 2 Re{Wave functions} "
+        }
+      ]
+    },
+    {
+      "id": "probability-current-reflection-and-transmission",
+      "label": "probability current reflection and transmission",
+      "fragments": [
+        {
+          "sectionId": "4.9",
+          "chapterId": "04",
+          "itemId": "4.9",
+          "title": "Probability current, reflection and transmission",
+          "pagePath": "slides/chapter-04/probability-current-reflection-and-transmission.html",
+          "pageStart": 31,
+          "pageEnd": 32,
+          "excerpt": "4.3 Transmission and reflection coefficients 147 FIGURE 4.6 Simplified scheme for incident, reflected and transmitted waves. Regions II and III In a similar way to what we did for region I, we can repeat the methodology for the regions II and III. For region II, we consider the wave function of Eq. (4.101), while for region III, we consider the wave function of Eq. (4.98). As discussed above, there are two possible solu- tions, which can be obtained with positive branch/odd n (Eq. (4.156)), and negative branch/even"
+        }
+      ]
+    },
+    {
+      "id": "scattering-from-an-attractive-finite-well",
+      "label": "scattering from an attractive finite well",
+      "fragments": [
+        {
+          "sectionId": "4.10",
+          "chapterId": "04",
+          "itemId": "4.10",
+          "title": "Scattering from an attractive finite well",
+          "pagePath": "slides/chapter-04/scattering-from-an-attractive-finite-well.html",
+          "pageStart": 33,
+          "pageEnd": 37,
+          "excerpt": "4.4 Unbound states I: finite potential well (E > 0) 149 FIGURE 4.7 Graphical representation for the finite potential well. and ψI I I (x ) = F ei k x = ψt (x ). (4.174) We therefore identify that the wave function of region I contains the inci- dent wave ψi (x ) (Eq. (4.164)) and the reflected wave ψr (x ) (Eq. (4.165)); while region III wave function contains the transmitted wave function ψt (x ) (Eq. (4.166)). Note that we are considering the particle incident from the left. If we considered the particle incident"
+        }
+      ]
+    },
+    {
+      "id": "delta-function-well-and-scattering",
+      "label": "delta function well and scattering",
+      "fragments": [
+        {
+          "sectionId": "4.11",
+          "chapterId": "04",
+          "itemId": "4.11",
+          "title": "Delta-function well and scattering",
+          "pagePath": "slides/chapter-04/delta-function-well-and-scattering.html",
+          "pageStart": 38,
+          "pageEnd": 40,
+          "excerpt": "154 4. One-dimensional problems: bound and unbound states FIGURE 4.9 Graphical representation for the Delta potential well. 4.5 Unbound states II: delta well (E > 0) This problem can be interpreted as an extension of the previous section, where we discussed the finite potential well with E > 0. However, for the present section, we will make the limit at which the width of the potential is zero, i.e. a → 0. Region II is suppressed and, in this way, the potential turns to be V (x ) = −α δ (x ), as shown in Fig. 4.9. "
+        }
+      ]
+    },
+    {
+      "id": "rectangular-step-potential-and-quantum-tunneling",
+      "label": "rectangular step potential and quantum tunneling",
+      "fragments": [
+        {
+          "sectionId": "4.12",
+          "chapterId": "04",
+          "itemId": "4.12",
+          "title": "Rectangular step potential and quantum tunneling",
+          "pagePath": "slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html",
+          "pageStart": 41,
+          "pageEnd": 44,
+          "excerpt": "4.6 Unbound states III: rectangular step potential (E < V0 ) 157 Taking Eqs. (4.216) and (4.217) into Eq. (4.215), results in: & ' 2m|α | i k lim Ae−i k .x − B ei k .x − F ei k .x = (A + B ), (4.218) .x →0 !2 where we are considering ψ(0) = ψI (0) = A + B . Taking the limit on the left side of Eq. (4.218), we find: > i % $ /|E | A B= > , (4.219) 1 − i % $ /|E | where m|α |2 %$ = . (4.220) 2!2 Taking Eq. (4.219) into Eq. (4.211), we also find: A F= > . (4.221) 1 − i % $ /|E | 4.6 Unbound states III: rectangular step"
+        }
+      ]
+    },
+    {
+      "id": "worked-models-and-integrated-practice",
+      "label": "worked models and integrated practice",
+      "fragments": [
+        {
+          "sectionId": "4.13",
+          "chapterId": "04",
+          "itemId": "4.13",
+          "title": "Worked models and integrated practice",
+          "pagePath": "slides/chapter-04/worked-models-and-integrated-practice.html",
+          "pageStart": 49,
+          "pageEnd": 51,
+          "excerpt": "4.B Exercises 165 (Eq. (2.146)) for the position and momentum results in: # % ! 1 var(x ) = 5x̂ 2 6 − 5x̂ 62 = n+ and mω 2 # % 1 var(p ) = 5p̂ 2 6 − 5p̂62 = m!ω n + . (4.A.30) 2 Using the √ results above, we can verify the product of the standard devia- tion .q = var(q ), given by: # % 1 .x .p = ! n + (4.A.31) 2 To think How can we interpret this result in terms of the Heisenberg uncertainty principle. Appendix 4.B Exercises Conceptual exercises Exercise 4.1. Consider the idea of bound and unbound states, as discus"
+        }
+      ]
+    },
+    {
+      "id": "chapter-synthesis-one-dimensional-quantum-models",
+      "label": "chapter synthesis one dimensional quantum models",
+      "fragments": [
+        {
+          "sectionId": "4.14",
+          "chapterId": "04",
+          "itemId": "4.14",
+          "title": "Chapter synthesis: one-dimensional quantum models",
+          "pagePath": "slides/chapter-04/chapter-synthesis-one-dimensional-quantum-models.html",
+          "pageStart": 49,
+          "pageEnd": 51,
+          "excerpt": "4.B Exercises 165 (Eq. (2.146)) for the position and momentum results in: # % ! 1 var(x ) = 5x̂ 2 6 − 5x̂ 62 = n+ and mω 2 # % 1 var(p ) = 5p̂ 2 6 − 5p̂62 = m!ω n + . (4.A.30) 2 Using the √ results above, we can verify the product of the standard devia- tion .q = var(q ), given by: # % 1 .x .p = ! n + (4.A.31) 2 To think How can we interpret this result in terms of the Heisenberg uncertainty principle. Appendix 4.B Exercises Conceptual exercises Exercise 4.1. Consider the idea of bound and unbound states, as discus"
+        }
+      ]
     }
   ],
   "sectionIndex": [
@@ -2191,6 +2415,146 @@
         "spectral-theorem",
         "unitary-evolution"
       ]
+    },
+    {
+      "sectionId": "4.1",
+      "chapterId": "04",
+      "itemId": "4.1",
+      "primaryTopic": "bound-and-unbound-states-chapter-roadmap",
+      "transversalTopics": [
+        "qho-differential-equation-variables-and-eigenstates"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.2",
+      "chapterId": "04",
+      "itemId": "4.2",
+      "primaryTopic": "qho-differential-equation-variables-and-eigenstates",
+      "transversalTopics": [
+        "qho-energy-eigenvalues"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.3",
+      "chapterId": "04",
+      "itemId": "4.3",
+      "primaryTopic": "qho-energy-eigenvalues",
+      "transversalTopics": [
+        "qho-ladder-operators-and-oscillator-algebra"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.4",
+      "chapterId": "04",
+      "itemId": "4.4",
+      "primaryTopic": "qho-ladder-operators-and-oscillator-algebra",
+      "transversalTopics": [
+        "qho-expectation-values-and-uncertainty"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.5",
+      "chapterId": "04",
+      "itemId": "4.5",
+      "primaryTopic": "qho-expectation-values-and-uncertainty",
+      "transversalTopics": [
+        "finite-potential-well-bound-state-setup"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.6",
+      "chapterId": "04",
+      "itemId": "4.6",
+      "primaryTopic": "finite-potential-well-bound-state-setup",
+      "transversalTopics": [
+        "finite-well-quantization-and-energy-levels"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.7",
+      "chapterId": "04",
+      "itemId": "4.7",
+      "primaryTopic": "finite-well-quantization-and-energy-levels",
+      "transversalTopics": [
+        "finite-well-wave-functions-and-penetration"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.8",
+      "chapterId": "04",
+      "itemId": "4.8",
+      "primaryTopic": "finite-well-wave-functions-and-penetration",
+      "transversalTopics": [
+        "probability-current-reflection-and-transmission"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.9",
+      "chapterId": "04",
+      "itemId": "4.9",
+      "primaryTopic": "probability-current-reflection-and-transmission",
+      "transversalTopics": [
+        "scattering-from-an-attractive-finite-well"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.10",
+      "chapterId": "04",
+      "itemId": "4.10",
+      "primaryTopic": "scattering-from-an-attractive-finite-well",
+      "transversalTopics": [
+        "delta-function-well-and-scattering"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.11",
+      "chapterId": "04",
+      "itemId": "4.11",
+      "primaryTopic": "delta-function-well-and-scattering",
+      "transversalTopics": [
+        "rectangular-step-potential-and-quantum-tunneling"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.12",
+      "chapterId": "04",
+      "itemId": "4.12",
+      "primaryTopic": "rectangular-step-potential-and-quantum-tunneling",
+      "transversalTopics": [
+        "worked-models-and-integrated-practice"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.13",
+      "chapterId": "04",
+      "itemId": "4.13",
+      "primaryTopic": "worked-models-and-integrated-practice",
+      "transversalTopics": [
+        "chapter-synthesis-one-dimensional-quantum-models"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "4.14",
+      "chapterId": "04",
+      "itemId": "4.14",
+      "primaryTopic": "chapter-synthesis-one-dimensional-quantum-models",
+      "transversalTopics": [
+        "worked-models-and-integrated-practice"
+      ],
+      "advancedSupportTopics": []
     }
   ]
 }

@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>QHO: Hermite equation and energy quantization | Chapter 4 | Quantum Mechanics</title>
-  <meta name="description" content="Normalizability, polynomial termination and the equally spaced oscillator spectrum. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <title>QHO: energy eigenvalues | Chapter 4 | Quantum Mechanics</title>
+  <meta name="description" content="Normalizability selects the allowed values of energy and yields the equally spaced oscillator spectrum. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
   <meta name="author" content="Prof. Mario Reis" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-04/qho-hermite-equation-and-energy-quantization.html" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="Quantum Mechanics" />
-  <meta property="og:title" content="QHO: Hermite equation and energy quantization | Chapter 4 | Quantum Mechanics" />
-  <meta property="og:description" content="Normalizability, polynomial termination and the equally spaced oscillator spectrum. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
+  <meta property="og:title" content="QHO: energy eigenvalues | Chapter 4 | Quantum Mechanics" />
+  <meta property="og:description" content="Normalizability selects the allowed values of energy and yields the equally spaced oscillator spectrum. Practical auxiliary summary for Chapter 4 of the Quantum Mechanics book-app." />
   <meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-04/qho-hermite-equation-and-energy-quantization.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -36,9 +36,9 @@
     <div class="hdr"><div class="hdr-inner">
       <a href="../../index.html?view=chapters&chapter=04" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a>
       <div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 4 · Item 4.3</div>
-      <div class="hdr-title">QHO: Hermite equation and energy quantization</div>
-      <div class="hdr-sub">Normalizability turns a differential equation into a discrete spectrum</div>
-    </div><div class="slide-num">3 / 15</div></div>
+      <div class="hdr-title">QHO: energy eigenvalues</div>
+      <div class="hdr-sub">Normalizability turns the Hermite equation into a discrete spectrum</div>
+    </div><div class="slide-num">3 / 14</div></div>
     <div class="body">
       <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>After the Gaussian asymptotic factor is removed, the remaining function satisfies Hermite's equation. A generic power series grows too rapidly; normalizability forces that series to terminate, and this termination condition quantizes the energy.</p></div>
       <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-filter"></i> Factor out the Gaussian</div><p>Write</p><div class="eq">\[\psi(\xi)=h(\xi)e^{-\xi^2/2}\]</div><p>and substitute into the dimensionless equation. The result is</p><div class="eq key-eq">\[h''-2\xi h'+(2\epsilon-1)h=0\]</div><p>This becomes the Hermite equation only for particular values of \(\epsilon\).</p></div><div class="card green"><div class="ch green"><i class="fa-solid fa-arrow-down-1-9"></i> Series recursion</div><p>With \(h=\sum_{j=0}^{\infty}a_j\xi^j\), coefficients satisfy</p><div class="eq">\[a_{j+2}=\frac{2j+1-2\epsilon}{(j+2)(j+1)}a_j\]</div><p>Even and odd coefficients form independent chains, anticipating states of definite parity.</p></div></div>

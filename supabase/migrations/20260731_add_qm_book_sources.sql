@@ -14,7 +14,7 @@ set public = false,
 
 create table if not exists public.qm_book_sources (
   source_key text primary key,
-  chapter_id text not null check (chapter_id ~ '^\\d{2}$'),
+  chapter_id text not null check (chapter_id ~ '^[0-9]{2}$'),
   source_kind text not null check (source_kind in ('theory', 'solutions')),
   storage_bucket text not null default 'qm-book-sources' check (storage_bucket = 'qm-book-sources'),
   storage_path text not null unique,
@@ -28,6 +28,7 @@ create table if not exists public.qm_book_sources (
 
 alter table public.qm_book_sources enable row level security;
 revoke all on table public.qm_book_sources from anon, authenticated;
+grant select, insert, update on table public.qm_book_sources to service_role;
 
 comment on table public.qm_book_sources is
   'Private metadata for book PDFs used by the server-side QM exercise generator.';

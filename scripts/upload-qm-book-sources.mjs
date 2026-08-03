@@ -9,8 +9,21 @@ const SOURCES = [
   ["chapter-02-theory", "02", "theory", "/Users/marioreis/Desktop/qm/c2 Reis Quantum Mechanics copy 3.pdf", "chapters/02/theory.pdf"],
   ["chapter-02-solutions", "02", "solutions", "/Users/marioreis/Desktop/qm/c2_Reis QM solutions copy 3.pdf", "chapters/02/solutions.pdf"],
   ["chapter-03-theory", "03", "theory", "/Users/marioreis/Desktop/qm/c3 Reis Quantum Mechanics copy 4.pdf", "chapters/03/theory.pdf"],
-  ["chapter-03-solutions", "03", "solutions", "/Users/marioreis/Desktop/qm/c3_Reis QM solutions copy 3.pdf", "chapters/03/solutions.pdf"]
+  ["chapter-03-solutions", "03", "solutions", "/Users/marioreis/Desktop/qm/c3_Reis QM solutions copy 3.pdf", "chapters/03/solutions.pdf"],
+  ["chapter-04-theory", "04", "theory", "/Users/marioreis/Desktop/qm/c4 Reis Quantum Mechanics copy 5.pdf", "chapters/04/theory.pdf"],
+  ["chapter-04-solutions", "04", "solutions", "/Users/marioreis/Desktop/qm/c4_Reis QM solutions copy 3.pdf", "chapters/04/solutions.pdf"]
 ];
+
+// Pass chapter ids to avoid re-uploading unchanged PDFs, e.g.
+// `node scripts/upload-qm-book-sources.mjs 04`.
+const requestedChapters = new Set(process.argv.slice(2).map((value) => String(value).padStart(2, "0")));
+const selectedSources = requestedChapters.size
+  ? SOURCES.filter((source) => requestedChapters.has(source[1]))
+  : SOURCES;
+
+if (!selectedSources.length) {
+  throw new Error("No matching chapter sources were selected.");
+}
 
 function loadEnvFile(path) {
   if (!existsSync(path)) return;
@@ -36,7 +49,7 @@ if (!url || !serviceKey) {
   throw new Error("Set PUBLIC_SUPABASE_URL and a server-only SUPABASE_SERVICE_ROLE_KEY (or SUPABASE_SECRET_KEY) before uploading.");
 }
 
-for (const [sourceKey, chapterId, sourceKind, localPath, storagePath] of SOURCES) {
+for (const [sourceKey, chapterId, sourceKind, localPath, storagePath] of selectedSources) {
   if (!existsSync(localPath)) throw new Error(`Missing PDF: ${localPath}`);
   const bytes = readFileSync(localPath);
   const response = await fetch(`${url}/storage/v1/object/${BUCKET}/${storagePath}`, {

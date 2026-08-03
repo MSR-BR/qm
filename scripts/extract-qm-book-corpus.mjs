@@ -29,6 +29,16 @@ const CHAPTERS = [
     theoryPdf: "/Users/marioreis/Desktop/qm/c3 Reis Quantum Mechanics copy 4.pdf",
     solutionsPdf: "/Users/marioreis/Desktop/qm/c3_Reis QM solutions copy 3.pdf",
     ranges: [[2, 2], [2, 4], [5, 6], [5, 6], [7, 10], [7, 10], [11, 12], [13, 14], [7, 10], [15, 16], [17, 17], [18, 18], [19, 20], [21, 21]]
+  },
+  {
+    id: "04",
+    title: "One-dimensional problems: bound and unbound states",
+    theoryPdf: "/Users/marioreis/Desktop/qm/c4 Reis Quantum Mechanics copy 5.pdf",
+    solutionsPdf: "/Users/marioreis/Desktop/qm/c4_Reis QM solutions copy 3.pdf",
+    // Curated to the chapter's actual sections, not merely to equal-size page
+    // slices. The final two items use the book's practice appendix as an
+    // integrated application/synthesis source.
+    ranges: [[2, 2], [2, 10], [3, 6], [11, 18], [45, 48], [19, 21], [22, 26], [27, 30], [31, 32], [33, 37], [38, 40], [41, 44], [49, 51], [49, 51]]
   }
 ];
 
