@@ -4,7 +4,7 @@
   const C = { green:"#2f6b4f", rust:"#a64b35", blue:"#376b8c", gold:"#b88932", ink:"#26332c", grid:"#dbe5dd", muted:"#6b756f" };
   const key = new URLSearchParams(location.search).get("sim") || "qho";
   const labs = {
-    qho: { slug:"qho-states-ladder", title:"QHO: eigenstates, ladder operators and uncertainty", subtitle:"Select a stationary state. Compare its wave function and density with the harmonic potential, energy ladder, and uncertainty.", sections:"4.1–4.4", show:["n","m","w"], main:"Eigenstate and probability density", side:"Energy ladder", equation:"\\[E_n=\\hbar\\omega\\left(n+\\frac12\\right),\\qquad \\Delta x\\,\\Delta p=\\hbar\\left(n+\\frac12\\right)\\]" },
+    qho: { slug:"qho-states-ladder", title:"QHO: eigenstates, ladder operators and uncertainty", subtitle:"Select a stationary state. In oscillator units, the parabola, wave function, density, energy level, and uncertainties can be compared without changing the mass.", sections:"4.1–4.4", show:["n"], main:"Eigenstate and probability density on its energy level", side:"Dimensionless uncertainty", equation:"\\[\\xi=\\sqrt{\\frac{m\\omega}{\\hbar}}x,\\qquad \\frac{E_n}{\\hbar\\omega}=n+\\frac12\\]\\[\\Delta\\xi=\\Delta\\pi=\\sqrt{n+\\frac12},\\qquad \\frac{\\Delta x\\,\\Delta p}{\\hbar}=n+\\frac12\\]" },
     finite: { slug:"finite-well-bound-states", title:"Finite well: bound states, parity and penetration", subtitle:"Change depth and width. The graphical boundary conditions select even and odd bound states and their exponentially decaying tails.", sections:"4.5–4.8", show:["n","m","v","a"], main:"Bound state in a finite well", side:"Graphical bound-state condition", equation:"\\[V(x)=\\begin{cases}0,&x<0\\ \\mathrm{or}\\ x>a\\\\-V_0,&0\\le x\\le a,\\end{cases}\\qquad E_n<0\\]\\[k\\tan(ka/2)=\\kappa\\quad(\\mathrm{even}),\\qquad-k\\cot(ka/2)=\\kappa\\quad(\\mathrm{odd})\\]" },
     scatter: { slug:"attractive-well-scattering", title:"Attractive finite well: scattering and resonant transmission", subtitle:"A positive-energy wave is partly reflected and partly transmitted. Vary energy, well depth, and width to find resonant transparency.", sections:"4.9–4.10", show:["m","v","a","e"], main:"Incident, reflected and transmitted waves", side:"Transmission versus energy", equation:"\\[\\bar k^2=k^2+k_0^2,\\qquad T=\\frac{1}{1+\\frac{k_0^4}{4k^2\\bar k^2}\\sin^2(\\bar k a)},\\qquad R=1-T\\]" },
     delta: { slug:"delta-well-scattering", title:"Delta well: transmission and reflection", subtitle:"For \\(V(x)=-|\\alpha|\\delta(x)\\), the ratio between incident energy and \\(\\mathcal E'\\) determines the transmission.", sections:"4.11", show:["m","e","alpha"], main:"Delta potential", side:"Transmission and reflection", equation:"\\[\\mathcal E'=\\frac{m|\\alpha|^2}{2\\hbar^2},\\qquad T=\\frac{1}{1+\\mathcal E'/|E|},\\qquad R=\\frac{1}{1+|E|/\\mathcal E'}\\]" },
@@ -50,12 +50,14 @@
     axes(ctx,w,h,p,mid);
     if(type==="qho") {
       const poly=[z=>1,z=>2*z,z=>4*z*z-2,z=>8*z*z*z-12*z,z=>16*z**4-48*z*z+12,z=>32*z**5-160*z**3+120*z,z=>64*z**6-480*z**4+720*z*z-120][s.n];
-      const xm=z=>p.l+(z+3)/6*(w-p.l-p.r), scale=Math.min(75,h*.18), psi=z=>Math.exp(-z*z/2)*poly(z);
+      const xm=z=>p.l+(z+3.4)/6.8*(w-p.l-p.r), ymax=7.1, ym=e=>h-p.b-e/ymax*(h-p.t-p.b), psi=z=>Math.exp(-z*z/2)*poly(z);
       let max=1;for(let q=-3;q<3;q+=.01)max=Math.max(max,Math.abs(psi(q)));
-      drawCurve(ctx,z=>.1*z*z,450,xm,y=>mid-y*scale,C.ink,-3,3);
-      drawCurve(ctx,z=>psi(z)/max,450,xm,y=>mid-y*scale*.75,C.green,-3,3);
-      drawCurve(ctx,z=>psi(z)*psi(z)/(max*max),450,xm,y=>h*.85-y*scale*.7,C.rust,-3,3);
-      label(ctx,"V(x)",p.l+8,mid-26,11,C.ink);label(ctx,"ψₙ",p.l+8,mid+14,11,C.green);label(ctx,"|ψₙ|²",p.l+8,h*.85+14,11,C.rust);label(ctx,"n = "+s.n,w-55,p.t+14,12,C.ink);
+      for(let n=0;n<7;n++){const e=n+.5,y=ym(e);ctx.strokeStyle=n===s.n?C.gold:C.grid;ctx.lineWidth=n===s.n?2.6:1;ctx.setLineDash(n===s.n?[]:[3,4]);ctx.beginPath();ctx.moveTo(p.l,y);ctx.lineTo(w-p.r,y);ctx.stroke();ctx.setLineDash([]);label(ctx,"n = "+n,p.l+4,y-5,10,n===s.n?C.gold:C.muted);}
+      drawCurve(ctx,z=>z*z/2,450,xm,ym,C.ink,-3.4,3.4);
+      const energy=s.n+.5, amp=Math.min(0.27,0.23+0.008*s.n);
+      drawCurve(ctx,z=>energy+amp*psi(z)/max,450,xm,ym,C.green,-3,3);
+      drawCurve(ctx,z=>energy+0.42*psi(z)*psi(z)/(max*max),450,xm,ym,C.rust,-3,3);
+      label(ctx,"V / ħω = ξ²/2",w*.57,ym(5.6),11,C.ink);label(ctx,"ψₙ(ξ)",w*.57,ym(energy-.45),11,C.green);label(ctx,"|ψₙ(ξ)|²",w*.57,ym(energy+.62),11,C.rust);label(ctx,"ξ = x/x₀",w*.46,h-8,11,C.muted);
       return;
     }
     if(type==="delta") {
@@ -93,8 +95,11 @@
     const out=fit($("sideCanvas")),ctx=out.ctx,w=out.width,h=out.height,p={l:52,r:22,t:23,b:32},base=h-p.b;
     axes(ctx,w,h,p,base);
     if(type==="qho") {
-      for(let n=0;n<7;n++){const y=base-(n+.5)/7*(h-p.t-p.b);ctx.strokeStyle=n===s.n?C.rust:C.green;ctx.lineWidth=n===s.n?4:2;ctx.beginPath();ctx.moveTo(p.l+38,y);ctx.lineTo(w-p.r,y);ctx.stroke();label(ctx,"n="+n,p.l+4,y+4,11,n===s.n?C.rust:C.muted);}
-      label(ctx,"each step: ΔE = ħω",w*.53,18);return;
+      const cx=(p.l+w-p.r)/2,cy=(p.t+base)/2,radius=(h-p.t-p.b)*0.34,spread=Math.sqrt(s.n+.5),r=Math.min(radius,radius*spread/2.6);
+      ctx.strokeStyle=C.grid;ctx.lineWidth=1;ctx.beginPath();ctx.moveTo(p.l,cy);ctx.lineTo(w-p.r,cy);ctx.moveTo(cx,p.t);ctx.lineTo(cx,base);ctx.stroke();
+      ctx.fillStyle="rgba(47,107,79,.13)";ctx.strokeStyle=C.green;ctx.lineWidth=2.4;ctx.beginPath();ctx.ellipse(cx,cy,r,r,0,0,2*Math.PI);ctx.fill();ctx.stroke();
+      ctx.strokeStyle=C.rust;ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(cx-r,cy-r-12);ctx.lineTo(cx+r,cy-r-12);ctx.moveTo(cx-r,cy-r-17);ctx.lineTo(cx-r,cy-r-7);ctx.moveTo(cx+r,cy-r-17);ctx.lineTo(cx+r,cy-r-7);ctx.moveTo(cx+r+12,cy-r);ctx.lineTo(cx+r+12,cy+r);ctx.moveTo(cx+r+7,cy-r);ctx.lineTo(cx+r+17,cy-r);ctx.moveTo(cx+r+7,cy+r);ctx.lineTo(cx+r+17,cy+r);ctx.stroke();
+      label(ctx,"Δξ",cx-7,cy-r-21,12,C.rust);label(ctx,"Δπ",cx+r+18,cy+4,12,C.rust);label(ctx,"ξ = x/x₀",w-p.r-43,cy-7,11,C.muted);label(ctx,"π = p/p₀",cx+7,p.t+12,11,C.muted);label(ctx,"n = "+s.n,w-p.r-42,base-8,11,C.ink);return;
     }
     if(type==="finite") {
       const z0=Math.min(10,Math.max(1,s.a*Math.sqrt(2*s.m*s.V)/HBAR)),xm=z=>p.l+z/z0*(w-p.l-p.r),ym=v=>base-v/z0*(h-p.t-p.b);
@@ -125,9 +130,9 @@
     const s=state();
     $("nV").textContent=s.n;$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
     if(key==="qho") {
-      const energy=HBAR*s.omega*(s.n+.5),dx=Math.sqrt(HBAR/(s.m*s.omega)*(s.n+.5)),dp=Math.sqrt(s.m*HBAR*s.omega*(s.n+.5));
-      metric("Energy Eₙ",decimal(energy/EV,3)+" eV","Δx",decimal(dx*1e9,3)+" nm","Δp",dp.toExponential(2),"ΔxΔp / ħ",decimal(dx*dp/HBAR,2));
-      $("insight").textContent="The ladder spacing is ħω. The ground state is the lower limit, and higher n increases both spatial and momentum uncertainty.";
+      const spread=Math.sqrt(s.n+.5);
+      metric("Eₙ / ħω",decimal(s.n+.5,2),"Δξ = Δx/x₀",decimal(spread,3),"Δπ = Δp/p₀",decimal(spread,3),"ΔxΔp / ħ",decimal(s.n+.5,2));
+      $("insight").textContent="The plot uses x₀ = √(ħ/mω) and p₀ = √(mħω). In these natural units, mass only rescales the physical axes; it does not change the displayed dimensionless state.";
       legend([[C.green,"ψₙ (scaled)"],[C.rust,"|ψₙ|²"],[C.ink,"V(x)"]]);
     } else if(key==="finite") {
       const z0=s.a*Math.sqrt(2*s.m*s.V)/HBAR,count=Math.max(1,Math.floor(z0/Math.PI)+1),n=Math.min(s.n,count-1),L=s.a/Math.max(.2,z0-n*Math.PI/2);
