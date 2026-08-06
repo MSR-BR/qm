@@ -36,9 +36,9 @@ const CHAPTERS = [
     theoryPdf: "/Users/marioreis/Desktop/qm/c4 Reis Quantum Mechanics copy 5.pdf",
     solutionsPdf: "/Users/marioreis/Desktop/qm/c4_Reis QM solutions copy 3.pdf",
     // Curated to the chapter's actual sections, not merely to equal-size page
-    // slices. The final two items use the book's practice appendix as an
-    // integrated application/synthesis source.
-    ranges: [[2, 2], [2, 10], [3, 6], [11, 18], [45, 48], [19, 21], [22, 26], [27, 30], [31, 32], [33, 37], [38, 40], [41, 44], [49, 51], [49, 51]]
+    // slices. The final item uses the book's practice appendix as a
+    // qualitative chapter-synthesis source.
+    ranges: [[2, 2], [2, 10], [3, 6], [11, 18], [45, 48], [19, 21], [22, 26], [27, 30], [31, 32], [33, 37], [38, 40], [41, 44], [49, 51]]
   }
 ];
 

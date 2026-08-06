@@ -85,18 +85,11 @@
       "aiExercise": true
     },
     {
-      "id": "4.13",
-      "title": "Worked models and integrated practice",
-      "note": "Guided applications involving finite-well spectra, transmission limits, oscillator moments and barrier behavior.",
-      "url": "slides/chapter-04/worked-models-and-integrated-practice.html",
-      "aiExercise": true
-    },
-    {
       "id": "4.14",
       "title": "Chapter synthesis: one-dimensional quantum models",
-      "note": "A unified solve strategy connecting boundary conditions, spectra, wave functions, probability current and measurement.",
+      "note": "A qualitative closing map connecting bound states, scattering, boundary conditions and probability conservation.",
       "url": "slides/chapter-04/chapter-synthesis-one-dimensional-quantum-models.html",
-      "aiExercise": true
+      "aiExercise": false
     }
   ]
 }

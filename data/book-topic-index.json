@@ -1,8 +1,8 @@
 {
   "version": "qm-book-topic-index-v1",
-  "generatedAt": "2026-08-03T22:12:08.069Z",
-  "sectionCount": 58,
-  "topicCount": 63,
+  "generatedAt": "2026-08-06T21:09:36.653Z",
+  "sectionCount": 57,
+  "topicCount": 62,
   "topics": [
     {
       "id": "why-old-quantum-physics-matters",
@@ -1811,22 +1811,6 @@
       ]
     },
     {
-      "id": "worked-models-and-integrated-practice",
-      "label": "worked models and integrated practice",
-      "fragments": [
-        {
-          "sectionId": "4.13",
-          "chapterId": "04",
-          "itemId": "4.13",
-          "title": "Worked models and integrated practice",
-          "pagePath": "slides/chapter-04/worked-models-and-integrated-practice.html",
-          "pageStart": 49,
-          "pageEnd": 51,
-          "excerpt": "4.B Exercises 165 (Eq. (2.146)) for the position and momentum results in: # % ! 1 var(x ) = 5x̂ 2 6 − 5x̂ 62 = n+ and mω 2 # % 1 var(p ) = 5p̂ 2 6 − 5p̂62 = m!ω n + . (4.A.30) 2 Using the √ results above, we can verify the product of the standard devia- tion .q = var(q ), given by: # % 1 .x .p = ! n + (4.A.31) 2 To think How can we interpret this result in terms of the Heisenberg uncertainty principle. Appendix 4.B Exercises Conceptual exercises Exercise 4.1. Consider the idea of bound and unbound states, as discus"
-        }
-      ]
-    },
-    {
       "id": "chapter-synthesis-one-dimensional-quantum-models",
       "label": "chapter synthesis one dimensional quantum models",
       "fragments": [
@@ -2532,16 +2516,6 @@
       "itemId": "4.12",
       "primaryTopic": "rectangular-step-potential-and-quantum-tunneling",
       "transversalTopics": [
-        "worked-models-and-integrated-practice"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "4.13",
-      "chapterId": "04",
-      "itemId": "4.13",
-      "primaryTopic": "worked-models-and-integrated-practice",
-      "transversalTopics": [
         "chapter-synthesis-one-dimensional-quantum-models"
       ],
       "advancedSupportTopics": []
@@ -2552,7 +2526,7 @@
       "itemId": "4.14",
       "primaryTopic": "chapter-synthesis-one-dimensional-quantum-models",
       "transversalTopics": [
-        "worked-models-and-integrated-practice"
+        "rectangular-step-potential-and-quantum-tunneling"
       ],
       "advancedSupportTopics": []
     }
