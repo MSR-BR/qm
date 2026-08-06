@@ -4,7 +4,7 @@
   const C = { green:"#2f6b4f", rust:"#a64b35", blue:"#376b8c", gold:"#b88932", ink:"#26332c", grid:"#dbe5dd", muted:"#6b756f" };
   const key = new URLSearchParams(location.search).get("sim") || "qho";
   const labs = {
-    qho: { slug:"qho-states-ladder", title:"QHO: eigenstates, ladder operators and uncertainty", subtitle:"Select a stationary state. In oscillator units, the parabola, wave function, density, energy level, and uncertainties can be compared without changing the mass.", sections:"4.1–4.4", show:["n"], main:"Eigenstate and probability density on its energy level", side:"Dimensionless uncertainty", equation:"\\[\\xi=\\sqrt{\\frac{m\\omega}{\\hbar}}x,\\qquad \\frac{E_n}{\\hbar\\omega}=n+\\frac12\\]\\[\\Delta\\xi=\\Delta\\pi=\\sqrt{n+\\frac12},\\qquad \\frac{\\Delta x\\,\\Delta p}{\\hbar}=n+\\frac12\\]" },
+    qho: { slug:"qho-states-ladder", title:"QHO: stationary eigenfunctions and energy levels", subtitle:"Select a stationary state. The book variable \\(\\xi=\\alpha x\\) places the normalized wave function and probability density on their corresponding energy level.", sections:"4.1–4.4", show:["n"], main:"Normalized eigenfunction and density on the energy level", side:"", equation:"\\[\\xi=\\alpha x,\\qquad \\alpha=\\sqrt{\\frac{m\\omega}{\\hbar}},\\qquad E_n=\\hbar\\omega\\left(n+\\frac12\\right)\\]\\[\\phi_n(\\xi)=\\frac{1}{\\pi^{1/4}\\sqrt{2^n n!}}e^{-\\xi^2/2}H_n(\\xi),\\qquad \\int_{-\\infty}^{\\infty}|\\phi_n(\\xi)|^2d\\xi=1\\]" },
     finite: { slug:"finite-well-bound-states", title:"Finite well: bound states, parity and penetration", subtitle:"Change depth and width. The graphical boundary conditions select even and odd bound states and their exponentially decaying tails.", sections:"4.5–4.8", show:["n","m","v","a"], main:"Bound state in a finite well", side:"Graphical bound-state condition", equation:"\\[V(x)=\\begin{cases}0,&x<0\\ \\mathrm{or}\\ x>a\\\\-V_0,&0\\le x\\le a,\\end{cases}\\qquad E_n<0\\]\\[k\\tan(ka/2)=\\kappa\\quad(\\mathrm{even}),\\qquad-k\\cot(ka/2)=\\kappa\\quad(\\mathrm{odd})\\]" },
     scatter: { slug:"attractive-well-scattering", title:"Attractive finite well: scattering and resonant transmission", subtitle:"A positive-energy wave is partly reflected and partly transmitted. Vary energy, well depth, and width to find resonant transparency.", sections:"4.9–4.10", show:["m","v","a","e"], main:"Incident, reflected and transmitted waves", side:"Transmission versus energy", equation:"\\[\\bar k^2=k^2+k_0^2,\\qquad T=\\frac{1}{1+\\frac{k_0^4}{4k^2\\bar k^2}\\sin^2(\\bar k a)},\\qquad R=1-T\\]" },
     delta: { slug:"delta-well-scattering", title:"Delta well: transmission and reflection", subtitle:"For \\(V(x)=-|\\alpha|\\delta(x)\\), the ratio between incident energy and \\(\\mathcal E'\\) determines the transmission.", sections:"4.11", show:["m","e","alpha"], main:"Delta potential", side:"Transmission and reflection", equation:"\\[\\mathcal E'=\\frac{m|\\alpha|^2}{2\\hbar^2},\\qquad T=\\frac{1}{1+\\mathcal E'/|E|},\\qquad R=\\frac{1}{1+|E|/\\mathcal E'}\\]" },
@@ -47,17 +47,21 @@
   }
   function drawMain(s, type) {
     const out=fit($("mainCanvas")),ctx=out.ctx,w=out.width,h=out.height,p={l:52,r:22,t:24,b:34},mid=h*.48;
-    axes(ctx,w,h,p,mid);
+    if(type!=="qho")axes(ctx,w,h,p,mid);
     if(type==="qho") {
       const poly=[z=>1,z=>2*z,z=>4*z*z-2,z=>8*z*z*z-12*z,z=>16*z**4-48*z*z+12,z=>32*z**5-160*z**3+120*z,z=>64*z**6-480*z**4+720*z*z-120][s.n];
-      const xm=z=>p.l+(z+3.4)/6.8*(w-p.l-p.r), ymax=7.1, ym=e=>h-p.b-e/ymax*(h-p.t-p.b), psi=z=>Math.exp(-z*z/2)*poly(z);
-      let max=1;for(let q=-3;q<3;q+=.01)max=Math.max(max,Math.abs(psi(q)));
+      const xiMax=5, xm=z=>p.l+(z+xiMax)/(2*xiMax)*(w-p.l-p.r), ymax=13.2, ym=e=>h-p.b-e/ymax*(h-p.t-p.b);
+      let factorial=1;for(let j=2;j<=s.n;j++)factorial*=j;
+      const normalization=1/(Math.PI**.25*Math.sqrt(2**s.n*factorial));
+      const phi=z=>normalization*Math.exp(-z*z/2)*poly(z);
+      let maxPhi=0,maxDensity=0;for(let q=-xiMax;q<=xiMax;q+=.005){maxPhi=Math.max(maxPhi,Math.abs(phi(q)));maxDensity=Math.max(maxDensity,phi(q)**2);}
+      axes(ctx,w,h,p,h-p.b);
       for(let n=0;n<7;n++){const e=n+.5,y=ym(e);ctx.strokeStyle=n===s.n?C.gold:C.grid;ctx.lineWidth=n===s.n?2.6:1;ctx.setLineDash(n===s.n?[]:[3,4]);ctx.beginPath();ctx.moveTo(p.l,y);ctx.lineTo(w-p.r,y);ctx.stroke();ctx.setLineDash([]);label(ctx,"n = "+n,p.l+4,y-5,10,n===s.n?C.gold:C.muted);}
-      drawCurve(ctx,z=>z*z/2,450,xm,ym,C.ink,-3.4,3.4);
-      const energy=s.n+.5, amp=Math.min(0.27,0.23+0.008*s.n);
-      drawCurve(ctx,z=>energy+amp*psi(z)/max,450,xm,ym,C.green,-3,3);
-      drawCurve(ctx,z=>energy+0.42*psi(z)*psi(z)/(max*max),450,xm,ym,C.rust,-3,3);
-      label(ctx,"V / ħω = ξ²/2",w*.57,ym(5.6),11,C.ink);label(ctx,"ψₙ(ξ)",w*.57,ym(energy-.45),11,C.green);label(ctx,"|ψₙ(ξ)|²",w*.57,ym(energy+.62),11,C.rust);label(ctx,"ξ = x/x₀",w*.46,h-8,11,C.muted);
+      drawCurve(ctx,z=>z*z/2,600,xm,ym,C.ink,-xiMax,xiMax);
+      const energy=s.n+.5;
+      drawCurve(ctx,z=>energy+.30*phi(z)/maxPhi,600,xm,ym,C.green,-xiMax,xiMax);
+      drawCurve(ctx,z=>energy+.46*phi(z)**2/maxDensity,600,xm,ym,C.rust,-xiMax,xiMax);
+      label(ctx,"V / ħω = ξ²/2",w*.57,ym(10.3),11,C.ink);label(ctx,"φₙ(ξ)",w*.57,ym(energy-.48),11,C.green);label(ctx,"|φₙ(ξ)|²",w*.57,ym(energy+.68),11,C.rust);label(ctx,"ξ = αx",w*.47,h-8,11,C.muted);
       return;
     }
     if(type==="delta") {
@@ -128,12 +132,13 @@
   function render() {
     Object.keys(controls).forEach(k=>document.querySelector(".c-"+k).style.display=lab.show.includes(k)?"grid":"none");
     const s=state();
+    const sidePanel=$("sideCanvas").closest(".sim-panel");
+    sidePanel.style.display=key==="qho"?"none":"";
     $("nV").textContent=s.n;$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
     if(key==="qho") {
-      const spread=Math.sqrt(s.n+.5);
-      metric("Eₙ / ħω",decimal(s.n+.5,2),"Δξ = Δx/x₀",decimal(spread,3),"Δπ = Δp/p₀",decimal(spread,3),"ΔxΔp / ħ",decimal(s.n+.5,2));
-      $("insight").textContent="The plot uses x₀ = √(ħ/mω) and p₀ = √(mħω). In these natural units, mass only rescales the physical axes; it does not change the displayed dimensionless state.";
-      legend([[C.green,"ψₙ (scaled)"],[C.rust,"|ψₙ|²"],[C.ink,"V(x)"]]);
+      metric("Energy Eₙ / ħω",decimal(s.n+.5,2),"Book variable ξ","αx","α","√(mω/ħ)","Normalization","∫|φₙ|²dξ = 1");
+      $("insight").textContent="The book variable is ξ = αx, with α = √(mω/ħ). The functions φₙ(ξ) and |φₙ(ξ)|² are normalized so that ∫|φₙ|² dξ = 1. Their profiles are vertically magnified only for visibility and are offset to the corresponding energy Eₙ.";
+      legend([[C.green,"normalized φₙ(ξ), vertically magnified"],[C.rust,"normalized |φₙ(ξ)|², vertically magnified"],[C.ink,"V/(ħω) = ξ²/2"]]);
     } else if(key==="finite") {
       const z0=s.a*Math.sqrt(2*s.m*s.V)/HBAR,count=Math.max(1,Math.floor(z0/Math.PI)+1),n=Math.min(s.n,count-1),L=s.a/Math.max(.2,z0-n*Math.PI/2);
       metric("Approx. bound states",String(count),"Selected parity",n%2?"odd":"even","Penetration depth",decimal(L*1e9,3)+" nm","Dimensionless depth",decimal(z0,3));
@@ -159,7 +164,7 @@
       $("insight").textContent="The potential determines the local wave form. Boundary conditions then decide whether a global solution is a bound state or a scattering state.";
       legend([[C.green,"oscillatory"],[C.rust,"evanescent / bound tail"],[C.ink,"potential"]]);
     }
-    drawMain(s,key);drawSide(s,key);
+    drawMain(s,key);if(key!=="qho")drawSide(s,key);
     if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([$("equation")]);
   }
   render();
