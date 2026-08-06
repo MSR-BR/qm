@@ -4,7 +4,7 @@
   const C = { green:"#2f6b4f", rust:"#a64b35", blue:"#376b8c", gold:"#b88932", ink:"#26332c", grid:"#dbe5dd", muted:"#6b756f" };
   const key = new URLSearchParams(location.search).get("sim") || "qho";
   const labs = {
-    qho: { slug:"qho-states-ladder", title:"QHO: stationary eigenfunctions and energy levels", subtitle:"Select a stationary state. The book variable \\(\\xi=\\alpha x\\) places the normalized wave function and probability density on their corresponding energy level.", sections:"4.1–4.4", show:["n"], main:"Normalized eigenfunction and density on the energy level", side:"", equation:"\\[\\xi=\\alpha x,\\qquad \\alpha=\\sqrt{\\frac{m\\omega}{\\hbar}},\\qquad E_n=\\hbar\\omega\\left(n+\\frac12\\right)\\]\\[\\phi_n(\\xi)=\\frac{1}{\\pi^{1/4}\\sqrt{2^n n!}}e^{-\\xi^2/2}H_n(\\xi),\\qquad \\int_{-\\infty}^{\\infty}|\\phi_n(\\xi)|^2d\\xi=1\\]" },
+    qho: { slug:"qho-states-ladder", title:"QHO: stationary eigenfunctions and energy levels", subtitle:"Select a stationary state. The graph follows the book variable \\(\\xi=\\alpha x\\) and the display scalings used for its wave functions and probability densities.", sections:"4.1–4.4", show:["n"], main:"Book-scaled wave function and probability density on the energy level", side:"", equation:"\\[-\\frac{\\hbar^2}{2m}\\frac{d^2\\psi}{dx^2}+\\frac12m\\omega^2x^2\\psi=E\\psi,\\qquad \\xi=\\alpha x,\\quad \\alpha=\\sqrt{\\frac{m\\omega}{\\hbar}}\\]\\[\\psi_n(x)=\\left(\\frac{m\\omega}{\\pi\\hbar}\\right)^{1/4}\\frac{e^{-m\\omega x^2/(2\\hbar)}}{\\sqrt{2^n n!}}H_n(\\alpha x),\\qquad \\rho_n(x)=|\\psi_n(x)|^2\\]\\[\\int_{-\\infty}^{\\infty}|\\psi_n(x)|^2\\,dx=1,\\qquad \\tilde\\psi_n(\\xi)=\\psi_n(\\xi)\\frac{\\pi^{1/4}}{\\sqrt{\\alpha}},\\qquad \\tilde\\rho_n(\\xi)=\\rho_n(\\xi)\\frac{\\sqrt{\\pi}}{\\alpha}\\]" },
     finite: { slug:"finite-well-bound-states", title:"Finite well: bound states, parity and penetration", subtitle:"Change depth and width. The graphical boundary conditions select even and odd bound states and their exponentially decaying tails.", sections:"4.5–4.8", show:["n","m","v","a"], main:"Bound state in a finite well", side:"Graphical bound-state condition", equation:"\\[V(x)=\\begin{cases}0,&x<0\\ \\mathrm{or}\\ x>a\\\\-V_0,&0\\le x\\le a,\\end{cases}\\qquad E_n<0\\]\\[k\\tan(ka/2)=\\kappa\\quad(\\mathrm{even}),\\qquad-k\\cot(ka/2)=\\kappa\\quad(\\mathrm{odd})\\]" },
     scatter: { slug:"attractive-well-scattering", title:"Attractive finite well: scattering and resonant transmission", subtitle:"A positive-energy wave is partly reflected and partly transmitted. Vary energy, well depth, and width to find resonant transparency.", sections:"4.9–4.10", show:["m","v","a","e"], main:"Incident, reflected and transmitted waves", side:"Transmission versus energy", equation:"\\[\\bar k^2=k^2+k_0^2,\\qquad T=\\frac{1}{1+\\frac{k_0^4}{4k^2\\bar k^2}\\sin^2(\\bar k a)},\\qquad R=1-T\\]" },
     delta: { slug:"delta-well-scattering", title:"Delta well: transmission and reflection", subtitle:"For \\(V(x)=-|\\alpha|\\delta(x)\\), the ratio between incident energy and \\(\\mathcal E'\\) determines the transmission.", sections:"4.11", show:["m","e","alpha"], main:"Delta potential", side:"Transmission and reflection", equation:"\\[\\mathcal E'=\\frac{m|\\alpha|^2}{2\\hbar^2},\\qquad T=\\frac{1}{1+\\mathcal E'/|E|},\\qquad R=\\frac{1}{1+|E|/\\mathcal E'}\\]" },
@@ -52,16 +52,15 @@
       const poly=[z=>1,z=>2*z,z=>4*z*z-2,z=>8*z*z*z-12*z,z=>16*z**4-48*z*z+12,z=>32*z**5-160*z**3+120*z,z=>64*z**6-480*z**4+720*z*z-120][s.n];
       const xiMax=5, xm=z=>p.l+(z+xiMax)/(2*xiMax)*(w-p.l-p.r), ymax=13.2, ym=e=>h-p.b-e/ymax*(h-p.t-p.b);
       let factorial=1;for(let j=2;j<=s.n;j++)factorial*=j;
-      const normalization=1/(Math.PI**.25*Math.sqrt(2**s.n*factorial));
-      const phi=z=>normalization*Math.exp(-z*z/2)*poly(z);
-      let maxPhi=0,maxDensity=0;for(let q=-xiMax;q<=xiMax;q+=.005){maxPhi=Math.max(maxPhi,Math.abs(phi(q)));maxDensity=Math.max(maxDensity,phi(q)**2);}
+      const psiTilde=z=>Math.exp(-z*z/2)*poly(z)/Math.sqrt(2**s.n*factorial);
+      const rhoTilde=z=>Math.exp(-z*z)*poly(z)**2/(2**s.n*factorial);
       axes(ctx,w,h,p,h-p.b);
       for(let n=0;n<7;n++){const e=n+.5,y=ym(e);ctx.strokeStyle=n===s.n?C.gold:C.grid;ctx.lineWidth=n===s.n?2.6:1;ctx.setLineDash(n===s.n?[]:[3,4]);ctx.beginPath();ctx.moveTo(p.l,y);ctx.lineTo(w-p.r,y);ctx.stroke();ctx.setLineDash([]);label(ctx,"n = "+n,p.l+4,y-5,10,n===s.n?C.gold:C.muted);}
       drawCurve(ctx,z=>z*z/2,600,xm,ym,C.ink,-xiMax,xiMax);
       const energy=s.n+.5;
-      drawCurve(ctx,z=>energy+.30*phi(z)/maxPhi,600,xm,ym,C.green,-xiMax,xiMax);
-      drawCurve(ctx,z=>energy+.46*phi(z)**2/maxDensity,600,xm,ym,C.rust,-xiMax,xiMax);
-      label(ctx,"V / ħω = ξ²/2",w*.57,ym(10.3),11,C.ink);label(ctx,"φₙ(ξ)",w*.57,ym(energy-.48),11,C.green);label(ctx,"|φₙ(ξ)|²",w*.57,ym(energy+.68),11,C.rust);label(ctx,"ξ = αx",w*.47,h-8,11,C.muted);
+      drawCurve(ctx,z=>energy+psiTilde(z),600,xm,ym,C.green,-xiMax,xiMax);
+      drawCurve(ctx,z=>energy+rhoTilde(z),600,xm,ym,C.rust,-xiMax,xiMax);
+      label(ctx,"V / ħω = ξ²/2",w*.57,ym(10.3),11,C.ink);label(ctx,"ψ̃ₙ(ξ)",w*.57,ym(energy-.48),11,C.green);label(ctx,"ρ̃ₙ(ξ)",w*.57,ym(energy+.68),11,C.rust);label(ctx,"ξ = αx",w*.47,h-8,11,C.muted);
       return;
     }
     if(type==="delta") {
@@ -132,13 +131,13 @@
   function render() {
     Object.keys(controls).forEach(k=>document.querySelector(".c-"+k).style.display=lab.show.includes(k)?"grid":"none");
     const s=state();
-    const sidePanel=$("sideCanvas").closest(".sim-panel");
+    const sidePanel=$("sideCanvas").closest(".sim-panel"),metricsPanel=$("l1").closest(".sim-panel");
     sidePanel.style.display=key==="qho"?"none":"";
+    metricsPanel.style.display=key==="qho"?"none":"";
     $("nV").textContent=s.n;$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
     if(key==="qho") {
-      metric("Energy Eₙ / ħω",decimal(s.n+.5,2),"Book variable ξ","αx","α","√(mω/ħ)","Normalization","∫|φₙ|²dξ = 1");
-      $("insight").textContent="The book variable is ξ = αx, with α = √(mω/ħ). The functions φₙ(ξ) and |φₙ(ξ)|² are normalized so that ∫|φₙ|² dξ = 1. Their profiles are vertically magnified only for visibility and are offset to the corresponding energy Eₙ.";
-      legend([[C.green,"normalized φₙ(ξ), vertically magnified"],[C.rust,"normalized |φₙ(ξ)|², vertically magnified"],[C.ink,"V/(ħω) = ξ²/2"]]);
+      $("insight").textContent="The physical wave function is normalized by ∫ |ψₙ(x)|² dx = 1. Following the caption of the book figure, the plotted curves are the display-scaled functions ψ̃ₙ(ξ) = ψₙ(ξ)π¹ᐟ⁴/√α and ρ̃ₙ(ξ) = ρₙ(ξ)√π/α. These scalings set the plotted height and units; they are not an additional normalization condition.";
+      legend([[C.green,"book display scale ψ̃ₙ(ξ)"],[C.rust,"book display scale ρ̃ₙ(ξ)"],[C.ink,"V/(ħω) = ξ²/2"]]);
     } else if(key==="finite") {
       const z0=s.a*Math.sqrt(2*s.m*s.V)/HBAR,count=Math.max(1,Math.floor(z0/Math.PI)+1),n=Math.min(s.n,count-1),L=s.a/Math.max(.2,z0-n*Math.PI/2);
       metric("Approx. bound states",String(count),"Selected parity",n%2?"odd":"even","Penetration depth",decimal(L*1e9,3)+" nm","Dimensionless depth",decimal(z0,3));
