@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chapter 4 Interactive Labs | Quantum Mechanics</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="../assets/qm-simulator-mobile.js?v=0721.1"></script>
+  <script defer src="../assets/qm-simulator-catalog.js?v=0806.1"></script>
+  <script defer src="../assets/qm4-labs.js?v=0806.1"></script>
+</head>
+<body>
+  <main class="sim-shell" data-simulator-slug="">
+    <header class="sim-header"><div><div class="sim-kicker" id="kicker"></div><h1 class="sim-title" id="title"></h1><p class="sim-subtitle" id="subtitle"></p></div><div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div></header>
+    <div class="sim-layout">
+      <aside class="sim-sidebar">
+        <details class="sim-panel sim-controls collapsible-panel" open>
+          <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Controls</summary>
+          <div class="control-group c-n"><div class="control-row"><label class="control-label" for="n">Quantum number n</label><output class="control-value" id="nV"></output></div><input id="n" type="range" min="0" max="6" step="1" value="0"></div>
+          <div class="control-group c-m"><div class="control-row"><label class="control-label" for="mass">Mass m/mₑ</label><output class="control-value" id="massV"></output></div><input id="mass" type="range" min="0.25" max="5" step="0.05" value="1"></div>
+          <div class="control-group c-w"><div class="control-row"><label class="control-label" for="frequency">Angular frequency ω</label><output class="control-value" id="frequencyV"></output></div><input id="frequency" type="range" min="0.5" max="8" step="0.1" value="2"></div>
+          <div class="control-group c-v"><div class="control-row"><label class="control-label" for="depth">Potential depth / height V₀</label><output class="control-value" id="depthV"></output></div><input id="depth" type="range" min="2" max="80" step="0.5" value="25"></div>
+          <div class="control-group c-a"><div class="control-row"><label class="control-label" for="width">Width a</label><output class="control-value" id="widthV"></output></div><input id="width" type="range" min="0.2" max="4" step="0.05" value="1"></div>
+          <div class="control-group c-e"><div class="control-row"><label class="control-label" for="energy">Incident energy E</label><output class="control-value" id="energyV"></output></div><input id="energy" type="range" min="0.1" max="80" step="0.1" value="12"></div>
+          <div class="control-group c-alpha"><div class="control-row"><label class="control-label" for="alpha">Delta strength |α|</label><output class="control-value" id="alphaV"></output></div><input id="alpha" type="range" min="0.2" max="8" step="0.05" value="2"></div>
+          <div class="button-row"><button class="sim-button secondary" id="reset" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button></div>
+          <div class="insight-box" id="insight" style="margin-top:14px;"></div>
+        </details>
+        <details class="sim-panel metrics-grid collapsible-panel" open>
+          <summary class="sim-panel-title"><i class="fa-solid fa-calculator"></i> Numerical values</summary>
+          <div class="metric"><div class="metric-label" id="l1"></div><div class="metric-value" id="m1"></div></div><div class="metric"><div class="metric-label" id="l2"></div><div class="metric-value" id="m2"></div></div><div class="metric"><div class="metric-label" id="l3"></div><div class="metric-value" id="m3"></div></div><div class="metric"><div class="metric-label" id="l4"></div><div class="metric-value" id="m4"></div></div>
+        </details>
+        <details class="sim-panel equation-panel"><summary>Equations</summary><div class="equation-box" id="equation"></div></details>
+      </aside>
+      <section class="sim-workspace">
+        <div class="sim-panel"><h2 class="sim-panel-title"><i class="fa-solid fa-wave-square"></i> <span id="mainHeading"></span></h2><div class="canvas-wrap tall"><canvas id="mainCanvas"></canvas></div><div class="legend" id="legend"></div></div>
+        <div class="sim-panel"><h2 class="sim-panel-title"><i class="fa-solid fa-chart-line"></i> <span id="sideHeading"></span></h2><div class="canvas-wrap"><canvas id="sideCanvas"></canvas></div></div>
+      </section>
+    </div>
+    <footer class="sim-footer">SI constants are used internally. Lengths are entered in nm, energies displayed in eV, and angular frequencies in \(10^{15}\ \mathrm{s^{-1}}\).</footer>
+  </main>
+</body>
+</html>
