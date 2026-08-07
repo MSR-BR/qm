@@ -33,14 +33,16 @@
       "title": "Hydrogen atom: radial solution and probability",
       "note": "Coulomb potential, effective radial equation, associated Laguerre solutions, normalization, degeneracy and radial probability density.",
       "url": "slides/chapter-05/hydrogen-atom-and-effective-potential.html",
-      "aiExercise": true
+      "aiExercise": true,
+      "simulators": ["hydrogen-radial-states"]
     },
     {
       "id": "5.6",
       "title": "Hydrogen energy spectrum and degeneracy",
       "note": "Origin of quantization, Bohr energy scale and degenerate states labeled by n, l and m.",
       "url": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
-      "aiExercise": true
+      "aiExercise": true,
+      "simulators": ["hydrogen-radial-states"]
     },
     {
       "id": "5.7",

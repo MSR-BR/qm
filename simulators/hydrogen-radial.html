@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Hydrogen Radial States | Quantum Mechanics</title>
+  <meta name="description" content="Compare effective potentials and radial probability densities superposed on the energy levels of two hydrogen states." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <style>
+    .state-editor{display:grid;gap:10px;margin-bottom:14px}.state-row{border:1px solid #dbe5dd;border-left:5px solid var(--state-color);border-radius:10px;padding:10px;background:#fff}.state-row-title{font:700 12px Inter,sans-serif;color:#33463b;margin-bottom:8px}.state-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.state-fields label{font:700 11px Inter,sans-serif;color:#5f6f65}.state-fields select{width:100%;margin-top:4px;border:1px solid #b9cbc0;border-radius:7px;padding:7px 6px;background:#fff;color:#26332c;font:600 13px Inter,sans-serif}.state-note{margin-top:7px;font:600 11px Inter,sans-serif;color:#68766e}.canvas-wrap.hydrogen-chart{height:560px}.legend-line{display:inline-block;width:22px;height:3px;margin-right:6px;vertical-align:middle;background:var(--swatch)}.legend-area{display:inline-block;width:22px;height:11px;margin-right:6px;vertical-align:middle;border-bottom:2px solid var(--swatch);background:color-mix(in srgb,var(--swatch) 28%,transparent)}
+    .hydrogen-sim .equation-box{overflow-x:auto;overflow-y:hidden}
+    @media(max-width:640px){.hydrogen-sim .sim-controls{grid-template-columns:1fr!important}.hydrogen-sim .sim-controls>.state-editor{grid-column:1;grid-template-columns:repeat(2,minmax(0,1fr));margin-bottom:0}.hydrogen-sim .state-row{padding:8px}.hydrogen-sim .state-row-title{margin-bottom:5px}.hydrogen-sim .state-fields{grid-template-columns:1fr}.hydrogen-sim .state-note{margin-top:5px}.hydrogen-sim .canvas-wrap.hydrogen-chart{height:430px}}
+  </style>
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="../assets/qm-simulator-mobile.js?v=0721.1"></script>
+  <script defer src="../assets/qm-simulator-catalog.js?v=0807.5"></script>
+</head>
+<body>
+  <main class="sim-shell hydrogen-sim" data-simulator-slug="hydrogen-radial-states">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">Chapter 5 · Sections 5.5–5.6</div>
+        <h1 class="sim-title">Hydrogen Radial States</h1>
+        <p class="sim-subtitle">Choose two states and compare their radial probability densities superposed on the corresponding energy levels and effective potentials.</p>
+      </div>
+      <div class="sim-source">Original simulator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+
+    <div class="sim-layout">
+      <aside class="sim-sidebar" aria-label="Simulation controls and equations">
+        <details class="sim-panel sim-controls collapsible-panel" open>
+          <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> States</summary>
+          <div class="state-editor" id="stateEditor"></div>
+          <div class="control-group">
+            <div class="control-row"><label class="control-label" for="radialRange">Radial range r/a₀</label><output class="control-value" id="radialRangeValue">50</output></div>
+            <input id="radialRange" type="range" min="10" max="80" step="5" value="50" />
+          </div>
+          <div class="button-row"><button class="sim-button secondary" id="resetButton" type="button"><i class="fa-solid fa-rotate-left"></i> Reset</button></div>
+          <div class="insight-box" style="margin-top:14px;">The magnetic quantum number m is omitted because it does not alter the radial function. Each density is drawn upward from its energy line, following the presentation in the book figure.</div>
+        </details>
+        <details class="sim-panel equation-panel" open>
+          <summary>Book equations and scales</summary>
+          <div class="equation-box">\[\rho=\frac{r}{a_0},\qquad a_0=0.529\,\text{Å},\qquad E_0=13.6\,\text{eV}\]\[\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2},\qquad \frac{E_n}{E_0}=-\frac{1}{n^2}\]\[\sigma(r)=|R_{nl}(r)|^2r^2,\qquad \int_0^\infty\sigma(r)\,dr=1\]</div>
+        </details>
+      </aside>
+
+      <section class="sim-workspace">
+        <div class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-chart-area"></i> Effective potential and radial probability density</h2>
+          <div class="canvas-wrap hydrogen-chart"><canvas id="potentialCanvas" aria-label="Effective potentials with radial probability densities superposed on the energy levels of two hydrogen states"></canvas></div>
+          <div class="legend" id="combinedLegend"></div>
+        </div>
+      </section>
+    </div>
+    <footer class="sim-footer">Axes follow the book: radius in units of a₀ and energy in units of E₀. Each normalized radial density a₀σ(r) is vertically scaled by the same factor and drawn from its energy Eₙ.</footer>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const colors = ["#d7853f", "#5b9bd5"];
+      const neutral = { grid:"#dbe5dd", ink:"#26332c", muted:"#66736b", zero:"#96a49b" };
+      const defaults = [{n:1,l:0},{n:2,l:1}];
+      const states = defaults.map((state, index) => ({...state,index}));
+
+      function factorial(n) { let value=1; for(let k=2;k<=n;k++) value*=k; return value; }
+      function laguerre(q, alpha, x) {
+        if(q===0) return 1;
+        if(q===1) return 1+alpha-x;
+        let previous=1, current=1+alpha-x;
+        for(let k=1;k<q;k++) {
+          const next=((2*k+1+alpha-x)*current-(k+alpha)*previous)/(k+1);
+          previous=current; current=next;
+        }
+        return current;
+      }
+      function radialAmplitude(n,l,rho) {
+        const q=n-l-1;
+        const normalization=Math.sqrt(factorial(q)/(2*n*factorial(n+l)))*Math.pow(2/n,l+1.5);
+        return normalization*Math.pow(rho,l)*Math.exp(-rho/n)*laguerre(q,2*l+1,2*rho/n);
+      }
+      function density(state,rho) { const radial=radialAmplitude(state.n,state.l,rho); return rho*rho*radial*radial; }
+      function potential(state,rho) { return -2/rho+state.l*(state.l+1)/(rho*rho); }
+      function energy(state) { return -1/(state.n*state.n); }
+      function orbitalLabel(l) { return ["s","p","d","f","g","h"][l] || `l${l}`; }
+      function stateLabel(state) { return `${state.n}${orbitalLabel(state.l)}`; }
+      function options(min,max,value) { let html=""; for(let k=min;k<=max;k++) html+=`<option value="${k}"${k===value?" selected":""}>${k}</option>`; return html; }
+
+      function buildEditors() {
+        $("stateEditor").innerHTML=states.map((state,index)=>`<div class="state-row" style="--state-color:${colors[index]}"><div class="state-row-title">State ${index+1}</div><div class="state-fields"><label>n<select data-state="${index}" data-field="n">${options(1,6,state.n)}</select></label><label>l<select data-state="${index}" data-field="l">${options(0,state.n-1,state.l)}</select></label></div><div class="state-note" data-state-note="${index}"></div></div>`).join("");
+        $("stateEditor").querySelectorAll("select").forEach(select=>select.addEventListener("change",handleSelection));
+      }
+      function refreshEditor(index) {
+        const state=states[index];
+        const lSelect=$(`stateEditor`).querySelector(`[data-state="${index}"][data-field="l"]`);
+        lSelect.innerHTML=options(0,state.n-1,state.l);
+        $(`stateEditor`).querySelector(`[data-state-note="${index}"]`).textContent=`Eₙ/E₀ = ${energy(state).toFixed(4)} · radial nodes = ${state.n-state.l-1}`;
+      }
+      function handleSelection(event) {
+        const index=Number(event.target.dataset.state), field=event.target.dataset.field;
+        states[index][field]=Number(event.target.value);
+        if(field==="n" && states[index].l>=states[index].n) states[index].l=states[index].n-1;
+        refreshEditor(index); render();
+      }
+      function fitCanvas(canvas) {
+        const ratio=Math.max(1,window.devicePixelRatio||1), rect=canvas.getBoundingClientRect();
+        const width=Math.max(300,Math.round(rect.width)), height=Math.max(260,Math.round(rect.height));
+        if(canvas.width!==width*ratio||canvas.height!==height*ratio){canvas.width=width*ratio;canvas.height=height*ratio;}
+        const ctx=canvas.getContext("2d"); ctx.setTransform(ratio,0,0,ratio,0,0); return {ctx,width,height};
+      }
+      function axes(ctx,width,height,pad,xMax,yMin,yMax,xTitle,yTitle) {
+        const x=rho=>pad.l+rho/xMax*(width-pad.l-pad.r), y=value=>pad.t+(yMax-value)/(yMax-yMin)*(height-pad.t-pad.b);
+        ctx.strokeStyle=neutral.grid;ctx.lineWidth=1;ctx.font="11px Inter, sans-serif";ctx.fillStyle=neutral.muted;
+        const xStep=xMax<=20?5:10;
+        for(let tick=0;tick<=xMax;tick+=xStep){const px=x(tick);ctx.beginPath();ctx.moveTo(px,pad.t);ctx.lineTo(px,height-pad.b);ctx.stroke();ctx.fillText(String(tick),px-4,height-pad.b+18);}
+        const yTicks=5;
+        ctx.textAlign="right";for(let i=0;i<=yTicks;i++){const value=yMin+(yMax-yMin)*i/yTicks,py=y(value);ctx.beginPath();ctx.moveTo(pad.l,py);ctx.lineTo(width-pad.r,py);ctx.stroke();ctx.fillText(value.toFixed(yMax<=1?2:1),pad.l-8,py+4);}ctx.textAlign="left";
+        ctx.strokeStyle=neutral.ink;ctx.strokeRect(pad.l,pad.t,width-pad.l-pad.r,height-pad.t-pad.b);
+        ctx.fillStyle=neutral.ink;ctx.font="600 12px Inter, sans-serif";ctx.fillText(xTitle,Math.max(pad.l,(width-pad.r+pad.l)/2-22),height-8);ctx.save();ctx.translate(14,(height+pad.t-pad.b)/2+25);ctx.rotate(-Math.PI/2);ctx.fillText(yTitle,0,0);ctx.restore();
+        return {x,y};
+      }
+      function plotLine(ctx,map,values,color,width=2.4,dash=[]) {
+        ctx.save();ctx.strokeStyle=color;ctx.lineWidth=width;ctx.setLineDash(dash);ctx.beginPath();let started=false;
+        values.forEach(point=>{if(!Number.isFinite(point.y))return;const px=map.x(point.x),py=map.y(point.y);if(!started){ctx.moveTo(px,py);started=true;}else ctx.lineTo(px,py);});ctx.stroke();ctx.restore();
+      }
+      function drawPotential() {
+        const {ctx,width,height}=fitCanvas($("potentialCanvas"));ctx.clearRect(0,0,width,height);
+        const xMax=Number($("radialRange").value),pad={l:62,r:20,t:30,b:42},yMin=-1.08,yMax=.18,map=axes(ctx,width,height,pad,xMax,yMin,yMax,"r/a₀","Energy/E₀");
+        if(yMin<0&&yMax>0){ctx.strokeStyle=neutral.zero;ctx.setLineDash([5,5]);ctx.beginPath();ctx.moveTo(pad.l,map.y(0));ctx.lineTo(width-pad.r,map.y(0));ctx.stroke();ctx.setLineDash([]);}
+        const samples=900;
+        const densitySeries=states.map(state=>{const points=[];for(let i=0;i<=samples;i++){const rho=xMax*i/samples;points.push({x:rho,y:density(state,rho)});}return points;});
+        const densityMaximum=Math.max(.01,...densitySeries.flat().map(point=>point.y));
+        const densityScale=.22/densityMaximum;
+        states.forEach((state,index)=>{
+          const potentialPoints=[];for(let i=0;i<=samples;i++){const rho=.08+(xMax-.08)*i/samples;potentialPoints.push({x:rho,y:Math.max(yMin,Math.min(yMax,potential(state,rho)))});}plotLine(ctx,map,potentialPoints,colors[index],2.5);
+          const baseline=energy(state),densityPoints=densitySeries[index].map(point=>({x:point.x,y:baseline+densityScale*point.y}));
+          ctx.save();ctx.fillStyle=`${colors[index]}55`;ctx.beginPath();ctx.moveTo(map.x(0),map.y(baseline));densityPoints.forEach(point=>ctx.lineTo(map.x(point.x),map.y(point.y)));ctx.lineTo(map.x(xMax),map.y(baseline));ctx.closePath();ctx.fill();ctx.restore();
+          plotLine(ctx,map,densityPoints,colors[index],2.2);plotLine(ctx,map,[{x:0,y:baseline},{x:xMax,y:baseline}],colors[index],1.6,[7,5]);
+          const peak=densityPoints.reduce((best,point)=>point.y>best.y?point:best,densityPoints[0]);ctx.fillStyle=neutral.ink;ctx.font="700 11px Inter, sans-serif";ctx.fillText(stateLabel(state),Math.min(map.x(peak.x)+6,width-pad.r-76),Math.max(pad.t+12,map.y(peak.y)-7));
+        });
+        ctx.fillStyle=neutral.ink;ctx.font="600 12px Inter, sans-serif";ctx.fillText("a₀σ(r)",pad.l+8,pad.t-10);
+      }
+      function buildLegend() {
+        $("combinedLegend").innerHTML=states.map((state,index)=>`<span class="legend-item"><span class="legend-area" style="--swatch:${colors[index]}"></span>${stateLabel(state)} · Vef and σ</span>`).join("");
+      }
+      function render() {
+        states.forEach((_,index)=>refreshEditor(index));$("radialRangeValue").textContent=$("radialRange").value;buildLegend();drawPotential();
+      }
+      $("radialRange").addEventListener("input",render);
+      $("resetButton").addEventListener("click",()=>{defaults.forEach((value,index)=>Object.assign(states[index],value));$("radialRange").value=50;buildEditors();render();});
+      window.addEventListener("resize",render);buildEditors();render();
+    })();
+  </script>
+</body>
+</html>
