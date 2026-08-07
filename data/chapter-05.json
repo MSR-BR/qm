@@ -37,8 +37,8 @@
     },
     {
       "id": "5.7",
-      "title": "Hydrogen energy spectrum",
-      "note": "Principal quantum number, Bohr energy scale and the discrete bound-state energies of hydrogen.",
+      "title": "Hydrogen energy spectrum and degeneracy",
+      "note": "Origin of quantization, Bohr energy scale and degenerate states labeled by n, l and m.",
       "url": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
       "aiExercise": true
     },

@@ -520,18 +520,42 @@
       ];
     }
     if (key === "hydrogen-spectrum-and-degeneracy") {
-      page.exerciseFocus = "the quantized hydrogen energy spectrum and the Bohr ionization-energy scale";
-      page.guide = String.raw`The polynomial condition fixes \(n=1/(ka_0)\). Together with \(k^2=-2mE/\hbar^2\), it gives the discrete hydrogen energy spectrum.`;
+      page.exerciseFocus = "the origin of hydrogen energy quantization, the bound-state spectrum, and degeneracy in the quantum numbers l and m";
+      page.guide = String.raw`Hydrogen energy quantization originates in the normalizability of the radial wave function. The associated Laguerre series must terminate, making its order a nonnegative integer; this condition fixes the principal quantum number and therefore the allowed energies.`;
       page.content = String.raw`
-        <div class="card" style="grid-column:1 / -1">
-          <div class="ch"><i class="fa-solid fa-bolt"></i> Energy quantization</div>
+        <div class="card" style="grid-column:1 / -1!important">
+          <div class="ch"><i class="fa-solid fa-arrow-down-wide-short"></i> Origin of quantization</div>
+          <p>After the required behavior at the origin and at infinity has been extracted, the remaining radial function obeys the associated Laguerre equation. A normalizable bound state is obtained only when the series terminates as a polynomial:</p>
+          <div class="eq key-eq">\[q=n-l-1=0,1,2,\ldots,\qquad n=\frac{1}{ka_0}.\]</div>
+          <p>Since \(l=0,1,2,\ldots\), polynomial termination restricts \(n\) to the positive integers and gives \(l=0,1,\ldots,n-1\). Thus the discreteness of the spectrum follows from the acceptable radial boundary conditions, rather than being imposed separately.</p>
+        </div>
+        <div class="card green" style="grid-column:1 / -1!important">
+          <div class="ch green"><i class="fa-solid fa-bolt"></i> Hydrogen energy spectrum</div>
           <div class="eq">\[k^2=-\frac{2mE}{\hbar^2},\qquad k=\frac{1}{na_0}.\]</div>
-          <p>Substitution gives</p>
+          <p>Combining these relations gives</p>
           <div class="eq key-eq">\[E_n=-\frac{E_0}{n^2},\qquad E_0=\frac{\hbar^2}{2ma_0^2}=13.6\,\text{eV},\qquad n=1,2,3,\ldots\]</div>
-          <p>\(E_0\) is the ionization energy of the hydrogen atom. The result agrees with the ionization energy obtained in the Bohr model, and the energy approaches zero from below as \(n\) increases.</p>
+          <p>\(E_0\) is the hydrogen ionization energy. The levels approach zero from below as \(n\) increases, and \(E=0\) is the boundary between bound and unbound motion.</p>
+        </div>
+        <div class="col">
+          <figure class="book-figure">
+            <img src="../../assets/chapter-05/figure-5-4-hydrogen-energy-degeneracy.png" alt="Hydrogen energy levels for the s, p, and d orbital sectors" />
+            <figcaption>Hydrogen energies for \(l=0,1,2\). States with the same principal quantum number lie at the same energy: \(2s\) and \(2p\) share \(-E_0/4\), while \(3s\), \(3p\), and \(3d\) share \(-E_0/9\).</figcaption>
+          </figure>
+        </div>
+        <div class="col">
+          <div class="card purple">
+            <div class="ch purple"><i class="fa-solid fa-layer-group"></i> Degeneracy</div>
+            <p>The energy \(E_n\) depends only on \(n\), although the stationary states are labeled by \((n,l,m)\). Consequently, different allowed values of \(l\) and \(m\) can correspond to the same energy.</p>
+            <div class="eq key-eq">\[l=0,1,\ldots,n-1,\qquad m=-l,-l+1,\ldots,l.\]</div>
+            <p>For example, the \(n=2\) energy contains the \(2s\) and \(2p\) states; the \(n=3\) energy contains \(3s\), \(3p\), and \(3d\). For each \(l\), the allowed values of \(m\) distinguish additional states at that same energy. Following the book, the formal counting of the degeneracy is left as an exercise.</p>
+          </div>
+          <figure class="book-figure">
+            <img src="../../assets/chapter-05/table-5-1-hydrogen-quantum-numbers.png" alt="Table of the first hydrogen energies and their n, l, and m quantum numbers" />
+            <figcaption>First hydrogen levels and their allowed \((n,l,m)\) labels. The repeated energy within each value of \(n\) makes the degeneracy explicit.</figcaption>
+          </figure>
         </div>
       `;
-      page.keys = [String.raw`E_n=-\frac{E_0}{n^2}`, String.raw`E_0=\frac{\hbar^2}{2ma_0^2}`];
+      page.keys = [String.raw`q=n-l-1=0,1,2,\ldots`, String.raw`n=\frac{1}{ka_0}`, String.raw`E_n=-\frac{E_0}{n^2}`, String.raw`l=0,1,\ldots,n-1,\qquad m=-l,\ldots,l`];
     }
     const preserved = [...body.children].filter((node) =>
       node.matches("[data-exercise-readiness], [data-practice-anchor], [data-termo-ai-exercise], .resource-links, .source-note")
