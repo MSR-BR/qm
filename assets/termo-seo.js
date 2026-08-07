@@ -534,6 +534,43 @@
         String.raw`\text{shell capacity}=2n^2`
       ];
     }
+    if (key === "hydrogen-expectation-values") {
+      page.exerciseFocus = "radial moments, the Kramers-Pasternack recurrence, and the Feynman-Hellmann theorem";
+      page.guide = String.raw`The appendix calculates \(\langle r^q\rangle\) for hydrogen states. It first obtains a recurrence relation and then uses the Feynman-Hellmann theorem to supply the inverse-power result needed to continue the recurrence.`;
+      page.content = String.raw`
+        <div class="col">
+          <div class="card">
+            <div class="ch"><i class="fa-solid fa-brackets-curly"></i> Radial expectation value</div>
+            <div class="eq key-eq">\[\langle r^q\rangle=\int_0^\infty R_{nl}^*(r)r^qR_{nl}(r)r^2\,dr.\]</div>
+            <p>With \(\rho=r/a_0\), the book introduces the dimensionless moments</p>
+            <div class="eq">\[\langle q\rangle=\int_0^\infty \rho^q f^2(\rho)\,d\rho.\]</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card orange">
+            <div class="ch orange"><i class="fa-solid fa-check"></i> First results</div>
+            <div class="eq">\[\langle r^{-1}\rangle=\frac{1}{n^2a_0},\qquad \langle r\rangle=\frac{a_0}{2}[3n^2-l(l+1)].\]</div>
+            <div class="eq">\[\langle r^2\rangle=\frac{a_0^2n^2}{2}[5n^2+1-3l(l+1)].\]</div>
+          </div>
+        </div>
+        <div class="card green" style="grid-column:1 / -1!important">
+          <div class="ch green"><i class="fa-solid fa-arrow-right-arrow-left"></i> Kramers-Pasternack relation</div>
+          <div class="eq key-eq">\[4(q+1)\langle q\rangle-4n^2(2q+1)\langle q-1\rangle+n^2[(2l+1)^2-q^2]\langle q-2\rangle=0.\]</div>
+        </div>
+        <div class="card purple" style="grid-column:1 / -1!important">
+          <div class="ch purple"><i class="fa-solid fa-scale-balanced"></i> Feynman-Hellmann theorem</div>
+          <div class="eq">\[\frac{\partial E_n}{\partial\gamma}=\left\langle\frac{\partial\hat H}{\partial\gamma}\right\rangle.\]</div>
+          <p>The book applies the theorem to obtain</p>
+          <div class="eq key-eq">\[\langle r^{-2}\rangle=\frac{1}{n^3a_0^2(l+1/2)},\]</div>
+          <p>and then returns to the recurrence relation for negative powers. The full derivation remains in Appendix 5.A.</p>
+        </div>
+      `;
+      page.keys = [
+        String.raw`\langle r^q\rangle=\int_0^\infty R_{nl}^*(r)r^qR_{nl}(r)r^2\,dr`,
+        String.raw`4(q+1)\langle q\rangle-4n^2(2q+1)\langle q-1\rangle+n^2[(2l+1)^2-q^2]\langle q-2\rangle=0`,
+        String.raw`\frac{\partial E_n}{\partial\gamma}=\left\langle\frac{\partial\hat H}{\partial\gamma}\right\rangle`
+      ];
+    }
     if (key === "hydrogen-atom-and-effective-potential") {
       page.guide = String.raw`For the hydrogen atom, the central potential is Coulombic. Substitution into the general radial equation produces an effective potential made of the Coulomb term and the orbital contribution.`;
       page.content = String.raw`<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-atom"></i> Coulomb potential</div><p>Taking the proton as the origin and writing the electron mass as \(m\), the electron-proton interaction is</p><div class="eq key-eq">\[V(r)=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}.\]</div><p>This is a central potential, so the separated radial equation derived above applies.</p></div><div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> Radial equation before the effective potential</div><p>With \(\lambda=l(l+1)\), the total radial equation is</p><div class="eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V(r)]-\frac{l(l+1)}{r^2}=0.\]</div><p>Gathering the Coulomb and orbital terms gives the effective-potential form.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-chart-line"></i> Effective radial potential</div><div class="eq key-eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0,\qquad V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div><p>The first term is the Coulomb attraction; the second is the orbital contribution. Their competition produces the effective-potential curves.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-ruler"></i> Hydrogen scales</div><div class="eq">\[\rho=\frac{r}{a_0},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{me^2},\qquad E_0=\frac{\hbar^2}{2ma_0^2}.\]</div><div class="eq key-eq">\[\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}.\]</div></div><figure class="book-figure"><img src="../../assets/chapter-05/figure-5-3-effective-potential.png" alt="Effective potential curves for hydrogen for l equals zero, one, and two" /><figcaption>Effective potential in units of \(E_0\) as a function of \(r/a_0\). The dashed curves isolate the orbital contribution; the solid curves are \(V_{\rm ef}^{\,l}\). The horizontal marks illustrate hydrogen energies for \(n=1,2,3\).</figcaption></figure></div>`;
