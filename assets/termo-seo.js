@@ -308,6 +308,10 @@
     if (!body) return;
 
     const key = window.location.pathname.split("/").pop().replace(/\.html$/, "");
+    if (["hydrogen-radial-equation-and-laguerre-solutions", "hydrogen-orbitals-and-radial-probability"].includes(key)) {
+      window.location.replace("hydrogen-atom-and-effective-potential.html");
+      return;
+    }
     const pages = {
       "central-potentials-chapter-roadmap": {
         guide: String.raw`This chapter treats central potentials, for which \(V(\mathbf r)=V(r)\). The common angular problem is separated first; the radial equation is then solved separately for the hydrogen atom and for the three-dimensional harmonic oscillator.`,
@@ -330,9 +334,9 @@
         keys: [String.raw`Y_l^m(\theta,\phi)=A_{lm}P_l^m(\cos\theta)e^{im\phi}`, String.raw`A_{lm}=\left[\frac{2l+1}{4\pi}\frac{(l-m)!}{(l+m)!}\right]^{1/2}`, String.raw`\int_0^{\pi}\!\int_0^{2\pi}\!|Y_l^m(\theta,\phi)|^2\sin\theta\,d\phi\,d\theta=1`]
       },
       "hydrogen-atom-and-effective-potential": {
-        guide: "For hydrogen, the central potential is Coulombic. Substitution into the general radial equation produces an effective potential made of the Coulomb term and the orbital contribution.",
-        content: `<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-atom"></i> Coulomb potential</div><div class="eq key-eq">\\[V(r)=-\\frac{e^2}{4\\pi\\epsilon_0r}.\\]</div><p>The book writes the radial equation using \(R_{nl}(r)\), then introduces the natural hydrogen length \(a_0=4\\pi\\epsilon_0\\hbar^2/(me^2)\).</p><div class="eq">\\[a_0=\\frac{4\\pi\\epsilon_0\\hbar^2}{me^2},\\qquad E_0=\\frac{\\hbar^2}{2ma_0^2}.\\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-chart-line"></i> Effective potential</div><div class="eq">\\[V_{\\rm ef}(r)=-\\frac{e^2}{4\\pi\\epsilon_0r}+\\frac{\\hbar^2l(l+1)}{2mr^2}.\\]</div><p>The first term is the central Coulomb potential; the second is the orbital contribution. The book uses their sum to organize the radial problem.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-wave-square"></i> Reduced radial equation</div><p>With \(u(r)=rR(r)\), the first derivative is removed:</p><div class="eq">\\[u''+\\left[-k^2+\\frac{2}{ra_0}-\\frac{l(l+1)}{r^2}\\right]u=0,\\qquad k^2=-\\frac{2mE}{\\hbar^2}.\\]</div></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-book-open"></i> Reading the figure</div><p>The effective-potential curves in the book show how the orbital contribution changes with \(l\). The radial solution and its allowed energies are obtained next by matching this equation to the associated Laguerre equation.</p></div></div>`,
-        keys: ["V_{\\rm ef}=-e^2/(4\\pi\\epsilon_0r)+\\hbar^2l(l+1)/(2mr^2)", "u''+[-k^2+2/(ra_0)-l(l+1)/r^2]u=0"]
+        guide: String.raw`A proton and an electron form the hydrogen atom. With the proton taken at the origin and the electron mass written as \(m\), the Coulomb interaction is inserted into the radial equation obtained for a central potential.`,
+        content: String.raw`<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-atom"></i> Hydrogen atom model</div><p>The proton has charge \(+e\) and mass \(m_p\); the electron has charge \(-e\) and mass \(m_e\). Since \(m_p\approx1836m_e\), the book places the origin at the proton and approximates the reduced mass by the electron mass, writing \(m_e=m\).</p><div class="eq key-eq">\[V(r)=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}.\]</div><p>This electron-proton Coulomb interaction is a central potential with spherical symmetry.</p></div><div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> Radial equation</div><p>The angular contribution is already supplied by the spherical harmonics. Using \(\lambda=l(l+1)\) in the radial equation gives</p><div class="eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}\left[E-V_{\rm ef}(r)\right]=0.\]</div><p>The radial solution itself is developed in the next section.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-chart-line"></i> Effective potential</div><div class="eq key-eq">\[V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div><p>The first term is the Coulomb interaction. The second is the orbital term; the book postpones the physical discussion of the orbital quantum number \(l\) to Chapter 6.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-ruler"></i> Dimensionless form</div><div class="eq">\[\rho=\frac{r}{a_0},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{me^2}=0.529\,\text{Å}.\]</div><div class="eq">\[E_0=\frac{\hbar^2}{2ma_0^2}=13.6\,\text{eV}.\]</div><div class="eq key-eq">\[\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}.\]</div><p>\(a_0\) is the Bohr radius, and \(E_0\) is the ionization energy of the Bohr atom. The following sections show that the Schrödinger treatment gives the same ionization energy.</p></div><figure class="book-figure"><img src="../../assets/chapter-05/figure-5-3-effective-potential.png" alt="Effective potential curves for the hydrogen atom for l equal to zero, one and two, with the orbital contributions shown separately" /><figcaption>Effective potential for the hydrogen atom. The Coulomb term \(-2/\rho\) and the orbital term \(l(l+1)/\rho^2\) compete. For \(l&gt;0\), their sum forms a minimum in which the electron is confined. The orbital contribution is shown separately for comparison; the energy-level interpretation is revisited later in the chapter.</figcaption></figure></div>`,
+        keys: [String.raw`V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}`, String.raw`\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}`]
       },
       "hydrogen-radial-equation-and-laguerre-solutions": {
         guide: "The book changes variables in the radial hydrogen equation and isolates its acceptable asymptotic behavior. The remaining function obeys the associated Laguerre differential equation.",
@@ -396,6 +400,139 @@
           String.raw`Single-valuedness under \(\phi\to\phi+2\pi\) restricts \(m\) to the integers: \(m=0,\pm1,\pm2,\ldots\).`
         );
     }
+    if (key === "hydrogen-atom-and-effective-potential") {
+      page.guide = String.raw`For the hydrogen atom, the central potential is Coulombic. Substitution into the general radial equation produces an effective potential made of the Coulomb term and the orbital contribution.`;
+      page.content = String.raw`<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-atom"></i> Coulomb potential</div><p>Taking the proton as the origin and writing the electron mass as \(m\), the electron-proton interaction is</p><div class="eq key-eq">\[V(r)=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}.\]</div><p>This is a central potential, so the separated radial equation derived above applies.</p></div><div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> Radial equation before the effective potential</div><p>With \(\lambda=l(l+1)\), the total radial equation is</p><div class="eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V(r)]-\frac{l(l+1)}{r^2}=0.\]</div><p>Gathering the Coulomb and orbital terms gives the effective-potential form.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-chart-line"></i> Effective radial potential</div><div class="eq key-eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0,\qquad V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div><p>The first term is the Coulomb attraction; the second is the orbital contribution. Their competition produces the effective-potential curves.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-ruler"></i> Hydrogen scales</div><div class="eq">\[\rho=\frac{r}{a_0},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{me^2},\qquad E_0=\frac{\hbar^2}{2ma_0^2}.\]</div><div class="eq key-eq">\[\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}.\]</div></div><figure class="book-figure"><img src="../../assets/chapter-05/figure-5-3-effective-potential.png" alt="Effective potential curves for hydrogen for l equals zero, one, and two" /><figcaption>Effective potential in units of \(E_0\) as a function of \(r/a_0\). The dashed curves isolate the orbital contribution; the solid curves are \(V_{\rm ef}^{\,l}\). The horizontal marks illustrate hydrogen energies for \(n=1,2,3\).</figcaption></figure></div>`;
+      page.keys = [String.raw`V(r)=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}`, String.raw`V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}`, String.raw`\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}`];
+    }
+    if (key === "hydrogen-radial-equation-and-laguerre-solutions") {
+      page.guide = String.raw`The hydrogen radial equation is reduced to the associated Laguerre equation. Its polynomial solutions, together with normalization, give the final radial functions and the radial probability density.`;
+      page.content = String.raw`<div class="card"><div class="ch"><i class="fa-solid fa-function"></i> Associated Laguerre equation</div><p>After the changes of variables and extraction of the required asymptotic factors, the remaining function has the associated Laguerre form</p><div class="eq key-eq">\[x\,y''(x)+(\nu+1-x)y'(x)+q\,y(x)=0,\qquad y(x)=A_{q\nu}L_\nu^q(x),\qquad q=0,1,2,\ldots\]</div><p>Comparison with the transformed hydrogen equation gives \(\nu=2l+1\), \(q=n-l-1\), and \(n=1/(ka_0)\). The detailed algebra of the transformations is given in the book.</p></div><div class="col"><div class="card green"><div class="ch green"><i class="fa-solid fa-list-check"></i> Allowed radial labels</div><div class="eq">\[q=n-l-1=0,1,2,\ldots,\qquad l=0,1,\ldots,n-1.\]</div><p>Polynomial termination is the normalizability condition that selects the allowed radial functions.</p></div><div class="card orange"><div class="ch orange"><i class="fa-solid fa-square-root-variable"></i> Normalized radial solution</div><div class="eq key-eq">\[R(r)=R_{nl}(r)=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\!\left(\frac{2r}{na_0}\right).\]</div><p>This is normalized so that \(\int_0^\infty |R_{nl}(r)|^2r^2\,dr=1\).</p></div></div><div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-chart-area"></i> Radial probability density</div><p>After integrating the normalized angular factor, the probability in the spherical shell from \(r\) to \(r+dr\) is</p><div class="eq">\[dP(r)=|R_{nl}(r)|^2r^2\,dr,\qquad \sigma(r)=|R_{nl}(r)|^2r^2.\]</div><p>Thus \(\sigma(r)\) is the radial probability density, not the point probability density.</p></div><figure class="book-figure"><img src="../../assets/chapter-05/figure-5-5-hydrogen-radial-probability.png" alt="Hydrogen radial probability densities and effective potentials for l equals one and l equals zero" /><figcaption>Hydrogen radial probability density \(\sigma(r)\), multiplied by \(a_0\), drawn over the effective-potential and energy diagram. Panel (a) is \(l=1\), with \(n=2,3,4\); panel (b) is \(l=0\), with \(n=1,2,3\).</figcaption></figure></div>`;
+      page.keys = [String.raw`x\,y''+(\nu+1-x)y'+q\,y=0`, String.raw`q=n-l-1,\qquad l=0,1,\ldots,n-1`, String.raw`R_{nl}(r)=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\!\left(\frac{2r}{na_0}\right)`, String.raw`\sigma(r)=|R_{nl}(r)|^2r^2`];
+    }
+    if (key === "hydrogen-spectrum-and-degeneracy") {
+      page.guide = String.raw`The polynomial condition fixes \(n=1/(ka_0)\). Combining it with the bound-state definition of \(k\) gives the hydrogen energies; the labels \(l\) and \(m\) then reveal the degeneracy within each energy level.`;
+      page.content = String.raw`<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-bolt"></i> Hydrogen energy</div><div class="eq">\[k^2=-\frac{2mE}{\hbar^2},\qquad k=\frac{1}{na_0}.\]</div><p>Substitution gives the discrete spectrum</p><div class="eq key-eq">\[E_n=-\frac{E_0}{n^2},\qquad E_0=\frac{\hbar^2}{2ma_0^2},\qquad n=1,2,3,\ldots\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-layer-group"></i> States at fixed energy</div><div class="eq">\[l=0,1,\ldots,n-1,\qquad m=-l,-l+1,\ldots,l.\]</div><p>For a fixed \(n\), the energy is the same for all allowed \(l\) and \(m\). For example, the \(n=3\) level contains the \(3s\), \(3p\), and \(3d\) states.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-circle-nodes"></i> Degeneracy</div><p>For each \(l\), there are \(2l+1\) values of \(m\). Hence the number of spatial states at the energy \(E_n\) is</p><div class="eq key-eq">\[\sum_{l=0}^{n-1}(2l+1)=n^2.\]</div><p>The degeneracy follows because the Coulomb energy depends only on the principal quantum number \(n\).</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-list"></i> First levels</div><div class="table-wrap"><table><thead><tr><th>n</th><th>Energy</th><th>subshells</th></tr></thead><tbody><tr><td>1</td><td>\(-E_0\)</td><td>1s</td></tr><tr><td>2</td><td>\(-E_0/4\)</td><td>2s, 2p</td></tr><tr><td>3</td><td>\(-E_0/9\)</td><td>3s, 3p, 3d</td></tr></tbody></table></div></div></div>`;
+      page.keys = [String.raw`E_n=-\frac{E_0}{n^2}`, String.raw`l=0,1,\ldots,n-1,\qquad m=-l,\ldots,l`, String.raw`\sum_{l=0}^{n-1}(2l+1)=n^2`];
+    }
+    if (key === "hydrogen-atom-and-effective-potential") {
+      page.exerciseFocus = "the Coulomb radial equation, effective potential, associated Laguerre solutions, normalization, degeneracy and radial probability density";
+      page.guide = String.raw`For the hydrogen atom, the central potential is Coulombic. Starting from the complete radial equation, the Coulomb and orbital terms are gathered into an effective potential; the same radial problem then leads to associated Laguerre polynomials, normalized radial functions, degeneracy, and radial probability density.`;
+      page.content = String.raw`
+        <div class="col">
+          <div class="card">
+            <div class="ch"><i class="fa-solid fa-atom"></i> Coulomb central potential</div>
+            <p>Taking the proton as the origin and writing the electron mass as \(m\), the electron-proton interaction is</p>
+            <div class="eq key-eq">\[V(r)=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}.\]</div>
+            <p>This is a central potential with spherical symmetry.</p>
+          </div>
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-wave-square"></i> Complete radial equation</div>
+            <p>With \(\lambda=l(l+1)\), the separated radial equation is first written without introducing the effective potential:</p>
+            <div class="eq">\[\begin{aligned}
+              &\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)
+              +\frac{2m}{\hbar^2}[E-V(r)]\\
+              &\hspace{4em}-\frac{l(l+1)}{r^2}=0.
+            \end{aligned}\]</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card orange">
+            <div class="ch orange"><i class="fa-solid fa-chart-line"></i> Effective radial equation</div>
+            <div class="eq key-eq">\[\begin{aligned}
+              &\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)\\
+              &\qquad+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0.
+            \end{aligned}\]</div>
+            <div class="eq">\[V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div>
+            <p>The first contribution is the Coulomb attraction; the second is the orbital term.</p>
+          </div>
+          <div class="card purple">
+            <div class="ch purple"><i class="fa-solid fa-ruler"></i> Hydrogen scales</div>
+            <div class="eq">\[\rho=\frac{r}{a_0},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{me^2}=0.529\,\text{Å},\]</div>
+            <div class="eq">\[E_0=\frac{\hbar^2}{2ma_0^2}=13.6\,\text{eV}.\]</div>
+            <div class="eq key-eq">\[\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}.\]</div>
+          </div>
+        </div>
+        <div class="col">
+          <figure class="book-figure">
+            <img src="../../assets/chapter-05/figure-5-3-effective-potential.png" alt="Effective potential curves for hydrogen for l equal to zero, one, and two" />
+            <figcaption>Effective potential for the hydrogen atom. The solid curves are \(V_{\rm ef}^{\,l}\); the dashed curves isolate the orbital contribution. Their competition forms a minimum that confines the electron. The horizontal marks show the first hydrogen energies.</figcaption>
+          </figure>
+        </div>
+        <div class="card orange" style="grid-column:1 / -1">
+          <div class="ch orange"><i class="fa-solid fa-arrow-right-arrow-left"></i> Reduction and boundary behavior</div>
+          <p>The book introduces \(u(r)=rR(r)\), \(z=2kr\), and \(k^2=-2mE/\hbar^2\). The radial equation becomes</p>
+          <div class="eq">\[\frac{d^2u}{dr^2}+\left[-k^2+\frac{2}{ra_0}-\frac{l(l+1)}{r^2}\right]u(r)=0.\]</div>
+          <p>Regularity near the origin selects \(u(z)\sim z^{l+1}\), while decay for \(z\to\infty\) selects \(u(z)\sim e^{-z/2}\). Therefore,</p>
+          <div class="eq key-eq">\[u(z)=z^{l+1}e^{-z/2}\chi(z).\]</div>
+          <p>The substitutions that lead from this expression to the next differential equation are detailed in Box 5.2 of the book.</p>
+        </div>
+        <div class="card" style="grid-column:1 / -1">
+          <div class="ch"><i class="fa-solid fa-function"></i> Associated Laguerre equation and solutions</div>
+          <p>The remaining function obeys</p>
+          <div class="eq">\[z\chi''(z)+[2(l+1)-z]\chi'(z)+\left[-(l+1)+\frac{1}{ka_0}\right]\chi(z)=0.\]</div>
+          <p>It is compared with the associated Laguerre equation and its polynomial solution:</p>
+          <div class="eq key-eq">\[xy''(x)+(\nu+1-x)y'(x)+q\,y(x)=0,\qquad y_q^\nu(x)=A_{q\nu}L_\nu^q(x),\]</div>
+          <div class="eq">\[L_\nu^q(x)=\frac{e^x x^{-\nu}}{q!}\frac{d^q}{dx^q}\left(e^{-x}x^{q+\nu}\right),\qquad q=0,1,2,\ldots\]</div>
+          <div class="eq">\[L_\nu^0(x)=1,\quad L_\nu^1(x)=(1+\nu)-x,\quad L_\nu^2(x)=\frac{(2+\nu)(1+\nu)}{2}-(2+\nu)x+\frac{x^2}{2}.\]</div>
+          <p>Comparison gives \(\nu=2l+1\), \(q=n-l-1\), and \(n=1/(ka_0)\). Polynomial termination requires \(q\geq0\), hence \(l=0,1,\ldots,n-1\).</p>
+        </div>
+        <div class="col">
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-scale-balanced"></i> Normalization</div>
+            <div class="eq">\[\int_0^\infty |R_{nl}(r)|^2r^2\,dr=1.\]</div>
+            <p>Using the weighted orthogonality of the associated Laguerre polynomials, the normalization constant is</p>
+            <div class="eq">\[A_{nl}=\left[\left(\frac{2}{na_0}\right)^3\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}.\]</div>
+            <p>The longer manipulation of the Laguerre recurrence and orthogonality relations remains in Box 5.3.</p>
+          </div>
+          <div class="card purple">
+            <div class="ch purple"><i class="fa-solid fa-layer-group"></i> Degeneracy</div>
+            <p>The energy depends on \(n\), not on \(l\) or \(m\). Different states therefore share the same energy. For \(n=3\), the degenerate spatial states belong to \(3s\), \(3p\), and \(3d\).</p>
+            <div class="eq">\[l=0,1,\ldots,n-1,\qquad m=-l,-l+1,\ldots,l.\]</div>
+            <p>Following the book, the formal calculation of the degeneracy is left as an exercise.</p>
+          </div>
+        </div>
+        <div class="col" style="grid-column:span 2">
+          <div class="card orange">
+            <div class="ch orange"><i class="fa-solid fa-square-root-variable"></i> Final normalized radial solution</div>
+            <div class="eq key-eq">\[R_{nl}(r)=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right).\]</div>
+            <div class="eq">\[\Psi_{nlm}(r,\theta,\phi)=R_{nl}(r)Y_l^m(\theta,\phi).\]</div>
+          </div>
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-chart-area"></i> Radial probability density</div>
+            <div class="eq key-eq">\[dP(r)=|R_{nl}(r)|^2r^2\,dr,\qquad \sigma(r)=|R_{nl}(r)|^2r^2.\]</div>
+            <p>For fixed \(l\), the lowest allowed \(n=l+1\) has no radial node; the following states acquire one additional node successively. The probability is not restricted to the classical limits of \(V_{\rm ef}\).</p>
+          </div>
+        </div>
+        <div class="col" style="grid-column:1 / -1; max-width:720px; margin:0 auto">
+          <figure class="book-figure">
+            <img src="../../assets/chapter-05/figure-5-5-hydrogen-radial-probability.png" alt="Hydrogen radial probability densities superposed on effective potentials for l equal to one and zero" />
+            <figcaption>Radial probability density \(\sigma(r)\), multiplied by \(a_0\), superposed on the energy diagram. Panel (a): \(l=1\), with \(n=2,3,4,\ldots\). Panel (b): \(l=0\), with \(n=1,2,3,\ldots\).</figcaption>
+          </figure>
+        </div>
+      `;
+      page.keys = [
+        String.raw`\frac{1}{r^2R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)+\frac{2m}{\hbar^2}[E-V]-\frac{l(l+1)}{r^2}=0`,
+        String.raw`V_{\rm ef}=V+\frac{\hbar^2l(l+1)}{2mr^2}`,
+        String.raw`xy''+(\nu+1-x)y'+q\,y=0`,
+        String.raw`R_{nl}(r)=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right)`,
+        String.raw`\sigma(r)=|R_{nl}(r)|^2r^2`
+      ];
+    }
+    if (key === "hydrogen-spectrum-and-degeneracy") {
+      page.exerciseFocus = "the quantized hydrogen energy spectrum and the Bohr ionization-energy scale";
+      page.guide = String.raw`The polynomial condition fixes \(n=1/(ka_0)\). Together with \(k^2=-2mE/\hbar^2\), it gives the discrete hydrogen energy spectrum.`;
+      page.content = String.raw`
+        <div class="card" style="grid-column:1 / -1">
+          <div class="ch"><i class="fa-solid fa-bolt"></i> Energy quantization</div>
+          <div class="eq">\[k^2=-\frac{2mE}{\hbar^2},\qquad k=\frac{1}{na_0}.\]</div>
+          <p>Substitution gives</p>
+          <div class="eq key-eq">\[E_n=-\frac{E_0}{n^2},\qquad E_0=\frac{\hbar^2}{2ma_0^2}=13.6\,\text{eV},\qquad n=1,2,3,\ldots\]</div>
+          <p>\(E_0\) is the ionization energy of the hydrogen atom. The result agrees with the ionization energy obtained in the Bohr model, and the energy approaches zero from below as \(n\) increases.</p>
+        </div>
+      `;
+      page.keys = [String.raw`E_n=-\frac{E_0}{n^2}`, String.raw`E_0=\frac{\hbar^2}{2ma_0^2}`];
+    }
     const preserved = [...body.children].filter((node) =>
       node.matches("[data-exercise-readiness], [data-practice-anchor], [data-termo-ai-exercise], .resource-links, .source-note")
     );
@@ -403,6 +540,10 @@
     const fragment = document.createRange().createContextualFragment(`<div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>${page.guide}</p></div>${page.content}`);
     body.append(fragment);
     const anchor = preserved.find((node) => node.matches("[data-practice-anchor]"));
+    const readiness = preserved.find((node) => node.matches("[data-exercise-readiness]"));
+    if (readiness && page.exerciseFocus) {
+      readiness.innerHTML = `<div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports short guided exercises on ${page.exerciseFocus}.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup and highlighted equations needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> the full variable changes, special-function derivations, normalization algebra and extended discussion.</li><li><span class="practice-label">Boundary:</span> do not introduce results or notation not developed in this reading sequence.</li></ul>`;
+    }
     if (anchor) {
       const eqs = page.keys.map((equation, index) => `<li><span class="practice-label">Key equation ${index + 1}:</span></li><div class="eq">\\[${equation}\\]</div>`).join("");
       anchor.innerHTML = `<div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use only the setup and equations introduced on this page. For the intermediate algebra and complete derivations, return to the corresponding part of the book.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> follow the book's sequence from the starting equation to the stated result.</li><li><span class="practice-label">Conceptual check:</span> identify which condition selects the allowed result.</li>${eqs}<li><span class="practice-label">Boundary:</span> do not introduce notation or results not developed in this section.</li></ul>`;

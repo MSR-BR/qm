@@ -30,30 +30,16 @@
     },
     {
       "id": "5.5",
-      "title": "Hydrogen atom and effective potential",
-      "note": "Coulomb attraction, the centrifugal contribution and the radial equation for a one-electron atom.",
+      "title": "Hydrogen atom: radial solution and probability",
+      "note": "Coulomb potential, effective radial equation, associated Laguerre solutions, normalization, degeneracy and radial probability density.",
       "url": "slides/chapter-05/hydrogen-atom-and-effective-potential.html",
       "aiExercise": true
     },
     {
-      "id": "5.6",
-      "title": "Hydrogen radial equation and Laguerre solutions",
-      "note": "Asymptotic behavior, associated Laguerre polynomials and the normalizable radial wave functions.",
-      "url": "slides/chapter-05/hydrogen-radial-equation-and-laguerre-solutions.html",
-      "aiExercise": true
-    },
-    {
       "id": "5.7",
-      "title": "Hydrogen spectrum and degeneracy",
-      "note": "Principal quantum number, Bohr energy scale, subshells and the n-squared degeneracy of the ideal atom.",
+      "title": "Hydrogen energy spectrum",
+      "note": "Principal quantum number, Bohr energy scale and the discrete bound-state energies of hydrogen.",
       "url": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
-      "aiExercise": true
-    },
-    {
-      "id": "5.8",
-      "title": "Hydrogen orbitals and radial probability",
-      "note": "Total wave functions, radial nodes, most probable radii and the physical meaning of orbital labels.",
-      "url": "slides/chapter-05/hydrogen-orbitals-and-radial-probability.html",
       "aiExercise": true
     },
     {
