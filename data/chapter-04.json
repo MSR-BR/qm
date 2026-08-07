@@ -40,6 +40,7 @@
       "title": "Finite potential well: bound-state setup",
       "note": "Piecewise wave functions, boundary matching, penetration depth and the conditions for negative-energy bound states.",
       "url": "slides/chapter-04/finite-potential-well-bound-state-setup.html",
+      "simulators": ["finite-well-bound-states"],
       "aiExercise": true
     },
     {
@@ -47,6 +48,7 @@
       "title": "Finite-well quantization and energy levels",
       "note": "Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels.",
       "url": "slides/chapter-04/finite-well-quantization-and-energy-levels.html",
+      "simulators": ["finite-well-bound-states"],
       "aiExercise": true
     },
     {
@@ -54,6 +56,7 @@
       "title": "Finite-well wave functions and penetration",
       "note": "Even and odd eigenfunctions, nodes, probability density and exponential leakage beyond the classical well.",
       "url": "slides/chapter-04/finite-well-wave-functions-and-penetration.html",
+      "simulators": ["finite-well-bound-states"],
       "aiExercise": true
     },
     {
