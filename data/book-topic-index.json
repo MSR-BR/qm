@@ -1,8 +1,8 @@
 {
   "version": "qm-book-topic-index-v1",
-  "generatedAt": "2026-08-06T21:09:36.653Z",
-  "sectionCount": 57,
-  "topicCount": 62,
+  "generatedAt": "2026-08-07T13:15:00.191Z",
+  "sectionCount": 72,
+  "topicCount": 77,
   "topics": [
     {
       "id": "why-old-quantum-physics-matters",
@@ -1825,6 +1825,246 @@
           "excerpt": "4.B Exercises 165 (Eq. (2.146)) for the position and momentum results in: # % ! 1 var(x ) = 5x̂ 2 6 − 5x̂ 62 = n+ and mω 2 # % 1 var(p ) = 5p̂ 2 6 − 5p̂62 = m!ω n + . (4.A.30) 2 Using the √ results above, we can verify the product of the standard devia- tion .q = var(q ), given by: # % 1 .x .p = ! n + (4.A.31) 2 To think How can we interpret this result in terms of the Heisenberg uncertainty principle. Appendix 4.B Exercises Conceptual exercises Exercise 4.1. Consider the idea of bound and unbound states, as discus"
         }
       ]
+    },
+    {
+      "id": "central-potentials-chapter-roadmap",
+      "label": "central potentials chapter roadmap",
+      "fragments": [
+        {
+          "sectionId": "5.1",
+          "chapterId": "05",
+          "itemId": "5.1",
+          "title": "Central potentials: chapter roadmap",
+          "pagePath": "slides/chapter-05/central-potentials-chapter-roadmap.html",
+          "pageStart": 3,
+          "pageEnd": 3,
+          "excerpt": "5.1 Separation of variables 171 Thus, the eigenvalue equation reads as2 : ⎬ ⎭ 2 2m ∇ + 2 [E − V (r )] ! (r, θ , φ ) = 0. (5.5) ! The Laplacian in spherical coordinates was described in detail in Ap- pendix 5.B, and can be reproduced below: # $ # $ 1 ∂ ∂ 1 ∂ ∂ 1 ∂2 ∇2 = r2 + sin θ + . (5.6) r2 ∂r ∂r 2 r sin θ ∂ θ ∂θ r 2 sin2 θ ∂ φ 2 For central potential problems (that do not depend on θ and φ ), it is possi- ble to propose a separation of variables, such as: ! (r, θ , φ ) = R (r )%(θ )&(φ ). (5.7) By taking Eqs. (5"
+        }
+      ]
+    },
+    {
+      "id": "separation-of-variables-in-spherical-coordinates",
+      "label": "separation of variables in spherical coordinates",
+      "fragments": [
+        {
+          "sectionId": "5.2",
+          "chapterId": "05",
+          "itemId": "5.2",
+          "title": "Separation of variables in spherical coordinates",
+          "pagePath": "slides/chapter-05/separation-of-variables-in-spherical-coordinates.html",
+          "pageStart": 3,
+          "pageEnd": 4,
+          "excerpt": "5.1 Separation of variables 171 Thus, the eigenvalue equation reads as2 : ⎬ ⎭ 2 2m ∇ + 2 [E − V (r )] ! (r, θ , φ ) = 0. (5.5) ! The Laplacian in spherical coordinates was described in detail in Ap- pendix 5.B, and can be reproduced below: # $ # $ 1 ∂ ∂ 1 ∂ ∂ 1 ∂2 ∇2 = r2 + sin θ + . (5.6) r2 ∂r ∂r 2 r sin θ ∂ θ ∂θ r 2 sin2 θ ∂ φ 2 For central potential problems (that do not depend on θ and φ ), it is possi- ble to propose a separation of variables, such as: ! (r, θ , φ ) = R (r )%(θ )&(φ ). (5.7) By taking Eqs. (5"
+        }
+      ]
+    },
+    {
+      "id": "azimuthal-and-polar-equations",
+      "label": "azimuthal and polar equations",
+      "fragments": [
+        {
+          "sectionId": "5.3",
+          "chapterId": "05",
+          "itemId": "5.3",
+          "title": "Azimuthal and polar equations",
+          "pagePath": "slides/chapter-05/azimuthal-and-polar-equations.html",
+          "pageStart": 4,
+          "pageEnd": 7,
+          "excerpt": "172 5. Traditional problems with central potential A possible solution to Eq. (5.9) is that both terms are equal to the same constant (denoted here as λ), but with opposite signs. This assumption leads directly to a purely radial equation: # $ 1 d d 2m r2 R (r ) + r 2 2 [E − V (r )] = +λ (5.10) R (r ) d r dr ! and another purely angular equation: ⎬ # $ ⎭ 1 1 ∂ ∂ 1 ∂2 sin θ + 2 %(θ )&(φ ) = −λ. (5.11) %(θ )&(φ ) sin θ ∂ θ ∂θ sin θ ∂ φ 2 The radial term is highlighted because it depends solely on r , whereas the angu"
+        }
+      ]
+    },
+    {
+      "id": "spherical-harmonics",
+      "label": "spherical harmonics",
+      "fragments": [
+        {
+          "sectionId": "5.4",
+          "chapterId": "05",
+          "itemId": "5.4",
+          "title": "Spherical harmonics",
+          "pagePath": "slides/chapter-05/spherical-harmonics.html",
+          "pageStart": 8,
+          "pageEnd": 10,
+          "excerpt": "176 5. Traditional problems with central potential Note that the polynomials are not, in fact, polynomials in x , since for odd values of m there is always a fractional power of (1 − x 2 ). Neverthe- less, these expressions consistently form true polynomials when expressed in terms of sin θ and cos θ . See Fig. 5.1 for a graphical observation of the as- sociated Legendre polynomials, expressed as a function of x = cos θ . 5.2.3 Spherical harmonics What we did above was to obtain the angular contribution for a parti"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-atom-and-effective-potential",
+      "label": "hydrogen atom and effective potential",
+      "fragments": [
+        {
+          "sectionId": "5.5",
+          "chapterId": "05",
+          "itemId": "5.5",
+          "title": "Hydrogen atom and effective potential",
+          "pagePath": "slides/chapter-05/hydrogen-atom-and-effective-potential.html",
+          "pageStart": 11,
+          "pageEnd": 12,
+          "excerpt": "5.3 Hydrogen atom 179 As the associated Legendre polynomials are real, we have (with x = cos θ ): . +1 / m 02 |Al m |2 2( Pl (x ) d x = 1. (5.48) −1 Our task now is to obtain the result of the integral above, which is related to the orthogonality condition of the associated Legendre poly- nomials [2]: . +1 2 (l + m)! Plm, (x )Plm (x )d x = )l , l , −l ≤ m ≤ +l . (5.49) −1 2l + 1 (l − m)! Taking Eq. (5.49) into Eq. (5.48), we obtain: ⎞ ⎠ 2l + 1 (l − m)! 1/2 Al m = , −l ≤ m ≤ +l . (5.50) 4( (l + m)! 5.3 Hydrogen atom"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-radial-equation-and-laguerre-solutions",
+      "label": "hydrogen radial equation and laguerre solutions",
+      "fragments": [
+        {
+          "sectionId": "5.6",
+          "chapterId": "05",
+          "itemId": "5.6",
+          "title": "Hydrogen radial equation and Laguerre solutions",
+          "pagePath": "slides/chapter-05/hydrogen-radial-equation-and-laguerre-solutions.html",
+          "pageStart": 13,
+          "pageEnd": 16,
+          "excerpt": "5.3 Hydrogen atom 181 FIGURE 5.3 Effective potential for the Hydrogen atom (Eq. (5.55)). For comparison pur- poses, we added the orbital contribution to the figure. electron is then confined. See Fig. 5.3 for a better understanding. We will revisit the discussion of this figure when we detail the energy levels of the Hydrogen atom. 5.3.3 Solution to radial equation Returning to Eq. (5.53), which represents the radial differential equa- tion, our goal is to find its respective solutions and analyze their implica- ti"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-spectrum-and-degeneracy",
+      "label": "hydrogen spectrum and degeneracy",
+      "fragments": [
+        {
+          "sectionId": "5.7",
+          "chapterId": "05",
+          "itemId": "5.7",
+          "title": "Hydrogen spectrum and degeneracy",
+          "pagePath": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
+          "pageStart": 17,
+          "pageEnd": 17,
+          "excerpt": "5.3 Hydrogen atom 185 in this limit, the solution reads as: z→∞ u(z) −−−→ e−z/2 . (5.78) These boundary conditions, therefore, allow us to write: u(z) ∝ zl +1 e−z/2 , (z), (5.79) where the function , (z) is now the unknown to be determined. This introduces the third change of variable in the problem. To determine , (z), we substitute the above expression into Eq. (5.72). After performing the necessary algebra (including differentiating the above equation twice with respect to z), we obtain: ⎞ ⎠ ,, , 1 z, (z) + [2(l"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-orbitals-and-radial-probability",
+      "label": "hydrogen orbitals and radial probability",
+      "fragments": [
+        {
+          "sectionId": "5.8",
+          "chapterId": "05",
+          "itemId": "5.8",
+          "title": "Hydrogen orbitals and radial probability",
+          "pagePath": "slides/chapter-05/hydrogen-orbitals-and-radial-probability.html",
+          "pageStart": 18,
+          "pageEnd": 23,
+          "excerpt": "186 5. Traditional problems with central potential TABLE 5.1 Principal quan- tum number n and their respec- tive energy values. The purpose of this table is to demonstrate the degeneracy that arises due to the energy of the Hydrogen atom be- ing only dependent on n – ob- serve the degenerate states for each energy value. n E (E0 ) nl (n, l , m) 1 −1 1s (1, 0, 0) 2 −1/4 2s (2, 0, 0) 2p (2, 1, 0) (2, 1, ±1) 3 −1/9 3s (3, 0, 0) 3p (3, 1, 0) (3, 1, ±1) 3d (3, 2, 0) (3, 2, ±1) (3, 2, ±2) Since energy only depends on n, "
+        }
+      ]
+    },
+    {
+      "id": "three-dimensional-harmonic-oscillator",
+      "label": "three dimensional harmonic oscillator",
+      "fragments": [
+        {
+          "sectionId": "5.9",
+          "chapterId": "05",
+          "itemId": "5.9",
+          "title": "Three-dimensional harmonic oscillator",
+          "pagePath": "slides/chapter-05/three-dimensional-harmonic-oscillator.html",
+          "pageStart": 24,
+          "pageEnd": 24,
+          "excerpt": "192 5. Traditional problems with central potential The key physics of this system has been thoroughly examined in the pre- ceding subsections, where the angular and radial components were sepa- rated, and their respective implications analyzed. The final equation pre- sented above effectively concludes the discussion of the Hydrogen atom. 5.4 Harmonic oscillator in three dimensions As we discussed throughout this chapter, for problems with central po- tentials, as is the case of the Hydrogen atom and the harmonic o"
+        }
+      ]
+    },
+    {
+      "id": "3d-oscillator-radial-equation",
+      "label": "3d oscillator radial equation",
+      "fragments": [
+        {
+          "sectionId": "5.10",
+          "chapterId": "05",
+          "itemId": "5.10",
+          "title": "3D oscillator radial equation",
+          "pagePath": "slides/chapter-05/3d-oscillator-radial-equation.html",
+          "pageStart": 25,
+          "pageEnd": 28,
+          "excerpt": "5.4 Harmonic oscillator in three dimensions 193 ⎞ ⎠ 1 2 3 = !ω nx + ny + nz + . (5.112) 2 On the other hand, the total wave function can be written as: !nx ,ny ,nz (x , y , z) = ψnx (x )ψny (y )ψnz (z), (5.113) where ψnu (u) represents the wave function of a one-dimensional harmonic oscillator. In this : three-dimensional ; system there are several different com- binations of nx , ny , nz that produce the same amount of energy. There- fore, based on these arguments and preliminary results, we can say that we have a"
+        }
+      ]
+    },
+    {
+      "id": "3d-oscillator-spectrum-and-degeneracy",
+      "label": "3d oscillator spectrum and degeneracy",
+      "fragments": [
+        {
+          "sectionId": "5.11",
+          "chapterId": "05",
+          "itemId": "5.11",
+          "title": "3D oscillator spectrum and degeneracy",
+          "pagePath": "slides/chapter-05/3d-oscillator-spectrum-and-degeneracy.html",
+          "pageStart": 29,
+          "pageEnd": 29,
+          "excerpt": "5.4 Harmonic oscillator in three dimensions 197 These boundary conditions allow us to write as a solution to the differ- ential equation of Eq. (5.125): 2 u(ξ ) ∝ ξ l +1 e−ξ /2 , (ξ ). (5.131) Our next task is to determine , (ξ ). By taking Eq. (5.131) into Eq. (5.125) we are performing the third change of variable, and we obtain for , (ξ ): ⎞ ⎠ ⎞ # $⎠ ,, (l + 1) , 3 , (ξ ) + 2 − ξ , (ξ ) + 2 * − l + , (ξ ) = 0. (5.132) ξ 2 Note that to write the result above it was necessary to obtain the second derivative of u(ξ "
+        }
+      ]
+    },
+    {
+      "id": "3d-oscillator-wave-functions-and-probability",
+      "label": "3d oscillator wave functions and probability",
+      "fragments": [
+        {
+          "sectionId": "5.12",
+          "chapterId": "05",
+          "itemId": "5.12",
+          "title": "3D oscillator wave functions and probability",
+          "pagePath": "slides/chapter-05/3d-oscillator-wave-functions-and-probability.html",
+          "pageStart": 30,
+          "pageEnd": 34,
+          "excerpt": "198 5. Traditional problems with central potential TABLE 5.2 The purpose of this table is to demonstrate the degeneracy that arises due to the energy of the 3D harmonic oscil- lator being only dependent on n – observe the degenerate states for each energy eigenvalue. As defined in the text: * = E /!ω. n ! nl (n, l , m) 0 3/2 0s (0, 0, 0) 1 5/2 1p (1, 1, 0) (1, 1, ±1) 2 7/2 2s (2, 0, 0) 2d (2, 2, 0) (2, 2, ±1) (2, 2, ±2) 3 9/2 3p (3, 1, 0) (3, 1, ±1) 3f (3, 3, 0) (3, 3, ±1) (3, 3, ±2) (3, 3, ±3) 5.4.5 Radial wave fu"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-atom-and-the-periodic-table",
+      "label": "hydrogen atom and the periodic table",
+      "fragments": [
+        {
+          "sectionId": "5.13",
+          "chapterId": "05",
+          "itemId": "5.13",
+          "title": "Hydrogen atom and the periodic table",
+          "pagePath": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html",
+          "pageStart": 35,
+          "pageEnd": 37,
+          "excerpt": "5.A Periodic table 203 5.4.6 Total wave function The angular contribution to the total wave function for a problem with a central potential is described by the spherical harmonics Ylm (θ , φ ) (Eq. (5.35)), while the radial contribution Rnl (r ) depends on the specific po- tential being studied. In the case of the 3D harmonic oscillator, Rnl (r ) has been derived and is given in Eq. (5.135). Therefore, the total wave function can be expressed as: ! (r, θ , φ ) → !nl m (r, θ , φ ) = Rnl (r )Ylm (θ , φ ) (5.152) that"
+        }
+      ]
+    },
+    {
+      "id": "hydrogen-expectation-values",
+      "label": "hydrogen expectation values",
+      "fragments": [
+        {
+          "sectionId": "5.14",
+          "chapterId": "05",
+          "itemId": "5.14",
+          "title": "Hydrogen expectation values",
+          "pagePath": "slides/chapter-05/hydrogen-expectation-values.html",
+          "pageStart": 38,
+          "pageEnd": 44,
+          "excerpt": "206 5. Traditional problems with central potential and thus we have three degenerate states. However, each state holds two electrons and therefore this row of this block holds six atoms: Boron, Car- bon, Nitrogen, Oxygen, Fluorine, and Neon. With this construction idea and the MEOR, we can understand the construction and the structure of the periodic table. It is worth emphasizing that MEOR is empirical, but useful for understanding the arrangement of the periodic table. To think Following this reasoning, how many "
+        }
+      ]
+    },
+    {
+      "id": "chapter-synthesis-solving-central-potentials",
+      "label": "chapter synthesis solving central potentials",
+      "fragments": [
+        {
+          "sectionId": "5.15",
+          "chapterId": "05",
+          "itemId": "5.15",
+          "title": "Chapter synthesis: solving central potentials",
+          "pagePath": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html",
+          "pageStart": 45,
+          "pageEnd": 48,
+          "excerpt": "5.B Spherical coordinates 213 FIGURE 5.11 Cartesian and spherical coordinates. Appendix 5.B Spherical coordinates This appendix presents various transformations and operators in the spherical coordinate system, including the unit vectors, the nabla ‘opera- tor’, and the Laplace operator. We begin this task by writing the spherical coordinates (r, θ , φ ) in terms of the Cartesian coordinates (x , y , z) – see Fig. 5.11: x = r sin θ cos φ , y = r sin θ sin φ and z = r cos θ (5.B.1) Alternatively, these relationships"
+        }
+      ]
     }
   ],
   "sectionIndex": [
@@ -2527,6 +2767,156 @@
       "primaryTopic": "chapter-synthesis-one-dimensional-quantum-models",
       "transversalTopics": [
         "rectangular-step-potential-and-quantum-tunneling"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.1",
+      "chapterId": "05",
+      "itemId": "5.1",
+      "primaryTopic": "central-potentials-chapter-roadmap",
+      "transversalTopics": [
+        "separation-of-variables-in-spherical-coordinates"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.2",
+      "chapterId": "05",
+      "itemId": "5.2",
+      "primaryTopic": "separation-of-variables-in-spherical-coordinates",
+      "transversalTopics": [
+        "azimuthal-and-polar-equations"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.3",
+      "chapterId": "05",
+      "itemId": "5.3",
+      "primaryTopic": "azimuthal-and-polar-equations",
+      "transversalTopics": [
+        "spherical-harmonics"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.4",
+      "chapterId": "05",
+      "itemId": "5.4",
+      "primaryTopic": "spherical-harmonics",
+      "transversalTopics": [
+        "hydrogen-atom-and-effective-potential"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.5",
+      "chapterId": "05",
+      "itemId": "5.5",
+      "primaryTopic": "hydrogen-atom-and-effective-potential",
+      "transversalTopics": [
+        "hydrogen-radial-equation-and-laguerre-solutions"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.6",
+      "chapterId": "05",
+      "itemId": "5.6",
+      "primaryTopic": "hydrogen-radial-equation-and-laguerre-solutions",
+      "transversalTopics": [
+        "hydrogen-spectrum-and-degeneracy"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.7",
+      "chapterId": "05",
+      "itemId": "5.7",
+      "primaryTopic": "hydrogen-spectrum-and-degeneracy",
+      "transversalTopics": [
+        "hydrogen-orbitals-and-radial-probability"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.8",
+      "chapterId": "05",
+      "itemId": "5.8",
+      "primaryTopic": "hydrogen-orbitals-and-radial-probability",
+      "transversalTopics": [
+        "three-dimensional-harmonic-oscillator"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.9",
+      "chapterId": "05",
+      "itemId": "5.9",
+      "primaryTopic": "three-dimensional-harmonic-oscillator",
+      "transversalTopics": [
+        "3d-oscillator-radial-equation"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.10",
+      "chapterId": "05",
+      "itemId": "5.10",
+      "primaryTopic": "3d-oscillator-radial-equation",
+      "transversalTopics": [
+        "3d-oscillator-spectrum-and-degeneracy"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.11",
+      "chapterId": "05",
+      "itemId": "5.11",
+      "primaryTopic": "3d-oscillator-spectrum-and-degeneracy",
+      "transversalTopics": [
+        "3d-oscillator-wave-functions-and-probability"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.12",
+      "chapterId": "05",
+      "itemId": "5.12",
+      "primaryTopic": "3d-oscillator-wave-functions-and-probability",
+      "transversalTopics": [
+        "hydrogen-atom-and-the-periodic-table"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.13",
+      "chapterId": "05",
+      "itemId": "5.13",
+      "primaryTopic": "hydrogen-atom-and-the-periodic-table",
+      "transversalTopics": [
+        "hydrogen-expectation-values"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.14",
+      "chapterId": "05",
+      "itemId": "5.14",
+      "primaryTopic": "hydrogen-expectation-values",
+      "transversalTopics": [
+        "chapter-synthesis-solving-central-potentials"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "5.15",
+      "chapterId": "05",
+      "itemId": "5.15",
+      "primaryTopic": "chapter-synthesis-solving-central-potentials",
+      "transversalTopics": [
+        "hydrogen-expectation-values"
       ],
       "advancedSupportTopics": []
     }

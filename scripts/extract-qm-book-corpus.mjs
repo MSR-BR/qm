@@ -39,6 +39,15 @@ const CHAPTERS = [
     // slices. The final item uses the book's practice appendix as a
     // qualitative chapter-synthesis source.
     ranges: [[2, 2], [2, 10], [3, 6], [11, 18], [45, 48], [19, 21], [22, 26], [27, 30], [31, 32], [33, 37], [38, 40], [41, 44], [49, 51]]
+  },
+  {
+    id: "05",
+    title: "Traditional problems with central potential",
+    theoryPdf: "/Users/marioreis/Desktop/qm/c5 Reis Quantum Mechanics copy 6.pdf",
+    solutionsPdf: "/Users/marioreis/Desktop/qm/c5_Reis QM solutions copy 3.pdf",
+    // PDF page ranges are matched to the book's section boundaries, including
+    // the periodic-table application and the expectation-value appendix.
+    ranges: [[3, 3], [3, 4], [4, 7], [8, 10], [11, 12], [13, 16], [17, 17], [18, 23], [24, 24], [25, 28], [29, 29], [30, 34], [35, 37], [38, 44], [45, 48]]
   }
 ];
 

@@ -11,7 +11,9 @@ const SOURCES = [
   ["chapter-03-theory", "03", "theory", "/Users/marioreis/Desktop/qm/c3 Reis Quantum Mechanics copy 4.pdf", "chapters/03/theory.pdf"],
   ["chapter-03-solutions", "03", "solutions", "/Users/marioreis/Desktop/qm/c3_Reis QM solutions copy 3.pdf", "chapters/03/solutions.pdf"],
   ["chapter-04-theory", "04", "theory", "/Users/marioreis/Desktop/qm/c4 Reis Quantum Mechanics copy 5.pdf", "chapters/04/theory.pdf"],
-  ["chapter-04-solutions", "04", "solutions", "/Users/marioreis/Desktop/qm/c4_Reis QM solutions copy 3.pdf", "chapters/04/solutions.pdf"]
+  ["chapter-04-solutions", "04", "solutions", "/Users/marioreis/Desktop/qm/c4_Reis QM solutions copy 3.pdf", "chapters/04/solutions.pdf"],
+  ["chapter-05-theory", "05", "theory", "/Users/marioreis/Desktop/qm/c5 Reis Quantum Mechanics copy 6.pdf", "chapters/05/theory.pdf"],
+  ["chapter-05-solutions", "05", "solutions", "/Users/marioreis/Desktop/qm/c5_Reis QM solutions copy 3.pdf", "chapters/05/solutions.pdf"]
 ];
 
 // Pass chapter ids to avoid re-uploading unchanged PDFs, e.g.
