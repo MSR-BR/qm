@@ -24,6 +24,11 @@ body{display:flex!important;justify-content:center!important;align-items:flex-st
 .card.red{border-top-color:var(--red)!important}.card.green{border-top-color:var(--green)!important}.card.purple{border-top-color:var(--purple)!important}.card.orange{border-top-color:var(--orange)!important}
 .guide-card{grid-column:1 / -1!important;background:#FFFDF8!important;}
 .guide-card p{font-size:clamp(.95rem,1.2vw,1.05rem)!important;line-height:1.62!important;margin:.45rem 0!important;}
+/* Chapter 5 follows the book's concise derivation sequence. Generic teaching
+   extensions are retained in source history but are not part of the reader view. */
+[data-detail-extension],
+[data-worked-reasoning],
+.reasoning-bridge-card{display:none!important;}
 .ch{font-family:"Inter",sans-serif!important;font-weight:700!important;font-size:var(--card-title)!important;line-height:1.25!important;color:var(--blue)!important;display:flex!important;align-items:center!important;gap:8px!important;margin-bottom:clamp(4px,.8vw,8px)!important;text-transform:none!important;letter-spacing:.015em!important;}
 .ch.red{color:var(--red)!important}.ch.green{color:var(--green)!important}.ch.purple{color:var(--purple)!important}.ch.orange{color:var(--orange)!important}
 p,li,td{font-family:"Lora", Georgia, serif!important;font-size:var(--body)!important;line-height:1.58!important;color:var(--text)!important;text-align:justify!important;}
