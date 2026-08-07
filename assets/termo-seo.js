@@ -466,6 +466,74 @@
         String.raw`\Psi_{nlm}=R_{nl}Y_l^m`
       ];
     }
+    if (key === "hydrogen-atom-and-the-periodic-table") {
+      page.exerciseFocus = "the Aufbau construction, Madelung ordering rule, Pauling diagram, subshell capacities, periods, groups, and periodic-table blocks";
+      page.guide = String.raw`The book uses the hydrogen quantum numbers ((n,l,m)) as the starting point for understanding the arrangement of the periodic table. Beginning with the (1s) state, multi-electron atoms are constructed by adding electrons according to the Aufbau principle and the empirical Madelung energy-ordering rule.`;
+      page.content = String.raw`
+        <div class="col">
+          <div class="card">
+            <div class="ch"><i class="fa-solid fa-atom"></i> Starting from hydrogen</div>
+            <p>The ground-state electron of hydrogen has ((n,l,m)=(1,0,0)), corresponding to the (1s) state. In the Aufbau construction, each added electron occupies the most stable available orbital.</p>
+            <div class="eq key-eq">\[(n,l,m)=(1,0,0)\quad\longrightarrow\quad 1s.\]</div>
+            <p>The ordering of the orbitals is supplied by the Madelung energy-ordering rule.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-arrow-down-1-9"></i> Madelung energy-ordering rule</div>
+            <ol class="numbered">
+              <li>States with the lowest value of (n+l) are filled first.</li>
+              <li>When two states have the same (n+l), the state with the lower (n) is filled first.</li>
+            </ol>
+            <div class="eq key-eq">\[n+l\ \text{lowest first};\qquad n\ \text{breaks a tie}.\]</div>
+            <p>The book emphasizes that this ordering rule is empirical, but useful for understanding the arrangement of the periodic table.</p>
+          </div>
+        </div>
+        <div class="col" style="grid-column:1 / -1!important;max-width:820px;margin:0 auto">
+          <figure class="book-figure">
+            <img src="../../assets/chapter-05/figure-5-9-pauling-diagram.png" alt="Pauling diagram constructed from the Madelung energy-ordering rule" />
+            <figcaption>Pauling diagram constructed from the Madelung rule. The columns correspond to (s,p,d,f), and the number in parentheses is (n+l). Following the diagonals gives the filling order.</figcaption>
+          </figure>
+        </div>
+        <div class="col">
+          <div class="card orange">
+            <div class="ch orange"><i class="fa-solid fa-diagram-project"></i> Constructing the filling order</div>
+            <p>The (1s) subshell is the only state with (n+l=1), so it is filled first. The (2s) subshell follows with (n+l=2). For (n+l=3), the candidates are (2p) and (3s); because (2p) has the lower (n), it is filled before (3s).</p>
+            <div class="eq key-eq">\[1s\;\longrightarrow\;2s\;\longrightarrow\;2p\;\longrightarrow\;3s\;\longrightarrow\;3p\;\longrightarrow\;4s\;\longrightarrow\cdots\]</div>
+            <p>The remaining order is read from the same diagonals in the Pauling diagram.</p>
+          </div>
+          <div class="card purple">
+            <div class="ch purple"><i class="fa-solid fa-layer-group"></i> Subshells and capacities</div>
+            <div class="eq">\[l=0,1,2,3\quad\longleftrightarrow\quad s,p,d,f.\]</div>
+            <p>For fixed (l), the magnetic quantum number has (2l+1) possible values. With two electrons in each state, a subshell holds</p>
+            <div class="eq key-eq">\[2(2l+1)\quad\longrightarrow\quad s:2,\ p:6,\ d:10,\ f:14.\]</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-table-cells-large"></i> From the diagram to the periodic table</div>
+            <ul class="bullet">
+              <li>The rows are the periods, arranged according to the Pauling diagram.</li>
+              <li>The columns are the groups, numbered from 1 to 18.</li>
+              <li>The table can be divided into the (s,p,d,f) blocks.</li>
+              <li>Each shell (K,L,M,\ldots) has the capacity (2n^2).</li>
+            </ul>
+            <div class="eq">\[\text{shell capacity}=2n^2.\]</div>
+          </div>
+          <div class="card">
+            <div class="ch"><i class="fa-solid fa-list-ol"></i> First steps of the construction</div>
+            <p>The (1s) subshell holds the electrons associated with hydrogen and helium. The (2s) subshell gives lithium and beryllium. The three degenerate (2p) states hold six electrons, corresponding to boron through neon.</p>
+            <a href="https://ptable.com/" target="_blank" rel="noopener noreferrer" class="index-back-button" style="margin-top:12px!important;margin-bottom:0!important"><i class="fa-solid fa-arrow-up-right-from-square"></i> Explore the interactive Ptable</a>
+          </div>
+        </div>
+      `;
+      page.keys = [
+        String.raw`n+l\ \text{lowest first};\qquad n\ \text{breaks a tie}`,
+        String.raw`l=0,1,2,3\longleftrightarrow s,p,d,f`,
+        String.raw`\text{subshell capacity}=2(2l+1)`,
+        String.raw`\text{shell capacity}=2n^2`
+      ];
+    }
     if (key === "hydrogen-atom-and-effective-potential") {
       page.guide = String.raw`For the hydrogen atom, the central potential is Coulombic. Substitution into the general radial equation produces an effective potential made of the Coulomb term and the orbital contribution.`;
       page.content = String.raw`<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-atom"></i> Coulomb potential</div><p>Taking the proton as the origin and writing the electron mass as \(m\), the electron-proton interaction is</p><div class="eq key-eq">\[V(r)=-\frac{1}{4\pi\epsilon_0}\frac{e^2}{r}.\]</div><p>This is a central potential, so the separated radial equation derived above applies.</p></div><div class="card green"><div class="ch green"><i class="fa-solid fa-wave-square"></i> Radial equation before the effective potential</div><p>With \(\lambda=l(l+1)\), the total radial equation is</p><div class="eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V(r)]-\frac{l(l+1)}{r^2}=0.\]</div><p>Gathering the Coulomb and orbital terms gives the effective-potential form.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-chart-line"></i> Effective radial potential</div><div class="eq key-eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0,\qquad V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div><p>The first term is the Coulomb attraction; the second is the orbital contribution. Their competition produces the effective-potential curves.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-ruler"></i> Hydrogen scales</div><div class="eq">\[\rho=\frac{r}{a_0},\qquad a_0=\frac{4\pi\epsilon_0\hbar^2}{me^2},\qquad E_0=\frac{\hbar^2}{2ma_0^2}.\]</div><div class="eq key-eq">\[\frac{V_{\rm ef}(\rho)}{E_0}=-\frac{2}{\rho}+\frac{l(l+1)}{\rho^2}.\]</div></div><figure class="book-figure"><img src="../../assets/chapter-05/figure-5-3-effective-potential.png" alt="Effective potential curves for hydrogen for l equals zero, one, and two" /><figcaption>Effective potential in units of \(E_0\) as a function of \(r/a_0\). The dashed curves isolate the orbital contribution; the solid curves are \(V_{\rm ef}^{\,l}\). The horizontal marks illustrate hydrogen energies for \(n=1,2,3\).</figcaption></figure></div>`;
