@@ -537,7 +537,8 @@
       node.matches("[data-exercise-readiness], [data-practice-anchor], [data-termo-ai-exercise], .resource-links, .source-note")
     );
     body.replaceChildren();
-    const fragment = document.createRange().createContextualFragment(`<div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>${page.guide}</p></div>${page.content}`);
+    const guideStyle = key === "hydrogen-atom-and-effective-potential" ? ' style="grid-column:1 / -1!important;width:100%!important"' : "";
+    const fragment = document.createRange().createContextualFragment(`<div class="card orange guide-card"${guideStyle}><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>${page.guide}</p></div>${page.content}`);
     body.append(fragment);
     const anchor = preserved.find((node) => node.matches("[data-practice-anchor]"));
     const readiness = preserved.find((node) => node.matches("[data-exercise-readiness]"));

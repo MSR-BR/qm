@@ -64,6 +64,7 @@ td{padding:7px 10px!important;border-bottom:1px solid #EEF1F5!important;text-ali
   .slide{width:100%!important;max-width:none!important;min-height:100vh!important;border:0!important;box-shadow:none!important;}
   .hdr{margin:10px 12px 6px!important;padding:11px 14px!important;}
   .body{grid-template-columns:1fr!important;padding:10px 12px 18px!important;gap:12px!important;}
+  .hydrogen-radial-page .body>.col{grid-column:1 / -1!important;max-width:100%!important;}
   .slide-num{display:none!important;}
   p,li,td{text-align:left!important;}
   .resource-links{align-items:flex-start!important;flex-direction:column!important;}
