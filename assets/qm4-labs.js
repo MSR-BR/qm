@@ -5,13 +5,14 @@
   const key = new URLSearchParams(location.search).get("sim") || "qho";
   const labs = {
     qho: { slug:"qho-states-ladder", title:"QHO: stationary eigenfunctions and energy levels", subtitle:"Select a stationary state. The graph follows the book variable \\(\\xi=\\alpha x\\) and the display scalings used for its wave functions and probability densities.", sections:"4.1–4.4", show:["n"], main:"Book-scaled wave function and probability density on the energy level", side:"", equation:"\\[-\\frac{\\hbar^2}{2m}\\frac{d^2\\psi}{dx^2}+\\frac12m\\omega^2x^2\\psi=E\\psi,\\qquad \\xi=\\alpha x,\\quad \\alpha=\\sqrt{\\frac{m\\omega}{\\hbar}}\\]\\[\\psi_n(x)=\\left(\\frac{m\\omega}{\\pi\\hbar}\\right)^{1/4}\\frac{e^{-m\\omega x^2/(2\\hbar)}}{\\sqrt{2^n n!}}H_n(\\alpha x),\\qquad \\rho_n(x)=|\\psi_n(x)|^2\\]\\[\\int_{-\\infty}^{\\infty}|\\psi_n(x)|^2\\,dx=1,\\qquad \\tilde\\psi_n(\\xi)=\\psi_n(\\xi)\\frac{\\pi^{1/4}}{\\sqrt{\\alpha}},\\qquad \\tilde\\rho_n(\\xi)=\\rho_n(\\xi)\\frac{\\sqrt{\\pi}}{\\alpha}\\]" },
-    finite: { slug:"finite-well-bound-states", title:"Finite well: bound-state densities and energy levels", subtitle:"Vary the book parameter \\(k_0a\\). The allowed values \\(\\tilde k_na\\) determine the number of bound energy levels and the density for the selected state.", sections:"4.5–4.8", show:["n","k0a"], main:"Finite well and probability density", side:"", equation:"\\[V(x)=\\begin{cases}0,&x<0\\ \\mathrm{or}\\ x>a\\\\-|V_0|,&0\\le x\\le a,\\end{cases}\\qquad -|V_0|<E_n<0,\\qquad k_0^2=\\frac{2m|V_0|}{\\hbar^2}\\]\\[\\tilde k_n^2=k_0^2-k_n^2,\\qquad \\frac{E_n}{|V_0|}=\\left(\\frac{\\tilde k_na}{k_0a}\\right)^2-1,\\qquad \\nu=\\left\\lceil\\frac{k_0a}{\\pi}\\right\\rceil\\]\\[\\tilde\\rho_n(x)=\\frac{\\rho_n(x)}{20|C|^2},\\qquad \\frac{x}{a}\\ \text{on the horizontal axis and}\\ \frac{E_n}{|V_0|}\\ \text{on the vertical axis}\\]" },
+    finite: { slug:"finite-well-bound-states", title:"Finite well: bound-state densities and energy levels", subtitle:"Vary the book parameter \\(k_0a/\\pi\\). The allowed values \\(\\tilde k_na\\) determine the number of bound energy levels and the density for the selected state.", sections:"4.5–4.8", show:["n","k0a"], main:"Finite well and probability density", side:"", equation:"\\[V(x)=\\begin{cases}0, & x<0\\ \mathrm{or}\\ x>a,\\\\-|V_0|, & 0\\le x\\le a,\\end{cases}\\qquad -|V_0|<E_n<0\\]\\[\\nu=\\left\\lceil\\frac{k_0a}{\\pi}\\right\\rceil,\\qquad \\frac{E_n}{|V_0|}=\\left(\\frac{\\tilde k_na}{k_0a}\\right)^2-1,\\qquad \\tilde\\rho_n(x)=\\frac{\\rho_n(x)}{20|C|^2}\\]" },
     scatter: { slug:"attractive-well-scattering", title:"Attractive finite well: scattering and resonant transmission", subtitle:"A positive-energy wave is partly reflected and partly transmitted. Vary energy, well depth, and width to find resonant transparency.", sections:"4.9–4.10", show:["m","v","a","e"], main:"Incident, reflected and transmitted waves", side:"Transmission versus energy", equation:"\\[\\bar k^2=k^2+k_0^2,\\qquad T=\\frac{1}{1+\\frac{k_0^4}{4k^2\\bar k^2}\\sin^2(\\bar k a)},\\qquad R=1-T\\]" },
     delta: { slug:"delta-well-scattering", title:"Delta well: transmission and reflection", subtitle:"For \\(V(x)=-|\\alpha|\\delta(x)\\), the ratio between incident energy and \\(\\mathcal E'\\) determines the transmission.", sections:"4.11", show:["m","e","alpha"], main:"Delta potential", side:"Transmission and reflection", equation:"\\[\\mathcal E'=\\frac{m|\\alpha|^2}{2\\hbar^2},\\qquad T=\\frac{1}{1+\\mathcal E'/|E|},\\qquad R=\\frac{1}{1+|E|/\\mathcal E'}\\]" },
     step: { slug:"step-tunneling", title:"Potential step: evanescent wave and penetration", subtitle:"For \\(E<V_0\\), the wave in the higher-potential region is evanescent. It has nonzero amplitude but no transmitted stationary current.", sections:"4.12", show:["m","v","e"], main:"Step potential with E < V₀", side:"Penetration depth", equation:"\\[\\kappa=\\frac{\\sqrt{2m(V_0-E)}}{\\hbar},\\qquad\\psi_{\\mathrm{II}}(x)\\propto e^{-\\kappa x},\\qquad R=1,\\ T=0\\]" },
     regimes: { slug:"bound-evanescent-scattering-map", title:"One-dimensional regimes: bound, evanescent and scattering", subtitle:"Compare the local wave forms used across the chapter: bound-state tails, propagating waves, and evanescent penetration.", sections:"4.1–4.12", show:["m","v","e"], main:"Three local solution types", side:"Energy relative to potential", equation:"\\[-\\frac{\\hbar^2}{2m}\\frac{d^2\\psi}{dx^2}+V\\psi=E\\psi,\\qquad E>V:\\ \\text{oscillatory};\\quad E<V:\\ \\text{evanescent}\\]" }
   };
   const lab = labs[key] || labs.qho;
+  let mathTypesetQueued=false;
   const controls = { n:$("n"), k0a:$("k0a"), m:$("mass"), w:$("frequency"), v:$("depth"), a:$("width"), e:$("energy"), alpha:$("alpha") };
   const defaults = { n:0, k0a:3.5, m:1, w:2, v:25, a:1, e:12, alpha:2 };
   document.querySelector("main").dataset.simulatorSlug = lab.slug;
@@ -39,6 +40,13 @@
     [[l1,v1,"l1","m1"],[l2,v2,"l2","m2"],[l3,v3,"l3","m3"],[l4,v4,"l4","m4"]].forEach(row => { $(row[2]).textContent=row[0]; $(row[3]).textContent=row[1]; });
   }
   function legend(items) { $("legend").innerHTML=items.map(item => '<span class="legend-item"><span class="legend-swatch" style="--swatch:'+item[0]+'"></span>'+item[1]+'</span>').join(""); }
+  function typesetLabMath() {
+    if(mathTypesetQueued)return;
+    mathTypesetQueued=true;
+    const nodes=[$("subtitle"),$("equation")];
+    const typeset=()=>{const promise=window.MathJax?.typesetPromise?.(nodes);if(promise)promise.catch(()=>{});};
+    if(window.MathJax?.startup?.promise)window.MathJax.startup.promise.then(typeset);else setTimeout(typeset,0);
+  }
   function state() { return { n:+controls.n.value, k0a:+controls.k0a.value*Math.PI, mr:+controls.m.value, m:+controls.m.value*ME, omega:+controls.w.value*1e15, V:+controls.v.value*EV, a:+controls.a.value*1e-9, E:+controls.e.value*EV, alpha:+controls.alpha.value*EV*1e-9 }; }
   function finiteRoots(k0a) {
     const total=Math.ceil(k0a/Math.PI), roots=[];
@@ -148,19 +156,21 @@
   }
   function render() {
     Object.keys(controls).forEach(k=>document.querySelector(".c-"+k).style.display=lab.show.includes(k)?"grid":"none");
+    controls.a.max="4";
     if(key==="finite") { const count=Math.ceil((+controls.k0a.value*Math.PI)/Math.PI);controls.n.max=count-1;if(+controls.n.value>count-1)controls.n.value=count-1; }
     const s=state();
     const sidePanel=$("sideCanvas").closest(".sim-panel"),metricsPanel=$("l1").closest(".sim-panel");
     sidePanel.style.display=(key==="qho"||key==="finite")?"none":"";
     metricsPanel.style.display=(key==="qho"||key==="finite")?"none":"";
-    document.querySelector(".sim-footer").textContent=key==="finite"?"Finite-well graph in the book variables x/a and Eₙ/|V₀|. The displayed probability density follows the book scale ρ̃ₙ(x)=ρₙ(x)/(20|C|²).":"SI constants are used internally. Lengths are entered in nm, energies displayed in eV, and angular frequencies in 10¹⁵ s⁻¹.";
-    $("nV").textContent=s.n;$("k0aV").textContent=decimal(s.k0a/Math.PI,2)+"π";$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
+    document.querySelector(".sim-footer").textContent=key==="finite"?"Finite-well graph in the book variables x/a and Eₙ/|V₀|. The displayed density follows ρ̃ₙ(x)=ρₙ(x)/(20|C|²).":"SI constants are used internally. Lengths are entered in nm, energies displayed in eV, and angular frequencies in 10¹⁵ s⁻¹.";
+    document.querySelector('label[for="width"]').textContent="Width a";
+    $("nV").textContent=s.n;$("k0aV").textContent=decimal(s.k0a/Math.PI,2);$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
     if(key==="qho") {
       $("insight").textContent="The physical wave function is normalized by ∫ |ψₙ(x)|² dx = 1. Following the caption of the book figure, the plotted curves are the display-scaled functions ψ̃ₙ(ξ) = ψₙ(ξ)π¹ᐟ⁴/√α and ρ̃ₙ(ξ) = ρₙ(ξ)√π/α. These scalings set the plotted height and units; they are not an additional normalization condition.";
       legend([[C.green,"book display scale ψ̃ₙ(ξ)"],[C.rust,"book display scale ρ̃ₙ(ξ)"],[C.ink,"V/(ħω) = ξ²/2"]]);
     } else if(key==="finite") {
       const roots=finiteRoots(s.k0a),q=roots[s.n]||roots[0],energy=q*q/(s.k0a*s.k0a)-1;
-      $("insight").textContent="The well is controlled by k₀a, the book’s dimensionless combination of depth and width. It has ν = ⌈k₀a/π⌉ bound levels. For the selected state, k̃ₙa fixes Eₙ/|V₀| and the probability-density profile in the three regions.";
+      $("insight").textContent="The control value is k₀a/π = "+decimal(s.k0a/Math.PI,2)+". It gives ν = "+roots.length+" bound levels. For the selected state, k̃ₙa fixes Eₙ/|V₀| and the probability-density profile in the three regions.";
       legend([[C.ink,"finite potential well"],[C.rust,"book display scale ρ̃ₙ(x)"],[C.gold,"selected energy level Eₙ/|V₀| = "+decimal(energy,3)]]);
     } else if(key==="scatter") {
       const k=Math.sqrt(2*s.m*s.E)/HBAR,kb=Math.sqrt(2*s.m*(s.E+s.V))/HBAR,T=1/(1+s.V*s.V/(4*s.E*(s.E+s.V))*Math.sin(kb*s.a)**2);
@@ -183,7 +193,7 @@
       legend([[C.green,"oscillatory"],[C.rust,"evanescent / bound tail"],[C.ink,"potential"]]);
     }
     drawMain(s,key);if(key!=="qho"&&key!=="finite")drawSide(s,key);
-    if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([$("equation")]);
+    typesetLabMath();
   }
   render();
 })();
