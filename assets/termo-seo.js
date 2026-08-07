@@ -429,20 +429,13 @@
           <div class="card green">
             <div class="ch green"><i class="fa-solid fa-wave-square"></i> Complete radial equation</div>
             <p>With \(\lambda=l(l+1)\), the separated radial equation is first written without introducing the effective potential:</p>
-            <div class="eq">\[\begin{aligned}
-              &\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)
-              +\frac{2m}{\hbar^2}[E-V(r)]\\
-              &\hspace{4em}-\frac{l(l+1)}{r^2}=0.
-            \end{aligned}\]</div>
+            <div class="eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V(r)]-\frac{l(l+1)}{r^2}=0.\]</div>
           </div>
         </div>
         <div class="col">
           <div class="card orange">
             <div class="ch orange"><i class="fa-solid fa-chart-line"></i> Effective radial equation</div>
-            <div class="eq key-eq">\[\begin{aligned}
-              &\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)\\
-              &\qquad+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0.
-            \end{aligned}\]</div>
+            <div class="eq key-eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0.\]</div>
             <div class="eq">\[V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div>
             <p>The first contribution is the Coulomb attraction; the second is the orbital term.</p>
           </div>
@@ -462,7 +455,7 @@
         <div class="card orange" style="grid-column:1 / -1">
           <div class="ch orange"><i class="fa-solid fa-arrow-right-arrow-left"></i> Reduction and boundary behavior</div>
           <p>The book introduces \(u(r)=rR(r)\), \(z=2kr\), and \(k^2=-2mE/\hbar^2\). The radial equation becomes</p>
-          <div class="eq">\[\begin{aligned}\frac{d^2u}{dr^2}&+\left[-k^2+\frac{2}{ra_0}\\&\qquad-\frac{l(l+1)}{r^2}\right]u(r)=0.\end{aligned}\]</div>
+          <div class="eq">\[\frac{d^2u}{dr^2}+\left[-k^2+\frac{2}{ra_0}-\frac{l(l+1)}{r^2}\right]u(r)=0.\]</div>
           <p>Regularity near the origin selects \(u(z)\sim z^{l+1}\), while decay for \(z\to\infty\) selects \(u(z)\sim e^{-z/2}\). Therefore,</p>
           <div class="eq key-eq">\[u(z)=z^{l+1}e^{-z/2}\chi(z).\]</div>
           <p>The substitutions that lead from this expression to the next differential equation are detailed in Box 5.2 of the book.</p>
@@ -470,11 +463,11 @@
         <div class="card" style="grid-column:1 / -1">
           <div class="ch"><i class="fa-solid fa-function"></i> Associated Laguerre equation and solutions</div>
           <p>The remaining function obeys</p>
-          <div class="eq">\[\begin{aligned}z\chi''(z)&+[2(l+1)-z]\chi'(z)\\&+\left[-(l+1)+\frac{1}{ka_0}\right]\chi(z)=0.\end{aligned}\]</div>
+          <div class="eq">\[z\chi''(z)+[2(l+1)-z]\chi'(z)+\left[-(l+1)+\frac{1}{ka_0}\right]\chi(z)=0.\]</div>
           <p>It is compared with the associated Laguerre equation and its polynomial solution:</p>
-          <div class="eq key-eq">\[\begin{aligned}xy''(x)+(\nu+1-x)y'(x)+q\,y(x)&=0,\\y_q^\nu(x)&=A_{q\nu}L_\nu^q(x).\end{aligned}\]</div>
-          <div class="eq">\[\begin{aligned}L_\nu^q(x)&=\frac{e^x x^{-\nu}}{q!}\frac{d^q}{dx^q}\left(e^{-x}x^{q+\nu}\right),\\q&=0,1,2,\ldots\end{aligned}\]</div>
-          <div class="eq">\[\begin{aligned}L_\nu^0(x)&=1,\\L_\nu^1(x)&=(1+\nu)-x,\\L_\nu^2(x)&=\frac{(2+\nu)(1+\nu)}{2}-(2+\nu)x+\frac{x^2}{2}.\end{aligned}\]</div>
+          <div class="eq key-eq">\[xy''(x)+(\nu+1-x)y'(x)+q\,y(x)=0,\qquad y_q^\nu(x)=A_{q\nu}L_\nu^q(x).\]</div>
+          <div class="eq">\[L_\nu^q(x)=\frac{e^x x^{-\nu}}{q!}\frac{d^q}{dx^q}\left(e^{-x}x^{q+\nu}\right),\qquad q=0,1,2,\ldots\]</div>
+          <div class="eq">\[L_\nu^0(x)=1,\quad L_\nu^1(x)=(1+\nu)-x,\quad L_\nu^2(x)=\frac{(2+\nu)(1+\nu)}{2}-(2+\nu)x+\frac{x^2}{2}.\]</div>
           <p>Comparison gives \(\nu=2l+1\), \(q=n-l-1\), and \(n=1/(ka_0)\). Polynomial termination requires \(q\geq0\), hence \(l=0,1,\ldots,n-1\).</p>
         </div>
         <div class="col">
@@ -488,19 +481,19 @@
           <div class="card purple">
             <div class="ch purple"><i class="fa-solid fa-layer-group"></i> Degeneracy</div>
             <p>The energy depends on \(n\), not on \(l\) or \(m\). Different states therefore share the same energy. For \(n=3\), the degenerate spatial states belong to \(3s\), \(3p\), and \(3d\).</p>
-            <div class="eq">\[\begin{aligned}l&=0,1,\ldots,n-1,\\m&=-l,-l+1,\ldots,l.\end{aligned}\]</div>
+            <div class="eq">\[l=0,1,\ldots,n-1,\qquad m=-l,-l+1,\ldots,l.\]</div>
             <p>Following the book, the formal calculation of the degeneracy is left as an exercise.</p>
           </div>
         </div>
         <div class="col" style="grid-column:span 2">
           <div class="card orange">
             <div class="ch orange"><i class="fa-solid fa-square-root-variable"></i> Final normalized radial solution</div>
-            <div class="eq key-eq">\[\begin{aligned}R_{nl}(r)&=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}\\&\quad\times r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right).\end{aligned}\]</div>
+            <div class="eq key-eq">\[R_{nl}(r)=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right).\]</div>
             <div class="eq">\[\Psi_{nlm}(r,\theta,\phi)=R_{nl}(r)Y_l^m(\theta,\phi).\]</div>
           </div>
           <div class="card green">
             <div class="ch green"><i class="fa-solid fa-chart-area"></i> Radial probability density</div>
-            <div class="eq key-eq">\[\begin{aligned}dP(r)&=|R_{nl}(r)|^2r^2\,dr,\\\sigma(r)&=|R_{nl}(r)|^2r^2.\end{aligned}\]</div>
+            <div class="eq key-eq">\[dP(r)=|R_{nl}(r)|^2r^2\,dr,\qquad \sigma(r)=|R_{nl}(r)|^2r^2.\]</div>
             <p>For fixed \(l\), the lowest allowed \(n=l+1\) has no radial node; the following states acquire one additional node successively. The probability is not restricted to the classical limits of \(V_{\rm ef}\).</p>
           </div>
         </div>
@@ -512,10 +505,10 @@
         </div>
       `;
       page.keys = [
-        String.raw`\begin{aligned}\frac{1}{r^2R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)&+\frac{2m}{\hbar^2}[E-V]\\&-\frac{l(l+1)}{r^2}=0\end{aligned}`,
+        String.raw`\frac{1}{r^2R}\frac{d}{dr}\left(r^2\frac{dR}{dr}\right)+\frac{2m}{\hbar^2}[E-V]-\frac{l(l+1)}{r^2}=0`,
         String.raw`V_{\rm ef}=V+\frac{\hbar^2l(l+1)}{2mr^2}`,
-        String.raw`\begin{aligned}xy''+(\nu+1-x)y'+q\,y&=0,\\y_q^\nu&=A_{q\nu}L_\nu^q\end{aligned}`,
-        String.raw`\begin{aligned}R_{nl}(r)&=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}\\&\quad\times r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right)\end{aligned}`,
+        String.raw`xy''+(\nu+1-x)y'+q\,y=0,\qquad y_q^\nu=A_{q\nu}L_\nu^q`,
+        String.raw`R_{nl}(r)=\left[\frac{(n-l-1)!}{2n(n+l)!}\right]^{1/2}\left(\frac{2}{na_0}\right)^{l+3/2}r^l e^{-r/(na_0)}L_{n-l-1}^{2l+1}\left(\frac{2r}{na_0}\right)`,
         String.raw`\sigma(r)=|R_{nl}(r)|^2r^2`
       ];
     }

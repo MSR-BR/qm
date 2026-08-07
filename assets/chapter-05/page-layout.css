@@ -38,7 +38,11 @@ p{margin:.35rem 0!important;}
 .numbered{padding-left:1.4rem!important;}
 li{position:relative!important;margin-bottom:.33rem!important;padding-left:.25rem!important;}
 .bullet li::before{content:"\25B8"!important;color:var(--blue)!important;position:absolute!important;left:-1rem!important;top:.05rem!important;font-size:.75em!important;}
-.eq{background:#F8F9FA!important;border:1px solid #D5D8DC!important;border-radius:8px!important;text-align:center!important;font-size:clamp(.95rem,1.2vw,1.06rem)!important;line-height:1.45!important;overflow-x:auto!important;overflow-y:hidden!important;max-width:100%!important;white-space:normal!important;-webkit-overflow-scrolling:touch!important;padding:11px!important;margin:10px 0!important;}
+.eq{background:#F8F9FA!important;border:1px solid #D5D8DC!important;border-radius:8px!important;text-align:center!important;font-size:clamp(.95rem,1.2vw,1.06rem)!important;line-height:1.45!important;overflow-x:auto!important;overflow-y:hidden!important;max-width:100%!important;white-space:normal!important;-webkit-overflow-scrolling:touch!important;scrollbar-gutter:stable!important;padding:11px!important;margin:10px 0!important;}
+.hydrogen-radial-page .eq mjx-container{scrollbar-gutter:stable!important;}
+.hydrogen-radial-page .eq::-webkit-scrollbar,.hydrogen-radial-page .eq mjx-container::-webkit-scrollbar{height:8px!important;}
+.hydrogen-radial-page .eq::-webkit-scrollbar-thumb,.hydrogen-radial-page .eq mjx-container::-webkit-scrollbar-thumb{background:#9BBEAA!important;border-radius:999px!important;}
+.hydrogen-radial-page .eq::-webkit-scrollbar-track,.hydrogen-radial-page .eq mjx-container::-webkit-scrollbar-track{background:#E8F1EC!important;border-radius:999px!important;}
 .key-eq{background:var(--orange-soft)!important;border:2px solid rgba(138,90,34,.35)!important;box-shadow:inset 0 0 0 1px rgba(255,255,255,.65)!important;}
 .eq mjx-container,mjx-container{max-width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;white-space:nowrap!important;}
 .callout{background:#FFF8F6!important;border-left:4px solid var(--red)!important;border-radius:0 8px 8px 0!important;padding:12px 14px!important;margin-top:10px!important;font-family:"Inter",sans-serif!important;font-size:var(--small)!important;line-height:1.45!important;color:#394B5D!important;}
@@ -73,7 +77,6 @@ td{padding:7px 10px!important;border-bottom:1px solid #EEF1F5!important;text-ali
   :root{--title:1.22rem;--subtitle:.76rem;--body:.94rem;--card-title:.98rem;}
   .hdr{flex-direction:column!important;}
   .card{padding:12px!important;}
-  .hydrogen-radial-page .eq{font-size:.78rem!important;padding:9px 5px!important;}
   table{min-width:360px!important;}
   .resource-link-list a{width:100%!important;justify-content:center!important;}
 }
