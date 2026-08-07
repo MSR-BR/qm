@@ -388,6 +388,14 @@
 
     const page = pages[key];
     if (!page) return;
+    if (key === "azimuthal-and-polar-equations") {
+      page.content = page.content
+        .replace(/<p>Written so that the two remaining variables are visible explicitly, it is<\/p><div class="eq">.*?<\/div><\/div><div class="card green">/, '</div><div class="card green">')
+        .replace(
+          String.raw`Single-valuedness under \(\phi\to\phi+2\pi\) restricts \(m\) to the integers.`,
+          String.raw`Single-valuedness under \(\phi\to\phi+2\pi\) restricts \(m\) to the integers: \(m=0,\pm1,\pm2,\ldots\).`
+        );
+    }
     const preserved = [...body.children].filter((node) =>
       node.matches("[data-exercise-readiness], [data-practice-anchor], [data-termo-ai-exercise], .resource-links, .source-note")
     );
