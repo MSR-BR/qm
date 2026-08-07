@@ -47,7 +47,7 @@ const CHAPTERS = [
     solutionsPdf: "/Users/marioreis/Desktop/qm/c5_Reis QM solutions copy 3.pdf",
     // PDF page ranges are matched to the book's section boundaries, including
     // the periodic-table application and the expectation-value appendix.
-    ranges: [[3, 3], [3, 4], [4, 7], [8, 10], [11, 12], [13, 16], [17, 17], [18, 23], [24, 24], [25, 28], [29, 29], [30, 34], [35, 37], [38, 44], [45, 48]]
+    ranges: [[3, 3], [3, 4], [4, 7], [8, 10], [11, 23], [17, 17], [24, 34], [35, 37], [38, 44], [45, 48]]
   }
 ];
 

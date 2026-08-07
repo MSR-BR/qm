@@ -36,35 +36,35 @@
       "aiExercise": true
     },
     {
-      "id": "5.7",
+      "id": "5.6",
       "title": "Hydrogen energy spectrum and degeneracy",
       "note": "Origin of quantization, Bohr energy scale and degenerate states labeled by n, l and m.",
       "url": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
       "aiExercise": true
     },
     {
-      "id": "5.9",
+      "id": "5.7",
       "title": "Three-dimensional harmonic oscillator: radial solution and spectrum",
       "note": "Compact book-led sequence from the oscillator potential to the effective radial equation, Laguerre solution, spectrum and total states.",
       "url": "slides/chapter-05/three-dimensional-harmonic-oscillator.html",
       "aiExercise": true
     },
     {
-      "id": "5.13",
+      "id": "5.8",
       "title": "Hydrogen atom and the periodic table",
       "note": "Shells, subshells, orbital capacity, Madelung ordering and the quantum structure behind the periodic table.",
       "url": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html",
       "aiExercise": true
     },
     {
-      "id": "5.14",
+      "id": "5.9",
       "title": "Hydrogen expectation values",
       "note": "Radial moments, Kramers-Pasternack relations and Feynman-Hellmann methods for extracting observables.",
       "url": "slides/chapter-05/hydrogen-expectation-values.html",
       "aiExercise": true
     },
     {
-      "id": "5.15",
+      "id": "5.10",
       "title": "Chapter synthesis: solving central potentials",
       "note": "A comparative map of angular quantum numbers, radial equations, special functions, spectra and degeneracies.",
       "url": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html",

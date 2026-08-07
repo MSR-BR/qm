@@ -1,8 +1,8 @@
 {
   "version": "qm-book-topic-index-v1",
-  "generatedAt": "2026-08-07T13:15:00.191Z",
-  "sectionCount": 72,
-  "topicCount": 77,
+  "generatedAt": "2026-08-07T21:38:15.486Z",
+  "sectionCount": 67,
+  "topicCount": 72,
   "topics": [
     {
       "id": "why-old-quantum-physics-matters",
@@ -1891,46 +1891,30 @@
       ]
     },
     {
-      "id": "hydrogen-atom-and-effective-potential",
-      "label": "hydrogen atom and effective potential",
+      "id": "hydrogen-atom-radial-solution-and-probability",
+      "label": "hydrogen atom radial solution and probability",
       "fragments": [
         {
           "sectionId": "5.5",
           "chapterId": "05",
           "itemId": "5.5",
-          "title": "Hydrogen atom and effective potential",
+          "title": "Hydrogen atom: radial solution and probability",
           "pagePath": "slides/chapter-05/hydrogen-atom-and-effective-potential.html",
           "pageStart": 11,
-          "pageEnd": 12,
+          "pageEnd": 23,
           "excerpt": "5.3 Hydrogen atom 179 As the associated Legendre polynomials are real, we have (with x = cos θ ): . +1 / m 02 |Al m |2 2( Pl (x ) d x = 1. (5.48) −1 Our task now is to obtain the result of the integral above, which is related to the orthogonality condition of the associated Legendre poly- nomials [2]: . +1 2 (l + m)! Plm, (x )Plm (x )d x = )l , l , −l ≤ m ≤ +l . (5.49) −1 2l + 1 (l − m)! Taking Eq. (5.49) into Eq. (5.48), we obtain: ⎞ ⎠ 2l + 1 (l − m)! 1/2 Al m = , −l ≤ m ≤ +l . (5.50) 4( (l + m)! 5.3 Hydrogen atom"
         }
       ]
     },
     {
-      "id": "hydrogen-radial-equation-and-laguerre-solutions",
-      "label": "hydrogen radial equation and laguerre solutions",
+      "id": "hydrogen-energy-spectrum-and-degeneracy",
+      "label": "hydrogen energy spectrum and degeneracy",
       "fragments": [
         {
           "sectionId": "5.6",
           "chapterId": "05",
           "itemId": "5.6",
-          "title": "Hydrogen radial equation and Laguerre solutions",
-          "pagePath": "slides/chapter-05/hydrogen-radial-equation-and-laguerre-solutions.html",
-          "pageStart": 13,
-          "pageEnd": 16,
-          "excerpt": "5.3 Hydrogen atom 181 FIGURE 5.3 Effective potential for the Hydrogen atom (Eq. (5.55)). For comparison pur- poses, we added the orbital contribution to the figure. electron is then confined. See Fig. 5.3 for a better understanding. We will revisit the discussion of this figure when we detail the energy levels of the Hydrogen atom. 5.3.3 Solution to radial equation Returning to Eq. (5.53), which represents the radial differential equa- tion, our goal is to find its respective solutions and analyze their implica- ti"
-        }
-      ]
-    },
-    {
-      "id": "hydrogen-spectrum-and-degeneracy",
-      "label": "hydrogen spectrum and degeneracy",
-      "fragments": [
-        {
-          "sectionId": "5.7",
-          "chapterId": "05",
-          "itemId": "5.7",
-          "title": "Hydrogen spectrum and degeneracy",
+          "title": "Hydrogen energy spectrum and degeneracy",
           "pagePath": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
           "pageStart": 17,
           "pageEnd": 17,
@@ -1939,82 +1923,18 @@
       ]
     },
     {
-      "id": "hydrogen-orbitals-and-radial-probability",
-      "label": "hydrogen orbitals and radial probability",
+      "id": "three-dimensional-harmonic-oscillator-radial-solution-and-spectrum",
+      "label": "three dimensional harmonic oscillator radial solution and spectrum",
       "fragments": [
         {
-          "sectionId": "5.8",
+          "sectionId": "5.7",
           "chapterId": "05",
-          "itemId": "5.8",
-          "title": "Hydrogen orbitals and radial probability",
-          "pagePath": "slides/chapter-05/hydrogen-orbitals-and-radial-probability.html",
-          "pageStart": 18,
-          "pageEnd": 23,
-          "excerpt": "186 5. Traditional problems with central potential TABLE 5.1 Principal quan- tum number n and their respec- tive energy values. The purpose of this table is to demonstrate the degeneracy that arises due to the energy of the Hydrogen atom be- ing only dependent on n – ob- serve the degenerate states for each energy value. n E (E0 ) nl (n, l , m) 1 −1 1s (1, 0, 0) 2 −1/4 2s (2, 0, 0) 2p (2, 1, 0) (2, 1, ±1) 3 −1/9 3s (3, 0, 0) 3p (3, 1, 0) (3, 1, ±1) 3d (3, 2, 0) (3, 2, ±1) (3, 2, ±2) Since energy only depends on n, "
-        }
-      ]
-    },
-    {
-      "id": "three-dimensional-harmonic-oscillator",
-      "label": "three dimensional harmonic oscillator",
-      "fragments": [
-        {
-          "sectionId": "5.9",
-          "chapterId": "05",
-          "itemId": "5.9",
-          "title": "Three-dimensional harmonic oscillator",
+          "itemId": "5.7",
+          "title": "Three-dimensional harmonic oscillator: radial solution and spectrum",
           "pagePath": "slides/chapter-05/three-dimensional-harmonic-oscillator.html",
           "pageStart": 24,
-          "pageEnd": 24,
-          "excerpt": "192 5. Traditional problems with central potential The key physics of this system has been thoroughly examined in the pre- ceding subsections, where the angular and radial components were sepa- rated, and their respective implications analyzed. The final equation pre- sented above effectively concludes the discussion of the Hydrogen atom. 5.4 Harmonic oscillator in three dimensions As we discussed throughout this chapter, for problems with central po- tentials, as is the case of the Hydrogen atom and the harmonic o"
-        }
-      ]
-    },
-    {
-      "id": "3d-oscillator-radial-equation",
-      "label": "3d oscillator radial equation",
-      "fragments": [
-        {
-          "sectionId": "5.10",
-          "chapterId": "05",
-          "itemId": "5.10",
-          "title": "3D oscillator radial equation",
-          "pagePath": "slides/chapter-05/3d-oscillator-radial-equation.html",
-          "pageStart": 25,
-          "pageEnd": 28,
-          "excerpt": "5.4 Harmonic oscillator in three dimensions 193 ⎞ ⎠ 1 2 3 = !ω nx + ny + nz + . (5.112) 2 On the other hand, the total wave function can be written as: !nx ,ny ,nz (x , y , z) = ψnx (x )ψny (y )ψnz (z), (5.113) where ψnu (u) represents the wave function of a one-dimensional harmonic oscillator. In this : three-dimensional ; system there are several different com- binations of nx , ny , nz that produce the same amount of energy. There- fore, based on these arguments and preliminary results, we can say that we have a"
-        }
-      ]
-    },
-    {
-      "id": "3d-oscillator-spectrum-and-degeneracy",
-      "label": "3d oscillator spectrum and degeneracy",
-      "fragments": [
-        {
-          "sectionId": "5.11",
-          "chapterId": "05",
-          "itemId": "5.11",
-          "title": "3D oscillator spectrum and degeneracy",
-          "pagePath": "slides/chapter-05/3d-oscillator-spectrum-and-degeneracy.html",
-          "pageStart": 29,
-          "pageEnd": 29,
-          "excerpt": "5.4 Harmonic oscillator in three dimensions 197 These boundary conditions allow us to write as a solution to the differ- ential equation of Eq. (5.125): 2 u(ξ ) ∝ ξ l +1 e−ξ /2 , (ξ ). (5.131) Our next task is to determine , (ξ ). By taking Eq. (5.131) into Eq. (5.125) we are performing the third change of variable, and we obtain for , (ξ ): ⎞ ⎠ ⎞ # $⎠ ,, (l + 1) , 3 , (ξ ) + 2 − ξ , (ξ ) + 2 * − l + , (ξ ) = 0. (5.132) ξ 2 Note that to write the result above it was necessary to obtain the second derivative of u(ξ "
-        }
-      ]
-    },
-    {
-      "id": "3d-oscillator-wave-functions-and-probability",
-      "label": "3d oscillator wave functions and probability",
-      "fragments": [
-        {
-          "sectionId": "5.12",
-          "chapterId": "05",
-          "itemId": "5.12",
-          "title": "3D oscillator wave functions and probability",
-          "pagePath": "slides/chapter-05/3d-oscillator-wave-functions-and-probability.html",
-          "pageStart": 30,
           "pageEnd": 34,
-          "excerpt": "198 5. Traditional problems with central potential TABLE 5.2 The purpose of this table is to demonstrate the degeneracy that arises due to the energy of the 3D harmonic oscil- lator being only dependent on n – observe the degenerate states for each energy eigenvalue. As defined in the text: * = E /!ω. n ! nl (n, l , m) 0 3/2 0s (0, 0, 0) 1 5/2 1p (1, 1, 0) (1, 1, ±1) 2 7/2 2s (2, 0, 0) 2d (2, 2, 0) (2, 2, ±1) (2, 2, ±2) 3 9/2 3p (3, 1, 0) (3, 1, ±1) 3f (3, 3, 0) (3, 3, ±1) (3, 3, ±2) (3, 3, ±3) 5.4.5 Radial wave fu"
+          "excerpt": "192 5. Traditional problems with central potential The key physics of this system has been thoroughly examined in the pre- ceding subsections, where the angular and radial components were sepa- rated, and their respective implications analyzed. The final equation pre- sented above effectively concludes the discussion of the Hydrogen atom. 5.4 Harmonic oscillator in three dimensions As we discussed throughout this chapter, for problems with central po- tentials, as is the case of the Hydrogen atom and the harmonic o"
         }
       ]
     },
@@ -2023,9 +1943,9 @@
       "label": "hydrogen atom and the periodic table",
       "fragments": [
         {
-          "sectionId": "5.13",
+          "sectionId": "5.8",
           "chapterId": "05",
-          "itemId": "5.13",
+          "itemId": "5.8",
           "title": "Hydrogen atom and the periodic table",
           "pagePath": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html",
           "pageStart": 35,
@@ -2039,9 +1959,9 @@
       "label": "hydrogen expectation values",
       "fragments": [
         {
-          "sectionId": "5.14",
+          "sectionId": "5.9",
           "chapterId": "05",
-          "itemId": "5.14",
+          "itemId": "5.9",
           "title": "Hydrogen expectation values",
           "pagePath": "slides/chapter-05/hydrogen-expectation-values.html",
           "pageStart": 38,
@@ -2055,9 +1975,9 @@
       "label": "chapter synthesis solving central potentials",
       "fragments": [
         {
-          "sectionId": "5.15",
+          "sectionId": "5.10",
           "chapterId": "05",
-          "itemId": "5.15",
+          "itemId": "5.10",
           "title": "Chapter synthesis: solving central potentials",
           "pagePath": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html",
           "pageStart": 45,
@@ -2806,7 +2726,7 @@
       "itemId": "5.4",
       "primaryTopic": "spherical-harmonics",
       "transversalTopics": [
-        "hydrogen-atom-and-effective-potential"
+        "hydrogen-atom-radial-solution-and-probability"
       ],
       "advancedSupportTopics": []
     },
@@ -2814,9 +2734,9 @@
       "sectionId": "5.5",
       "chapterId": "05",
       "itemId": "5.5",
-      "primaryTopic": "hydrogen-atom-and-effective-potential",
+      "primaryTopic": "hydrogen-atom-radial-solution-and-probability",
       "transversalTopics": [
-        "hydrogen-radial-equation-and-laguerre-solutions"
+        "hydrogen-energy-spectrum-and-degeneracy"
       ],
       "advancedSupportTopics": []
     },
@@ -2824,9 +2744,9 @@
       "sectionId": "5.6",
       "chapterId": "05",
       "itemId": "5.6",
-      "primaryTopic": "hydrogen-radial-equation-and-laguerre-solutions",
+      "primaryTopic": "hydrogen-energy-spectrum-and-degeneracy",
       "transversalTopics": [
-        "hydrogen-spectrum-and-degeneracy"
+        "three-dimensional-harmonic-oscillator-radial-solution-and-spectrum"
       ],
       "advancedSupportTopics": []
     },
@@ -2834,9 +2754,9 @@
       "sectionId": "5.7",
       "chapterId": "05",
       "itemId": "5.7",
-      "primaryTopic": "hydrogen-spectrum-and-degeneracy",
+      "primaryTopic": "three-dimensional-harmonic-oscillator-radial-solution-and-spectrum",
       "transversalTopics": [
-        "hydrogen-orbitals-and-radial-probability"
+        "hydrogen-atom-and-the-periodic-table"
       ],
       "advancedSupportTopics": []
     },
@@ -2844,56 +2764,6 @@
       "sectionId": "5.8",
       "chapterId": "05",
       "itemId": "5.8",
-      "primaryTopic": "hydrogen-orbitals-and-radial-probability",
-      "transversalTopics": [
-        "three-dimensional-harmonic-oscillator"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "5.9",
-      "chapterId": "05",
-      "itemId": "5.9",
-      "primaryTopic": "three-dimensional-harmonic-oscillator",
-      "transversalTopics": [
-        "3d-oscillator-radial-equation"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "5.10",
-      "chapterId": "05",
-      "itemId": "5.10",
-      "primaryTopic": "3d-oscillator-radial-equation",
-      "transversalTopics": [
-        "3d-oscillator-spectrum-and-degeneracy"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "5.11",
-      "chapterId": "05",
-      "itemId": "5.11",
-      "primaryTopic": "3d-oscillator-spectrum-and-degeneracy",
-      "transversalTopics": [
-        "3d-oscillator-wave-functions-and-probability"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "5.12",
-      "chapterId": "05",
-      "itemId": "5.12",
-      "primaryTopic": "3d-oscillator-wave-functions-and-probability",
-      "transversalTopics": [
-        "hydrogen-atom-and-the-periodic-table"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "5.13",
-      "chapterId": "05",
-      "itemId": "5.13",
       "primaryTopic": "hydrogen-atom-and-the-periodic-table",
       "transversalTopics": [
         "hydrogen-expectation-values"
@@ -2901,9 +2771,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "5.14",
+      "sectionId": "5.9",
       "chapterId": "05",
-      "itemId": "5.14",
+      "itemId": "5.9",
       "primaryTopic": "hydrogen-expectation-values",
       "transversalTopics": [
         "chapter-synthesis-solving-central-potentials"
@@ -2911,9 +2781,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "5.15",
+      "sectionId": "5.10",
       "chapterId": "05",
-      "itemId": "5.15",
+      "itemId": "5.10",
       "primaryTopic": "chapter-synthesis-solving-central-potentials",
       "transversalTopics": [
         "hydrogen-expectation-values"
