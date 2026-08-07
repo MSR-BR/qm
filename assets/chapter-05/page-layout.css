@@ -73,6 +73,7 @@ td{padding:7px 10px!important;border-bottom:1px solid #EEF1F5!important;text-ali
   :root{--title:1.22rem;--subtitle:.76rem;--body:.94rem;--card-title:.98rem;}
   .hdr{flex-direction:column!important;}
   .card{padding:12px!important;}
+  .hydrogen-radial-page .eq{font-size:.78rem!important;padding:9px 5px!important;}
   table{min-width:360px!important;}
   .resource-link-list a{width:100%!important;justify-content:center!important;}
 }
