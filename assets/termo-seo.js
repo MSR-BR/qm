@@ -721,6 +721,14 @@
       `;
       page.keys = [String.raw`q=n-l-1=0,1,2,\ldots`, String.raw`n=\frac{1}{ka_0}`, String.raw`E_n=-\frac{E_0}{n^2}`, String.raw`l=0,1,\ldots,n-1,\qquad m=-l,\ldots,l`];
     }
+    if (key === "chapter-synthesis-solving-central-potentials") {
+      page.guide = String.raw`Central symmetry produces one common angular problem and potential-specific radial problems. This final page keeps the comparison qualitative and points back to the book for the full derivations.`;
+      page.content = String.raw`<div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-globe"></i> What is common</div><p>For every \(V(r)\), separation gives the same spherical harmonics \(Y_l^m\) and the same allowed angular labels \(l,m\). The total state has the form</p><div class="eq key-eq">\[\Psi(r,\theta,\phi)=R(r)Y_l^m(\theta,\phi).\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-arrows-split-up-and-left"></i> What changes</div><p>The central potential fixes the radial equation. Hydrogen uses a Coulomb potential and associated Laguerre functions; the three-dimensional oscillator uses a quadratic potential and its own radial Laguerre construction.</p></div></div><div class="col"><div class="card orange"><div class="ch orange"><i class="fa-solid fa-bolt"></i> Spectra</div><div class="eq">\[E_n^{\rm H}=-\frac{E_0}{n^2},\qquad E_n^{\rm osc}=\hbar\omega\left(n+\frac32\right).\]</div><p>These different spectra come from different radial dynamics, while their angular structure is shared.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-book-open"></i> Use the book for</div><p>the variable changes, the special-function derivations, normalizations, complete wave functions, figures and exercise solutions. The purpose of this chapter view is to retain the sequence of the argument and the central results.</p></div></div>`;
+      page.keys = [
+        String.raw`\Psi(r,\theta,\phi)=R(r)Y_l^m(\theta,\phi)`,
+        String.raw`E_n^{\rm H}=-\frac{E_0}{n^2},\qquad E_n^{\rm osc}=\hbar\omega\left(n+\frac32\right)`
+      ];
+    }
     const preserved = [...body.children].filter((node) =>
       node.matches("[data-exercise-readiness], [data-practice-anchor], [data-termo-ai-exercise], .resource-links, .source-note")
     );
