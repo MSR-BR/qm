@@ -44,30 +44,9 @@
     },
     {
       "id": "5.9",
-      "title": "Three-dimensional harmonic oscillator",
-      "note": "Cartesian and spherical descriptions, central confinement and the effective radial potential.",
+      "title": "Three-dimensional harmonic oscillator: radial solution and spectrum",
+      "note": "Compact book-led sequence from the oscillator potential to the effective radial equation, Laguerre solution, spectrum and total states.",
       "url": "slides/chapter-05/three-dimensional-harmonic-oscillator.html",
-      "aiExercise": true
-    },
-    {
-      "id": "5.10",
-      "title": "3D oscillator radial equation",
-      "note": "Boundary behavior, associated Laguerre functions and the allowed relation between radial and orbital labels.",
-      "url": "slides/chapter-05/3d-oscillator-radial-equation.html",
-      "aiExercise": true
-    },
-    {
-      "id": "5.11",
-      "title": "3D oscillator spectrum and degeneracy",
-      "note": "Energy quantization, allowed l values and the equivalence between Cartesian and spherical state counting.",
-      "url": "slides/chapter-05/3d-oscillator-spectrum-and-degeneracy.html",
-      "aiExercise": true
-    },
-    {
-      "id": "5.12",
-      "title": "3D oscillator wave functions and probability",
-      "note": "Normalized radial states, nodes, turning points and how orbital angular momentum shifts probability outward.",
-      "url": "slides/chapter-05/3d-oscillator-wave-functions-and-probability.html",
       "aiExercise": true
     },
     {

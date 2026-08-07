@@ -308,8 +308,15 @@
     if (!body) return;
 
     const key = window.location.pathname.split("/").pop().replace(/\.html$/, "");
-    if (["hydrogen-radial-equation-and-laguerre-solutions", "hydrogen-orbitals-and-radial-probability"].includes(key)) {
-      window.location.replace("hydrogen-atom-and-effective-potential.html");
+    const mergedChapterFivePages = {
+      "hydrogen-radial-equation-and-laguerre-solutions": "hydrogen-atom-and-effective-potential.html",
+      "hydrogen-orbitals-and-radial-probability": "hydrogen-atom-and-effective-potential.html",
+      "3d-oscillator-radial-equation": "three-dimensional-harmonic-oscillator.html",
+      "3d-oscillator-spectrum-and-degeneracy": "three-dimensional-harmonic-oscillator.html",
+      "3d-oscillator-wave-functions-and-probability": "three-dimensional-harmonic-oscillator.html"
+    };
+    if (mergedChapterFivePages[key]) {
+      window.location.replace(mergedChapterFivePages[key]);
       return;
     }
     const pages = {
@@ -399,6 +406,65 @@
           String.raw`Single-valuedness under \(\phi\to\phi+2\pi\) restricts \(m\) to the integers.`,
           String.raw`Single-valuedness under \(\phi\to\phi+2\pi\) restricts \(m\) to the integers: \(m=0,\pm1,\pm2,\ldots\).`
         );
+    }
+    if (key === "three-dimensional-harmonic-oscillator") {
+      page.exerciseFocus = "the 3D oscillator potential, effective radial equation, Laguerre quantization, energy spectrum, and final stationary states";
+      page.guide = String.raw`The isotropic three-dimensional harmonic oscillator is another central-potential problem. Its spherical-coordinate solution follows the same procedure used for hydrogen: separate the angular contribution, construct the effective radial equation, compare the transformed equation with the associated Laguerre equation, and impose acceptable solutions. The detailed variable changes and normalization are given in the book.`;
+      page.content = String.raw`
+        <div class="col">
+          <div class="card">
+            <div class="ch"><i class="fa-solid fa-wave-square"></i> Potential and Hamiltonian</div>
+            <div class="eq key-eq">\[V(r)=\frac{1}{2}m\omega^2r^2,\qquad \hat H=\frac{\hat p^2}{2m}+\frac{1}{2}m\omega^2\hat r^2.\]</div>
+            <p>In Cartesian coordinates, this Hamiltonian is the sum of three independent one-dimensional oscillators:</p>
+            <div class="eq">\[E_{n_x,n_y,n_z}=\hbar\omega\left(n_x+n_y+n_z+\frac{3}{2}\right).\]</div>
+            <div class="eq">\[\Psi_{n_x,n_y,n_z}(x,y,z)=\psi_{n_x}(x)\psi_{n_y}(y)\psi_{n_z}(z).\]</div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-chart-line"></i> Effective radial problem</div>
+            <div class="eq">\[\frac{1}{r^2R(r)}\frac{d}{dr}\left(r^2\frac{dR(r)}{dr}\right)+\frac{2m}{\hbar^2}[E-V_{\rm ef}(r)]=0.\]</div>
+            <div class="eq key-eq">\[V_{\rm ef}(r)=V(r)+\frac{\hbar^2}{2m}\frac{l(l+1)}{r^2}.\]</div>
+            <p>With \(\xi=\alpha r\) and \(\alpha^2=m\omega/\hbar\),</p>
+            <div class="eq">\[\frac{V_{\rm ef}(\xi)}{\hbar\omega}=\frac{\xi^2}{2}+\frac{l(l+1)}{2\xi^2}.\]</div>
+          </div>
+        </div>
+        <div class="card orange" style="grid-column:1 / -1!important">
+          <div class="ch orange"><i class="fa-solid fa-code-compare"></i> The same radial strategy used for hydrogen</div>
+          <p>As in the hydrogen problem, the behavior at the origin and at infinity is extracted first. After the changes of variables detailed in Box 5.4, the remaining function obeys</p>
+          <div class="eq">\[z\chi''(z)+\left(l+\frac{3}{2}-z\right)\chi'(z)+\frac{1}{2}\left[\varepsilon-\left(l+\frac{3}{2}\right)\right]\chi(z)=0,\qquad \varepsilon=\frac{E}{\hbar\omega}.\]</div>
+          <p>Comparison with the associated Laguerre equation gives</p>
+          <div class="eq key-eq">\[\nu=l+\frac{1}{2},\qquad q=\frac{n-l}{2},\qquad \varepsilon=n+\frac{3}{2}.\]</div>
+          <p>Because \(q\) is a nonnegative integer, \(n=0,1,2,\ldots\), and for each \(n\),</p>
+          <div class="eq">\[l=n,n-2,\ldots,j,\qquad j=0\ \text{ if }n\text{ is even},\quad j=1\ \text{ if }n\text{ is odd}.\]</div>
+        </div>
+        <div class="col">
+          <div class="card purple">
+            <div class="ch purple"><i class="fa-solid fa-bolt"></i> Energy and degeneracy</div>
+            <div class="eq key-eq">\[E_n=\hbar\omega\left(n+\frac{3}{2}\right),\qquad n=0,1,2,\ldots\]</div>
+            <p>The energy depends on \(n\), not on \(l\) or \(m\). The allowed states with different \((l,m)\) at fixed \(n\) are therefore degenerate, as listed in Table 5.2 of the book.</p>
+          </div>
+          <div class="card">
+            <div class="ch"><i class="fa-solid fa-circle-nodes"></i> Radial density</div>
+            <div class="eq">\[\sigma(r)=|R_{nl}(r)|^2r^2.\]</div>
+            <p>The book discusses the nodes and the location of radial probability in detail; no graph is needed for this compact reading.</p>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card green">
+            <div class="ch green"><i class="fa-solid fa-square-root-variable"></i> Normalized radial and total states</div>
+            <div class="eq key-eq">\[R_{nl}(r)=\left\{\frac{2\left[\frac{n-l}{2}\right]!}{\Gamma\left(\frac{n+l}{2}+\frac{3}{2}\right)}\right\}^{1/2}\alpha^{l+3/2}r^l e^{-\alpha^2r^2/2}L_{(n-l)/2}^{l+1/2}(\alpha^2r^2).\]</div>
+            <div class="eq">\[\Psi_{nlm}(r,\theta,\phi)=R_{nl}(r)Y_l^m(\theta,\phi).\]</div>
+            <p>The complete derivation of the radial equation and its normalization is presented in Boxes 5.4 and 5.5 of the book.</p>
+          </div>
+        </div>
+      `;
+      page.keys = [
+        String.raw`V(r)=\frac12m\omega^2r^2`,
+        String.raw`V_{\rm ef}(r)=V(r)+\frac{\hbar^2l(l+1)}{2mr^2}`,
+        String.raw`E_n=\hbar\omega\left(n+\frac32\right)`,
+        String.raw`\Psi_{nlm}=R_{nl}Y_l^m`
+      ];
     }
     if (key === "hydrogen-atom-and-effective-potential") {
       page.guide = String.raw`For the hydrogen atom, the central potential is Coulombic. Substitution into the general radial equation produces an effective potential made of the Coulomb term and the orbital contribution.`;
