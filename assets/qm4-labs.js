@@ -5,15 +5,15 @@
   const key = new URLSearchParams(location.search).get("sim") || "qho";
   const labs = {
     qho: { slug:"qho-states-ladder", title:"QHO: stationary eigenfunctions and energy levels", subtitle:"Select a stationary state. The graph follows the book variable \\(\\xi=\\alpha x\\) and the display scalings used for its wave functions and probability densities.", sections:"4.1–4.4", show:["n"], main:"Book-scaled wave function and probability density on the energy level", side:"", equation:"\\[-\\frac{\\hbar^2}{2m}\\frac{d^2\\psi}{dx^2}+\\frac12m\\omega^2x^2\\psi=E\\psi,\\qquad \\xi=\\alpha x,\\quad \\alpha=\\sqrt{\\frac{m\\omega}{\\hbar}}\\]\\[\\psi_n(x)=\\left(\\frac{m\\omega}{\\pi\\hbar}\\right)^{1/4}\\frac{e^{-m\\omega x^2/(2\\hbar)}}{\\sqrt{2^n n!}}H_n(\\alpha x),\\qquad \\rho_n(x)=|\\psi_n(x)|^2\\]\\[\\int_{-\\infty}^{\\infty}|\\psi_n(x)|^2\\,dx=1,\\qquad \\tilde\\psi_n(\\xi)=\\psi_n(\\xi)\\frac{\\pi^{1/4}}{\\sqrt{\\alpha}},\\qquad \\tilde\\rho_n(\\xi)=\\rho_n(\\xi)\\frac{\\sqrt{\\pi}}{\\alpha}\\]" },
-    finite: { slug:"finite-well-bound-states", title:"Finite well: bound states, parity and penetration", subtitle:"Change depth and width. The graphical boundary conditions select even and odd bound states and their exponentially decaying tails.", sections:"4.5–4.8", show:["n","m","v","a"], main:"Bound state in a finite well", side:"Graphical bound-state condition", equation:"\\[V(x)=\\begin{cases}0,&x<0\\ \\mathrm{or}\\ x>a\\\\-V_0,&0\\le x\\le a,\\end{cases}\\qquad E_n<0\\]\\[k\\tan(ka/2)=\\kappa\\quad(\\mathrm{even}),\\qquad-k\\cot(ka/2)=\\kappa\\quad(\\mathrm{odd})\\]" },
+    finite: { slug:"finite-well-bound-states", title:"Finite well: bound-state densities and energy levels", subtitle:"Vary the book parameter \\(k_0a\\). The allowed values \\(\\tilde k_na\\) determine the number of bound energy levels and the density for the selected state.", sections:"4.5–4.8", show:["n","k0a"], main:"Finite well and probability density", side:"", equation:"\\[V(x)=\\begin{cases}0,&x<0\\ \\mathrm{or}\\ x>a\\\\-|V_0|,&0\\le x\\le a,\\end{cases}\\qquad -|V_0|<E_n<0,\\qquad k_0^2=\\frac{2m|V_0|}{\\hbar^2}\\]\\[\\tilde k_n^2=k_0^2-k_n^2,\\qquad \\frac{E_n}{|V_0|}=\\left(\\frac{\\tilde k_na}{k_0a}\\right)^2-1,\\qquad \\nu=\\left\\lceil\\frac{k_0a}{\\pi}\\right\\rceil\\]\\[\\tilde\\rho_n(x)=\\frac{\\rho_n(x)}{20|C|^2},\\qquad \\frac{x}{a}\\ \text{on the horizontal axis and}\\ \frac{E_n}{|V_0|}\\ \text{on the vertical axis}\\]" },
     scatter: { slug:"attractive-well-scattering", title:"Attractive finite well: scattering and resonant transmission", subtitle:"A positive-energy wave is partly reflected and partly transmitted. Vary energy, well depth, and width to find resonant transparency.", sections:"4.9–4.10", show:["m","v","a","e"], main:"Incident, reflected and transmitted waves", side:"Transmission versus energy", equation:"\\[\\bar k^2=k^2+k_0^2,\\qquad T=\\frac{1}{1+\\frac{k_0^4}{4k^2\\bar k^2}\\sin^2(\\bar k a)},\\qquad R=1-T\\]" },
     delta: { slug:"delta-well-scattering", title:"Delta well: transmission and reflection", subtitle:"For \\(V(x)=-|\\alpha|\\delta(x)\\), the ratio between incident energy and \\(\\mathcal E'\\) determines the transmission.", sections:"4.11", show:["m","e","alpha"], main:"Delta potential", side:"Transmission and reflection", equation:"\\[\\mathcal E'=\\frac{m|\\alpha|^2}{2\\hbar^2},\\qquad T=\\frac{1}{1+\\mathcal E'/|E|},\\qquad R=\\frac{1}{1+|E|/\\mathcal E'}\\]" },
     step: { slug:"step-tunneling", title:"Potential step: evanescent wave and penetration", subtitle:"For \\(E<V_0\\), the wave in the higher-potential region is evanescent. It has nonzero amplitude but no transmitted stationary current.", sections:"4.12", show:["m","v","e"], main:"Step potential with E < V₀", side:"Penetration depth", equation:"\\[\\kappa=\\frac{\\sqrt{2m(V_0-E)}}{\\hbar},\\qquad\\psi_{\\mathrm{II}}(x)\\propto e^{-\\kappa x},\\qquad R=1,\\ T=0\\]" },
     regimes: { slug:"bound-evanescent-scattering-map", title:"One-dimensional regimes: bound, evanescent and scattering", subtitle:"Compare the local wave forms used across the chapter: bound-state tails, propagating waves, and evanescent penetration.", sections:"4.1–4.12", show:["m","v","e"], main:"Three local solution types", side:"Energy relative to potential", equation:"\\[-\\frac{\\hbar^2}{2m}\\frac{d^2\\psi}{dx^2}+V\\psi=E\\psi,\\qquad E>V:\\ \\text{oscillatory};\\quad E<V:\\ \\text{evanescent}\\]" }
   };
   const lab = labs[key] || labs.qho;
-  const controls = { n:$("n"), m:$("mass"), w:$("frequency"), v:$("depth"), a:$("width"), e:$("energy"), alpha:$("alpha") };
-  const defaults = { n:0, m:1, w:2, v:25, a:1, e:12, alpha:2 };
+  const controls = { n:$("n"), k0a:$("k0a"), m:$("mass"), w:$("frequency"), v:$("depth"), a:$("width"), e:$("energy"), alpha:$("alpha") };
+  const defaults = { n:0, k0a:3.5, m:1, w:2, v:25, a:1, e:12, alpha:2 };
   document.querySelector("main").dataset.simulatorSlug = lab.slug;
   $("kicker").textContent = "Chapter 4 · Sections " + lab.sections;
   $("title").textContent = lab.title;
@@ -39,7 +39,20 @@
     [[l1,v1,"l1","m1"],[l2,v2,"l2","m2"],[l3,v3,"l3","m3"],[l4,v4,"l4","m4"]].forEach(row => { $(row[2]).textContent=row[0]; $(row[3]).textContent=row[1]; });
   }
   function legend(items) { $("legend").innerHTML=items.map(item => '<span class="legend-item"><span class="legend-swatch" style="--swatch:'+item[0]+'"></span>'+item[1]+'</span>').join(""); }
-  function state() { return { n:+controls.n.value, mr:+controls.m.value, m:+controls.m.value*ME, omega:+controls.w.value*1e15, V:+controls.v.value*EV, a:+controls.a.value*1e-9, E:+controls.e.value*EV, alpha:+controls.alpha.value*EV*1e-9 }; }
+  function state() { return { n:+controls.n.value, k0a:+controls.k0a.value*Math.PI, mr:+controls.m.value, m:+controls.m.value*ME, omega:+controls.w.value*1e15, V:+controls.v.value*EV, a:+controls.a.value*1e-9, E:+controls.e.value*EV, alpha:+controls.alpha.value*EV*1e-9 }; }
+  function finiteRoots(k0a) {
+    const total=Math.ceil(k0a/Math.PI), roots=[];
+    for(let n=0;n<total;n++) {
+      let lo=n*Math.PI+1e-7,hi=Math.min((n+1)*Math.PI-1e-7,k0a-1e-7);
+      if(hi<=lo)continue;
+      const f=q=>n%2===0?q*Math.tan(q/2)-Math.sqrt(Math.max(0,k0a*k0a-q*q)):-q/Math.tan(q/2)-Math.sqrt(Math.max(0,k0a*k0a-q*q));
+      let flo=f(lo),fhi=f(hi);
+      if(!Number.isFinite(flo)||!Number.isFinite(fhi)||flo*fhi>0)continue;
+      for(let j=0;j<70;j++){const mid=(lo+hi)/2,fmid=f(mid);if(flo*fmid<=0){hi=mid;fhi=fmid;}else{lo=mid;flo=fmid;}}
+      roots.push((lo+hi)/2);
+    }
+    return roots;
+  }
   function drawCurve(ctx, fn, samples, xmap, ymap, color, start, end) {
     ctx.strokeStyle=color;ctx.lineWidth=2.5;ctx.beginPath();
     for(let i=0;i<=samples;i++){const z=start+(end-start)*i/samples, x=xmap(z), y=ymap(fn(z));if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);}
@@ -47,7 +60,7 @@
   }
   function drawMain(s, type) {
     const out=fit($("mainCanvas")),ctx=out.ctx,w=out.width,h=out.height,p={l:52,r:22,t:24,b:34},mid=h*.48;
-    if(type!=="qho")axes(ctx,w,h,p,mid);
+    if(type!=="qho"&&type!=="finite")axes(ctx,w,h,p,mid);
     if(type==="qho") {
       const poly=[z=>1,z=>2*z,z=>4*z*z-2,z=>8*z*z*z-12*z,z=>16*z**4-48*z*z+12,z=>32*z**5-160*z**3+120*z,z=>64*z**6-480*z**4+720*z*z-120][s.n];
       const xiMax=5, xm=z=>p.l+(z+xiMax)/(2*xiMax)*(w-p.l-p.r), ymax=13.2, ym=e=>h-p.b-e/ymax*(h-p.t-p.b);
@@ -63,6 +76,18 @@
       label(ctx,"V / ħω = ξ²/2",w*.57,ym(10.3),11,C.ink);label(ctx,"ψ̃ₙ(ξ)",w*.57,ym(energy-.48),11,C.green);label(ctx,"ρ̃ₙ(ξ)",w*.57,ym(energy+.68),11,C.rust);label(ctx,"ξ = αx",w*.47,h-8,11,C.muted);
       return;
     }
+    if(type==="finite") {
+      const roots=finiteRoots(s.k0a),q=roots[s.n]||roots[0],energy=q*q/(s.k0a*s.k0a)-1,lambda=1/Math.sqrt(Math.max(1e-9,s.k0a*s.k0a-q*q));
+      const xmin=-.6,xmax=1.6,ymin=-1.16,ymax=.20,xm=u=>p.l+(u-xmin)/(xmax-xmin)*(w-p.l-p.r),ym=value=>h-p.b-(value-ymin)/(ymax-ymin)*(h-p.t-p.b);
+      axes(ctx,w,h,p,ym(ymin));
+      ctx.strokeStyle=C.ink;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(xm(xmin),ym(0));ctx.lineTo(xm(0),ym(0));ctx.lineTo(xm(0),ym(-1));ctx.lineTo(xm(1),ym(-1));ctx.lineTo(xm(1),ym(0));ctx.lineTo(xm(xmax),ym(0));ctx.stroke();
+      roots.forEach((root,n)=>{const en=root*root/(s.k0a*s.k0a)-1,y=ym(en);ctx.strokeStyle=n===s.n?C.gold:C.grid;ctx.lineWidth=n===s.n?2.6:1;ctx.setLineDash(n===s.n?[]:[3,4]);ctx.beginPath();ctx.moveTo(xm(0),y);ctx.lineTo(xm(1),y);ctx.stroke();ctx.setLineDash([]);label(ctx,"n = "+n,xm(1)+8,y+4,10,n===s.n?C.gold:C.muted);});
+      const core=u=>s.n%2===0?Math.cos(q*(u-.5)):Math.sin(q*(u-.5));
+      const edge=core(0),rho=u=>u<0?edge*edge*Math.exp(2*u/lambda):u>1?edge*edge*Math.exp(-2*(u-1)/lambda):core(u)*core(u);
+      drawCurve(ctx,u=>energy+rho(u)/5,700,xm,ym,C.rust,xmin,xmax);
+      label(ctx,"V(x)/|V₀|",xm(xmin)+5,ym(.08),11,C.ink);label(ctx,"ρ̃ₙ(x)",xm(.55),ym(energy+.28),11,C.rust);label(ctx,"x/a",xm(.49),h-8,11,C.muted);label(ctx,"Eₙ/|V₀|",6,ym(-.25),11,C.muted);
+      return;
+    }
     if(type==="delta") {
       ctx.strokeStyle=C.ink;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.l,mid);ctx.lineTo(w*.5-14,mid);ctx.lineTo(w*.5,mid+105);ctx.lineTo(w*.5+14,mid);ctx.lineTo(w-p.r,mid);ctx.stroke();
       label(ctx,"V(x) = −|α|δ(x)",w*.5-58,mid+126,12,C.ink);label(ctx,"incident",p.l+18,mid-20);label(ctx,"reflected",p.l+18,mid+36);label(ctx,"transmitted",w-110,mid-20);
@@ -76,17 +101,10 @@
       return;
     }
     const x0=w*.33,x1=w*.67;
-    if(type==="finite"||type==="scatter") {
+    if(type==="scatter") {
       ctx.strokeStyle=C.ink;ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(p.l,mid);ctx.lineTo(x0,mid);ctx.lineTo(x0,mid+68);ctx.lineTo(x1,mid+68);ctx.lineTo(x1,mid);ctx.lineTo(w-p.r,mid);ctx.stroke();
-      if(type==="finite") {
-        const n=s.n+1;
-        drawCurve(ctx,z=>z<.33?Math.exp((z-.33)*12):z>.67?Math.exp((.67-z)*12):Math.sin(n*Math.PI*(z-.33)/.34),600,z=>p.l+z*(w-p.l-p.r),y=>mid-y*42,C.green,0,1);
-        drawCurve(ctx,z=>{const q=z<.33?Math.exp((z-.33)*12):z>.67?Math.exp((.67-z)*12):Math.sin(n*Math.PI*(z-.33)/.34);return q*q;},600,z=>p.l+z*(w-p.l-p.r),y=>h*.85-y*58,C.rust,0,1);
-        label(ctx,"outside",p.l+20,mid-10);label(ctx,"well",w*.48,mid+58);label(ctx,"outside",w-82,mid-10);
-      } else {
-        drawCurve(ctx,z=>z<.33?Math.sin(12*Math.PI*z)+.35*Math.sin(-12*Math.PI*z):z<.67?Math.sin(20*Math.PI*z):.8*Math.sin(12*Math.PI*z),700,z=>p.l+z*(w-p.l-p.r),y=>mid-32-y*32,C.green,0,1);
-        label(ctx,"incident + reflected",p.l+8,mid+29);label(ctx,"transmitted",w-105,mid+29);
-      }
+      drawCurve(ctx,z=>z<.33?Math.sin(12*Math.PI*z)+.35*Math.sin(-12*Math.PI*z):z<.67?Math.sin(20*Math.PI*z):.8*Math.sin(12*Math.PI*z),700,z=>p.l+z*(w-p.l-p.r),y=>mid-32-y*32,C.green,0,1);
+      label(ctx,"incident + reflected",p.l+8,mid+29);label(ctx,"transmitted",w-105,mid+29);
       return;
     }
     drawCurve(ctx,z=>Math.exp((z-1)*6),250,z=>p.l+z*(w*.30-p.l),y=>mid-y*32,C.rust,0,1);
@@ -130,19 +148,20 @@
   }
   function render() {
     Object.keys(controls).forEach(k=>document.querySelector(".c-"+k).style.display=lab.show.includes(k)?"grid":"none");
+    if(key==="finite") { const count=Math.ceil((+controls.k0a.value*Math.PI)/Math.PI);controls.n.max=count-1;if(+controls.n.value>count-1)controls.n.value=count-1; }
     const s=state();
     const sidePanel=$("sideCanvas").closest(".sim-panel"),metricsPanel=$("l1").closest(".sim-panel");
-    sidePanel.style.display=key==="qho"?"none":"";
-    metricsPanel.style.display=key==="qho"?"none":"";
-    $("nV").textContent=s.n;$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
+    sidePanel.style.display=(key==="qho"||key==="finite")?"none":"";
+    metricsPanel.style.display=(key==="qho"||key==="finite")?"none":"";
+    document.querySelector(".sim-footer").textContent=key==="finite"?"Finite-well graph in the book variables x/a and Eₙ/|V₀|. The displayed probability density follows the book scale ρ̃ₙ(x)=ρₙ(x)/(20|C|²).":"SI constants are used internally. Lengths are entered in nm, energies displayed in eV, and angular frequencies in 10¹⁵ s⁻¹.";
+    $("nV").textContent=s.n;$("k0aV").textContent=decimal(s.k0a/Math.PI,2)+"π";$("massV").textContent=decimal(s.mr,2)+" mₑ";$("frequencyV").textContent=decimal(s.omega/1e15,2)+"×10¹⁵";$("depthV").textContent=decimal(s.V/EV,1)+" eV";$("widthV").textContent=decimal(s.a*1e9,2)+" nm";$("energyV").textContent=decimal(s.E/EV,1)+" eV";$("alphaV").textContent=decimal(s.alpha/(EV*1e-9),2)+" eV nm";
     if(key==="qho") {
       $("insight").textContent="The physical wave function is normalized by ∫ |ψₙ(x)|² dx = 1. Following the caption of the book figure, the plotted curves are the display-scaled functions ψ̃ₙ(ξ) = ψₙ(ξ)π¹ᐟ⁴/√α and ρ̃ₙ(ξ) = ρₙ(ξ)√π/α. These scalings set the plotted height and units; they are not an additional normalization condition.";
       legend([[C.green,"book display scale ψ̃ₙ(ξ)"],[C.rust,"book display scale ρ̃ₙ(ξ)"],[C.ink,"V/(ħω) = ξ²/2"]]);
     } else if(key==="finite") {
-      const z0=s.a*Math.sqrt(2*s.m*s.V)/HBAR,count=Math.max(1,Math.floor(z0/Math.PI)+1),n=Math.min(s.n,count-1),L=s.a/Math.max(.2,z0-n*Math.PI/2);
-      metric("Approx. bound states",String(count),"Selected parity",n%2?"odd":"even","Penetration depth",decimal(L*1e9,3)+" nm","Dimensionless depth",decimal(z0,3));
-      $("insight").textContent="Intersections of the even or odd boundary branches with the circular curve select the bound states. Shallower states have longer tails.";
-      legend([[C.ink,"potential"],[C.green,"wave function"],[C.rust,"probability density"]]);
+      const roots=finiteRoots(s.k0a),q=roots[s.n]||roots[0],energy=q*q/(s.k0a*s.k0a)-1;
+      $("insight").textContent="The well is controlled by k₀a, the book’s dimensionless combination of depth and width. It has ν = ⌈k₀a/π⌉ bound levels. For the selected state, k̃ₙa fixes Eₙ/|V₀| and the probability-density profile in the three regions.";
+      legend([[C.ink,"finite potential well"],[C.rust,"book display scale ρ̃ₙ(x)"],[C.gold,"selected energy level Eₙ/|V₀| = "+decimal(energy,3)]]);
     } else if(key==="scatter") {
       const k=Math.sqrt(2*s.m*s.E)/HBAR,kb=Math.sqrt(2*s.m*(s.E+s.V))/HBAR,T=1/(1+s.V*s.V/(4*s.E*(s.E+s.V))*Math.sin(kb*s.a)**2);
       metric("Transmission T",decimal(100*T,2)+"%","Reflection R",decimal(100*(1-T),2)+"%","ka",decimal(k*s.a,3),"k̄a",decimal(kb*s.a,3));
@@ -163,7 +182,7 @@
       $("insight").textContent="The potential determines the local wave form. Boundary conditions then decide whether a global solution is a bound state or a scattering state.";
       legend([[C.green,"oscillatory"],[C.rust,"evanescent / bound tail"],[C.ink,"potential"]]);
     }
-    drawMain(s,key);if(key!=="qho")drawSide(s,key);
+    drawMain(s,key);if(key!=="qho"&&key!=="finite")drawSide(s,key);
     if(window.MathJax&&window.MathJax.typesetPromise)window.MathJax.typesetPromise([$("equation")]);
   }
   render();
