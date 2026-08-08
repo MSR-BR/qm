@@ -1,109 +1,95 @@
 {
-  "description": "Chapter 6 - Angular momentum. A guided structure for commutation relations, ladder algebra, spectra, matrices, differential operators and uncertainty.",
+  "description": "Chapter 6 - Angular momentum. A book-led sequence for commutation relations, angular-momentum algebra, consequences, matrix representations, position-space operators, generalized uncertainty and exercises.",
   "topics": [
     {
       "id": "6.1",
       "title": "Angular momentum: chapter roadmap",
-      "note": "From the classical cross product to a quantum observable with noncommuting components and discrete projections.",
+      "note": "The chapter presents the formal algebra of angular momentum, which can be orbital or spin, and prepares the addition of angular momenta in the next chapter.",
       "url": "slides/chapter-06/angular-momentum-chapter-roadmap.html"
     },
     {
       "id": "6.2",
-      "title": "Angular momentum and Levi-Civita notation",
-      "note": "Operator components, index notation and the tensor identities used throughout the angular momentum algebra.",
-      "url": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html",
-      "aiExercise": true
+      "title": "Commutation relations",
+      "note": "The angular-momentum components obey nonzero commutators, so two components cannot be determined simultaneously with absolute precision.",
+      "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html"
     },
     {
       "id": "6.3",
-      "title": "Commutation relations and physical meaning",
-      "note": "Deriving the cyclic commutators and understanding why different components cannot be sharp simultaneously.",
-      "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
-      "aiExercise": true
+      "title": "Box 6.1: commutator proof",
+      "note": "Box 6.1 derives the commutator by combining the Levi-Civita form of angular momentum with the position-momentum commutator.",
+      "url": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html"
     },
     {
       "id": "6.4",
       "title": "Compatible observables: L squared and Lz",
-      "note": "Why total magnitude commutes with every component and how a common eigenbasis is selected.",
-      "url": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
-      "aiExercise": true
+      "note": "Because L squared commutes with each angular-momentum component, the book chooses L squared and Lz as simultaneous observables.",
+      "url": "slides/chapter-06/compatible-observables-l-squared-and-lz.html"
     },
     {
       "id": "6.5",
       "title": "Raising and lowering operators",
-      "note": "Definitions, commutators, operator products and the ladder action that preserves total angular momentum.",
-      "url": "slides/chapter-06/raising-and-lowering-operators.html",
-      "aiExercise": true
+      "note": "The operators L plus and L minus move between eigenvectors of Lz while preserving the eigenvalue of L squared.",
+      "url": "slides/chapter-06/raising-and-lowering-operators.html"
     },
     {
       "id": "6.6",
-      "title": "Quantization of l and m",
-      "note": "Ladder termination, endpoint states and the derivation of integer or half-integer angular momentum.",
-      "url": "slides/chapter-06/quantization-of-l-and-m.html",
-      "aiExercise": true
+      "title": "Ladder action and endpoints",
+      "note": "The ladder changes b in steps of hbar, while positivity confines b between an upper and lower endpoint.",
+      "url": "slides/chapter-06/quantization-of-l-and-m.html"
     },
     {
       "id": "6.7",
       "title": "Angular momentum spectrum",
-      "note": "Eigenvalues of L squared and Lz, multiplet dimension and the geometry of magnitude and projection.",
-      "url": "slides/chapter-06/angular-momentum-spectrum.html",
-      "aiExercise": true
+      "note": "The book defines l and m from the finite ladder and obtains the eigenvalues of L squared and Lz.",
+      "url": "slides/chapter-06/angular-momentum-spectrum.html"
     },
     {
       "id": "6.8",
       "title": "Normalized ladder action",
-      "note": "Transition amplitudes between neighboring m states and the endpoint coefficients of a finite multiplet.",
-      "url": "slides/chapter-06/normalized-ladder-action.html",
-      "aiExercise": true
+      "note": "Corollary 6.9 determines the normalization factor multiplying the neighboring state reached by L plus or L minus.",
+      "url": "slides/chapter-06/normalized-ladder-action.html"
     },
     {
       "id": "6.9",
-      "title": "Expectation values and transverse variance",
-      "note": "Mean transverse components, quantum spread and the vector-cone interpretation of an angular momentum state.",
-      "url": "slides/chapter-06/expectation-values-and-transverse-variance.html",
-      "aiExercise": true
+      "title": "Consequences: transverse components",
+      "note": "Once Lz has a definite value, the transverse means vanish but their variances do not.",
+      "url": "slides/chapter-06/expectation-values-and-transverse-variance.html"
     },
     {
       "id": "6.10",
-      "title": "General matrix representation",
-      "note": "Matrix elements of Lz, L squared and the ladder operators for arbitrary l.",
-      "url": "slides/chapter-06/general-matrix-representation.html",
-      "aiExercise": true
+      "title": "Matrix representation",
+      "note": "Section 6.4 writes Lz, L squared and the ladder operators as matrices in a fixed l subspace and constructs the l = 1 matrices.",
+      "url": "slides/chapter-06/general-matrix-representation.html"
     },
     {
       "id": "6.11",
-      "title": "Worked matrices and change of basis",
-      "note": "Explicit l = 1 and l = 1/2 examples, eigenvectors of transverse components and unitary basis transformations.",
-      "url": "slides/chapter-06/worked-matrices-and-change-of-basis.html",
-      "aiExercise": true
+      "title": "Change of basis for Lx",
+      "note": "Example 6.2 diagonalizes Lx for l = 1 and constructs the change-of-basis matrix.",
+      "url": "slides/chapter-06/worked-matrices-and-change-of-basis.html"
     },
     {
       "id": "6.12",
       "title": "Angular momentum in position space",
-      "note": "Orbital angular momentum as a differential operator and its purely angular character in spherical coordinates.",
-      "url": "slides/chapter-06/angular-momentum-in-position-space.html",
-      "aiExercise": true
+      "note": "Section 6.5 writes the angular-momentum operators in position space using the differential momentum operator.",
+      "url": "slides/chapter-06/angular-momentum-in-position-space.html"
     },
     {
       "id": "6.13",
-      "title": "Spherical harmonics as angular momentum eigenfunctions",
-      "note": "Differential eigenvalue equations, ladder construction and normalized angular wave functions.",
-      "url": "slides/chapter-06/spherical-harmonics-as-angular-momentum-eigenfunctions.html",
-      "aiExercise": true
+      "title": "Spherical harmonics as eigenfunctions",
+      "note": "The position-space form of L squared turns the angular equation of central potentials into the angular-momentum eigenvalue equation.",
+      "url": "slides/chapter-06/spherical-harmonics-as-angular-momentum-eigenfunctions.html"
     },
     {
       "id": "6.14",
-      "title": "Generalized uncertainty for angular momentum",
-      "note": "Schwartz inequality, covariance and the uncertainty relation between noncommuting angular components.",
-      "url": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
-      "aiExercise": true
+      "title": "Appendices: Levi-Civita and generalized uncertainty",
+      "note": "Appendices 6.A and 6.B provide the Levi-Civita identities and derive the generalized uncertainty principle used for angular momentum.",
+      "url": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html"
     },
     {
       "id": "6.15",
-      "title": "Chapter synthesis: angular momentum toolkit",
-      "note": "A compact bridge from commutators and multiplets to matrices, spherical harmonics and addition of angular momenta.",
-      "url": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
-      "aiExercise": true
+      "title": "Angular-momentum uncertainty and synthesis",
+      "note": "For angular momentum, the covariance terms vanish in the states considered by the book, leaving uncertainty relations controlled by the commutators.",
+      "url": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html"
     }
   ]
 }
