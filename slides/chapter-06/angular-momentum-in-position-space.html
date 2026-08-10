@@ -2,10 +2,10 @@
 <html lang="en"><head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Position-space representation | Chapter 6 | Quantum Mechanics</title>
-  <meta name="description" content="The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations." /><meta name="author" content="Prof. Mario Reis" />
+  <meta name="description" content="Angular-momentum operators in position space and spherical harmonics as eigenfunctions of L squared and Lz." /><meta name="author" content="Prof. Mario Reis" />
   <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-in-position-space.html" />
   <meta property="og:type" content="article" /><meta property="og:site_name" content="Quantum Mechanics" />
-  <meta property="og:title" content="Position-space representation | Chapter 6 | Quantum Mechanics" /><meta property="og:description" content="The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-in-position-space.html" />
+  <meta property="og:title" content="Position-space representation | Chapter 6 | Quantum Mechanics" /><meta property="og:description" content="Angular-momentum operators in position space and spherical harmonics as eigenfunctions of L squared and Lz." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-in-position-space.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
@@ -16,25 +16,74 @@
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
-<!-- termo-seo:start -->
-<meta name="description" content="The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations. Interactive material from the book..."/>
-<meta name="author" content="Prof. Mario Reis"/>
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
-<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
-<meta name="theme-color" content="#2F6B4F"/>
-<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-in-position-space.html"/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:type" content="article"/>
-<meta property="og:site_name" content="Quantum Mechanics"/>
-<meta property="og:title" content="Position-space representation | Chapter 6 | Quantum Mechanics"/>
-<meta property="og:description" content="The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations. Interactive material from the book..."/>
-<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-in-position-space.html"/>
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Position-space representation | Chapter 6 | Quantum Mechanics"/>
-<meta name="twitter:description" content="The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations. Interactive material from the book..."/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Position-space representation | Chapter 6 | Quantum Mechanics","description":"The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations. Interactive material from the book...","url":"https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-in-position-space.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
-<!-- termo-seo:end -->
 </head><body><div class="slide">
-  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=06" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 6 · Item 6.7</div><div class="hdr-title">Position-space representation</div><div class="hdr-sub">Differential angular-momentum operators and spherical harmonics</div></div><div class="slide-num">7 / 9</div></div>
-  <div class="body"><div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>The book obtains the position representation directly from \(\vec{\hat p}=-i\hbar\vec\nabla\). This connects the angular equation of central potentials to angular-momentum eigenfunctions.</p></div><div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-location-dot"></i> Where it comes from</div><div class="eq key-eq">\[\vec{\hat p}=-i\hbar\vec\nabla,\qquad \vec{\hat L}=(-i\hbar)\vec r\times\vec\nabla\]</div><div class="eq ">\[\vec\nabla=\hat r{\partial\over\partial r}+{\hat\theta\over r}{\partial\over\partial\theta}+{\hat\phi\over r\sin\theta}{\partial\over\partial\phi}\]</div><div class="eq ">\[\vec{\hat L}=(-i\hbar)\left(\hat\phi{\partial\over\partial\theta}-{\hat\theta\over\sin\theta}{\partial\over\partial\phi}\right)\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-angles-right"></i> Component operators</div><div class="eq key-eq">\[\hat L_z=-i\hbar{\partial\over\partial\phi}\]</div><div class="eq ">\[\hat L_x=i\hbar\left(\cot\theta\cos\phi{\partial\over\partial\phi}+\sin\phi{\partial\over\partial\theta}\right)\]</div><div class="eq ">\[\hat L_y=i\hbar\left(\cot\theta\sin\phi{\partial\over\partial\phi}-\cos\phi{\partial\over\partial\theta}\right)\]</div></div></div><div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-superscript"></i> Operators L± and L squared</div><div class="eq key-eq">\[\hat L_\pm=\hbar e^{\pm i\phi}\left(\pm{\partial\over\partial\theta}+i\cot\theta{\partial\over\partial\phi}\right)\]</div><div class="eq ">\[\hat L^2=-\hbar^2\left[{\partial^2\over\partial\theta^2}+\cot\theta{\partial\over\partial\theta}+{1\over\sin^2\theta}{\partial^2\over\partial\phi^2}\right]\]</div></div><div class="card orange"><div class="ch orange"><i class="fa-solid fa-wave-square"></i> Spherical harmonics</div><p>Recovering the angular equation from Chapter 5 gives</p><div class="eq ">\[Y_l^m(\theta,\phi)=A_l^m\Theta(\theta)\Phi(\phi)\]</div><div class="eq key-eq">\[\hat L^2Y_l^m(\theta,\phi)=l(l+1)\hbar^2Y_l^m(\theta,\phi)\]</div><div class="eq key-eq">\[\hat L_zY_l^m(\theta,\phi)=m\hbar Y_l^m(\theta,\phi)\]</div></div></div><div class="card green" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-flask"></i> Book example</div><p>For the angular wave function</p><div class="eq key-eq">\[Y_l^m(\theta,\phi)={1\over4}\sqrt{15\over2\pi}\,\sin^2\theta\,e^{2i\phi}\]</div><p>the book applies \(\hat L_z\) and \(\hat L^2\), obtaining \(m=+2\) and \(l=2\). Further construction and probability examples are kept in the textbook.</p></div><div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports guided exercises on: position-space angular-momentum operators and spherical harmonics as angular-momentum eigenfunctions.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul></div><div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;"><div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use these anchors only within the material introduced on this page.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> position-space angular-momentum operators and spherical harmonics as angular-momentum eigenfunctions.</li><li><span class="practice-label">Conceptual check:</span> connect the equation to what can be measured, represented or inferred physically.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\vec{\hat L}=(-i\hbar)\vec r\times\vec\nabla\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[\hat L^2Y_l^m=l(l+1)\hbar^2Y_l^m,\qquad \hat L_zY_l^m=m\hbar Y_l^m\]</div><li><span class="practice-label">Typical task:</span> verify one relation, apply it to a specified state or matrix, and state the measurement consequence.</li></ul></div><section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section><div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div></div>
+  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=06" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 6 · Item 6.6</div><div class="hdr-title">Position-space representation</div><div class="hdr-sub">Differential operators and spherical harmonics</div></div><div class="slide-num">6 / 8</div></div>
+  <div class="body">
+    <div class="card orange guide-card">
+      <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+      <p>The book obtains the position representation directly from \(\vec{\hat p}=-i\hbar\vec\nabla\). This connects the angular equation of central potentials to angular-momentum eigenfunctions.</p>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="ch"><i class="fa-solid fa-location-dot"></i> Where it comes from</div>
+        <div class="eq key-eq">\[\vec{\hat p}=-i\hbar\vec\nabla,\qquad \vec{\hat L}=(-i\hbar)\vec r\times\vec\nabla\]</div>
+        <div class="eq ">\[\vec\nabla=\hat r{\partial\over\partial r}+{\hat\theta\over r}{\partial\over\partial\theta}+{\hat\phi\over r\sin\theta}{\partial\over\partial\phi}\]</div>
+        <div class="eq ">\[\vec r\times\vec\nabla=\hat\phi{\partial\over\partial\theta}-{\hat\theta\over\sin\theta}{\partial\over\partial\phi}\]</div>
+        <div class="eq key-eq">\[\vec{\hat L}=(-i\hbar)\left(\hat\phi{\partial\over\partial\theta}-{\hat\theta\over\sin\theta}{\partial\over\partial\phi}\right)\]</div>
+      </div>
+      <div class="card green">
+        <div class="ch green"><i class="fa-solid fa-compass-drafting"></i> Cartesian unit vectors</div>
+        <p>The book then uses the unit vectors from the spherical-coordinate appendix.</p>
+        <div class="eq ">\[\hat x=\hat r\sin\theta\cos\phi+\hat\theta\cos\theta\cos\phi-\hat\phi\sin\phi\]</div>
+        <div class="eq ">\[\hat y=\hat r\sin\theta\sin\phi+\hat\theta\cos\theta\sin\phi+\hat\phi\cos\phi\]</div>
+        <div class="eq key-eq">\[\hat z=\hat r\cos\theta-\hat\theta\sin\theta\]</div>
+        <p>The hat denotes unit vectors here; the same symbol is also used for operators, as in the book.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card purple">
+        <div class="ch purple"><i class="fa-solid fa-angles-right"></i> Component operators</div>
+        <div class="eq key-eq">\[\hat L_z=\hat z\cdot\vec{\hat L}=(-i\hbar)(\hat r\cos\theta-\hat\theta\sin\theta)\cdot\left(\hat\phi{\partial\over\partial\theta}-{\hat\theta\over\sin\theta}{\partial\over\partial\phi}\right)=-i\hbar{\partial\over\partial\phi}\]</div>
+        <div class="eq ">\[\hat L_x=\hat x\cdot\vec{\hat L}=i\hbar\left(\cot\theta\cos\phi{\partial\over\partial\phi}+\sin\phi{\partial\over\partial\theta}\right)\]</div>
+        <div class="eq ">\[\hat L_y=\hat y\cdot\vec{\hat L}=i\hbar\left(\cot\theta\sin\phi{\partial\over\partial\phi}-\cos\phi{\partial\over\partial\theta}\right)\]</div>
+      </div>
+      <div class="card orange">
+        <div class="ch orange"><i class="fa-solid fa-superscript"></i> Operators \(\hat L_\pm\) and \(\hat L^2\)</div>
+        <div class="eq key-eq">\[\hat L_\pm=\hbar e^{\pm i\phi}\left(\pm{\partial\over\partial\theta}+i\cot\theta{\partial\over\partial\phi}\right)\]</div>
+        <div class="eq ">\[\hat L^2=-\hbar^2\left[{\partial^2\over\partial\theta^2}+\cot\theta{\partial\over\partial\theta}+{1\over\sin^2\theta}{\partial^2\over\partial\phi^2}\right]\]</div>
+        <div class="eq ">\[-{\hat L^2\over\hbar^2}={1\over\sin\theta}{\partial\over\partial\theta}\left(\sin\theta{\partial\over\partial\theta}\right)+{1\over\sin^2\theta}{\partial^2\over\partial\phi^2}\]</div>
+      </div>
+    </div>
+    <div class="card green" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-wave-square"></i> Spherical harmonics as eigenfunctions</div>
+      <p>Recovering the angular equation from Chapter 5, the book identifies the spherical harmonics as eigenfunctions of the angular-momentum operators.</p>
+      <div class="eq ">\[Y_l^m(\theta,\phi)=A_l^m\Theta(\theta)\Phi(\phi)\]</div>
+      <div class="eq key-eq">\[\hat L^2Y_l^m(\theta,\phi)=l(l+1)\hbar^2Y_l^m(\theta,\phi)\]</div>
+      <div class="eq key-eq">\[\hat L_zY_l^m(\theta,\phi)=m\hbar Y_l^m(\theta,\phi)\]</div>
+    </div>
+    <div class="card purple" style="grid-column:1 / -1!important;">
+      <div class="ch purple"><i class="fa-solid fa-flask"></i> Complete book example: \(Y_1^{-1}\)</div>
+      <p>For \((l,m)=(1,-1)\), the book starts with the \(\hat L_z\) eigenvalue equation and separates \(Y_1^{-1}(\theta,\phi)=\Theta(\theta)\Phi(\phi)\).</p>
+      <div class="eq ">\[\hat L_zY_1^{-1}(\theta,\phi)=-\hbar Y_1^{-1}(\theta,\phi)\]</div>
+      <div class="eq ">\[-i\hbar\,\Theta(\theta){d\Phi(\phi)\over d\phi}=-\hbar\Theta(\theta)\Phi(\phi)\quad\Rightarrow\quad {d\Phi\over d\phi}=-i\Phi\]</div>
+      <div class="eq key-eq">\[\Phi(\phi)=e^{-i\phi}\]</div>
+      <p>To obtain the polar factor, the text uses the endpoint condition \(\hat L_-Y_1^{-1}=0\).</p>
+      <div class="eq ">\[\hat L_-Y_1^{-1}=0\quad\Rightarrow\quad -{d\Theta\over d\theta}+\cot\theta\,\Theta=0\]</div>
+      <div class="eq key-eq">\[\Theta(\theta)=\sin\theta\]</div>
+      <p>Normalization with \(\int_0^\pi\int_0^{2\pi}|Y_l^m|^2\sin\theta\,d\phi\,d\theta=1\) gives</p>
+      <div class="eq key-eq">\[Y_1^{-1}(\theta,\phi)=\sqrt{3\over8\pi}\,\sin\theta\,e^{-i\phi}\]</div>
+    </div>
+    <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+      <p>This page supports guided exercises on: position-space angular-momentum operators and spherical harmonics as angular-momentum eigenfunctions.</p>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+    </div>
+    <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+      <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+      <p>Use these anchors only within the material introduced on this page.</p>
+      <ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> position-space angular-momentum operators and spherical harmonics as angular-momentum eigenfunctions.</li><li><span class="practice-label">Conceptual check:</span> explain how the angular equation from central potentials reappears as the \(\hat L^2\) eigenvalue equation.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\vec{\hat L}=(-i\hbar)\vec r\times\vec\nabla\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[\hat L^2Y_l^m=l(l+1)\hbar^2Y_l^m,\qquad \hat L_zY_l^m=m\hbar Y_l^m\]</div><li><span class="practice-label">Typical task:</span> apply \(\hat L_z\), \(\hat L^2\), or \(\hat L_\pm\) to an angular function.</li></ul>
+    </div>
+    <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+    <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div>
+  </div>
 </div></body></html>

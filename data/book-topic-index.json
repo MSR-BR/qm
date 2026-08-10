@@ -1,8 +1,8 @@
 {
   "version": "qm-book-topic-index-v1",
-  "generatedAt": "2026-08-10T19:48:29.918Z",
-  "sectionCount": 76,
-  "topicCount": 81,
+  "generatedAt": "2026-08-10T21:13:46.598Z",
+  "sectionCount": 75,
+  "topicCount": 80,
   "topics": [
     {
       "id": "why-old-quantum-physics-matters",
@@ -2003,14 +2003,14 @@
       ]
     },
     {
-      "id": "commutation-relations",
-      "label": "commutation relations",
+      "id": "commutation-relations-and-levi-civita-notation",
+      "label": "commutation relations and levi civita notation",
       "fragments": [
         {
           "sectionId": "6.2",
           "chapterId": "06",
           "itemId": "6.2",
-          "title": "Commutation relations",
+          "title": "Commutation relations and Levi-Civita notation",
           "pagePath": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
           "pageStart": 2,
           "pageEnd": 2,
@@ -2019,29 +2019,13 @@
       ]
     },
     {
-      "id": "levi-civita-notation-and-physical-meaning",
-      "label": "levi civita notation and physical meaning",
+      "id": "angular-momentum-algebra",
+      "label": "angular momentum algebra",
       "fragments": [
         {
           "sectionId": "6.3",
           "chapterId": "06",
           "itemId": "6.3",
-          "title": "Levi-Civita notation and physical meaning",
-          "pagePath": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html",
-          "pageStart": 26,
-          "pageEnd": 26,
-          "excerpt": "244 6. Angular momentum 3< 2π < π 32 3 0∗ 0 3 3 P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149) 0 0 To solve the integrals above, we use the orthogonality conditions of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this example that a particle with the proposed wave function has a 100% probability of being in a state characterized by angular momentum (l , m) = (1, 0). ! Appendix 6.A Levi-Civita symbol The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is defined a"
-        }
-      ]
-    },
-    {
-      "id": "angular-momentum-algebra",
-      "label": "angular momentum algebra",
-      "fragments": [
-        {
-          "sectionId": "6.4",
-          "chapterId": "06",
-          "itemId": "6.4",
           "title": "Angular momentum algebra",
           "pagePath": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
           "pageStart": 4,
@@ -2055,9 +2039,9 @@
       "label": "consequences of the algebra",
       "fragments": [
         {
-          "sectionId": "6.5",
+          "sectionId": "6.4",
           "chapterId": "06",
-          "itemId": "6.5",
+          "itemId": "6.4",
           "title": "Consequences of the algebra",
           "pagePath": "slides/chapter-06/expectation-values-and-transverse-variance.html",
           "pageStart": 12,
@@ -2071,9 +2055,9 @@
       "label": "matrix representation",
       "fragments": [
         {
-          "sectionId": "6.6",
+          "sectionId": "6.5",
           "chapterId": "06",
-          "itemId": "6.6",
+          "itemId": "6.5",
           "title": "Matrix representation",
           "pagePath": "slides/chapter-06/general-matrix-representation.html",
           "pageStart": 14,
@@ -2087,9 +2071,9 @@
       "label": "position space representation",
       "fragments": [
         {
-          "sectionId": "6.7",
+          "sectionId": "6.6",
           "chapterId": "06",
-          "itemId": "6.7",
+          "itemId": "6.6",
           "title": "Position-space representation",
           "pagePath": "slides/chapter-06/angular-momentum-in-position-space.html",
           "pageStart": 20,
@@ -2103,9 +2087,9 @@
       "label": "schrodinger uncertainty and schwartz inequality",
       "fragments": [
         {
-          "sectionId": "6.8",
+          "sectionId": "6.7",
           "chapterId": "06",
-          "itemId": "6.8",
+          "itemId": "6.7",
           "title": "Schrödinger uncertainty and Schwartz inequality",
           "pagePath": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
           "pageStart": 26,
@@ -2119,9 +2103,9 @@
       "label": "chapter synthesis angular momentum toolkit",
       "fragments": [
         {
-          "sectionId": "6.9",
+          "sectionId": "6.8",
           "chapterId": "06",
-          "itemId": "6.9",
+          "itemId": "6.8",
           "title": "Chapter synthesis: angular momentum toolkit",
           "pagePath": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
           "pageStart": 30,
@@ -2940,7 +2924,7 @@
       "itemId": "6.1",
       "primaryTopic": "angular-momentum-chapter-roadmap",
       "transversalTopics": [
-        "commutation-relations"
+        "commutation-relations-and-levi-civita-notation"
       ],
       "advancedSupportTopics": []
     },
@@ -2948,9 +2932,9 @@
       "sectionId": "6.2",
       "chapterId": "06",
       "itemId": "6.2",
-      "primaryTopic": "commutation-relations",
+      "primaryTopic": "commutation-relations-and-levi-civita-notation",
       "transversalTopics": [
-        "levi-civita-notation-and-physical-meaning"
+        "angular-momentum-algebra"
       ],
       "advancedSupportTopics": []
     },
@@ -2958,16 +2942,6 @@
       "sectionId": "6.3",
       "chapterId": "06",
       "itemId": "6.3",
-      "primaryTopic": "levi-civita-notation-and-physical-meaning",
-      "transversalTopics": [
-        "angular-momentum-algebra"
-      ],
-      "advancedSupportTopics": []
-    },
-    {
-      "sectionId": "6.4",
-      "chapterId": "06",
-      "itemId": "6.4",
       "primaryTopic": "angular-momentum-algebra",
       "transversalTopics": [
         "consequences-of-the-algebra"
@@ -2975,9 +2949,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "6.5",
+      "sectionId": "6.4",
       "chapterId": "06",
-      "itemId": "6.5",
+      "itemId": "6.4",
       "primaryTopic": "consequences-of-the-algebra",
       "transversalTopics": [
         "matrix-representation"
@@ -2985,9 +2959,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "6.6",
+      "sectionId": "6.5",
       "chapterId": "06",
-      "itemId": "6.6",
+      "itemId": "6.5",
       "primaryTopic": "matrix-representation",
       "transversalTopics": [
         "position-space-representation"
@@ -2995,9 +2969,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "6.7",
+      "sectionId": "6.6",
       "chapterId": "06",
-      "itemId": "6.7",
+      "itemId": "6.6",
       "primaryTopic": "position-space-representation",
       "transversalTopics": [
         "schrodinger-uncertainty-and-schwartz-inequality"
@@ -3005,9 +2979,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "6.8",
+      "sectionId": "6.7",
       "chapterId": "06",
-      "itemId": "6.8",
+      "itemId": "6.7",
       "primaryTopic": "schrodinger-uncertainty-and-schwartz-inequality",
       "transversalTopics": [
         "chapter-synthesis-angular-momentum-toolkit"
@@ -3015,9 +2989,9 @@
       "advancedSupportTopics": []
     },
     {
-      "sectionId": "6.9",
+      "sectionId": "6.8",
       "chapterId": "06",
-      "itemId": "6.9",
+      "itemId": "6.8",
       "primaryTopic": "chapter-synthesis-angular-momentum-toolkit",
       "transversalTopics": [
         "schrodinger-uncertainty-and-schwartz-inequality"

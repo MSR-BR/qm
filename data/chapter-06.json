@@ -9,58 +9,54 @@
     },
     {
       "id": "6.2",
-      "title": "Commutation relations",
-      "note": "Angular momentum is written as a vector product and in Cartesian operator form before the nonzero component commutators and their physical consequence.",
+      "title": "Commutation relations and Levi-Civita notation",
+      "note": "The main angular-momentum commutator is stated first; the vector-product definition, Levi-Civita notation and physical consequence then explain how the book proof begins.",
       "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
       "aiExercise": true
     },
     {
       "id": "6.3",
-      "title": "Levi-Civita notation and physical meaning",
-      "note": "The Levi-Civita symbol and Kronecker-delta identity support the compact notation used in the angular-momentum algebra; the proof is left in the textbook.",
-      "url": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html",
+      "title": "Angular momentum algebra",
+      "note": "The algebra introduces L squared, the compatible pair L squared and Lz, raising/lowering operators, finite ladders and the allowed l,m spectrum.",
+      "url": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
+      "simulators": ["angular-momentum-matrix-calculator"],
       "aiExercise": true
     },
     {
       "id": "6.4",
-      "title": "Angular momentum algebra",
-      "note": "The algebra introduces L squared, the compatible pair L squared and Lz, raising/lowering operators, finite ladders and the allowed l,m spectrum.",
-      "url": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
-      "aiExercise": true
-    },
-    {
-      "id": "6.5",
       "title": "Consequences of the algebra",
       "note": "Once Lz is definite, the transverse means vanish while their variances remain finite; the book represents this with the angular-momentum cone.",
       "url": "slides/chapter-06/expectation-values-and-transverse-variance.html",
       "aiExercise": true
     },
     {
-      "id": "6.6",
+      "id": "6.5",
       "title": "Matrix representation",
       "note": "The angular-momentum matrices are built from matrix elements in the fixed-l basis; the l equals 1 example includes the change-of-basis matrix U.",
       "url": "slides/chapter-06/general-matrix-representation.html",
+      "simulators": ["angular-momentum-matrix-calculator"],
       "aiExercise": true
     },
     {
-      "id": "6.7",
+      "id": "6.6",
       "title": "Position-space representation",
       "note": "The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations.",
       "url": "slides/chapter-06/angular-momentum-in-position-space.html",
       "aiExercise": true
     },
     {
-      "id": "6.8",
+      "id": "6.7",
       "title": "Schrödinger uncertainty and Schwartz inequality",
       "note": "Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form.",
       "url": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
       "aiExercise": true
     },
     {
-      "id": "6.9",
+      "id": "6.8",
       "title": "Chapter synthesis: angular momentum toolkit",
       "note": "The chapter summary gathers the commutator, compatible observables, ladder spectrum, representations and uncertainty relations needed for exercises.",
       "url": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
+      "simulators": ["angular-momentum-matrix-calculator"],
       "aiExercise": true
     }
   ]

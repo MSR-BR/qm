@@ -2,10 +2,10 @@
 <html lang="en"><head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Schrödinger uncertainty and Schwartz inequality | Chapter 6 | Quantum Mechanics</title>
-  <meta name="description" content="Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form." /><meta name="author" content="Prof. Mario Reis" />
+  <meta name="description" content="Step-by-step route from Schwartz inequality to Schrödinger uncertainty and its angular-momentum application." /><meta name="author" content="Prof. Mario Reis" />
   <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-06/generalized-uncertainty-for-angular-momentum.html" />
   <meta property="og:type" content="article" /><meta property="og:site_name" content="Quantum Mechanics" />
-  <meta property="og:title" content="Schrödinger uncertainty and Schwartz inequality | Chapter 6 | Quantum Mechanics" /><meta property="og:description" content="Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/generalized-uncertainty-for-angular-momentum.html" />
+  <meta property="og:title" content="Schrödinger uncertainty and Schwartz inequality | Chapter 6 | Quantum Mechanics" /><meta property="og:description" content="Step-by-step route from Schwartz inequality to Schrödinger uncertainty and its angular-momentum application." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/generalized-uncertainty-for-angular-momentum.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
@@ -16,25 +16,74 @@
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
-<!-- termo-seo:start -->
-<meta name="description" content="Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form. Interactive material from the book Quantum Mechanics,..."/>
-<meta name="author" content="Prof. Mario Reis"/>
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
-<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1"/>
-<meta name="theme-color" content="#2F6B4F"/>
-<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-06/generalized-uncertainty-for-angular-momentum.html"/>
-<meta property="og:locale" content="en_US"/>
-<meta property="og:type" content="article"/>
-<meta property="og:site_name" content="Quantum Mechanics"/>
-<meta property="og:title" content="Schrödinger uncertainty and Schwartz inequality | Chapter 6 | Quantum Mechanics"/>
-<meta property="og:description" content="Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form. Interactive material from the book Quantum Mechanics,..."/>
-<meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/generalized-uncertainty-for-angular-momentum.html"/>
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Schrödinger uncertainty and Schwartz inequality | Chapter 6 | Quantum Mechanics"/>
-<meta name="twitter:description" content="Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form. Interactive material from the book Quantum Mechanics,..."/>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Schrödinger uncertainty and Schwartz inequality | Chapter 6 | Quantum Mechanics","description":"Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form. Interactive material from the book Quantum Mechanics,...","url":"https://qm-beta.vercel.app/slides/chapter-06/generalized-uncertainty-for-angular-momentum.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
-<!-- termo-seo:end -->
 </head><body><div class="slide">
-  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=06" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 6 · Item 6.8</div><div class="hdr-title">Schrödinger uncertainty and Schwartz inequality</div><div class="hdr-sub">The generalized uncertainty relation applied to angular momentum</div></div><div class="slide-num">8 / 9</div></div>
-  <div class="body"><div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>This item follows Appendix 6.B. It first states the Schwartz inequality, then the Schrödinger generalized uncertainty principle, and finally applies it to angular momentum.</p></div><div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-greater-than-equal"></i> Schwartz inequality</div><p>For two vectors \(|n\rangle\) and \(|m\rangle\), the appendix obtains</p><div class="eq key-eq">\[\langle n|n\rangle\langle m|m\rangle\ge |\langle n|m\rangle|^2\]</div><p>This is the inequality used to derive the generalized uncertainty relation.</p></div><div class="card green"><div class="ch green"><i class="fa-solid fa-arrows-left-right-to-line"></i> Operator fluctuations</div><div class="eq ">\[|a\rangle=\delta\hat a|\psi\rangle=(\hat A-\langle\hat A\rangle)|\psi\rangle\]</div><div class="eq ">\[|b\rangle=\delta\hat b|\psi\rangle=(\hat B-\langle\hat B\rangle)|\psi\rangle\]</div></div></div><div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-scale-balanced"></i> Generalized uncertainty</div><div class="eq ">\[\operatorname{cov}(A,B)={1\over2}\langle\{\delta\hat a,\delta\hat b\}\rangle={1\over2}\langle\{\hat A,\hat B\}\rangle-\langle\hat A\rangle\langle\hat B\rangle\]</div><div class="eq key-eq">\[(\Delta A)^2(\Delta B)^2\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2+|\operatorname{cov}(A,B)|^2\]</div></div><div class="card orange"><div class="ch orange"><i class="fa-solid fa-atom"></i> Angular momentum</div><div class="eq ">\[(\Delta L_u)^2(\Delta L_v)^2\ge {1\over4}|\langle[\hat L_u,\hat L_v]\rangle|^2+|\operatorname{cov}(L_u,L_v)|^2\]</div><div class="eq ">\[\operatorname{cov}(L_u,L_v)=0\]</div><div class="eq key-eq">\[\Delta L_u\Delta L_v\ge {\hbar\over2}|\epsilon_{uvw}\langle\hat L_w\rangle|\]</div><div class="eq ">\[\Delta L_x\Delta L_y\ge {\hbar^2\over2}|m|\]</div></div></div><div class="card green" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-comment-dots"></i> Physical reading</div><p>The appendix notes that \(\Delta L_z\) can be zero for a state with definite \(m\), without violating the uncertainty principle. The nonzero product for \(\Delta L_x\Delta L_y\) is controlled by the commutator and by \(m\).</p></div><div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports guided exercises on: Schwartz inequality, the Schrödinger uncertainty relation and the angular-momentum uncertainty product.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul></div><div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;"><div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use these anchors only within the material introduced on this page.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> Schwartz inequality, the Schrödinger uncertainty relation and the angular-momentum uncertainty product.</li><li><span class="practice-label">Conceptual check:</span> connect the equation to what can be measured, represented or inferred physically.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\langle n|n\rangle\langle m|m\rangle\ge |\langle n|m\rangle|^2\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[(\Delta A)^2(\Delta B)^2\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2+|\operatorname{cov}(A,B)|^2\]</div><li><span class="practice-label">Key equation 3:</span></li><div class="eq ">\[\Delta L_x\Delta L_y\ge {\hbar^2\over2}|m|\]</div><li><span class="practice-label">Typical task:</span> verify one relation, apply it to a specified state or matrix, and state the measurement consequence.</li></ul></div><section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section><div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div></div>
+  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=06" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 6 · Item 6.7</div><div class="hdr-title">Schrödinger uncertainty and Schwartz inequality</div><div class="hdr-sub">From vector inequality to angular-momentum uncertainty</div></div><div class="slide-num">7 / 8</div></div>
+  <div class="body">
+    <div class="card orange guide-card">
+      <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+      <p>This item follows Appendix 6.B. It begins with the Schwartz inequality, uses it to obtain the Schrödinger generalized uncertainty principle, and then applies the result to angular momentum.</p>
+    </div>
+    <div class="col">
+      <div class="card">
+        <div class="ch"><i class="fa-solid fa-greater-than-equal"></i> Starting point: Schwartz inequality</div>
+        <p>The appendix considers a vector written as a superposition of two vectors.</p>
+        <div class="eq ">\[|\psi\rangle=|n\rangle+\alpha |m\rangle,\qquad \langle\psi|\psi\rangle\ge0\]</div>
+        <p>Minimizing the positive inner product with respect to \(\alpha\) and \(\alpha^\ast\) gives</p>
+        <div class="eq key-eq">\[\langle n|n\rangle\langle m|m\rangle\ge |\langle n|m\rangle|^2\]</div>
+        <p>This is the Schwartz inequality used in the uncertainty derivation.</p>
+      </div>
+      <div class="card green">
+        <div class="ch green"><i class="fa-solid fa-arrows-left-right-to-line"></i> Fluctuation vectors</div>
+        <p>For two Hermitian observables \(A\) and \(B\), the appendix defines deviations from the expectation values.</p>
+        <div class="eq ">\[\delta\hat a=\hat A-\langle\hat A\rangle,\qquad \delta\hat b=\hat B-\langle\hat B\rangle\]</div>
+        <div class="eq ">\[|a\rangle=\delta\hat a|\psi\rangle,\qquad |b\rangle=\delta\hat b|\psi\rangle\]</div>
+        <p>Taking these vectors into the Schwartz inequality gives</p>
+        <div class="eq key-eq">\[(\Delta A)^2(\Delta B)^2=\langle a|a\rangle\langle b|b\rangle\ge |\langle a|b\rangle|^2\]</div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card purple">
+        <div class="ch purple"><i class="fa-solid fa-code-compare"></i> Commutator and anti-commutator split</div>
+        <p>The inner product on the right is written as an expectation value of \(\delta\hat a\,\delta\hat b\).</p>
+        <div class="eq ">\[\langle a|b\rangle=\langle\delta\hat a\,\delta\hat b\rangle\]</div>
+        <div class="eq key-eq">\[\delta\hat a\,\delta\hat b={1\over2}[\delta\hat a,\delta\hat b]+{1\over2}\{\delta\hat a,\delta\hat b\}\]</div>
+        <div class="eq ">\[[\delta\hat a,\delta\hat b]=[\hat A,\hat B]\]</div>
+        <p>The covariance is introduced from the anti-commutator term.</p>
+        <div class="eq ">\[\operatorname{cov}(A,B)={1\over2}\langle\{\delta\hat a,\delta\hat b\}\rangle={1\over2}\langle\{\hat A,\hat B\}\rangle-\langle\hat A\rangle\langle\hat B\rangle\]</div>
+      </div>
+      <div class="card orange">
+        <div class="ch orange"><i class="fa-solid fa-scale-balanced"></i> Schrödinger uncertainty principle</div>
+        <p>Combining the previous steps gives the generalized uncertainty relation.</p>
+        <div class="eq key-eq">\[(\Delta A)^2(\Delta B)^2\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2+|\operatorname{cov}(A,B)|^2\]</div>
+        <p>The book also writes the same content through the covariance matrix.</p>
+        <div class="eq ">\[\Sigma=\begin{pmatrix}\operatorname{var}(A)&\operatorname{cov}(A,B)\\ \operatorname{cov}(A,B)&\operatorname{var}(B)\end{pmatrix},\qquad \det\Sigma\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2\]</div>
+      </div>
+    </div>
+    <div class="card green" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-atom"></i> Application to angular momentum</div>
+      <p>For angular momentum, the generalized relation becomes</p>
+      <div class="eq ">\[(\Delta L_u)^2(\Delta L_v)^2\ge {1\over4}|\langle[\hat L_u,\hat L_v]\rangle|^2+|\operatorname{cov}(L_u,L_v)|^2\]</div>
+      <p>The book uses the expectation values obtained in the chapter, including \(\langle\hat L_x\rangle=\langle\hat L_y\rangle=0\), \(\langle\hat L_z\rangle=m\hbar\), and the relevant anti-commutator averages, to conclude</p>
+      <div class="eq ">\[\operatorname{cov}(L_u,L_v)=0\]</div>
+      <div class="eq key-eq">\[\Delta L_u\Delta L_v\ge {\hbar\over2}\left|\epsilon_{uvw}\langle\hat L_w\rangle\right|\]</div>
+      <div class="eq key-eq">\[\Delta L_x\Delta L_y\ge {\hbar^2\over2}|m|\]</div>
+    </div>
+    <div class="card orange" style="grid-column:1 / -1!important;">
+      <div class="ch orange"><i class="fa-solid fa-comment-dots"></i> Physical meaning</div>
+      <p>The appendix notes that \(\Delta L_z\) can be zero for a state with definite \(m\). This does not violate the uncertainty principle because the corresponding products involving \(L_z\) have a zero lower bound in this state.</p>
+      <p>The transverse product is different: \(\Delta L_x\Delta L_y\) is controlled by the commutator and by the projection quantum number \(m\). This is the uncertainty-principle version of the cone discussion in the previous item.</p>
+    </div>
+    <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+      <p>This page supports guided exercises on: Schwartz inequality, the Schrödinger uncertainty relation and the angular-momentum uncertainty product.</p>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+    </div>
+    <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+      <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+      <p>Use these anchors only within the material introduced on this page.</p>
+      <ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> Schwartz inequality, the Schrödinger uncertainty relation and the angular-momentum uncertainty product.</li><li><span class="practice-label">Conceptual check:</span> explain the role of the covariance term before setting it to zero for angular momentum.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\langle n|n\rangle\langle m|m\rangle\ge |\langle n|m\rangle|^2\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[(\Delta A)^2(\Delta B)^2\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2+|\operatorname{cov}(A,B)|^2\]</div><li><span class="practice-label">Key equation 3:</span></li><div class="eq ">\[\Delta L_x\Delta L_y\ge {\hbar^2\over2}|m|\]</div><li><span class="practice-label">Typical task:</span> identify the commutator, evaluate the covariance statement and interpret the uncertainty product.</li></ul>
+    </div>
+    <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+    <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div>
+  </div>
 </div></body></html>

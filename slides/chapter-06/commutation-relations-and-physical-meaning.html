@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Commutation relations | Chapter 6 | Quantum Mechanics</title>
-  <meta name="description" content="The angular-momentum components obey nonzero commutators, so two components cannot be known simultaneously with absolute precision." /><meta name="author" content="Prof. Mario Reis" />
+  <title>Commutation relations and Levi-Civita notation | Chapter 6 | Quantum Mechanics</title>
+  <meta name="description" content="The main angular-momentum commutator is stated first, followed by the vector-product definition, Levi-Civita notation and physical consequence." /><meta name="author" content="Prof. Mario Reis" />
   <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-06/commutation-relations-and-physical-meaning.html" />
   <meta property="og:type" content="article" /><meta property="og:site_name" content="Quantum Mechanics" />
-  <meta property="og:title" content="Commutation relations | Chapter 6 | Quantum Mechanics" /><meta property="og:description" content="The angular-momentum components obey nonzero commutators, so two components cannot be known simultaneously with absolute precision." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/commutation-relations-and-physical-meaning.html" />
+  <meta property="og:title" content="Commutation relations and Levi-Civita notation | Chapter 6 | Quantum Mechanics" /><meta property="og:description" content="The main angular-momentum commutator is stated first, followed by the vector-product definition, Levi-Civita notation and physical consequence." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-06/commutation-relations-and-physical-meaning.html" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
@@ -35,6 +35,64 @@
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"LearningResource","name":"Commutation relations | Chapter 6 | Quantum Mechanics","description":"The angular-momentum components obey nonzero commutators, so two components cannot be known simultaneously with absolute precision. Interactive material from the book Qu...","url":"https://qm-beta.vercel.app/slides/chapter-06/commutation-relations-and-physical-meaning.html","inLanguage":"en","isAccessibleForFree":true,"educationalUse":"instruction","learningResourceType":"InteractiveResource","author":{"@type":"Person","name":"Prof. Mario Reis"},"publisher":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"isPartOf":{"@type":"Course","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/"}}</script>
 <!-- termo-seo:end -->
 </head><body><div class="slide">
-  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=06" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 6 · Item 6.2</div><div class="hdr-title">Commutation relations</div><div class="hdr-sub">The components of angular momentum do not commute</div></div><div class="slide-num">2 / 9</div></div>
-  <div class="body"><div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>After the qualitative opening, the book writes angular momentum as a vector product, rewrites it in Cartesian operator form and then obtains the commutation relations. The detailed proof is kept in Box 6.1 of the book.</p></div><div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-compass-drafting"></i> Vector and Cartesian forms</div><p>The definitions from the opening discussion are gathered here before the commutator algebra.</p><div class="eq key-eq">\[\vec L=\vec r\times\vec p\]</div><div class="eq ">\[\vec L=L_x\hat x+L_y\hat y+L_z\hat z\]</div></div><div class="card green"><div class="ch green"><i class="fa-solid fa-code-branch"></i> Levi-Civita operator form</div><p>The operator form of the vector product is</p><div class="eq key-eq">\[\hat L_i=\epsilon_{ijk}\hat x_j\hat p_k\]</div><p>The proof uses the position-momentum commutator generalized to Cartesian components, \([\hat x_i,\hat p_j]=i\hbar\delta_{ij}\).</p></div></div><div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-square-root-variable"></i> Main commutator</div><p>The section then obtains the compact relation</p><div class="eq key-eq">\[[\hat L_u,\hat L_v]=i\hbar\epsilon_{uvw}\hat L_w\]</div><p>where \(u,v,w\) represent Cartesian directions.</p></div><div class="card purple"><div class="ch purple"><i class="fa-solid fa-arrows-spin"></i> Cyclic components</div><div class="eq ">\[[\hat L_x,\hat L_y]=i\hbar\hat L_z\]</div><div class="eq ">\[[\hat L_z,\hat L_x]=i\hbar\hat L_y\]</div><div class="eq ">\[[\hat L_y,\hat L_z]=i\hbar\hat L_x\]</div></div><div class="card orange"><div class="ch orange"><i class="fa-solid fa-bullseye"></i> Physical consequence</div><p>Because these components do not commute, the book states that it is impossible to have simultaneous and precise knowledge of two angular-momentum components.</p><p>In matrix language, the component matrices cannot be diagonalized simultaneously because they do not share the same vector basis.</p></div></div><div class="card orange" style="grid-column:1 / -1!important;"><div class="ch orange"><i class="fa-solid fa-book"></i> Where the proof goes</div><p>The algebraic proof of the commutator is not reproduced here. It is the detailed Box 6.1 calculation in the textbook, based on the operator definition, the position-momentum commutator and the Levi-Civita identities.</p></div><div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;"><div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div><p>This page supports guided exercises on: the angular-momentum definition, commutator and direct physical meaning.</p><ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul></div><div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;"><div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div><p>Use these anchors only within the material introduced on this page.</p><ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> the angular-momentum definition, commutator and direct physical meaning.</li><li><span class="practice-label">Conceptual check:</span> connect the equation to what can be measured, represented or inferred physically.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\vec L=\vec r\times\vec p\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[[\hat L_u,\hat L_v]=i\hbar\epsilon_{uvw}\hat L_w\]</div><li><span class="practice-label">Typical task:</span> verify one relation, apply it to a specified state or matrix, and state the measurement consequence.</li></ul></div><section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section><div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div></div>
+  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=06" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 6 · Item 6.2</div><div class="hdr-title">Commutation relations and Levi-Civita notation</div><div class="hdr-sub">The components of angular momentum do not commute</div></div><div class="slide-num">2 / 8</div></div>
+  <div class="body">
+    <div class="card orange guide-card">
+      <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
+      <p>This page puts the target result first: the compact commutator obtained in Section 6.1 of the book. The definitions and Levi-Civita notation that follow are the passage used in the proof in Box 6.1.</p>
+    </div>
+    <div class="col">
+      <div class="card purple">
+        <div class="ch purple"><i class="fa-solid fa-square-root-variable"></i> Main commutator</div>
+        <p>The section then obtains the compact relation</p>
+        <div class="eq key-eq">\[[\hat L_u,\hat L_v]=i\hbar\epsilon_{uvw}\hat L_w\]</div>
+        <p>where \(u,v,w\) represent Cartesian directions.</p>
+      </div>
+      <div class="card">
+        <div class="ch"><i class="fa-solid fa-compass-drafting"></i> Definition used in the proof</div>
+        <p>The book begins from angular momentum as a vector product and then writes its Cartesian components.</p>
+        <div class="eq key-eq">\[\vec L=\vec r\times\vec p\]</div>
+        <div class="eq ">\[\vec L=L_x\hat x+L_y\hat y+L_z\hat z\]</div>
+        <p>For operators, the vector product is represented by the Levi-Civita symbol:</p>
+        <div class="eq key-eq">\[\hat L_i=\epsilon_{ijk}\hat x_j\hat p_k\]</div>
+        <p>Box 6.1 uses this form together with \([\hat x_i,\hat p_j]=i\hbar\delta_{ij}\) to obtain the commutator above.</p>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card green">
+        <div class="ch green"><i class="fa-solid fa-language"></i> Levi-Civita notation from Appendix 6.A</div>
+        <p>The Levi-Civita symbol has values \(+1\), \(-1\), or \(0\), depending on the permutation of its three indices.</p>
+        <div class="eq ">\[\epsilon_{ijk}=\begin{cases}+1, & \text{even permutations},\\ -1, & \text{odd permutations},\\ 0, & i=j\ \text{or}\ i=k\ \text{or}\ j=k.\end{cases}\]</div>
+        <p>The reduced identity used in the commutator manipulation is</p>
+        <div class="eq key-eq">\[\epsilon_{ijk}\epsilon_{imn}=\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}\]</div>
+        <p>The book uses Einstein notation: a repeated index indicates summation over that index.</p>
+      </div>
+      <div class="card purple">
+        <div class="ch purple"><i class="fa-solid fa-arrows-spin"></i> Cyclic components</div>
+        <div class="eq ">\[[\hat L_x,\hat L_y]=i\hbar\hat L_z\]</div>
+        <div class="eq ">\[[\hat L_z,\hat L_x]=i\hbar\hat L_y\]</div>
+        <div class="eq ">\[[\hat L_y,\hat L_z]=i\hbar\hat L_x\]</div>
+      </div>
+      <div class="card orange">
+        <div class="ch orange"><i class="fa-solid fa-bullseye"></i> Physical consequence</div>
+        <p>Because these components do not commute, the book states that it is impossible to have simultaneous and precise knowledge of two angular-momentum components.</p>
+        <p>In matrix language, the component matrices cannot be diagonalized simultaneously because they do not share the same vector basis.</p>
+      </div>
+    </div>
+    <div class="card orange" style="grid-column:1 / -1!important;">
+      <div class="ch orange"><i class="fa-solid fa-book"></i> Where the proof goes</div>
+      <p>The algebraic proof of the commutator is not reproduced here. It is the detailed Box 6.1 calculation in the textbook, based on the operator definition, the position-momentum commutator and the Levi-Civita identities.</p>
+    </div>
+    <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+      <p>This page supports guided exercises on: the angular-momentum commutator, the Levi-Civita notation used in its proof and the direct physical meaning.</p>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+    </div>
+    <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+      <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+      <p>Use these anchors only within the material introduced on this page.</p>
+      <ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> the angular-momentum commutator and Levi-Civita notation.</li><li><span class="practice-label">Conceptual check:</span> connect the nonzero commutator to what can be measured simultaneously.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[[\hat L_u,\hat L_v]=i\hbar\epsilon_{uvw}\hat L_w\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[\hat L_i=\epsilon_{ijk}\hat x_j\hat p_k\]</div><li><span class="practice-label">Typical task:</span> use the compact notation to identify a component commutator and state its measurement consequence.</li></ul>
+    </div>
+    <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+    <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div></div>
 </div></body></html>

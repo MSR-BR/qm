@@ -54,11 +54,11 @@ const CHAPTERS = [
     title: "Angular momentum",
     theoryPdf: resolve(ROOT_DIR, "sources/chapter-06/c6-Reis-Quantum-Mechanics.pdf"),
     solutionsPdf: resolve(ROOT_DIR, "sources/chapter-06/c6-Reis-QM-solutions.pdf"),
-    // The HTML chapter has been condensed into nine book-led items. The PDF
+    // The HTML chapter has been condensed into eight book-led items. The PDF
     // ranges remain aligned with the source sequence: commutators, algebra,
     // consequences, matrices, position representation, uncertainty appendix
     // and exercise appendix.
-    ranges: [[1, 1], [2, 2], [26, 26], [4, 11], [12, 14], [14, 20], [20, 26], [26, 30], [30, 33]]
+    ranges: [[1, 1], [2, 2], [4, 11], [12, 14], [14, 20], [20, 26], [26, 30], [30, 33]]
   }
 ];
 

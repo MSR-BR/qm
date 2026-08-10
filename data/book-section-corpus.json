@@ -1,6 +1,6 @@
 {
   "version": "qm-book-section-corpus-v1",
-  "generatedAt": "2026-08-10T19:48:23.304Z",
+  "generatedAt": "2026-08-10T21:13:42.801Z",
   "sections": [
     {
       "chapterId": "01",
@@ -2385,7 +2385,7 @@
     {
       "chapterId": "06",
       "itemId": "6.2",
-      "topicTitle": "Commutation relations",
+      "topicTitle": "Commutation relations and Levi-Civita notation",
       "pagePath": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
       "pdfChapterNumber": "6",
       "pdfChapterTitle": "Angular momentum",
@@ -2420,41 +2420,6 @@
     {
       "chapterId": "06",
       "itemId": "6.3",
-      "topicTitle": "Levi-Civita notation and physical meaning",
-      "pagePath": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html",
-      "pdfChapterNumber": "6",
-      "pdfChapterTitle": "Angular momentum",
-      "pageStart": 26,
-      "pageEnd": 26,
-      "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
-      "extractionSources": [
-        "chapter-06-theory.pdf"
-      ],
-      "referenceCount": 1,
-      "needsReview": false,
-      "references": [
-        {
-          "id": "qm-06-6.3",
-          "label": "Chapter 6, item 6.3",
-          "pdfChapterNumber": "6",
-          "pdfChapterTitle": "Angular momentum",
-          "pageStart": 26,
-          "pageEnd": 26,
-          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
-          "extractionSources": [
-            "chapter-06-theory.pdf"
-          ],
-          "needsReview": false,
-          "content": "244 6. Angular momentum\n\n 3< 2π < π 32\n 3 0∗ 0\n 3\n 3\n P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149)\n 0 0\n\n To solve the integrals above, we use the orthogonality conditions\n of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this\n example that a particle with the proposed wave function has a 100%\n probability of being in a state characterized by angular momentum\n (l , m) = (1, 0). !\n\n Appendix 6.A Levi-Civita symbol\n\n The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is\ndefined as:\n \n  +1, for (i, j , k ) ⇒ (k , i, j ) ⇒ (j , k , i ) – Even permutations.\n!ij k = −1, for (i, j , k ) ⇒ (i, k , j ) – Even permutations.\n \n 0, for i = j or i = k or j = k .\n (6.A.1)\nThere is a relation between the Levi-Civita symbol and the Kronecker\ndelta:\n 3 3\n 3 δi l δi m δi n 3 δi l (δj m δk n − δj n δk m )+\n 3 3\n !ij k !l mn = 33δj l δj m δj n 33 = δi m (δj n δk l − δj l δk n )+ (6.A.2)\n 3δk l δk m δk n 3 δi n (δj l δk m − δj m δk l )\n\nwhich can be easily reduced when there is a repeated index (e.g. i = l ):\n\n !ij k !i mn = δj m δk n − δj n δk m . (6.A.3)\n\nIt is worth noting that, in this text, we are using Einstein notation, where a\ndouble index indicates the presence of a sum in such index:\n )\n !ij k !i mn ≡ !ij k !i mn . (6.A.4)\n i\n\n Appendix 6.B Uncertainty principle applied to the angular\n momentum\n\n We begin this appendix by recalling the Heisenberg uncertainty princi-\nple (for position and linear momentum):\n\n !\n #x #p ≥ . (6.B.1)\n 2",
-          "excerpt": "244 6. Angular momentum\n\n 3< 2π < π 32\n 3 0∗ 0\n 3\n 3\n P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149)\n 0 0\n\n To solve the integrals above, we use the orthogonality conditions\n of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this\n example that a particle with the proposed wave function has a 100%\n probability of being in a state characterized by angular momentum\n (l , m) = (1, 0). !\n\n Appendix 6.A Levi-Civita symbol\n\n The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is\ndefined as:\n \n  +1, for (i, j , k ) ⇒ (k , i, j ) ⇒ (j , k , i ) – Even permutations.\n!ij k = −1, for (i, j , k ) ⇒ (i, k , j ) – Even permutations.\n \n 0, for i = j or i = k or j = k .\n (6.A.1)\nThere is a relation between the Levi-Civita symbol and the Kronecker\ndelta:\n 3 3\n 3 δi l δi m δi n 3 δi l (δj m δk n − δj n δk m )+\n 3 3\n !ij k !l mn = 33δj l δj m δj n 33 = δi m (δj n δk l − δj l δk n )+ (6.A.2)\n 3δk l δk m δk n 3 δi n (δj l δk m − δj m δk l )\n\nwhich can be easily reduced when there is a repeated index (e.g. i = l ):..."
-        }
-      ],
-      "content": "244 6. Angular momentum\n\n 3< 2π < π 32\n 3 0∗ 0\n 3\n 3\n P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149)\n 0 0\n\n To solve the integrals above, we use the orthogonality conditions\n of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this\n example that a particle with the proposed wave function has a 100%\n probability of being in a state characterized by angular momentum\n (l , m) = (1, 0). !\n\n Appendix 6.A Levi-Civita symbol\n\n The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is\ndefined as:\n \n  +1, for (i, j , k ) ⇒ (k , i, j ) ⇒ (j , k , i ) – Even permutations.\n!ij k = −1, for (i, j , k ) ⇒ (i, k , j ) – Even permutations.\n \n 0, for i = j or i = k or j = k .\n (6.A.1)\nThere is a relation between the Levi-Civita symbol and the Kronecker\ndelta:\n 3 3\n 3 δi l δi m δi n 3 δi l (δj m δk n − δj n δk m )+\n 3 3\n !ij k !l mn = 33δj l δj m δj n 33 = δi m (δj n δk l − δj l δk n )+ (6.A.2)\n 3δk l δk m δk n 3 δi n (δj l δk m − δj m δk l )\n\nwhich can be easily reduced when there is a repeated index (e.g. i = l ):\n\n !ij k !i mn = δj m δk n − δj n δk m . (6.A.3)\n\nIt is worth noting that, in this text, we are using Einstein notation, where a\ndouble index indicates the presence of a sum in such index:\n )\n !ij k !i mn ≡ !ij k !i mn . (6.A.4)\n i\n\n Appendix 6.B Uncertainty principle applied to the angular\n momentum\n\n We begin this appendix by recalling the Heisenberg uncertainty princi-\nple (for position and linear momentum):\n\n !\n #x #p ≥ . (6.B.1)\n 2",
-      "excerpt": "244 6. Angular momentum\n\n 3< 2π < π 32\n 3 0∗ 0\n 3\n 3\n P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149)\n 0 0\n\n To solve the integrals above, we use the orthogonality conditions\n of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this\n example that a particle with the proposed wave function has a 100%\n probability of being in a state characterized by angular momentum\n (l , m) = (1, 0). !\n\n Appendix 6.A Levi-Civita symbol\n\n The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is\ndefined as:\n \n  +1, for (i, j , k ) ⇒ (k , i, j ) ⇒ (j , k , i ) – Even permutations.\n!ij k = −1, for (i, j , k ) ⇒ (i, k , j ) – Even permutations.\n \n 0, for i = j or i = k or j = k .\n (6.A.1)\nThere is a relation between the Levi-Civita symbol and the Kronecker\ndelta:\n 3 3\n 3 δi l δi m δi n 3 δi l (δj m δk n − δj n δk m )+\n 3 3\n !ij k !l mn = 33δj l δj m δj n 33 = δi m (δj n δk l − δj l δk n )+ (6.A.2)\n 3δk l δk m δk n 3 δi n (δj l δk m − δj m δk l )\n\nwhich can be easily reduced when there is a repeated index (e.g. i = l ):..."
-    },
-    {
-      "chapterId": "06",
-      "itemId": "6.4",
       "topicTitle": "Angular momentum algebra",
       "pagePath": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
       "pdfChapterNumber": "6",
@@ -2469,8 +2434,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-06-6.4",
-          "label": "Chapter 6, item 6.4",
+          "id": "qm-06-6.3",
+          "label": "Chapter 6, item 6.3",
           "pdfChapterNumber": "6",
           "pdfChapterTitle": "Angular momentum",
           "pageStart": 4,
@@ -2489,7 +2454,7 @@
     },
     {
       "chapterId": "06",
-      "itemId": "6.5",
+      "itemId": "6.4",
       "topicTitle": "Consequences of the algebra",
       "pagePath": "slides/chapter-06/expectation-values-and-transverse-variance.html",
       "pdfChapterNumber": "6",
@@ -2504,8 +2469,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-06-6.5",
-          "label": "Chapter 6, item 6.5",
+          "id": "qm-06-6.4",
+          "label": "Chapter 6, item 6.4",
           "pdfChapterNumber": "6",
           "pdfChapterTitle": "Angular momentum",
           "pageStart": 12,
@@ -2524,7 +2489,7 @@
     },
     {
       "chapterId": "06",
-      "itemId": "6.6",
+      "itemId": "6.5",
       "topicTitle": "Matrix representation",
       "pagePath": "slides/chapter-06/general-matrix-representation.html",
       "pdfChapterNumber": "6",
@@ -2539,8 +2504,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-06-6.6",
-          "label": "Chapter 6, item 6.6",
+          "id": "qm-06-6.5",
+          "label": "Chapter 6, item 6.5",
           "pdfChapterNumber": "6",
           "pdfChapterTitle": "Angular momentum",
           "pageStart": 14,
@@ -2559,7 +2524,7 @@
     },
     {
       "chapterId": "06",
-      "itemId": "6.7",
+      "itemId": "6.6",
       "topicTitle": "Position-space representation",
       "pagePath": "slides/chapter-06/angular-momentum-in-position-space.html",
       "pdfChapterNumber": "6",
@@ -2574,8 +2539,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-06-6.7",
-          "label": "Chapter 6, item 6.7",
+          "id": "qm-06-6.6",
+          "label": "Chapter 6, item 6.6",
           "pdfChapterNumber": "6",
           "pdfChapterTitle": "Angular momentum",
           "pageStart": 20,
@@ -2594,7 +2559,7 @@
     },
     {
       "chapterId": "06",
-      "itemId": "6.8",
+      "itemId": "6.7",
       "topicTitle": "Schrödinger uncertainty and Schwartz inequality",
       "pagePath": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
       "pdfChapterNumber": "6",
@@ -2609,8 +2574,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-06-6.8",
-          "label": "Chapter 6, item 6.8",
+          "id": "qm-06-6.7",
+          "label": "Chapter 6, item 6.7",
           "pdfChapterNumber": "6",
           "pdfChapterTitle": "Angular momentum",
           "pageStart": 26,
@@ -2629,7 +2594,7 @@
     },
     {
       "chapterId": "06",
-      "itemId": "6.9",
+      "itemId": "6.8",
       "topicTitle": "Chapter synthesis: angular momentum toolkit",
       "pagePath": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
       "pdfChapterNumber": "6",
@@ -2644,8 +2609,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-06-6.9",
-          "label": "Chapter 6, item 6.9",
+          "id": "qm-06-6.8",
+          "label": "Chapter 6, item 6.8",
           "pdfChapterNumber": "6",
           "pdfChapterTitle": "Angular momentum",
           "pageStart": 30,

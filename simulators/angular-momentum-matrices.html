@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angular Momentum Matrix Calculator | Quantum Mechanics</title>
+  <meta name="description" content="Calculate angular-momentum matrices in the Lz basis and transform them to x, y, or z reference bases." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../assets/qm-simulators.css?v=0720.1" />
+  <style>
+    .am-sim .sim-layout{grid-template-columns:minmax(250px,330px) minmax(0,1fr)}
+    .basis-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    .matrix-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+    .matrix-card{min-width:0;border:1px solid var(--sim-border);border-radius:14px;background:#fffdf9;overflow:hidden}
+    .matrix-title{display:flex;justify-content:space-between;gap:10px;padding:10px 12px;border-bottom:1px solid var(--sim-border);background:var(--sim-green-soft);color:var(--sim-green-dark);font-weight:800;font-size:.86rem}
+    .matrix-unit{color:var(--sim-muted);font-weight:700}
+    .matrix-scroll{overflow:auto;max-width:100%;padding:10px}
+    .matrix-table{border-collapse:collapse;margin:auto;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;color:var(--sim-ink)}
+    .matrix-table td,.matrix-table th{min-width:54px;padding:7px 9px;border:1px solid #dbe5dd;text-align:center;white-space:nowrap}
+    .matrix-table th{background:#f4f7f2;color:#536258;font-size:.72rem;font-weight:800}
+    .basis-list{display:grid;gap:8px;margin:0;padding:0;list-style:none}
+    .basis-list li{padding:9px 10px;border:1px solid #dbe5dd;border-radius:10px;background:#fff;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;line-height:1.5;overflow-x:auto}
+    .axis-note{margin-top:10px;color:var(--sim-muted);font-size:.82rem;line-height:1.55}
+    .formula-line{overflow-x:auto;white-space:nowrap}
+    .am-sim .equation-box{overflow-x:auto}
+    @media(max-width:760px){.am-sim .sim-layout{grid-template-columns:1fr}.am-sim .sim-sidebar{position:static}.basis-row{grid-template-columns:1fr}.matrix-table td,.matrix-table th{min-width:46px;padding:6px 7px;font-size:.76rem}}
+  </style>
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="../assets/qm-simulator-mobile.js?v=0721.1"></script>
+  <script defer src="../assets/qm-simulator-catalog.js?v=0810.1"></script>
+</head>
+<body>
+  <main class="sim-shell am-sim" data-simulator-slug="angular-momentum-matrix-calculator">
+    <header class="sim-header">
+      <div>
+        <div class="sim-kicker">Chapter 6 · Sections 6.3 and 6.5</div>
+        <h1 class="sim-title">Angular Momentum Matrix Calculator</h1>
+        <p class="sim-subtitle">Choose \(l\), build \(\hat L_z,\hat L_x,\hat L_y,\hat L_+,\hat L_-\) and \(\hat L^2\) in the \(\hat L_z\) basis, then choose \(x\), \(y\), or \(z\) as the reference basis and inspect the transformed matrices and the basis decomposition.</p>
+      </div>
+      <div class="sim-source">Original calculator · Quantum Mechanics book-app · Prof. Mario Reis</div>
+    </header>
+
+    <div class="sim-layout">
+      <aside class="sim-sidebar" aria-label="Calculator controls and equations">
+        <details class="sim-panel sim-controls collapsible-panel" open>
+          <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Inputs</summary>
+          <div class="basis-row">
+            <div class="control-group">
+              <div class="control-row"><label class="control-label" for="lValue">Angular momentum \(l\)</label></div>
+              <select id="lValue">
+                <option value="0.5">1/2</option>
+                <option value="1" selected>1</option>
+                <option value="1.5">3/2</option>
+                <option value="2">2</option>
+                <option value="2.5">5/2</option>
+              </select>
+            </div>
+            <div class="control-group">
+              <div class="control-row"><label class="control-label" for="axisValue">Reference basis</label></div>
+              <select id="axisValue">
+                <option value="z">z basis</option>
+                <option value="x" selected>x basis</option>
+                <option value="y">y basis</option>
+              </select>
+            </div>
+          </div>
+          <div class="insight-box">The first calculator is fixed in the \(\hat L_z\) basis. The second uses the unitary matrix \(U\) to express the same operators in the chosen \(x\), \(y\), or \(z\) basis.</div>
+        </details>
+        <details class="sim-panel equation-panel" open>
+          <summary>Book equations used</summary>
+          <div class="equation-box">
+            <div class="formula-line">\[\hat L_z|l,m\rangle=m\hbar|l,m\rangle,\qquad \hat L^2|l,m\rangle=l(l+1)\hbar^2|l,m\rangle\]</div>
+            <div class="formula-line">\[\hat L_\pm|l,m\rangle=\sqrt{l(l+1)-m(m\pm1)}\,\hbar |l,m\pm1\rangle\]</div>
+            <div class="formula-line">\[\hat L_x={1\over2}(\hat L_++\hat L_-),\qquad \hat L_y={1\over2i}(\hat L_+-\hat L_-)\]</div>
+            <div class="formula-line">\[(\hat O)_{\rm basis}=U(\hat O)_zU^\dagger\]</div>
+          </div>
+        </details>
+      </aside>
+
+      <section class="sim-workspace">
+        <section class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-table-cells"></i> Calculator 1 · matrices in the \(\hat L_z\) basis</h2>
+          <div class="matrix-grid" id="zBasisMatrices"></div>
+        </section>
+
+        <section class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-rotate"></i> Calculator 2 · chosen basis and \(U\)</h2>
+          <div class="matrix-grid" id="basisMatrices"></div>
+          <p class="axis-note" id="basisNote"></p>
+          <h3 class="sim-panel-title" style="margin-top:16px;"><i class="fa-solid fa-code-branch"></i> Decomposition of the chosen basis in the \(\hat L_z\) basis</h3>
+          <ul class="basis-list" id="basisDecomposition"></ul>
+        </section>
+      </section>
+    </div>
+    <footer class="sim-footer">Matrix entries are displayed in units of \(\hbar\) for \(\hat L_z,\hat L_x,\hat L_y,\hat L_\pm\), and in units of \(\hbar^2\) for \(\hat L^2\).</footer>
+  </main>
+
+  <script>
+    (() => {
+      const $ = (id) => document.getElementById(id);
+      const EPS = 1e-10;
+      const c = (re, im = 0) => ({ re, im });
+      const add = (a, b) => c(a.re + b.re, a.im + b.im);
+      const sub = (a, b) => c(a.re - b.re, a.im - b.im);
+      const mul = (a, b) => c(a.re * b.re - a.im * b.im, a.re * b.im + a.im * b.re);
+      const scale = (a, s) => c(a.re * s, a.im * s);
+      const conj = (a) => c(a.re, -a.im);
+      const phase = (angle) => c(Math.cos(angle), Math.sin(angle));
+      const zeroMatrix = (n) => Array.from({ length:n }, () => Array.from({ length:n }, () => c(0,0)));
+      const identity = (n) => {
+        const matrix = zeroMatrix(n);
+        for (let i = 0; i < n; i += 1) matrix[i][i] = c(1,0);
+        return matrix;
+      };
+      const dagger = (matrix) => matrix[0].map((_, j) => matrix.map((row) => conj(row[j])));
+      const multiply = (a, b) => {
+        const rows = a.length, inner = b.length, cols = b[0].length;
+        const out = zeroMatrix(rows);
+        for (let i = 0; i < rows; i += 1) {
+          for (let j = 0; j < cols; j += 1) {
+            let value = c(0,0);
+            for (let k = 0; k < inner; k += 1) value = add(value, mul(a[i][k], b[k][j]));
+            out[i][j] = value;
+          }
+        }
+        return out;
+      };
+      const transform = (operator, u) => multiply(multiply(u, operator), dagger(u));
+      const matrixAdd = (a, b) => a.map((row, i) => row.map((value, j) => add(value, b[i][j])));
+      const matrixSub = (a, b) => a.map((row, i) => row.map((value, j) => sub(value, b[i][j])));
+      const matrixScale = (a, s) => a.map((row) => row.map((value) => scale(value, s)));
+      const matrixMultiplyComplexScalar = (a, z) => a.map((row) => row.map((value) => mul(value, z)));
+
+      function labelNumber(value) {
+        if (Math.abs(value) < EPS) return "0";
+        const doubled = Math.round(2 * value);
+        if (Math.abs(2 * value - doubled) < EPS && Math.abs(doubled) % 2 === 1) {
+          return `${doubled > 0 ? "" : "-"}${Math.abs(doubled)}/2`;
+        }
+        return String(Math.round(value));
+      }
+      function labelKet(m, axis = "") {
+        const core = labelNumber(m);
+        return `|${core}⟩${axis ? "_" + axis : ""}`;
+      }
+      function fmtReal(value) {
+        if (Math.abs(value) < EPS) return "0";
+        if (Math.abs(value - Math.round(value)) < EPS) return String(Math.round(value));
+        const doubled = Math.round(2 * value);
+        if (Math.abs(2 * value - doubled) < EPS) return `${doubled}/2`;
+        return Number(value.toFixed(4)).toString();
+      }
+      function fmtComplex(value) {
+        const re = Math.abs(value.re) < EPS ? 0 : value.re;
+        const im = Math.abs(value.im) < EPS ? 0 : value.im;
+        if (!re && !im) return "0";
+        if (!im) return fmtReal(re);
+        const imAbs = Math.abs(im);
+        const imText = Math.abs(imAbs - 1) < EPS ? "i" : `${fmtReal(imAbs)}i`;
+        if (!re) return im > 0 ? imText : `-${imText}`;
+        return `${fmtReal(re)} ${im > 0 ? "+" : "-"} ${imText}`;
+      }
+      function fmtCoeff(value) {
+        const text = fmtComplex(value);
+        if (text === "1") return "";
+        if (text === "-1") return "-";
+        return `${text} `;
+      }
+      function ms(l) {
+        const count = Math.round(2 * l + 1);
+        return Array.from({ length: count }, (_, i) => l - i);
+      }
+      function buildOperators(l) {
+        const values = ms(l), n = values.length, index = new Map(values.map((m, i) => [String(m), i]));
+        const lz = zeroMatrix(n), l2 = zeroMatrix(n), lp = zeroMatrix(n), lm = zeroMatrix(n);
+        values.forEach((m, col) => {
+          lz[col][col] = c(m);
+          l2[col][col] = c(l * (l + 1));
+          const up = m + 1, down = m - 1;
+          if (index.has(String(up))) lp[index.get(String(up))][col] = c(Math.sqrt(l * (l + 1) - m * (m + 1)));
+          if (index.has(String(down))) lm[index.get(String(down))][col] = c(Math.sqrt(l * (l + 1) - m * (m - 1)));
+        });
+        const lx = matrixScale(matrixAdd(lp, lm), 0.5);
+        const ly = matrixMultiplyComplexScalar(matrixSub(lp, lm), c(0, -0.5));
+        return { values, lz, lx, ly, lp, lm, l2 };
+      }
+      function jacobiEigenSymmetric(input) {
+        const n = input.length;
+        const a = input.map((row) => row.slice());
+        const v = Array.from({ length:n }, (_, i) => Array.from({ length:n }, (_, j) => i === j ? 1 : 0));
+        for (let step = 0; step < 120; step += 1) {
+          let p = 0, q = 1, max = 0;
+          for (let i = 0; i < n; i += 1) for (let j = i + 1; j < n; j += 1) {
+            const value = Math.abs(a[i][j]);
+            if (value > max) { max = value; p = i; q = j; }
+          }
+          if (max < 1e-12) break;
+          const tau = (a[q][q] - a[p][p]) / (2 * a[p][q]);
+          const t = Math.sign(tau || 1) / (Math.abs(tau) + Math.sqrt(1 + tau * tau));
+          const cosine = 1 / Math.sqrt(1 + t * t);
+          const sine = t * cosine;
+          const app = a[p][p], aqq = a[q][q], apq = a[p][q];
+          a[p][p] = app - t * apq;
+          a[q][q] = aqq + t * apq;
+          a[p][q] = 0; a[q][p] = 0;
+          for (let k = 0; k < n; k += 1) if (k !== p && k !== q) {
+            const akp = a[k][p], akq = a[k][q];
+            a[k][p] = cosine * akp - sine * akq;
+            a[p][k] = a[k][p];
+            a[k][q] = sine * akp + cosine * akq;
+            a[q][k] = a[k][q];
+          }
+          for (let k = 0; k < n; k += 1) {
+            const vkp = v[k][p], vkq = v[k][q];
+            v[k][p] = cosine * vkp - sine * vkq;
+            v[k][q] = sine * vkp + cosine * vkq;
+          }
+        }
+        const eigen = Array.from({ length:n }, (_, column) => ({
+          value: a[column][column],
+          vector: Array.from({ length:n }, (_, row) => v[row][column])
+        })).sort((aEntry, bEntry) => bEntry.value - aEntry.value);
+        eigen.forEach((entry) => {
+          const pivot = entry.vector.reduce((best, value, index) => Math.abs(value) > Math.abs(entry.vector[best]) ? index : best, 0);
+          if (entry.vector[pivot] < 0) entry.vector = entry.vector.map((value) => -value);
+        });
+        return eigen;
+      }
+      function basisUnitary(axis, operators) {
+        const n = operators.values.length;
+        if (axis === "z") return identity(n);
+        const realLx = operators.lx.map((row) => row.map((value) => value.re));
+        const eigen = jacobiEigenSymmetric(realLx);
+        const rows = eigen.map((entry) => entry.vector.map((value) => c(value, 0)));
+        if (axis === "x") return rows;
+        return rows.map((row) => row.map((value, column) => mul(value, phase(operators.values[column] * Math.PI / 2))));
+      }
+      function matrixTable(name, unit, matrix, values) {
+        const headers = values.map((m) => `<th>${labelNumber(m)}</th>`).join("");
+        const rows = matrix.map((row, i) => `<tr><th>${labelNumber(values[i])}</th>${row.map((value) => `<td>${fmtComplex(value)}</td>`).join("")}</tr>`).join("");
+        return `<article class="matrix-card"><div class="matrix-title"><span>${name}</span><span class="matrix-unit">${unit}</span></div><div class="matrix-scroll"><table class="matrix-table"><thead><tr><th></th>${headers}</tr></thead><tbody>${rows}</tbody></table></div></article>`;
+      }
+      function renderMatrixSet(target, operators, matrices) {
+        const values = operators.values;
+        target.innerHTML = [
+          matrixTable("Lz", "÷ ℏ", matrices.lz, values),
+          matrixTable("Lx", "÷ ℏ", matrices.lx, values),
+          matrixTable("Ly", "÷ ℏ", matrices.ly, values),
+          matrixTable("L+", "÷ ℏ", matrices.lp, values),
+          matrixTable("L−", "÷ ℏ", matrices.lm, values),
+          matrixTable("L²", "÷ ℏ²", matrices.l2, values)
+        ].join("");
+      }
+      function renderDecomposition(axis, u, operators) {
+        const values = operators.values;
+        $("basisDecomposition").innerHTML = values.map((m, row) => {
+          const parts = values.map((baseM, column) => {
+            const ketCoeff = conj(u[row][column]);
+            if (Math.abs(ketCoeff.re) < EPS && Math.abs(ketCoeff.im) < EPS) return "";
+            return `${fmtCoeff(ketCoeff)}${labelKet(baseM, "z")}`;
+          }).filter(Boolean).join(" + ").replace(/\+ -/g, "- ");
+          return `<li>${labelKet(m, axis)} = ${parts || "0"}</li>`;
+        }).join("");
+      }
+      function render() {
+        const l = Number($("lValue").value);
+        const axis = $("axisValue").value;
+        const operators = buildOperators(l);
+        renderMatrixSet($("zBasisMatrices"), operators, operators);
+        const u = basisUnitary(axis, operators);
+        const transformed = {
+          lz: transform(operators.lz, u),
+          lx: transform(operators.lx, u),
+          ly: transform(operators.ly, u),
+          lp: transform(operators.lp, u),
+          lm: transform(operators.lm, u),
+          l2: transform(operators.l2, u)
+        };
+        $("basisMatrices").innerHTML = matrixTable("U", "basis map", u, operators.values);
+        renderMatrixSet($("basisMatrices"), operators, transformed);
+        $("basisMatrices").insertAdjacentHTML("afterbegin", matrixTable("U", "basis map", u, operators.values));
+        $("basisNote").textContent = axis === "z"
+          ? "For the z basis, U is the identity and the matrices are unchanged."
+          : `For the ${axis} basis, U transforms the z-basis matrices according to O_${axis} = U O_z U†. The selected component is diagonal in this basis.`;
+        renderDecomposition(axis, u, operators);
+        if (window.MathJax?.typesetPromise) window.MathJax.typesetPromise();
+      }
+      $("lValue").addEventListener("change", render);
+      $("axisValue").addEventListener("change", render);
+      render();
+    })();
+  </script>
+</body>
+</html>
