@@ -10,7 +10,7 @@
     {
       "id": "6.2",
       "title": "Commutation relations",
-      "note": "The angular-momentum components obey nonzero commutators, so two components cannot be known simultaneously with absolute precision.",
+      "note": "Angular momentum is written as a vector product and in Cartesian operator form before the nonzero component commutators and their physical consequence.",
       "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
       "aiExercise": true
     },
