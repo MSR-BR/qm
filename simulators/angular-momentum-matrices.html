@@ -225,8 +225,8 @@
           vector: Array.from({ length:n }, (_, row) => v[row][column])
         })).sort((aEntry, bEntry) => bEntry.value - aEntry.value);
         eigen.forEach((entry) => {
-          const pivot = entry.vector.reduce((best, value, index) => Math.abs(value) > Math.abs(entry.vector[best]) ? index : best, 0);
-          if (entry.vector[pivot] < 0) entry.vector = entry.vector.map((value) => -value);
+          const firstNonZero = entry.vector.find((value) => Math.abs(value) > EPS);
+          if (firstNonZero < 0) entry.vector = entry.vector.map((value) => -value);
         });
         return eigen;
       }
