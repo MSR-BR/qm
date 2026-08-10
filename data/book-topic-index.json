@@ -1,8 +1,8 @@
 {
   "version": "qm-book-topic-index-v1",
-  "generatedAt": "2026-08-07T21:38:15.486Z",
-  "sectionCount": 67,
-  "topicCount": 72,
+  "generatedAt": "2026-08-10T19:48:29.918Z",
+  "sectionCount": 76,
+  "topicCount": 81,
   "topics": [
     {
       "id": "why-old-quantum-physics-matters",
@@ -1985,6 +1985,150 @@
           "excerpt": "5.B Spherical coordinates 213 FIGURE 5.11 Cartesian and spherical coordinates. Appendix 5.B Spherical coordinates This appendix presents various transformations and operators in the spherical coordinate system, including the unit vectors, the nabla ‘opera- tor’, and the Laplace operator. We begin this task by writing the spherical coordinates (r, θ , φ ) in terms of the Cartesian coordinates (x , y , z) – see Fig. 5.11: x = r sin θ cos φ , y = r sin θ sin φ and z = r cos θ (5.B.1) Alternatively, these relationships"
         }
       ]
+    },
+    {
+      "id": "angular-momentum-chapter-roadmap",
+      "label": "angular momentum chapter roadmap",
+      "fragments": [
+        {
+          "sectionId": "6.1",
+          "chapterId": "06",
+          "itemId": "6.1",
+          "title": "Angular momentum: chapter roadmap",
+          "pagePath": "slides/chapter-06/angular-momentum-chapter-roadmap.html",
+          "pageStart": 1,
+          "pageEnd": 1,
+          "excerpt": "C H A P T E R 6 Angular momentum! ! O U T L I N E 6.1 Commutation relations 220 6.2 Angular momentum algebra 222 6.3 Consequences of angular momentum algebra 230 6.4 Matrix representation of the angular momentum operator 232 6.5 Representation of the angular momentum operator in position space 238 Appendix 6.A Levi-Civita symbol 244 Appendix 6.B Uncertainty principle applied to the angular momentum 244 6.B.1 Schwartz inequality 245 6.B.2 Schrödinger uncertainty principle 245 6.B.3 Application: angular momentum 247 "
+        }
+      ]
+    },
+    {
+      "id": "commutation-relations",
+      "label": "commutation relations",
+      "fragments": [
+        {
+          "sectionId": "6.2",
+          "chapterId": "06",
+          "itemId": "6.2",
+          "title": "Commutation relations",
+          "pagePath": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
+          "pageStart": 2,
+          "pageEnd": 2,
+          "excerpt": "220 6. Angular momentum 6.1 Commutation relations We begin this chapter’s journey with the definition of angular momen- tum: \" = r\" × p\", L (6.1) which, obviously, has components: \" = Lx x̂ + Ly ŷ + Lz ẑ. L (6.2) These components can be written in terms of the Levi-Civita symbol !ij k (see Appendix 6.A for more details). Considering further that these quan- tities are operators, we have: L̂i = !ij k x̂j p̂k , (6.3) where the subscript index, in this case i , j , k , represents, respectively, the Cartesian compone"
+        }
+      ]
+    },
+    {
+      "id": "levi-civita-notation-and-physical-meaning",
+      "label": "levi civita notation and physical meaning",
+      "fragments": [
+        {
+          "sectionId": "6.3",
+          "chapterId": "06",
+          "itemId": "6.3",
+          "title": "Levi-Civita notation and physical meaning",
+          "pagePath": "slides/chapter-06/angular-momentum-and-levi-civita-notation.html",
+          "pageStart": 26,
+          "pageEnd": 26,
+          "excerpt": "244 6. Angular momentum 3< 2π < π 32 3 0∗ 0 3 3 P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149) 0 0 To solve the integrals above, we use the orthogonality conditions of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this example that a particle with the proposed wave function has a 100% probability of being in a state characterized by angular momentum (l , m) = (1, 0). ! Appendix 6.A Levi-Civita symbol The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is defined a"
+        }
+      ]
+    },
+    {
+      "id": "angular-momentum-algebra",
+      "label": "angular momentum algebra",
+      "fragments": [
+        {
+          "sectionId": "6.4",
+          "chapterId": "06",
+          "itemId": "6.4",
+          "title": "Angular momentum algebra",
+          "pagePath": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
+          "pageStart": 4,
+          "pageEnd": 11,
+          "excerpt": "222 6. Angular momentum 6.2 Angular momentum algebra Since the components of angular momentum do not commute with each other, they cannot be determined simultaneously and with absolute precision.1 For this reason, we can determine only one of these compo- nents. To better understand the angular momentum, we therefore need another operator, but one that commutes with these components. Thus, we consider: L̂2 = L̂2x + L̂2y + L̂2z . (6.15) Based on the definition above and the results from Section 6.1, it is possible t"
+        }
+      ]
+    },
+    {
+      "id": "consequences-of-the-algebra",
+      "label": "consequences of the algebra",
+      "fragments": [
+        {
+          "sectionId": "6.5",
+          "chapterId": "06",
+          "itemId": "6.5",
+          "title": "Consequences of the algebra",
+          "pagePath": "slides/chapter-06/expectation-values-and-transverse-variance.html",
+          "pageStart": 12,
+          "pageEnd": 14,
+          "excerpt": "230 6. Angular momentum 6.3 Consequences of angular momentum algebra From Eq. (6.4), we know that the components of angular momentum do not commute with each other. This property arises from the commutation relations between the position and linear momentum operators, which, in turn, are directly connected to the uncertainty principle. Therefore, the simultaneous knowledge of two components of angular momentum is impossible. We also deduced Eqs. (6.48) and (6.49), which tell us, respec- tively,+that we can simultan"
+        }
+      ]
+    },
+    {
+      "id": "matrix-representation",
+      "label": "matrix representation",
+      "fragments": [
+        {
+          "sectionId": "6.6",
+          "chapterId": "06",
+          "itemId": "6.6",
+          "title": "Matrix representation",
+          "pagePath": "slides/chapter-06/general-matrix-representation.html",
+          "pageStart": 14,
+          "pageEnd": 20,
+          "excerpt": "232 6. Angular momentum FIGURE 6.1 + Schematic representation of an angular momentum l = 3. We can measure its module l (l + 1)! and its projection m!, but we cannot define its orthogonal components. Therefore, the angular momentum has an equal probability of being found anywhere on the surface of the cone. Furthermore, for the maximum projection value m = l , the vector does not lie along the z axis. Furthermore, for this case,+the projection of the vector on the z axis, i.e. l ! is smaller than the module l (l + "
+        }
+      ]
+    },
+    {
+      "id": "position-space-representation",
+      "label": "position space representation",
+      "fragments": [
+        {
+          "sectionId": "6.7",
+          "chapterId": "06",
+          "itemId": "6.7",
+          "title": "Position-space representation",
+          "pagePath": "slides/chapter-06/angular-momentum-in-position-space.html",
+          "pageStart": 20,
+          "pageEnd": 26,
+          "excerpt": "238 6. Angular momentum and consequently:   1 0 0 (L̂x )x = ! 0 0 0  . (6.104) 0 0 −1 The matrix is diagonal, as observed, and has the same eigenvalues determined earlier. This operation corresponds to a rotation of the axes, where the x -axis now takes on the physical interpretation pre- viously associated with the z-axis. ! 6.5 Representation of the angular momentum operator in position space The goal of this subsection is to describe the angular momentum oper- ators in position space. Let’s begin this task b"
+        }
+      ]
+    },
+    {
+      "id": "schrodinger-uncertainty-and-schwartz-inequality",
+      "label": "schrodinger uncertainty and schwartz inequality",
+      "fragments": [
+        {
+          "sectionId": "6.8",
+          "chapterId": "06",
+          "itemId": "6.8",
+          "title": "Schrödinger uncertainty and Schwartz inequality",
+          "pagePath": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
+          "pageStart": 26,
+          "pageEnd": 30,
+          "excerpt": "244 6. Angular momentum 3< 2π < π 32 3 0∗ 0 3 3 P (1, 0) = 3 Y1 (θ , φ )Y1 (θ , φ ) sin θ d θ d φ 33 = 1. (6.149) 0 0 To solve the integrals above, we use the orthogonality conditions of the spherical harmonics (Eq. (5.36)). Thus, we conclude from this example that a particle with the proposed wave function has a 100% probability of being in a state characterized by angular momentum (l , m) = (1, 0). ! Appendix 6.A Levi-Civita symbol The Levi-Civita symbol is a rank-3 tensor, since it has 3 indexes. It is defined a"
+        }
+      ]
+    },
+    {
+      "id": "chapter-synthesis-angular-momentum-toolkit",
+      "label": "chapter synthesis angular momentum toolkit",
+      "fragments": [
+        {
+          "sectionId": "6.9",
+          "chapterId": "06",
+          "itemId": "6.9",
+          "title": "Chapter synthesis: angular momentum toolkit",
+          "pagePath": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
+          "pageStart": 30,
+          "pageEnd": 33,
+          "excerpt": "248 6. Angular momentum Thus, for any component of the angular momentum: 1 cov(Lu , Lv ) = '{L̂u , L̂v }% − 'L̂u %'L̂v % = 0. (6.B.26) 2 In this case, the uncertainty relation for the components of angular mo- mentum can be written as (using Eq. (6.4)): ! #Lu #Lv ≥ |!uv w 'L̂w %|. (6.B.27) 2 Based on the above result, we have #Lz #Lx = #Ly #Lz ≥ 0. This means that the standard deviation of the z component of the angular momentum can be zero (and indeed it is – check it out!), which does not violate the uncertainty "
+        }
+      ]
     }
   ],
   "sectionIndex": [
@@ -2787,6 +2931,96 @@
       "primaryTopic": "chapter-synthesis-solving-central-potentials",
       "transversalTopics": [
         "hydrogen-expectation-values"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.1",
+      "chapterId": "06",
+      "itemId": "6.1",
+      "primaryTopic": "angular-momentum-chapter-roadmap",
+      "transversalTopics": [
+        "commutation-relations"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.2",
+      "chapterId": "06",
+      "itemId": "6.2",
+      "primaryTopic": "commutation-relations",
+      "transversalTopics": [
+        "levi-civita-notation-and-physical-meaning"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.3",
+      "chapterId": "06",
+      "itemId": "6.3",
+      "primaryTopic": "levi-civita-notation-and-physical-meaning",
+      "transversalTopics": [
+        "angular-momentum-algebra"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.4",
+      "chapterId": "06",
+      "itemId": "6.4",
+      "primaryTopic": "angular-momentum-algebra",
+      "transversalTopics": [
+        "consequences-of-the-algebra"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.5",
+      "chapterId": "06",
+      "itemId": "6.5",
+      "primaryTopic": "consequences-of-the-algebra",
+      "transversalTopics": [
+        "matrix-representation"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.6",
+      "chapterId": "06",
+      "itemId": "6.6",
+      "primaryTopic": "matrix-representation",
+      "transversalTopics": [
+        "position-space-representation"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.7",
+      "chapterId": "06",
+      "itemId": "6.7",
+      "primaryTopic": "position-space-representation",
+      "transversalTopics": [
+        "schrodinger-uncertainty-and-schwartz-inequality"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.8",
+      "chapterId": "06",
+      "itemId": "6.8",
+      "primaryTopic": "schrodinger-uncertainty-and-schwartz-inequality",
+      "transversalTopics": [
+        "chapter-synthesis-angular-momentum-toolkit"
+      ],
+      "advancedSupportTopics": []
+    },
+    {
+      "sectionId": "6.9",
+      "chapterId": "06",
+      "itemId": "6.9",
+      "primaryTopic": "chapter-synthesis-angular-momentum-toolkit",
+      "transversalTopics": [
+        "schrodinger-uncertainty-and-schwartz-inequality"
       ],
       "advancedSupportTopics": []
     }

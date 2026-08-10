@@ -48,6 +48,17 @@ const CHAPTERS = [
     // PDF page ranges are matched to the book's section boundaries, including
     // the periodic-table application and the expectation-value appendix.
     ranges: [[3, 3], [3, 4], [4, 7], [8, 10], [11, 23], [17, 17], [24, 34], [35, 37], [38, 44], [45, 48]]
+  },
+  {
+    id: "06",
+    title: "Angular momentum",
+    theoryPdf: resolve(ROOT_DIR, "sources/chapter-06/c6-Reis-Quantum-Mechanics.pdf"),
+    solutionsPdf: resolve(ROOT_DIR, "sources/chapter-06/c6-Reis-QM-solutions.pdf"),
+    // The HTML chapter has been condensed into nine book-led items. The PDF
+    // ranges remain aligned with the source sequence: commutators, algebra,
+    // consequences, matrices, position representation, uncertainty appendix
+    // and exercise appendix.
+    ranges: [[1, 1], [2, 2], [26, 26], [4, 11], [12, 14], [14, 20], [20, 26], [26, 30], [30, 33]]
   }
 ];
 
