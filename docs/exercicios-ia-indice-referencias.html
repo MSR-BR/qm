@@ -1,0 +1,1247 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QM AI exercise index and references</title>
+  <style>
+    :root{color-scheme:light;--green:#2d6b4f;--soft:#eef7f1;--line:#cfe3d7;--ink:#1f2937;--muted:#667085;}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:0;color:var(--ink);background:#fafafa;line-height:1.5;}
+    main{max-width:1180px;margin:0 auto;padding:32px 20px 56px;}
+    h1,h2{color:var(--green);}
+    .note{background:var(--soft);border:1px solid var(--line);border-left:6px solid var(--green);border-radius:18px;padding:18px 20px;margin:18px 0 26px;}
+    table{width:100%;border-collapse:collapse;background:white;border:1px solid #e5e7eb;border-radius:16px;overflow:hidden;margin:18px 0 34px;}
+    th,td{vertical-align:top;text-align:left;padding:12px 14px;border-bottom:1px solid #e5e7eb;}
+    th{background:#f3f7f5;color:var(--green);font-size:.9rem;text-transform:uppercase;letter-spacing:.04em;}
+    tr:last-child td{border-bottom:0;}
+    code{background:#f2f4f7;border-radius:8px;padding:2px 6px;}
+    ul{margin:0;padding-left:18px;}
+    .muted{color:var(--muted);}
+  </style>
+</head>
+<body>
+<main>
+  <h1>QM AI exercise index and references</h1>
+  <div class="note">
+    <p><strong>Purpose.</strong> This page documents the curated topic map used by the QM exercise generator. The canonical source remains the book corpus; the taxonomy only controls which related fragments may support an exercise.</p>
+    <p><strong>Scope.</strong> Chapters 01, 02, 03, 04, 05, 06; 75 app sections; 64 curated topics. Generated from <code>data/book-topic-taxonomy.json</code>.</p>
+  </div>
+
+  <h2>Sections</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Section</th>
+        <th>Title</th>
+        <th>Canonical book reference</th>
+        <th>Primary topic</th>
+        <th>Related topics</th>
+        <th>Advanced support</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td><code>1.1</code></td>
+    <td>Why old quantum physics matters</td>
+    <td>Old quantum physics<br><span class="muted">p. 2</span></td>
+    <td>Old quantum physics overview (old-quantum-physics-overview)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.2</code></td>
+    <td>Wave optics as the classical benchmark</td>
+    <td>Old quantum physics<br><span class="muted">p. 2-3</span></td>
+    <td>Classical wave benchmark (classical-wave-benchmark)</td>
+    <td><ul><li>Old quantum physics overview (old-quantum-physics-overview)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.3</code></td>
+    <td>Hydrogen spectral lines</td>
+    <td>Old quantum physics<br><span class="muted">p. 3-5</span></td>
+    <td>Hydrogen spectral lines (hydrogen-spectral-lines)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li><li>Hydrogen from old quantum physics to Schrodinger theory (hydrogen-from-old-to-schrodinger)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>1.4</code></td>
+    <td>Cathode rays and the electron</td>
+    <td>Old quantum physics<br><span class="muted">p. 5-8</span></td>
+    <td>Electron experimental evidence (electron-experimental-evidence)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.5</code></td>
+    <td>Black-body radiation</td>
+    <td>Old quantum physics<br><span class="muted">p. 9-15</span></td>
+    <td>Black-body radiation (black-body-radiation)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>1.6</code></td>
+    <td>Photoelectric effect</td>
+    <td>Old quantum physics<br><span class="muted">p. 16-17</span></td>
+    <td>Photoelectric effect (photoelectric-effect)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>1.7</code></td>
+    <td>Elementary charge</td>
+    <td>Old quantum physics<br><span class="muted">p. 18-20</span></td>
+    <td>Electron experimental evidence (electron-experimental-evidence)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.8</code></td>
+    <td>Electron diffraction</td>
+    <td>Old quantum physics<br><span class="muted">p. 21-22</span></td>
+    <td>Electron experimental evidence (electron-experimental-evidence)</td>
+    <td><ul><li>Classical wave benchmark (classical-wave-benchmark)</li><li>de Broglie matter waves (de-broglie-matter-waves)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.9</code></td>
+    <td>Bohr model: postulates</td>
+    <td>Old quantum physics<br><span class="muted">p. 23-24</span></td>
+    <td>Bohr hydrogen model (bohr-hydrogen-model)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>1.10</code></td>
+    <td>Bohr model: hydrogen spectrum</td>
+    <td>Old quantum physics<br><span class="muted">p. 25-27</span></td>
+    <td>Bohr hydrogen model (bohr-hydrogen-model)</td>
+    <td><ul><li>Hydrogen spectral lines (hydrogen-spectral-lines)</li></ul></td>
+    <td><ul><li>Hydrogen from old quantum physics to Schrodinger theory (hydrogen-from-old-to-schrodinger)</li><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>1.11</code></td>
+    <td>de Broglie hypothesis</td>
+    <td>Old quantum physics<br><span class="muted">p. 28</span></td>
+    <td>de Broglie matter waves (de-broglie-matter-waves)</td>
+    <td><ul><li>Classical wave benchmark (classical-wave-benchmark)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.12</code></td>
+    <td>Semi-classical quantization rule</td>
+    <td>Old quantum physics<br><span class="muted">p. 29-30</span></td>
+    <td>Semi-classical quantization (semiclassical-quantization)</td>
+    <td><ul><li>de Broglie matter waves (de-broglie-matter-waves)</li></ul></td>
+    <td><ul><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>1.13</code></td>
+    <td>SCQR examples</td>
+    <td>Old quantum physics<br><span class="muted">p. 30-35</span></td>
+    <td>Semi-classical quantization (semiclassical-quantization)</td>
+    <td><ul><li>de Broglie matter waves (de-broglie-matter-waves)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.14</code></td>
+    <td>Sommerfeld orbits and ellipse geometry</td>
+    <td>Old quantum physics<br><span class="muted">p. 35-40</span></td>
+    <td>Bohr hydrogen model (bohr-hydrogen-model)</td>
+    <td><ul><li>Semi-classical quantization (semiclassical-quantization)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>1.15</code></td>
+    <td>Chapter synthesis</td>
+    <td>Old quantum physics<br><span class="muted">p. 47-51</span></td>
+    <td>Old quantum physics overview (old-quantum-physics-overview)</td>
+    <td><ul><li>Semi-classical quantization (semiclassical-quantization)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.1</code></td>
+    <td>Why wave mechanics is needed</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 2</span></td>
+    <td>Schrodinger equation (schrodinger-equation)</td>
+    <td><ul><li>Wave mechanics synthesis (wave-mechanics-synthesis)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.2</code></td>
+    <td>Time-dependent Schrodinger equation</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 2</span></td>
+    <td>Schrodinger equation (schrodinger-equation)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.3</code></td>
+    <td>Stationary states and the TISE</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 3</span></td>
+    <td>Stationary states and TISE (stationary-states-tise)</td>
+    <td><ul><li>Schrodinger equation (schrodinger-equation)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.4</code></td>
+    <td>Probability density and current</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 4-5</span></td>
+    <td>Probability density and current (probability-density-current)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.5</code></td>
+    <td>Infinite potential well</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 6-9</span></td>
+    <td>Infinite potential well (infinite-potential-well)</td>
+    <td><ul><li>Stationary states and TISE (stationary-states-tise)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.6</code></td>
+    <td>Postulates of quantum mechanics: the rules ahead</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 9-10</span></td>
+    <td>Quantum postulates and measurement (quantum-postulates-measurement)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.7</code></td>
+    <td>Quantum states as superpositions</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 11</span></td>
+    <td>Superposition and state space (superposition-state-space)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.8</code></td>
+    <td>Observables, operators and commutators</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 12-17</span></td>
+    <td>Observables, operators and commutators (observables-operators-commutators)</td>
+    <td><ul><li>Quantum postulates and measurement (quantum-postulates-measurement)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.9</code></td>
+    <td>Measurement probabilities</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 18-19</span></td>
+    <td>Born rule and probabilities (born-rule-probabilities)</td>
+    <td><ul><li>Quantum postulates and measurement (quantum-postulates-measurement)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.10</code></td>
+    <td>Expectation values and collapse</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 20</span></td>
+    <td>Expectation values and variance (expectation-values-variance)</td>
+    <td><ul><li>Born rule and probabilities (born-rule-probabilities)</li><li>Quantum postulates and measurement (quantum-postulates-measurement)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.11</code></td>
+    <td>Equations of motion: Ehrenfest and Virial</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 21-24</span></td>
+    <td>Equations of motion (equations-of-motion)</td>
+    <td><ul><li>Expectation values and variance (expectation-values-variance)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.12</code></td>
+    <td>Plane waves and localized packets</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 25-26</span></td>
+    <td>Wave packets, Fourier width and uncertainty (wave-packets-fourier-uncertainty)</td>
+    <td><ul><li>Superposition and state space (superposition-state-space)</li><li>Classical wave benchmark (classical-wave-benchmark)</li><li>de Broglie matter waves (de-broglie-matter-waves)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.13</code></td>
+    <td>Gaussian wave packet and Fourier width</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 27-30</span></td>
+    <td>Wave packets, Fourier width and uncertainty (wave-packets-fourier-uncertainty)</td>
+    <td><ul><li>Classical wave benchmark (classical-wave-benchmark)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>2.14</code></td>
+    <td>Wave packet spreading and uncertainty</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 31-34</span></td>
+    <td>Wave packets, Fourier width and uncertainty (wave-packets-fourier-uncertainty)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Uncertainty across wave and operator formalisms (uncertainty-across-formalisms)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>2.15</code></td>
+    <td>Chapter synthesis</td>
+    <td>Construction of quantum theory I: wave mechanics<br><span class="muted">p. 31-34</span></td>
+    <td>Wave mechanics synthesis (wave-mechanics-synthesis)</td>
+    <td><ul><li>Schrodinger equation (schrodinger-equation)</li><li>Wave packets, Fourier width and uncertainty (wave-packets-fourier-uncertainty)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.1</code></td>
+    <td>Why matrix mechanics is needed</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 2</span></td>
+    <td>Matrix mechanics and spin entry point (matrix-mechanics-spin-entry)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.2</code></td>
+    <td>Stern-Gerlach experiment: magnetic force and spin</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 2-4</span></td>
+    <td>Matrix mechanics and spin entry point (matrix-mechanics-spin-entry)</td>
+    <td><ul><li>Pauli matrices and spin (pauli-matrices-spin)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.3</code></td>
+    <td>Dirac notation: kets, bras and inner products</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 5-6</span></td>
+    <td>Dirac notation (dirac-notation)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.4</code></td>
+    <td>Hilbert space, bases, superposition and completeness</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 5-6</span></td>
+    <td>Hilbert space, bases and completeness (hilbert-space-bases-completeness)</td>
+    <td><ul><li>Dirac notation (dirac-notation)</li><li>Superposition and state space (superposition-state-space)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.5</code></td>
+    <td>Operators, eigenvalues and spectral decomposition</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 7-10</span></td>
+    <td>Operators and spectral decomposition (operators-spectral-decomposition)</td>
+    <td><ul><li>Observables, operators and commutators (observables-operators-commutators)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.6</code></td>
+    <td>Pauli matrices and spin observables</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 7-10</span></td>
+    <td>Pauli matrices and spin (pauli-matrices-spin)</td>
+    <td><ul><li>Matrix mechanics and spin entry point (matrix-mechanics-spin-entry)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.7</code></td>
+    <td>Born rule in vector notation</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 11-12</span></td>
+    <td>Born rule and probabilities (born-rule-probabilities)</td>
+    <td><ul><li>Dirac notation (dirac-notation)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.8</code></td>
+    <td>Expectation value, variance and preparation</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 13-14</span></td>
+    <td>Expectation values and variance (expectation-values-variance)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Uncertainty across wave and operator formalisms (uncertainty-across-formalisms)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>3.9</code></td>
+    <td>Hermitian operators and real outcomes</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 7-10</span></td>
+    <td>Hermitian observables (hermitian-observables)</td>
+    <td><ul><li>Operators and spectral decomposition (operators-spectral-decomposition)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.10</code></td>
+    <td>Commutators, compatibility and measurement order</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 15-16</span></td>
+    <td>Compatibility and measurement order (compatibility-measurement-order)</td>
+    <td><ul><li>Observables, operators and commutators (observables-operators-commutators)</li></ul></td>
+    <td><ul><li>Operator algebra across representations (operator-algebra-across-representations)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>3.11</code></td>
+    <td>Schrodinger picture: unitary time evolution</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 17</span></td>
+    <td>Quantum pictures and time evolution (quantum-pictures-time-evolution)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.12</code></td>
+    <td>Heisenberg picture: operator evolution</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 18</span></td>
+    <td>Quantum pictures and time evolution (quantum-pictures-time-evolution)</td>
+    <td><ul><li>Equations of motion (equations-of-motion)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>3.13</code></td>
+    <td>Unitary transformations and change of basis</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 19-20</span></td>
+    <td>Unitary transformations and change of basis (unitary-transformations-change-basis)</td>
+    <td><ul><li>Hilbert space, bases and completeness (hilbert-space-bases-completeness)</li></ul></td>
+    <td><ul><li>Operator algebra across representations (operator-algebra-across-representations)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>3.14</code></td>
+    <td>Operator functions and chapter synthesis</td>
+    <td>Construction of quantum theory II: matrix mechanics<br><span class="muted">p. 21</span></td>
+    <td>Operator functions (operator-functions)</td>
+    <td><ul><li>Operators and spectral decomposition (operators-spectral-decomposition)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.1</code></td>
+    <td>Bound and unbound states: chapter roadmap</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 2</span></td>
+    <td>One-dimensional quantum models (one-dimensional-quantum-models)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.2</code></td>
+    <td>QHO: differential equation, variables and eigenstates</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 2-10</span></td>
+    <td>Quantum harmonic oscillator model (harmonic-oscillator-model)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.3</code></td>
+    <td>QHO: energy eigenvalues</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 3-6</span></td>
+    <td>Hermite equation and oscillator quantization (hermite-quantization)</td>
+    <td><ul><li>Quantum harmonic oscillator model (harmonic-oscillator-model)</li></ul></td>
+    <td><ul><li>Special functions in bound-state problems (special-functions-bound-states)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>4.4</code></td>
+    <td>QHO: ladder operators and oscillator algebra</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 11-18</span></td>
+    <td>Ladder-operator methods (ladder-operator-methods)</td>
+    <td><ul><li>Quantum harmonic oscillator model (harmonic-oscillator-model)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.5</code></td>
+    <td>QHO: expectation values and uncertainty</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 45-48</span></td>
+    <td>Quantum harmonic oscillator model (harmonic-oscillator-model)</td>
+    <td><ul><li>Expectation values and variance (expectation-values-variance)</li></ul></td>
+    <td><ul><li>Uncertainty across wave and operator formalisms (uncertainty-across-formalisms)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>4.6</code></td>
+    <td>Finite potential well: bound-state setup</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 19-21</span></td>
+    <td>Finite-well bound states (finite-well-bound-states)</td>
+    <td><ul><li>Stationary states and TISE (stationary-states-tise)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.7</code></td>
+    <td>Finite-well quantization and energy levels</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 22-26</span></td>
+    <td>Finite-well quantization and penetration (finite-well-quantization-penetration)</td>
+    <td><ul><li>Finite-well bound states (finite-well-bound-states)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.8</code></td>
+    <td>Finite-well wave functions and penetration</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 27-30</span></td>
+    <td>Finite-well quantization and penetration (finite-well-quantization-penetration)</td>
+    <td><ul><li>Finite-well bound states (finite-well-bound-states)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.9</code></td>
+    <td>Probability current, reflection and transmission</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 31-32</span></td>
+    <td>Scattering, reflection and transmission (scattering-reflection-transmission)</td>
+    <td><ul><li>Probability density and current (probability-density-current)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.10</code></td>
+    <td>Scattering from an attractive finite well</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 33-37</span></td>
+    <td>Attractive-well scattering (attractive-well-scattering)</td>
+    <td><ul><li>Scattering, reflection and transmission (scattering-reflection-transmission)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.11</code></td>
+    <td>Delta-function well and scattering</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 38-40</span></td>
+    <td>Delta-function potential (delta-function-potential)</td>
+    <td><ul><li>Scattering, reflection and transmission (scattering-reflection-transmission)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.12</code></td>
+    <td>Rectangular step potential and quantum tunneling</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 41-44</span></td>
+    <td>Rectangular barrier and quantum tunneling (quantum-tunneling-barrier)</td>
+    <td><ul><li>Scattering, reflection and transmission (scattering-reflection-transmission)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>4.14</code></td>
+    <td>Chapter synthesis: one-dimensional quantum models</td>
+    <td>One-dimensional problems: bound and unbound states<br><span class="muted">p. 49-51</span></td>
+    <td>One-dimensional quantum models (one-dimensional-quantum-models)</td>
+    <td><ul><li>Quantum harmonic oscillator model (harmonic-oscillator-model)</li><li>Finite-well bound states (finite-well-bound-states)</li><li>Scattering, reflection and transmission (scattering-reflection-transmission)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>5.1</code></td>
+    <td>Central potentials: chapter roadmap</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 3</span></td>
+    <td>Central potentials and spherical separation (central-potentials-spherical-separation)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>5.2</code></td>
+    <td>Separation of variables in spherical coordinates</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 3-4</span></td>
+    <td>Central potentials and spherical separation (central-potentials-spherical-separation)</td>
+    <td><ul><li>Stationary states and TISE (stationary-states-tise)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>5.3</code></td>
+    <td>Azimuthal and polar equations</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 4-7</span></td>
+    <td>Angular equations and special functions (angular-equations-special-functions)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Special functions in bound-state problems (special-functions-bound-states)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>5.4</code></td>
+    <td>Spherical harmonics</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 8-10</span></td>
+    <td>Spherical harmonics (spherical-harmonics)</td>
+    <td><ul><li>Angular equations and special functions (angular-equations-special-functions)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>5.5</code></td>
+    <td>Hydrogen atom: radial solution and probability</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 11-23</span></td>
+    <td>Hydrogen radial equation and Laguerre solutions (hydrogen-radial-laguerre)</td>
+    <td><ul><li>Hydrogen effective potential and radial density (hydrogen-effective-potential-radial-density)</li></ul></td>
+    <td><ul><li>Special functions in bound-state problems (special-functions-bound-states)</li><li>Hydrogen from old quantum physics to Schrodinger theory (hydrogen-from-old-to-schrodinger)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>5.6</code></td>
+    <td>Hydrogen energy spectrum and degeneracy</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 17</span></td>
+    <td>Hydrogen spectrum and degeneracy (hydrogen-spectrum-degeneracy)</td>
+    <td><ul><li>Hydrogen effective potential and radial density (hydrogen-effective-potential-radial-density)</li><li>Hydrogen spectral lines (hydrogen-spectral-lines)</li></ul></td>
+    <td><ul><li>Hydrogen from old quantum physics to Schrodinger theory (hydrogen-from-old-to-schrodinger)</li><li>Quantization across early evidence and spectra (quantization-history-and-spectra)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>5.7</code></td>
+    <td>Three-dimensional harmonic oscillator: radial solution and spectrum</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 24-34</span></td>
+    <td>Three-dimensional harmonic oscillator (three-dimensional-harmonic-oscillator)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Special functions in bound-state problems (special-functions-bound-states)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>5.8</code></td>
+    <td>Hydrogen atom and the periodic table</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 35-37</span></td>
+    <td>Hydrogen atom and periodic-table construction (periodic-table-construction)</td>
+    <td><ul><li>Hydrogen spectrum and degeneracy (hydrogen-spectrum-degeneracy)</li></ul></td>
+    <td><ul><li>Hydrogen from old quantum physics to Schrodinger theory (hydrogen-from-old-to-schrodinger)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>5.9</code></td>
+    <td>Hydrogen expectation values</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 38-44</span></td>
+    <td>Hydrogen expectation values (hydrogen-expectation-values)</td>
+    <td><ul><li>Expectation values and variance (expectation-values-variance)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>5.10</code></td>
+    <td>Chapter synthesis: solving central potentials</td>
+    <td>Traditional problems with central potential<br><span class="muted">p. 45-48</span></td>
+    <td>Central-potentials synthesis (central-potentials-synthesis)</td>
+    <td><ul><li>Central potentials and spherical separation (central-potentials-spherical-separation)</li><li>Spherical harmonics (spherical-harmonics)</li><li>Hydrogen spectrum and degeneracy (hydrogen-spectrum-degeneracy)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>6.1</code></td>
+    <td>Angular momentum: chapter roadmap</td>
+    <td>Angular momentum<br><span class="muted">p. 1</span></td>
+    <td>Angular momentum roadmap (angular-momentum-roadmap)</td>
+    <td><span class="muted">none</span></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+
+  <tr>
+    <td><code>6.2</code></td>
+    <td>Commutation relations and Levi-Civita notation</td>
+    <td>Angular momentum<br><span class="muted">p. 2</span></td>
+    <td>Angular momentum commutators (angular-momentum-commutators)</td>
+    <td><ul><li>Compatibility and measurement order (compatibility-measurement-order)</li><li>Observables, operators and commutators (observables-operators-commutators)</li></ul></td>
+    <td><ul><li>Operator algebra across representations (operator-algebra-across-representations)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>6.3</code></td>
+    <td>Angular momentum algebra</td>
+    <td>Angular momentum<br><span class="muted">p. 4-11</span></td>
+    <td>Angular momentum algebra and ladder operators (angular-momentum-algebra-ladders)</td>
+    <td><ul><li>Angular momentum commutators (angular-momentum-commutators)</li><li>Compatibility and measurement order (compatibility-measurement-order)</li><li>Ladder-operator methods (ladder-operator-methods)</li></ul></td>
+    <td><ul><li>Operator algebra across representations (operator-algebra-across-representations)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>6.4</code></td>
+    <td>Consequences of the algebra</td>
+    <td>Angular momentum<br><span class="muted">p. 12-14</span></td>
+    <td>Angular momentum variance and geometry (angular-momentum-variance-geometry)</td>
+    <td><ul><li>Angular momentum algebra and ladder operators (angular-momentum-algebra-ladders)</li><li>Expectation values and variance (expectation-values-variance)</li></ul></td>
+    <td><ul><li>Uncertainty across wave and operator formalisms (uncertainty-across-formalisms)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>6.5</code></td>
+    <td>Matrix representation</td>
+    <td>Angular momentum<br><span class="muted">p. 14-20</span></td>
+    <td>Angular momentum matrix representation (angular-momentum-matrix-representation)</td>
+    <td><ul><li>Angular momentum algebra and ladder operators (angular-momentum-algebra-ladders)</li><li>Dirac notation (dirac-notation)</li><li>Hilbert space, bases and completeness (hilbert-space-bases-completeness)</li><li>Unitary transformations and change of basis (unitary-transformations-change-basis)</li></ul></td>
+    <td><ul><li>Operator algebra across representations (operator-algebra-across-representations)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>6.6</code></td>
+    <td>Position-space representation</td>
+    <td>Angular momentum<br><span class="muted">p. 20-26</span></td>
+    <td>Angular momentum position-space representation (angular-momentum-position-representation)</td>
+    <td><ul><li>Spherical harmonics (spherical-harmonics)</li><li>Angular equations and special functions (angular-equations-special-functions)</li></ul></td>
+    <td><ul><li>Operator algebra across representations (operator-algebra-across-representations)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>6.7</code></td>
+    <td>Schrödinger uncertainty and Schwartz inequality</td>
+    <td>Angular momentum<br><span class="muted">p. 26-30</span></td>
+    <td>Schrodinger uncertainty and Schwartz inequality (schrodinger-uncertainty-schwartz)</td>
+    <td><span class="muted">none</span></td>
+    <td><ul><li>Uncertainty across wave and operator formalisms (uncertainty-across-formalisms)</li></ul></td>
+  </tr>
+
+  <tr>
+    <td><code>6.8</code></td>
+    <td>Chapter synthesis: angular momentum toolkit</td>
+    <td>Angular momentum<br><span class="muted">p. 30-33</span></td>
+    <td>Angular momentum chapter toolkit (angular-momentum-chapter-toolkit)</td>
+    <td><ul><li>Angular momentum roadmap (angular-momentum-roadmap)</li><li>Angular momentum algebra and ladder operators (angular-momentum-algebra-ladders)</li></ul></td>
+    <td><span class="muted">none</span></td>
+  </tr>
+</tbody>
+  </table>
+
+  <h2>Curated topics</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Topic id</th>
+        <th>Label</th>
+        <th>Usage</th>
+        <th>Sections</th>
+        <th>Chapters</th>
+      </tr>
+    </thead>
+    <tbody>
+  <tr>
+    <td><code>old-quantum-physics-overview</code></td>
+    <td>Old quantum physics overview</td>
+    <td>default</td>
+    <td>3</td>
+    <td>01</td>
+  </tr>
+
+  <tr>
+    <td><code>classical-wave-benchmark</code></td>
+    <td>Classical wave benchmark</td>
+    <td>default</td>
+    <td>5</td>
+    <td>01, 02</td>
+  </tr>
+
+  <tr>
+    <td><code>hydrogen-spectral-lines</code></td>
+    <td>Hydrogen spectral lines</td>
+    <td>default</td>
+    <td>3</td>
+    <td>01, 05</td>
+  </tr>
+
+  <tr>
+    <td><code>electron-experimental-evidence</code></td>
+    <td>Electron experimental evidence</td>
+    <td>default</td>
+    <td>3</td>
+    <td>01</td>
+  </tr>
+
+  <tr>
+    <td><code>black-body-radiation</code></td>
+    <td>Black-body radiation</td>
+    <td>default</td>
+    <td>1</td>
+    <td>01</td>
+  </tr>
+
+  <tr>
+    <td><code>photoelectric-effect</code></td>
+    <td>Photoelectric effect</td>
+    <td>default</td>
+    <td>1</td>
+    <td>01</td>
+  </tr>
+
+  <tr>
+    <td><code>bohr-hydrogen-model</code></td>
+    <td>Bohr hydrogen model</td>
+    <td>default</td>
+    <td>3</td>
+    <td>01</td>
+  </tr>
+
+  <tr>
+    <td><code>de-broglie-matter-waves</code></td>
+    <td>de Broglie matter waves</td>
+    <td>default</td>
+    <td>5</td>
+    <td>01, 02</td>
+  </tr>
+
+  <tr>
+    <td><code>semiclassical-quantization</code></td>
+    <td>Semi-classical quantization</td>
+    <td>default</td>
+    <td>4</td>
+    <td>01</td>
+  </tr>
+
+  <tr>
+    <td><code>schrodinger-equation</code></td>
+    <td>Schrodinger equation</td>
+    <td>default</td>
+    <td>4</td>
+    <td>02</td>
+  </tr>
+
+  <tr>
+    <td><code>stationary-states-tise</code></td>
+    <td>Stationary states and TISE</td>
+    <td>default</td>
+    <td>4</td>
+    <td>02, 04, 05</td>
+  </tr>
+
+  <tr>
+    <td><code>probability-density-current</code></td>
+    <td>Probability density and current</td>
+    <td>default</td>
+    <td>2</td>
+    <td>02, 04</td>
+  </tr>
+
+  <tr>
+    <td><code>infinite-potential-well</code></td>
+    <td>Infinite potential well</td>
+    <td>default</td>
+    <td>1</td>
+    <td>02</td>
+  </tr>
+
+  <tr>
+    <td><code>quantum-postulates-measurement</code></td>
+    <td>Quantum postulates and measurement</td>
+    <td>default</td>
+    <td>4</td>
+    <td>02</td>
+  </tr>
+
+  <tr>
+    <td><code>superposition-state-space</code></td>
+    <td>Superposition and state space</td>
+    <td>default</td>
+    <td>3</td>
+    <td>02, 03</td>
+  </tr>
+
+  <tr>
+    <td><code>observables-operators-commutators</code></td>
+    <td>Observables, operators and commutators</td>
+    <td>default</td>
+    <td>4</td>
+    <td>02, 03, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>born-rule-probabilities</code></td>
+    <td>Born rule and probabilities</td>
+    <td>default</td>
+    <td>3</td>
+    <td>02, 03</td>
+  </tr>
+
+  <tr>
+    <td><code>expectation-values-variance</code></td>
+    <td>Expectation values and variance</td>
+    <td>default</td>
+    <td>6</td>
+    <td>02, 03, 04, 05, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>equations-of-motion</code></td>
+    <td>Equations of motion</td>
+    <td>default</td>
+    <td>2</td>
+    <td>02, 03</td>
+  </tr>
+
+  <tr>
+    <td><code>wave-packets-fourier-uncertainty</code></td>
+    <td>Wave packets, Fourier width and uncertainty</td>
+    <td>default</td>
+    <td>4</td>
+    <td>02</td>
+  </tr>
+
+  <tr>
+    <td><code>wave-mechanics-synthesis</code></td>
+    <td>Wave mechanics synthesis</td>
+    <td>default</td>
+    <td>2</td>
+    <td>02</td>
+  </tr>
+
+  <tr>
+    <td><code>matrix-mechanics-spin-entry</code></td>
+    <td>Matrix mechanics and spin entry point</td>
+    <td>default</td>
+    <td>3</td>
+    <td>03</td>
+  </tr>
+
+  <tr>
+    <td><code>dirac-notation</code></td>
+    <td>Dirac notation</td>
+    <td>default</td>
+    <td>4</td>
+    <td>03, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>hilbert-space-bases-completeness</code></td>
+    <td>Hilbert space, bases and completeness</td>
+    <td>default</td>
+    <td>3</td>
+    <td>03, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>operators-spectral-decomposition</code></td>
+    <td>Operators and spectral decomposition</td>
+    <td>default</td>
+    <td>3</td>
+    <td>03</td>
+  </tr>
+
+  <tr>
+    <td><code>pauli-matrices-spin</code></td>
+    <td>Pauli matrices and spin</td>
+    <td>default</td>
+    <td>2</td>
+    <td>03</td>
+  </tr>
+
+  <tr>
+    <td><code>hermitian-observables</code></td>
+    <td>Hermitian observables</td>
+    <td>default</td>
+    <td>1</td>
+    <td>03</td>
+  </tr>
+
+  <tr>
+    <td><code>compatibility-measurement-order</code></td>
+    <td>Compatibility and measurement order</td>
+    <td>default</td>
+    <td>3</td>
+    <td>03, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>quantum-pictures-time-evolution</code></td>
+    <td>Quantum pictures and time evolution</td>
+    <td>default</td>
+    <td>2</td>
+    <td>03</td>
+  </tr>
+
+  <tr>
+    <td><code>unitary-transformations-change-basis</code></td>
+    <td>Unitary transformations and change of basis</td>
+    <td>default</td>
+    <td>2</td>
+    <td>03, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>operator-functions</code></td>
+    <td>Operator functions</td>
+    <td>default</td>
+    <td>1</td>
+    <td>03</td>
+  </tr>
+
+  <tr>
+    <td><code>one-dimensional-quantum-models</code></td>
+    <td>One-dimensional quantum models</td>
+    <td>default</td>
+    <td>2</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>harmonic-oscillator-model</code></td>
+    <td>Quantum harmonic oscillator model</td>
+    <td>default</td>
+    <td>5</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>hermite-quantization</code></td>
+    <td>Hermite equation and oscillator quantization</td>
+    <td>default</td>
+    <td>1</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>ladder-operator-methods</code></td>
+    <td>Ladder-operator methods</td>
+    <td>default</td>
+    <td>2</td>
+    <td>04, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>finite-well-bound-states</code></td>
+    <td>Finite-well bound states</td>
+    <td>default</td>
+    <td>4</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>finite-well-quantization-penetration</code></td>
+    <td>Finite-well quantization and penetration</td>
+    <td>default</td>
+    <td>2</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>scattering-reflection-transmission</code></td>
+    <td>Scattering, reflection and transmission</td>
+    <td>default</td>
+    <td>5</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>attractive-well-scattering</code></td>
+    <td>Attractive-well scattering</td>
+    <td>default</td>
+    <td>1</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>delta-function-potential</code></td>
+    <td>Delta-function potential</td>
+    <td>default</td>
+    <td>1</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>quantum-tunneling-barrier</code></td>
+    <td>Rectangular barrier and quantum tunneling</td>
+    <td>default</td>
+    <td>1</td>
+    <td>04</td>
+  </tr>
+
+  <tr>
+    <td><code>central-potentials-spherical-separation</code></td>
+    <td>Central potentials and spherical separation</td>
+    <td>default</td>
+    <td>3</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-equations-special-functions</code></td>
+    <td>Angular equations and special functions</td>
+    <td>default</td>
+    <td>3</td>
+    <td>05, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>spherical-harmonics</code></td>
+    <td>Spherical harmonics</td>
+    <td>default</td>
+    <td>3</td>
+    <td>05, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>hydrogen-radial-laguerre</code></td>
+    <td>Hydrogen radial equation and Laguerre solutions</td>
+    <td>default</td>
+    <td>1</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>hydrogen-effective-potential-radial-density</code></td>
+    <td>Hydrogen effective potential and radial density</td>
+    <td>default</td>
+    <td>2</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>hydrogen-spectrum-degeneracy</code></td>
+    <td>Hydrogen spectrum and degeneracy</td>
+    <td>default</td>
+    <td>3</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>three-dimensional-harmonic-oscillator</code></td>
+    <td>Three-dimensional harmonic oscillator</td>
+    <td>default</td>
+    <td>1</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>periodic-table-construction</code></td>
+    <td>Hydrogen atom and periodic-table construction</td>
+    <td>default</td>
+    <td>1</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>hydrogen-expectation-values</code></td>
+    <td>Hydrogen expectation values</td>
+    <td>default</td>
+    <td>1</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>central-potentials-synthesis</code></td>
+    <td>Central-potentials synthesis</td>
+    <td>default</td>
+    <td>1</td>
+    <td>05</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-roadmap</code></td>
+    <td>Angular momentum roadmap</td>
+    <td>default</td>
+    <td>2</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-commutators</code></td>
+    <td>Angular momentum commutators</td>
+    <td>default</td>
+    <td>2</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-algebra-ladders</code></td>
+    <td>Angular momentum algebra and ladder operators</td>
+    <td>default</td>
+    <td>4</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-variance-geometry</code></td>
+    <td>Angular momentum variance and geometry</td>
+    <td>default</td>
+    <td>1</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-matrix-representation</code></td>
+    <td>Angular momentum matrix representation</td>
+    <td>default</td>
+    <td>1</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-position-representation</code></td>
+    <td>Angular momentum position-space representation</td>
+    <td>default</td>
+    <td>1</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>schrodinger-uncertainty-schwartz</code></td>
+    <td>Schrodinger uncertainty and Schwartz inequality</td>
+    <td>default</td>
+    <td>1</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>angular-momentum-chapter-toolkit</code></td>
+    <td>Angular momentum chapter toolkit</td>
+    <td>default</td>
+    <td>1</td>
+    <td>06</td>
+  </tr>
+
+  <tr>
+    <td><code>quantization-history-and-spectra</code></td>
+    <td>Quantization across early evidence and spectra</td>
+    <td>advanced-support</td>
+    <td>7</td>
+    <td>01, 05</td>
+  </tr>
+
+  <tr>
+    <td><code>special-functions-bound-states</code></td>
+    <td>Special functions in bound-state problems</td>
+    <td>advanced-support</td>
+    <td>4</td>
+    <td>04, 05</td>
+  </tr>
+
+  <tr>
+    <td><code>operator-algebra-across-representations</code></td>
+    <td>Operator algebra across representations</td>
+    <td>advanced-support</td>
+    <td>6</td>
+    <td>03, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>uncertainty-across-formalisms</code></td>
+    <td>Uncertainty across wave and operator formalisms</td>
+    <td>advanced-support</td>
+    <td>5</td>
+    <td>02, 03, 04, 06</td>
+  </tr>
+
+  <tr>
+    <td><code>hydrogen-from-old-to-schrodinger</code></td>
+    <td>Hydrogen from old quantum physics to Schrodinger theory</td>
+    <td>advanced-support</td>
+    <td>5</td>
+    <td>01, 05</td>
+  </tr>
+</tbody>
+  </table>
+</main>
+</body>
+</html>
