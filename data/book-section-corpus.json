@@ -1,6 +1,6 @@
 {
   "version": "qm-book-section-corpus-v1",
-  "generatedAt": "2026-08-11T21:55:29.288Z",
+  "generatedAt": "2026-08-11T22:14:47.096Z",
   "sections": [
     {
       "chapterId": "01",
@@ -2630,6 +2630,41 @@
     {
       "chapterId": "07",
       "itemId": "7.1",
+      "topicTitle": "Addition of angular momenta: chapter roadmap",
+      "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-roadmap.html",
+      "pdfChapterNumber": "7",
+      "pdfChapterTitle": "Addition of angular momenta",
+      "pageStart": 1,
+      "pageEnd": 1,
+      "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+      "extractionSources": [
+        "chapter-07-theory.pdf"
+      ],
+      "referenceCount": 1,
+      "needsReview": false,
+      "references": [
+        {
+          "id": "qm-07-7.1",
+          "label": "Chapter 7, item 7.1",
+          "pdfChapterNumber": "7",
+          "pdfChapterTitle": "Addition of angular momenta",
+          "pageStart": 1,
+          "pageEnd": 1,
+          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+          "extractionSources": [
+            "chapter-07-theory.pdf"
+          ],
+          "needsReview": false,
+          "content": "C H A P T E R\n\n 7\n Addition of angular momenta!\n !\n\n O U T L I N E\n\n 7.1 Interactions between angular momenta 254\n 7.2 Commutation relations 256\n 7.3 Vectors in the coupled basis 261\n 7.3.1 Sequentially coupled basis 261\n 7.3.2 Non-sequentially coupled basis 263\n 7.4 Hilbert space expansion 264\n 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267\n 7.5.1 Coupling of 2 angular momenta 267\n 7.5.2 Coupling of 3 angular momenta 273\n 7.5.3 Recurrence relation for N angular momenta 274\n 7.6 Basis change of an operator 277\n Application 7.A Magnetic moment and the Zeeman effect 279\n Application 7.B Angular momentum of atoms and the Hund’s rules 282\n Appendix 7.A Exercises 284\n\n In the previous chapter, we analyzed systems with a single angular mo-\n \"\nmentum, L̂, which operates within a Hilbert space of dimension 2l + 1.\nHowever, in nature, we often encounter systems with multiple angular\nmomenta, such as orbital momentum L̂ \" and spin Ŝ\", which interact through\nvarious types of interactions represented by their respective Hamiltonian\nformulations. To address these systems, this chapter begins by exploring\nHamiltonians that describe these interactions. Following this, we explore\nthe addition of angular momenta and the formation of commuting ob-\n!\n!\n This book has a companion website hosting complementary materials. Visit this URL to\naccess it: https://www.elsevier.com/books-and-journals/book-companion/9780443328268.\n\nQuantum Mechanics Copyright © 2026 Elsevier Inc. All rights are\nhttps://doi.org/10.1016/B978-0-44-332826-8.00016-6 253 reserved, including those for text and data mining,\n AI training, and similar technologies.",
+          "excerpt": "C H A P T E R\n\n 7\n Addition of angular momenta!\n !\n\n O U T L I N E\n\n 7.1 Interactions between angular momenta 254\n 7.2 Commutation relations 256\n 7.3 Vectors in the coupled basis 261\n 7.3.1 Sequentially coupled basis 261\n 7.3.2 Non-sequentially coupled basis 263\n 7.4 Hilbert space expansion 264\n 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267\n 7.5.1 Coupling of 2 angular momenta 267\n 7.5.2 Coupling of 3 angular momenta 273\n 7.5.3 Recurrence relation for N angular momenta 274\n 7.6 Basis change of an operator 277\n Application 7.A Magnetic moment and the Zeeman effect 279\n Application 7.B Angular momentum of atoms and the Hund’s rules 282\n Appendix 7.A Exercises 284\n\n In the previous chapter, we analyzed systems with a single angular mo-\n \"\nmentum, L̂, which operates within a Hilbert space of dimension 2l + 1.\nHowever, in nature, we often encounter systems with multiple angular\nmomenta, such as orbital momentum L̂ \" and spin Ŝ\", which interact through\nvarious types of interactions represented by their respective Hamiltonian\nformulations...."
+        }
+      ],
+      "content": "C H A P T E R\n\n 7\n Addition of angular momenta!\n !\n\n O U T L I N E\n\n 7.1 Interactions between angular momenta 254\n 7.2 Commutation relations 256\n 7.3 Vectors in the coupled basis 261\n 7.3.1 Sequentially coupled basis 261\n 7.3.2 Non-sequentially coupled basis 263\n 7.4 Hilbert space expansion 264\n 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267\n 7.5.1 Coupling of 2 angular momenta 267\n 7.5.2 Coupling of 3 angular momenta 273\n 7.5.3 Recurrence relation for N angular momenta 274\n 7.6 Basis change of an operator 277\n Application 7.A Magnetic moment and the Zeeman effect 279\n Application 7.B Angular momentum of atoms and the Hund’s rules 282\n Appendix 7.A Exercises 284\n\n In the previous chapter, we analyzed systems with a single angular mo-\n \"\nmentum, L̂, which operates within a Hilbert space of dimension 2l + 1.\nHowever, in nature, we often encounter systems with multiple angular\nmomenta, such as orbital momentum L̂ \" and spin Ŝ\", which interact through\nvarious types of interactions represented by their respective Hamiltonian\nformulations. To address these systems, this chapter begins by exploring\nHamiltonians that describe these interactions. Following this, we explore\nthe addition of angular momenta and the formation of commuting ob-\n!\n!\n This book has a companion website hosting complementary materials. Visit this URL to\naccess it: https://www.elsevier.com/books-and-journals/book-companion/9780443328268.\n\nQuantum Mechanics Copyright © 2026 Elsevier Inc. All rights are\nhttps://doi.org/10.1016/B978-0-44-332826-8.00016-6 253 reserved, including those for text and data mining,\n AI training, and similar technologies.",
+      "excerpt": "C H A P T E R\n\n 7\n Addition of angular momenta!\n !\n\n O U T L I N E\n\n 7.1 Interactions between angular momenta 254\n 7.2 Commutation relations 256\n 7.3 Vectors in the coupled basis 261\n 7.3.1 Sequentially coupled basis 261\n 7.3.2 Non-sequentially coupled basis 263\n 7.4 Hilbert space expansion 264\n 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267\n 7.5.1 Coupling of 2 angular momenta 267\n 7.5.2 Coupling of 3 angular momenta 273\n 7.5.3 Recurrence relation for N angular momenta 274\n 7.6 Basis change of an operator 277\n Application 7.A Magnetic moment and the Zeeman effect 279\n Application 7.B Angular momentum of atoms and the Hund’s rules 282\n Appendix 7.A Exercises 284\n\n In the previous chapter, we analyzed systems with a single angular mo-\n \"\nmentum, L̂, which operates within a Hilbert space of dimension 2l + 1.\nHowever, in nature, we often encounter systems with multiple angular\nmomenta, such as orbital momentum L̂ \" and spin Ŝ\", which interact through\nvarious types of interactions represented by their respective Hamiltonian\nformulations...."
+    },
+    {
+      "chapterId": "07",
+      "itemId": "7.2",
       "topicTitle": "Interactions between angular momenta",
       "pagePath": "slides/chapter-07/interactions-between-angular-momenta.html",
       "pdfChapterNumber": "7",
@@ -2644,8 +2679,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.1",
-          "label": "Chapter 7, item 7.1",
+          "id": "qm-07-7.2",
+          "label": "Chapter 7, item 7.2",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 2,
@@ -2664,7 +2699,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.2",
+      "itemId": "7.3",
       "topicTitle": "Commutation relations",
       "pagePath": "slides/chapter-07/commutation-relations.html",
       "pdfChapterNumber": "7",
@@ -2679,8 +2714,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.2",
-          "label": "Chapter 7, item 7.2",
+          "id": "qm-07-7.3",
+          "label": "Chapter 7, item 7.3",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 4,
@@ -2699,7 +2734,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.3",
+      "itemId": "7.4",
       "topicTitle": "Vectors in the coupled basis",
       "pagePath": "slides/chapter-07/vectors-in-the-coupled-basis.html",
       "pdfChapterNumber": "7",
@@ -2714,8 +2749,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.3",
-          "label": "Chapter 7, item 7.3",
+          "id": "qm-07-7.4",
+          "label": "Chapter 7, item 7.4",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 9,
@@ -2734,7 +2769,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.4",
+      "itemId": "7.5",
       "topicTitle": "Hilbert space expansion",
       "pagePath": "slides/chapter-07/hilbert-space-expansion.html",
       "pdfChapterNumber": "7",
@@ -2749,8 +2784,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.4",
-          "label": "Chapter 7, item 7.4",
+          "id": "qm-07-7.5",
+          "label": "Chapter 7, item 7.5",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 12,
@@ -2769,7 +2804,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.5",
+      "itemId": "7.6",
       "topicTitle": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
       "pagePath": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
       "pdfChapterNumber": "7",
@@ -2784,8 +2819,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.5",
-          "label": "Chapter 7, item 7.5",
+          "id": "qm-07-7.6",
+          "label": "Chapter 7, item 7.6",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 15,
@@ -2804,7 +2839,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.6",
+      "itemId": "7.7",
       "topicTitle": "Basis change of an operator",
       "pagePath": "slides/chapter-07/basis-change-of-an-operator.html",
       "pdfChapterNumber": "7",
@@ -2819,8 +2854,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.6",
-          "label": "Chapter 7, item 7.6",
+          "id": "qm-07-7.7",
+          "label": "Chapter 7, item 7.7",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 25,
@@ -2839,7 +2874,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.7",
+      "itemId": "7.8",
       "topicTitle": "Application 7.A: Magnetic moment and the Zeeman effect",
       "pagePath": "slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html",
       "pdfChapterNumber": "7",
@@ -2854,8 +2889,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.7",
-          "label": "Chapter 7, item 7.7",
+          "id": "qm-07-7.8",
+          "label": "Chapter 7, item 7.8",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 27,
@@ -2874,7 +2909,7 @@
     },
     {
       "chapterId": "07",
-      "itemId": "7.8",
+      "itemId": "7.9",
       "topicTitle": "Application 7.B: Angular momentum of atoms and Hund's rules",
       "pagePath": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html",
       "pdfChapterNumber": "7",
@@ -2889,8 +2924,8 @@
       "needsReview": false,
       "references": [
         {
-          "id": "qm-07-7.8",
-          "label": "Chapter 7, item 7.8",
+          "id": "qm-07-7.9",
+          "label": "Chapter 7, item 7.9",
           "pdfChapterNumber": "7",
           "pdfChapterTitle": "Addition of angular momenta",
           "pageStart": 30,

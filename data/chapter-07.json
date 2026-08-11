@@ -3,55 +3,61 @@
   "topics": [
     {
       "id": "7.1",
+      "title": "Addition of angular momenta: chapter roadmap",
+      "note": "Chapter 7 introduces interactions between angular momenta and then builds the coupled basis, Clebsch-Gordan coefficients, basis changes and applications.",
+      "url": "slides/chapter-07/addition-of-angular-momenta-chapter-roadmap.html"
+    },
+    {
+      "id": "7.2",
       "title": "Interactions between angular momenta",
       "note": "Chapter 7 begins with Heisenberg, Ising, XY, antisymmetric, spin-orbit, local anisotropy and Zeeman Hamiltonians.",
       "url": "slides/chapter-07/interactions-between-angular-momenta.html",
       "aiExercise": true
     },
     {
-      "id": "7.2",
+      "id": "7.3",
       "title": "Commutation relations",
       "note": "Independent angular-momentum subspaces, total angular momentum, allowed l values and the projection condition m equals m1 plus m2.",
       "url": "slides/chapter-07/commutation-relations.html",
       "aiExercise": true
     },
     {
-      "id": "7.3",
+      "id": "7.4",
       "title": "Vectors in the coupled basis",
       "note": "The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially.",
       "url": "slides/chapter-07/vectors-in-the-coupled-basis.html",
       "aiExercise": true
     },
     {
-      "id": "7.4",
+      "id": "7.5",
       "title": "Hilbert space expansion",
       "note": "Matrix expansion by tensor products makes angular-momentum operators act in the total Hilbert space.",
       "url": "slides/chapter-07/hilbert-space-expansion.html",
       "aiExercise": true
     },
     {
-      "id": "7.5",
+      "id": "7.6",
       "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
       "note": "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
       "url": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
       "aiExercise": true
     },
     {
-      "id": "7.6",
+      "id": "7.7",
       "title": "Basis change of an operator",
       "note": "The Clebsch-Gordan matrix changes an operator from the local basis to the coupled basis.",
       "url": "slides/chapter-07/basis-change-of-an-operator.html",
       "aiExercise": true
     },
     {
-      "id": "7.7",
+      "id": "7.8",
       "title": "Application 7.A: Magnetic moment and the Zeeman effect",
       "note": "Application 7.A derives the magnetic moment projection, the Lande factor and the Zeeman Hamiltonian in the coupled basis.",
       "url": "slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html",
       "aiExercise": true
     },
     {
-      "id": "7.8",
+      "id": "7.9",
       "title": "Application 7.B: Angular momentum of atoms and Hund's rules",
       "note": "Application 7.B applies angular-momentum addition to atoms, Hund's rules and Russell-Saunders notation.",
       "url": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html",

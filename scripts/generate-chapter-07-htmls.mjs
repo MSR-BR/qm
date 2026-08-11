@@ -90,7 +90,7 @@ function renderPage(page, index, total) {
     <div class="col">${left}</div>
     <div class="col">${right}</div>
     ${(page.fullWidth || []).map((entry) => card(entry).replace("<div class=\"card", "<div style=\"grid-column:1 / -1!important;\" class=\"card")).join("\n")}
-    ${exerciseBoundary(page)}
+    ${page.aiExercise === false ? "" : exerciseBoundary(page)}
     ${resourceLinks()}${sourceNote()}
   </div>
 </div></body></html>
@@ -98,6 +98,59 @@ function renderPage(page, index, total) {
 }
 
 const pages = [
+  {
+    id: "7.1",
+    file: "addition-of-angular-momenta-chapter-roadmap.html",
+    title: "Addition of angular momenta: chapter roadmap",
+    subtitle: "From interacting angular momenta to coupled bases and applications",
+    description: "Chapter 7 introduces interactions between angular momenta and then builds the coupled basis, Clebsch-Gordan coefficients, basis changes and applications.",
+    aiExercise: false,
+    guide: String.raw`<p>The chapter starts from physical Hamiltonians containing more than one angular momentum and then develops the basis language needed to treat those systems.</p><p>This first item is intentionally qualitative. The detailed definitions, calculations and examples are developed in the following items and in Chapter 7.</p>`,
+    cards: [
+      {
+        title: "Physical starting point",
+        icon: "fa-solid fa-magnet",
+        body: String.raw`
+          <p>The opening section introduces interaction terms involving two angular momenta: exchange interactions, spin-orbit coupling, local anisotropy and the Zeeman interaction.</p>
+          <p>The common issue is that the Hamiltonian contains more than one angular momentum, so the local labels alone are not always the most useful basis labels.</p>
+        `
+      },
+      {
+        title: "What the chapter builds",
+        icon: "fa-solid fa-layer-group",
+        color: "green",
+        body: String.raw`
+          <p>The chapter constructs the coupled basis from angular momenta that first live in independent Hilbert subspaces.</p>
+          <p>The local basis keeps the individual projections visible; the coupled basis keeps the total angular momentum and total projection visible.</p>
+        `
+      },
+      {
+        title: "Chapter sequence",
+        icon: "fa-solid fa-route",
+        color: "purple",
+        body: String.raw`
+          <ul class="bullet">
+            <li>interactions between angular momenta;</li>
+            <li>commutation relations and the local/coupled bases;</li>
+            <li>vectors in sequential and non-sequential coupled bases;</li>
+            <li>Hilbert-space expansion by tensor products;</li>
+            <li>Clebsch-Gordan coefficients and basis-change matrices;</li>
+            <li>basis change of operators;</li>
+            <li>magnetic moment, Zeeman effect and Hund's rules.</li>
+          </ul>
+        `
+      },
+      {
+        title: "Reading boundary",
+        icon: "fa-solid fa-book-open",
+        color: "orange",
+        body: String.raw`
+          <p>This roadmap should be used only to keep the logic of the chapter visible. It does not replace the worked algebra, the derivations or the examples.</p>
+          <p>The mathematical details begin in the next item, with the interaction Hamiltonians and the addition problem they motivate.</p>
+        `
+      }
+    ]
+  },
   {
     id: "7.1",
     file: "interactions-between-angular-momenta.html",
@@ -607,6 +660,10 @@ const pages = [
   }
 ];
 
+pages.forEach((page, index) => {
+  page.id = `7.${index + 1}`;
+});
+
 await mkdir(chapterDir, { recursive: true });
 for (const entry of await readdir(chapterDir)) {
   if (entry.endsWith(".html")) await unlink(path.join(chapterDir, entry));
@@ -621,7 +678,7 @@ const data = {
     title: page.title,
     note: page.description,
     url: `slides/chapter-07/${page.file}`,
-    aiExercise: true
+    ...(page.aiExercise === false ? {} : { aiExercise: true })
   }))
 };
 

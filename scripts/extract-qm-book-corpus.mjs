@@ -65,10 +65,11 @@ const CHAPTERS = [
     title: "Addition of angular momenta",
     theoryPdf: resolve(ROOT_DIR, "sources/chapter-07/c7-Reis-Quantum-Mechanics.pdf"),
     solutionsPdf: resolve(ROOT_DIR, "sources/chapter-07/c7-Reis-QM-solutions.pdf"),
-    // The HTML chapter follows the PDF outline: interactions, commutation
-    // relations, coupled vectors, Hilbert-space expansion, Clebsch-Gordan
-    // coefficients, basis change, and the two applications.
-    ranges: [[2, 3], [4, 8], [9, 12], [12, 15], [15, 25], [25, 27], [27, 30], [30, 32]]
+    // The HTML chapter starts with a roadmap item and then follows the PDF
+    // outline: interactions, commutation relations, coupled vectors,
+    // Hilbert-space expansion, Clebsch-Gordan coefficients, basis change,
+    // and the two applications.
+    ranges: [[1, 1], [2, 3], [4, 8], [9, 12], [12, 15], [15, 25], [25, 27], [27, 30], [30, 32]]
   }
 ];
 
