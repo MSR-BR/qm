@@ -8,6 +8,14 @@
   const DEFAULT_VALIDATOR_EMAILS = ["marioreis@id.uff.br"];
   const EXERCISE_GENERATION_ENABLED = true;
 
+  function sanitizeGeneratedExerciseText(value) {
+    return String(value || "")
+      .replace(/\b(?:as|according to|following)\s+(?:prof\.?|professor)\s+mario\s+reis,?\s*/gi, "")
+      .replace(/\b(?:prof\.?|professor)\s+mario\s+reis\b/gi, "this material")
+      .replace(/\bmario\s+reis\b/gi, "this material")
+      .replace(/(^|[.!?] +)([a-zà-ÿ])/g, (_match, lead, letter) => lead + letter.toUpperCase());
+  }
+
   function getCurrentPageReference() {
     return `${window.location.pathname}${window.location.search}${window.location.hash}` || "/";
   }
@@ -97,7 +105,7 @@
   }
 
   function hasProseCue(value) {
-    return /\b(?:where|for|consider|suppose|show|calculate|determine|system|state|particle|wave|energy|operator|hamiltonian|spin|momentum|potential|eigenvalue|eigenvector|function|equation|probability|commutator|basis|limit|therefore|hence)\b/i.test(String(value || ""));
+    return /\b(?:where|for|consider|suppose|show|calculate|determine|evaluate|using|given|since|system|state|particle|wave|energy|operator|hamiltonian|spin|momentum|potential|eigenvalue|eigenvector|function|equation|probability|commutator|basis|limit|therefore|hence)\b/i.test(String(value || ""));
   }
 
   function convertStandaloneMathLine(line) {
@@ -148,6 +156,14 @@
         : `\\(${cleaned}\\)`;
     }
 
+    if (/\\\(|\\\[/.test(line)) {
+      return line;
+    }
+
+    if (/:/.test(line) && countWords(line) > 0 && !/[=+*/→≤≥≠-]/.test(line)) {
+      return line;
+    }
+
     if (countWords(line) <= 2 && shouldDisplayEquation(line)) {
       const cleaned = cleanupEquation(line);
       return isSimpleInlineMath(cleaned) ? `\\(${latexifySnippet(cleaned)}\\)` : `\\[${cleaned}\\]`;
@@ -156,9 +172,145 @@
     return line;
   }
 
+  function repairGeneratedMathDelimiters(value) {
+    let text = String(value || "")
+      .replace(/\r\n?/g, "\n");
+
+    const sourceLines = text.split("\n");
+    const joinedLines = [];
+    let pendingInline = "";
+    sourceLines.forEach(function (rawLine, index) {
+      const raw = String(rawLine || "");
+      if (pendingInline && !raw.trim()) {
+        joinedLines.push(pendingInline + "\\)");
+        joinedLines.push(raw);
+        pendingInline = "";
+        return;
+      }
+
+      const line = pendingInline ? pendingInline + " " + raw.trim() : raw;
+      const inlineOpen = (line.match(/\\\(/g) || []).length;
+      const inlineClose = (line.match(/\\\)/g) || []).length;
+      if (inlineOpen > inlineClose) {
+        const nextLine = String(sourceLines[index + 1] || "");
+        const continuesMath = /^\s*(?:[.,;:+\-*/=})\]]|\d|\\[A-Za-z])/.test(nextLine);
+        if (!nextLine.trim() || !continuesMath) {
+          joinedLines.push(line + "\\)");
+          pendingInline = "";
+        } else {
+          pendingInline = line;
+        }
+        return;
+      }
+
+      joinedLines.push(line);
+      pendingInline = "";
+    });
+    if (pendingInline) joinedLines.push(pendingInline + "\\)");
+
+    text = joinedLines
+      .join("\n")
+      .replace(/(\d)\s+\.(\d)/g, "$1.$2")
+      .replace(/\\\(\s*\\\)/g, "")
+      .replace(/\\\[\s*\\\]/g, "");
+
+    let output = "";
+    let cursor = 0;
+    let inlineBalance = 0;
+    let displayBalance = 0;
+    const tokenPattern = /\\[()[\]]/g;
+    let match;
+    while ((match = tokenPattern.exec(text))) {
+      output += text.slice(cursor, match.index);
+      const token = match[0];
+      if (token === "\\(") {
+        inlineBalance += 1;
+        output += token;
+      } else if (token === "\\)") {
+        if (inlineBalance > 0) {
+          inlineBalance -= 1;
+          output += token;
+        }
+      } else if (token === "\\[") {
+        displayBalance += 1;
+        output += token;
+      } else if (token === "\\]") {
+        if (displayBalance > 0) {
+          displayBalance -= 1;
+          output += token;
+        }
+      }
+      cursor = match.index + token.length;
+    }
+    output += text.slice(cursor);
+
+    if (displayBalance > 0) output += "\\]".repeat(displayBalance);
+    if (inlineBalance > 0) output += "\\)".repeat(inlineBalance);
+    return output;
+  }
+
+  function replaceOutsideMathSegments(value, transform) {
+    const tokens = [];
+    const masked = String(value || "").replace(mathSegmentPattern, function (match) {
+      const token = `@@TERMO_MATH_${tokens.length}@@`;
+      tokens.push(match);
+      return token;
+    });
+
+    return transform(masked).replace(/@@TERMO_MATH_(\d+)@@/g, function (_match, index) {
+      return tokens[Number(index)] || "";
+    });
+  }
+
+  function wrapBareLatexExpressions(value) {
+    const latexCommand = /\\(?:left|right|frac|partial|nabla|sum|int|sqrt|cdot|text|mathrm|to|rightarrow|le|ge|neq|infty|hat|vec|epsilon|varepsilon|delta|hbar|ell|langle|rangle|bra|ket|braket|pm|mp|dagger|alpha|beta|gamma|theta|Theta|Phi|phi|lambda|mu|sigma|rho|Omega|Delta|ln|exp|sin|cos|tan)(?![A-Za-z])/;
+    const latexRun = /(^|[^A-Za-zÀ-ÿ\\])((?:(?:\\(?:text|mathrm)\s*\{[^}]*\})|(?:\{[^}]*\})|(?:\\[A-Za-z]+)|(?:[A-Za-z](?![A-Za-zÀ-ÿ]))|(?:\d+(?:\.\d+)?)|[\s_{}()[\]=+\-*/^<>.,|]){4,})(?=$|[^A-Za-zÀ-ÿ])/g;
+
+    return replaceOutsideMathSegments(value, function (segment) {
+      return segment.replace(latexRun, function (match, lead, candidate) {
+        if (!latexCommand.test(candidate)) return match;
+        const cleaned = String(candidate || "")
+          .replace(/\s*\n\s*/g, " ")
+          .replace(/\s{2,}/g, " ")
+          .trim();
+        if (!cleaned || !latexCommand.test(cleaned)) return match;
+        const punctuation = cleaned.match(/[.,;:]$/)?.[0] || "";
+        const core = punctuation ? cleaned.slice(0, -1).trim() : cleaned;
+        if (!core || !latexCommand.test(core)) return match;
+        return `${lead}\\(${latexifySnippet(core)}\\)${punctuation}`;
+      });
+    });
+  }
+
+  function separateAdjacentMathAndText(value) {
+    return String(value || "")
+      .replace(/(\\\)|\\\])(?=[A-Za-zÀ-ÿ])/g, "$1 ")
+      .replace(/([,.;:])(?=\\\(|\\\[)/g, "$1 ")
+      .replace(/([A-Za-zÀ-ÿ])(?=\\\(|\\\[)/g, "$1 ");
+  }
+
+  function wrapBareMathTokens(value) {
+    return replaceOutsideMathSegments(wrapBareLatexExpressions(value), function (segment) {
+      return segment
+        .replace(/(^|[^A-Za-zÀ-ÿ\\])([A-Za-z])_([A-Za-z0-9]+)\b/g, function (_match, lead, symbol, subscript) {
+          return `${lead}\\(${symbol}_{${subscript}}\\)`;
+        })
+        .replace(/(^|[^A-Za-zÀ-ÿ\\])([A-Za-z])\^([A-Za-z0-9]+)\b/g, function (_match, lead, symbol, superscript) {
+          return `${lead}\\(${symbol}^{${superscript}}\\)`;
+        });
+    });
+  }
+
+  function unwrapProseDisplayMath(value) {
+    return String(value || "").replace(/\\\[([\s\S]*?)\\\]/g, function (match, content) {
+      return hasProseCue(content) ? content.trim() : match;
+    });
+  }
+
   function normalizeGeneratedMath(value) {
-    return flattenNestedMathDelimiters(String(value || "")
-      .replace(/\r\n?/g, "\n")
+    const normalized = wrapBareMathTokens(
+      repairGeneratedMathDelimiters(sanitizeGeneratedExerciseText(value))
+        .replace(/\r\n?/g, "\n")
       .replace(/\\\\/g, "\\")
       .replace(/^\s*```(?:latex|tex)?\s*$/gim, "")
       .replace(/^\s*```\s*$/gm, "")
@@ -180,7 +332,10 @@
       })
       .join("\n")
       .replace(/\n{3,}/g, "\n\n")
-      .trim());
+      .trim()
+    );
+    const flattened = separateAdjacentMathAndText(flattenNestedMathDelimiters(normalized));
+    return separateAdjacentMathAndText(wrapBareMathTokens(unwrapProseDisplayMath(flattened)));
   }
 
   function flattenNestedMathDelimiters(value) {
@@ -243,7 +398,7 @@
       /(^|[^\\])\[\s*([^[\]\n]{3,180})\s*\]/g,
       function (match, lead, snippet) {
         if (!isMathy(snippet)) return match;
-        return `${lead}\\(${latexifySnippet(snippet)}\\)`;
+        return `${lead}\\(\\left[${latexifySnippet(snippet)}\\right]\\)`;
       }
     );
 

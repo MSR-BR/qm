@@ -13,7 +13,7 @@
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0810.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 </head><body><div class="slide">
@@ -21,20 +21,24 @@
   <div class="body">
     <div class="card orange guide-card">
       <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-      <p>This item follows the book's Section 6.4. It first shows how the angular-momentum matrices are assembled in a fixed-\(l\) subspace and then develops Example 6.2 up to the \(x\)-basis and the matrix \(\hat U\).</p>
+      <p>This item builds the matrix representation in a fixed-\(l\) subspace and then develops the \(l=1\) change of basis from the \(z\)-basis to the \(x\)-basis.</p>
     </div>
     <div class="col">
       <div class="card">
         <div class="ch"><i class="fa-solid fa-table-cells"></i> How the matrix is built</div>
-        <p>For a fixed angular momentum \(l\), the allowed \(m\) values define a \((2l+1)\)-dimensional subspace. Matrix entries are the projections between basis states.</p>
-        <div class="eq key-eq">\[\hat L_z=\sum_{m',m}\langle l,m'|\hat L_z|l,m\rangle |l,m'\rangle\langle l,m|\]</div>
-        <div class="eq ">\[\langle l,m'|\hat L_z|l,m\rangle=m\hbar\delta_{m',m}\]</div>
-        <div class="eq ">\[\langle l,m'|\hat L^2|l,m\rangle=l(l+1)\hbar^2\delta_{m',m}\]</div>
+        <p>For a fixed angular momentum \(l\), the allowed \(m\) values define a \((2l+1)\)-dimensional subspace. The basis dyads \(|l,m'\rangle\langle l,m|\) carry the matrix entries.</p>
+        <div class="eq ">\[\hat L_z=\sum_{m',m}\langle l,m'|\hat L_z|l,m\rangle |l,m'\rangle\langle l,m|\]</div>
+        <div class="eq ">\[\hat L^2=\sum_{m',m}\langle l,m'|\hat L^2|l,m\rangle |l,m'\rangle\langle l,m|\]</div>
+        <div class="eq ">\[\hat L_\pm=\sum_{m',m}\langle l,m'|\hat L_\pm|l,m\rangle |l,m'\rangle\langle l,m|\]</div>
+        <p>The matrix elements are fixed by the eigenvalue equations and by the ladder action:</p>
+        <div class="eq key-eq">\[\langle l,m'|\hat L_z|l,m\rangle=m\hbar\delta_{m',m}\]</div>
+        <div class="eq key-eq">\[\langle l,m'|\hat L^2|l,m\rangle=l(l+1)\hbar^2\delta_{m',m}\]</div>
         <div class="eq key-eq">\[\langle l,m'|\hat L_\pm|l,m\rangle=\sqrt{l(l+1)-m(m\pm1)}\,\hbar\delta_{m',m\pm1}\]</div>
       </div>
       <div class="card green">
-        <div class="ch green"><i class="fa-solid fa-vector-square"></i> Example 6.1: \(l=1\) basis</div>
+        <div class="ch green"><i class="fa-solid fa-vector-square"></i> The \(l=1\) basis and matrices</div>
         <div class="eq key-eq">\[|1,+1\rangle=\begin{pmatrix}1\\0\\0\end{pmatrix},\qquad |1,0\rangle=\begin{pmatrix}0\\1\\0\end{pmatrix},\qquad |1,-1\rangle=\begin{pmatrix}0\\0\\1\end{pmatrix}\]</div>
+        <div class="eq ">\[\hat L_z=\hbar|1,+1\rangle\langle1,+1|-\hbar|1,-1\rangle\langle1,-1|\]</div>
         <div class="eq ">\[\hat L_z=\hbar\begin{pmatrix}1&0&0\\0&0&0\\0&0&-1\end{pmatrix}\]</div>
         <div class="eq ">\[\hat L_+=\sqrt2\hbar\begin{pmatrix}0&1&0\\0&0&1\\0&0&0\end{pmatrix},\qquad \hat L_-=\sqrt2\hbar\begin{pmatrix}0&0&0\\1&0&0\\0&1&0\end{pmatrix}\]</div>
         <div class="eq key-eq">\[\hat L_x={\hbar\over\sqrt2}\begin{pmatrix}0&1&0\\1&0&1\\0&1&0\end{pmatrix},\qquad \hat L_y={i\hbar\over\sqrt2}\begin{pmatrix}0&-1&0\\1&0&-1\\0&1&0\end{pmatrix}\]</div>
@@ -42,8 +46,8 @@
     </div>
     <div class="col">
       <div class="card purple">
-        <div class="ch purple"><i class="fa-solid fa-compass"></i> Example 6.2: eigenvectors of \(\hat L_x\)</div>
-        <p>The book solves the eigenvalue equation in the \(z\)-basis:</p>
+        <div class="ch purple"><i class="fa-solid fa-compass"></i> Eigenvectors of \(\hat L_x\)</div>
+        <p>The \(x\)-basis is obtained from the eigenvalue equation written in the \(z\)-basis:</p>
         <div class="eq key-eq">\[\hat L_x|l,m\rangle_x=\lambda |l,m\rangle_x\]</div>
         <p>For \(l=1\), the determinant gives</p>
         <div class="eq ">\[-\lambda^3+2\lambda\hbar^2=0,\qquad \lambda=+\hbar,0,-\hbar.\]</div>
@@ -74,7 +78,7 @@
     <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
       <p>This page supports guided exercises on: constructing angular-momentum matrices in the fixed-\(l\) basis and using \(\hat U\) to diagonalize \(\hat L_x\).</p>
-      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Long-form material:</span> complete proofs, long demonstrations, extended examples and the full exercise set remain in the textbook.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in Chapter 6.</li></ul>
     </div>
     <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
       <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>

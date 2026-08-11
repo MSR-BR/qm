@@ -13,7 +13,7 @@
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0810.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 <!-- termo-seo:start -->
@@ -39,7 +39,7 @@
   <div class="body">
     <div class="card orange guide-card">
       <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-      <p>This page puts the target result first: the compact commutator obtained in Section 6.1 of the book. The definitions and Levi-Civita notation that follow are the passage used in the proof in Box 6.1.</p>
+      <p>This page puts the target result first: the compact commutator of angular-momentum components. The definitions and Levi-Civita notation then show the algebraic path behind that result.</p>
     </div>
     <div class="col">
       <div class="card purple">
@@ -50,22 +50,22 @@
       </div>
       <div class="card">
         <div class="ch"><i class="fa-solid fa-compass-drafting"></i> Definition used in the proof</div>
-        <p>The book begins from angular momentum as a vector product and then writes its Cartesian components.</p>
+        <p>Angular momentum begins as a vector product and is then written in Cartesian components.</p>
         <div class="eq key-eq">\[\vec L=\vec r\times\vec p\]</div>
         <div class="eq ">\[\vec L=L_x\hat x+L_y\hat y+L_z\hat z\]</div>
         <p>For operators, the vector product is represented by the Levi-Civita symbol:</p>
         <div class="eq key-eq">\[\hat L_i=\epsilon_{ijk}\hat x_j\hat p_k\]</div>
-        <p>Box 6.1 uses this form together with \([\hat x_i,\hat p_j]=i\hbar\delta_{ij}\) to obtain the commutator above.</p>
+        <p>This form, together with \([\hat x_i,\hat p_j]=i\hbar\delta_{ij}\), leads to the compact commutator above.</p>
       </div>
     </div>
     <div class="col">
       <div class="card green">
-        <div class="ch green"><i class="fa-solid fa-language"></i> Levi-Civita notation from Appendix 6.A</div>
+        <div class="ch green"><i class="fa-solid fa-language"></i> Levi-Civita notation</div>
         <p>The Levi-Civita symbol has values \(+1\), \(-1\), or \(0\), depending on the permutation of its three indices.</p>
         <div class="eq ">\[\epsilon_{ijk}=\begin{cases}+1, & \text{even permutations},\\ -1, & \text{odd permutations},\\ 0, & i=j\ \text{or}\ i=k\ \text{or}\ j=k.\end{cases}\]</div>
         <p>The reduced identity used in the commutator manipulation is</p>
         <div class="eq key-eq">\[\epsilon_{ijk}\epsilon_{imn}=\delta_{jm}\delta_{kn}-\delta_{jn}\delta_{km}\]</div>
-        <p>The book uses Einstein notation: a repeated index indicates summation over that index.</p>
+        <p>Einstein notation is used: a repeated index indicates summation over that index.</p>
       </div>
       <div class="card purple">
         <div class="ch purple"><i class="fa-solid fa-arrows-spin"></i> Cyclic components</div>
@@ -75,18 +75,14 @@
       </div>
       <div class="card orange">
         <div class="ch orange"><i class="fa-solid fa-bullseye"></i> Physical consequence</div>
-        <p>Because these components do not commute, the book states that it is impossible to have simultaneous and precise knowledge of two angular-momentum components.</p>
+        <p>Because these components do not commute, it is impossible to have simultaneous and precise knowledge of two angular-momentum components.</p>
         <p>In matrix language, the component matrices cannot be diagonalized simultaneously because they do not share the same vector basis.</p>
       </div>
-    </div>
-    <div class="card orange" style="grid-column:1 / -1!important;">
-      <div class="ch orange"><i class="fa-solid fa-book"></i> Where the proof goes</div>
-      <p>The algebraic proof of the commutator is not reproduced here. It is the detailed Box 6.1 calculation in the textbook, based on the operator definition, the position-momentum commutator and the Levi-Civita identities.</p>
     </div>
     <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
       <p>This page supports guided exercises on: the angular-momentum commutator, the Levi-Civita notation used in its proof and the direct physical meaning.</p>
-      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Long-form material:</span> complete proofs, long demonstrations, extended examples and the full exercise set remain in the textbook.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in Chapter 6.</li></ul>
     </div>
     <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
       <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>

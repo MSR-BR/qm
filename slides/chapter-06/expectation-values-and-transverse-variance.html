@@ -13,7 +13,7 @@
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0810.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 </head><body><div class="slide">
@@ -21,12 +21,12 @@
   <div class="body">
     <div class="card orange guide-card">
       <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-      <p>This item follows the book's Section 6.3. After \(\hat L^2\) and \(\hat L_z\) have definite eigenvalues, the text asks what can still be said about the \(x\) and \(y\) components.</p>
+      <p>After \(\hat L^2\) and \(\hat L_z\) have definite eigenvalues, the next question is what can still be said about the \(x\) and \(y\) components.</p>
     </div>
     <div class="col">
       <div class="card">
         <div class="ch"><i class="fa-solid fa-arrows-left-right"></i> Mean transverse components</div>
-        <p>The book writes \(\hat L_x\) and \(\hat L_y\) through \(\hat L_\pm\). The ladder action makes the relevant inner products proportional to \(\langle l,m|l,m\pm1\rangle\), which vanish.</p>
+        <p>Writing \(\hat L_x\) and \(\hat L_y\) through \(\hat L_\pm\), the ladder action makes the relevant inner products proportional to \(\langle l,m|l,m\pm1\rangle\), which vanish.</p>
         <div class="eq ">\[\langle \hat L_x\rangle={1\over2}\left(\langle l,m|\hat L_+|l,m\rangle+\langle l,m|\hat L_-|l,m\rangle\right)\]</div>
         <div class="eq ">\[\langle \hat L_y\rangle={1\over2i}\left(\langle l,m|\hat L_+|l,m\rangle-\langle l,m|\hat L_-|l,m\rangle\right)\]</div>
         <div class="eq key-eq">\[\langle \hat L_x\rangle=\langle \hat L_y\rangle=0\]</div>
@@ -43,7 +43,7 @@
     <div class="col">
       <div class="card purple">
         <div class="ch purple"><i class="fa-solid fa-wave-square"></i> Variances and standard deviations</div>
-        <p>Using \(\operatorname{var}(L_x)=\langle \hat L_x^2\rangle-\langle \hat L_x\rangle^2\), the book obtains</p>
+        <p>Using \(\operatorname{var}(L_x)=\langle \hat L_x^2\rangle-\langle \hat L_x\rangle^2\), the variances follow as</p>
         <div class="eq key-eq">\[\operatorname{var}(L_x)=\operatorname{var}(L_y)={\hbar^2\over2}\left[l(l+1)-m^2\right]\]</div>
         <div class="eq key-eq">\[\Delta L_x=\Delta L_y={\hbar\over\sqrt2}\left[l(l+1)-m^2\right]^{1/2}\]</div>
         <div class="eq ">\[\Delta L_z=0\]</div>
@@ -53,22 +53,22 @@
         <div class="ch orange"><i class="fa-solid fa-location-arrow"></i> Maximum projection</div>
         <p>Even for the maximum projection \(m=l\), the transverse spread does not vanish:</p>
         <div class="eq key-eq">\[\Delta L_x(m=l)=\Delta L_y(m=l)=\hbar\sqrt{l\over2}\]</div>
-        <p>The book uses this to emphasize that the angular momentum is not absolutely aligned with the \(z\)-axis.</p>
+        <p>Therefore the angular momentum is not absolutely aligned with the \(z\)-axis, even at maximum projection.</p>
       </div>
       <div class="card purple">
         <div class="ch purple"><i class="fa-solid fa-chart-area"></i> Cone representation</div>
-        <figure class="book-figure"><img src="../../assets/chapter-06/figures/angular-momentum-cone-l3.png" alt="Angular momentum cone for l equals 3" /><figcaption>Figure 6.1 from the textbook: for \(l=3\), the magnitude \(\sqrt{l(l+1)}\hbar\) and projection \(m\hbar\) are definite, while the orthogonal components are not.</figcaption></figure>
+        <figure class="book-figure"><img src="../../assets/chapter-06/figures/angular-momentum-cone-l3.png" alt="Angular momentum cone for l equals 3" /><figcaption>For \(l=3\), the magnitude \(\sqrt{l(l+1)}\hbar\) and projection \(m\hbar\) are definite, while the orthogonal components are not.</figcaption></figure>
       </div>
     </div>
     <div class="card green" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-lightbulb"></i> Physical consequence</div>
       <p>After a measurement of \(L_z\), the value of that component is precise. Since \(L_x\) and \(L_y\) retain finite variances, the angular momentum cannot be pictured as a classical vector pointing in one sharply defined direction.</p>
-      <p>The cone is the book's visualization aid: the magnitude \(\sqrt{l(l+1)}\hbar\) and the height \(m\hbar\) are fixed, while any position on the cone surface is equally probable.</p>
+      <p>The cone is a visualization aid: the magnitude \(\sqrt{l(l+1)}\hbar\) and the height \(m\hbar\) are fixed, while any position on the cone surface is equally probable.</p>
     </div>
     <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
       <p>This page supports guided exercises on: expectation values, transverse variances and the physical cone representation of angular momentum.</p>
-      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Long-form material:</span> complete proofs, long demonstrations, extended examples and the full exercise set remain in the textbook.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in Chapter 6.</li></ul>
     </div>
     <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
       <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>

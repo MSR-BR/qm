@@ -13,7 +13,7 @@
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0810.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 </head><body><div class="slide">
@@ -21,7 +21,7 @@
   <div class="body">
     <div class="card orange guide-card">
       <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-      <p>The book obtains the position representation directly from \(\vec{\hat p}=-i\hbar\vec\nabla\). This connects the angular equation of central potentials to angular-momentum eigenfunctions.</p>
+      <p>The position representation follows directly from \(\vec{\hat p}=-i\hbar\vec\nabla\). This connects the angular equation of central potentials to angular-momentum eigenfunctions.</p>
     </div>
     <div class="col">
       <div class="card">
@@ -33,50 +33,50 @@
       </div>
       <div class="card green">
         <div class="ch green"><i class="fa-solid fa-compass-drafting"></i> Cartesian unit vectors</div>
-        <p>The book then uses the unit vectors from the spherical-coordinate appendix.</p>
+        <p>The spherical-coordinate unit vectors are then written in the Cartesian directions.</p>
         <div class="eq ">\[\hat x=\hat r\sin\theta\cos\phi+\hat\theta\cos\theta\cos\phi-\hat\phi\sin\phi\]</div>
         <div class="eq ">\[\hat y=\hat r\sin\theta\sin\phi+\hat\theta\cos\theta\sin\phi+\hat\phi\cos\phi\]</div>
-        <div class="eq key-eq">\[\hat z=\hat r\cos\theta-\hat\theta\sin\theta\]</div>
-        <p>The hat denotes unit vectors here; the same symbol is also used for operators, as in the book.</p>
+        <div class="eq ">\[\hat z=\hat r\cos\theta-\hat\theta\sin\theta\]</div>
+        <p>The hat denotes unit vectors in this card; the same symbol also denotes operators when attached to observables.</p>
       </div>
     </div>
     <div class="col">
       <div class="card purple">
         <div class="ch purple"><i class="fa-solid fa-angles-right"></i> Component operators</div>
-        <div class="eq key-eq">\[\hat L_z=\hat z\cdot\vec{\hat L}=(-i\hbar)(\hat r\cos\theta-\hat\theta\sin\theta)\cdot\left(\hat\phi{\partial\over\partial\theta}-{\hat\theta\over\sin\theta}{\partial\over\partial\phi}\right)=-i\hbar{\partial\over\partial\phi}\]</div>
+        <div class="eq ">\[\hat L_z=\hat z\cdot\vec{\hat L}=(-i\hbar)(\hat r\cos\theta-\hat\theta\sin\theta)\cdot\left(\hat\phi{\partial\over\partial\theta}-{\hat\theta\over\sin\theta}{\partial\over\partial\phi}\right)=-i\hbar{\partial\over\partial\phi}\]</div>
         <div class="eq ">\[\hat L_x=\hat x\cdot\vec{\hat L}=i\hbar\left(\cot\theta\cos\phi{\partial\over\partial\phi}+\sin\phi{\partial\over\partial\theta}\right)\]</div>
         <div class="eq ">\[\hat L_y=\hat y\cdot\vec{\hat L}=i\hbar\left(\cot\theta\sin\phi{\partial\over\partial\phi}-\cos\phi{\partial\over\partial\theta}\right)\]</div>
       </div>
       <div class="card orange">
         <div class="ch orange"><i class="fa-solid fa-superscript"></i> Operators \(\hat L_\pm\) and \(\hat L^2\)</div>
-        <div class="eq key-eq">\[\hat L_\pm=\hbar e^{\pm i\phi}\left(\pm{\partial\over\partial\theta}+i\cot\theta{\partial\over\partial\phi}\right)\]</div>
+        <div class="eq ">\[\hat L_\pm=\hbar e^{\pm i\phi}\left(\pm{\partial\over\partial\theta}+i\cot\theta{\partial\over\partial\phi}\right)\]</div>
         <div class="eq ">\[\hat L^2=-\hbar^2\left[{\partial^2\over\partial\theta^2}+\cot\theta{\partial\over\partial\theta}+{1\over\sin^2\theta}{\partial^2\over\partial\phi^2}\right]\]</div>
         <div class="eq ">\[-{\hat L^2\over\hbar^2}={1\over\sin\theta}{\partial\over\partial\theta}\left(\sin\theta{\partial\over\partial\theta}\right)+{1\over\sin^2\theta}{\partial^2\over\partial\phi^2}\]</div>
       </div>
     </div>
     <div class="card green" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-wave-square"></i> Spherical harmonics as eigenfunctions</div>
-      <p>Recovering the angular equation from Chapter 5, the book identifies the spherical harmonics as eigenfunctions of the angular-momentum operators.</p>
+      <p>Recovering the angular equation from Chapter 5 identifies the spherical harmonics as eigenfunctions of the angular-momentum operators.</p>
       <div class="eq ">\[Y_l^m(\theta,\phi)=A_l^m\Theta(\theta)\Phi(\phi)\]</div>
       <div class="eq key-eq">\[\hat L^2Y_l^m(\theta,\phi)=l(l+1)\hbar^2Y_l^m(\theta,\phi)\]</div>
       <div class="eq key-eq">\[\hat L_zY_l^m(\theta,\phi)=m\hbar Y_l^m(\theta,\phi)\]</div>
     </div>
     <div class="card purple" style="grid-column:1 / -1!important;">
-      <div class="ch purple"><i class="fa-solid fa-flask"></i> Complete book example: \(Y_1^{-1}\)</div>
-      <p>For \((l,m)=(1,-1)\), the book starts with the \(\hat L_z\) eigenvalue equation and separates \(Y_1^{-1}(\theta,\phi)=\Theta(\theta)\Phi(\phi)\).</p>
+      <div class="ch purple"><i class="fa-solid fa-flask"></i> Complete example: \(Y_1^{-1}\)</div>
+      <p>For \((l,m)=(1,-1)\), start with the \(\hat L_z\) eigenvalue equation and separate \(Y_1^{-1}(\theta,\phi)=\Theta(\theta)\Phi(\phi)\).</p>
       <div class="eq ">\[\hat L_zY_1^{-1}(\theta,\phi)=-\hbar Y_1^{-1}(\theta,\phi)\]</div>
       <div class="eq ">\[-i\hbar\,\Theta(\theta){d\Phi(\phi)\over d\phi}=-\hbar\Theta(\theta)\Phi(\phi)\quad\Rightarrow\quad {d\Phi\over d\phi}=-i\Phi\]</div>
-      <div class="eq key-eq">\[\Phi(\phi)=e^{-i\phi}\]</div>
-      <p>To obtain the polar factor, the text uses the endpoint condition \(\hat L_-Y_1^{-1}=0\).</p>
+      <div class="eq ">\[\Phi(\phi)=e^{-i\phi}\]</div>
+      <p>To obtain the polar factor, use the endpoint condition \(\hat L_-Y_1^{-1}=0\).</p>
       <div class="eq ">\[\hat L_-Y_1^{-1}=0\quad\Rightarrow\quad -{d\Theta\over d\theta}+\cot\theta\,\Theta=0\]</div>
-      <div class="eq key-eq">\[\Theta(\theta)=\sin\theta\]</div>
+      <div class="eq ">\[\Theta(\theta)=\sin\theta\]</div>
       <p>Normalization with \(\int_0^\pi\int_0^{2\pi}|Y_l^m|^2\sin\theta\,d\phi\,d\theta=1\) gives</p>
-      <div class="eq key-eq">\[Y_1^{-1}(\theta,\phi)=\sqrt{3\over8\pi}\,\sin\theta\,e^{-i\phi}\]</div>
+      <div class="eq ">\[Y_1^{-1}(\theta,\phi)=\sqrt{3\over8\pi}\,\sin\theta\,e^{-i\phi}\]</div>
     </div>
     <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
       <p>This page supports guided exercises on: position-space angular-momentum operators and spherical harmonics as angular-momentum eigenfunctions.</p>
-      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Long-form material:</span> complete proofs, long demonstrations, extended examples and the full exercise set remain in the textbook.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in Chapter 6.</li></ul>
     </div>
     <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
       <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>

@@ -13,7 +13,7 @@
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0717.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0810.2"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 </head><body><div class="slide">
@@ -21,22 +21,26 @@
   <div class="body">
     <div class="card orange guide-card">
       <div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>
-      <p>This item follows Appendix 6.B. It begins with the Schwartz inequality, uses it to obtain the Schrödinger generalized uncertainty principle, and then applies the result to angular momentum.</p>
+      <p>This item begins with the Schwartz inequality, uses it to obtain the Schrödinger generalized uncertainty principle, and then applies the result to angular momentum.</p>
     </div>
     <div class="col">
       <div class="card">
         <div class="ch"><i class="fa-solid fa-greater-than-equal"></i> Starting point: Schwartz inequality</div>
-        <p>The appendix considers a vector written as a superposition of two vectors.</p>
+        <p>Consider a vector written as a superposition of two vectors.</p>
         <div class="eq ">\[|\psi\rangle=|n\rangle+\alpha |m\rangle,\qquad \langle\psi|\psi\rangle\ge0\]</div>
+        <div class="eq ">\[\langle\psi|\psi\rangle=\langle n|n\rangle+\alpha\langle n|m\rangle+\alpha^\ast\langle m|n\rangle+\alpha^\ast\alpha\langle m|m\rangle\ge0\]</div>
         <p>Minimizing the positive inner product with respect to \(\alpha\) and \(\alpha^\ast\) gives</p>
+        <div class="eq ">\[{\partial\langle\psi|\psi\rangle\over\partial\alpha}=\langle n|m\rangle+\alpha^\ast\langle m|m\rangle=0,\qquad \alpha^\ast=-{\langle n|m\rangle\over\langle m|m\rangle}\]</div>
+        <div class="eq ">\[{\partial\langle\psi|\psi\rangle\over\partial\alpha^\ast}=\langle m|n\rangle+\alpha\langle m|m\rangle=0,\qquad \alpha=-{\langle m|n\rangle\over\langle m|m\rangle}\]</div>
+        <p>Substitution of these minimizing values leaves the inequality</p>
         <div class="eq key-eq">\[\langle n|n\rangle\langle m|m\rangle\ge |\langle n|m\rangle|^2\]</div>
-        <p>This is the Schwartz inequality used in the uncertainty derivation.</p>
       </div>
       <div class="card green">
         <div class="ch green"><i class="fa-solid fa-arrows-left-right-to-line"></i> Fluctuation vectors</div>
-        <p>For two Hermitian observables \(A\) and \(B\), the appendix defines deviations from the expectation values.</p>
+        <p>For two Hermitian observables \(A\) and \(B\), define deviations from the expectation values.</p>
         <div class="eq ">\[\delta\hat a=\hat A-\langle\hat A\rangle,\qquad \delta\hat b=\hat B-\langle\hat B\rangle\]</div>
         <div class="eq ">\[|a\rangle=\delta\hat a|\psi\rangle,\qquad |b\rangle=\delta\hat b|\psi\rangle\]</div>
+        <div class="eq ">\[\langle a|a\rangle=\langle(\hat A-\langle\hat A\rangle)^2\rangle=(\Delta A)^2,\qquad \langle b|b\rangle=(\Delta B)^2\]</div>
         <p>Taking these vectors into the Schwartz inequality gives</p>
         <div class="eq key-eq">\[(\Delta A)^2(\Delta B)^2=\langle a|a\rangle\langle b|b\rangle\ge |\langle a|b\rangle|^2\]</div>
       </div>
@@ -48,14 +52,17 @@
         <div class="eq ">\[\langle a|b\rangle=\langle\delta\hat a\,\delta\hat b\rangle\]</div>
         <div class="eq key-eq">\[\delta\hat a\,\delta\hat b={1\over2}[\delta\hat a,\delta\hat b]+{1\over2}\{\delta\hat a,\delta\hat b\}\]</div>
         <div class="eq ">\[[\delta\hat a,\delta\hat b]=[\hat A,\hat B]\]</div>
+        <div class="eq ">\[[\hat A,\hat B]=i\hat C\]</div>
+        <div class="eq ">\[\delta\hat a\,\delta\hat b={i\over2}\hat C+{1\over2}\{\delta\hat a,\delta\hat b\}\]</div>
         <p>The covariance is introduced from the anti-commutator term.</p>
         <div class="eq ">\[\operatorname{cov}(A,B)={1\over2}\langle\{\delta\hat a,\delta\hat b\}\rangle={1\over2}\langle\{\hat A,\hat B\}\rangle-\langle\hat A\rangle\langle\hat B\rangle\]</div>
+        <div class="eq key-eq">\[|\langle a|b\rangle|^2={1\over4}|\langle[\hat A,\hat B]\rangle|^2+|\operatorname{cov}(A,B)|^2\]</div>
       </div>
       <div class="card orange">
         <div class="ch orange"><i class="fa-solid fa-scale-balanced"></i> Schrödinger uncertainty principle</div>
-        <p>Combining the previous steps gives the generalized uncertainty relation.</p>
+        <p>Combining the Schwartz inequality with the last expression gives the generalized uncertainty relation.</p>
         <div class="eq key-eq">\[(\Delta A)^2(\Delta B)^2\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2+|\operatorname{cov}(A,B)|^2\]</div>
-        <p>The book also writes the same content through the covariance matrix.</p>
+        <p>The same content can be written through the covariance matrix.</p>
         <div class="eq ">\[\Sigma=\begin{pmatrix}\operatorname{var}(A)&\operatorname{cov}(A,B)\\ \operatorname{cov}(A,B)&\operatorname{var}(B)\end{pmatrix},\qquad \det\Sigma\ge {1\over4}|\langle[\hat A,\hat B]\rangle|^2\]</div>
       </div>
     </div>
@@ -63,20 +70,24 @@
       <div class="ch green"><i class="fa-solid fa-atom"></i> Application to angular momentum</div>
       <p>For angular momentum, the generalized relation becomes</p>
       <div class="eq ">\[(\Delta L_u)^2(\Delta L_v)^2\ge {1\over4}|\langle[\hat L_u,\hat L_v]\rangle|^2+|\operatorname{cov}(L_u,L_v)|^2\]</div>
-      <p>The book uses the expectation values obtained in the chapter, including \(\langle\hat L_x\rangle=\langle\hat L_y\rangle=0\), \(\langle\hat L_z\rangle=m\hbar\), and the relevant anti-commutator averages, to conclude</p>
+      <p>The expectation values obtained in the chapter give</p>
+      <div class="eq ">\[\langle\hat L_z\rangle=m\hbar,\qquad \langle\hat L_x\rangle=\langle\hat L_y\rangle=0\]</div>
+      <div class="eq ">\[\langle\hat L_x\hat L_y+\hat L_y\hat L_x\rangle=0,\qquad \langle\hat L_z\hat L_x\rangle=\langle\hat L_y\hat L_z\rangle=0\]</div>
+      <p>Therefore the covariance term vanishes for the angular-momentum components considered here:</p>
       <div class="eq ">\[\operatorname{cov}(L_u,L_v)=0\]</div>
+      <p>Using the angular-momentum commutator then gives</p>
       <div class="eq key-eq">\[\Delta L_u\Delta L_v\ge {\hbar\over2}\left|\epsilon_{uvw}\langle\hat L_w\rangle\right|\]</div>
       <div class="eq key-eq">\[\Delta L_x\Delta L_y\ge {\hbar^2\over2}|m|\]</div>
     </div>
     <div class="card orange" style="grid-column:1 / -1!important;">
       <div class="ch orange"><i class="fa-solid fa-comment-dots"></i> Physical meaning</div>
-      <p>The appendix notes that \(\Delta L_z\) can be zero for a state with definite \(m\). This does not violate the uncertainty principle because the corresponding products involving \(L_z\) have a zero lower bound in this state.</p>
+      <p>The standard deviation \(\Delta L_z\) can be zero for a state with definite \(m\). This does not violate the uncertainty principle because the corresponding products involving \(L_z\) have a zero lower bound in this state.</p>
       <p>The transverse product is different: \(\Delta L_x\Delta L_y\) is controlled by the commutator and by the projection quantum number \(m\). This is the uncertainty-principle version of the cone discussion in the previous item.</p>
     </div>
     <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
       <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
       <p>This page supports guided exercises on: Schwartz inequality, the Schrödinger uncertainty relation and the angular-momentum uncertainty product.</p>
-      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Keep in the book:</span> complete proofs, long demonstrations, extended examples and the full exercise set in Appendix 6.C.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in the textbook.</li></ul>
+      <ul class="bullet practice-list"><li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and conceptual links needed for a compact calculation or explanation.</li><li><span class="practice-label">Long-form material:</span> complete proofs, long demonstrations, extended examples and the full exercise set remain in the textbook.</li><li><span class="practice-label">Boundary:</span> do not introduce results, notation or physical claims outside the sequence presented here and in Chapter 6.</li></ul>
     </div>
     <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
       <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>

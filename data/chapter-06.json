@@ -10,7 +10,7 @@
     {
       "id": "6.2",
       "title": "Commutation relations and Levi-Civita notation",
-      "note": "The main angular-momentum commutator is stated first; the vector-product definition, Levi-Civita notation and physical consequence then explain how the book proof begins.",
+      "note": "The main angular-momentum commutator is stated first; the vector-product definition, Levi-Civita notation and physical consequence then explain the algebraic route.",
       "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
       "aiExercise": true
     },
@@ -25,7 +25,7 @@
     {
       "id": "6.4",
       "title": "Consequences of the algebra",
-      "note": "Once Lz is definite, the transverse means vanish while their variances remain finite; the book represents this with the angular-momentum cone.",
+      "note": "Once Lz is definite, the transverse means vanish while their variances remain finite; the angular-momentum cone visualizes this result.",
       "url": "slides/chapter-06/expectation-values-and-transverse-variance.html",
       "aiExercise": true
     },
@@ -47,7 +47,7 @@
     {
       "id": "6.7",
       "title": "Schrödinger uncertainty and Schwartz inequality",
-      "note": "Appendix 6.B derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form.",
+      "note": "Derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form.",
       "url": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
       "aiExercise": true
     },
