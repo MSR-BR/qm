@@ -23,6 +23,8 @@ const overescapedDisplay = window.QmAIExercise.formatGeneratedText(String.raw`Us
 \\[\hat L_u, \hat L_v = i\hbar\epsilon_{uvw}\hat L_w\\]
 
 calculate the explicit commutator.`);
+const commutatorDisplay = window.QmAIExercise.formatGeneratedText(String.raw`\[[\hat L_y, \hat L_z] = i\hbar\hat L_x\]`);
+const commutatorInline = window.QmAIExercise.formatGeneratedText(String.raw`Evaluate [\hat L_y, \hat L_z].`);
 
 if (rendered.includes("\\(\\(") || rendered.includes("\\)\\)")) {
   throw new Error("The renderer nested MathJax delimiters inside a protected expression.");
@@ -48,6 +50,12 @@ if (!embeddedDisplay.includes("</p><div class=\"termo-exercise__math-block\">\\[
 }
 if (/\\\\\\\\[\\[\\]]/.test(overescapedDisplay) || overescapedDisplay.includes("\\] calculate")) {
   throw new Error("The renderer leaked overescaped display delimiters into the exercise text.");
+}
+if (!commutatorDisplay.includes("\\[[\\hat L_y, \\hat L_z] = i\\hbar\\hat L_x\\]")) {
+  throw new Error("The renderer removed square brackets from a commutator display equation.");
+}
+if (!commutatorInline.includes("\\(\\left[\\hat L_{y}, \\hat L_{z}\\right]\\)")) {
+  throw new Error("The renderer removed square brackets from an inline commutator.");
 }
 
 console.log("AI exercise renderer passed.");

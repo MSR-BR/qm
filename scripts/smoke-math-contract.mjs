@@ -118,3 +118,19 @@ const splitSetInline = normalizeExerciseMathForTest({
 if (!splitSetInline.statement.includes("\\(\\hat{L}_x, \\hat{y}\\), we set \\(i = x\\) and \\(m = y\\):")) {
   throw new Error("Inline math containing a 'we set' clause was not split before rendering.");
 }
+
+const commutatorDisplay = normalizeExerciseMathForTest({
+  statement: String.raw`\[[\hat L_y, \hat L_z] = i\hbar\hat L_x\]`,
+  solution: ""
+});
+if (!commutatorDisplay.statement.includes(String.raw`\left[\hat L_{y}, \hat L_{z}\right] = i\hbar\hat L_x`)) {
+  throw new Error("Square brackets in a commutator display equation were not preserved.");
+}
+
+const commutatorInline = normalizeExerciseMathForTest({
+  statement: String.raw`Evaluate [\hat L_y, \hat L_z].`,
+  solution: ""
+});
+if (!commutatorInline.statement.includes(String.raw`\(\left[\hat L_{y}, \hat L_{z}\right]\)`)) {
+  throw new Error("Square brackets in an inline commutator were not preserved.");
+}
