@@ -1,11 +1,11 @@
 {
   "version": "qm-book-topic-index-v2",
-  "generatedAt": "2026-08-11T22:14:54.056Z",
+  "generatedAt": "2026-08-11T22:37:32.929Z",
   "sourceTaxonomy": "data/book-topic-taxonomy.json",
   "sourceCorpus": "data/book-section-corpus.json",
   "description": "Curated topic index for QM AI exercises. It connects each reviewed app section to canonical book references and controlled related topics.",
-  "sectionCount": 84,
-  "topicCount": 73,
+  "sectionCount": 85,
+  "topicCount": 74,
   "topics": [
     {
       "id": "old-quantum-physics-overview",
@@ -6793,7 +6793,7 @@
       "id": "coupled-basis-construction",
       "label": "Coupled-basis construction",
       "usage": "default",
-      "sectionCount": 4,
+      "sectionCount": 5,
       "chapters": [
         "07"
       ],
@@ -6947,6 +6947,45 @@
           "excerpt": "282 7. Addition of angular momenta where g is the well-known Landé factor. Finally, the Zeeman Hamiltonian can be rewritten as: \" · B\" = g µ J\"ˆ · B\" Ĥ = −µ̂ Z J B (7.A.18) where µ̂\" J is given by Eq. (7.A.14). It is worth mentioning that in this devel- opment we are considering the Landé factor as a scalar, a number. How- ever, for more advanced studies, depending on the material, this factor can be anisotropic, being represented in the equations above by a tensor. The detailed description of how to represent the Landé factor as a tensor is be- yond the scope of this book, and this information is of a complementary nature [17]. ! Pieter Zeeman (1865–1943): Born in Zonnemaire, in the province of Zeeland, Netherlands. He was awarded the 1902 Nobel Prize in Physics for his research on the influence of magnetism on radiation phenomena. Alfred Landé (1888–1976): Born in Elberfeld, Germany....",
           "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
           "reviewStatus": "curated-through-chapter-07"
+        },
+        {
+          "sectionId": "7.10",
+          "chapterId": "07",
+          "itemId": "7.10",
+          "title": "Chapter synthesis: addition of angular momenta",
+          "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+          "relation": "tagged-topic",
+          "primaryTopic": "addition-angular-momenta-synthesis",
+          "topicTags": [
+            "addition-angular-momenta-synthesis",
+            "coupled-basis-construction",
+            "clebsch-gordan-coefficients",
+            "magnetic-moment-zeeman-lande",
+            "atomic-angular-momentum-hund-rules"
+          ],
+          "advancedTopicTags": [],
+          "pdfChapterNumber": "7",
+          "pdfChapterTitle": "Addition of angular momenta",
+          "pageStart": 1,
+          "pageEnd": 32,
+          "references": [
+            {
+              "id": "qm-07-7.10",
+              "label": "Chapter 7, item 7.10",
+              "pdfChapterNumber": "7",
+              "pdfChapterTitle": "Addition of angular momenta",
+              "pageStart": 1,
+              "pageEnd": 32,
+              "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+              "extractionSources": [
+                "chapter-07-theory.pdf"
+              ],
+              "needsReview": false
+            }
+          ],
+          "excerpt": "C H A P T E R 7 Addition of angular momenta! ! O U T L I N E 7.1 Interactions between angular momenta 254 7.2 Commutation relations 256 7.3 Vectors in the coupled basis 261 7.3.1 Sequentially coupled basis 261 7.3.2 Non-sequentially coupled basis 263 7.4 Hilbert space expansion 264 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267 7.5.1 Coupling of 2 angular momenta 267 7.5.2 Coupling of 3 angular momenta 273 7.5.3 Recurrence relation for N angular momenta 274 7.6 Basis change of an operator 277 Application 7.A Magnetic moment and the Zeeman effect 279 Application 7.B Angular momentum of atoms and the Hund’s rules 282 Appendix 7.A Exercises 284 In the previous chapter, we analyzed systems with a single angular mo- \" mentum, L̂, which operates within a Hilbert space of dimension 2l + 1....",
+          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+          "reviewStatus": "curated-through-chapter-07"
         }
       ],
       "usageHint": "Use these fragments as related context. The current section remains the primary exercise anchor."
@@ -7004,7 +7043,7 @@
       "id": "clebsch-gordan-coefficients",
       "label": "Clebsch-Gordan coefficients",
       "usage": "default",
-      "sectionCount": 3,
+      "sectionCount": 4,
       "chapters": [
         "07"
       ],
@@ -7123,6 +7162,45 @@
           "excerpt": "7.A Magnetic moment and the Zeeman effect 279 and, consequently:   1 0 0 0 !2  0 1 0 0. Ĥd = (7.130) 4 0 0 1 0 0 0 0 −3 The operator Ĥ is diagonal, featuring three degenerate states with an eigenvalue of 1/4 and one non-degenerate state with an eigen- value of −3/4. It is important to highlight that the change of basis from local to coupled does not necessarily ensure the diagonaliza- tion of the operator in question. ! Application 7.A Magnetic moment and the Zeeman effect The Hamiltonian describing the Zeeman effect comes directly from the Dirac equation (see Chapter 13), more precisely from Eqs. (13.163) and (13.164): µB # \" \" $ \" ĤZ = 2Ŝ + L̂ · B (7.A.1) ! where, for convenience (as done in Section 7.1), we will make the angular momenta dimensionless and, for this reason, we will omit the pre-factor 1/!....",
           "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
           "reviewStatus": "curated-through-chapter-07"
+        },
+        {
+          "sectionId": "7.10",
+          "chapterId": "07",
+          "itemId": "7.10",
+          "title": "Chapter synthesis: addition of angular momenta",
+          "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+          "relation": "tagged-topic",
+          "primaryTopic": "addition-angular-momenta-synthesis",
+          "topicTags": [
+            "addition-angular-momenta-synthesis",
+            "coupled-basis-construction",
+            "clebsch-gordan-coefficients",
+            "magnetic-moment-zeeman-lande",
+            "atomic-angular-momentum-hund-rules"
+          ],
+          "advancedTopicTags": [],
+          "pdfChapterNumber": "7",
+          "pdfChapterTitle": "Addition of angular momenta",
+          "pageStart": 1,
+          "pageEnd": 32,
+          "references": [
+            {
+              "id": "qm-07-7.10",
+              "label": "Chapter 7, item 7.10",
+              "pdfChapterNumber": "7",
+              "pdfChapterTitle": "Addition of angular momenta",
+              "pageStart": 1,
+              "pageEnd": 32,
+              "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+              "extractionSources": [
+                "chapter-07-theory.pdf"
+              ],
+              "needsReview": false
+            }
+          ],
+          "excerpt": "C H A P T E R 7 Addition of angular momenta! ! O U T L I N E 7.1 Interactions between angular momenta 254 7.2 Commutation relations 256 7.3 Vectors in the coupled basis 261 7.3.1 Sequentially coupled basis 261 7.3.2 Non-sequentially coupled basis 263 7.4 Hilbert space expansion 264 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267 7.5.1 Coupling of 2 angular momenta 267 7.5.2 Coupling of 3 angular momenta 273 7.5.3 Recurrence relation for N angular momenta 274 7.6 Basis change of an operator 277 Application 7.A Magnetic moment and the Zeeman effect 279 Application 7.B Angular momentum of atoms and the Hund’s rules 282 Appendix 7.A Exercises 284 In the previous chapter, we analyzed systems with a single angular mo- \" mentum, L̂, which operates within a Hilbert space of dimension 2l + 1....",
+          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+          "reviewStatus": "curated-through-chapter-07"
         }
       ],
       "usageHint": "Use these fragments as related context. The current section remains the primary exercise anchor."
@@ -7182,7 +7260,7 @@
       "id": "magnetic-moment-zeeman-lande",
       "label": "Magnetic moment, Zeeman effect and Lande factor",
       "usage": "default",
-      "sectionCount": 1,
+      "sectionCount": 2,
       "chapters": [
         "07"
       ],
@@ -7223,6 +7301,45 @@
           "excerpt": "7.A Magnetic moment and the Zeeman effect 279 and, consequently:   1 0 0 0 !2  0 1 0 0. Ĥd = (7.130) 4 0 0 1 0 0 0 0 −3 The operator Ĥ is diagonal, featuring three degenerate states with an eigenvalue of 1/4 and one non-degenerate state with an eigen- value of −3/4. It is important to highlight that the change of basis from local to coupled does not necessarily ensure the diagonaliza- tion of the operator in question. ! Application 7.A Magnetic moment and the Zeeman effect The Hamiltonian describing the Zeeman effect comes directly from the Dirac equation (see Chapter 13), more precisely from Eqs. (13.163) and (13.164): µB # \" \" $ \" ĤZ = 2Ŝ + L̂ · B (7.A.1) ! where, for convenience (as done in Section 7.1), we will make the angular momenta dimensionless and, for this reason, we will omit the pre-factor 1/!....",
           "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
           "reviewStatus": "curated-through-chapter-07"
+        },
+        {
+          "sectionId": "7.10",
+          "chapterId": "07",
+          "itemId": "7.10",
+          "title": "Chapter synthesis: addition of angular momenta",
+          "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+          "relation": "tagged-topic",
+          "primaryTopic": "addition-angular-momenta-synthesis",
+          "topicTags": [
+            "addition-angular-momenta-synthesis",
+            "coupled-basis-construction",
+            "clebsch-gordan-coefficients",
+            "magnetic-moment-zeeman-lande",
+            "atomic-angular-momentum-hund-rules"
+          ],
+          "advancedTopicTags": [],
+          "pdfChapterNumber": "7",
+          "pdfChapterTitle": "Addition of angular momenta",
+          "pageStart": 1,
+          "pageEnd": 32,
+          "references": [
+            {
+              "id": "qm-07-7.10",
+              "label": "Chapter 7, item 7.10",
+              "pdfChapterNumber": "7",
+              "pdfChapterTitle": "Addition of angular momenta",
+              "pageStart": 1,
+              "pageEnd": 32,
+              "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+              "extractionSources": [
+                "chapter-07-theory.pdf"
+              ],
+              "needsReview": false
+            }
+          ],
+          "excerpt": "C H A P T E R 7 Addition of angular momenta! ! O U T L I N E 7.1 Interactions between angular momenta 254 7.2 Commutation relations 256 7.3 Vectors in the coupled basis 261 7.3.1 Sequentially coupled basis 261 7.3.2 Non-sequentially coupled basis 263 7.4 Hilbert space expansion 264 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267 7.5.1 Coupling of 2 angular momenta 267 7.5.2 Coupling of 3 angular momenta 273 7.5.3 Recurrence relation for N angular momenta 274 7.6 Basis change of an operator 277 Application 7.A Magnetic moment and the Zeeman effect 279 Application 7.B Angular momentum of atoms and the Hund’s rules 282 Appendix 7.A Exercises 284 In the previous chapter, we analyzed systems with a single angular mo- \" mentum, L̂, which operates within a Hilbert space of dimension 2l + 1....",
+          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+          "reviewStatus": "curated-through-chapter-07"
         }
       ],
       "usageHint": "Use these fragments as related context. The current section remains the primary exercise anchor."
@@ -7231,7 +7348,7 @@
       "id": "atomic-angular-momentum-hund-rules",
       "label": "Atomic angular momentum and Hund's rules",
       "usage": "default",
-      "sectionCount": 1,
+      "sectionCount": 2,
       "chapters": [
         "07"
       ],
@@ -7270,6 +7387,96 @@
             }
           ],
           "excerpt": "282 7. Addition of angular momenta where g is the well-known Landé factor. Finally, the Zeeman Hamiltonian can be rewritten as: \" · B\" = g µ J\"ˆ · B\" Ĥ = −µ̂ Z J B (7.A.18) where µ̂\" J is given by Eq. (7.A.14). It is worth mentioning that in this devel- opment we are considering the Landé factor as a scalar, a number. How- ever, for more advanced studies, depending on the material, this factor can be anisotropic, being represented in the equations above by a tensor. The detailed description of how to represent the Landé factor as a tensor is be- yond the scope of this book, and this information is of a complementary nature [17]. ! Pieter Zeeman (1865–1943): Born in Zonnemaire, in the province of Zeeland, Netherlands. He was awarded the 1902 Nobel Prize in Physics for his research on the influence of magnetism on radiation phenomena. Alfred Landé (1888–1976): Born in Elberfeld, Germany....",
+          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+          "reviewStatus": "curated-through-chapter-07"
+        },
+        {
+          "sectionId": "7.10",
+          "chapterId": "07",
+          "itemId": "7.10",
+          "title": "Chapter synthesis: addition of angular momenta",
+          "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+          "relation": "tagged-topic",
+          "primaryTopic": "addition-angular-momenta-synthesis",
+          "topicTags": [
+            "addition-angular-momenta-synthesis",
+            "coupled-basis-construction",
+            "clebsch-gordan-coefficients",
+            "magnetic-moment-zeeman-lande",
+            "atomic-angular-momentum-hund-rules"
+          ],
+          "advancedTopicTags": [],
+          "pdfChapterNumber": "7",
+          "pdfChapterTitle": "Addition of angular momenta",
+          "pageStart": 1,
+          "pageEnd": 32,
+          "references": [
+            {
+              "id": "qm-07-7.10",
+              "label": "Chapter 7, item 7.10",
+              "pdfChapterNumber": "7",
+              "pdfChapterTitle": "Addition of angular momenta",
+              "pageStart": 1,
+              "pageEnd": 32,
+              "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+              "extractionSources": [
+                "chapter-07-theory.pdf"
+              ],
+              "needsReview": false
+            }
+          ],
+          "excerpt": "C H A P T E R 7 Addition of angular momenta! ! O U T L I N E 7.1 Interactions between angular momenta 254 7.2 Commutation relations 256 7.3 Vectors in the coupled basis 261 7.3.1 Sequentially coupled basis 261 7.3.2 Non-sequentially coupled basis 263 7.4 Hilbert space expansion 264 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267 7.5.1 Coupling of 2 angular momenta 267 7.5.2 Coupling of 3 angular momenta 273 7.5.3 Recurrence relation for N angular momenta 274 7.6 Basis change of an operator 277 Application 7.A Magnetic moment and the Zeeman effect 279 Application 7.B Angular momentum of atoms and the Hund’s rules 282 Appendix 7.A Exercises 284 In the previous chapter, we analyzed systems with a single angular mo- \" mentum, L̂, which operates within a Hilbert space of dimension 2l + 1....",
+          "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+          "reviewStatus": "curated-through-chapter-07"
+        }
+      ],
+      "usageHint": "Use these fragments as related context. The current section remains the primary exercise anchor."
+    },
+    {
+      "id": "addition-angular-momenta-synthesis",
+      "label": "Addition of angular momenta synthesis",
+      "usage": "default",
+      "sectionCount": 1,
+      "chapters": [
+        "07"
+      ],
+      "fragments": [
+        {
+          "sectionId": "7.10",
+          "chapterId": "07",
+          "itemId": "7.10",
+          "title": "Chapter synthesis: addition of angular momenta",
+          "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+          "relation": "primary-topic",
+          "primaryTopic": "addition-angular-momenta-synthesis",
+          "topicTags": [
+            "addition-angular-momenta-synthesis",
+            "coupled-basis-construction",
+            "clebsch-gordan-coefficients",
+            "magnetic-moment-zeeman-lande",
+            "atomic-angular-momentum-hund-rules"
+          ],
+          "advancedTopicTags": [],
+          "pdfChapterNumber": "7",
+          "pdfChapterTitle": "Addition of angular momenta",
+          "pageStart": 1,
+          "pageEnd": 32,
+          "references": [
+            {
+              "id": "qm-07-7.10",
+              "label": "Chapter 7, item 7.10",
+              "pdfChapterNumber": "7",
+              "pdfChapterTitle": "Addition of angular momenta",
+              "pageStart": 1,
+              "pageEnd": 32,
+              "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+              "extractionSources": [
+                "chapter-07-theory.pdf"
+              ],
+              "needsReview": false
+            }
+          ],
+          "excerpt": "C H A P T E R 7 Addition of angular momenta! ! O U T L I N E 7.1 Interactions between angular momenta 254 7.2 Commutation relations 256 7.3 Vectors in the coupled basis 261 7.3.1 Sequentially coupled basis 261 7.3.2 Non-sequentially coupled basis 263 7.4 Hilbert space expansion 264 7.5 Local basis vs. coupled basis: Clebsch–Gordan coefficients 267 7.5.1 Coupling of 2 angular momenta 267 7.5.2 Coupling of 3 angular momenta 273 7.5.3 Recurrence relation for N angular momenta 274 7.6 Basis change of an operator 277 Application 7.A Magnetic moment and the Zeeman effect 279 Application 7.B Angular momentum of atoms and the Hund’s rules 282 Appendix 7.A Exercises 284 In the previous chapter, we analyzed systems with a single angular mo- \" mentum, L̂, which operates within a Hilbert space of dimension 2l + 1....",
           "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
           "reviewStatus": "curated-through-chapter-07"
         }
@@ -12011,6 +12218,52 @@
             "pdfChapterNumber": "7",
             "pdfChapterTitle": "Addition of angular momenta",
             "pageStart": 30,
+            "pageEnd": 32,
+            "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      }
+    },
+    {
+      "sectionId": "7.10",
+      "chapterId": "07",
+      "itemId": "7.10",
+      "title": "Chapter synthesis: addition of angular momenta",
+      "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+      "primaryTopic": "addition-angular-momenta-synthesis",
+      "topicTags": [
+        "addition-angular-momenta-synthesis",
+        "coupled-basis-construction",
+        "clebsch-gordan-coefficients",
+        "magnetic-moment-zeeman-lande",
+        "atomic-angular-momentum-hund-rules"
+      ],
+      "advancedTopicTags": [],
+      "transversalTopics": [
+        "addition-angular-momenta-synthesis",
+        "coupled-basis-construction",
+        "clebsch-gordan-coefficients",
+        "magnetic-moment-zeeman-lande",
+        "atomic-angular-momentum-hund-rules"
+      ],
+      "advancedSupportTopics": [],
+      "reviewStatus": "curated-through-chapter-07",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 1,
+        "pageEnd": 32,
+        "references": [
+          {
+            "id": "qm-07-7.10",
+            "label": "Chapter 7, item 7.10",
+            "pdfChapterNumber": "7",
+            "pdfChapterTitle": "Addition of angular momenta",
+            "pageStart": 1,
             "pageEnd": 32,
             "mappingReason": "Curated PDF-page mapping aligned with the corresponding book-app item.",
             "extractionSources": [

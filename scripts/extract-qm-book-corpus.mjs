@@ -68,8 +68,9 @@ const CHAPTERS = [
     // The HTML chapter starts with a roadmap item and then follows the PDF
     // outline: interactions, commutation relations, coupled vectors,
     // Hilbert-space expansion, Clebsch-Gordan coefficients, basis change,
-    // and the two applications.
-    ranges: [[1, 1], [2, 3], [4, 8], [9, 12], [12, 15], [15, 25], [25, 27], [27, 30], [30, 32]]
+    // and the two applications. The final app item is a chapter synthesis
+    // supported by the complete reviewed Chapter 7 source range.
+    ranges: [[1, 1], [2, 3], [4, 8], [9, 12], [12, 15], [15, 25], [25, 27], [27, 30], [30, 32], [1, 32]]
   }
 ];
 

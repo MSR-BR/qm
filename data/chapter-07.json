@@ -62,6 +62,13 @@
       "note": "Application 7.B applies angular-momentum addition to atoms, Hund's rules and Russell-Saunders notation.",
       "url": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html",
       "aiExercise": true
+    },
+    {
+      "id": "7.10",
+      "title": "Chapter synthesis: addition of angular momenta",
+      "note": "Chapter 7 synthesis connects angular-momentum interactions, coupled bases, Hilbert-space expansion, Clebsch-Gordan coefficients, basis changes, Zeeman effect and Hund's rules.",
+      "url": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+      "aiExercise": true
     }
   ]
 }

@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../../assets/chapter-07/page-layout.css?v=0811.1" /><link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+  <link rel="stylesheet" href="../../assets/chapter-07/page-layout.css?v=0811.3" /><link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
@@ -17,7 +17,7 @@
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 </head><body><div class="slide">
-  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=07" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 7 · Item 7.3</div><div class="hdr-title">Commutation relations</div><div class="hdr-sub">From local observables to the coupled basis</div></div><div class="slide-num">3 / 9</div></div>
+  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=07" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 7 · Item 7.3</div><div class="hdr-title">Commutation relations</div><div class="hdr-sub">From local observables to the coupled basis</div></div><div class="slide-num">3 / 10</div></div>
   <div class="body">
     <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>The section asks which observables describe a system with two independent angular momenta. The local basis is built first; the coupled basis appears when the total angular momentum is introduced.</p></div>
     <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-link-slash"></i> Independent subspaces</div>
@@ -53,7 +53,7 @@
           <div class="eq key-eq">\[m=m_1+m_2.\]</div>
           <p>This condition is necessary, but not sufficient, for \(\langle m_1,m_2|l,m\rangle\) to be nonzero.</p>
         </div></div>
-    <div style="grid-column:1 / -1!important;" class="card green"><div class="ch green"><i class="fa-solid fa-table-cells"></i> Example: two angular momenta (l_1=l_2=1/2)</div>
+    <div style="grid-column:1 / -1!important;" class="card green"><div class="ch green"><i class="fa-solid fa-table-cells"></i> Example: two angular momenta l1 = l2 = 1/2</div>
           <div class="table-wrap"><table><thead><tr><th>Basis</th><th>Vectors in the short notation of the section</th><th>Dimension check</th></tr></thead><tbody>
           <tr><td>Local basis \(|m_1,m_2\rangle\)</td><td>\(|+,+\rangle,\ |+,-\rangle,\ |-,+\rangle,\ |-,-\rangle\)</td><td>\((2l_1+1)(2l_2+1)=4\)</td></tr>
           <tr><td>Coupled basis \(|l,m\rangle\)</td><td>\(|1,1\rangle,\ |1,0\rangle,\ |1,-1\rangle,\ |0,0\rangle\)</td><td>\(\sum_{l=0}^{1}(2l+1)=4\)</td></tr>
@@ -76,9 +76,14 @@
       <ul class="bullet practice-list">
         <li><span class="practice-label">Focus:</span> the two commuting sets that define local and coupled angular-momentum bases.</li>
         <li><span class="practice-label">Conceptual check:</span> identify the basis or angular-momentum interaction before applying the equation.</li>
-        <li><span class="practice-label">Key equation:</span></li>
+        <li class="practice-equation-item"><span class="practice-label">Key equation 1:</span>
+          <div class="eq">\[\{\hat L_1^2,\hat L_2^2,\hat L_{1z},\hat L_{2z}\}\]</div>
+        </li>
+        <li class="practice-equation-item"><span class="practice-label">Key equation 2:</span>
+          <div class="eq">\[\{\hat L_1^2,\hat L_2^2,\hat L^2,\hat L_z\}\]</div>
+        </li>
+        <li><span class="practice-label">Typical task:</span> apply one central equation and state what basis, quantum numbers or physical consequence it uses.</li>
       </ul>
-      <div class="eq">\[\{\hat L_1^2,\hat L_2^2,\hat L_{1z},\hat L_{2z}\}\quad\longrightarrow\quad \{\hat L_1^2,\hat L_2^2,\hat L^2,\hat L_z\}\]</div>
     </div>
     <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
     <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 7 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for complete demonstrations, examples and exercises.</div>

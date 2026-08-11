@@ -1,10 +1,10 @@
 {
-  "version": "2026-08-11-qm-ai-topic-taxonomy-chapters-01-07-roadmap",
+  "version": "2026-08-11-qm-ai-topic-taxonomy-chapters-01-07-synthesis",
   "description": "Curated topic taxonomy for Quantum Mechanics AI exercises. The taxonomy covers the reviewed app/book sections through Chapter 7 and controls which related fragments may support exercise generation.",
   "sourceCorpus": "data/book-section-corpus.json",
   "scope": {
     "chapters": ["01", "02", "03", "04", "05", "06", "07"],
-    "appSectionCount": 84,
+    "appSectionCount": 85,
     "reviewStatus": "curated-through-chapter-07",
     "note": "Chapters after 07 should be added only after their pedagogical review is complete."
   },
@@ -77,6 +77,7 @@
     { "id": "operator-basis-change-coupled", "label": "Operator basis change with coupled states" },
     { "id": "magnetic-moment-zeeman-lande", "label": "Magnetic moment, Zeeman effect and Lande factor" },
     { "id": "atomic-angular-momentum-hund-rules", "label": "Atomic angular momentum and Hund's rules" },
+    { "id": "addition-angular-momenta-synthesis", "label": "Addition of angular momenta synthesis" },
     { "id": "quantization-history-and-spectra", "label": "Quantization across early evidence and spectra", "usage": "advanced-support" },
     { "id": "special-functions-bound-states", "label": "Special functions in bound-state problems", "usage": "advanced-support" },
     { "id": "operator-algebra-across-representations", "label": "Operator algebra across representations", "usage": "advanced-support" },
@@ -173,6 +174,7 @@
     { "sectionId": "7.6", "chapterId": "07", "itemId": "7.6", "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients", "primaryTopic": "clebsch-gordan-coefficients", "topicTags": ["clebsch-gordan-coefficients", "coupled-basis-construction", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
     { "sectionId": "7.7", "chapterId": "07", "itemId": "7.7", "title": "Basis change of an operator", "primaryTopic": "operator-basis-change-coupled", "topicTags": ["operator-basis-change-coupled", "clebsch-gordan-coefficients", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
     { "sectionId": "7.8", "chapterId": "07", "itemId": "7.8", "title": "Application 7.A: Magnetic moment and the Zeeman effect", "primaryTopic": "magnetic-moment-zeeman-lande", "topicTags": ["magnetic-moment-zeeman-lande", "angular-momentum-interactions", "clebsch-gordan-coefficients"] },
-    { "sectionId": "7.9", "chapterId": "07", "itemId": "7.9", "title": "Application 7.B: Angular momentum of atoms and Hund's rules", "primaryTopic": "atomic-angular-momentum-hund-rules", "topicTags": ["atomic-angular-momentum-hund-rules", "angular-momentum-interactions", "coupled-basis-construction"] }
+    { "sectionId": "7.9", "chapterId": "07", "itemId": "7.9", "title": "Application 7.B: Angular momentum of atoms and Hund's rules", "primaryTopic": "atomic-angular-momentum-hund-rules", "topicTags": ["atomic-angular-momentum-hund-rules", "angular-momentum-interactions", "coupled-basis-construction"] },
+    { "sectionId": "7.10", "chapterId": "07", "itemId": "7.10", "title": "Chapter synthesis: addition of angular momenta", "primaryTopic": "addition-angular-momenta-synthesis", "topicTags": ["addition-angular-momenta-synthesis", "coupled-basis-construction", "clebsch-gordan-coefficients", "magnetic-moment-zeeman-lande", "atomic-angular-momentum-hund-rules"] }
   ]
 }

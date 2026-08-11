@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 const chapterDir = path.join(rootDir, "slides", "chapter-07");
 const dataPath = path.join(rootDir, "data", "chapter-07.json");
-const layoutVersion = "0811.1";
+const layoutVersion = "0811.3";
 
 const originalLinks = [
   ["Elsevier shop", "https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8"],
@@ -37,6 +37,14 @@ function card({ title, icon = "fa-solid fa-book-open", color = "", body = "" }) 
   return `<div class="card${colorClass}"><div class="ch${colorClass}"><i class="${icon}"></i> ${title}</div>${body}</div>`;
 }
 
+function practiceEquationItems(page) {
+  const equations = (page.keyEquations || [page.keyEquation]).filter(Boolean);
+  const multi = equations.length > 1;
+  return equations.map((equation, index) => `<li class="practice-equation-item"><span class="practice-label">Key equation${multi ? ` ${index + 1}` : ""}:</span>
+          <div class="eq">${equation}</div>
+        </li>`).join("\n        ");
+}
+
 function exerciseBoundary(page) {
   return `
     <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
@@ -54,11 +62,88 @@ function exerciseBoundary(page) {
       <ul class="bullet practice-list">
         <li><span class="practice-label">Focus:</span> ${escapeHtml(page.focus)}.</li>
         <li><span class="practice-label">Conceptual check:</span> identify the basis or angular-momentum interaction before applying the equation.</li>
-        <li><span class="practice-label">Key equation:</span></li>
+        ${practiceEquationItems(page)}
+        <li><span class="practice-label">Typical task:</span> ${escapeHtml(page.typicalTask || "apply one central equation and state what basis, quantum numbers or physical consequence it uses.")}</li>
       </ul>
-      <div class="eq">${page.keyEquation}</div>
     </div>
     <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>`;
+}
+
+function vectorStack(rows) {
+  return `<div class="vector-stack">${rows.map((row) => `<div class="vector-row">\\(${row}\\)</div>`).join("")}</div>`;
+}
+
+function sequentialDiagram() {
+  return String.raw`<figure class="basis-diagram">
+    <svg viewBox="0 0 720 310" role="img" aria-label="Sequential coupled basis diagram">
+      <text class="axis-label" x="132" y="38">l<tspan baseline-shift="sub" font-size="13">12</tspan></text>
+      <text class="axis-label" x="336" y="38">l<tspan baseline-shift="sub" font-size="13">13</tspan></text>
+      <text class="axis-label" x="544" y="38">l</text>
+      <text x="96" y="96">1</text><line class="branch" x1="116" y1="90" x2="295" y2="90"/>
+      <text x="302" y="96">3/2</text><line class="branch" x1="350" y1="90" x2="515" y2="90"/>
+      <line class="branch" x1="515" y1="90" x2="515" y2="128"/><line class="branch" x1="515" y1="90" x2="548" y2="90"/><line class="branch" x1="515" y1="128" x2="548" y2="128"/>
+      <text x="560" y="96">2</text><text x="560" y="134">1</text>
+      <line class="branch" x1="295" y1="90" x2="295" y2="128"/><line class="branch" x1="295" y1="128" x2="350" y2="128"/>
+      <text x="302" y="134">1/2</text><line class="branch" x1="350" y1="128" x2="470" y2="128"/>
+      <line class="branch" x1="470" y1="128" x2="470" y2="184"/><line class="branch" x1="470" y1="184" x2="515" y2="184"/>
+      <line class="branch" x1="515" y1="184" x2="515" y2="222"/><line class="branch" x1="515" y1="184" x2="548" y2="184"/><line class="branch" x1="515" y1="222" x2="548" y2="222"/>
+      <text x="560" y="190">1</text><text x="560" y="228">0</text>
+      <text x="96" y="184">0</text><line class="branch" x1="116" y1="178" x2="295" y2="178"/>
+      <text x="302" y="184">1/2</text><line class="branch" x1="350" y1="178" x2="455" y2="178"/>
+      <line class="branch" x1="455" y1="178" x2="455" y2="252"/><line class="branch" x1="455" y1="252" x2="515" y2="252"/>
+      <line class="branch" x1="515" y1="252" x2="515" y2="290"/><line class="branch" x1="515" y1="252" x2="548" y2="252"/><line class="branch" x1="515" y1="290" x2="548" y2="290"/>
+      <text x="560" y="258">1</text><text x="560" y="296">0</text>
+    </svg>
+    <figcaption>Sequential addition for four \(1/2\) angular momenta: \(l_{12}\), then \(l_{13}\), then \(l\).</figcaption>
+  </figure>`;
+}
+
+function nonSequentialDiagram() {
+  return String.raw`<figure class="basis-diagram">
+    <svg viewBox="0 0 720 285" role="img" aria-label="Non-sequential coupled basis diagram">
+      <text class="axis-label" x="132" y="38">l<tspan baseline-shift="sub" font-size="13">12</tspan></text>
+      <text class="axis-label" x="336" y="38">l<tspan baseline-shift="sub" font-size="13">34</tspan></text>
+      <text class="axis-label" x="544" y="38">l</text>
+      <text x="96" y="96">1</text><line class="branch" x1="116" y1="90" x2="300" y2="90"/>
+      <text x="316" y="96">1</text><line class="branch" x1="340" y1="90" x2="510" y2="90"/>
+      <line class="branch" x1="510" y1="90" x2="510" y2="166"/><line class="branch" x1="510" y1="90" x2="548" y2="90"/><line class="branch" x1="510" y1="128" x2="548" y2="128"/><line class="branch" x1="510" y1="166" x2="548" y2="166"/>
+      <text x="560" y="96">2</text><text x="560" y="134">1</text><text x="560" y="172">0</text>
+      <text x="96" y="178">0</text><line class="branch dotted" x1="116" y1="172" x2="300" y2="172"/>
+      <text x="316" y="178">0</text><line class="branch dotted" x1="340" y1="172" x2="510" y2="172"/>
+      <line class="branch dotted" x1="300" y1="90" x2="300" y2="172"/><line class="branch" x1="300" y1="172" x2="340" y2="172"/>
+      <line class="branch dotted" x1="510" y1="172" x2="510" y2="250"/><line class="branch dotted" x1="510" y1="250" x2="548" y2="250"/>
+      <text x="560" y="212">1</text><text x="560" y="256">0</text>
+      <line class="branch dotted" x1="510" y1="172" x2="548" y2="208"/><line class="branch dotted" x1="300" y1="90" x2="340" y2="172"/>
+    </svg>
+    <figcaption>One non-sequential choice: build \(l_{12}\), build \(l_{34}\), then couple them into \(l\).</figcaption>
+  </figure>`;
+}
+
+function zeemanSchematic() {
+  return String.raw`<figure style="grid-column:1 / -1!important;margin:0!important;">
+    <svg class="zeeman-schematic" viewBox="0 0 520 360" role="img" aria-label="Magnetic moment projection schematic">
+      <defs><marker id="arrowHead" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"></path></marker></defs>
+      <line class="axis" x1="260" y1="328" x2="260" y2="32"/><text x="272" y="45">z</text>
+      <ellipse class="cone" cx="304" cy="92" rx="86" ry="18" fill="#e7a1c9" stroke="#8a5a7a"/><path class="cone" d="M218 92 L260 178 L390 92" fill="#e7a1c9" stroke="#8a5a7a"/>
+      <ellipse class="cone" cx="352" cy="156" rx="83" ry="18" transform="rotate(28 352 156)" fill="#8ca7d9" stroke="#536c9a"/><path class="cone" d="M260 178 L430 188 L320 104" fill="#8ca7d9" stroke="#536c9a"/>
+      <ellipse class="cone" cx="190" cy="234" rx="89" ry="18" transform="rotate(28 190 234)" fill="#b6df96" stroke="#6f915a"/><path class="cone" d="M260 178 L96 204 L250 278" fill="#b6df96" stroke="#6f915a"/>
+      <line class="vector" x1="260" y1="178" x2="342" y2="84"/><text x="350" y="88">J</text>
+      <line class="vector" x1="260" y1="178" x2="407" y2="154"/><text x="416" y="158">L</text>
+      <line class="vector" x1="260" y1="178" x2="232" y2="112"/><text x="214" y="112">S</text>
+      <line class="vector mu" x1="260" y1="178" x2="180" y2="286"/><text x="166" y="305">μ</text>
+      <line class="vector mu" x1="260" y1="178" x2="215" y2="268" stroke-dasharray="6 5"/><text x="228" y="286">μ<tspan baseline-shift="sub" font-size="10">J</tspan></text>
+      <line class="vector mu" x1="260" y1="178" x2="110" y2="214"/><text x="76" y="214">μ<tspan baseline-shift="sub" font-size="10">L</tspan></text>
+      <line class="vector mu" x1="260" y1="178" x2="328" y2="278"/><text x="334" y="286">μ<tspan baseline-shift="sub" font-size="10">S</tspan></text>
+    </svg>
+    <figcaption class="schematic-caption">Schematic of the projection used in Application 7.A: \(\vec{\hat\mu}\) is not parallel to \(\vec{\hat J}\), and only \(\vec{\hat\mu}_J\) contributes to the magnetic energy.</figcaption>
+  </figure>`;
+}
+
+function hundFillingDiagram() {
+  return String.raw`<div class="table-wrap hund-filling"><table>
+    <thead><tr><th>\(m_l\)</th><th>+3</th><th>+2</th><th>+1</th><th>0</th><th>-1</th><th>-2</th><th>-3</th></tr></thead>
+    <tbody><tr><td>\(4f^5\)</td><td>↑</td><td>↑</td><td>↑</td><td>↑</td><td>↑</td><td></td><td></td></tr></tbody>
+  </table></div>`;
 }
 
 function renderPage(page, index, total) {
@@ -158,7 +243,10 @@ const pages = [
     subtitle: "Hamiltonians that motivate the addition of angular momenta",
     description: "Chapter 7 begins with Heisenberg, Ising, XY, antisymmetric, spin-orbit, local anisotropy and Zeeman Hamiltonians.",
     focus: "the angular-momentum interactions that motivate the addition problem",
-    keyEquation: String.raw`\[\hat H=-J\vec{\hat S}_1\cdot\vec{\hat S}_2,\qquad \hat H_Z=\mu_B(2\vec{\hat S}+\vec{\hat L})\cdot\vec B\]`,
+    keyEquations: [
+      String.raw`\[\hat H=-J\vec{\hat S}_1\cdot\vec{\hat S}_2\]`,
+      String.raw`\[\hat H_Z=\mu_B(2\vec{\hat S}+\vec{\hat L})\cdot\vec B\]`
+    ],
     guide: String.raw`<p>The section introduces interaction Hamiltonians before the algebra of addition. The purpose is physical: once a Hamiltonian contains more than one angular momentum, a basis built from only one momentum is not enough.</p>`,
     cards: [
       {
@@ -216,7 +304,10 @@ const pages = [
     subtitle: "From local observables to the coupled basis",
     description: "Independent angular-momentum subspaces, total angular momentum, allowed l values and the projection condition m equals m1 plus m2.",
     focus: "the two commuting sets that define local and coupled angular-momentum bases",
-    keyEquation: String.raw`\[\{\hat L_1^2,\hat L_2^2,\hat L_{1z},\hat L_{2z}\}\quad\longrightarrow\quad \{\hat L_1^2,\hat L_2^2,\hat L^2,\hat L_z\}\]`,
+    keyEquations: [
+      String.raw`\[\{\hat L_1^2,\hat L_2^2,\hat L_{1z},\hat L_{2z}\}\]`,
+      String.raw`\[\{\hat L_1^2,\hat L_2^2,\hat L^2,\hat L_z\}\]`
+    ],
     guide: String.raw`<p>The section asks which observables describe a system with two independent angular momenta. The local basis is built first; the coupled basis appears when the total angular momentum is introduced.</p>`,
     cards: [
       {
@@ -274,7 +365,7 @@ const pages = [
     ],
     fullWidth: [
       {
-        title: "Example: two angular momenta \(l_1=l_2=1/2\)",
+        title: "Example: two angular momenta l1 = l2 = 1/2",
         icon: "fa-solid fa-table-cells",
         color: "green",
         body: String.raw`
@@ -294,7 +385,10 @@ const pages = [
     subtitle: "Sequential and non-sequential construction",
     description: "The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially.",
     focus: "construction of coupled-basis vectors for several angular momenta",
-    keyEquation: String.raw`\[|l_{12},l_{13},l,m\rangle\quad\hbox{or}\quad |l_{12},l_{34},l,m\rangle\]`,
+    keyEquations: [
+      String.raw`\[|l_{12},l_{13},l,m\rangle\]`,
+      String.raw`\[|l_{12},l_{34},l,m\rangle\]`
+    ],
     guide: String.raw`<p>The section extends the two-angular-momentum example to \(N\) angular momenta. The construction always adds angular momenta in pairs and checks the allowed interval \(|l_a-l_b|\le l\le l_a+l_b\) at every step.</p>`,
     cards: [
       {
@@ -313,7 +407,7 @@ const pages = [
         color: "green",
         body: String.raw`
           <p>The simplified sequential coupled basis omits the constant \(l_1,l_2,l_3,l_4\) and is written as \(|l_{12},l_{13},l,m\rangle\):</p>
-          <div class="eq">\[\begin{gathered}|1,3/2,2,m\rangle,\ |1,3/2,1,m\rangle,\ |1,1/2,1,m\rangle,\\ |1,1/2,0,m\rangle,\ |0,1/2,1,m\rangle,\ |0,1/2,0,m\rangle.\end{gathered}\]</div>
+          ${vectorStack(["|l_{12},l_{13},l,m\\rangle","|1,3/2,2,m\\rangle","|1,3/2,1,m\\rangle","|1,1/2,1,m\\rangle","|1,1/2,0,m\\rangle","|0,1/2,1,m\\rangle","|0,1/2,0,m\\rangle"])}
           <p>The coupled basis has one quintuplet, three triplets and two singlets, preserving the Hilbert-space dimension \(16\).</p>
         `
       },
@@ -333,8 +427,30 @@ const pages = [
         color: "orange",
         body: String.raw`
           <p>The corresponding basis is written as \(|l_{12},l_{34},l,m\rangle\):</p>
-          <div class="eq">\[\begin{gathered}|1,1,2,m\rangle,\ |1,1,1,m\rangle,\ |1,1,0,m\rangle,\\ |1,0,1,m\rangle,\ |0,1,1,m\rangle,\ |0,0,0,m\rangle.\end{gathered}\]</div>
+          ${vectorStack(["|l_{12},l_{34},l,m\\rangle","|1,1,2,m\\rangle","|1,1,1,m\\rangle","|1,1,0,m\\rangle","|1,0,1,m\\rangle","|0,1,1,m\\rangle","|0,0,0,m\\rangle"])}
           <p>As expected, the dimension is preserved again: one quintuplet, three triplets and two singlets.</p>
+        `
+      }
+    ],
+    fullWidth: [
+      {
+        title: "Sequential diagram",
+        icon: "fa-solid fa-diagram-project",
+        color: "green",
+        body: String.raw`
+          <p>For the sequential choice, follow the possible lines from \(l_{12}\) to \(l_{13}\) and then to \(l\).</p>
+          ${sequentialDiagram()}
+          <p>Each path generates one family \(|l_{12},l_{13},l,m\rangle\); the allowed \(m\) values inside each family are fixed by \(-l\le m\le +l\).</p>
+        `
+      },
+      {
+        title: "Non-sequential diagram and reading boundary",
+        icon: "fa-solid fa-code-fork",
+        color: "purple",
+        body: String.raw`
+          <p>A non-sequential basis is also built pair by pair. In the example below, \(l_{12}\) and \(l_{34}\) are built first, and only then they are added to form \(l\).</p>
+          ${nonSequentialDiagram()}
+          <p>Other non-sequential choices also exist. This app keeps the main construction visible; the detailed discussion of alternative non-sequential bases and the extension to three or more angular momenta remains in Chapter 7.</p>
         `
       }
     ]
@@ -346,7 +462,10 @@ const pages = [
     subtitle: "Tensor products put all operators in the same dimension",
     description: "Matrix expansion by tensor products makes angular-momentum operators act in the total Hilbert space.",
     focus: "tensor-product expansion of operators and local basis vectors",
-    keyEquation: String.raw`\[\hat L_{1u}=\hat L_u^{(1)}\otimes \hat 1^{(2)}\otimes\cdots\otimes\hat 1^{(N)},\qquad \hat L_{Nu}=\hat 1^{(1)}\otimes\cdots\otimes\hat L_u^{(N)}\]`,
+    keyEquations: [
+      String.raw`\[\hat L_{1u}=\hat L_u^{(1)}\otimes 1^{(2)}\otimes\cdots\otimes 1^{(N)}\]`,
+      String.raw`\[|l_1,\ldots,l_N,m_1,\ldots,m_N\rangle=|l_1,m_1\rangle\otimes\cdots\otimes |l_N,m_N\rangle\]`
+    ],
     guide: String.raw`<p>Operators from different angular-momentum subspaces may have different matrix dimensions. The section solves this by expanding every operator and vector into the total Hilbert space.</p>`,
     cards: [
       {
@@ -363,7 +482,7 @@ const pages = [
         color: "green",
         body: String.raw`
           <p>The tensor products are</p>
-          <div class="eq key-eq">\[\begin{aligned}\hat L_{1u}&=\hat L_u^{(1)}\otimes \hat 1^{(2)}\otimes \hat 1^{(3)}\otimes\cdots\otimes \hat 1^{(N)},\\ \hat L_{2u}&=\hat 1^{(1)}\otimes \hat L_u^{(2)}\otimes \hat 1^{(3)}\otimes\cdots\otimes \hat 1^{(N)},\\ \hat L_{Nu}&=\hat 1^{(1)}\otimes \hat 1^{(2)}\otimes \hat 1^{(3)}\otimes\cdots\otimes \hat L_u^{(N)}.\end{aligned}\]</div>
+          <div class="eq key-eq">\[\begin{aligned}\hat L_{1u}&=\hat L_u^{(1)}\otimes 1^{(2)}\otimes 1^{(3)}\otimes\cdots\otimes 1^{(N)},\\ \hat L_{2u}&=1^{(1)}\otimes \hat L_u^{(2)}\otimes 1^{(3)}\otimes\cdots\otimes 1^{(N)},\\ \hat L_{Nu}&=1^{(1)}\otimes 1^{(2)}\otimes 1^{(3)}\otimes\cdots\otimes \hat L_u^{(N)}.\end{aligned}\]</div>
           <p>Here \(u=(x,y,z)\). After the tensor products, all components have the correct common dimension.</p>
         `
       },
@@ -384,12 +503,24 @@ const pages = [
           <p>The example considers</p>
           <div class="eq key-eq">\[\hat H=\vec{\hat S}_1\cdot\vec{\hat S}_2=\hat S_{1x}\hat S_{2x}+\hat S_{1y}\hat S_{2y}+\hat S_{1z}\hat S_{2z},\]</div>
           <p>with \(s_1=1/2\) and \(s_2=1\). One component is expanded as</p>
-          <div class="eq">\[\hat S_{1x}=\hat S_x^{(1)}\otimes\hat 1^{(2)},\qquad \hat S_{2x}=\hat 1^{(1)}\otimes\hat S_x^{(2)}.\]</div>
+          <div class="eq">\[\hat S_{1x}=\hat S_x^{(1)}\otimes 1^{(2)},\qquad \hat S_{2x}=1^{(1)}\otimes\hat S_x^{(2)}.\]</div>
           <p>The same procedure is used for the other components before summing the Hamiltonian.</p>
         `
       }
     ],
     fullWidth: [
+      {
+        title: "Example 7.4: expansion step by step",
+        icon: "fa-solid fa-shoe-prints",
+        color: "orange",
+        body: String.raw`
+          <p>For \(s_1=1/2\) and \(s_2=1\), the Hilbert-space dimension is \((2s_1+1)(2s_2+1)=6\). The \(x\)-component of spin 1 is expanded with the identity in subspace 2:</p>
+          <div class="eq">\[\hat S_{1x}=\hat S_x^{(1)}\otimes 1^{(2)}=\frac{\hbar}{2}\begin{pmatrix}0&0&0&1&0&0\\0&0&0&0&1&0\\0&0&0&0&0&1\\1&0&0&0&0&0\\0&1&0&0&0&0\\0&0&1&0&0&0\end{pmatrix}.\]</div>
+          <p>The \(x\)-component of spin 2 is expanded with the identity in subspace 1:</p>
+          <div class="eq">\[\hat S_{2x}=1^{(1)}\otimes\hat S_x^{(2)}=\frac{\hbar}{\sqrt2}\begin{pmatrix}0&1&0&0&0&0\\1&0&1&0&0&0\\0&1&0&0&0&0\\0&0&0&0&1&0\\0&0&0&1&0&1\\0&0&0&0&1&0\end{pmatrix}.\]</div>
+          <p>The remaining components are obtained by the same tensor-product method before the products \(\hat S_{1x}\hat S_{2x}\), \(\hat S_{1y}\hat S_{2y}\) and \(\hat S_{1z}\hat S_{2z}\) are summed.</p>
+        `
+      },
       {
         title: "Matrix shown in the section",
         icon: "fa-solid fa-border-all",
@@ -398,6 +529,17 @@ const pages = [
           <p>For \(s_1=1/2\) and \(s_2=1\), the resulting matrix is</p>
           <div class="eq key-eq">\[\hat H=\frac{\hbar^2}{2}\begin{pmatrix}1&0&0&0&0&0\\0&0&0&\sqrt{2}&0&0\\0&0&-1&0&\sqrt{2}&0\\0&\sqrt{2}&0&-1&0&0\\0&0&\sqrt{2}&0&0&0\\0&0&0&0&0&1\end{pmatrix}.\]</div>
           <p>The local basis vector example is \(|s_1,s_2,m_1,m_2\rangle=|s_1,m_1\rangle\otimes |s_2,m_2\rangle\).</p>
+        `
+      },
+      {
+        title: "Example local vector",
+        icon: "fa-solid fa-vector-square",
+        color: "purple",
+        body: String.raw`
+          <p>The same expansion applies to vectors. The example state is</p>
+          <div class="eq">\[\left|\frac12,1,\frac12,0\right\rangle=\left|\frac12,\frac12\right\rangle\otimes |1,0\rangle.\]</div>
+          <p>With the column vectors used in the section, this gives</p>
+          <div class="eq key-eq">\[\left|\frac12,1,\frac12,0\right\rangle=\begin{pmatrix}1\\0\end{pmatrix}\otimes\begin{pmatrix}0\\1\\0\end{pmatrix}=\begin{pmatrix}0\\1\\0\\0\\0\\0\end{pmatrix}.\]</div>
         `
       }
     ]
@@ -409,7 +551,10 @@ const pages = [
     subtitle: "The matrix that relates the two bases",
     description: "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
     focus: "Clebsch-Gordan coefficients and the local-to-coupled basis matrix",
-    keyEquation: String.raw`\[|l_1,l_2,l,m\rangle=\sum_{m_1}\sum_{m_2}\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle |l_1,l_2,m_1,m_2\rangle\]`,
+    keyEquations: [
+      String.raw`\[|l_1,l_2,l,m\rangle=\sum_{m_1}\sum_{m_2}\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle |l_1,l_2,m_1,m_2\rangle\]`,
+      String.raw`\[|l,m\rangle=\hat U|m_1,m_2\rangle\]`
+    ],
     guide: String.raw`<p>After the Hilbert space is expanded, the next question is how to change from the local basis to the coupled basis. The answer is the Clebsch-Gordan matrix.</p>`,
     cards: [
       {
@@ -424,7 +569,7 @@ const pages = [
         `
       },
       {
-        title: "Two angular momenta \(l_1=l_2=1/2\)",
+        title: "Two angular momenta l1 = l2 = 1/2",
         icon: "fa-solid fa-arrow-down-short-wide",
         color: "green",
         body: String.raw`
@@ -439,7 +584,7 @@ const pages = [
         body: String.raw`
           <p>Using the completeness relation of the local basis, the coupled vector is written as</p>
           <div class="eq key-eq">\[|l_1,l_2,l,m\rangle=\sum_{m_1}\sum_{m_2}\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle |l_1,l_2,m_1,m_2\rangle.\]</div>
-          <p>The coefficients \(\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle\) are the Clebsch-Gordan coefficients. They are real and form a unitary matrix.</p>
+          <p>The coefficients \(\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle\) are the Clebsch-Gordan coefficients. They measure the relation between a local vector and a coupled vector. They are real and form a unitary matrix.</p>
         `
       },
       {
@@ -455,24 +600,34 @@ const pages = [
     ],
     fullWidth: [
       {
-        title: "Change-of-basis matrix for \(l_1=l_2=1/2\)",
+        title: "Example 7.6: change-of-basis matrix for l1 = l2 = 1/2",
         icon: "fa-solid fa-table-cells-large",
         color: "purple",
         body: String.raw`
-          <p>With rows ordered as \(|1,1\rangle,|1,0\rangle,|1,-1\rangle,|0,0\rangle\) and columns as \(|+,+\rangle,|+,-\rangle,|-,+\rangle,|-,-\rangle\), the matrix is</p>
+          <p>The local basis is \(|+,+\rangle, |+,-\rangle, |-,+\rangle, |-,-\rangle\). The coupled basis is \(|1,1\rangle, |1,0\rangle, |1,-1\rangle, |0,0\rangle\).</p>
+          <p>With rows ordered as the coupled basis and columns ordered as the local basis, the matrix is</p>
           <div class="eq key-eq">\[\hat U=\begin{pmatrix}1&0&0&0\\0&1/\sqrt2&1/\sqrt2&0\\0&0&0&1\\0&1/\sqrt2&-1/\sqrt2&0\end{pmatrix},\qquad |l,m\rangle=\hat U|m_1,m_2\rangle.\]</div>
           <p>Since \(\hat U\) is unitary, \(|m_1,m_2\rangle=\hat U^\dagger |l,m\rangle\).</p>
         `
       },
       {
-        title: "Three and \(N\) angular momenta",
-        icon: "fa-solid fa-diagram-next",
+        title: "Relations obtained from U",
+        icon: "fa-solid fa-arrows-left-right",
         color: "green",
         body: String.raw`
-          <p>For three angular momenta in the sequential coupled basis \(|(l_1,l_2,[l_{12}),l_3,l],m\rangle\), the local and coupled vectors are related by the product of two Clebsch-Gordan coefficients.</p>
-          <div class="eq key-eq">\[|(l_1,l_2,[l_{12}),l_3,l],m\rangle=\sum_{m_{12}}\sum_{m_1}\sum_{m_2}\sum_{m_3} U^{13}U^{12}|l_1,l_2,l_3,m_1,m_2,m_3\rangle.\]</div>
-          <p>The recurrence relation for \(N\) angular momenta is the product of \(N-1\) Clebsch-Gordan coefficients:</p>
-          <div class="eq">\[\hat U^{1n}\cdots \hat U^{14}\hat U^{13}\hat U^{12}.\]</div>
+          <p>The nonzero entries of \(\hat U\) give the same relations obtained by the lowering-operator construction:</p>
+          <div class="eq key-eq">\[\begin{aligned}|1,1\rangle&=|+,+\rangle,\\ |1,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle+|-,+\rangle),\\ |1,-1\rangle&=|-,-\rangle,\\ |0,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle-|-,+\rangle).\end{aligned}\]</div>
+          <p>The inverse relations come from \(\hat U^\dagger\):</p>
+          <div class="eq">\[\begin{aligned}|+,+\rangle&=|1,1\rangle,\\ |+,-\rangle&=\frac{1}{\sqrt2}(|1,0\rangle+|0,0\rangle),\\ |-,+\rangle&=\frac{1}{\sqrt2}(|1,0\rangle-|0,0\rangle),\\ |-,-\rangle&=|1,-1\rangle.\end{aligned}\]</div>
+        `
+      },
+      {
+        title: "Reading boundary for 3+ angular momenta",
+        icon: "fa-solid fa-book-open",
+        color: "orange",
+        body: String.raw`
+          <p>For three or more angular momenta, the coupled basis can be sequential or non-sequential, and the change-of-basis matrix is built recursively from Clebsch-Gordan coefficients.</p>
+          <p>This app keeps the two-angular-momentum case as the worked example. The detailed construction for three and \(N\) angular momenta remains in Chapter 7.</p>
         `
       }
     ]
@@ -484,7 +639,10 @@ const pages = [
     subtitle: "Using the Clebsch-Gordan matrix to transform operators",
     description: "The Clebsch-Gordan matrix changes an operator from the local basis to the coupled basis.",
     focus: "operator basis change using the Clebsch-Gordan matrix",
-    keyEquation: String.raw`\[\hat A_d=\hat U\hat A_a\hat U^\dagger\]`,
+    keyEquations: [
+      String.raw`\[\hat A_d=\hat U\hat A_a\hat U^\dagger\]`,
+      String.raw`\[\hat H_d=\frac{\hbar^2}{4}\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&-3\end{pmatrix}\]`
+    ],
     guide: String.raw`<p>The section uses the change-of-basis matrix obtained from Clebsch-Gordan coefficients to transform an operator. The purpose is practical: many operators are not diagonal in the local basis but become diagonal in the coupled basis.</p>`,
     cards: [
       {
@@ -536,7 +694,10 @@ const pages = [
     subtitle: "Projection along total angular momentum and the Lande factor",
     description: "Application 7.A derives the magnetic moment projection, the Lande factor and the Zeeman Hamiltonian in the coupled basis.",
     focus: "magnetic moment, Zeeman Hamiltonian and the Lande factor",
-    keyEquation: String.raw`\[g=1+\frac{j(j+1)-l(l+1)+s(s+1)}{2j(j+1)},\qquad \hat H_Z=g_J\mu_B\vec{\hat J}\cdot\vec B\]`,
+    keyEquations: [
+      String.raw`\[\vec{\hat\mu}_J=-g_J\mu_B\vec{\hat J}\]`,
+      String.raw`\[g\equiv g_J=1+\frac{j(j+1)-l(l+1)+s(s+1)}{2j(j+1)},\qquad \hat H_Z=g_J\mu_B\vec{\hat J}\cdot\vec B\]`
+    ],
     guide: String.raw`<p>The application uses the addition of spin and orbital angular momenta to write the magnetic moment of an atom and the Zeeman Hamiltonian. The key step is the projection of \(\vec{\hat\mu}\) along \(\vec{\hat J}\).</p>`,
     cards: [
       {
@@ -561,7 +722,7 @@ const pages = [
         `
       },
       {
-        title: "Projection along \(\vec{\hat J}\)",
+        title: "Projection along J",
         icon: "fa-solid fa-arrows-to-dot",
         color: "purple",
         body: String.raw`
@@ -584,6 +745,31 @@ const pages = [
           <div class="eq key-eq">\[\hat H_Z=-\vec{\hat\mu}_J\cdot\vec B=g_J\mu_B\vec{\hat J}\cdot\vec B.\]</div>
         `
       }
+    ],
+    fullWidth: [
+      {
+        title: "Projection geometry",
+        icon: "fa-solid fa-diagram-project",
+        color: "green",
+        body: String.raw`
+          <p>The magnetic moment is not parallel to the total angular momentum because the spin and orbital parts have different gyromagnetic factors. The energy keeps the projection of \(\vec{\hat\mu}\) along \(\vec{\hat J}\).</p>
+          ${zeemanSchematic()}
+        `
+      },
+      {
+        title: "Algebraic route to the Landé factor",
+        icon: "fa-solid fa-route",
+        color: "orange",
+        body: String.raw`
+          <p>The projection uses</p>
+          <div class="eq">\[\vec{\hat J}=\vec{\hat L}+\vec{\hat S},\qquad \vec{\hat\mu}=-\mu_B(\vec{\hat L}+2\vec{\hat S}).\]</div>
+          <p>The projected magnetic moment is</p>
+          <div class="eq key-eq">\[\vec{\hat\mu}_J=-\frac{\mu_B}{2\hat J^2}(3\hat J^2-\hat L^2+\hat S^2)\vec{\hat J}.\]</div>
+          <p>Using the eigenvalues in the coupled basis gives the Landé factor</p>
+          <div class="eq key-eq">\[g\equiv g_J=1+\frac{j(j+1)-l(l+1)+s(s+1)}{2j(j+1)}.\]</div>
+          <p>The tensor form of the Landé factor is complementary material and remains outside this app summary.</p>
+        `
+      }
     ]
   },
   {
@@ -593,23 +779,27 @@ const pages = [
     subtitle: "Effective atomic angular momenta and term symbols",
     description: "Application 7.B applies angular-momentum addition to atoms, Hund's rules and Russell-Saunders notation.",
     focus: "effective atomic angular momenta, Hund's rules and Russell-Saunders notation",
-    keyEquation: String.raw`\[\vec{\hat S}=\sum_i\vec{\hat S}_i,\qquad \vec{\hat L}=\sum_i\vec{\hat L}_i,\qquad {}^{2s+1}X_j\]`,
-    guide: String.raw`<p>The application applies the addition of angular momenta to atoms. Closed shells do not contribute to the total angular momentum; the incomplete shells determine the effective spin and orbital angular momenta.</p>`,
+    keyEquations: [
+      String.raw`\[\vec{\hat S}=\sum_i\vec{\hat S}_i,\qquad \vec{\hat L}=\sum_i\vec{\hat L}_i\]`,
+      String.raw`\[{}^{2s+1}X_j\]`
+    ],
+    guide: String.raw`<p>The application applies the addition of angular momenta to atoms. Closed shells do not contribute to the total angular momentum; only the incomplete shells determine the effective spin, orbital and total angular momenta.</p>`,
     cards: [
       {
         title: "Effective angular momenta",
         icon: "fa-solid fa-atom",
         body: String.raw`
-          <p>For light atoms, the spin angular momenta couple to produce an effective spin:</p>
+          <p>In complete shells the total angular momentum is zero. For incomplete shells in light atoms, the spin angular momenta first couple to produce an effective spin:</p>
           <div class="eq key-eq">\[\vec{\hat S}=\sum_i \vec{\hat S}_i.\]</div>
           <p>The orbital angular momenta also couple:</p>
           <div class="eq key-eq">\[\vec{\hat L}=\sum_i \vec{\hat L}_i.\]</div>
           <p>These interact through spin-orbit coupling:</p>
           <div class="eq">\[\hat H=\zeta\vec{\hat S}\cdot\vec{\hat L}.\]</div>
+          <p>This is the Russell-Saunders coupling route used for light atoms.</p>
         `
       },
       {
-        title: "Heavy atoms and \(j-j\) coupling",
+        title: "Heavy atoms and j-j coupling",
         icon: "fa-solid fa-layer-group",
         color: "green",
         body: String.raw`
@@ -624,11 +814,12 @@ const pages = [
         color: "purple",
         body: String.raw`
           <ul class="bullet">
-            <li>First rule: the effective spin momentum must be at its maximum value.</li>
-            <li>Second rule: for a given effective spin, the effective orbital momentum must be maximum.</li>
+            <li>First rule: fill the available orbitals one by one, respecting the Pauli exclusion principle, so that the effective spin momentum has its maximum value.</li>
+            <li>Second rule: once the spin is fixed, choose the maximum effective orbital momentum.</li>
             <li>Third rule: the sign of \(\zeta\) determines whether the ground state has \(\vec{\hat S}\) antiparallel or parallel to \(\vec{\hat L}\).</li>
           </ul>
           <div class="eq">\[\zeta>0:\ j=|l-s|,\qquad \zeta<0:\ j=l+s.\]</div>
+          <p>For shells less than half filled, \(\zeta>0\). For shells more than half filled, \(\zeta<0\).</p>
         `
       },
       {
@@ -645,15 +836,110 @@ const pages = [
     ],
     fullWidth: [
       {
-        title: "Example: \(Sm^{3+}\)",
+        title: "Example: Sm3+",
         icon: "fa-solid fa-flask",
         color: "green",
         body: String.raw`
           <p>The application uses \(Sm^{3+}\), with electronic configuration</p>
           <div class="eq">\[Sm:[Xe]4f^6 6s^2\quad\longrightarrow\quad Sm^{3+}:[Xe]4f^5.\]</div>
+          ${hundFillingDiagram()}
           <p>Hund's first rule gives \(s=5/2\). Hund's second rule gives \(l=+3+2+1+0-1=+5\). Because the \(f\) shell is less than half filled, Hund's third rule gives the ground-state multiplet \(j=|s-l|=5/2\).</p>
           <p>The multiplets listed in the application are \(j=5/2\) (ground state), \(7/2\), \(11/2\), \(13/2\) and \(15/2\). The ground state is written as</p>
           <div class="eq key-eq">\[{}^6H_{5/2}.\]</div>
+        `
+      },
+      {
+        title: "Physical reading of the rules",
+        icon: "fa-solid fa-compass-drafting",
+        color: "orange",
+        body: String.raw`
+          <p>The first rule follows the Pauli exclusion principle and the tendency to occupy different orbitals before pairing. The second rule selects the largest effective orbital angular momentum compatible with the spin choice.</p>
+          <p>The third rule uses the spin-orbit term: for less than half-filled shells the ground state has \(\vec{\hat S}\) antiparallel to \(\vec{\hat L}\), while for more than half-filled shells it has them parallel.</p>
+        `
+      }
+    ]
+  },
+  {
+    id: "7.9",
+    file: "addition-of-angular-momenta-chapter-synthesis.html",
+    title: "Chapter synthesis: addition of angular momenta",
+    subtitle: "Local bases, coupled bases, Clebsch-Gordan matrices and atomic applications",
+    description: "Chapter 7 synthesis connects angular-momentum interactions, coupled bases, Hilbert-space expansion, Clebsch-Gordan coefficients, basis changes, Zeeman effect and Hund's rules.",
+    focus: "the complete Chapter 7 route from angular-momentum interactions to coupled-basis applications",
+    keyEquations: [
+      String.raw`\[\{\hat L_1^2,\hat L_2^2,\hat L_{1z},\hat L_{2z}\}\quad\longleftrightarrow\quad |l_1,l_2,m_1,m_2\rangle\]`,
+      String.raw`\[\{\hat L_1^2,\hat L_2^2,\hat L^2,\hat L_z\}\quad\longleftrightarrow\quad |l_1,l_2,l,m\rangle\]`,
+      String.raw`\[m=m_1+m_2,\qquad |l_1-l_2|\le l\le l_1+l_2\]`,
+      String.raw`\[|l_1,l_2,l,m\rangle=\sum_{m_1}\sum_{m_2}\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle |l_1,l_2,m_1,m_2\rangle\]`
+    ],
+    guide: String.raw`<p>This synthesis keeps the logical route of Chapter 7 visible: physical interactions motivate the addition problem; the local and coupled bases organize the states; Clebsch-Gordan coefficients connect the bases; the same machinery is then used in the Zeeman effect and in Hund's rules.</p>`,
+    cards: [
+      {
+        title: "Physical motivation",
+        icon: "fa-solid fa-magnet",
+        body: String.raw`
+          <p>The chapter begins with Hamiltonians containing more than one angular momentum: exchange interactions, spin-orbit coupling, local anisotropy and the Zeeman interaction.</p>
+          <p>Once the Hamiltonian contains two angular momenta, it becomes useful to compare the local basis with the coupled basis.</p>
+        `
+      },
+      {
+        title: "Local and coupled labels",
+        icon: "fa-solid fa-layer-group",
+        color: "green",
+        body: String.raw`
+          <p>The local basis keeps the individual projections \(m_1\) and \(m_2\) visible:</p>
+          <div class="eq">\[\{\hat L_1^2,\hat L_2^2,\hat L_{1z},\hat L_{2z}\}\quad\longleftrightarrow\quad |l_1,l_2,m_1,m_2\rangle.\]</div>
+          <p>The coupled basis keeps the total angular momentum and its projection visible:</p>
+          <div class="eq key-eq">\[\{\hat L_1^2,\hat L_2^2,\hat L^2,\hat L_z\}\quad\longleftrightarrow\quad |l_1,l_2,l,m\rangle.\]</div>
+        `
+      },
+      {
+        title: "Allowed values",
+        icon: "fa-solid fa-ruler-combined",
+        color: "purple",
+        body: String.raw`
+          <p>The coupled basis must preserve the Hilbert-space dimension. For two angular momenta, the allowed values are</p>
+          <div class="eq key-eq">\[|l_1-l_2|\le l\le l_1+l_2.\]</div>
+          <p>The projection condition is</p>
+          <div class="eq key-eq">\[m=m_1+m_2.\]</div>
+          <p>For more than two angular momenta, sequential and non-sequential pairwise constructions are possible. Detailed \(3+\) coupling constructions remain in Chapter 7.</p>
+        `
+      },
+      {
+        title: "Expansion and change of basis",
+        icon: "fa-solid fa-right-left",
+        color: "orange",
+        body: String.raw`
+          <p>Tensor products expand local operators into the total Hilbert space:</p>
+          <div class="eq">\[\hat L_{1u}=\hat L_u^{(1)}\otimes 1^{(2)}\otimes\cdots\otimes 1^{(N)}.\]</div>
+          <p>Clebsch-Gordan coefficients then form the change-of-basis matrix \(\hat U\), and operators transform as</p>
+          <div class="eq key-eq">\[\hat A_d=\hat U\hat A_a\hat U^\dagger.\]</div>
+        `
+      }
+    ],
+    fullWidth: [
+      {
+        title: "Exercise-ready map",
+        icon: "fa-solid fa-map",
+        color: "green",
+        body: String.raw`
+          <div class="table-wrap"><table><thead><tr><th>Chapter step</th><th>Main object</th><th>Typical exercise action</th></tr></thead><tbody>
+          <tr><td>Interactions</td><td>\(\hat H\) with two angular momenta</td><td>identify the angular momenta and the physical interaction</td></tr>
+          <tr><td>Commutation relations</td><td>local and coupled commuting sets</td><td>choose the basis compatible with the observables</td></tr>
+          <tr><td>Coupled vectors</td><td>\(|l_1,l_2,l,m\rangle\), \(|l_{12},l_{13},l,m\rangle\), \(|l_{12},l_{34},l,m\rangle\)</td><td>list allowed intermediate and total values</td></tr>
+          <tr><td>Hilbert expansion</td><td>tensor products with \(1^{(n)}\)</td><td>put operators and vectors in the same total dimension</td></tr>
+          <tr><td>Clebsch-Gordan coefficients</td><td>\(\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle\)</td><td>convert local vectors into coupled vectors</td></tr>
+          <tr><td>Applications</td><td>\(\vec{\hat\mu}_J\), \(g_J\), Hund rules</td><td>read magnetic-moment projections and atomic term symbols</td></tr>
+          </tbody></table></div>
+        `
+      },
+      {
+        title: "One route through the chapter",
+        icon: "fa-solid fa-route",
+        color: "purple",
+        body: String.raw`
+          <p>Start with the Hamiltonian, decide whether local or coupled labels expose the physics, expand operators when several Hilbert subspaces are present, use Clebsch-Gordan coefficients for the basis change, and then read the physical result in the coupled basis.</p>
+          <p>The app keeps the central equations and representative examples; extended coupling schemes, long calculations and additional examples remain in Chapter 7.</p>
         `
       }
     ]
