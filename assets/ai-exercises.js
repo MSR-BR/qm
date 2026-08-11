@@ -224,18 +224,27 @@
       output += text.slice(cursor, match.index);
       const token = match[0];
       if (token === "\\(") {
-        inlineBalance += 1;
-        output += token;
+        if (displayBalance === 0) {
+          inlineBalance += 1;
+          output += token;
+        }
       } else if (token === "\\)") {
-        if (inlineBalance > 0) {
+        if (displayBalance > 0) {
+          // Inline delimiters inside display math are invalid TeX input. Treat
+          // them as accidental wrappers and drop the delimiter itself.
+        } else if (inlineBalance > 0) {
           inlineBalance -= 1;
           output += token;
         }
       } else if (token === "\\[") {
-        displayBalance += 1;
-        output += token;
+        if (inlineBalance === 0 && displayBalance === 0) {
+          displayBalance += 1;
+          output += token;
+        }
       } else if (token === "\\]") {
-        if (displayBalance > 0) {
+        if (inlineBalance > 0) {
+          // Display delimiters inside inline math are likewise accidental.
+        } else if (displayBalance > 0) {
           displayBalance -= 1;
           output += token;
         }
@@ -250,18 +259,23 @@
   }
 
   function splitProseInsideInlineMath(value) {
-    const proseCuePattern = /\s+\b(?:between|where|with|using|given|show|calculate|determine|evaluate|explain|prove|find|from|in terms of|with respect to|for a|for the)\b/i;
+    const proseCuePattern = /\s+\b(?:we\s+set|between|where|with|using|given|show|calculate|determine|evaluate|explain|prove|find|from|set|in terms of|with respect to|for a|for the)\b/i;
     return String(value || "").replace(/\\\(([^\n]*?)\\\)/g, function (match, content) {
       const split = String(content || "").match(proseCuePattern);
       if (!split || split.index < 4) return match;
 
-      const mathPart = content.slice(0, split.index).trim();
+      let mathPart = content.slice(0, split.index).trim();
       const prosePart = content.slice(split.index).trimStart();
-      if (!mathPart || !prosePart || !isMathy(mathPart) || countWords(mathPart) > 3) {
+      const trailingPunctuation = mathPart.match(/[,:;]+$/)?.[0] || "";
+      if (trailingPunctuation) {
+        mathPart = mathPart.slice(0, -trailingPunctuation.length).trim();
+      }
+      const mathWords = countWords(mathPart.replace(/\\[A-Za-z]+\s*(?:\{[^}]*\})?/g, " "));
+      if (!mathPart || !prosePart || !isMathy(mathPart) || mathWords > 2) {
         return match;
       }
 
-      return `\\(${cleanupEquation(mathPart)}\\) ${prosePart}`;
+      return `\\(${cleanupEquation(mathPart)}\\)${trailingPunctuation} ${prosePart}`;
     });
   }
 
@@ -419,8 +433,17 @@
     );
 
     formatted = formatted.replace(
-      /([A-Za-z][A-Za-z0-9']*(?:_[A-Za-z0-9]+)?\s*=\s*[^.,;\n]+)(?=[.,;\n]|$)/g,
-      function (_match, snippet) {
+      /\b([A-Za-z])\s*=\s*([A-Za-z])\s+and\s+([A-Za-z])\s*=\s*([A-Za-z])(?=[:.,;\n]|$)/g,
+      function (_match, leftSymbol, leftValue, rightSymbol, rightValue) {
+        return `\\(${leftSymbol} = ${leftValue}\\) and \\(${rightSymbol} = ${rightValue}\\)`;
+      }
+    );
+
+    formatted = formatted.replace(
+      /([A-Za-z][A-Za-z0-9']*(?:_[A-Za-z0-9]+)?\s*=\s*[^.,;()\\\n]+)(?=[.,;()\\\n]|$)/g,
+      function (match, snippet, offset, source) {
+        const previous = source.slice(Math.max(0, offset - 2), offset);
+        if (previous === "\\(" || previous === "\\[") return match;
         return `\\(${latexifySnippet(snippet)}\\)`;
       }
     );
@@ -453,12 +476,16 @@
     });
   }
 
+  function collapseOverescapedLatex(value) {
+    return String(value || "").replace(/\\\\(?=[()[\]]|[A-Za-z])/g, "\\");
+  }
+
   function renderInlineMarkup(text) {
     // Never run the plain-text formatter inside an already delimited MathJax
     // segment. Otherwise an expression such as \(E_1 = \cdots\) can be
     // wrapped a second time, producing the nested delimiters seen by MathJax.
     const protectedText = protectMathSegments(text);
-    const mathAware = autoFormatPlainMath(protectedText.masked);
+    const mathAware = collapseOverescapedLatex(autoFormatPlainMath(protectedText.masked));
     const escaped = escapeHtml(mathAware)
       .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
       .replace(/(^|[^\w*])\*([^*\n]+)\*/g, "$1<em>$2</em>");

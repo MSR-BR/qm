@@ -95,10 +95,26 @@ if (!/^\\\[/.test(flattened.statement) || /\\\[([\s\S]*?)\\\(/.test(flattened.st
   throw new Error("Nested inline delimiters inside display math were not flattened.");
 }
 
+const orphanNested = normalizeExerciseMathForTest({
+  statement: "\\[\\hat{L}_i, \\hat{x}_m = \\epsilon_{ijk}\\hat{x}_j \\(\\hat{p}_k, \\hat{x}_m\\]",
+  solution: ""
+});
+if (!validateExerciseMathContract(orphanNested).ok || /\\\[([\s\S]*?)\\\(/.test(orphanNested.statement) || /\\\)\s*$/.test(orphanNested.statement)) {
+  throw new Error("Orphan inline delimiters inside display math were not repaired.");
+}
+
 const splitInline = normalizeExerciseMathForTest({
   statement: "Derive \\(\\hat L_i, \\hat x_j between angular-momentum and position components.\\)",
   solution: ""
 });
 if (!splitInline.statement.includes("\\(\\hat L_i, \\hat x_j\\) between angular-momentum and position components.")) {
   throw new Error("Inline math containing prose was not split before rendering.");
+}
+
+const splitSetInline = normalizeExerciseMathForTest({
+  statement: "For the specific case \\(\\hat{L}_x, \\hat{y}, we set i = x and m = y:\\)",
+  solution: ""
+});
+if (!splitSetInline.statement.includes("\\(\\hat{L}_x, \\hat{y}\\), we set \\(i = x\\) and \\(m = y\\):")) {
+  throw new Error("Inline math containing a 'we set' clause was not split before rendering.");
 }
