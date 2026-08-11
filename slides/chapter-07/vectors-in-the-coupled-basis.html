@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vectors in the coupled basis | Chapter 7 | Quantum Mechanics</title>
+  <meta name="description" content="The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially." /><meta name="author" content="Prof. Mario Reis" />
+  <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-07/vectors-in-the-coupled-basis.html" />
+  <meta property="og:type" content="article" /><meta property="og:site_name" content="Quantum Mechanics" />
+  <meta property="og:title" content="Vectors in the coupled basis | Chapter 7 | Quantum Mechanics" /><meta property="og:description" content="The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-07/vectors-in-the-coupled-basis.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-07/page-layout.css?v=0811.1" /><link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0811.5"></script>
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head><body><div class="slide">
+  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=07" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 7 · Item 7.3</div><div class="hdr-title">Vectors in the coupled basis</div><div class="hdr-sub">Sequential and non-sequential construction</div></div><div class="slide-num">3 / 8</div></div>
+  <div class="body">
+    <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>The section extends the two-angular-momentum example to \(N\) angular momenta. The construction always adds angular momenta in pairs and checks the allowed interval \(|l_a-l_b|\le l\le l_a+l_b\) at every step.</p></div>
+    <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-shoe-prints"></i> Sequentially coupled basis</div>
+          <p>For four angular momenta \(l_1=l_2=l_3=l_4=1/2\), the sequential construction is</p>
+          <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{13}=\vec{\hat L}_{12}+\vec{\hat L}_3,\qquad \vec{\hat L}=\vec{\hat L}_{14}=\vec{\hat L}_{13}+\vec{\hat L}_4.\]</div>
+          <p>The allowed intermediate values are obtained from</p>
+          <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_{12}-l_3|\le l_{13}\le l_{12}+l_3,\qquad |l_{13}-l_4|\le l\le l_{13}+l_4.\]</div>
+        </div>
+<div class="card green"><div class="ch green"><i class="fa-solid fa-list"></i> Sequential vectors</div>
+          <p>The simplified sequential coupled basis omits the constant \(l_1,l_2,l_3,l_4\) and is written as \(|l_{12},l_{13},l,m\rangle\):</p>
+          <div class="eq">\[\begin{gathered}|1,3/2,2,m\rangle,\ |1,3/2,1,m\rangle,\ |1,1/2,1,m\rangle,\\ |1,1/2,0,m\rangle,\ |0,1/2,1,m\rangle,\ |0,1/2,0,m\rangle.\end{gathered}\]</div>
+          <p>The coupled basis has one quintuplet, three triplets and two singlets, preserving the Hilbert-space dimension \(16\).</p>
+        </div></div>
+    <div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-code-fork"></i> Non-sequentially coupled basis</div>
+          <p>The angular momenta do not need to be added sequentially. For the same four angular momenta, the section also uses</p>
+          <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{34}=\vec{\hat L}_3+\vec{\hat L}_4,\qquad \vec{\hat L}=\vec{\hat L}_{12}+\vec{\hat L}_{34}.\]</div>
+          <p>This choice depends on the system under study and still uses the same allowed-value condition at each pairwise addition.</p>
+        </div>
+<div class="card orange"><div class="ch orange"><i class="fa-solid fa-diagram-project"></i> Non-sequential vectors</div>
+          <p>The corresponding basis is written as \(|l_{12},l_{34},l,m\rangle\):</p>
+          <div class="eq">\[\begin{gathered}|1,1,2,m\rangle,\ |1,1,1,m\rangle,\ |1,1,0,m\rangle,\\ |1,0,1,m\rangle,\ |0,1,1,m\rangle,\ |0,0,0,m\rangle.\end{gathered}\]</div>
+          <p>As expected, the dimension is preserved again: one quintuplet, three triplets and two singlets.</p>
+        </div></div>
+    
+    
+    <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+      <p>This page supports compact guided exercises on: construction of coupled-basis vectors for several angular momenta.</p>
+      <ul class="bullet practice-list">
+        <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and quantum-number restrictions shown here.</li>
+        <li><span class="practice-label">Keep in Chapter 7:</span> the complete demonstrations, long examples, historical notes and extended exercise solutions.</li>
+        <li><span class="practice-label">Boundary:</span> do not introduce notation, Hamiltonians, coupling schemes or selection rules outside the sequence presented here.</li>
+      </ul>
+    </div>
+    <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+      <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+      <p>Use these anchors only within the material introduced on this page.</p>
+      <ul class="bullet practice-list">
+        <li><span class="practice-label">Focus:</span> construction of coupled-basis vectors for several angular momenta.</li>
+        <li><span class="practice-label">Conceptual check:</span> identify the basis or angular-momentum interaction before applying the equation.</li>
+        <li><span class="practice-label">Key equation:</span></li>
+      </ul>
+      <div class="eq">\[|l_{12},l_{13},l,m\rangle\quad\hbox{or}\quad |l_{12},l_{34},l,m\rangle\]</div>
+    </div>
+    <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+    <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 7 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for complete demonstrations, examples and exercises.</div>
+  </div>
+</div></body></html>

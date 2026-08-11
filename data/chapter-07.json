@@ -1,115 +1,60 @@
 {
-  "description": "Chapter 7 - Addition of angular momenta. A guided structure for coupled bases, tensor-product spaces, Clebsch-Gordan coefficients, magnetic moments and Hund's rules.",
+  "description": "Chapter 7 - Addition of angular momenta. A book-led sequence for interactions, commuting observables, coupled bases, Hilbert-space expansion, Clebsch-Gordan coefficients, basis changes, magnetic moments and Hund's rules.",
   "topics": [
     {
       "id": "7.1",
-      "title": "Why angular momenta must be added",
-      "note": "Physical interactions involving spin, orbital motion, exchange, anisotropy and external magnetic fields.",
-      "url": "slides/chapter-07/why-angular-momenta-must-be-added.html"
+      "title": "Interactions between angular momenta",
+      "note": "Chapter 7 begins with Heisenberg, Ising, XY, antisymmetric, spin-orbit, local anisotropy and Zeeman Hamiltonians.",
+      "url": "slides/chapter-07/interactions-between-angular-momenta.html",
+      "aiExercise": true
     },
     {
       "id": "7.2",
-      "title": "Local and coupled observables",
-      "note": "Commuting operator sets, independent subspaces and the distinction between local and total quantum numbers.",
-      "url": "slides/chapter-07/local-and-coupled-observables.html",
+      "title": "Commutation relations",
+      "note": "Independent angular-momentum subspaces, total angular momentum, allowed l values and the projection condition m equals m1 plus m2.",
+      "url": "slides/chapter-07/commutation-relations.html",
       "aiExercise": true
     },
     {
       "id": "7.3",
-      "title": "Triangle rule and projection rule",
-      "note": "Allowed total angular momenta, multiplet dimensions and the selection condition m = m1 + m2.",
-      "url": "slides/chapter-07/triangle-rule-and-projection-rule.html",
+      "title": "Vectors in the coupled basis",
+      "note": "The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially.",
+      "url": "slides/chapter-07/vectors-in-the-coupled-basis.html",
       "aiExercise": true
     },
     {
       "id": "7.4",
-      "title": "Sequential coupling trees",
-      "note": "Building coupled bases for three or more momenta and tracking intermediate angular momentum labels.",
-      "url": "slides/chapter-07/sequential-coupling-trees.html",
+      "title": "Hilbert space expansion",
+      "note": "Matrix expansion by tensor products makes angular-momentum operators act in the total Hilbert space.",
+      "url": "slides/chapter-07/hilbert-space-expansion.html",
       "aiExercise": true
     },
     {
       "id": "7.5",
-      "title": "Alternative coupling schemes and multiplicity",
-      "note": "Non-sequential trees, repeated multiplets and dimension checks that remain invariant across coupling orders.",
-      "url": "slides/chapter-07/alternative-coupling-schemes-and-multiplicity.html",
+      "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
+      "note": "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
+      "url": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
       "aiExercise": true
     },
     {
       "id": "7.6",
-      "title": "Expanding the Hilbert space",
-      "note": "Tensor products, composite-state dimension and the embedding of local operators into a common space.",
-      "url": "slides/chapter-07/expanding-the-hilbert-space.html",
+      "title": "Basis change of an operator",
+      "note": "The Clebsch-Gordan matrix changes an operator from the local basis to the coupled basis.",
+      "url": "slides/chapter-07/basis-change-of-an-operator.html",
       "aiExercise": true
     },
     {
       "id": "7.7",
-      "title": "Composite operators and spin interactions",
-      "note": "Constructing expanded matrices and reading exchange processes in scalar-product Hamiltonians.",
-      "url": "slides/chapter-07/composite-operators-and-spin-interactions.html",
+      "title": "Application 7.A: Magnetic moment and the Zeeman effect",
+      "note": "Application 7.A derives the magnetic moment projection, the Lande factor and the Zeeman Hamiltonian in the coupled basis.",
+      "url": "slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html",
       "aiExercise": true
     },
     {
       "id": "7.8",
-      "title": "Clebsch-Gordan coefficients",
-      "note": "The amplitudes that connect local and coupled bases, together with selection rules and unitarity.",
-      "url": "slides/chapter-07/clebsch-gordan-coefficients.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.9",
-      "title": "Constructing coupled states by ladder operators",
-      "note": "Highest-weight states, successive lowering, orthogonality and normalization of triplets, singlets and higher multiplets.",
-      "url": "slides/chapter-07/constructing-coupled-states-by-ladder-operators.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.10",
-      "title": "Wigner 3j symbols and the Racah formula",
-      "note": "A finite computational form for Clebsch-Gordan coefficients and the rules that eliminate forbidden terms.",
-      "url": "slides/chapter-07/wigner-3j-symbols-and-the-racah-formula.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.11",
-      "title": "Coupling N angular momenta",
-      "note": "Recursive binary couplings, intermediate projections and the factorized construction of large basis transformations.",
-      "url": "slides/chapter-07/coupling-n-angular-momenta.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.12",
-      "title": "Changing basis and reading spectra",
-      "note": "Transforming operators with the Clebsch-Gordan matrix and choosing the basis adapted to a Hamiltonian's symmetries.",
-      "url": "slides/chapter-07/changing-basis-and-reading-spectra.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.13",
-      "title": "Magnetic moments, Lande factor and Zeeman effect",
-      "note": "Combining spin and orbital magnetic moments, projecting along total angular momentum and splitting multiplets in a field.",
-      "url": "slides/chapter-07/magnetic-moments-lande-factor-and-zeeman-effect.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.14",
-      "title": "Atomic coupling schemes",
-      "note": "LS coupling, j-j coupling, closed shells and how atomic angular momenta are assembled.",
-      "url": "slides/chapter-07/atomic-coupling-schemes.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.15",
-      "title": "Hund's rules and term symbols",
-      "note": "Maximizing spin and orbital angular momentum, spin-orbit ordering and Russell-Saunders notation.",
-      "url": "slides/chapter-07/hund-s-rules-and-term-symbols.html",
-      "aiExercise": true
-    },
-    {
-      "id": "7.16",
-      "title": "Chapter synthesis: coupled quantum systems",
-      "note": "A decision framework for choosing observables, coupling trees, basis transformations and multiplet labels.",
-      "url": "slides/chapter-07/chapter-synthesis-coupled-quantum-systems.html",
+      "title": "Application 7.B: Angular momentum of atoms and Hund's rules",
+      "note": "Application 7.B applies angular-momentum addition to atoms, Hund's rules and Russell-Saunders notation.",
+      "url": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html",
       "aiExercise": true
     }
   ]

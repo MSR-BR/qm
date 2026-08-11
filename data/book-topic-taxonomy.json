@@ -1,12 +1,12 @@
 {
-  "version": "2026-08-11-qm-ai-topic-taxonomy-chapters-01-06",
-  "description": "Curated topic taxonomy for Quantum Mechanics AI exercises. The taxonomy covers the reviewed app/book sections through Chapter 6 and controls which related fragments may support exercise generation.",
+  "version": "2026-08-11-qm-ai-topic-taxonomy-chapters-01-07",
+  "description": "Curated topic taxonomy for Quantum Mechanics AI exercises. The taxonomy covers the reviewed app/book sections through Chapter 7 and controls which related fragments may support exercise generation.",
   "sourceCorpus": "data/book-section-corpus.json",
   "scope": {
-    "chapters": ["01", "02", "03", "04", "05", "06"],
-    "appSectionCount": 75,
-    "reviewStatus": "curated-through-chapter-06",
-    "note": "Chapters after 06 should be added only after their pedagogical review is complete."
+    "chapters": ["01", "02", "03", "04", "05", "06", "07"],
+    "appSectionCount": 83,
+    "reviewStatus": "curated-through-chapter-07",
+    "note": "Chapters after 07 should be added only after their pedagogical review is complete."
   },
   "transversalTopics": [
     { "id": "old-quantum-physics-overview", "label": "Old quantum physics overview" },
@@ -68,6 +68,14 @@
     { "id": "angular-momentum-position-representation", "label": "Angular momentum position-space representation" },
     { "id": "schrodinger-uncertainty-schwartz", "label": "Schrodinger uncertainty and Schwartz inequality" },
     { "id": "angular-momentum-chapter-toolkit", "label": "Angular momentum chapter toolkit" },
+    { "id": "angular-momentum-interactions", "label": "Interactions between angular momenta" },
+    { "id": "coupled-commuting-observables", "label": "Local and coupled commuting observables" },
+    { "id": "coupled-basis-construction", "label": "Coupled-basis construction" },
+    { "id": "hilbert-space-expansion-angular-momenta", "label": "Hilbert-space expansion for angular momenta" },
+    { "id": "clebsch-gordan-coefficients", "label": "Clebsch-Gordan coefficients" },
+    { "id": "operator-basis-change-coupled", "label": "Operator basis change with coupled states" },
+    { "id": "magnetic-moment-zeeman-lande", "label": "Magnetic moment, Zeeman effect and Lande factor" },
+    { "id": "atomic-angular-momentum-hund-rules", "label": "Atomic angular momentum and Hund's rules" },
     { "id": "quantization-history-and-spectra", "label": "Quantization across early evidence and spectra", "usage": "advanced-support" },
     { "id": "special-functions-bound-states", "label": "Special functions in bound-state problems", "usage": "advanced-support" },
     { "id": "operator-algebra-across-representations", "label": "Operator algebra across representations", "usage": "advanced-support" },
@@ -154,6 +162,15 @@
     { "sectionId": "6.5", "chapterId": "06", "itemId": "6.5", "title": "Matrix representation", "primaryTopic": "angular-momentum-matrix-representation", "topicTags": ["angular-momentum-matrix-representation", "angular-momentum-algebra-ladders", "dirac-notation", "hilbert-space-bases-completeness", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
     { "sectionId": "6.6", "chapterId": "06", "itemId": "6.6", "title": "Position-space representation", "primaryTopic": "angular-momentum-position-representation", "topicTags": ["angular-momentum-position-representation", "spherical-harmonics", "angular-equations-special-functions"], "advancedTopicTags": ["operator-algebra-across-representations"] },
     { "sectionId": "6.7", "chapterId": "06", "itemId": "6.7", "title": "Schrödinger uncertainty and Schwartz inequality", "primaryTopic": "schrodinger-uncertainty-schwartz", "topicTags": ["schrodinger-uncertainty-schwartz"], "advancedTopicTags": ["uncertainty-across-formalisms"] },
-    { "sectionId": "6.8", "chapterId": "06", "itemId": "6.8", "title": "Chapter synthesis: angular momentum toolkit", "primaryTopic": "angular-momentum-chapter-toolkit", "topicTags": ["angular-momentum-chapter-toolkit", "angular-momentum-roadmap", "angular-momentum-algebra-ladders"] }
+    { "sectionId": "6.8", "chapterId": "06", "itemId": "6.8", "title": "Chapter synthesis: angular momentum toolkit", "primaryTopic": "angular-momentum-chapter-toolkit", "topicTags": ["angular-momentum-chapter-toolkit", "angular-momentum-roadmap", "angular-momentum-algebra-ladders"] },
+
+    { "sectionId": "7.1", "chapterId": "07", "itemId": "7.1", "title": "Interactions between angular momenta", "primaryTopic": "angular-momentum-interactions", "topicTags": ["angular-momentum-interactions", "angular-momentum-algebra-ladders"], "advancedTopicTags": ["operator-algebra-across-representations"] },
+    { "sectionId": "7.2", "chapterId": "07", "itemId": "7.2", "title": "Commutation relations", "primaryTopic": "coupled-commuting-observables", "topicTags": ["coupled-commuting-observables", "angular-momentum-commutators", "compatibility-measurement-order"], "advancedTopicTags": ["operator-algebra-across-representations"] },
+    { "sectionId": "7.3", "chapterId": "07", "itemId": "7.3", "title": "Vectors in the coupled basis", "primaryTopic": "coupled-basis-construction", "topicTags": ["coupled-basis-construction", "hilbert-space-bases-completeness", "angular-momentum-algebra-ladders"] },
+    { "sectionId": "7.4", "chapterId": "07", "itemId": "7.4", "title": "Hilbert space expansion", "primaryTopic": "hilbert-space-expansion-angular-momenta", "topicTags": ["hilbert-space-expansion-angular-momenta", "hilbert-space-bases-completeness", "dirac-notation"] },
+    { "sectionId": "7.5", "chapterId": "07", "itemId": "7.5", "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients", "primaryTopic": "clebsch-gordan-coefficients", "topicTags": ["clebsch-gordan-coefficients", "coupled-basis-construction", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
+    { "sectionId": "7.6", "chapterId": "07", "itemId": "7.6", "title": "Basis change of an operator", "primaryTopic": "operator-basis-change-coupled", "topicTags": ["operator-basis-change-coupled", "clebsch-gordan-coefficients", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
+    { "sectionId": "7.7", "chapterId": "07", "itemId": "7.7", "title": "Application 7.A: Magnetic moment and the Zeeman effect", "primaryTopic": "magnetic-moment-zeeman-lande", "topicTags": ["magnetic-moment-zeeman-lande", "angular-momentum-interactions", "clebsch-gordan-coefficients"] },
+    { "sectionId": "7.8", "chapterId": "07", "itemId": "7.8", "title": "Application 7.B: Angular momentum of atoms and Hund's rules", "primaryTopic": "atomic-angular-momentum-hund-rules", "topicTags": ["atomic-angular-momentum-hund-rules", "angular-momentum-interactions", "coupled-basis-construction"] }
   ]
 }

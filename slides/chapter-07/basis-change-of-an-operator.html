@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Basis change of an operator | Chapter 7 | Quantum Mechanics</title>
+  <meta name="description" content="The Clebsch-Gordan matrix changes an operator from the local basis to the coupled basis." /><meta name="author" content="Prof. Mario Reis" />
+  <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-07/basis-change-of-an-operator.html" />
+  <meta property="og:type" content="article" /><meta property="og:site_name" content="Quantum Mechanics" />
+  <meta property="og:title" content="Basis change of an operator | Chapter 7 | Quantum Mechanics" /><meta property="og:description" content="The Clebsch-Gordan matrix changes an operator from the local basis to the coupled basis." /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-07/basis-change-of-an-operator.html" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/chapter-07/page-layout.css?v=0811.1" /><link rel="stylesheet" href="../../assets/ai-exercises.css?v=0717.2" />
+  <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0811.5"></script>
+  <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
+  <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+</head><body><div class="slide">
+  <div class="hdr"><div class="hdr-inner"><a href="../../index.html?view=chapters&chapter=07" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 7 · Item 7.6</div><div class="hdr-title">Basis change of an operator</div><div class="hdr-sub">Using the Clebsch-Gordan matrix to transform operators</div></div><div class="slide-num">6 / 8</div></div>
+  <div class="body">
+    <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div><p>The section uses the change-of-basis matrix obtained from Clebsch-Gordan coefficients to transform an operator. The purpose is practical: many operators are not diagonal in the local basis but become diagonal in the coupled basis.</p></div>
+    <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-right-left"></i> Basis-change rule</div>
+          <p>The operator before the change of basis is \(\hat A_a\). After the change, it is</p>
+          <div class="eq key-eq">\[\hat A_d=\hat U\hat A_a\hat U^\dagger,\]</div>
+          <p>where \(\hat U\) is the change-of-basis matrix and \(\hat U^\dagger\) is its conjugate transpose.</p>
+        </div>
+<div class="card green"><div class="ch green"><i class="fa-solid fa-circle-nodes"></i> Operator used in the example</div>
+          <p>The example returns to the scalar-product operator</p>
+          <div class="eq key-eq">\[\hat H=\vec{\hat S}_1\cdot\vec{\hat S}_2=\hat S_{1x}\hat S_{2x}+\hat S_{1y}\hat S_{2y}+\hat S_{1z}\hat S_{2z},\]</div>
+          <p>now with \(s_1=s_2=1/2\). In the local basis, after the Hilbert-space expansion, the operator is</p>
+          <div class="eq">\[\hat H_a=\frac{\hbar^2}{4}\begin{pmatrix}1&0&0&0\\0&-1&2&0\\0&2&-1&0\\0&0&0&1\end{pmatrix}.\]</div>
+        </div></div>
+    <div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-repeat"></i> Transform to the coupled basis</div>
+          <p>Using the matrix \(\hat U\) from the \(l_1=l_2=1/2\) coupling,</p>
+          <div class="eq key-eq">\[\hat H_d=\hat U\hat H_a\hat U^\dagger.\]</div>
+          <p>The result is diagonal:</p>
+          <div class="eq key-eq">\[\hat H_d=\frac{\hbar^2}{4}\begin{pmatrix}1&0&0&0\\0&1&0&0\\0&0&1&0\\0&0&0&-3\end{pmatrix}.\]</div>
+        </div>
+<div class="card orange"><div class="ch orange"><i class="fa-solid fa-magnifying-glass-chart"></i> Reading the result</div>
+          <p>The transformed operator has three degenerate states with eigenvalue \(\hbar^2/4\) and one non-degenerate state with eigenvalue \(-3\hbar^2/4\).</p>
+          <p>The section also emphasizes that changing from local to coupled basis does not necessarily diagonalize every operator.</p>
+        </div></div>
+    
+    
+    <div class="card green exercise-readiness-card" data-exercise-readiness="true" style="grid-column:1 / -1!important;">
+      <div class="ch green"><i class="fa-solid fa-list-check"></i> Exercise-ready boundary</div>
+      <p>This page supports compact guided exercises on: operator basis change using the Clebsch-Gordan matrix.</p>
+      <ul class="bullet practice-list">
+        <li><span class="practice-label">Use from this page:</span> the definitions, physical setup, highlighted equations and quantum-number restrictions shown here.</li>
+        <li><span class="practice-label">Keep in Chapter 7:</span> the complete demonstrations, long examples, historical notes and extended exercise solutions.</li>
+        <li><span class="practice-label">Boundary:</span> do not introduce notation, Hamiltonians, coupling schemes or selection rules outside the sequence presented here.</li>
+      </ul>
+    </div>
+    <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
+      <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
+      <p>Use these anchors only within the material introduced on this page.</p>
+      <ul class="bullet practice-list">
+        <li><span class="practice-label">Focus:</span> operator basis change using the Clebsch-Gordan matrix.</li>
+        <li><span class="practice-label">Conceptual check:</span> identify the basis or angular-momentum interaction before applying the equation.</li>
+        <li><span class="practice-label">Key equation:</span></li>
+      </ul>
+      <div class="eq">\[\hat A_d=\hat U\hat A_a\hat U^\dagger\]</div>
+    </div>
+    <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
+    <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 7 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for complete demonstrations, examples and exercises.</div>
+  </div>
+</div></body></html>
