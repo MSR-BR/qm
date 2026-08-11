@@ -17,6 +17,12 @@ const nestedDisplay = window.QmAIExercise.formatGeneratedText("\\[\\frac{i}{\\hb
 const orphanNestedDisplay = window.QmAIExercise.formatGeneratedText("\\[\\hat{L}_i, \\hat{x}_m = \\epsilon_{ijk}\\hat{x}_j \\(\\hat{p}_k, \\hat{x}_m\\]");
 const fragmentedInline = window.QmAIExercise.formatGeneratedText("Consider a particle of mass\n\n\\(m\\)\n\nmoving in one dimension.");
 const proseInsideInline = window.QmAIExercise.formatGeneratedText("For the specific case \\(\\hat{L}_x, \\hat{y}, we set i = x and m = y:\\)");
+const embeddedDisplay = window.QmAIExercise.formatGeneratedText(String.raw`Using the general commutation relation, \[\hat L_u, \hat L_v = i\hbar\epsilon_{uvw}\hat L_w\] calculate the explicit commutator.`);
+const overescapedDisplay = window.QmAIExercise.formatGeneratedText(String.raw`Using the general commutation relation,
+
+\\[\hat L_u, \hat L_v = i\hbar\epsilon_{uvw}\hat L_w\\]
+
+calculate the explicit commutator.`);
 
 if (rendered.includes("\\(\\(") || rendered.includes("\\)\\)")) {
   throw new Error("The renderer nested MathJax delimiters inside a protected expression.");
@@ -36,6 +42,12 @@ if ((fragmentedInline.match(/<p>/g) || []).length !== 1 || !fragmentedInline.inc
 }
 if (!proseInsideInline.includes("\\(\\hat{L}_x, \\hat{y}\\), we set \\(i = x\\) and \\(m = y\\):")) {
   throw new Error("The renderer did not split prose that was accidentally placed inside inline math.");
+}
+if (!embeddedDisplay.includes("</p><div class=\"termo-exercise__math-block\">\\[\\hat L_u, \\hat L_v = i\\hbar\\epsilon_{uvw}\\hat L_w\\]</div><p>calculate")) {
+  throw new Error("The renderer did not split embedded display math into a standalone block.");
+}
+if (/\\\\\\\\[\\[\\]]/.test(overescapedDisplay) || overescapedDisplay.includes("\\] calculate")) {
+  throw new Error("The renderer leaked overescaped display delimiters into the exercise text.");
 }
 
 console.log("AI exercise renderer passed.");

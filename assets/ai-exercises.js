@@ -337,6 +337,18 @@
     });
   }
 
+  function splitEmbeddedDisplayMath(value) {
+    return String(value || "")
+      .replace(/\\\[([\s\S]*?)\\\]/g, function (_match, content) {
+        const cleaned = cleanupEquation(content);
+        return cleaned ? `\n\\[${cleaned}\\]\n` : "\n";
+      })
+      .replace(/[ \t]+\n/g, "\n")
+      .replace(/\n[ \t]+/g, "\n")
+      .replace(/\n{3,}/g, "\n\n")
+      .trim();
+  }
+
   function normalizeGeneratedMath(value) {
     const normalized = wrapBareMathTokens(
       splitProseInsideInlineMath(repairGeneratedMathDelimiters(sanitizeGeneratedExerciseText(value)))
@@ -365,7 +377,8 @@
       .trim()
     );
     const flattened = separateAdjacentMathAndText(splitProseInsideInlineMath(flattenNestedMathDelimiters(normalized)));
-    return separateAdjacentMathAndText(wrapBareMathTokens(splitProseInsideInlineMath(unwrapProseDisplayMath(flattened))));
+    const displaySeparated = splitEmbeddedDisplayMath(flattened);
+    return separateAdjacentMathAndText(wrapBareMathTokens(splitProseInsideInlineMath(unwrapProseDisplayMath(displaySeparated))));
   }
 
   function flattenNestedMathDelimiters(value) {
@@ -555,6 +568,16 @@
     return blocks;
   }
 
+  function normalizeExercisePayload(data) {
+    const payload = data || {};
+    return {
+      ...payload,
+      title: normalizeGeneratedMath(payload.title || "Exercise").replace(/\s+/g, " ").trim() || "Exercise",
+      statement: normalizeGeneratedMath(payload.statement || ""),
+      solution: normalizeGeneratedMath(payload.solution || "")
+    };
+  }
+
   function isInlineMathOnly(value) {
     return /^\\\([\s\S]*?\\\)$/.test(String(value || "").trim());
   }
@@ -606,7 +629,8 @@
     return joinFragmentedInlineMath(tokenizeGeneratedText(value))
       .map(function (block) {
         if (block.type === "math") {
-          return `<div class="termo-exercise__math-block">${escapeHtml(block.value)}</div>`;
+          const equation = cleanupEquation(block.value);
+          return equation ? `<div class="termo-exercise__math-block">\\[${escapeHtml(equation)}\\]</div>` : "";
         }
 
         // Model line wraps are not semantic paragraph breaks. Keeping them as
@@ -1241,28 +1265,35 @@
         );
       }
 
+      const cleanData = normalizeExercisePayload(data);
+
       outputTitle.innerHTML = `
         <i class="fa-solid fa-circle-question"></i>
-        <span class="termo-exercise__generated-title">${escapeHtml(data.title || "Exercise")}</span>
-        ${data.exerciseId ? `<span class="termo-exercise__id-chip">${escapeHtml(data.exerciseId)}</span>` : ""}
+        <span class="termo-exercise__generated-title">${escapeHtml(cleanData.title || "Exercise")}</span>
+        ${cleanData.exerciseId ? `<span class="termo-exercise__id-chip">${escapeHtml(cleanData.exerciseId)}</span>` : ""}
       `;
       output.classList.remove("termo-exercise__placeholder");
-      output.innerHTML = formatGeneratedText(data.statement || "The API did not return a statement.");
+      output.innerHTML = formatGeneratedText(cleanData.statement || "The API did not return a statement.");
 
       solution.classList.remove("termo-exercise__placeholder");
-      solution.innerHTML = formatGeneratedText(data.solution || "The API did not return a solution.");
+      solution.innerHTML = formatGeneratedText(cleanData.solution || "The API did not return a solution.");
 
       await typesetMath([output, solution]);
-      toggleBtn.disabled = !(data.solution || "").trim();
+      toggleBtn.disabled = !(cleanData.solution || "").trim();
       hostState.exercise = {
-        title: data.title || "Exercise",
-        exerciseId: data.exerciseId || "",
-        statement: data.statement || "",
-        solution: data.solution || "",
+        title: cleanData.title || "Exercise",
+        exerciseId: cleanData.exerciseId || "",
+        statement: cleanData.statement || "",
+        solution: cleanData.solution || "",
         difficulty: difficulty.value,
-        context: ctx
+        context: ctx,
+        model: data.model || "",
+        sourceReferences: Array.isArray(data.sourceReferences) ? data.sourceReferences : [],
+        contextPackageMeta: data.contextPackageMeta || {},
+        mathContract: data.mathContract || null,
+        mathContractOk: data.mathContractOk === true
       };
-      hostState.saveResult = await persistExercise(host, buildExerciseRecord(ctx, data, difficulty.value));
+      hostState.saveResult = await persistExercise(host, buildExerciseRecord(ctx, cleanData, difficulty.value));
       if (hostState.canValidate && Number(data.validationMemoryCount || 0) > 0) {
         setMemoryStatus(
           host,
@@ -1361,6 +1392,7 @@
     mount,
     autoMount,
     formatGeneratedText,
+    normalizeExercisePayload,
     normalizeGeneratedMath
   };
   window.QmAIExercise = window.TermoAIExercise;
