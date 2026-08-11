@@ -55,6 +55,15 @@ const cases = [
       statement: "Use \\( \\psi(x) = \\(A\\) \\).",
       solution: "Short answer."
     }
+  },
+  {
+    name: "prose inside math delimiters is rejected",
+    expectedOk: false,
+    exercise: {
+      title: "Commutator",
+      statement: "Derive \\(\\hat L_i, \\hat x_j between angular-momentum and position components.\\)",
+      solution: "Short answer."
+    }
   }
 ];
 
@@ -84,4 +93,12 @@ const flattened = normalizeExerciseMathForTest({
 });
 if (!/^\\\[/.test(flattened.statement) || /\\\[([\s\S]*?)\\\(/.test(flattened.statement) || /\\\)\s*\\\]/.test(flattened.statement)) {
   throw new Error("Nested inline delimiters inside display math were not flattened.");
+}
+
+const splitInline = normalizeExerciseMathForTest({
+  statement: "Derive \\(\\hat L_i, \\hat x_j between angular-momentum and position components.\\)",
+  solution: ""
+});
+if (!splitInline.statement.includes("\\(\\hat L_i, \\hat x_j\\) between angular-momentum and position components.")) {
+  throw new Error("Inline math containing prose was not split before rendering.");
 }

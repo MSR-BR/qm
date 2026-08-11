@@ -249,6 +249,22 @@
     return output;
   }
 
+  function splitProseInsideInlineMath(value) {
+    const proseCuePattern = /\s+\b(?:between|where|with|using|given|show|calculate|determine|evaluate|explain|prove|find|from|in terms of|with respect to|for a|for the)\b/i;
+    return String(value || "").replace(/\\\(([^\n]*?)\\\)/g, function (match, content) {
+      const split = String(content || "").match(proseCuePattern);
+      if (!split || split.index < 4) return match;
+
+      const mathPart = content.slice(0, split.index).trim();
+      const prosePart = content.slice(split.index).trimStart();
+      if (!mathPart || !prosePart || !isMathy(mathPart) || countWords(mathPart) > 3) {
+        return match;
+      }
+
+      return `\\(${cleanupEquation(mathPart)}\\) ${prosePart}`;
+    });
+  }
+
   function replaceOutsideMathSegments(value, transform) {
     const tokens = [];
     const masked = String(value || "").replace(mathSegmentPattern, function (match) {
@@ -309,7 +325,7 @@
 
   function normalizeGeneratedMath(value) {
     const normalized = wrapBareMathTokens(
-      repairGeneratedMathDelimiters(sanitizeGeneratedExerciseText(value))
+      splitProseInsideInlineMath(repairGeneratedMathDelimiters(sanitizeGeneratedExerciseText(value)))
         .replace(/\r\n?/g, "\n")
       .replace(/\\\\/g, "\\")
       .replace(/^\s*```(?:latex|tex)?\s*$/gim, "")
@@ -334,8 +350,8 @@
       .replace(/\n{3,}/g, "\n\n")
       .trim()
     );
-    const flattened = separateAdjacentMathAndText(flattenNestedMathDelimiters(normalized));
-    return separateAdjacentMathAndText(wrapBareMathTokens(unwrapProseDisplayMath(flattened)));
+    const flattened = separateAdjacentMathAndText(splitProseInsideInlineMath(flattenNestedMathDelimiters(normalized)));
+    return separateAdjacentMathAndText(wrapBareMathTokens(splitProseInsideInlineMath(unwrapProseDisplayMath(flattened))));
   }
 
   function flattenNestedMathDelimiters(value) {

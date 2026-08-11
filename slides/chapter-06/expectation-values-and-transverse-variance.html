@@ -13,7 +13,7 @@
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},startup:{typeset:true}};</script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
-  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0810.2"></script>
+  <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0811.1"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
   <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
 </head><body><div class="slide">
@@ -43,10 +43,14 @@
     <div class="col">
       <div class="card purple">
         <div class="ch purple"><i class="fa-solid fa-wave-square"></i> Variances and standard deviations</div>
-        <p>Using \(\operatorname{var}(L_x)=\langle \hat L_x^2\rangle-\langle \hat L_x\rangle^2\), the variances follow as</p>
+        <p>The variance is the quadratic spread around the mean value. For any component, it is defined as</p>
+        <div class="eq ">\[\operatorname{var}(L_u)=\langle \hat L_u^2\rangle-\langle \hat L_u\rangle^2\]</div>
+        <p>The standard deviation is the positive square root of the variance:</p>
+        <div class="eq ">\[\Delta L_u=\sqrt{\operatorname{var}(L_u)}\]</div>
+        <p>Using the quadratic averages above, the transverse variances follow as</p>
         <div class="eq key-eq">\[\operatorname{var}(L_x)=\operatorname{var}(L_y)={\hbar^2\over2}\left[l(l+1)-m^2\right]\]</div>
         <div class="eq key-eq">\[\Delta L_x=\Delta L_y={\hbar\over\sqrt2}\left[l(l+1)-m^2\right]^{1/2}\]</div>
-        <div class="eq ">\[\Delta L_z=0\]</div>
+        <div class="eq key-eq">\[\operatorname{var}(L_z)=0,\qquad \Delta L_z=0\]</div>
         <p>The \(z\) component is precise in the state \(|l,m\rangle\), but the transverse components are not.</p>
       </div>
       <div class="card orange">
@@ -73,7 +77,7 @@
     <div class="card purple practice-anchor-card" data-practice-anchor="true" style="grid-column:1 / -1!important;">
       <div class="ch purple"><i class="fa-solid fa-pen-nib"></i> Practice anchors</div>
       <p>Use these anchors only within the material introduced on this page.</p>
-      <ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> expectation values, transverse variances and the physical cone representation of angular momentum.</li><li><span class="practice-label">Conceptual check:</span> explain why \(\Delta L_z=0\) does not make \(\Delta L_x\) and \(\Delta L_y\) vanish.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\langle \hat L_x\rangle=\langle \hat L_y\rangle=0\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[\Delta L_x=\Delta L_y={\hbar\over\sqrt2}\left[l(l+1)-m^2\right]^{1/2}\]</div><li><span class="practice-label">Typical task:</span> compute a variance for given \(l,m\) and interpret the cone picture.</li></ul>
+      <ul class="bullet practice-list"><li><span class="practice-label">Focus:</span> expectation values, transverse variances and the physical cone representation of angular momentum.</li><li><span class="practice-label">Conceptual check:</span> explain why \(\Delta L_z=0\) does not make \(\Delta L_x\) and \(\Delta L_y\) vanish.</li><li><span class="practice-label">Key equation 1:</span></li><div class="eq ">\[\langle \hat L_x\rangle=\langle \hat L_y\rangle=0\]</div><li><span class="practice-label">Key equation 2:</span></li><div class="eq ">\[\Delta L_x=\Delta L_y={\hbar\over\sqrt2}\left[l(l+1)-m^2\right]^{1/2}\]</div><li><span class="practice-label">Key equation 3:</span></li><div class="eq ">\[\operatorname{var}(L_z)=0,\qquad \Delta L_z=0\]</div><li><span class="practice-label">Typical task:</span> compute a variance for given \(l,m\) and interpret the cone picture.</li></ul>
     </div>
     <section data-termo-ai-exercise data-exercise-theme="purple" data-exercise-level="undergraduate physics" style="grid-column:1 / -1!important;"></section>
     <div class="resource-links"><strong>Original book and previews:</strong><div class="resource-link-list"><a href="https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8" target="_blank" rel="noopener noreferrer">Elsevier shop</a><a href="https://www.sciencedirect.com/book/monograph/9780443328268/quantum-mechanics" target="_blank" rel="noopener noreferrer">ScienceDirect</a><a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" target="_blank" rel="noopener noreferrer">Google Books preview</a><a href="https://a.co/d/09vYq2F7" target="_blank" rel="noopener noreferrer">Amazon</a></div></div><div class="source-note"><strong>Source note:</strong> Original auxiliary summary for this book-app, based on Chapter 6 of Mario Reis, <em>Quantum Mechanics</em>, Elsevier, 2026. Book text and figures are copyright &copy; 2026 Elsevier Inc.; consult the original book for the complete presentation, proofs, examples and exercises.</div>
