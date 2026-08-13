@@ -520,12 +520,18 @@ const pages = [
         `
       },
       {
-        title: "Two angular momenta l1 = l2 = 1/2",
+        title: "Example 7.5 route: lowering and orthogonality",
         icon: "fa-solid fa-arrow-down-short-wide",
         color: "green",
         body: String.raw`
-          <div class="eq key-eq">\[\begin{aligned}|1,1\rangle&=|+,+\rangle,\\ |1,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle+|-,+\rangle),\\ |1,-1\rangle&=|-,-\rangle,\\ |0,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle-|-,+\rangle).\end{aligned}\]</div>
-          <p>The singlet comes from the orthogonality condition \(\langle 1,0|0,0\rangle=0\) together with normalization.</p>
+          <p>For \(l_1=l_2=1/2\), the maximum projection fixes the first vector:</p>
+          <div class="eq key-eq">\[|1,+1\rangle=|+,+\rangle.\]</div>
+          <p>Then apply \(\hat L_-=\hat L_{1-}+\hat L_{2-}\):</p>
+          <div class="eq">\[\hat L_-|1,+1\rangle=(\hat L_{1-}+\hat L_{2-})|+,+\rangle.\]</div>
+          <p>This gives the \(m=0\) triplet vector; applying \(\hat L_-\) once more gives the \(m=-1\) triplet vector:</p>
+          <div class="eq">\[\begin{aligned}|1,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle+|-,+\rangle),\\ |1,-1\rangle&=|-,-\rangle.\end{aligned}\]</div>
+          <p>The missing singlet is found by writing \(|0,0\rangle=a|+,-\rangle+b|-,+\rangle\), using \(\langle1,0|0,0\rangle=0\), and normalizing:</p>
+          <div class="eq">\[|0,0\rangle=\frac{1}{\sqrt2}(|+,-\rangle-|-,+\rangle).\]</div>
         `
       },
       {
@@ -555,21 +561,25 @@ const pages = [
         icon: "fa-solid fa-table-cells-large",
         color: "purple",
         body: String.raw`
-          <p>The local basis is \(|+,+\rangle, |+,-\rangle, |-,+\rangle, |-,-\rangle\). The coupled basis is \(|1,1\rangle, |1,0\rangle, |1,-1\rangle, |0,0\rangle\).</p>
-          <p>With rows ordered as the coupled basis and columns ordered as the local basis, the matrix is</p>
-          <div class="eq key-eq">\[\hat U=\begin{pmatrix}1&0&0&0\\0&1/\sqrt2&1/\sqrt2&0\\0&0&0&1\\0&1/\sqrt2&-1/\sqrt2&0\end{pmatrix},\qquad |l,m\rangle=\hat U|m_1,m_2\rangle.\]</div>
-          <p>Since \(\hat U\) is unitary, \(|m_1,m_2\rangle=\hat U^\dagger |l,m\rangle\).</p>
+          <p>The local basis is ordered as \(|+,+\rangle, |+,-\rangle, |-,+\rangle, |-,-\rangle\). The coupled basis is ordered as \(|1,1\rangle, |1,0\rangle, |1,-1\rangle, |0,0\rangle\).</p>
+          <p>The Clebsch-Gordan coefficients form the matrix in</p>
+          <div class="eq key-eq">\[|l,m\rangle=\hat U|m_1,m_2\rangle.\]</div>
+          <p>With coupled vectors as rows and local vectors as columns, the matrix of coefficients is</p>
+          <div class="eq">\[\hat U=\begin{pmatrix}\langle +,+|1,1\rangle&\langle +,-|1,1\rangle&\langle -, +|1,1\rangle&\langle -,-|1,1\rangle\\ \langle +,+|1,0\rangle&\langle +,-|1,0\rangle&\langle -, +|1,0\rangle&\langle -,-|1,0\rangle\\ \langle +,+|1,-1\rangle&\langle +,-|1,-1\rangle&\langle -, +|1,-1\rangle&\langle -,-|1,-1\rangle\\ \langle +,+|0,0\rangle&\langle +,-|0,0\rangle&\langle -, +|0,0\rangle&\langle -,-|0,0\rangle\end{pmatrix}.\]</div>
+          <p>The zero entries are selected by \(m=m_1+m_2\); the nonzero entries are the Clebsch-Gordan coefficients. For this example:</p>
+          <div class="eq key-eq">\[\hat U=\begin{pmatrix}1&0&0&0\\0&1/\sqrt2&1/\sqrt2&0\\0&0&0&1\\0&1/\sqrt2&-1/\sqrt2&0\end{pmatrix}.\]</div>
         `
       },
       {
-        title: "Relations obtained from U",
+        title: "Reading U and U dagger",
         icon: "fa-solid fa-arrows-left-right",
         color: "green",
         body: String.raw`
-          <p>The nonzero entries of \(\hat U\) give the same relations obtained by the lowering-operator construction:</p>
-          <div class="eq key-eq">\[\begin{aligned}|1,1\rangle&=|+,+\rangle,\\ |1,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle+|-,+\rangle),\\ |1,-1\rangle&=|-,-\rangle,\\ |0,0\rangle&=\frac{1}{\sqrt2}(|+,-\rangle-|-,+\rangle).\end{aligned}\]</div>
-          <p>The inverse relations come from \(\hat U^\dagger\):</p>
-          <div class="eq">\[\begin{aligned}|+,+\rangle&=|1,1\rangle,\\ |+,-\rangle&=\frac{1}{\sqrt2}(|1,0\rangle+|0,0\rangle),\\ |-,+\rangle&=\frac{1}{\sqrt2}(|1,0\rangle-|0,0\rangle),\\ |-,-\rangle&=|1,-1\rangle.\end{aligned}\]</div>
+          <p>Each row of \(\hat U\) gives one coupled vector expanded in the local basis. This reproduces the vectors obtained in Example 7.5 by successive application of \(\hat L_-\).</p>
+          <p>Because \(\hat U\) is unitary, the inverse change of basis is</p>
+          <div class="eq key-eq">\[|m_1,m_2\rangle=\hat U^{-1}|l,m\rangle=\hat U^\dagger|l,m\rangle.\]</div>
+          <p>For the same ordering of vectors,</p>
+          <div class="eq">\[\hat U^\dagger=\begin{pmatrix}1&0&0&0\\0&1/\sqrt2&0&1/\sqrt2\\0&1/\sqrt2&0&-1/\sqrt2\\0&0&1&0\end{pmatrix}.\]</div>
         `
       },
       {
