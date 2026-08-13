@@ -4,7 +4,7 @@
   const inlineMathPattern = /\\\(([\s\S]+?)\\\)/g;
   const mathSegmentPattern = /\\\[[\s\S]+?\\\]|\\\([\s\S]+?\\\)/g;
   const mathLikePattern =
-    /(?:\\[A-Za-z]+|\b(?:psi|Psi|hbar)\b|[A-Za-z]_[A-Za-z0-9]+|[A-Za-z]\^[A-Za-z0-9]+|\b(?:sum|ln|exp|lim|frac|partial|nabla|int|bra|ket|braket|sin|cos|tan|sinh|cosh)\b|[=+\-*/^_]|[Σ∑∂∇ΔΩβλμψΨℏ→≤≥±≠∞])/;
+    /(?:\\[A-Za-z]+|\\begin\{(?:p|b|B|v|V)?matrix\}|\b(?:psi|Psi|hbar)\b|[A-Za-z]_[A-Za-z0-9]+|[A-Za-z]\^[A-Za-z0-9]+|\b(?:sum|ln|exp|lim|frac|partial|nabla|int|bra|ket|braket|sin|cos|tan|sinh|cosh|pmatrix|bmatrix|matrix|array)\b|[=+\-*/^_]|[Σ∑∂∇ΔΩβλμψΨℏ→≤≥±≠∞])/;
   const DEFAULT_VALIDATOR_EMAILS = ["marioreis@id.uff.br"];
   const EXERCISE_GENERATION_ENABLED = true;
 
@@ -69,15 +69,16 @@
   }
 
   function cleanupEquation(value) {
-    return String(value || "")
+    const stripped = String(value || "")
       .replace(/^\s*\\\[/, "")
       .replace(/\\\]\s*$/, "")
       .replace(/^\s*\\\(/, "")
       .replace(/\\\)\s*$/, "")
       .replace(/^\s*\$+/, "")
       .replace(/\$+\s*$/, "")
-      .replace(/\r\n?/g, "\n")
-      .replace(/\\\\/g, "\\")
+      .replace(/\r\n?/g, "\n");
+
+    return collapseOverescapedLatex(stripped)
       .replace(/\s*\n\s*/g, " ")
       .replace(/\s{2,}/g, " ")
       .trim();
@@ -92,6 +93,12 @@
 
     if (words <= 4) return true;
     return density > 0.18 && words <= 8;
+  }
+
+  function compactDisplayMathBlocks(value) {
+    return String(value || "").replace(/\\\[([\s\S]*?)\\\]/g, function (_match, content) {
+      return `\\[${cleanupEquation(content)}\\]`;
+    });
   }
 
   function isSimpleInlineMath(value) {
@@ -305,7 +312,7 @@
   }
 
   function wrapBareLatexExpressions(value) {
-    const latexCommand = /\\(?:left|right|frac|partial|nabla|sum|int|sqrt|cdot|text|mathrm|to|rightarrow|le|ge|neq|infty|hat|vec|epsilon|varepsilon|delta|hbar|ell|langle|rangle|bra|ket|braket|pm|mp|dagger|alpha|beta|gamma|theta|Theta|Phi|phi|lambda|mu|sigma|rho|Omega|Delta|ln|exp|sin|cos|tan)(?![A-Za-z])/;
+    const latexCommand = /\\(?:left|right|frac|partial|nabla|sum|int|sqrt|cdot|text|mathrm|operatorname|begin|end|to|rightarrow|le|ge|neq|infty|hat|vec|epsilon|varepsilon|delta|hbar|ell|langle|rangle|bra|ket|braket|pm|mp|dagger|otimes|alpha|beta|gamma|theta|Theta|Phi|phi|lambda|mu|sigma|rho|Omega|Delta|ln|exp|sin|cos|tan)(?![A-Za-z])/;
     const latexRun = /(^|[^A-Za-zÀ-ÿ\\])((?:(?:\\(?:text|mathrm)\s*\{[^}]*\})|(?:\{[^}]*\})|(?:\\[A-Za-z]+)|(?:[A-Za-z](?![A-Za-zÀ-ÿ]))|(?:\d+(?:\.\d+)?)|[\s_{}()[\]=+\-*/^<>.,|]){4,})(?=$|[^A-Za-zÀ-ÿ])/g;
 
     return replaceOutsideMathSegments(value, function (segment) {
@@ -375,10 +382,12 @@
   }
 
   function normalizeGeneratedMath(value) {
-    const normalized = wrapBareMathTokens(
+    const source = compactDisplayMathBlocks(collapseOverescapedLatex(
       splitProseInsideInlineMath(repairGeneratedMathDelimiters(sanitizeGeneratedExerciseText(value)))
         .replace(/\r\n?/g, "\n")
-      .replace(/\\\\/g, "\\")
+    ));
+    const normalized = wrapBareMathTokens(
+      source
       .replace(/^\s*```(?:latex|tex)?\s*$/gim, "")
       .replace(/^\s*```\s*$/gm, "")
       .replace(/\$\$([\s\S]+?)\$\$/g, function (_match, equation) {
@@ -515,7 +524,24 @@
   }
 
   function collapseOverescapedLatex(value) {
-    return String(value || "").replace(/\\\\(?=[()[\]]|[A-Za-z])/g, "\\");
+    const protectedBlocks = [];
+    const masked = String(value || "").replace(
+      /\\begin\{((?:[pbBvV]?matrix)|smallmatrix|array|cases)\}(?:\{[^{}]*\})?[\s\S]*?\\end\{\1\}/g,
+      function (match) {
+        const key = `@@QM_MATRIX_BLOCK_${protectedBlocks.length}@@`;
+        protectedBlocks.push(match);
+        return key;
+      }
+    );
+
+    return masked
+      .replace(/\\\\(?=[()])/g, "\\")
+      .replace(/(^|[\s\n])\\\\(?=\[)/g, "$1\\")
+      .replace(/\\\\(?=\])/g, "\\")
+      .replace(/\\\\(?=[A-Za-z])/g, "\\")
+      .replace(/@@QM_MATRIX_BLOCK_(\d+)@@/g, function (_match, index) {
+        return protectedBlocks[Number(index)] || "";
+      });
   }
 
   function renderInlineMarkup(text) {

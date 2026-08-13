@@ -25,6 +25,9 @@ const overescapedDisplay = window.QmAIExercise.formatGeneratedText(String.raw`Us
 calculate the explicit commutator.`);
 const commutatorDisplay = window.QmAIExercise.formatGeneratedText(String.raw`\[[\hat L_y, \hat L_z] = i\hbar\hat L_x\]`);
 const commutatorInline = window.QmAIExercise.formatGeneratedText(String.raw`Evaluate [\hat L_y, \hat L_z].`);
+const matrixDisplay = window.QmAIExercise.formatGeneratedText(String.raw`\[\hat 1^{(2)} = \begin{pmatrix}1&0\\0&1\end{pmatrix}\]`);
+const overescapedMatrixDisplay = window.QmAIExercise.formatGeneratedText(String.raw`\\[\hat A = \begin{pmatrix}1&0\\
+0&1\end{pmatrix}\\]`);
 
 if (rendered.includes("\\(\\(") || rendered.includes("\\)\\)")) {
   throw new Error("The renderer nested MathJax delimiters inside a protected expression.");
@@ -56,6 +59,13 @@ if (!commutatorDisplay.includes("\\[[\\hat L_y, \\hat L_z] = i\\hbar\\hat L_x\\]
 }
 if (!commutatorInline.includes("\\(\\left[\\hat L_{y}, \\hat L_{z}\\right]\\)")) {
   throw new Error("The renderer removed square brackets from an inline commutator.");
+}
+const renderedMatrixPattern = /\\begin\{pmatrix\}1(?:&|&amp;)0\\\\\s*0(?:&|&amp;)1\\end\{pmatrix\}/;
+if (!renderedMatrixPattern.test(matrixDisplay)) {
+  throw new Error("The renderer flattened a valid pmatrix row separator.");
+}
+if (!renderedMatrixPattern.test(overescapedMatrixDisplay)) {
+  throw new Error("The renderer did not preserve pmatrix rows in an overescaped display block.");
 }
 
 console.log("AI exercise renderer passed.");

@@ -134,3 +134,31 @@ const commutatorInline = normalizeExerciseMathForTest({
 if (!commutatorInline.statement.includes(String.raw`\(\left[\hat L_{y}, \hat L_{z}\right]\)`)) {
   throw new Error("Square brackets in an inline commutator were not preserved.");
 }
+
+const matrixExercise = normalizeExerciseMathForTest({
+  statement: "",
+  solution: String.raw`\[\hat 1^{(2)} = \begin{pmatrix}1&0\\0&1\end{pmatrix}\]`
+});
+if (!/\\begin\{pmatrix\}1&0\\\\\s*0&1\\end\{pmatrix\}/.test(matrixExercise.solution)) {
+  throw new Error("A valid matrix environment was flattened during server-side normalization.");
+}
+if (!validateExerciseMathContract(matrixExercise).ok) {
+  throw new Error("A valid matrix environment did not satisfy the exercise math contract.");
+}
+
+const tensorMatrixExercise = normalizeExerciseMathForTest({
+  statement: "",
+  solution: String.raw`\[\hat S_{1z}=\frac{\hbar}{2}\begin{pmatrix}1&0\\0&-1\end{pmatrix}\otimes\begin{pmatrix}1&0\\0&1\end{pmatrix}\]`
+});
+if (!/1&0\\\\\s*0&-1/.test(tensorMatrixExercise.solution) || !/1&0\\\\\s*0&1/.test(tensorMatrixExercise.solution)) {
+  throw new Error("Tensor-product matrices lost their row separators during normalization.");
+}
+
+const multilineMatrixExercise = normalizeExerciseMathForTest({
+  statement: "",
+  solution: String.raw`\[\hat A = \begin{pmatrix}1&0\\
+0&1\end{pmatrix}\]`
+});
+if (!/\\begin\{pmatrix\}1&0\\\\\s*0&1\\end\{pmatrix\}/.test(multilineMatrixExercise.solution)) {
+  throw new Error("A multiline matrix display was not compacted while preserving its rows.");
+}
