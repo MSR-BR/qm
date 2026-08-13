@@ -366,9 +366,9 @@ const pages = [
         body: String.raw`
           <p>For four angular momenta \(l_1=l_2=l_3=l_4=1/2\), the sequential construction is</p>
           <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{13}=\vec{\hat L}_{12}+\vec{\hat L}_3,\qquad \vec{\hat L}=\vec{\hat L}_{14}=\vec{\hat L}_{13}+\vec{\hat L}_4.\]</div>
-          ${sequentialBasisFigure()}
           <p>The allowed intermediate values are obtained from</p>
           <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_{12}-l_3|\le l_{13}\le l_{12}+l_3,\qquad |l_{13}-l_4|\le l\le l_{13}+l_4.\]</div>
+          ${sequentialBasisFigure()}
         `
       },
       {
@@ -386,10 +386,12 @@ const pages = [
         icon: "fa-solid fa-code-fork",
         color: "purple",
         body: String.raw`
-          <p>The angular momenta do not need to be added sequentially. For the same four angular momenta, the section also uses</p>
+          <p>The angular momenta do not need to be added sequentially. For the same example of four spins \(1/2\), with \(l_1=l_2=l_3=l_4=1/2\), the section also uses</p>
           <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{34}=\vec{\hat L}_3+\vec{\hat L}_4,\qquad \vec{\hat L}=\vec{\hat L}_{12}+\vec{\hat L}_{34}.\]</div>
+          <p>The allowed intermediate values are obtained from</p>
+          <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_3-l_4|\le l_{34}\le l_3+l_4,\qquad |l_{12}-l_{34}|\le l\le l_{12}+l_{34}.\]</div>
           ${nonSequentialBasisFigure()}
-          <p>This choice depends on the system under study and still uses the same allowed-value condition at each pairwise addition.</p>
+          <p>This choice depends on the system under study and still uses the same allowed-value condition at each pairwise addition. Other non-sequential choices and the extension to three or more angular momenta remain in Chapter 7.</p>
         `
       },
       {

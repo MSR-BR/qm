@@ -23,12 +23,12 @@
     <div class="col"><div class="card"><div class="ch"><i class="fa-solid fa-shoe-prints"></i> Sequentially coupled basis</div>
           <p>For four angular momenta \(l_1=l_2=l_3=l_4=1/2\), the sequential construction is</p>
           <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{13}=\vec{\hat L}_{12}+\vec{\hat L}_3,\qquad \vec{\hat L}=\vec{\hat L}_{14}=\vec{\hat L}_{13}+\vec{\hat L}_4.\]</div>
+          <p>The allowed intermediate values are obtained from</p>
+          <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_{12}-l_3|\le l_{13}\le l_{12}+l_3,\qquad |l_{13}-l_4|\le l\le l_{13}+l_4.\]</div>
           <figure class="book-figure basis-book-figure">
     <img src="../../assets/chapter-07/fig-7-4-sequential-basis.png?v=0813.1" alt="Sequential construction of the coupled basis" loading="lazy" decoding="async" />
     <figcaption>Sequential construction for four \(1/2\) angular momenta: first \(l_{12}\), then \(l_{13}\), then \(l\).</figcaption>
   </figure>
-          <p>The allowed intermediate values are obtained from</p>
-          <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_{12}-l_3|\le l_{13}\le l_{12}+l_3,\qquad |l_{13}-l_4|\le l\le l_{13}+l_4.\]</div>
         </div>
 <div class="card green"><div class="ch green"><i class="fa-solid fa-list"></i> Sequential vectors</div>
           <p>The simplified sequential coupled basis omits the constant \(l_1,l_2,l_3,l_4\) and is written as \(|l_{12},l_{13},l,m\rangle\):</p>
@@ -36,13 +36,15 @@
           <p>The coupled basis has one quintuplet, three triplets and two singlets, preserving the Hilbert-space dimension \(16\).</p>
         </div></div>
     <div class="col"><div class="card purple"><div class="ch purple"><i class="fa-solid fa-code-fork"></i> Non-sequentially coupled basis</div>
-          <p>The angular momenta do not need to be added sequentially. For the same four angular momenta, the section also uses</p>
+          <p>The angular momenta do not need to be added sequentially. For the same example of four spins \(1/2\), with \(l_1=l_2=l_3=l_4=1/2\), the section also uses</p>
           <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{34}=\vec{\hat L}_3+\vec{\hat L}_4,\qquad \vec{\hat L}=\vec{\hat L}_{12}+\vec{\hat L}_{34}.\]</div>
+          <p>The allowed intermediate values are obtained from</p>
+          <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_3-l_4|\le l_{34}\le l_3+l_4,\qquad |l_{12}-l_{34}|\le l\le l_{12}+l_{34}.\]</div>
           <figure class="book-figure basis-book-figure">
     <img src="../../assets/chapter-07/fig-7-4-non-sequential-basis.png?v=0813.1" alt="Non-sequential construction of the coupled basis" loading="lazy" decoding="async" />
     <figcaption>Non-sequential construction: first \(l_{12}\) and \(l_{34}\), then the total \(l\).</figcaption>
   </figure>
-          <p>This choice depends on the system under study and still uses the same allowed-value condition at each pairwise addition.</p>
+          <p>This choice depends on the system under study and still uses the same allowed-value condition at each pairwise addition. Other non-sequential choices and the extension to three or more angular momenta remain in Chapter 7.</p>
         </div>
 <div class="card orange"><div class="ch orange"><i class="fa-solid fa-diagram-project"></i> Non-sequential vectors</div>
           <p>The corresponding basis is written as \(|l_{12},l_{34},l,m\rangle\):</p>
