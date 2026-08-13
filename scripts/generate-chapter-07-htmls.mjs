@@ -7,7 +7,7 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 const chapterDir = path.join(rootDir, "slides", "chapter-07");
 const dataPath = path.join(rootDir, "data", "chapter-07.json");
-const layoutVersion = "0811.3";
+const layoutVersion = "0813.1";
 
 const originalLinks = [
   ["Elsevier shop", "https://shop.elsevier.com/books/quantum-mechanics/reis/978-0-443-32826-8"],
@@ -73,49 +73,17 @@ function vectorStack(rows) {
   return `<div class="vector-stack">${rows.map((row) => `<div class="vector-row">\\(${row}\\)</div>`).join("")}</div>`;
 }
 
-function sequentialDiagram() {
-  return String.raw`<figure class="basis-diagram">
-    <svg viewBox="0 0 720 310" role="img" aria-label="Sequential coupled basis diagram">
-      <text class="axis-label" x="132" y="38">l<tspan baseline-shift="sub" font-size="13">12</tspan></text>
-      <text class="axis-label" x="336" y="38">l<tspan baseline-shift="sub" font-size="13">13</tspan></text>
-      <text class="axis-label" x="544" y="38">l</text>
-      <text x="96" y="96">1</text><line class="branch" x1="116" y1="90" x2="295" y2="90"/>
-      <text x="302" y="96">3/2</text><line class="branch" x1="350" y1="90" x2="515" y2="90"/>
-      <line class="branch" x1="515" y1="90" x2="515" y2="128"/><line class="branch" x1="515" y1="90" x2="548" y2="90"/><line class="branch" x1="515" y1="128" x2="548" y2="128"/>
-      <text x="560" y="96">2</text><text x="560" y="134">1</text>
-      <line class="branch" x1="295" y1="90" x2="295" y2="128"/><line class="branch" x1="295" y1="128" x2="350" y2="128"/>
-      <text x="302" y="134">1/2</text><line class="branch" x1="350" y1="128" x2="470" y2="128"/>
-      <line class="branch" x1="470" y1="128" x2="470" y2="184"/><line class="branch" x1="470" y1="184" x2="515" y2="184"/>
-      <line class="branch" x1="515" y1="184" x2="515" y2="222"/><line class="branch" x1="515" y1="184" x2="548" y2="184"/><line class="branch" x1="515" y1="222" x2="548" y2="222"/>
-      <text x="560" y="190">1</text><text x="560" y="228">0</text>
-      <text x="96" y="184">0</text><line class="branch" x1="116" y1="178" x2="295" y2="178"/>
-      <text x="302" y="184">1/2</text><line class="branch" x1="350" y1="178" x2="455" y2="178"/>
-      <line class="branch" x1="455" y1="178" x2="455" y2="252"/><line class="branch" x1="455" y1="252" x2="515" y2="252"/>
-      <line class="branch" x1="515" y1="252" x2="515" y2="290"/><line class="branch" x1="515" y1="252" x2="548" y2="252"/><line class="branch" x1="515" y1="290" x2="548" y2="290"/>
-      <text x="560" y="258">1</text><text x="560" y="296">0</text>
-    </svg>
-    <figcaption>Sequential addition for four \(1/2\) angular momenta: \(l_{12}\), then \(l_{13}\), then \(l\).</figcaption>
+function sequentialBasisFigure() {
+  return String.raw`<figure class="book-figure basis-book-figure">
+    <img src="../../assets/chapter-07/fig-7-4-sequential-basis.png?v=0813.1" alt="Sequential construction of the coupled basis" loading="lazy" decoding="async" />
+    <figcaption>Sequential construction for four \(1/2\) angular momenta: first \(l_{12}\), then \(l_{13}\), then \(l\).</figcaption>
   </figure>`;
 }
 
-function nonSequentialDiagram() {
-  return String.raw`<figure class="basis-diagram">
-    <svg viewBox="0 0 720 285" role="img" aria-label="Non-sequential coupled basis diagram">
-      <text class="axis-label" x="132" y="38">l<tspan baseline-shift="sub" font-size="13">12</tspan></text>
-      <text class="axis-label" x="336" y="38">l<tspan baseline-shift="sub" font-size="13">34</tspan></text>
-      <text class="axis-label" x="544" y="38">l</text>
-      <text x="96" y="96">1</text><line class="branch" x1="116" y1="90" x2="300" y2="90"/>
-      <text x="316" y="96">1</text><line class="branch" x1="340" y1="90" x2="510" y2="90"/>
-      <line class="branch" x1="510" y1="90" x2="510" y2="166"/><line class="branch" x1="510" y1="90" x2="548" y2="90"/><line class="branch" x1="510" y1="128" x2="548" y2="128"/><line class="branch" x1="510" y1="166" x2="548" y2="166"/>
-      <text x="560" y="96">2</text><text x="560" y="134">1</text><text x="560" y="172">0</text>
-      <text x="96" y="178">0</text><line class="branch dotted" x1="116" y1="172" x2="300" y2="172"/>
-      <text x="316" y="178">0</text><line class="branch dotted" x1="340" y1="172" x2="510" y2="172"/>
-      <line class="branch dotted" x1="300" y1="90" x2="300" y2="172"/><line class="branch" x1="300" y1="172" x2="340" y2="172"/>
-      <line class="branch dotted" x1="510" y1="172" x2="510" y2="250"/><line class="branch dotted" x1="510" y1="250" x2="548" y2="250"/>
-      <text x="560" y="212">1</text><text x="560" y="256">0</text>
-      <line class="branch dotted" x1="510" y1="172" x2="548" y2="208"/><line class="branch dotted" x1="300" y1="90" x2="340" y2="172"/>
-    </svg>
-    <figcaption>One non-sequential choice: build \(l_{12}\), build \(l_{34}\), then couple them into \(l\).</figcaption>
+function nonSequentialBasisFigure() {
+  return String.raw`<figure class="book-figure basis-book-figure">
+    <img src="../../assets/chapter-07/fig-7-4-non-sequential-basis.png?v=0813.1" alt="Non-sequential construction of the coupled basis" loading="lazy" decoding="async" />
+    <figcaption>Non-sequential construction: first \(l_{12}\) and \(l_{34}\), then the total \(l\).</figcaption>
   </figure>`;
 }
 
@@ -150,6 +118,7 @@ function renderPage(page, index, total) {
   const midpoint = Math.ceil(page.cards.length / 2);
   const left = page.cards.slice(0, midpoint).map(card).join("\n");
   const right = page.cards.slice(midpoint).map(card).join("\n");
+  const fullWidth = (page.fullWidth || []).map((entry) => card(entry).replace("<div class=\"card", "<div style=\"grid-column:1 / -1!important;\" class=\"card")).join("\n");
   return `<!DOCTYPE html>
 <html lang="en"><head>
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -174,7 +143,7 @@ function renderPage(page, index, total) {
     <div class="card orange guide-card"><div class="ch orange"><i class="fa-solid fa-map-location-dot"></i> Guided reading</div>${page.guide}</div>
     <div class="col">${left}</div>
     <div class="col">${right}</div>
-    ${(page.fullWidth || []).map((entry) => card(entry).replace("<div class=\"card", "<div style=\"grid-column:1 / -1!important;\" class=\"card")).join("\n")}
+${fullWidth}
     ${page.aiExercise === false ? "" : exerciseBoundary(page)}
     ${resourceLinks()}${sourceNote()}
   </div>
@@ -397,6 +366,7 @@ const pages = [
         body: String.raw`
           <p>For four angular momenta \(l_1=l_2=l_3=l_4=1/2\), the sequential construction is</p>
           <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{13}=\vec{\hat L}_{12}+\vec{\hat L}_3,\qquad \vec{\hat L}=\vec{\hat L}_{14}=\vec{\hat L}_{13}+\vec{\hat L}_4.\]</div>
+          ${sequentialBasisFigure()}
           <p>The allowed intermediate values are obtained from</p>
           <div class="eq">\[|l_1-l_2|\le l_{12}\le l_1+l_2,\qquad |l_{12}-l_3|\le l_{13}\le l_{12}+l_3,\qquad |l_{13}-l_4|\le l\le l_{13}+l_4.\]</div>
         `
@@ -418,6 +388,7 @@ const pages = [
         body: String.raw`
           <p>The angular momenta do not need to be added sequentially. For the same four angular momenta, the section also uses</p>
           <div class="eq key-eq">\[\vec{\hat L}_{12}=\vec{\hat L}_1+\vec{\hat L}_2,\qquad \vec{\hat L}_{34}=\vec{\hat L}_3+\vec{\hat L}_4,\qquad \vec{\hat L}=\vec{\hat L}_{12}+\vec{\hat L}_{34}.\]</div>
+          ${nonSequentialBasisFigure()}
           <p>This choice depends on the system under study and still uses the same allowed-value condition at each pairwise addition.</p>
         `
       },
@@ -429,28 +400,6 @@ const pages = [
           <p>The corresponding basis is written as \(|l_{12},l_{34},l,m\rangle\):</p>
           ${vectorStack(["|l_{12},l_{34},l,m\\rangle","|1,1,2,m\\rangle","|1,1,1,m\\rangle","|1,1,0,m\\rangle","|1,0,1,m\\rangle","|0,1,1,m\\rangle","|0,0,0,m\\rangle"])}
           <p>As expected, the dimension is preserved again: one quintuplet, three triplets and two singlets.</p>
-        `
-      }
-    ],
-    fullWidth: [
-      {
-        title: "Sequential diagram",
-        icon: "fa-solid fa-diagram-project",
-        color: "green",
-        body: String.raw`
-          <p>For the sequential choice, follow the possible lines from \(l_{12}\) to \(l_{13}\) and then to \(l\).</p>
-          ${sequentialDiagram()}
-          <p>Each path generates one family \(|l_{12},l_{13},l,m\rangle\); the allowed \(m\) values inside each family are fixed by \(-l\le m\le +l\).</p>
-        `
-      },
-      {
-        title: "Non-sequential diagram and reading boundary",
-        icon: "fa-solid fa-code-fork",
-        color: "purple",
-        body: String.raw`
-          <p>A non-sequential basis is also built pair by pair. In the example below, \(l_{12}\) and \(l_{34}\) are built first, and only then they are added to form \(l\).</p>
-          ${nonSequentialDiagram()}
-          <p>Other non-sequential choices also exist. This app keeps the main construction visible; the detailed discussion of alternative non-sequential bases and the extension to three or more angular momenta remains in Chapter 7.</p>
         `
       }
     ]
