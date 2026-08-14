@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Coupled Angular-Momentum States | Quantum Mechanics</title>
-  <meta name="description" content="Calculate possible coupled angular-momentum states for up to four angular momenta with a guided coupling builder." />
+  <title>Coupled Bases and Clebsch-Gordan Matrix | Quantum Mechanics</title>
+  <meta name="description" content="Build coupled angular-momentum bases for up to four angular momenta and inspect the Clebsch-Gordan matrix." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
@@ -15,6 +15,22 @@
     .spin-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
     .builder-grid{display:grid;grid-template-columns:1fr;gap:10px;margin-top:10px}
     .builder-hint{font-size:.86rem;line-height:1.45;color:var(--sim-muted);background:#fbfdfb;border:1px dashed var(--sim-border);border-radius:12px;padding:10px 12px}
+    .coupling-diagram{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:8px}
+    .coupling-step{background:#fffdf9;border:1px solid var(--sim-border);border-radius:14px;padding:10px 12px}
+    .coupling-step span{display:block;color:var(--sim-muted);font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+    .coupling-step strong{display:block;color:var(--sim-green-dark);font-size:.92rem;line-height:1.35}
+    .basis-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .basis-list{max-height:310px;overflow:auto;border:1px solid var(--sim-border);border-radius:14px;background:#fffdf9;padding:8px;display:grid;gap:5px}
+    .basis-list div{display:grid;grid-template-columns:34px 1fr;gap:8px;align-items:start;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.82rem;color:#27313f}
+    .basis-list span{color:var(--sim-muted);font-weight:800;text-align:right}
+    .matrix-controls{display:grid;grid-template-columns:minmax(220px,1fr);gap:10px;margin-bottom:12px}
+    .matrix-note{font-size:.86rem;line-height:1.45;color:var(--sim-muted);background:#fbfdfb;border:1px dashed var(--sim-border);border-radius:12px;padding:10px 12px;margin:8px 0 12px}
+    .matrix-table{width:max-content;min-width:100%;border-collapse:collapse}
+    .matrix-table th,.matrix-table td{padding:8px 10px;border-bottom:1px solid #dfe8e1;border-right:1px solid #edf2ef;text-align:center;vertical-align:middle;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.78rem;white-space:nowrap}
+    .matrix-table th{background:var(--sim-green-soft);color:var(--sim-green-dark);font-weight:800}
+    .selected-vector{font-weight:800;color:var(--sim-green-dark);margin-bottom:8px}
+    .formula-scroll{overflow-x:auto;white-space:nowrap}
+    .coefficient-wrap{max-height:360px;overflow:auto;margin-bottom:12px}
     .table-wrap{width:100%;overflow:auto;border:1px solid var(--sim-border);border-radius:14px;background:#fffdf9}
     .result-table{width:100%;border-collapse:collapse;min-width:520px}
     .result-table th,.result-table td{padding:10px 12px;border-bottom:1px solid #dfe8e1;text-align:left;vertical-align:top}
@@ -25,22 +41,22 @@
     .route-tree{padding:11px 12px;border:1px dashed var(--sim-border);border-radius:12px;background:#fbfdfb;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86rem;overflow-x:auto;white-space:nowrap}
     .channel-wrap{max-height:460px;overflow:auto}
     .coupling-sim .equation-box{overflow-x:auto}
-    @media(max-width:760px){.coupling-sim .sim-layout{grid-template-columns:1fr}.coupling-sim .sim-sidebar{position:static}.spin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.result-table{min-width:440px}}
+    @media(max-width:760px){.coupling-sim .sim-layout{grid-template-columns:1fr}.coupling-sim .sim-sidebar{position:static}.spin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.basis-grid{grid-template-columns:1fr}.result-table{min-width:440px}}
     @media(max-width:520px){.spin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   </style>
   <script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},svg:{fontCache:"global"}};</script>
   <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
   <script defer src="../assets/qm-simulator-mobile.js?v=0721.1"></script>
-  <script defer src="../assets/qm-simulator-catalog.js?v=0813.4"></script>
-  <script defer src="../assets/chapter-07-coupling-simulators.js?v=0813.3"></script>
+  <script defer src="../assets/qm-simulator-catalog.js?v=0814.1"></script>
+  <script defer src="../assets/chapter-07-coupling-simulators.js?v=0814.1"></script>
 </head>
 <body>
   <main class="sim-shell coupling-sim" data-simulator-slug="angular-momentum-coupled-states" data-coupled-states-calculator>
     <header class="sim-header">
       <div>
         <div class="sim-kicker">Chapter 7 · Sections 7.3-7.4</div>
-        <h1 class="sim-title">Coupled Angular-Momentum States</h1>
-        <p class="sim-subtitle">Choose up to four angular momenta \(l_i\). A value \(l_i=0\) means that subspace is absent. The builder then helps assemble the coupling route and lists the possible total \(l\) values, multiplicities and intermediate channels.</p>
+        <h1 class="sim-title">Coupled Bases and Clebsch-Gordan Matrix</h1>
+        <p class="sim-subtitle">Choose up to four angular momenta \(l_i\). A value \(l_i=0\) means that subspace is absent. The builder constructs the coupling route step by step, then shows the local basis, the coupled basis and the Clebsch-Gordan matrix \(U\).</p>
       </div>
       <div class="sim-source">Original calculator · Quantum Mechanics book-app · Prof. Mario Reis</div>
     </header>
@@ -50,32 +66,26 @@
         <details class="sim-panel sim-controls collapsible-panel" open>
           <summary class="sim-panel-title"><i class="fa-solid fa-sliders"></i> Inputs</summary>
           <div class="spin-grid" id="spinInputs"></div>
+          <div class="builder-hint" id="activationHint"></div>
           <div class="builder-grid">
-            <div class="control-group">
-              <div class="control-row"><label class="control-label" for="couplingMode">Coupling builder</label></div>
-              <select id="couplingMode">
-                <option value="auto" selected>Smart: pair the remaining momenta when possible</option>
-                <option value="pairwise">Two pairs, then combine the pair results</option>
-                <option value="sequential">First pair, then add the remaining momenta one by one</option>
-              </select>
-            </div>
             <div class="control-group">
               <div class="control-row"><label class="control-label" for="firstPair">First pair</label></div>
               <select id="firstPair"></select>
             </div>
             <div class="control-group">
-              <div class="control-row"><label class="control-label" for="nextMomentum">Next step for sequential mode</label></div>
-              <select id="nextMomentum"></select>
+              <div class="control-row"><label class="control-label" for="secondStep">Second step</label></div>
+              <select id="secondStep"></select>
             </div>
             <div class="builder-hint" id="builderHint"></div>
           </div>
-          <div class="insight-box">The calculator repeatedly applies the Chapter 7 condition \(|l_a-l_b|\le l\le l_a+l_b\). Different routes may expose different intermediate labels, while the final Hilbert-space dimension is preserved.</div>
+          <div class="insight-box">The calculator repeatedly applies the Chapter 7 condition \(|l_a-l_b|\le l\le l_a+l_b\). The matrix \(U\) is written with coupled-basis rows and local-basis columns.</div>
         </details>
         <details class="sim-panel equation-panel" open>
           <summary>Book equations used</summary>
           <div class="equation-box">
             \[|l_1-l_2|\le l\le l_1+l_2,\qquad m=m_1+m_2\]
             \[\dim\mathcal H=\prod_i(2l_i+1),\qquad \dim\mathcal H=\sum_l g_l(2l+1)\]
+            \[|l,m\rangle=\sum_{m_1,m_2,\ldots} U_{(l,m),(m_1,m_2,\ldots)} |m_1,m_2,\ldots\rangle\]
           </div>
         </details>
       </aside>
@@ -92,6 +102,7 @@
           <h2 class="sim-panel-title"><i class="fa-solid fa-code-branch"></i> Coupling route</h2>
           <div class="route-name" id="routeTitle"></div>
           <div class="route-tree" id="routeTree"></div>
+          <div class="coupling-diagram" id="couplingDiagram"></div>
           <div class="status-box" id="routeWarning"></div>
         </section>
 
@@ -114,9 +125,45 @@
             </table>
           </div>
         </section>
+
+        <section class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-table-list"></i> Local and coupled bases</h2>
+          <div class="basis-grid">
+            <div>
+              <h3 class="route-name">Local basis</h3>
+              <div class="basis-list" id="localBasisList"></div>
+            </div>
+            <div>
+              <h3 class="route-name">Coupled basis</h3>
+              <div class="basis-list" id="coupledBasisList"></div>
+            </div>
+          </div>
+        </section>
+
+        <section class="sim-panel">
+          <h2 class="sim-panel-title"><i class="fa-solid fa-square-root-variable"></i> Clebsch-Gordan matrix \(U\)</h2>
+          <div class="matrix-controls">
+            <div class="control-group">
+              <div class="control-row"><label class="control-label" for="matrixRowSelect">Selected coupled-basis row</label></div>
+              <select id="matrixRowSelect"></select>
+            </div>
+          </div>
+          <div class="selected-vector" id="selectedCoupledVector"></div>
+          <div class="equation-box formula-scroll" id="selectedExpansion"></div>
+          <div class="table-wrap coefficient-wrap">
+            <table class="result-table">
+              <thead><tr><th>Local vector</th><th>Coefficient</th><th>Decimal</th></tr></thead>
+              <tbody id="selectedCoefficientTable"></tbody>
+            </table>
+          </div>
+          <div class="matrix-note" id="matrixNotice"></div>
+          <div class="table-wrap">
+            <table class="matrix-table" id="cgMatrixTable"></table>
+          </div>
+        </section>
       </section>
     </div>
-    <footer class="sim-footer">This calculator lists allowed coupled multiplets. It does not replace the detailed construction of the coupled vectors and Clebsch-Gordan coefficients in Chapter 7.</footer>
+    <footer class="sim-footer">This calculator lists allowed coupled multiplets and the corresponding Clebsch-Gordan coefficients. The detailed construction remains in Chapter 7.</footer>
   </main>
 </body>
 </html>

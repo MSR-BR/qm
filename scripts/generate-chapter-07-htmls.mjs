@@ -491,7 +491,7 @@ const pages = [
     subtitle: "The matrix that relates the two bases",
     description: "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
     focus: "Clebsch-Gordan coefficients and the local-to-coupled basis matrix",
-    simulators: ["clebsch-gordan-calculator"],
+    simulators: ["angular-momentum-coupled-states"],
     keyEquations: [
       String.raw`\[|l_1,l_2,l,m\rangle=\sum_{m_1}\sum_{m_2}\langle l_1,l_2,m_1,m_2|l_1,l_2,l,m\rangle |l_1,l_2,m_1,m_2\rangle\]`,
       String.raw`\[|l,m\rangle=\hat U|m_1,m_2\rangle\]`

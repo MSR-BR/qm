@@ -1,10 +1,5 @@
 (() => {
   const EPS = 1e-10;
-  const routeNames = {
-    sequential: "Sequential: 1-2, then +3, then +4, then +5",
-    pairPair: "Pair route: 1-2 and 3-4, then result +5",
-    pairTail: "Mixed route: 1-2, then +3; 4-5 separately; then final"
-  };
 
   const $ = (id) => document.getElementById(id);
   const html = (value) => String(value ?? "").replace(/[&<>"']/g, (char) => ({
@@ -59,46 +54,6 @@
 
   function combine(left, right, id, label) {
     return { type: "combine", id, label, left, right };
-  }
-
-  function rawRouteTree(route) {
-    if (route === "pairPair") {
-      return combine(
-        combine(combine(leaf(1), leaf(2), "l12", "l_{12}"), combine(leaf(3), leaf(4), "l34", "l_{34}"), "l1234", "l_{1234}"),
-        leaf(5),
-        "l",
-        "l"
-      );
-    }
-    if (route === "pairTail") {
-      return combine(
-        combine(combine(leaf(1), leaf(2), "l12", "l_{12}"), leaf(3), "l13", "l_{13}"),
-        combine(leaf(4), leaf(5), "l45", "l_{45}"),
-        "l",
-        "l"
-      );
-    }
-    return combine(
-      combine(combine(combine(leaf(1), leaf(2), "l12", "l_{12}"), leaf(3), "l13", "l_{13}"), leaf(4), "l14", "l_{14}"),
-      leaf(5),
-      "l",
-      "l"
-    );
-  }
-
-  function pruneTree(node, activeLeaves) {
-    if (!node) return null;
-    if (node.type === "leaf") return activeLeaves.has(node.id) ? node : null;
-    const left = pruneTree(node.left, activeLeaves);
-    const right = pruneTree(node.right, activeLeaves);
-    if (left && right) return { ...node, left, right };
-    return left || right;
-  }
-
-  function treeFor(route, activeLeaves) {
-    const tree = pruneTree(rawRouteTree(route), activeLeaves);
-    if (!tree || tree.type === "leaf") return tree;
-    return { ...tree, id: "l", label: "l" };
   }
 
   function enumerateChannels(node, leafValues) {
@@ -192,39 +147,6 @@
     return `l_{${ids.join("")}}`;
   }
 
-  function buildSmartCouplingTree(activeIds, mode, firstPairValue, nextLeafValue) {
-    if (activeIds.length === 0) return null;
-    if (activeIds.length === 1) return leaf(activeIds[0]);
-
-    const pairs = pairOptionsFromActive(activeIds);
-    let firstPair = parsePairValue(firstPairValue);
-    if (!pairIsValid(firstPair, activeIds)) firstPair = pairs[0] || activeIds.slice(0, 2);
-    firstPair = firstPair.slice().sort((a, b) => a - b);
-
-    const remaining = activeIds.filter((id) => !firstPair.includes(id));
-    const firstNode = combine(leaf(firstPair[0]), leaf(firstPair[1]), intermediateLabel(firstPair), intermediateLabel(firstPair));
-
-    if (remaining.length === 0) return combine(leaf(firstPair[0]), leaf(firstPair[1]), "l", "l");
-
-    if (remaining.length === 1) {
-      return combine(firstNode, leaf(remaining[0]), "l", "l");
-    }
-
-    const resolvedMode = mode === "auto" ? "pairwise" : mode;
-    if (remaining.length === 2 && resolvedMode === "pairwise") {
-      const secondPair = remaining.slice().sort((a, b) => a - b);
-      const secondNode = combine(leaf(secondPair[0]), leaf(secondPair[1]), intermediateLabel(secondPair), intermediateLabel(secondPair));
-      return combine(firstNode, secondNode, "l", "l");
-    }
-
-    let nextLeaf = Number(nextLeafValue);
-    if (!remaining.includes(nextLeaf)) nextLeaf = remaining[0];
-    const lastLeaf = remaining.find((id) => id !== nextLeaf);
-    const secondIds = [...firstPair, nextLeaf].sort((a, b) => a - b);
-    const secondNode = combine(firstNode, leaf(nextLeaf), intermediateLabel(secondIds), intermediateLabel(secondIds));
-    return lastLeaf ? combine(secondNode, leaf(lastLeaf), "l", "l") : secondNode;
-  }
-
   function updateMath(root = document.body) {
     if (window.MathJax?.typesetPromise) {
       window.MathJax.typesetPromise([root]).catch(() => {});
@@ -235,20 +157,38 @@
     return values.map((value) => `<option value="${value}"${value === selected ? " selected" : ""}>${formatHalf(value)}</option>`).join("");
   }
 
-  function maybePlural(value, singular, plural = `${singular}s`) {
-    return `${value} ${value === 1 ? singular : plural}`;
-  }
-
   function renderCoupledStatesSimulator() {
     const root = document.querySelector("[data-coupled-states-calculator]");
     if (!root) return;
     const values = [1, 1, 0, 0];
     const spinOptions = [0, 1, 2, 3, 4, 5];
+    let currentChannels = [];
+    let currentTree = null;
+    let currentLeafValues = {};
+    let currentActiveIds = [];
+    let currentLocalBasis = [];
+    let currentCoupledBasis = [];
 
-    function readInputs() {
+    function readRawValues() {
       values.forEach((_, index) => {
         values[index] = Number($(`l${index + 1}`).value);
       });
+    }
+
+    function enforceInputRules() {
+      readRawValues();
+      const l4Select = $("l4");
+      const l4Blocked = Number($("l2").value) === 0 || Number($("l3").value) === 0;
+      if (l4Blocked && Number(l4Select.value) > 0) l4Select.value = "0";
+      l4Select.disabled = l4Blocked;
+      readRawValues();
+      $("activationHint").textContent = l4Blocked
+        ? "The fourth angular momentum remains unavailable until both l2 and l3 are active."
+        : "The fourth angular momentum is available because l2 and l3 are active.";
+    }
+
+    function readInputs() {
+      enforceInputRules();
       const active = activeLeavesFromValues(values);
       const activeIds = activeLeafIdsFromValues(values);
       const leafValues = {};
@@ -257,9 +197,8 @@
         active,
         activeIds,
         leafValues,
-        mode: $("couplingMode").value,
         firstPair: $("firstPair").value,
-        nextLeaf: $("nextMomentum").value
+        secondStep: $("secondStep").value
       };
     }
 
@@ -269,6 +208,63 @@
       return `(${renderTreeText(tree.left)} + ${renderTreeText(tree.right)}) → ${tree.label.replace(/[{}\\]/g, "")}`;
     }
 
+    function optionNodeLabel(value) {
+      if (value.type === "leaf") return `l${value.id}`;
+      return value.label.replace(/[{}\\]/g, "");
+    }
+
+    function buildGuidedCoupling(activeIds, firstPairValue, secondStepValue) {
+      if (activeIds.length === 0) return { tree: null, steps: [] };
+      if (activeIds.length === 1) return { tree: leaf(activeIds[0]), steps: [`Only l${activeIds[0]} is active.`] };
+
+      const pairs = pairOptionsFromActive(activeIds);
+      let firstPair = parsePairValue(firstPairValue);
+      if (!pairIsValid(firstPair, activeIds)) firstPair = pairs[0] || activeIds.slice(0, 2);
+      firstPair = firstPair.slice().sort((a, b) => a - b);
+
+      if (activeIds.length === 2) {
+        const tree = combine(leaf(firstPair[0]), leaf(firstPair[1]), "l", "l");
+        return { tree, steps: [`l${firstPair[0]} + l${firstPair[1]} → l`] };
+      }
+
+      const firstLabel = intermediateLabel(firstPair);
+      const firstNode = combine(leaf(firstPair[0]), leaf(firstPair[1]), firstLabel, firstLabel);
+      const remaining = activeIds.filter((id) => !firstPair.includes(id));
+      const steps = [`l${firstPair[0]} + l${firstPair[1]} → ${firstLabel.replace(/[{}\\]/g, "")}`];
+
+      if (remaining.length === 1) {
+        const tree = combine(firstNode, leaf(remaining[0]), "l", "l");
+        steps.push(`${firstLabel.replace(/[{}\\]/g, "")} + l${remaining[0]} → l`);
+        return { tree, steps };
+      }
+
+      let secondStep = String(secondStepValue || "");
+      if (!secondStep) secondStep = `pair:${pairValue(remaining)}`;
+      if (secondStep.startsWith("pair:")) {
+        const secondPair = parsePairValue(secondStep.slice(5)).sort((a, b) => a - b);
+        if (pairIsValid(secondPair, remaining)) {
+          const secondLabel = intermediateLabel(secondPair);
+          const secondNode = combine(leaf(secondPair[0]), leaf(secondPair[1]), secondLabel, secondLabel);
+          const tree = combine(firstNode, secondNode, "l", "l");
+          steps.push(`l${secondPair[0]} + l${secondPair[1]} → ${secondLabel.replace(/[{}\\]/g, "")}`);
+          steps.push(`${firstLabel.replace(/[{}\\]/g, "")} + ${secondLabel.replace(/[{}\\]/g, "")} → l`);
+          return { tree, steps };
+        }
+      }
+
+      let nextLeaf = Number(secondStep.replace("cluster:", ""));
+      if (!remaining.includes(nextLeaf)) nextLeaf = remaining[0];
+      const lastLeaf = remaining.find((id) => id !== nextLeaf);
+      const secondIds = [...firstPair, nextLeaf].sort((a, b) => a - b);
+      const secondLabel = intermediateLabel(secondIds);
+      const secondNode = combine(firstNode, leaf(nextLeaf), secondLabel, secondLabel);
+      steps.push(`${firstLabel.replace(/[{}\\]/g, "")} + l${nextLeaf} → ${secondLabel.replace(/[{}\\]/g, "")}`);
+      if (!lastLeaf) return { tree: { ...secondNode, id: "l", label: "l" }, steps };
+      const tree = combine(secondNode, leaf(lastLeaf), "l", "l");
+      steps.push(`${secondLabel.replace(/[{}\\]/g, "")} + l${lastLeaf} → l`);
+      return { tree, steps };
+    }
+
     function updateBuilderControls() {
       const activeIds = activeLeafIdsFromValues(values);
       const pairs = pairOptionsFromActive(activeIds);
@@ -276,7 +272,7 @@
       $("firstPair").innerHTML = pairs.length
         ? pairs.map((pair) => {
           const value = pairValue(pair);
-          return `<option value="${value}"${value === currentPair ? " selected" : ""}>Add l${pair[0]} with l${pair[1]}</option>`;
+          return `<option value="${value}"${value === currentPair ? " selected" : ""}>Step 1: l${pair[0]} with l${pair[1]}</option>`;
         }).join("")
         : `<option value="">Choose at least two active momenta</option>`;
       if (pairs.length && !pairs.some((pair) => pairValue(pair) === $("firstPair").value)) {
@@ -285,56 +281,145 @@
 
       const firstPair = parsePairValue($("firstPair").value);
       const remaining = activeIds.filter((id) => !firstPair.includes(id));
-      const currentNext = $("nextMomentum").value;
-      $("nextMomentum").innerHTML = remaining.length
-        ? remaining.map((id) => `<option value="${id}"${String(id) === currentNext ? " selected" : ""}>Add l${id} next</option>`).join("")
-        : `<option value="">No remaining momentum</option>`;
-      if (remaining.length && !remaining.some((id) => String(id) === $("nextMomentum").value)) {
-        $("nextMomentum").value = String(remaining[0]);
+      const currentSecond = $("secondStep").value;
+      const secondOptions = [];
+      if (remaining.length === 1) {
+        secondOptions.push({ value: `cluster:${remaining[0]}`, label: `Step 2: add l${remaining[0]} to the first pair` });
+      } else if (remaining.length === 2) {
+        secondOptions.push({ value: `pair:${pairValue(remaining)}`, label: `Step 2: make the second pair l${remaining[0]} with l${remaining[1]}` });
+        remaining.forEach((id) => {
+          secondOptions.push({ value: `cluster:${id}`, label: `Step 2: add l${id} to the first pair` });
+        });
+      }
+      $("secondStep").innerHTML = secondOptions.length
+        ? secondOptions.map((option) => `<option value="${option.value}"${option.value === currentSecond ? " selected" : ""}>${html(option.label)}</option>`).join("")
+        : `<option value="">No second step</option>`;
+      if (secondOptions.length && !secondOptions.some((option) => option.value === $("secondStep").value)) {
+        $("secondStep").value = secondOptions[0].value;
       }
 
-      const mode = $("couplingMode").value;
-      const pairwiseAllowed = activeIds.length === 4;
-      $("nextMomentum").disabled = activeIds.length < 4 || mode === "pairwise" || mode === "auto";
       $("firstPair").disabled = activeIds.length < 2;
-      $("couplingMode").disabled = activeIds.length < 3;
+      $("secondStep").disabled = activeIds.length < 3;
       $("builderHint").textContent = activeIds.length < 2
         ? "Activate at least two angular momenta to build a coupled basis."
         : activeIds.length === 2
           ? "With two active angular momenta, the sum is direct."
-          : pairwiseAllowed
-            ? "Choose the first pair. Smart mode couples the remaining two as the second pair; sequential mode adds them one at a time."
+          : activeIds.length === 4
+            ? "Choose the first pair, then choose whether the remaining two form the second pair or whether the construction proceeds sequentially."
             : "Choose the first pair; the remaining angular momentum is added automatically.";
     }
 
+    function renderDiagram(steps) {
+      $("couplingDiagram").innerHTML = steps.length
+        ? steps.map((step, index) => `<div class="coupling-step"><span>Step ${index + 1}</span><strong>${html(step)}</strong></div>`).join("")
+        : `<div class="coupling-step"><span>Step</span><strong>No active angular momentum.</strong></div>`;
+    }
+
+    function refreshMatrixRowOptions() {
+      const select = $("matrixRowSelect");
+      const current = Number(select.value);
+      select.innerHTML = currentCoupledBasis.length
+        ? currentCoupledBasis.map((state, index) => `<option value="${index}"${index === current ? " selected" : ""}>${html(state.plain)}</option>`).join("")
+        : `<option value="0">No coupled vector</option>`;
+      if (!currentCoupledBasis[current]) select.value = "0";
+    }
+
+    function expansionForCoupledState(state) {
+      if (!state || !currentTree) return new Map();
+      return canonicalExpansion(currentTree, state.m2, currentLeafValues, channelMap(state.channel), currentActiveIds);
+    }
+
+    function renderClebschGordanMatrix() {
+      const dimension = currentLocalBasis.length;
+      const selectedState = currentCoupledBasis[Number($("matrixRowSelect").value)] || currentCoupledBasis[0];
+      const selectedExpansion = expansionForCoupledState(selectedState);
+      const nonzero = [...selectedExpansion.entries()]
+        .filter(([, coefficient]) => Math.abs(coefficient) > 1e-9)
+        .sort((left, right) => left[0].localeCompare(right[0], undefined, { numeric: true }));
+
+      $("selectedCoupledVector").innerHTML = selectedState ? `\\(${selectedState.latex}\\)` : "No coupled vector selected.";
+      $("selectedExpansion").innerHTML = selectedState
+        ? `\\[${selectedState.latex}= ${nonzero.map(([key, coefficient], index) => {
+          const term = termLatex(key, coefficient);
+          if (index === 0) return term;
+          return coefficient < 0 ? ` ${term}` : ` + ${term}`;
+        }).join("") || "0"}\\]`
+        : "";
+      $("selectedCoefficientTable").innerHTML = nonzero.length
+        ? nonzero.map(([key, coefficient]) => {
+          const parts = coefficientParts(coefficient);
+          return `<tr><td>\\(${ketLatex(key)}\\)</td><td>${html(parts.text)}</td><td>${coefficient.toFixed(8)}</td></tr>`;
+        }).join("")
+        : `<tr><td colspan="3">No nonzero coefficients for the selected row.</td></tr>`;
+
+      const fullLimit = 64;
+      const previewLimit = 18;
+      const rowLimit = dimension <= fullLimit ? dimension : Math.min(previewLimit, currentCoupledBasis.length);
+      const colLimit = dimension <= fullLimit ? dimension : Math.min(previewLimit, currentLocalBasis.length);
+      $("matrixNotice").textContent = dimension
+        ? dimension <= fullLimit
+          ? `Full matrix U shown: ${dimension} coupled rows × ${dimension} local columns.`
+          : `Matrix U has ${dimension} coupled rows × ${dimension} local columns. Showing a top-left preview and the selected row expansion.`
+        : "Activate angular momenta to build the matrix.";
+
+      if (!dimension) {
+        $("cgMatrixTable").innerHTML = `<tbody><tr><td>No matrix to show.</td></tr></tbody>`;
+        return;
+      }
+
+      const header = `<thead><tr><th>Coupled \\ Local</th>${currentLocalBasis.slice(0, colLimit).map((state, index) => `<th>${index + 1}<br>\\(${state.latex}\\)</th>`).join("")}</tr></thead>`;
+      const rows = currentCoupledBasis.slice(0, rowLimit).map((state, rowIndex) => {
+        const expansion = expansionForCoupledState(state);
+        return `<tr><th>${rowIndex + 1}<br>\\(${state.latex}\\)</th>${currentLocalBasis.slice(0, colLimit).map((localState) => {
+          const coefficient = expansion.get(localState.key) || 0;
+          return `<td>${Math.abs(coefficient) < 1e-9 ? "0" : html(coefficientParts(coefficient).text)}</td>`;
+        }).join("")}</tr>`;
+      }).join("");
+      $("cgMatrixTable").innerHTML = `${header}<tbody>${rows}</tbody>`;
+    }
+
     function render() {
-      values.forEach((_, index) => {
-        values[index] = Number($(`l${index + 1}`).value);
-      });
+      enforceInputRules();
       updateBuilderControls();
-      const { active, activeIds, leafValues, mode, firstPair, nextLeaf } = readInputs();
-      const tree = buildSmartCouplingTree(activeIds, mode, firstPair, nextLeaf);
+      const { active, activeIds, leafValues, firstPair, secondStep } = readInputs();
+      const built = buildGuidedCoupling(activeIds, firstPair, secondStep);
+      const tree = built.tree;
       const channels = enumerateChannels(tree, leafValues);
       const finals = aggregateFinals(channels);
       const productDimension = Object.keys(leafValues).length ? dimensionFromLeaves(leafValues) : 0;
       const totalStates = finals.reduce((sum, entry) => sum + entry.states, 0);
+      currentTree = tree;
+      currentChannels = channels;
+      currentLeafValues = leafValues;
+      currentActiveIds = activeIds;
+      currentLocalBasis = localBasisStates(leafValues, activeIds);
+      currentCoupledBasis = coupledBasisStates(currentChannels);
       $("activeCount").textContent = `${active.size}`;
       $("hilbertDimension").textContent = `${productDimension}`;
       $("multipletCount").textContent = `${finals.reduce((sum, entry) => sum + entry.multiplicity, 0)}`;
       $("stateCheck").textContent = `${totalStates}`;
       $("routeTitle").textContent = activeIds.length < 2
         ? "Activate angular momenta to build the route"
-        : $("couplingMode").selectedOptions[0]?.textContent || "Smart coupling route";
+        : "Guided coupling construction";
       $("routeTree").textContent = renderTreeText(tree);
       $("routeWarning").textContent = active.size < 2
         ? "Choose at least two nonzero angular momenta to see a nontrivial addition."
         : `Dimension check: Σ_l g_l(2l+1) = ${totalStates}, matching Π_i(2l_i+1) = ${productDimension}.`;
+      renderDiagram(built.steps);
       $("finalTable").innerHTML = finals.length
         ? finals.map((entry) => `<tr><td>\\(${latexHalf(entry.j2)}\\)</td><td>${entry.multiplicity}</td><td>${entry.j2 + 1}</td><td>${entry.states}</td></tr>`).join("")
         : `<tr><td colspan="4">Choose at least one active angular momentum.</td></tr>`;
       $("channelTable").innerHTML = channels.length
         ? channels.map((channel, index) => `<tr><td>${index + 1}</td><td>${labelChannel(channel)}</td><td>\\(${latexHalf(channel.finalJ2)}\\)</td><td>${channel.finalJ2 + 1}</td></tr>`).join("")
         : `<tr><td colspan="4">No channels to list.</td></tr>`;
+      $("localBasisList").innerHTML = currentLocalBasis.length
+        ? currentLocalBasis.map((state, index) => `<div><span>${index + 1}</span> \\(${state.latex}\\)</div>`).join("")
+        : `<div><span>—</span> No local basis yet.</div>`;
+      $("coupledBasisList").innerHTML = currentCoupledBasis.length
+        ? currentCoupledBasis.map((state, index) => `<div><span>${index + 1}</span> \\(${state.latex}\\)</div>`).join("")
+        : `<div><span>—</span> No coupled basis yet.</div>`;
+      refreshMatrixRowOptions();
+      renderClebschGordanMatrix();
       updateMath(root);
     }
 
@@ -345,7 +430,7 @@
       </div>
     `).join("");
     values.forEach((_, index) => $(`l${index + 1}`).addEventListener("change", render));
-    ["couplingMode", "firstPair", "nextMomentum"].forEach((id) => $(id).addEventListener("change", render));
+    ["firstPair", "secondStep", "matrixRowSelect"].forEach((id) => $(id).addEventListener("change", render));
     render();
   }
 
@@ -539,10 +624,6 @@
     return { text: value.toFixed(6).replace(/\.?0+$/, ""), latex: value.toFixed(6).replace(/\.?0+$/, ""), prefix: value.toFixed(6).replace(/\.?0+$/, "") };
   }
 
-  function ketText(key) {
-    return `|${key.split(",").map((value) => plusLabel(Number(value))).join(", ")}⟩`;
-  }
-
   function ketLatex(key) {
     return `|${key.split(",").map((value) => latexPlusLabel(Number(value))).join(",")}\\rangle`;
   }
@@ -554,87 +635,100 @@
     return `${parts.prefix}${ketLatex(key)}`;
   }
 
-  function renderClebschGordanSimulator() {
-    const root = document.querySelector("[data-clebsch-gordan-calculator]");
-    if (!root) return;
-    let currentChannels = [];
-
-    function leafValues() {
-      const n = Number($("spinCount").value);
-      const s2 = Number($("spinValue").value);
-      const values = {};
-      for (let i = 1; i <= n; i += 1) values[i] = s2;
-      return values;
+  function localBasisStates(leafValues, activeIds) {
+    const out = [];
+    function walk(index, current) {
+      if (index >= activeIds.length) {
+        const key = current.join(",");
+        out.push({
+          key,
+          values: current.slice(),
+          latex: `|${current.map((value) => latexPlusLabel(value)).join(",")}\\rangle`,
+          plain: `|${current.map((value) => plusLabel(value)).join(", ")}⟩`
+        });
+        return;
+      }
+      const id = activeIds[index];
+      mValues2(leafValues[id]).forEach((m2) => walk(index + 1, [...current, m2]));
     }
+    walk(0, []);
+    return out;
+  }
 
-    function refreshChannelOptions() {
-      const n = Number($("spinCount").value);
-      const values = leafValues();
-      const active = new Set(Array.from({ length: n }, (_, i) => i + 1));
-      const tree = treeFor($("cgRoute").value, active);
-      currentChannels = enumerateChannels(tree, values);
-      $("channelSelect").innerHTML = currentChannels.map((channel, index) => `<option value="${index}">${html(labelChannel(channel, true).replace(/\\[()]/g, ""))}</option>`).join("");
-      refreshMOptions();
-    }
-
-    function refreshMOptions() {
-      const channel = currentChannels[Number($("channelSelect").value)] || currentChannels[0];
-      const values = channel ? mValues2(channel.finalJ2) : [0];
-      const selected = Number($("mSelect").value);
-      $("mSelect").innerHTML = values.map((m2) => `<option value="${m2}"${m2 === selected ? " selected" : ""}>${formatHalf(m2)}</option>`).join("");
-    }
-
-    function render() {
-      if (!currentChannels.length) refreshChannelOptions();
-      const values = leafValues();
-      const n = Number($("spinCount").value);
-      const tree = treeFor($("cgRoute").value, new Set(Array.from({ length: n }, (_, i) => i + 1)));
-      const channel = currentChannels[Number($("channelSelect").value)] || currentChannels[0];
-      const map = channelMap(channel);
-      const M = Number($("mSelect").value);
-      const expansion = [...expandNode(tree, M, values, map).entries()]
-        .filter(([, coefficient]) => Math.abs(coefficient) > 1e-9)
-        .sort((left, right) => left[0].localeCompare(right[0], undefined, { numeric: true }));
-      const dimension = dimensionFromLeaves(values);
-      $("cgDimension").textContent = `${dimension}`;
-      $("cgTerms").textContent = `${expansion.length}`;
-      $("cgFinal").textContent = `l=${formatHalf(channel.finalJ2)}, m=${formatHalf(M)}`;
-      $("cgRouteTitle").textContent = routeNames[$("cgRoute").value] || routeNames.sequential;
-      $("cgChannelLabel").innerHTML = labelChannel(channel);
-      $("coefficientTable").innerHTML = expansion.map(([key, coefficient]) => {
-        const parts = coefficientParts(coefficient);
-        return `<tr><td>\\(${ketLatex(key)}\\)</td><td>${html(parts.text)}</td><td>${coefficient.toFixed(8)}</td></tr>`;
-      }).join("");
-      const terms = expansion.slice(0, 42).map(([key, coefficient], index) => {
-        const term = termLatex(key, coefficient);
-        if (index === 0) return term;
-        return coefficient < 0 ? ` ${term}` : ` + ${term}`;
-      }).join("");
-      const ellipsis = expansion.length > 42 ? " + \\cdots" : "";
-      $("expansionFormula").innerHTML = `\\[|l,m\\rangle=${terms}${ellipsis}\\]`;
-      updateMath(root);
-    }
-
-    ["spinCount", "spinValue", "cgRoute"].forEach((id) => $(id).addEventListener("change", () => {
-      refreshChannelOptions();
-      render();
+  function coupledLabelParts(channel) {
+    const labels = channel.labels.map((entry) => ({
+      latex: `${entry.label}=${latexHalf(entry.j2)}`,
+      plain: `${entry.label.replace(/[{}\\]/g, "")}=${formatHalf(entry.j2)}`
     }));
-    $("channelSelect").addEventListener("change", () => {
-      refreshMOptions();
-      render();
+    if (!labels.length) {
+      labels.push({
+        latex: `l=${latexHalf(channel.finalJ2)}`,
+        plain: `l=${formatHalf(channel.finalJ2)}`
+      });
+    }
+    return labels;
+  }
+
+  function coupledBasisStates(channels) {
+    const out = [];
+    channels.forEach((channel, channelIndex) => {
+      const parts = coupledLabelParts(channel);
+      mValues2(channel.finalJ2).forEach((m2) => {
+        out.push({
+          channel,
+          channelIndex,
+          m2,
+          latex: `|${parts.map((part) => part.latex).join(",")},m=${latexHalf(m2)}\\rangle`,
+          plain: `|${parts.map((part) => part.plain).join(", ")}, m=${formatHalf(m2)}⟩`
+        });
+      });
     });
-    $("mSelect").addEventListener("change", render);
-    refreshChannelOptions();
-    render();
+    return out;
+  }
+
+  function expandNodeAssignments(node, M, leafValues, map) {
+    if (!node) return [];
+    if (node.type === "leaf") {
+      if (!validM(leafValues[node.id], M)) return [];
+      return [{ assignments: { [node.id]: M }, coefficient: 1 }];
+    }
+    const leftJ = nodeJ2(node.left, leafValues, map);
+    const rightJ = nodeJ2(node.right, leafValues, map);
+    const J = nodeJ2(node, leafValues, map);
+    const out = [];
+    mValues2(leftJ).forEach((leftM) => {
+      const rightM = M - leftM;
+      if (!validM(rightJ, rightM)) return;
+      const coefficient = cg2(leftJ, rightJ, J, leftM, rightM, M);
+      if (Math.abs(coefficient) < EPS) return;
+      const leftExpansion = expandNodeAssignments(node.left, leftM, leafValues, map);
+      const rightExpansion = expandNodeAssignments(node.right, rightM, leafValues, map);
+      leftExpansion.forEach((leftEntry) => {
+        rightExpansion.forEach((rightEntry) => {
+          out.push({
+            assignments: { ...leftEntry.assignments, ...rightEntry.assignments },
+            coefficient: coefficient * leftEntry.coefficient * rightEntry.coefficient
+          });
+        });
+      });
+    });
+    return out;
+  }
+
+  function canonicalExpansion(node, M, leafValues, map, activeIds) {
+    const out = new Map();
+    expandNodeAssignments(node, M, leafValues, map).forEach((entry) => {
+      const key = activeIds.map((id) => entry.assignments[id]).join(",");
+      out.set(key, (out.get(key) || 0) + entry.coefficient);
+    });
+    return out;
   }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", () => {
       renderCoupledStatesSimulator();
-      renderClebschGordanSimulator();
     });
   } else {
     renderCoupledStatesSimulator();
-    renderClebschGordanSimulator();
   }
 })();

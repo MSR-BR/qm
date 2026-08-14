@@ -47,7 +47,7 @@
       "note": "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
       "url": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
       "simulators": [
-        "clebsch-gordan-calculator"
+        "angular-momentum-coupled-states"
       ],
       "aiExercise": true
     },
