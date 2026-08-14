@@ -71,6 +71,14 @@ const CHAPTERS = [
     // and the two applications. The final app item is a chapter synthesis
     // supported by the complete reviewed Chapter 7 source range.
     ranges: [[1, 1], [2, 3], [4, 8], [9, 12], [12, 15], [15, 25], [25, 27], [27, 30], [30, 32], [1, 32]]
+  },
+  {
+    id: "08",
+    title: "Time-independent perturbation theory",
+    theoryPdf: resolve(ROOT_DIR, "sources/chapter-08/c8-Reis-Quantum-Mechanics.pdf"),
+    solutionsPdf: resolve(ROOT_DIR, "sources/chapter-08/c8-Reis-QM-solutions.pdf"),
+    // The reviewed app follows the two main cases, then the two applications.
+    ranges: [[1, 1], [2, 4], [5, 7], [8, 12], [13, 15], [16, 18], [19, 22], [23, 28], [29, 35], [1, 35]]
   }
 ];
 

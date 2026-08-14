@@ -1,109 +1,15 @@
 {
-  "description": "Chapter 8 - Time-independent perturbation theory. A guided structure for non-degenerate and degenerate expansions, van Vleck susceptibility and the Stark effect.",
+  "description": "Chapter 8 - Time-independent perturbation theory. The chapter develops non-degenerate and degenerate cases before applying the method to van Vleck susceptibility and the Stark effect.",
   "topics": [
-    {
-      "id": "8.1",
-      "title": "Why perturbation theory is needed",
-      "note": "Approximating systems that differ weakly from a solvable model and identifying the regime where the expansion is useful.",
-      "url": "slides/chapter-08/why-perturbation-theory-is-needed.html"
-    },
-    {
-      "id": "8.2",
-      "title": "Hamiltonian, state and energy expansions",
-      "note": "Power series in the perturbation strength, equations order by order and normalization constraints.",
-      "url": "slides/chapter-08/hamiltonian-state-and-energy-expansions.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.3",
-      "title": "First-order non-degenerate corrections",
-      "note": "Diagonal energy shifts and the mixing of nearby unperturbed states through off-diagonal matrix elements.",
-      "url": "slides/chapter-08/first-order-non-degenerate-corrections.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.4",
-      "title": "Second-order energy correction",
-      "note": "Virtual coupling through other levels, energy denominators and the sign and scale of quadratic shifts.",
-      "url": "slides/chapter-08/second-order-energy-correction.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.5",
-      "title": "Second-order state correction",
-      "note": "Normalization, direct mixing and paths through intermediate states in the corrected eigenvector.",
-      "url": "slides/chapter-08/second-order-state-correction.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.6",
-      "title": "Exact matrix benchmark",
-      "note": "A solvable three-level model used to compare exact eigenvalues and vectors with their perturbative expansions.",
-      "url": "slides/chapter-08/exact-matrix-benchmark.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.7",
-      "title": "Why degeneracy changes the method",
-      "note": "Vanishing denominators, degenerate subspaces and complementary projection operators.",
-      "url": "slides/chapter-08/why-degeneracy-changes-the-method.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.8",
-      "title": "First-order degenerate perturbation theory",
-      "note": "Diagonalizing the reduced perturbation inside a degenerate domain to obtain the correct zeroth-order combinations.",
-      "url": "slides/chapter-08/first-order-degenerate-perturbation-theory.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.9",
-      "title": "Degenerate state and second-order corrections",
-      "note": "Mixing within and outside the split subspace and quadratic energy shifts from external states.",
-      "url": "slides/chapter-08/degenerate-state-and-second-order-corrections.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.10",
-      "title": "van Vleck susceptibility",
-      "note": "From field-dependent energy corrections to magnetic moment, thermal magnetization and susceptibility.",
-      "url": "slides/chapter-08/van-vleck-susceptibility.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.11",
-      "title": "Anisotropic spin example",
-      "note": "A j = 3/2 spectrum in a transverse magnetic field, reduced perturbations and temperature-dependent response.",
-      "url": "slides/chapter-08/anisotropic-spin-example.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.12",
-      "title": "Hydrogen atom in an electric field",
-      "note": "The Stark perturbation, the degenerate n = 2 manifold and the matrix elements of the position operator.",
-      "url": "slides/chapter-08/hydrogen-atom-in-an-electric-field.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.13",
-      "title": "Linear and quadratic Stark effects",
-      "note": "First-order splitting of mixed excited states and the second-order shift of the Hydrogen ground state.",
-      "url": "slides/chapter-08/linear-and-quadratic-stark-effects.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.14",
-      "title": "Stark selection rules",
-      "note": "Commutators, angular symmetry and the conditions delta m = 0 and delta l = plus or minus 1.",
-      "url": "slides/chapter-08/stark-selection-rules.html",
-      "aiExercise": true
-    },
-    {
-      "id": "8.15",
-      "title": "Chapter synthesis: perturbative workflow",
-      "note": "A practical decision tree for choosing a basis, detecting degeneracy, computing corrections and interpreting observables.",
-      "url": "slides/chapter-08/chapter-synthesis-perturbative-workflow.html",
-      "aiExercise": true
-    }
+    { "id": "8.1", "title": "Time-independent perturbation theory: chapter roadmap", "note": "The chapter separates non-degenerate and degenerate spectra, then applies the resulting energy corrections to magnetic susceptibility and the Stark effect.", "url": "slides/chapter-08/why-perturbation-theory-is-needed.html" },
+    { "id": "8.2", "title": "Non-degenerate case: overview", "note": "Starting with a non-degenerate unperturbed Hamiltonian, expand the energy and vector in powers of the perturbation strength.", "url": "slides/chapter-08/hamiltonian-state-and-energy-expansions.html", "aiExercise": true },
+    { "id": "8.3", "title": "Non-degenerate case: first-order energy and vectors", "note": "The diagonal matrix element gives the first energy correction, while off-diagonal elements determine the first correction to the vector.", "url": "slides/chapter-08/first-order-non-degenerate-corrections.html", "aiExercise": true },
+    { "id": "8.4", "title": "Non-degenerate case: second-order energy and vectors", "note": "Second-order corrections contain energy denominators and matrix elements connecting the reference state to the other unperturbed states.", "url": "slides/chapter-08/second-order-energy-correction.html", "aiExercise": true },
+    { "id": "8.5", "title": "Degenerate case: overview", "note": "Degeneracy makes the non-degenerate denominators divergent; complementary projection operators separate a degeneracy domain from the remaining states.", "url": "slides/chapter-08/why-degeneracy-changes-the-method.html", "aiExercise": true },
+    { "id": "8.6", "title": "Degenerate case: first-order energy", "note": "Diagonalize the reduced perturbation within each degeneracy domain to obtain the zeroth-order combinations and first energy corrections.", "url": "slides/chapter-08/first-order-degenerate-perturbation-theory.html", "aiExercise": true },
+    { "id": "8.7", "title": "Degenerate case: second-order energy", "note": "The second-order correction is a sum over states outside the selected degeneracy domain.", "url": "slides/chapter-08/degenerate-state-and-second-order-corrections.html", "aiExercise": true },
+    { "id": "8.8", "title": "Application: van Vleck susceptibility", "note": "Expand the field-dependent energy, obtain the magnetic moment and use the thermal average to obtain susceptibility.", "url": "slides/chapter-08/van-vleck-susceptibility.html", "aiExercise": true },
+    { "id": "8.9", "title": "Application: Stark effect", "note": "A constant electric field perturbs the degenerate Hydrogen spectrum; selection rules determine the non-zero matrix elements.", "url": "slides/chapter-08/hydrogen-atom-in-an-electric-field.html", "aiExercise": true },
+    { "id": "8.10", "title": "Chapter synthesis: time-independent perturbation theory", "note": "Choose the correct unperturbed basis, identify degeneracy before using denominators, then obtain the required corrections and physical observable.", "url": "slides/chapter-08/chapter-synthesis-perturbative-workflow.html", "aiExercise": true }
   ]
 }
