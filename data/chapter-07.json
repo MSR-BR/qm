@@ -19,6 +19,9 @@
       "title": "Commutation relations",
       "note": "Independent angular-momentum subspaces, total angular momentum, allowed l values and the projection condition m equals m1 plus m2.",
       "url": "slides/chapter-07/commutation-relations.html",
+      "simulators": [
+        "angular-momentum-coupled-states"
+      ],
       "aiExercise": true
     },
     {
@@ -26,6 +29,9 @@
       "title": "Vectors in the coupled basis",
       "note": "The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially.",
       "url": "slides/chapter-07/vectors-in-the-coupled-basis.html",
+      "simulators": [
+        "angular-momentum-coupled-states"
+      ],
       "aiExercise": true
     },
     {
@@ -40,6 +46,9 @@
       "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
       "note": "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
       "url": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
+      "simulators": [
+        "clebsch-gordan-calculator"
+      ],
       "aiExercise": true
     },
     {

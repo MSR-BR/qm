@@ -45,6 +45,8 @@ mjx-container{max-width:100%!important;overflow-x:auto!important;overflow-y:hidd
 .basis-book-figure{margin:10px 0!important;background:#FFFFFF!important;}
 .basis-book-figure img{max-height:330px!important;object-fit:contain!important;}
 .basis-book-figure figcaption,.schematic-caption{font-family:"Inter",sans-serif!important;font-size:.76rem!important;line-height:1.4!important;color:#526173!important;text-align:center!important;margin-top:0!important;}
+.zeeman-book-figure{margin:10px 0 0!important;background:#FFFFFF!important;}
+.zeeman-book-figure img{max-height:560px!important;object-fit:contain!important;}
 .zeeman-schematic{display:block!important;width:min(100%,520px)!important;min-width:360px!important;height:auto!important;margin:8px auto!important;background:#FFF!important;border:1px solid #D5D8DC!important;border-radius:8px!important;padding:8px!important;}
 .zeeman-schematic text{font-family:"Inter",sans-serif!important;fill:#26323F!important;font-size:15px!important;font-weight:700!important;}
 .zeeman-schematic .axis{stroke:#5F6B78!important;stroke-width:1.4!important;}
