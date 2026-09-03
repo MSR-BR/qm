@@ -501,6 +501,39 @@
       padding-left: 7px;
     }
 
+    .chapter-button--locked,
+    .chapter-button--locked:disabled {
+      cursor: not-allowed;
+      background: #F1F3F5;
+      border-color: #D9DEE5;
+      color: #7B8490;
+      opacity: 1;
+    }
+
+    .chapter-button--locked:hover,
+    .chapter-button--locked:focus,
+    .chapter-button--locked:focus-visible {
+      transform: none;
+      box-shadow: none;
+      background: #F1F3F5;
+      border-color: #D9DEE5;
+    }
+
+    .chapter-button--locked .chapter-number,
+    .chapter-button--locked .chapter-name {
+      color: #7B8490;
+    }
+
+    .chapter-lock-note {
+      display: block;
+      grid-column: 2;
+      margin-top: -5px;
+      color: #8C96A3;
+      font-size: 11.5px;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
     .chapter-button:focus,
     .chapter-button:focus-visible {
       outline: none;
@@ -2377,7 +2410,8 @@
 <meta name="twitter:description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://qm-beta.vercel.app/"}]</script>
 <!-- termo-seo:end -->
-<script defer src="assets/termo-seo.js?v=0614.1"></script>
+<script defer src="assets/qm-content-registry.js?v=0903.2"></script>
+<script defer src="assets/termo-seo.js?v=0903.2"></script>
 </head>
 
 <body>
@@ -2530,40 +2564,22 @@
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=08">
-                      <span class="chapter-number">08</span>
-                      <span class="chapter-name">Time-independent perturbation theory</span>
-                    </a>
+                    <button type="button" class="chapter-button chapter-button--locked" disabled aria-disabled="true"><span class="chapter-number">08</span><span class="chapter-name">Time-independent perturbation theory</span><span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span></button>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=09">
-                      <span class="chapter-number">09</span>
-                      <span class="chapter-name">Time-dependent perturbation theory</span>
-                    </a>
+                    <button type="button" class="chapter-button chapter-button--locked" disabled aria-disabled="true"><span class="chapter-number">09</span><span class="chapter-name">Time-dependent perturbation theory</span><span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span></button>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=10">
-                      <span class="chapter-number">10</span>
-                      <span class="chapter-name">Scattering: partial waves</span>
-                    </a>
+                    <button type="button" class="chapter-button chapter-button--locked" disabled aria-disabled="true"><span class="chapter-number">10</span><span class="chapter-name">Scattering: partial waves</span><span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span></button>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=11">
-                      <span class="chapter-number">11</span>
-                      <span class="chapter-name">Density operator</span>
-                    </a>
+                    <button type="button" class="chapter-button chapter-button--locked" disabled aria-disabled="true"><span class="chapter-number">11</span><span class="chapter-name">Density operator</span><span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span></button>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=12">
-                      <span class="chapter-number">12</span>
-                      <span class="chapter-name">Entangled states</span>
-                    </a>
+                    <button type="button" class="chapter-button chapter-button--locked" disabled aria-disabled="true"><span class="chapter-number">12</span><span class="chapter-name">Entangled states</span><span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span></button>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=13">
-                      <span class="chapter-number">13</span>
-                      <span class="chapter-name">Relativistic quantum mechanics</span>
-                    </a>
+                    <button type="button" class="chapter-button chapter-button--locked" disabled aria-disabled="true"><span class="chapter-number">13</span><span class="chapter-name">Relativistic quantum mechanics</span><span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span></button>
                   </li>
                 </ul>
               </div>
@@ -3042,6 +3058,12 @@
       }
     */
 
+    const chapterAvailability = window.QMContentRegistry?.chapters || Object.create(null);
+    const isLockedChapter = (chapterId) => {
+      const publication = chapterAvailability[String(chapterId)];
+      return Boolean(publication && publication.availability !== "published");
+    };
+
     const chapters = [
       { id: "01", title: "Old quantum physics", summary: "Experimental foundations, Bohr model, de Broglie hypothesis and semi-classical quantization.", data: "data/chapter-01.json" },
       { id: "02", title: "Construction of quantum theory I: wave mechanics", summary: "Schrödinger equation, wave functions, postulates and uncertainty.", data: "data/chapter-02.json" },
@@ -3056,7 +3078,7 @@
       { id: "11", title: "Density operator", summary: "Pure and mixed states, bipartite systems, partial trace and statistical mechanics connections.", data: "data/chapter-11.json" },
       { id: "12", title: "Entangled states", summary: "Classical and quantum correlations, concurrence and entanglement of formation.", data: "data/chapter-12.json" },
       { id: "13", title: "Relativistic quantum mechanics", summary: "Klein-Gordon and Dirac approaches, spinors, potentials and the Klein paradox.", data: "data/chapter-13.json" }
-    ];
+    ].map((chapter) => ({ ...chapter, locked: isLockedChapter(chapter.id) }));
 
     const embeddedChapterData = {
       "01": {
@@ -3594,17 +3616,22 @@
       chapters.forEach((chapter) => {
         const li = document.createElement("li");
         const button = document.createElement("button");
-        button.className = "chapter-button";
+        button.className = `chapter-button${chapter.locked ? " chapter-button--locked" : ""}`;
         button.type = "button";
         button.dataset.chapterId = chapter.id;
+        button.disabled = Boolean(chapter.locked);
+        button.setAttribute("aria-disabled", String(Boolean(chapter.locked)));
         button.innerHTML = `
           <span class="chapter-number">${chapter.id}</span>
           <span class="chapter-name">${chapter.title}</span>
+          ${chapter.locked ? '<span class="chapter-lock-note"><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review</span>' : ""}
         `;
-        button.addEventListener("click", function () {
-          closeDrawer();
-          void activateView("chapters", chapter.id);
-        });
+        if (!chapter.locked) {
+          button.addEventListener("click", function () {
+            closeDrawer();
+            void activateView("chapters", chapter.id);
+          });
+        }
         li.appendChild(button);
         chapterList.appendChild(li);
       });
@@ -4603,6 +4630,10 @@
     async function loadChapter(chapterId) {
       setLandingMode(false);
       const chapter = findChapterById(chapterId);
+      if (!chapter || chapter.locked) {
+        renderLockedChapter(chapter);
+        return;
+      }
       const loadToken = state.chapterLoadToken + 1;
       state.chapterLoadToken = loadToken;
       const isCurrentLoad = function () {
@@ -4668,6 +4699,24 @@
           </div>
         `;
       }
+    }
+
+    function renderLockedChapter(chapter) {
+      setLandingMode(false);
+      const title = chapter?.title || "This chapter";
+      panelKicker.textContent = chapter ? `Chapter ${chapter.id}` : "Chapter unavailable";
+      panelTitle.textContent = title;
+      panelDescription.textContent = "";
+      setActiveChapter("");
+      setActivePersonal("");
+      setActiveExtra("");
+      panelActions.innerHTML = "";
+      topicContainer.innerHTML = `
+        <div class="empty-state">
+          <strong><i class="fa-solid fa-lock" aria-hidden="true"></i> Under editorial review.</strong><br />
+          This chapter is not available yet. Its content and exercises will be published after the editorial review is complete.
+        </div>
+      `;
     }
 
     async function renderSavedExercises() {

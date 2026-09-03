@@ -1,6 +1,7 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { readdir, readFile, writeFile } from "node:fs/promises";
+import { isChapterSeoEligible } from "../lib/qm-content-registry.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -9,12 +10,13 @@ const slidesDir = path.join(rootDir, "slides");
 const dataDir = path.join(rootDir, "data");
 
 const SITE_URL = "https://qm-beta.vercel.app";
-const SEO_ASSET_VERSION = "0614.1";
+const SEO_ASSET_VERSION = "0903.2";
 const COURSE_TITLE = "Quantum Mechanics";
 const AUTHOR_NAME = "Prof. Mario Reis";
 const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
 const DEFAULT_SITE_DESCRIPTION = "Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).";
 const TODAY = "2026-06-14";
+
 
 const chapterCatalog = {
     "01": {
@@ -308,11 +310,13 @@ function upsertSeoBlock(html, block) {
   return html.replace(/<\/head>/i, `${block}\n</head>`);
 }
 
-function upsertSeoAsset(html, assetTag) {
+function upsertSeoAssets(html, registryTag, seoTag) {
+  const tags = `${registryTag}\n${seoTag}`;
   if (/termo-seo\.js/i.test(html)) {
-    return html.replace(/<script defer src="[^"]*termo-seo\.js(?:\?v=[^"]*)?"><\/script>/i, assetTag);
+    const withRegistryRemoved = html.replace(/<script defer src="[^"]*qm-content-registry\.js(?:\?v=[^"]*)?"><\/script>\s*/i, "");
+    return withRegistryRemoved.replace(/<script defer src="[^"]*termo-seo\.js(?:\?v=[^"]*)?"><\/script>/i, tags);
   }
-  return html.replace(/<\/head>/i, `${assetTag}\n</head>`);
+  return html.replace(/<\/head>/i, `${tags}\n</head>`);
 }
 
 async function processHtmlFile(filePath, topicMap) {
@@ -320,11 +324,12 @@ async function processHtmlFile(filePath, topicMap) {
   let html = await readFile(filePath, "utf8");
   const meta = inferPageMeta(relativePath, html, topicMap);
   const seoBlock = buildSeoBlock(meta);
-  const assetTag = `<script defer src="${getRelativeAssetPath(filePath, "termo-seo.js")}?v=${SEO_ASSET_VERSION}"></script>`;
+  const registryTag = `<script defer src="${getRelativeAssetPath(filePath, "qm-content-registry.js")}?v=${SEO_ASSET_VERSION}"></script>`;
+  const seoTag = `<script defer src="${getRelativeAssetPath(filePath, "termo-seo.js")}?v=${SEO_ASSET_VERSION}"></script>`;
 
   html = upsertTitle(html, meta.title);
   html = upsertSeoBlock(html, seoBlock);
-  html = upsertSeoAsset(html, assetTag);
+  html = upsertSeoAssets(html, registryTag, seoTag);
 
   await writeFile(filePath, html, "utf8");
 }
@@ -345,10 +350,12 @@ async function writeSitemap(topicMap) {
   urls.set(`${SITE_URL}/`, { priority: "1.0", changefreq: "weekly" });
 
   for (const chapterId of Object.keys(chapterCatalog).sort()) {
+    if (!isChapterSeoEligible(chapterId)) continue;
     urls.set(`${SITE_URL}/?view=chapters&chapter=${chapterId}`, { priority: "0.9", changefreq: "weekly" });
   }
 
-  for (const [relativeUrl] of topicMap.entries()) {
+  for (const [relativeUrl, topic] of topicMap.entries()) {
+    if (!isChapterSeoEligible(topic.chapterId)) continue;
     urls.set(`${SITE_URL}/${relativeUrl}`, { priority: "0.7", changefreq: "monthly" });
   }
 
@@ -374,7 +381,11 @@ async function writeSitemap(topicMap) {
 }
 
 const topicMap = await loadTopicMap();
-const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))];
+const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
+  .filter((filePath) => {
+    const chapterMatch = toPosix(path.relative(rootDir, filePath)).match(/^slides\/chapter-(\d{2})\//);
+    return !chapterMatch || isChapterSeoEligible(chapterMatch[1]);
+  });
 
 for (const filePath of htmlFiles) {
   await processHtmlFile(filePath, topicMap);

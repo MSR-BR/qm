@@ -1,5 +1,6 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { isChapterExerciseEligible } from "../lib/qm-content-registry.mjs";
 
 const root = process.cwd();
 const index = JSON.parse(readFileSync(resolve(root, "data/book-topic-index.json"), "utf8"));
@@ -10,6 +11,8 @@ const taxonomySectionIds = new Set((taxonomy.sectionTopics || []).map((entry) =>
 const taxonomyTopicIds = new Set((taxonomy.transversalTopics || []).map((topic) => topic.id));
 const indexSectionIds = new Set((index.sectionIndex || []).map((entry) => entry.sectionId));
 const indexTopicIds = new Set((index.topics || []).map((topic) => topic.id));
+const ineligibleIndexSections = (index.sectionIndex || []).filter((section) => !isChapterExerciseEligible(section.chapterId));
+const ineligibleTopicFragments = (index.topics || []).flatMap((topic) => topic.fragments || []).filter((fragment) => !isChapterExerciseEligible(fragment.chapterId));
 
 if (index.sourceTaxonomy !== "data/book-topic-taxonomy.json") {
   errors.push("Index must declare data/book-topic-taxonomy.json as sourceTaxonomy.");
@@ -18,6 +21,8 @@ if (index.sourceTaxonomy !== "data/book-topic-taxonomy.json") {
 if (index.sectionCount !== taxonomySectionIds.size) {
   errors.push(`sectionCount ${index.sectionCount} does not match taxonomy ${taxonomySectionIds.size}.`);
 }
+
+if (ineligibleIndexSections.length || ineligibleTopicFragments.length) errors.push("Topic index includes a chapter that is not exercise-eligible.");
 
 if (index.topicCount !== taxonomyTopicIds.size) {
   errors.push(`topicCount ${index.topicCount} does not match taxonomy ${taxonomyTopicIds.size}.`);

@@ -1,0 +1,2485 @@
+{
+  "version": "qm-exercise-source-manifest-v1",
+  "generatedAt": "2026-09-03T21:46:04.199Z",
+  "sourceCorpus": "data/book-section-corpus.json",
+  "publicationRegistry": "data/qm-content-registry.json",
+  "eligibleChapters": [
+    "01",
+    "02",
+    "03",
+    "04",
+    "05",
+    "06",
+    "07"
+  ],
+  "sectionCount": 85,
+  "sourceFileCount": 7,
+  "entries": [
+    {
+      "sectionId": "1.1",
+      "chapterId": "01",
+      "itemId": "1.1",
+      "title": "Why old quantum physics matters",
+      "pagePath": "slides/chapter-01/why-old-quantum-physics-matters.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 2,
+        "pageEnd": 2,
+        "references": [
+          {
+            "id": "qm-01-1.1",
+            "label": "Chapter 1, item 1.1",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.2",
+      "chapterId": "01",
+      "itemId": "1.2",
+      "title": "Wave optics as the classical benchmark",
+      "pagePath": "slides/chapter-01/wave-optics-classical-benchmark.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 2,
+        "pageEnd": 3,
+        "references": [
+          {
+            "id": "qm-01-1.2",
+            "label": "Chapter 1, item 1.2",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.3",
+      "chapterId": "01",
+      "itemId": "1.3",
+      "title": "Hydrogen spectral lines",
+      "pagePath": "slides/chapter-01/hydrogen-spectral-lines.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 3,
+        "pageEnd": 5,
+        "references": [
+          {
+            "id": "qm-01-1.3",
+            "label": "Chapter 1, item 1.3",
+            "pageStart": 3,
+            "pageEnd": 5,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.4",
+      "chapterId": "01",
+      "itemId": "1.4",
+      "title": "Cathode rays and the electron",
+      "pagePath": "slides/chapter-01/cathode-rays-and-electron.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 5,
+        "pageEnd": 8,
+        "references": [
+          {
+            "id": "qm-01-1.4",
+            "label": "Chapter 1, item 1.4",
+            "pageStart": 5,
+            "pageEnd": 8,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.5",
+      "chapterId": "01",
+      "itemId": "1.5",
+      "title": "Black-body radiation",
+      "pagePath": "slides/chapter-01/black-body-radiation.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 9,
+        "pageEnd": 15,
+        "references": [
+          {
+            "id": "qm-01-1.5",
+            "label": "Chapter 1, item 1.5",
+            "pageStart": 9,
+            "pageEnd": 15,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.6",
+      "chapterId": "01",
+      "itemId": "1.6",
+      "title": "Photoelectric effect",
+      "pagePath": "slides/chapter-01/photoelectric-effect.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 16,
+        "pageEnd": 17,
+        "references": [
+          {
+            "id": "qm-01-1.6",
+            "label": "Chapter 1, item 1.6",
+            "pageStart": 16,
+            "pageEnd": 17,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.7",
+      "chapterId": "01",
+      "itemId": "1.7",
+      "title": "Elementary charge",
+      "pagePath": "slides/chapter-01/elementary-charge.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 18,
+        "pageEnd": 20,
+        "references": [
+          {
+            "id": "qm-01-1.7",
+            "label": "Chapter 1, item 1.7",
+            "pageStart": 18,
+            "pageEnd": 20,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.8",
+      "chapterId": "01",
+      "itemId": "1.8",
+      "title": "Electron diffraction",
+      "pagePath": "slides/chapter-01/electron-diffraction.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 21,
+        "pageEnd": 22,
+        "references": [
+          {
+            "id": "qm-01-1.8",
+            "label": "Chapter 1, item 1.8",
+            "pageStart": 21,
+            "pageEnd": 22,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.9",
+      "chapterId": "01",
+      "itemId": "1.9",
+      "title": "Bohr model: postulates",
+      "pagePath": "slides/chapter-01/bohr-model-postulates.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 23,
+        "pageEnd": 24,
+        "references": [
+          {
+            "id": "qm-01-1.9",
+            "label": "Chapter 1, item 1.9",
+            "pageStart": 23,
+            "pageEnd": 24,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.10",
+      "chapterId": "01",
+      "itemId": "1.10",
+      "title": "Bohr model: hydrogen spectrum",
+      "pagePath": "slides/chapter-01/bohr-model-hydrogen-spectrum.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 25,
+        "pageEnd": 27,
+        "references": [
+          {
+            "id": "qm-01-1.10",
+            "label": "Chapter 1, item 1.10",
+            "pageStart": 25,
+            "pageEnd": 27,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.11",
+      "chapterId": "01",
+      "itemId": "1.11",
+      "title": "de Broglie hypothesis",
+      "pagePath": "slides/chapter-01/de-broglie-hypothesis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 28,
+        "pageEnd": 28,
+        "references": [
+          {
+            "id": "qm-01-1.11",
+            "label": "Chapter 1, item 1.11",
+            "pageStart": 28,
+            "pageEnd": 28,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.12",
+      "chapterId": "01",
+      "itemId": "1.12",
+      "title": "Semi-classical quantization rule",
+      "pagePath": "slides/chapter-01/semi-classical-quantization-rule.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 29,
+        "pageEnd": 30,
+        "references": [
+          {
+            "id": "qm-01-1.12",
+            "label": "Chapter 1, item 1.12",
+            "pageStart": 29,
+            "pageEnd": 30,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.13",
+      "chapterId": "01",
+      "itemId": "1.13",
+      "title": "SCQR examples",
+      "pagePath": "slides/chapter-01/scqr-examples.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 30,
+        "pageEnd": 35,
+        "references": [
+          {
+            "id": "qm-01-1.13",
+            "label": "Chapter 1, item 1.13",
+            "pageStart": 30,
+            "pageEnd": 35,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.14",
+      "chapterId": "01",
+      "itemId": "1.14",
+      "title": "Sommerfeld orbits and ellipse geometry",
+      "pagePath": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 35,
+        "pageEnd": 40,
+        "references": [
+          {
+            "id": "qm-01-1.14",
+            "label": "Chapter 1, item 1.14",
+            "pageStart": 35,
+            "pageEnd": 40,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "1.15",
+      "chapterId": "01",
+      "itemId": "1.15",
+      "title": "Chapter synthesis",
+      "pagePath": "slides/chapter-01/timeline-conceptual-synthesis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "1",
+        "pdfChapterTitle": "Old quantum physics",
+        "pageStart": 47,
+        "pageEnd": 51,
+        "references": [
+          {
+            "id": "qm-01-1.15",
+            "label": "Chapter 1, item 1.15",
+            "pageStart": 47,
+            "pageEnd": 51,
+            "extractionSources": [
+              "chapter-01-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-01-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.1",
+      "chapterId": "02",
+      "itemId": "2.1",
+      "title": "Why wave mechanics is needed",
+      "pagePath": "slides/chapter-02/why-wave-mechanics-is-needed.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 2,
+        "pageEnd": 2,
+        "references": [
+          {
+            "id": "qm-02-2.1",
+            "label": "Chapter 2, item 2.1",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.2",
+      "chapterId": "02",
+      "itemId": "2.2",
+      "title": "Time-dependent Schrodinger equation",
+      "pagePath": "slides/chapter-02/time-dependent-schrodinger-equation.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 2,
+        "pageEnd": 2,
+        "references": [
+          {
+            "id": "qm-02-2.2",
+            "label": "Chapter 2, item 2.2",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.3",
+      "chapterId": "02",
+      "itemId": "2.3",
+      "title": "Stationary states and the TISE",
+      "pagePath": "slides/chapter-02/stationary-states-and-tise.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 3,
+        "pageEnd": 3,
+        "references": [
+          {
+            "id": "qm-02-2.3",
+            "label": "Chapter 2, item 2.3",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.4",
+      "chapterId": "02",
+      "itemId": "2.4",
+      "title": "Probability density and current",
+      "pagePath": "slides/chapter-02/probability-density-and-current.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 4,
+        "pageEnd": 5,
+        "references": [
+          {
+            "id": "qm-02-2.4",
+            "label": "Chapter 2, item 2.4",
+            "pageStart": 4,
+            "pageEnd": 5,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.5",
+      "chapterId": "02",
+      "itemId": "2.5",
+      "title": "Infinite potential well",
+      "pagePath": "slides/chapter-02/infinite-potential-well.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 6,
+        "pageEnd": 9,
+        "references": [
+          {
+            "id": "qm-02-2.5",
+            "label": "Chapter 2, item 2.5",
+            "pageStart": 6,
+            "pageEnd": 9,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.6",
+      "chapterId": "02",
+      "itemId": "2.6",
+      "title": "Postulates of quantum mechanics: the rules ahead",
+      "pagePath": "slides/chapter-02/postulates-rules-ahead.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 9,
+        "pageEnd": 10,
+        "references": [
+          {
+            "id": "qm-02-2.6",
+            "label": "Chapter 2, item 2.6",
+            "pageStart": 9,
+            "pageEnd": 10,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.7",
+      "chapterId": "02",
+      "itemId": "2.7",
+      "title": "Quantum states as superpositions",
+      "pagePath": "slides/chapter-02/quantum-states-superpositions.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 11,
+        "pageEnd": 11,
+        "references": [
+          {
+            "id": "qm-02-2.7",
+            "label": "Chapter 2, item 2.7",
+            "pageStart": 11,
+            "pageEnd": 11,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.8",
+      "chapterId": "02",
+      "itemId": "2.8",
+      "title": "Observables, operators and commutators",
+      "pagePath": "slides/chapter-02/observables-operators-commutators.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 12,
+        "pageEnd": 17,
+        "references": [
+          {
+            "id": "qm-02-2.8",
+            "label": "Chapter 2, item 2.8",
+            "pageStart": 12,
+            "pageEnd": 17,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.9",
+      "chapterId": "02",
+      "itemId": "2.9",
+      "title": "Measurement probabilities",
+      "pagePath": "slides/chapter-02/measurement-probabilities.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 18,
+        "pageEnd": 19,
+        "references": [
+          {
+            "id": "qm-02-2.9",
+            "label": "Chapter 2, item 2.9",
+            "pageStart": 18,
+            "pageEnd": 19,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.10",
+      "chapterId": "02",
+      "itemId": "2.10",
+      "title": "Expectation values and collapse",
+      "pagePath": "slides/chapter-02/expectation-values-and-collapse.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 20,
+        "pageEnd": 20,
+        "references": [
+          {
+            "id": "qm-02-2.10",
+            "label": "Chapter 2, item 2.10",
+            "pageStart": 20,
+            "pageEnd": 20,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.11",
+      "chapterId": "02",
+      "itemId": "2.11",
+      "title": "Equations of motion: Ehrenfest and Virial",
+      "pagePath": "slides/chapter-02/ehrenfest-and-virial-theorems.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 21,
+        "pageEnd": 24,
+        "references": [
+          {
+            "id": "qm-02-2.11",
+            "label": "Chapter 2, item 2.11",
+            "pageStart": 21,
+            "pageEnd": 24,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.12",
+      "chapterId": "02",
+      "itemId": "2.12",
+      "title": "Plane waves and localized packets",
+      "pagePath": "slides/chapter-02/plane-waves-and-localized-packets.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 25,
+        "pageEnd": 26,
+        "references": [
+          {
+            "id": "qm-02-2.12",
+            "label": "Chapter 2, item 2.12",
+            "pageStart": 25,
+            "pageEnd": 26,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.13",
+      "chapterId": "02",
+      "itemId": "2.13",
+      "title": "Gaussian wave packet and Fourier width",
+      "pagePath": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 27,
+        "pageEnd": 30,
+        "references": [
+          {
+            "id": "qm-02-2.13",
+            "label": "Chapter 2, item 2.13",
+            "pageStart": 27,
+            "pageEnd": 30,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.14",
+      "chapterId": "02",
+      "itemId": "2.14",
+      "title": "Wave packet spreading and uncertainty",
+      "pagePath": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 31,
+        "pageEnd": 34,
+        "references": [
+          {
+            "id": "qm-02-2.14",
+            "label": "Chapter 2, item 2.14",
+            "pageStart": 31,
+            "pageEnd": 34,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "2.15",
+      "chapterId": "02",
+      "itemId": "2.15",
+      "title": "Chapter synthesis",
+      "pagePath": "slides/chapter-02/chapter-synthesis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "2",
+        "pdfChapterTitle": "Construction of quantum theory I: wave mechanics",
+        "pageStart": 31,
+        "pageEnd": 34,
+        "references": [
+          {
+            "id": "qm-02-2.15",
+            "label": "Chapter 2, item 2.15",
+            "pageStart": 31,
+            "pageEnd": 34,
+            "extractionSources": [
+              "chapter-02-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-02-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.1",
+      "chapterId": "03",
+      "itemId": "3.1",
+      "title": "Why matrix mechanics is needed",
+      "pagePath": "slides/chapter-03/why-matrix-mechanics-is-needed.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 2,
+        "pageEnd": 2,
+        "references": [
+          {
+            "id": "qm-03-3.1",
+            "label": "Chapter 3, item 3.1",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.2",
+      "chapterId": "03",
+      "itemId": "3.2",
+      "title": "Stern-Gerlach experiment: magnetic force and spin",
+      "pagePath": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 2,
+        "pageEnd": 4,
+        "references": [
+          {
+            "id": "qm-03-3.2",
+            "label": "Chapter 3, item 3.2",
+            "pageStart": 2,
+            "pageEnd": 4,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.3",
+      "chapterId": "03",
+      "itemId": "3.3",
+      "title": "Dirac notation: kets, bras and inner products",
+      "pagePath": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 5,
+        "pageEnd": 6,
+        "references": [
+          {
+            "id": "qm-03-3.3",
+            "label": "Chapter 3, item 3.3",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.4",
+      "chapterId": "03",
+      "itemId": "3.4",
+      "title": "Hilbert space, bases, superposition and completeness",
+      "pagePath": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 5,
+        "pageEnd": 6,
+        "references": [
+          {
+            "id": "qm-03-3.4",
+            "label": "Chapter 3, item 3.4",
+            "pageStart": 5,
+            "pageEnd": 6,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.5",
+      "chapterId": "03",
+      "itemId": "3.5",
+      "title": "Operators, eigenvalues and spectral decomposition",
+      "pagePath": "slides/chapter-03/operators-as-matrices.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 7,
+        "pageEnd": 10,
+        "references": [
+          {
+            "id": "qm-03-3.5",
+            "label": "Chapter 3, item 3.5",
+            "pageStart": 7,
+            "pageEnd": 10,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.6",
+      "chapterId": "03",
+      "itemId": "3.6",
+      "title": "Pauli matrices and spin observables",
+      "pagePath": "slides/chapter-03/pauli-matrices-and-spin-observables.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 7,
+        "pageEnd": 10,
+        "references": [
+          {
+            "id": "qm-03-3.6",
+            "label": "Chapter 3, item 3.6",
+            "pageStart": 7,
+            "pageEnd": 10,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.7",
+      "chapterId": "03",
+      "itemId": "3.7",
+      "title": "Born rule in vector notation",
+      "pagePath": "slides/chapter-03/born-rule-vector-notation.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 11,
+        "pageEnd": 12,
+        "references": [
+          {
+            "id": "qm-03-3.7",
+            "label": "Chapter 3, item 3.7",
+            "pageStart": 11,
+            "pageEnd": 12,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.8",
+      "chapterId": "03",
+      "itemId": "3.8",
+      "title": "Expectation value, variance and preparation",
+      "pagePath": "slides/chapter-03/expectation-value-variance-and-preparation.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 13,
+        "pageEnd": 14,
+        "references": [
+          {
+            "id": "qm-03-3.8",
+            "label": "Chapter 3, item 3.8",
+            "pageStart": 13,
+            "pageEnd": 14,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.9",
+      "chapterId": "03",
+      "itemId": "3.9",
+      "title": "Hermitian operators and real outcomes",
+      "pagePath": "slides/chapter-03/hermitian-operators-and-real-outcomes.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 7,
+        "pageEnd": 10,
+        "references": [
+          {
+            "id": "qm-03-3.9",
+            "label": "Chapter 3, item 3.9",
+            "pageStart": 7,
+            "pageEnd": 10,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.10",
+      "chapterId": "03",
+      "itemId": "3.10",
+      "title": "Commutators, compatibility and measurement order",
+      "pagePath": "slides/chapter-03/commutators-compatibility-and-measurement-order.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 15,
+        "pageEnd": 16,
+        "references": [
+          {
+            "id": "qm-03-3.10",
+            "label": "Chapter 3, item 3.10",
+            "pageStart": 15,
+            "pageEnd": 16,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.11",
+      "chapterId": "03",
+      "itemId": "3.11",
+      "title": "Schrodinger picture: unitary time evolution",
+      "pagePath": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 17,
+        "pageEnd": 17,
+        "references": [
+          {
+            "id": "qm-03-3.11",
+            "label": "Chapter 3, item 3.11",
+            "pageStart": 17,
+            "pageEnd": 17,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.12",
+      "chapterId": "03",
+      "itemId": "3.12",
+      "title": "Heisenberg picture: operator evolution",
+      "pagePath": "slides/chapter-03/heisenberg-picture-operator-evolution.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 18,
+        "pageEnd": 18,
+        "references": [
+          {
+            "id": "qm-03-3.12",
+            "label": "Chapter 3, item 3.12",
+            "pageStart": 18,
+            "pageEnd": 18,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.13",
+      "chapterId": "03",
+      "itemId": "3.13",
+      "title": "Unitary transformations and change of basis",
+      "pagePath": "slides/chapter-03/unitary-transformations-and-change-of-basis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 19,
+        "pageEnd": 20,
+        "references": [
+          {
+            "id": "qm-03-3.13",
+            "label": "Chapter 3, item 3.13",
+            "pageStart": 19,
+            "pageEnd": 20,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "3.14",
+      "chapterId": "03",
+      "itemId": "3.14",
+      "title": "Operator functions and chapter synthesis",
+      "pagePath": "slides/chapter-03/operator-functions-and-chapter-synthesis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "3",
+        "pdfChapterTitle": "Construction of quantum theory II: matrix mechanics",
+        "pageStart": 21,
+        "pageEnd": 21,
+        "references": [
+          {
+            "id": "qm-03-3.14",
+            "label": "Chapter 3, item 3.14",
+            "pageStart": 21,
+            "pageEnd": 21,
+            "extractionSources": [
+              "chapter-03-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-03-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.1",
+      "chapterId": "04",
+      "itemId": "4.1",
+      "title": "Bound and unbound states: chapter roadmap",
+      "pagePath": "slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 2,
+        "pageEnd": 2,
+        "references": [
+          {
+            "id": "qm-04-4.1",
+            "label": "Chapter 4, item 4.1",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.2",
+      "chapterId": "04",
+      "itemId": "4.2",
+      "title": "QHO: differential equation, variables and eigenstates",
+      "pagePath": "slides/chapter-04/quantum-harmonic-oscillator-qho-model-and-scaling.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 2,
+        "pageEnd": 10,
+        "references": [
+          {
+            "id": "qm-04-4.2",
+            "label": "Chapter 4, item 4.2",
+            "pageStart": 2,
+            "pageEnd": 10,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.3",
+      "chapterId": "04",
+      "itemId": "4.3",
+      "title": "QHO: energy eigenvalues",
+      "pagePath": "slides/chapter-04/qho-hermite-equation-and-energy-quantization.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 3,
+        "pageEnd": 6,
+        "references": [
+          {
+            "id": "qm-04-4.3",
+            "label": "Chapter 4, item 4.3",
+            "pageStart": 3,
+            "pageEnd": 6,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.4",
+      "chapterId": "04",
+      "itemId": "4.4",
+      "title": "QHO: ladder operators and oscillator algebra",
+      "pagePath": "slides/chapter-04/qho-ladder-operators-and-oscillator-algebra.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 11,
+        "pageEnd": 18,
+        "references": [
+          {
+            "id": "qm-04-4.4",
+            "label": "Chapter 4, item 4.4",
+            "pageStart": 11,
+            "pageEnd": 18,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.5",
+      "chapterId": "04",
+      "itemId": "4.5",
+      "title": "QHO: expectation values and uncertainty",
+      "pagePath": "slides/chapter-04/qho-expectation-values-and-uncertainty.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 45,
+        "pageEnd": 48,
+        "references": [
+          {
+            "id": "qm-04-4.5",
+            "label": "Chapter 4, item 4.5",
+            "pageStart": 45,
+            "pageEnd": 48,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.6",
+      "chapterId": "04",
+      "itemId": "4.6",
+      "title": "Finite potential well: bound-state setup",
+      "pagePath": "slides/chapter-04/finite-potential-well-bound-state-setup.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 19,
+        "pageEnd": 21,
+        "references": [
+          {
+            "id": "qm-04-4.6",
+            "label": "Chapter 4, item 4.6",
+            "pageStart": 19,
+            "pageEnd": 21,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.7",
+      "chapterId": "04",
+      "itemId": "4.7",
+      "title": "Finite-well quantization and energy levels",
+      "pagePath": "slides/chapter-04/finite-well-quantization-and-energy-levels.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 22,
+        "pageEnd": 26,
+        "references": [
+          {
+            "id": "qm-04-4.7",
+            "label": "Chapter 4, item 4.7",
+            "pageStart": 22,
+            "pageEnd": 26,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.8",
+      "chapterId": "04",
+      "itemId": "4.8",
+      "title": "Finite-well wave functions and penetration",
+      "pagePath": "slides/chapter-04/finite-well-wave-functions-and-penetration.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 27,
+        "pageEnd": 30,
+        "references": [
+          {
+            "id": "qm-04-4.8",
+            "label": "Chapter 4, item 4.8",
+            "pageStart": 27,
+            "pageEnd": 30,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.9",
+      "chapterId": "04",
+      "itemId": "4.9",
+      "title": "Probability current, reflection and transmission",
+      "pagePath": "slides/chapter-04/probability-current-reflection-and-transmission.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 31,
+        "pageEnd": 32,
+        "references": [
+          {
+            "id": "qm-04-4.9",
+            "label": "Chapter 4, item 4.9",
+            "pageStart": 31,
+            "pageEnd": 32,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.10",
+      "chapterId": "04",
+      "itemId": "4.10",
+      "title": "Scattering from an attractive finite well",
+      "pagePath": "slides/chapter-04/scattering-from-an-attractive-finite-well.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 33,
+        "pageEnd": 37,
+        "references": [
+          {
+            "id": "qm-04-4.10",
+            "label": "Chapter 4, item 4.10",
+            "pageStart": 33,
+            "pageEnd": 37,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.11",
+      "chapterId": "04",
+      "itemId": "4.11",
+      "title": "Delta-function well and scattering",
+      "pagePath": "slides/chapter-04/delta-function-well-and-scattering.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 38,
+        "pageEnd": 40,
+        "references": [
+          {
+            "id": "qm-04-4.11",
+            "label": "Chapter 4, item 4.11",
+            "pageStart": 38,
+            "pageEnd": 40,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.12",
+      "chapterId": "04",
+      "itemId": "4.12",
+      "title": "Rectangular step potential and quantum tunneling",
+      "pagePath": "slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 41,
+        "pageEnd": 44,
+        "references": [
+          {
+            "id": "qm-04-4.12",
+            "label": "Chapter 4, item 4.12",
+            "pageStart": 41,
+            "pageEnd": 44,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "4.14",
+      "chapterId": "04",
+      "itemId": "4.14",
+      "title": "Chapter synthesis: one-dimensional quantum models",
+      "pagePath": "slides/chapter-04/chapter-synthesis-one-dimensional-quantum-models.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "4",
+        "pdfChapterTitle": "One-dimensional problems: bound and unbound states",
+        "pageStart": 49,
+        "pageEnd": 51,
+        "references": [
+          {
+            "id": "qm-04-4.14",
+            "label": "Chapter 4, item 4.14",
+            "pageStart": 49,
+            "pageEnd": 51,
+            "extractionSources": [
+              "chapter-04-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-04-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.1",
+      "chapterId": "05",
+      "itemId": "5.1",
+      "title": "Central potentials: chapter roadmap",
+      "pagePath": "slides/chapter-05/central-potentials-chapter-roadmap.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 3,
+        "pageEnd": 3,
+        "references": [
+          {
+            "id": "qm-05-5.1",
+            "label": "Chapter 5, item 5.1",
+            "pageStart": 3,
+            "pageEnd": 3,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.2",
+      "chapterId": "05",
+      "itemId": "5.2",
+      "title": "Separation of variables in spherical coordinates",
+      "pagePath": "slides/chapter-05/separation-of-variables-in-spherical-coordinates.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 3,
+        "pageEnd": 4,
+        "references": [
+          {
+            "id": "qm-05-5.2",
+            "label": "Chapter 5, item 5.2",
+            "pageStart": 3,
+            "pageEnd": 4,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.3",
+      "chapterId": "05",
+      "itemId": "5.3",
+      "title": "Azimuthal and polar equations",
+      "pagePath": "slides/chapter-05/azimuthal-and-polar-equations.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 4,
+        "pageEnd": 7,
+        "references": [
+          {
+            "id": "qm-05-5.3",
+            "label": "Chapter 5, item 5.3",
+            "pageStart": 4,
+            "pageEnd": 7,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.4",
+      "chapterId": "05",
+      "itemId": "5.4",
+      "title": "Spherical harmonics",
+      "pagePath": "slides/chapter-05/spherical-harmonics.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 8,
+        "pageEnd": 10,
+        "references": [
+          {
+            "id": "qm-05-5.4",
+            "label": "Chapter 5, item 5.4",
+            "pageStart": 8,
+            "pageEnd": 10,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.5",
+      "chapterId": "05",
+      "itemId": "5.5",
+      "title": "Hydrogen atom: radial solution and probability",
+      "pagePath": "slides/chapter-05/hydrogen-atom-and-effective-potential.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 11,
+        "pageEnd": 23,
+        "references": [
+          {
+            "id": "qm-05-5.5",
+            "label": "Chapter 5, item 5.5",
+            "pageStart": 11,
+            "pageEnd": 23,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.6",
+      "chapterId": "05",
+      "itemId": "5.6",
+      "title": "Hydrogen energy spectrum and degeneracy",
+      "pagePath": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 17,
+        "pageEnd": 17,
+        "references": [
+          {
+            "id": "qm-05-5.6",
+            "label": "Chapter 5, item 5.6",
+            "pageStart": 17,
+            "pageEnd": 17,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.7",
+      "chapterId": "05",
+      "itemId": "5.7",
+      "title": "Three-dimensional harmonic oscillator: radial solution and spectrum",
+      "pagePath": "slides/chapter-05/three-dimensional-harmonic-oscillator.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 24,
+        "pageEnd": 34,
+        "references": [
+          {
+            "id": "qm-05-5.7",
+            "label": "Chapter 5, item 5.7",
+            "pageStart": 24,
+            "pageEnd": 34,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.8",
+      "chapterId": "05",
+      "itemId": "5.8",
+      "title": "Hydrogen atom and the periodic table",
+      "pagePath": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 35,
+        "pageEnd": 37,
+        "references": [
+          {
+            "id": "qm-05-5.8",
+            "label": "Chapter 5, item 5.8",
+            "pageStart": 35,
+            "pageEnd": 37,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.9",
+      "chapterId": "05",
+      "itemId": "5.9",
+      "title": "Hydrogen expectation values",
+      "pagePath": "slides/chapter-05/hydrogen-expectation-values.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 38,
+        "pageEnd": 44,
+        "references": [
+          {
+            "id": "qm-05-5.9",
+            "label": "Chapter 5, item 5.9",
+            "pageStart": 38,
+            "pageEnd": 44,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "5.10",
+      "chapterId": "05",
+      "itemId": "5.10",
+      "title": "Chapter synthesis: solving central potentials",
+      "pagePath": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "5",
+        "pdfChapterTitle": "Traditional problems with central potential",
+        "pageStart": 45,
+        "pageEnd": 48,
+        "references": [
+          {
+            "id": "qm-05-5.10",
+            "label": "Chapter 5, item 5.10",
+            "pageStart": 45,
+            "pageEnd": 48,
+            "extractionSources": [
+              "chapter-05-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-05-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.1",
+      "chapterId": "06",
+      "itemId": "6.1",
+      "title": "Angular momentum: chapter roadmap",
+      "pagePath": "slides/chapter-06/angular-momentum-chapter-roadmap.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 1,
+        "pageEnd": 1,
+        "references": [
+          {
+            "id": "qm-06-6.1",
+            "label": "Chapter 6, item 6.1",
+            "pageStart": 1,
+            "pageEnd": 1,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.2",
+      "chapterId": "06",
+      "itemId": "6.2",
+      "title": "Commutation relations and Levi-Civita notation",
+      "pagePath": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 2,
+        "pageEnd": 2,
+        "references": [
+          {
+            "id": "qm-06-6.2",
+            "label": "Chapter 6, item 6.2",
+            "pageStart": 2,
+            "pageEnd": 2,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.3",
+      "chapterId": "06",
+      "itemId": "6.3",
+      "title": "Angular momentum algebra",
+      "pagePath": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 4,
+        "pageEnd": 11,
+        "references": [
+          {
+            "id": "qm-06-6.3",
+            "label": "Chapter 6, item 6.3",
+            "pageStart": 4,
+            "pageEnd": 11,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.4",
+      "chapterId": "06",
+      "itemId": "6.4",
+      "title": "Consequences of the algebra",
+      "pagePath": "slides/chapter-06/expectation-values-and-transverse-variance.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 12,
+        "pageEnd": 14,
+        "references": [
+          {
+            "id": "qm-06-6.4",
+            "label": "Chapter 6, item 6.4",
+            "pageStart": 12,
+            "pageEnd": 14,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.5",
+      "chapterId": "06",
+      "itemId": "6.5",
+      "title": "Matrix representation",
+      "pagePath": "slides/chapter-06/general-matrix-representation.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 14,
+        "pageEnd": 20,
+        "references": [
+          {
+            "id": "qm-06-6.5",
+            "label": "Chapter 6, item 6.5",
+            "pageStart": 14,
+            "pageEnd": 20,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.6",
+      "chapterId": "06",
+      "itemId": "6.6",
+      "title": "Position-space representation",
+      "pagePath": "slides/chapter-06/angular-momentum-in-position-space.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 20,
+        "pageEnd": 26,
+        "references": [
+          {
+            "id": "qm-06-6.6",
+            "label": "Chapter 6, item 6.6",
+            "pageStart": 20,
+            "pageEnd": 26,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.7",
+      "chapterId": "06",
+      "itemId": "6.7",
+      "title": "Schrödinger uncertainty and Schwartz inequality",
+      "pagePath": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 26,
+        "pageEnd": 30,
+        "references": [
+          {
+            "id": "qm-06-6.7",
+            "label": "Chapter 6, item 6.7",
+            "pageStart": 26,
+            "pageEnd": 30,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "6.8",
+      "chapterId": "06",
+      "itemId": "6.8",
+      "title": "Chapter synthesis: angular momentum toolkit",
+      "pagePath": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "6",
+        "pdfChapterTitle": "Angular momentum",
+        "pageStart": 30,
+        "pageEnd": 33,
+        "references": [
+          {
+            "id": "qm-06-6.8",
+            "label": "Chapter 6, item 6.8",
+            "pageStart": 30,
+            "pageEnd": 33,
+            "extractionSources": [
+              "chapter-06-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-06-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.1",
+      "chapterId": "07",
+      "itemId": "7.1",
+      "title": "Addition of angular momenta: chapter roadmap",
+      "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-roadmap.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 1,
+        "pageEnd": 1,
+        "references": [
+          {
+            "id": "qm-07-7.1",
+            "label": "Chapter 7, item 7.1",
+            "pageStart": 1,
+            "pageEnd": 1,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.2",
+      "chapterId": "07",
+      "itemId": "7.2",
+      "title": "Interactions between angular momenta",
+      "pagePath": "slides/chapter-07/interactions-between-angular-momenta.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 2,
+        "pageEnd": 3,
+        "references": [
+          {
+            "id": "qm-07-7.2",
+            "label": "Chapter 7, item 7.2",
+            "pageStart": 2,
+            "pageEnd": 3,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.3",
+      "chapterId": "07",
+      "itemId": "7.3",
+      "title": "Commutation relations",
+      "pagePath": "slides/chapter-07/commutation-relations.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 4,
+        "pageEnd": 8,
+        "references": [
+          {
+            "id": "qm-07-7.3",
+            "label": "Chapter 7, item 7.3",
+            "pageStart": 4,
+            "pageEnd": 8,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.4",
+      "chapterId": "07",
+      "itemId": "7.4",
+      "title": "Vectors in the coupled basis",
+      "pagePath": "slides/chapter-07/vectors-in-the-coupled-basis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 9,
+        "pageEnd": 12,
+        "references": [
+          {
+            "id": "qm-07-7.4",
+            "label": "Chapter 7, item 7.4",
+            "pageStart": 9,
+            "pageEnd": 12,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.5",
+      "chapterId": "07",
+      "itemId": "7.5",
+      "title": "Hilbert space expansion",
+      "pagePath": "slides/chapter-07/hilbert-space-expansion.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 12,
+        "pageEnd": 15,
+        "references": [
+          {
+            "id": "qm-07-7.5",
+            "label": "Chapter 7, item 7.5",
+            "pageStart": 12,
+            "pageEnd": 15,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.6",
+      "chapterId": "07",
+      "itemId": "7.6",
+      "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
+      "pagePath": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 15,
+        "pageEnd": 25,
+        "references": [
+          {
+            "id": "qm-07-7.6",
+            "label": "Chapter 7, item 7.6",
+            "pageStart": 15,
+            "pageEnd": 25,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.7",
+      "chapterId": "07",
+      "itemId": "7.7",
+      "title": "Basis change of an operator",
+      "pagePath": "slides/chapter-07/basis-change-of-an-operator.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 25,
+        "pageEnd": 27,
+        "references": [
+          {
+            "id": "qm-07-7.7",
+            "label": "Chapter 7, item 7.7",
+            "pageStart": 25,
+            "pageEnd": 27,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.8",
+      "chapterId": "07",
+      "itemId": "7.8",
+      "title": "Application 7.A: Magnetic moment and the Zeeman effect",
+      "pagePath": "slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 27,
+        "pageEnd": 30,
+        "references": [
+          {
+            "id": "qm-07-7.8",
+            "label": "Chapter 7, item 7.8",
+            "pageStart": 27,
+            "pageEnd": 30,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.9",
+      "chapterId": "07",
+      "itemId": "7.9",
+      "title": "Application 7.B: Angular momentum of atoms and Hund's rules",
+      "pagePath": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 30,
+        "pageEnd": 32,
+        "references": [
+          {
+            "id": "qm-07-7.9",
+            "label": "Chapter 7, item 7.9",
+            "pageStart": 30,
+            "pageEnd": 32,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    },
+    {
+      "sectionId": "7.10",
+      "chapterId": "07",
+      "itemId": "7.10",
+      "title": "Chapter synthesis: addition of angular momenta",
+      "pagePath": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+      "canonicalReference": {
+        "pdfChapterNumber": "7",
+        "pdfChapterTitle": "Addition of angular momenta",
+        "pageStart": 1,
+        "pageEnd": 32,
+        "references": [
+          {
+            "id": "qm-07-7.10",
+            "label": "Chapter 7, item 7.10",
+            "pageStart": 1,
+            "pageEnd": 32,
+            "extractionSources": [
+              "chapter-07-theory.pdf"
+            ],
+            "needsReview": false
+          }
+        ]
+      },
+      "sourceFiles": [
+        "chapter-07-theory.pdf"
+      ],
+      "needsReview": false
+    }
+  ],
+  "integrity": "34f2963179412b3339bf985c666e7eb76435ff12952be03ed69be8e5a7057641"
+}

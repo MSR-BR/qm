@@ -60,6 +60,11 @@
   };
 
   const PRIVATE_VIEWS = new Set(["saved", "favorites", "validation-review"]);
+  const LOCKED_CHAPTER_IDS = new Set(
+    Object.entries(window.QMContentRegistry?.chapters || {})
+      .filter(([, chapter]) => chapter?.availability !== "published")
+      .map(([chapterId]) => chapterId)
+  );
 
   function isIndexPage() {
     return /(^|\/)index\.html$/i.test(window.location.pathname) || window.location.pathname === "/";
@@ -188,6 +193,23 @@
             name: COURSE_TITLE,
             url: SITE_URL
           }
+        }
+      };
+    }
+
+    if (view === "chapters" && LOCKED_CHAPTER_IDS.has(chapterId)) {
+      return {
+        title: `Chapter ${Number(chapterId)} under editorial review | ${COURSE_TITLE}`,
+        description: "This chapter is under editorial review and is not available yet.",
+        canonical: buildCanonicalForIndex("chapters", ""),
+        robots: "noindex,nofollow,noarchive",
+        ogType: "website",
+        jsonLd: {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: `Chapter ${Number(chapterId)} under editorial review | ${COURSE_TITLE}`,
+          isPartOf: { "@type": "Course", name: COURSE_TITLE },
+          inLanguage: "en"
         }
       };
     }

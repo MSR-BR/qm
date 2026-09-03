@@ -1,0 +1,34 @@
+{
+  "redirects": [
+    {
+      "source": "/slides/chapter-10/:path*",
+      "destination": "/index.html?view=chapters&chapter=10",
+      "permanent": false
+    },
+    {
+      "source": "/slides/chapter-11/:path*",
+      "destination": "/index.html?view=chapters&chapter=11",
+      "permanent": false
+    },
+    {
+      "source": "/slides/chapter-12/:path*",
+      "destination": "/index.html?view=chapters&chapter=12",
+      "permanent": false
+    },
+    {
+      "source": "/slides/chapter-13/:path*",
+      "destination": "/index.html?view=chapters&chapter=13",
+      "permanent": false
+    },
+    {
+      "source": "/slides/chapter-08/:path*",
+      "destination": "/index.html?view=chapters&chapter=08",
+      "permanent": false
+    },
+    {
+      "source": "/slides/chapter-09/:path*",
+      "destination": "/index.html?view=chapters&chapter=09",
+      "permanent": false
+    }
+  ]
+}

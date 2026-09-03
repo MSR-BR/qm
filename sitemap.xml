@@ -49,42 +49,6 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/?view=chapters&amp;chapter=08</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/?view=chapters&amp;chapter=09</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/?view=chapters&amp;chapter=10</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/?view=chapters&amp;chapter=11</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/?view=chapters&amp;chapter=12</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/?view=chapters&amp;chapter=13</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
     <loc>https://qm-beta.vercel.app/slides/chapter-01/why-old-quantum-physics-matters.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -499,12 +463,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-06/angular-momentum-and-levi-civita-notation.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://qm-beta.vercel.app/slides/chapter-06/compatible-observables-l-squared-and-lz.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
@@ -541,187 +499,61 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/why-angular-momenta-must-be-added.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/addition-of-angular-momenta-chapter-roadmap.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/local-and-coupled-observables.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/interactions-between-angular-momenta.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/triangle-rule-and-projection-rule.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/commutation-relations.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/sequential-coupling-trees.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/vectors-in-the-coupled-basis.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/alternative-coupling-schemes-and-multiplicity.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/hilbert-space-expansion.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/expanding-the-hilbert-space.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/composite-operators-and-spin-interactions.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/basis-change-of-an-operator.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/clebsch-gordan-coefficients.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/constructing-coupled-states-by-ladder-operators.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/wigner-3j-symbols-and-the-racah-formula.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/coupling-n-angular-momenta.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/changing-basis-and-reading-spectra.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/magnetic-moments-lande-factor-and-zeeman-effect.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/atomic-coupling-schemes.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/hund-s-rules-and-term-symbols.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-07/chapter-synthesis-coupled-quantum-systems.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/why-perturbation-theory-is-needed.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/hamiltonian-state-and-energy-expansions.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/first-order-non-degenerate-corrections.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/second-order-energy-correction.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/second-order-state-correction.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/exact-matrix-benchmark.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/why-degeneracy-changes-the-method.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/first-order-degenerate-perturbation-theory.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/degenerate-state-and-second-order-corrections.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/van-vleck-susceptibility.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/anisotropic-spin-example.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/hydrogen-atom-in-an-electric-field.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/linear-and-quadratic-stark-effects.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/stark-selection-rules.html</loc>
-    <lastmod>2026-06-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://qm-beta.vercel.app/slides/chapter-08/chapter-synthesis-perturbative-workflow.html</loc>
+    <loc>https://qm-beta.vercel.app/slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html</loc>
     <lastmod>2026-06-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>

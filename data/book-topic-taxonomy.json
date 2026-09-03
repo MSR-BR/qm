@@ -1,197 +1,1352 @@
 {
-  "version": "2026-08-14-qm-ai-topic-taxonomy-chapters-01-08-synthesis",
-  "description": "Curated topic taxonomy for Quantum Mechanics AI exercises. The taxonomy covers the reviewed app/book sections through Chapter 8 and controls which related fragments may support exercise generation.",
+  "version": "2026-09-03-qm-ai-topic-taxonomy-chapters-01-07-published",
+  "description": "Curated topic taxonomy for Quantum Mechanics AI exercises. It controls the related fragments available for exercises in published, editorially reviewed chapters only.",
   "sourceCorpus": "data/book-section-corpus.json",
   "scope": {
-    "chapters": ["01", "02", "03", "04", "05", "06", "07", "08"],
-    "appSectionCount": 95,
-    "reviewStatus": "curated-through-chapter-08",
-    "note": "Chapters after 08 should be added only after their pedagogical review is complete."
+    "chapters": [
+      "01",
+      "02",
+      "03",
+      "04",
+      "05",
+      "06",
+      "07"
+    ],
+    "appSectionCount": 85,
+    "reviewStatus": "curated-through-chapter-07",
+    "note": "Only published and editorially reviewed chapters may support AI exercise generation."
   },
   "transversalTopics": [
-    { "id": "old-quantum-physics-overview", "label": "Old quantum physics overview" },
-    { "id": "classical-wave-benchmark", "label": "Classical wave benchmark" },
-    { "id": "hydrogen-spectral-lines", "label": "Hydrogen spectral lines" },
-    { "id": "electron-experimental-evidence", "label": "Electron experimental evidence" },
-    { "id": "black-body-radiation", "label": "Black-body radiation" },
-    { "id": "photoelectric-effect", "label": "Photoelectric effect" },
-    { "id": "bohr-hydrogen-model", "label": "Bohr hydrogen model" },
-    { "id": "de-broglie-matter-waves", "label": "de Broglie matter waves" },
-    { "id": "semiclassical-quantization", "label": "Semi-classical quantization" },
-    { "id": "schrodinger-equation", "label": "Schrodinger equation" },
-    { "id": "stationary-states-tise", "label": "Stationary states and TISE" },
-    { "id": "probability-density-current", "label": "Probability density and current" },
-    { "id": "infinite-potential-well", "label": "Infinite potential well" },
-    { "id": "quantum-postulates-measurement", "label": "Quantum postulates and measurement" },
-    { "id": "superposition-state-space", "label": "Superposition and state space" },
-    { "id": "observables-operators-commutators", "label": "Observables, operators and commutators" },
-    { "id": "born-rule-probabilities", "label": "Born rule and probabilities" },
-    { "id": "expectation-values-variance", "label": "Expectation values and variance" },
-    { "id": "equations-of-motion", "label": "Equations of motion" },
-    { "id": "wave-packets-fourier-uncertainty", "label": "Wave packets, Fourier width and uncertainty" },
-    { "id": "wave-mechanics-synthesis", "label": "Wave mechanics synthesis" },
-    { "id": "matrix-mechanics-spin-entry", "label": "Matrix mechanics and spin entry point" },
-    { "id": "dirac-notation", "label": "Dirac notation" },
-    { "id": "hilbert-space-bases-completeness", "label": "Hilbert space, bases and completeness" },
-    { "id": "operators-spectral-decomposition", "label": "Operators and spectral decomposition" },
-    { "id": "pauli-matrices-spin", "label": "Pauli matrices and spin" },
-    { "id": "hermitian-observables", "label": "Hermitian observables" },
-    { "id": "compatibility-measurement-order", "label": "Compatibility and measurement order" },
-    { "id": "quantum-pictures-time-evolution", "label": "Quantum pictures and time evolution" },
-    { "id": "unitary-transformations-change-basis", "label": "Unitary transformations and change of basis" },
-    { "id": "operator-functions", "label": "Operator functions" },
-    { "id": "one-dimensional-quantum-models", "label": "One-dimensional quantum models" },
-    { "id": "harmonic-oscillator-model", "label": "Quantum harmonic oscillator model" },
-    { "id": "hermite-quantization", "label": "Hermite equation and oscillator quantization" },
-    { "id": "ladder-operator-methods", "label": "Ladder-operator methods" },
-    { "id": "finite-well-bound-states", "label": "Finite-well bound states" },
-    { "id": "finite-well-quantization-penetration", "label": "Finite-well quantization and penetration" },
-    { "id": "scattering-reflection-transmission", "label": "Scattering, reflection and transmission" },
-    { "id": "attractive-well-scattering", "label": "Attractive-well scattering" },
-    { "id": "delta-function-potential", "label": "Delta-function potential" },
-    { "id": "quantum-tunneling-barrier", "label": "Rectangular barrier and quantum tunneling" },
-    { "id": "central-potentials-spherical-separation", "label": "Central potentials and spherical separation" },
-    { "id": "angular-equations-special-functions", "label": "Angular equations and special functions" },
-    { "id": "spherical-harmonics", "label": "Spherical harmonics" },
-    { "id": "hydrogen-radial-laguerre", "label": "Hydrogen radial equation and Laguerre solutions" },
-    { "id": "hydrogen-effective-potential-radial-density", "label": "Hydrogen effective potential and radial density" },
-    { "id": "hydrogen-spectrum-degeneracy", "label": "Hydrogen spectrum and degeneracy" },
-    { "id": "three-dimensional-harmonic-oscillator", "label": "Three-dimensional harmonic oscillator" },
-    { "id": "periodic-table-construction", "label": "Hydrogen atom and periodic-table construction" },
-    { "id": "hydrogen-expectation-values", "label": "Hydrogen expectation values" },
-    { "id": "central-potentials-synthesis", "label": "Central-potentials synthesis" },
-    { "id": "angular-momentum-roadmap", "label": "Angular momentum roadmap" },
-    { "id": "angular-momentum-commutators", "label": "Angular momentum commutators" },
-    { "id": "angular-momentum-algebra-ladders", "label": "Angular momentum algebra and ladder operators" },
-    { "id": "angular-momentum-variance-geometry", "label": "Angular momentum variance and geometry" },
-    { "id": "angular-momentum-matrix-representation", "label": "Angular momentum matrix representation" },
-    { "id": "angular-momentum-position-representation", "label": "Angular momentum position-space representation" },
-    { "id": "schrodinger-uncertainty-schwartz", "label": "Schrodinger uncertainty and Schwartz inequality" },
-    { "id": "angular-momentum-chapter-toolkit", "label": "Angular momentum chapter toolkit" },
-    { "id": "addition-angular-momenta-roadmap", "label": "Addition of angular momenta roadmap" },
-    { "id": "angular-momentum-interactions", "label": "Interactions between angular momenta" },
-    { "id": "coupled-commuting-observables", "label": "Local and coupled commuting observables" },
-    { "id": "coupled-basis-construction", "label": "Coupled-basis construction" },
-    { "id": "hilbert-space-expansion-angular-momenta", "label": "Hilbert-space expansion for angular momenta" },
-    { "id": "clebsch-gordan-coefficients", "label": "Clebsch-Gordan coefficients" },
-    { "id": "operator-basis-change-coupled", "label": "Operator basis change with coupled states" },
-    { "id": "magnetic-moment-zeeman-lande", "label": "Magnetic moment, Zeeman effect and Lande factor" },
-    { "id": "atomic-angular-momentum-hund-rules", "label": "Atomic angular momentum and Hund's rules" },
-    { "id": "addition-angular-momenta-synthesis", "label": "Addition of angular momenta synthesis" },
-    { "id": "time-independent-perturbation-roadmap", "label": "Time-independent perturbation theory roadmap" },
-    { "id": "non-degenerate-perturbation-theory", "label": "Non-degenerate perturbation theory" },
-    { "id": "degenerate-perturbation-theory", "label": "Degenerate perturbation theory" },
-    { "id": "van-vleck-susceptibility", "label": "van Vleck susceptibility" },
-    { "id": "stark-effect", "label": "Stark effect" },
-    { "id": "time-independent-perturbation-synthesis", "label": "Time-independent perturbation theory synthesis" },
-    { "id": "quantization-history-and-spectra", "label": "Quantization across early evidence and spectra", "usage": "advanced-support" },
-    { "id": "special-functions-bound-states", "label": "Special functions in bound-state problems", "usage": "advanced-support" },
-    { "id": "operator-algebra-across-representations", "label": "Operator algebra across representations", "usage": "advanced-support" },
-    { "id": "uncertainty-across-formalisms", "label": "Uncertainty across wave and operator formalisms", "usage": "advanced-support" },
-    { "id": "hydrogen-from-old-to-schrodinger", "label": "Hydrogen from old quantum physics to Schrodinger theory", "usage": "advanced-support" }
+    {
+      "id": "old-quantum-physics-overview",
+      "label": "Old quantum physics overview"
+    },
+    {
+      "id": "classical-wave-benchmark",
+      "label": "Classical wave benchmark"
+    },
+    {
+      "id": "hydrogen-spectral-lines",
+      "label": "Hydrogen spectral lines"
+    },
+    {
+      "id": "electron-experimental-evidence",
+      "label": "Electron experimental evidence"
+    },
+    {
+      "id": "black-body-radiation",
+      "label": "Black-body radiation"
+    },
+    {
+      "id": "photoelectric-effect",
+      "label": "Photoelectric effect"
+    },
+    {
+      "id": "bohr-hydrogen-model",
+      "label": "Bohr hydrogen model"
+    },
+    {
+      "id": "de-broglie-matter-waves",
+      "label": "de Broglie matter waves"
+    },
+    {
+      "id": "semiclassical-quantization",
+      "label": "Semi-classical quantization"
+    },
+    {
+      "id": "schrodinger-equation",
+      "label": "Schrodinger equation"
+    },
+    {
+      "id": "stationary-states-tise",
+      "label": "Stationary states and TISE"
+    },
+    {
+      "id": "probability-density-current",
+      "label": "Probability density and current"
+    },
+    {
+      "id": "infinite-potential-well",
+      "label": "Infinite potential well"
+    },
+    {
+      "id": "quantum-postulates-measurement",
+      "label": "Quantum postulates and measurement"
+    },
+    {
+      "id": "superposition-state-space",
+      "label": "Superposition and state space"
+    },
+    {
+      "id": "observables-operators-commutators",
+      "label": "Observables, operators and commutators"
+    },
+    {
+      "id": "born-rule-probabilities",
+      "label": "Born rule and probabilities"
+    },
+    {
+      "id": "expectation-values-variance",
+      "label": "Expectation values and variance"
+    },
+    {
+      "id": "equations-of-motion",
+      "label": "Equations of motion"
+    },
+    {
+      "id": "wave-packets-fourier-uncertainty",
+      "label": "Wave packets, Fourier width and uncertainty"
+    },
+    {
+      "id": "wave-mechanics-synthesis",
+      "label": "Wave mechanics synthesis"
+    },
+    {
+      "id": "matrix-mechanics-spin-entry",
+      "label": "Matrix mechanics and spin entry point"
+    },
+    {
+      "id": "dirac-notation",
+      "label": "Dirac notation"
+    },
+    {
+      "id": "hilbert-space-bases-completeness",
+      "label": "Hilbert space, bases and completeness"
+    },
+    {
+      "id": "operators-spectral-decomposition",
+      "label": "Operators and spectral decomposition"
+    },
+    {
+      "id": "pauli-matrices-spin",
+      "label": "Pauli matrices and spin"
+    },
+    {
+      "id": "hermitian-observables",
+      "label": "Hermitian observables"
+    },
+    {
+      "id": "compatibility-measurement-order",
+      "label": "Compatibility and measurement order"
+    },
+    {
+      "id": "quantum-pictures-time-evolution",
+      "label": "Quantum pictures and time evolution"
+    },
+    {
+      "id": "unitary-transformations-change-basis",
+      "label": "Unitary transformations and change of basis"
+    },
+    {
+      "id": "operator-functions",
+      "label": "Operator functions"
+    },
+    {
+      "id": "one-dimensional-quantum-models",
+      "label": "One-dimensional quantum models"
+    },
+    {
+      "id": "harmonic-oscillator-model",
+      "label": "Quantum harmonic oscillator model"
+    },
+    {
+      "id": "hermite-quantization",
+      "label": "Hermite equation and oscillator quantization"
+    },
+    {
+      "id": "ladder-operator-methods",
+      "label": "Ladder-operator methods"
+    },
+    {
+      "id": "finite-well-bound-states",
+      "label": "Finite-well bound states"
+    },
+    {
+      "id": "finite-well-quantization-penetration",
+      "label": "Finite-well quantization and penetration"
+    },
+    {
+      "id": "scattering-reflection-transmission",
+      "label": "Scattering, reflection and transmission"
+    },
+    {
+      "id": "attractive-well-scattering",
+      "label": "Attractive-well scattering"
+    },
+    {
+      "id": "delta-function-potential",
+      "label": "Delta-function potential"
+    },
+    {
+      "id": "quantum-tunneling-barrier",
+      "label": "Rectangular barrier and quantum tunneling"
+    },
+    {
+      "id": "central-potentials-spherical-separation",
+      "label": "Central potentials and spherical separation"
+    },
+    {
+      "id": "angular-equations-special-functions",
+      "label": "Angular equations and special functions"
+    },
+    {
+      "id": "spherical-harmonics",
+      "label": "Spherical harmonics"
+    },
+    {
+      "id": "hydrogen-radial-laguerre",
+      "label": "Hydrogen radial equation and Laguerre solutions"
+    },
+    {
+      "id": "hydrogen-effective-potential-radial-density",
+      "label": "Hydrogen effective potential and radial density"
+    },
+    {
+      "id": "hydrogen-spectrum-degeneracy",
+      "label": "Hydrogen spectrum and degeneracy"
+    },
+    {
+      "id": "three-dimensional-harmonic-oscillator",
+      "label": "Three-dimensional harmonic oscillator"
+    },
+    {
+      "id": "periodic-table-construction",
+      "label": "Hydrogen atom and periodic-table construction"
+    },
+    {
+      "id": "hydrogen-expectation-values",
+      "label": "Hydrogen expectation values"
+    },
+    {
+      "id": "central-potentials-synthesis",
+      "label": "Central-potentials synthesis"
+    },
+    {
+      "id": "angular-momentum-roadmap",
+      "label": "Angular momentum roadmap"
+    },
+    {
+      "id": "angular-momentum-commutators",
+      "label": "Angular momentum commutators"
+    },
+    {
+      "id": "angular-momentum-algebra-ladders",
+      "label": "Angular momentum algebra and ladder operators"
+    },
+    {
+      "id": "angular-momentum-variance-geometry",
+      "label": "Angular momentum variance and geometry"
+    },
+    {
+      "id": "angular-momentum-matrix-representation",
+      "label": "Angular momentum matrix representation"
+    },
+    {
+      "id": "angular-momentum-position-representation",
+      "label": "Angular momentum position-space representation"
+    },
+    {
+      "id": "schrodinger-uncertainty-schwartz",
+      "label": "Schrodinger uncertainty and Schwartz inequality"
+    },
+    {
+      "id": "angular-momentum-chapter-toolkit",
+      "label": "Angular momentum chapter toolkit"
+    },
+    {
+      "id": "addition-angular-momenta-roadmap",
+      "label": "Addition of angular momenta roadmap"
+    },
+    {
+      "id": "angular-momentum-interactions",
+      "label": "Interactions between angular momenta"
+    },
+    {
+      "id": "coupled-commuting-observables",
+      "label": "Local and coupled commuting observables"
+    },
+    {
+      "id": "coupled-basis-construction",
+      "label": "Coupled-basis construction"
+    },
+    {
+      "id": "hilbert-space-expansion-angular-momenta",
+      "label": "Hilbert-space expansion for angular momenta"
+    },
+    {
+      "id": "clebsch-gordan-coefficients",
+      "label": "Clebsch-Gordan coefficients"
+    },
+    {
+      "id": "operator-basis-change-coupled",
+      "label": "Operator basis change with coupled states"
+    },
+    {
+      "id": "magnetic-moment-zeeman-lande",
+      "label": "Magnetic moment, Zeeman effect and Lande factor"
+    },
+    {
+      "id": "atomic-angular-momentum-hund-rules",
+      "label": "Atomic angular momentum and Hund's rules"
+    },
+    {
+      "id": "addition-angular-momenta-synthesis",
+      "label": "Addition of angular momenta synthesis"
+    },
+    {
+      "id": "quantization-history-and-spectra",
+      "label": "Quantization across early evidence and spectra",
+      "usage": "advanced-support"
+    },
+    {
+      "id": "special-functions-bound-states",
+      "label": "Special functions in bound-state problems",
+      "usage": "advanced-support"
+    },
+    {
+      "id": "operator-algebra-across-representations",
+      "label": "Operator algebra across representations",
+      "usage": "advanced-support"
+    },
+    {
+      "id": "uncertainty-across-formalisms",
+      "label": "Uncertainty across wave and operator formalisms",
+      "usage": "advanced-support"
+    },
+    {
+      "id": "hydrogen-from-old-to-schrodinger",
+      "label": "Hydrogen from old quantum physics to Schrodinger theory",
+      "usage": "advanced-support"
+    }
   ],
   "sectionTopics": [
-    { "sectionId": "1.1", "chapterId": "01", "itemId": "1.1", "title": "Why old quantum physics matters", "primaryTopic": "old-quantum-physics-overview", "topicTags": ["old-quantum-physics-overview"] },
-    { "sectionId": "1.2", "chapterId": "01", "itemId": "1.2", "title": "Wave optics as the classical benchmark", "primaryTopic": "classical-wave-benchmark", "topicTags": ["classical-wave-benchmark", "old-quantum-physics-overview"] },
-    { "sectionId": "1.3", "chapterId": "01", "itemId": "1.3", "title": "Hydrogen spectral lines", "primaryTopic": "hydrogen-spectral-lines", "topicTags": ["hydrogen-spectral-lines"], "advancedTopicTags": ["quantization-history-and-spectra", "hydrogen-from-old-to-schrodinger"] },
-    { "sectionId": "1.4", "chapterId": "01", "itemId": "1.4", "title": "Cathode rays and the electron", "primaryTopic": "electron-experimental-evidence", "topicTags": ["electron-experimental-evidence"] },
-    { "sectionId": "1.5", "chapterId": "01", "itemId": "1.5", "title": "Black-body radiation", "primaryTopic": "black-body-radiation", "topicTags": ["black-body-radiation"], "advancedTopicTags": ["quantization-history-and-spectra"] },
-    { "sectionId": "1.6", "chapterId": "01", "itemId": "1.6", "title": "Photoelectric effect", "primaryTopic": "photoelectric-effect", "topicTags": ["photoelectric-effect"], "advancedTopicTags": ["quantization-history-and-spectra"] },
-    { "sectionId": "1.7", "chapterId": "01", "itemId": "1.7", "title": "Elementary charge", "primaryTopic": "electron-experimental-evidence", "topicTags": ["electron-experimental-evidence"] },
-    { "sectionId": "1.8", "chapterId": "01", "itemId": "1.8", "title": "Electron diffraction", "primaryTopic": "electron-experimental-evidence", "topicTags": ["electron-experimental-evidence", "classical-wave-benchmark", "de-broglie-matter-waves"] },
-    { "sectionId": "1.9", "chapterId": "01", "itemId": "1.9", "title": "Bohr model: postulates", "primaryTopic": "bohr-hydrogen-model", "topicTags": ["bohr-hydrogen-model"], "advancedTopicTags": ["quantization-history-and-spectra"] },
-    { "sectionId": "1.10", "chapterId": "01", "itemId": "1.10", "title": "Bohr model: hydrogen spectrum", "primaryTopic": "bohr-hydrogen-model", "topicTags": ["bohr-hydrogen-model", "hydrogen-spectral-lines"], "advancedTopicTags": ["hydrogen-from-old-to-schrodinger", "quantization-history-and-spectra"] },
-    { "sectionId": "1.11", "chapterId": "01", "itemId": "1.11", "title": "de Broglie hypothesis", "primaryTopic": "de-broglie-matter-waves", "topicTags": ["de-broglie-matter-waves", "classical-wave-benchmark"] },
-    { "sectionId": "1.12", "chapterId": "01", "itemId": "1.12", "title": "Semi-classical quantization rule", "primaryTopic": "semiclassical-quantization", "topicTags": ["semiclassical-quantization", "de-broglie-matter-waves"], "advancedTopicTags": ["quantization-history-and-spectra"] },
-    { "sectionId": "1.13", "chapterId": "01", "itemId": "1.13", "title": "SCQR examples", "primaryTopic": "semiclassical-quantization", "topicTags": ["semiclassical-quantization", "de-broglie-matter-waves"] },
-    { "sectionId": "1.14", "chapterId": "01", "itemId": "1.14", "title": "Sommerfeld orbits and ellipse geometry", "primaryTopic": "bohr-hydrogen-model", "topicTags": ["bohr-hydrogen-model", "semiclassical-quantization"] },
-    { "sectionId": "1.15", "chapterId": "01", "itemId": "1.15", "title": "Chapter synthesis", "primaryTopic": "old-quantum-physics-overview", "topicTags": ["old-quantum-physics-overview", "semiclassical-quantization"] },
-
-    { "sectionId": "2.1", "chapterId": "02", "itemId": "2.1", "title": "Why wave mechanics is needed", "primaryTopic": "schrodinger-equation", "topicTags": ["schrodinger-equation", "wave-mechanics-synthesis"] },
-    { "sectionId": "2.2", "chapterId": "02", "itemId": "2.2", "title": "Time-dependent Schrodinger equation", "primaryTopic": "schrodinger-equation", "topicTags": ["schrodinger-equation"] },
-    { "sectionId": "2.3", "chapterId": "02", "itemId": "2.3", "title": "Stationary states and the TISE", "primaryTopic": "stationary-states-tise", "topicTags": ["stationary-states-tise", "schrodinger-equation"] },
-    { "sectionId": "2.4", "chapterId": "02", "itemId": "2.4", "title": "Probability density and current", "primaryTopic": "probability-density-current", "topicTags": ["probability-density-current"] },
-    { "sectionId": "2.5", "chapterId": "02", "itemId": "2.5", "title": "Infinite potential well", "primaryTopic": "infinite-potential-well", "topicTags": ["infinite-potential-well", "stationary-states-tise"] },
-    { "sectionId": "2.6", "chapterId": "02", "itemId": "2.6", "title": "Postulates of quantum mechanics: the rules ahead", "primaryTopic": "quantum-postulates-measurement", "topicTags": ["quantum-postulates-measurement"] },
-    { "sectionId": "2.7", "chapterId": "02", "itemId": "2.7", "title": "Quantum states as superpositions", "primaryTopic": "superposition-state-space", "topicTags": ["superposition-state-space"] },
-    { "sectionId": "2.8", "chapterId": "02", "itemId": "2.8", "title": "Observables, operators and commutators", "primaryTopic": "observables-operators-commutators", "topicTags": ["observables-operators-commutators", "quantum-postulates-measurement"] },
-    { "sectionId": "2.9", "chapterId": "02", "itemId": "2.9", "title": "Measurement probabilities", "primaryTopic": "born-rule-probabilities", "topicTags": ["born-rule-probabilities", "quantum-postulates-measurement"] },
-    { "sectionId": "2.10", "chapterId": "02", "itemId": "2.10", "title": "Expectation values and collapse", "primaryTopic": "expectation-values-variance", "topicTags": ["expectation-values-variance", "born-rule-probabilities", "quantum-postulates-measurement"] },
-    { "sectionId": "2.11", "chapterId": "02", "itemId": "2.11", "title": "Equations of motion: Ehrenfest and Virial", "primaryTopic": "equations-of-motion", "topicTags": ["equations-of-motion", "expectation-values-variance"] },
-    { "sectionId": "2.12", "chapterId": "02", "itemId": "2.12", "title": "Plane waves and localized packets", "primaryTopic": "wave-packets-fourier-uncertainty", "topicTags": ["wave-packets-fourier-uncertainty", "superposition-state-space", "classical-wave-benchmark", "de-broglie-matter-waves"] },
-    { "sectionId": "2.13", "chapterId": "02", "itemId": "2.13", "title": "Gaussian wave packet and Fourier width", "primaryTopic": "wave-packets-fourier-uncertainty", "topicTags": ["wave-packets-fourier-uncertainty", "classical-wave-benchmark"] },
-    { "sectionId": "2.14", "chapterId": "02", "itemId": "2.14", "title": "Wave packet spreading and uncertainty", "primaryTopic": "wave-packets-fourier-uncertainty", "topicTags": ["wave-packets-fourier-uncertainty"], "advancedTopicTags": ["uncertainty-across-formalisms"] },
-    { "sectionId": "2.15", "chapterId": "02", "itemId": "2.15", "title": "Chapter synthesis", "primaryTopic": "wave-mechanics-synthesis", "topicTags": ["wave-mechanics-synthesis", "schrodinger-equation", "wave-packets-fourier-uncertainty"] },
-
-    { "sectionId": "3.1", "chapterId": "03", "itemId": "3.1", "title": "Why matrix mechanics is needed", "primaryTopic": "matrix-mechanics-spin-entry", "topicTags": ["matrix-mechanics-spin-entry"] },
-    { "sectionId": "3.2", "chapterId": "03", "itemId": "3.2", "title": "Stern-Gerlach experiment: magnetic force and spin", "primaryTopic": "matrix-mechanics-spin-entry", "topicTags": ["matrix-mechanics-spin-entry", "pauli-matrices-spin"] },
-    { "sectionId": "3.3", "chapterId": "03", "itemId": "3.3", "title": "Dirac notation: kets, bras and inner products", "primaryTopic": "dirac-notation", "topicTags": ["dirac-notation"] },
-    { "sectionId": "3.4", "chapterId": "03", "itemId": "3.4", "title": "Hilbert space, bases, superposition and completeness", "primaryTopic": "hilbert-space-bases-completeness", "topicTags": ["hilbert-space-bases-completeness", "dirac-notation", "superposition-state-space"] },
-    { "sectionId": "3.5", "chapterId": "03", "itemId": "3.5", "title": "Operators, eigenvalues and spectral decomposition", "primaryTopic": "operators-spectral-decomposition", "topicTags": ["operators-spectral-decomposition", "observables-operators-commutators"] },
-    { "sectionId": "3.6", "chapterId": "03", "itemId": "3.6", "title": "Pauli matrices and spin observables", "primaryTopic": "pauli-matrices-spin", "topicTags": ["pauli-matrices-spin", "matrix-mechanics-spin-entry"] },
-    { "sectionId": "3.7", "chapterId": "03", "itemId": "3.7", "title": "Born rule in vector notation", "primaryTopic": "born-rule-probabilities", "topicTags": ["born-rule-probabilities", "dirac-notation"] },
-    { "sectionId": "3.8", "chapterId": "03", "itemId": "3.8", "title": "Expectation value, variance and preparation", "primaryTopic": "expectation-values-variance", "topicTags": ["expectation-values-variance"], "advancedTopicTags": ["uncertainty-across-formalisms"] },
-    { "sectionId": "3.9", "chapterId": "03", "itemId": "3.9", "title": "Hermitian operators and real outcomes", "primaryTopic": "hermitian-observables", "topicTags": ["hermitian-observables", "operators-spectral-decomposition"] },
-    { "sectionId": "3.10", "chapterId": "03", "itemId": "3.10", "title": "Commutators, compatibility and measurement order", "primaryTopic": "compatibility-measurement-order", "topicTags": ["compatibility-measurement-order", "observables-operators-commutators"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "3.11", "chapterId": "03", "itemId": "3.11", "title": "Schrodinger picture: unitary time evolution", "primaryTopic": "quantum-pictures-time-evolution", "topicTags": ["quantum-pictures-time-evolution"] },
-    { "sectionId": "3.12", "chapterId": "03", "itemId": "3.12", "title": "Heisenberg picture: operator evolution", "primaryTopic": "quantum-pictures-time-evolution", "topicTags": ["quantum-pictures-time-evolution", "equations-of-motion"] },
-    { "sectionId": "3.13", "chapterId": "03", "itemId": "3.13", "title": "Unitary transformations and change of basis", "primaryTopic": "unitary-transformations-change-basis", "topicTags": ["unitary-transformations-change-basis", "hilbert-space-bases-completeness"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "3.14", "chapterId": "03", "itemId": "3.14", "title": "Operator functions and chapter synthesis", "primaryTopic": "operator-functions", "topicTags": ["operator-functions", "operators-spectral-decomposition"] },
-
-    { "sectionId": "4.1", "chapterId": "04", "itemId": "4.1", "title": "Bound and unbound states: chapter roadmap", "primaryTopic": "one-dimensional-quantum-models", "topicTags": ["one-dimensional-quantum-models"] },
-    { "sectionId": "4.2", "chapterId": "04", "itemId": "4.2", "title": "QHO: differential equation, variables and eigenstates", "primaryTopic": "harmonic-oscillator-model", "topicTags": ["harmonic-oscillator-model"] },
-    { "sectionId": "4.3", "chapterId": "04", "itemId": "4.3", "title": "QHO: energy eigenvalues", "primaryTopic": "hermite-quantization", "topicTags": ["hermite-quantization", "harmonic-oscillator-model"], "advancedTopicTags": ["special-functions-bound-states"] },
-    { "sectionId": "4.4", "chapterId": "04", "itemId": "4.4", "title": "QHO: ladder operators and oscillator algebra", "primaryTopic": "ladder-operator-methods", "topicTags": ["ladder-operator-methods", "harmonic-oscillator-model"] },
-    { "sectionId": "4.5", "chapterId": "04", "itemId": "4.5", "title": "QHO: expectation values and uncertainty", "primaryTopic": "harmonic-oscillator-model", "topicTags": ["harmonic-oscillator-model", "expectation-values-variance"], "advancedTopicTags": ["uncertainty-across-formalisms"] },
-    { "sectionId": "4.6", "chapterId": "04", "itemId": "4.6", "title": "Finite potential well: bound-state setup", "primaryTopic": "finite-well-bound-states", "topicTags": ["finite-well-bound-states", "stationary-states-tise"] },
-    { "sectionId": "4.7", "chapterId": "04", "itemId": "4.7", "title": "Finite-well quantization and energy levels", "primaryTopic": "finite-well-quantization-penetration", "topicTags": ["finite-well-quantization-penetration", "finite-well-bound-states"] },
-    { "sectionId": "4.8", "chapterId": "04", "itemId": "4.8", "title": "Finite-well wave functions and penetration", "primaryTopic": "finite-well-quantization-penetration", "topicTags": ["finite-well-quantization-penetration", "finite-well-bound-states"] },
-    { "sectionId": "4.9", "chapterId": "04", "itemId": "4.9", "title": "Probability current, reflection and transmission", "primaryTopic": "scattering-reflection-transmission", "topicTags": ["scattering-reflection-transmission", "probability-density-current"] },
-    { "sectionId": "4.10", "chapterId": "04", "itemId": "4.10", "title": "Scattering from an attractive finite well", "primaryTopic": "attractive-well-scattering", "topicTags": ["attractive-well-scattering", "scattering-reflection-transmission"] },
-    { "sectionId": "4.11", "chapterId": "04", "itemId": "4.11", "title": "Delta-function well and scattering", "primaryTopic": "delta-function-potential", "topicTags": ["delta-function-potential", "scattering-reflection-transmission"] },
-    { "sectionId": "4.12", "chapterId": "04", "itemId": "4.12", "title": "Rectangular step potential and quantum tunneling", "primaryTopic": "quantum-tunneling-barrier", "topicTags": ["quantum-tunneling-barrier", "scattering-reflection-transmission"] },
-    { "sectionId": "4.14", "chapterId": "04", "itemId": "4.14", "title": "Chapter synthesis: one-dimensional quantum models", "primaryTopic": "one-dimensional-quantum-models", "topicTags": ["one-dimensional-quantum-models", "harmonic-oscillator-model", "finite-well-bound-states", "scattering-reflection-transmission"] },
-
-    { "sectionId": "5.1", "chapterId": "05", "itemId": "5.1", "title": "Central potentials: chapter roadmap", "primaryTopic": "central-potentials-spherical-separation", "topicTags": ["central-potentials-spherical-separation"] },
-    { "sectionId": "5.2", "chapterId": "05", "itemId": "5.2", "title": "Separation of variables in spherical coordinates", "primaryTopic": "central-potentials-spherical-separation", "topicTags": ["central-potentials-spherical-separation", "stationary-states-tise"] },
-    { "sectionId": "5.3", "chapterId": "05", "itemId": "5.3", "title": "Azimuthal and polar equations", "primaryTopic": "angular-equations-special-functions", "topicTags": ["angular-equations-special-functions"], "advancedTopicTags": ["special-functions-bound-states"] },
-    { "sectionId": "5.4", "chapterId": "05", "itemId": "5.4", "title": "Spherical harmonics", "primaryTopic": "spherical-harmonics", "topicTags": ["spherical-harmonics", "angular-equations-special-functions"] },
-    { "sectionId": "5.5", "chapterId": "05", "itemId": "5.5", "title": "Hydrogen atom: radial solution and probability", "primaryTopic": "hydrogen-radial-laguerre", "topicTags": ["hydrogen-radial-laguerre", "hydrogen-effective-potential-radial-density"], "advancedTopicTags": ["special-functions-bound-states", "hydrogen-from-old-to-schrodinger"] },
-    { "sectionId": "5.6", "chapterId": "05", "itemId": "5.6", "title": "Hydrogen energy spectrum and degeneracy", "primaryTopic": "hydrogen-spectrum-degeneracy", "topicTags": ["hydrogen-spectrum-degeneracy", "hydrogen-effective-potential-radial-density", "hydrogen-spectral-lines"], "advancedTopicTags": ["hydrogen-from-old-to-schrodinger", "quantization-history-and-spectra"] },
-    { "sectionId": "5.7", "chapterId": "05", "itemId": "5.7", "title": "Three-dimensional harmonic oscillator: radial solution and spectrum", "primaryTopic": "three-dimensional-harmonic-oscillator", "topicTags": ["three-dimensional-harmonic-oscillator"], "advancedTopicTags": ["special-functions-bound-states"] },
-    { "sectionId": "5.8", "chapterId": "05", "itemId": "5.8", "title": "Hydrogen atom and the periodic table", "primaryTopic": "periodic-table-construction", "topicTags": ["periodic-table-construction", "hydrogen-spectrum-degeneracy"], "advancedTopicTags": ["hydrogen-from-old-to-schrodinger"] },
-    { "sectionId": "5.9", "chapterId": "05", "itemId": "5.9", "title": "Hydrogen expectation values", "primaryTopic": "hydrogen-expectation-values", "topicTags": ["hydrogen-expectation-values", "expectation-values-variance"] },
-    { "sectionId": "5.10", "chapterId": "05", "itemId": "5.10", "title": "Chapter synthesis: solving central potentials", "primaryTopic": "central-potentials-synthesis", "topicTags": ["central-potentials-synthesis", "central-potentials-spherical-separation", "spherical-harmonics", "hydrogen-spectrum-degeneracy"] },
-
-    { "sectionId": "6.1", "chapterId": "06", "itemId": "6.1", "title": "Angular momentum: chapter roadmap", "primaryTopic": "angular-momentum-roadmap", "topicTags": ["angular-momentum-roadmap"] },
-    { "sectionId": "6.2", "chapterId": "06", "itemId": "6.2", "title": "Commutation relations and Levi-Civita notation", "primaryTopic": "angular-momentum-commutators", "topicTags": ["angular-momentum-commutators", "compatibility-measurement-order", "observables-operators-commutators"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "6.3", "chapterId": "06", "itemId": "6.3", "title": "Angular momentum algebra", "primaryTopic": "angular-momentum-algebra-ladders", "topicTags": ["angular-momentum-algebra-ladders", "angular-momentum-commutators", "compatibility-measurement-order", "ladder-operator-methods"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "6.4", "chapterId": "06", "itemId": "6.4", "title": "Consequences of the algebra", "primaryTopic": "angular-momentum-variance-geometry", "topicTags": ["angular-momentum-variance-geometry", "angular-momentum-algebra-ladders", "expectation-values-variance"], "advancedTopicTags": ["uncertainty-across-formalisms"] },
-    { "sectionId": "6.5", "chapterId": "06", "itemId": "6.5", "title": "Matrix representation", "primaryTopic": "angular-momentum-matrix-representation", "topicTags": ["angular-momentum-matrix-representation", "angular-momentum-algebra-ladders", "dirac-notation", "hilbert-space-bases-completeness", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "6.6", "chapterId": "06", "itemId": "6.6", "title": "Position-space representation", "primaryTopic": "angular-momentum-position-representation", "topicTags": ["angular-momentum-position-representation", "spherical-harmonics", "angular-equations-special-functions"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "6.7", "chapterId": "06", "itemId": "6.7", "title": "Schrödinger uncertainty and Schwartz inequality", "primaryTopic": "schrodinger-uncertainty-schwartz", "topicTags": ["schrodinger-uncertainty-schwartz"], "advancedTopicTags": ["uncertainty-across-formalisms"] },
-    { "sectionId": "6.8", "chapterId": "06", "itemId": "6.8", "title": "Chapter synthesis: angular momentum toolkit", "primaryTopic": "angular-momentum-chapter-toolkit", "topicTags": ["angular-momentum-chapter-toolkit", "angular-momentum-roadmap", "angular-momentum-algebra-ladders"] },
-
-    { "sectionId": "7.1", "chapterId": "07", "itemId": "7.1", "title": "Addition of angular momenta: chapter roadmap", "primaryTopic": "addition-angular-momenta-roadmap", "topicTags": ["addition-angular-momenta-roadmap", "angular-momentum-interactions", "coupled-basis-construction"] },
-    { "sectionId": "7.2", "chapterId": "07", "itemId": "7.2", "title": "Interactions between angular momenta", "primaryTopic": "angular-momentum-interactions", "topicTags": ["angular-momentum-interactions", "angular-momentum-algebra-ladders"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "7.3", "chapterId": "07", "itemId": "7.3", "title": "Commutation relations", "primaryTopic": "coupled-commuting-observables", "topicTags": ["coupled-commuting-observables", "angular-momentum-commutators", "compatibility-measurement-order"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "7.4", "chapterId": "07", "itemId": "7.4", "title": "Vectors in the coupled basis", "primaryTopic": "coupled-basis-construction", "topicTags": ["coupled-basis-construction", "hilbert-space-bases-completeness", "angular-momentum-algebra-ladders"] },
-    { "sectionId": "7.5", "chapterId": "07", "itemId": "7.5", "title": "Hilbert space expansion", "primaryTopic": "hilbert-space-expansion-angular-momenta", "topicTags": ["hilbert-space-expansion-angular-momenta", "hilbert-space-bases-completeness", "dirac-notation"] },
-    { "sectionId": "7.6", "chapterId": "07", "itemId": "7.6", "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients", "primaryTopic": "clebsch-gordan-coefficients", "topicTags": ["clebsch-gordan-coefficients", "coupled-basis-construction", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "7.7", "chapterId": "07", "itemId": "7.7", "title": "Basis change of an operator", "primaryTopic": "operator-basis-change-coupled", "topicTags": ["operator-basis-change-coupled", "clebsch-gordan-coefficients", "unitary-transformations-change-basis"], "advancedTopicTags": ["operator-algebra-across-representations"] },
-    { "sectionId": "7.8", "chapterId": "07", "itemId": "7.8", "title": "Application 7.A: Magnetic moment and the Zeeman effect", "primaryTopic": "magnetic-moment-zeeman-lande", "topicTags": ["magnetic-moment-zeeman-lande", "angular-momentum-interactions", "clebsch-gordan-coefficients"] },
-    { "sectionId": "7.9", "chapterId": "07", "itemId": "7.9", "title": "Application 7.B: Angular momentum of atoms and Hund's rules", "primaryTopic": "atomic-angular-momentum-hund-rules", "topicTags": ["atomic-angular-momentum-hund-rules", "angular-momentum-interactions", "coupled-basis-construction"] },
-    { "sectionId": "7.10", "chapterId": "07", "itemId": "7.10", "title": "Chapter synthesis: addition of angular momenta", "primaryTopic": "addition-angular-momenta-synthesis", "topicTags": ["addition-angular-momenta-synthesis", "coupled-basis-construction", "clebsch-gordan-coefficients", "magnetic-moment-zeeman-lande", "atomic-angular-momentum-hund-rules"] },
-
-    { "sectionId": "8.1", "chapterId": "08", "itemId": "8.1", "title": "Time-independent perturbation theory: chapter roadmap", "primaryTopic": "time-independent-perturbation-roadmap", "topicTags": ["time-independent-perturbation-roadmap"] },
-    { "sectionId": "8.2", "chapterId": "08", "itemId": "8.2", "title": "Non-degenerate case: overview", "primaryTopic": "non-degenerate-perturbation-theory", "topicTags": ["non-degenerate-perturbation-theory", "time-independent-perturbation-roadmap"] },
-    { "sectionId": "8.3", "chapterId": "08", "itemId": "8.3", "title": "Non-degenerate case: first-order energy and vectors", "primaryTopic": "non-degenerate-perturbation-theory", "topicTags": ["non-degenerate-perturbation-theory", "operators-spectral-decomposition"] },
-    { "sectionId": "8.4", "chapterId": "08", "itemId": "8.4", "title": "Non-degenerate case: second-order energy and vectors", "primaryTopic": "non-degenerate-perturbation-theory", "topicTags": ["non-degenerate-perturbation-theory", "hermitian-observables"] },
-    { "sectionId": "8.5", "chapterId": "08", "itemId": "8.5", "title": "Degenerate case: overview", "primaryTopic": "degenerate-perturbation-theory", "topicTags": ["degenerate-perturbation-theory", "hilbert-space-bases-completeness"] },
-    { "sectionId": "8.6", "chapterId": "08", "itemId": "8.6", "title": "Degenerate case: first-order energy", "primaryTopic": "degenerate-perturbation-theory", "topicTags": ["degenerate-perturbation-theory", "operators-spectral-decomposition"] },
-    { "sectionId": "8.7", "chapterId": "08", "itemId": "8.7", "title": "Degenerate case: second-order energy", "primaryTopic": "degenerate-perturbation-theory", "topicTags": ["degenerate-perturbation-theory"] },
-    { "sectionId": "8.8", "chapterId": "08", "itemId": "8.8", "title": "Application: van Vleck susceptibility", "primaryTopic": "van-vleck-susceptibility", "topicTags": ["van-vleck-susceptibility", "degenerate-perturbation-theory", "magnetic-moment-zeeman-lande"] },
-    { "sectionId": "8.9", "chapterId": "08", "itemId": "8.9", "title": "Application: Stark effect", "primaryTopic": "stark-effect", "topicTags": ["stark-effect", "degenerate-perturbation-theory", "hydrogen-spectrum-degeneracy", "spherical-harmonics"] },
-    { "sectionId": "8.10", "chapterId": "08", "itemId": "8.10", "title": "Chapter synthesis: time-independent perturbation theory", "primaryTopic": "time-independent-perturbation-synthesis", "topicTags": ["time-independent-perturbation-synthesis", "time-independent-perturbation-roadmap", "non-degenerate-perturbation-theory", "degenerate-perturbation-theory", "van-vleck-susceptibility", "stark-effect"] }
+    {
+      "sectionId": "1.1",
+      "chapterId": "01",
+      "itemId": "1.1",
+      "title": "Why old quantum physics matters",
+      "primaryTopic": "old-quantum-physics-overview",
+      "topicTags": [
+        "old-quantum-physics-overview"
+      ]
+    },
+    {
+      "sectionId": "1.2",
+      "chapterId": "01",
+      "itemId": "1.2",
+      "title": "Wave optics as the classical benchmark",
+      "primaryTopic": "classical-wave-benchmark",
+      "topicTags": [
+        "classical-wave-benchmark",
+        "old-quantum-physics-overview"
+      ]
+    },
+    {
+      "sectionId": "1.3",
+      "chapterId": "01",
+      "itemId": "1.3",
+      "title": "Hydrogen spectral lines",
+      "primaryTopic": "hydrogen-spectral-lines",
+      "topicTags": [
+        "hydrogen-spectral-lines"
+      ],
+      "advancedTopicTags": [
+        "quantization-history-and-spectra",
+        "hydrogen-from-old-to-schrodinger"
+      ]
+    },
+    {
+      "sectionId": "1.4",
+      "chapterId": "01",
+      "itemId": "1.4",
+      "title": "Cathode rays and the electron",
+      "primaryTopic": "electron-experimental-evidence",
+      "topicTags": [
+        "electron-experimental-evidence"
+      ]
+    },
+    {
+      "sectionId": "1.5",
+      "chapterId": "01",
+      "itemId": "1.5",
+      "title": "Black-body radiation",
+      "primaryTopic": "black-body-radiation",
+      "topicTags": [
+        "black-body-radiation"
+      ],
+      "advancedTopicTags": [
+        "quantization-history-and-spectra"
+      ]
+    },
+    {
+      "sectionId": "1.6",
+      "chapterId": "01",
+      "itemId": "1.6",
+      "title": "Photoelectric effect",
+      "primaryTopic": "photoelectric-effect",
+      "topicTags": [
+        "photoelectric-effect"
+      ],
+      "advancedTopicTags": [
+        "quantization-history-and-spectra"
+      ]
+    },
+    {
+      "sectionId": "1.7",
+      "chapterId": "01",
+      "itemId": "1.7",
+      "title": "Elementary charge",
+      "primaryTopic": "electron-experimental-evidence",
+      "topicTags": [
+        "electron-experimental-evidence"
+      ]
+    },
+    {
+      "sectionId": "1.8",
+      "chapterId": "01",
+      "itemId": "1.8",
+      "title": "Electron diffraction",
+      "primaryTopic": "electron-experimental-evidence",
+      "topicTags": [
+        "electron-experimental-evidence",
+        "classical-wave-benchmark",
+        "de-broglie-matter-waves"
+      ]
+    },
+    {
+      "sectionId": "1.9",
+      "chapterId": "01",
+      "itemId": "1.9",
+      "title": "Bohr model: postulates",
+      "primaryTopic": "bohr-hydrogen-model",
+      "topicTags": [
+        "bohr-hydrogen-model"
+      ],
+      "advancedTopicTags": [
+        "quantization-history-and-spectra"
+      ]
+    },
+    {
+      "sectionId": "1.10",
+      "chapterId": "01",
+      "itemId": "1.10",
+      "title": "Bohr model: hydrogen spectrum",
+      "primaryTopic": "bohr-hydrogen-model",
+      "topicTags": [
+        "bohr-hydrogen-model",
+        "hydrogen-spectral-lines"
+      ],
+      "advancedTopicTags": [
+        "hydrogen-from-old-to-schrodinger",
+        "quantization-history-and-spectra"
+      ]
+    },
+    {
+      "sectionId": "1.11",
+      "chapterId": "01",
+      "itemId": "1.11",
+      "title": "de Broglie hypothesis",
+      "primaryTopic": "de-broglie-matter-waves",
+      "topicTags": [
+        "de-broglie-matter-waves",
+        "classical-wave-benchmark"
+      ]
+    },
+    {
+      "sectionId": "1.12",
+      "chapterId": "01",
+      "itemId": "1.12",
+      "title": "Semi-classical quantization rule",
+      "primaryTopic": "semiclassical-quantization",
+      "topicTags": [
+        "semiclassical-quantization",
+        "de-broglie-matter-waves"
+      ],
+      "advancedTopicTags": [
+        "quantization-history-and-spectra"
+      ]
+    },
+    {
+      "sectionId": "1.13",
+      "chapterId": "01",
+      "itemId": "1.13",
+      "title": "SCQR examples",
+      "primaryTopic": "semiclassical-quantization",
+      "topicTags": [
+        "semiclassical-quantization",
+        "de-broglie-matter-waves"
+      ]
+    },
+    {
+      "sectionId": "1.14",
+      "chapterId": "01",
+      "itemId": "1.14",
+      "title": "Sommerfeld orbits and ellipse geometry",
+      "primaryTopic": "bohr-hydrogen-model",
+      "topicTags": [
+        "bohr-hydrogen-model",
+        "semiclassical-quantization"
+      ]
+    },
+    {
+      "sectionId": "1.15",
+      "chapterId": "01",
+      "itemId": "1.15",
+      "title": "Chapter synthesis",
+      "primaryTopic": "old-quantum-physics-overview",
+      "topicTags": [
+        "old-quantum-physics-overview",
+        "semiclassical-quantization"
+      ]
+    },
+    {
+      "sectionId": "2.1",
+      "chapterId": "02",
+      "itemId": "2.1",
+      "title": "Why wave mechanics is needed",
+      "primaryTopic": "schrodinger-equation",
+      "topicTags": [
+        "schrodinger-equation",
+        "wave-mechanics-synthesis"
+      ]
+    },
+    {
+      "sectionId": "2.2",
+      "chapterId": "02",
+      "itemId": "2.2",
+      "title": "Time-dependent Schrodinger equation",
+      "primaryTopic": "schrodinger-equation",
+      "topicTags": [
+        "schrodinger-equation"
+      ]
+    },
+    {
+      "sectionId": "2.3",
+      "chapterId": "02",
+      "itemId": "2.3",
+      "title": "Stationary states and the TISE",
+      "primaryTopic": "stationary-states-tise",
+      "topicTags": [
+        "stationary-states-tise",
+        "schrodinger-equation"
+      ]
+    },
+    {
+      "sectionId": "2.4",
+      "chapterId": "02",
+      "itemId": "2.4",
+      "title": "Probability density and current",
+      "primaryTopic": "probability-density-current",
+      "topicTags": [
+        "probability-density-current"
+      ]
+    },
+    {
+      "sectionId": "2.5",
+      "chapterId": "02",
+      "itemId": "2.5",
+      "title": "Infinite potential well",
+      "primaryTopic": "infinite-potential-well",
+      "topicTags": [
+        "infinite-potential-well",
+        "stationary-states-tise"
+      ]
+    },
+    {
+      "sectionId": "2.6",
+      "chapterId": "02",
+      "itemId": "2.6",
+      "title": "Postulates of quantum mechanics: the rules ahead",
+      "primaryTopic": "quantum-postulates-measurement",
+      "topicTags": [
+        "quantum-postulates-measurement"
+      ]
+    },
+    {
+      "sectionId": "2.7",
+      "chapterId": "02",
+      "itemId": "2.7",
+      "title": "Quantum states as superpositions",
+      "primaryTopic": "superposition-state-space",
+      "topicTags": [
+        "superposition-state-space"
+      ]
+    },
+    {
+      "sectionId": "2.8",
+      "chapterId": "02",
+      "itemId": "2.8",
+      "title": "Observables, operators and commutators",
+      "primaryTopic": "observables-operators-commutators",
+      "topicTags": [
+        "observables-operators-commutators",
+        "quantum-postulates-measurement"
+      ]
+    },
+    {
+      "sectionId": "2.9",
+      "chapterId": "02",
+      "itemId": "2.9",
+      "title": "Measurement probabilities",
+      "primaryTopic": "born-rule-probabilities",
+      "topicTags": [
+        "born-rule-probabilities",
+        "quantum-postulates-measurement"
+      ]
+    },
+    {
+      "sectionId": "2.10",
+      "chapterId": "02",
+      "itemId": "2.10",
+      "title": "Expectation values and collapse",
+      "primaryTopic": "expectation-values-variance",
+      "topicTags": [
+        "expectation-values-variance",
+        "born-rule-probabilities",
+        "quantum-postulates-measurement"
+      ]
+    },
+    {
+      "sectionId": "2.11",
+      "chapterId": "02",
+      "itemId": "2.11",
+      "title": "Equations of motion: Ehrenfest and Virial",
+      "primaryTopic": "equations-of-motion",
+      "topicTags": [
+        "equations-of-motion",
+        "expectation-values-variance"
+      ]
+    },
+    {
+      "sectionId": "2.12",
+      "chapterId": "02",
+      "itemId": "2.12",
+      "title": "Plane waves and localized packets",
+      "primaryTopic": "wave-packets-fourier-uncertainty",
+      "topicTags": [
+        "wave-packets-fourier-uncertainty",
+        "superposition-state-space",
+        "classical-wave-benchmark",
+        "de-broglie-matter-waves"
+      ]
+    },
+    {
+      "sectionId": "2.13",
+      "chapterId": "02",
+      "itemId": "2.13",
+      "title": "Gaussian wave packet and Fourier width",
+      "primaryTopic": "wave-packets-fourier-uncertainty",
+      "topicTags": [
+        "wave-packets-fourier-uncertainty",
+        "classical-wave-benchmark"
+      ]
+    },
+    {
+      "sectionId": "2.14",
+      "chapterId": "02",
+      "itemId": "2.14",
+      "title": "Wave packet spreading and uncertainty",
+      "primaryTopic": "wave-packets-fourier-uncertainty",
+      "topicTags": [
+        "wave-packets-fourier-uncertainty"
+      ],
+      "advancedTopicTags": [
+        "uncertainty-across-formalisms"
+      ]
+    },
+    {
+      "sectionId": "2.15",
+      "chapterId": "02",
+      "itemId": "2.15",
+      "title": "Chapter synthesis",
+      "primaryTopic": "wave-mechanics-synthesis",
+      "topicTags": [
+        "wave-mechanics-synthesis",
+        "schrodinger-equation",
+        "wave-packets-fourier-uncertainty"
+      ]
+    },
+    {
+      "sectionId": "3.1",
+      "chapterId": "03",
+      "itemId": "3.1",
+      "title": "Why matrix mechanics is needed",
+      "primaryTopic": "matrix-mechanics-spin-entry",
+      "topicTags": [
+        "matrix-mechanics-spin-entry"
+      ]
+    },
+    {
+      "sectionId": "3.2",
+      "chapterId": "03",
+      "itemId": "3.2",
+      "title": "Stern-Gerlach experiment: magnetic force and spin",
+      "primaryTopic": "matrix-mechanics-spin-entry",
+      "topicTags": [
+        "matrix-mechanics-spin-entry",
+        "pauli-matrices-spin"
+      ]
+    },
+    {
+      "sectionId": "3.3",
+      "chapterId": "03",
+      "itemId": "3.3",
+      "title": "Dirac notation: kets, bras and inner products",
+      "primaryTopic": "dirac-notation",
+      "topicTags": [
+        "dirac-notation"
+      ]
+    },
+    {
+      "sectionId": "3.4",
+      "chapterId": "03",
+      "itemId": "3.4",
+      "title": "Hilbert space, bases, superposition and completeness",
+      "primaryTopic": "hilbert-space-bases-completeness",
+      "topicTags": [
+        "hilbert-space-bases-completeness",
+        "dirac-notation",
+        "superposition-state-space"
+      ]
+    },
+    {
+      "sectionId": "3.5",
+      "chapterId": "03",
+      "itemId": "3.5",
+      "title": "Operators, eigenvalues and spectral decomposition",
+      "primaryTopic": "operators-spectral-decomposition",
+      "topicTags": [
+        "operators-spectral-decomposition",
+        "observables-operators-commutators"
+      ]
+    },
+    {
+      "sectionId": "3.6",
+      "chapterId": "03",
+      "itemId": "3.6",
+      "title": "Pauli matrices and spin observables",
+      "primaryTopic": "pauli-matrices-spin",
+      "topicTags": [
+        "pauli-matrices-spin",
+        "matrix-mechanics-spin-entry"
+      ]
+    },
+    {
+      "sectionId": "3.7",
+      "chapterId": "03",
+      "itemId": "3.7",
+      "title": "Born rule in vector notation",
+      "primaryTopic": "born-rule-probabilities",
+      "topicTags": [
+        "born-rule-probabilities",
+        "dirac-notation"
+      ]
+    },
+    {
+      "sectionId": "3.8",
+      "chapterId": "03",
+      "itemId": "3.8",
+      "title": "Expectation value, variance and preparation",
+      "primaryTopic": "expectation-values-variance",
+      "topicTags": [
+        "expectation-values-variance"
+      ],
+      "advancedTopicTags": [
+        "uncertainty-across-formalisms"
+      ]
+    },
+    {
+      "sectionId": "3.9",
+      "chapterId": "03",
+      "itemId": "3.9",
+      "title": "Hermitian operators and real outcomes",
+      "primaryTopic": "hermitian-observables",
+      "topicTags": [
+        "hermitian-observables",
+        "operators-spectral-decomposition"
+      ]
+    },
+    {
+      "sectionId": "3.10",
+      "chapterId": "03",
+      "itemId": "3.10",
+      "title": "Commutators, compatibility and measurement order",
+      "primaryTopic": "compatibility-measurement-order",
+      "topicTags": [
+        "compatibility-measurement-order",
+        "observables-operators-commutators"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "3.11",
+      "chapterId": "03",
+      "itemId": "3.11",
+      "title": "Schrodinger picture: unitary time evolution",
+      "primaryTopic": "quantum-pictures-time-evolution",
+      "topicTags": [
+        "quantum-pictures-time-evolution"
+      ]
+    },
+    {
+      "sectionId": "3.12",
+      "chapterId": "03",
+      "itemId": "3.12",
+      "title": "Heisenberg picture: operator evolution",
+      "primaryTopic": "quantum-pictures-time-evolution",
+      "topicTags": [
+        "quantum-pictures-time-evolution",
+        "equations-of-motion"
+      ]
+    },
+    {
+      "sectionId": "3.13",
+      "chapterId": "03",
+      "itemId": "3.13",
+      "title": "Unitary transformations and change of basis",
+      "primaryTopic": "unitary-transformations-change-basis",
+      "topicTags": [
+        "unitary-transformations-change-basis",
+        "hilbert-space-bases-completeness"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "3.14",
+      "chapterId": "03",
+      "itemId": "3.14",
+      "title": "Operator functions and chapter synthesis",
+      "primaryTopic": "operator-functions",
+      "topicTags": [
+        "operator-functions",
+        "operators-spectral-decomposition"
+      ]
+    },
+    {
+      "sectionId": "4.1",
+      "chapterId": "04",
+      "itemId": "4.1",
+      "title": "Bound and unbound states: chapter roadmap",
+      "primaryTopic": "one-dimensional-quantum-models",
+      "topicTags": [
+        "one-dimensional-quantum-models"
+      ]
+    },
+    {
+      "sectionId": "4.2",
+      "chapterId": "04",
+      "itemId": "4.2",
+      "title": "QHO: differential equation, variables and eigenstates",
+      "primaryTopic": "harmonic-oscillator-model",
+      "topicTags": [
+        "harmonic-oscillator-model"
+      ]
+    },
+    {
+      "sectionId": "4.3",
+      "chapterId": "04",
+      "itemId": "4.3",
+      "title": "QHO: energy eigenvalues",
+      "primaryTopic": "hermite-quantization",
+      "topicTags": [
+        "hermite-quantization",
+        "harmonic-oscillator-model"
+      ],
+      "advancedTopicTags": [
+        "special-functions-bound-states"
+      ]
+    },
+    {
+      "sectionId": "4.4",
+      "chapterId": "04",
+      "itemId": "4.4",
+      "title": "QHO: ladder operators and oscillator algebra",
+      "primaryTopic": "ladder-operator-methods",
+      "topicTags": [
+        "ladder-operator-methods",
+        "harmonic-oscillator-model"
+      ]
+    },
+    {
+      "sectionId": "4.5",
+      "chapterId": "04",
+      "itemId": "4.5",
+      "title": "QHO: expectation values and uncertainty",
+      "primaryTopic": "harmonic-oscillator-model",
+      "topicTags": [
+        "harmonic-oscillator-model",
+        "expectation-values-variance"
+      ],
+      "advancedTopicTags": [
+        "uncertainty-across-formalisms"
+      ]
+    },
+    {
+      "sectionId": "4.6",
+      "chapterId": "04",
+      "itemId": "4.6",
+      "title": "Finite potential well: bound-state setup",
+      "primaryTopic": "finite-well-bound-states",
+      "topicTags": [
+        "finite-well-bound-states",
+        "stationary-states-tise"
+      ]
+    },
+    {
+      "sectionId": "4.7",
+      "chapterId": "04",
+      "itemId": "4.7",
+      "title": "Finite-well quantization and energy levels",
+      "primaryTopic": "finite-well-quantization-penetration",
+      "topicTags": [
+        "finite-well-quantization-penetration",
+        "finite-well-bound-states"
+      ]
+    },
+    {
+      "sectionId": "4.8",
+      "chapterId": "04",
+      "itemId": "4.8",
+      "title": "Finite-well wave functions and penetration",
+      "primaryTopic": "finite-well-quantization-penetration",
+      "topicTags": [
+        "finite-well-quantization-penetration",
+        "finite-well-bound-states"
+      ]
+    },
+    {
+      "sectionId": "4.9",
+      "chapterId": "04",
+      "itemId": "4.9",
+      "title": "Probability current, reflection and transmission",
+      "primaryTopic": "scattering-reflection-transmission",
+      "topicTags": [
+        "scattering-reflection-transmission",
+        "probability-density-current"
+      ]
+    },
+    {
+      "sectionId": "4.10",
+      "chapterId": "04",
+      "itemId": "4.10",
+      "title": "Scattering from an attractive finite well",
+      "primaryTopic": "attractive-well-scattering",
+      "topicTags": [
+        "attractive-well-scattering",
+        "scattering-reflection-transmission"
+      ]
+    },
+    {
+      "sectionId": "4.11",
+      "chapterId": "04",
+      "itemId": "4.11",
+      "title": "Delta-function well and scattering",
+      "primaryTopic": "delta-function-potential",
+      "topicTags": [
+        "delta-function-potential",
+        "scattering-reflection-transmission"
+      ]
+    },
+    {
+      "sectionId": "4.12",
+      "chapterId": "04",
+      "itemId": "4.12",
+      "title": "Rectangular step potential and quantum tunneling",
+      "primaryTopic": "quantum-tunneling-barrier",
+      "topicTags": [
+        "quantum-tunneling-barrier",
+        "scattering-reflection-transmission"
+      ]
+    },
+    {
+      "sectionId": "4.14",
+      "chapterId": "04",
+      "itemId": "4.14",
+      "title": "Chapter synthesis: one-dimensional quantum models",
+      "primaryTopic": "one-dimensional-quantum-models",
+      "topicTags": [
+        "one-dimensional-quantum-models",
+        "harmonic-oscillator-model",
+        "finite-well-bound-states",
+        "scattering-reflection-transmission"
+      ]
+    },
+    {
+      "sectionId": "5.1",
+      "chapterId": "05",
+      "itemId": "5.1",
+      "title": "Central potentials: chapter roadmap",
+      "primaryTopic": "central-potentials-spherical-separation",
+      "topicTags": [
+        "central-potentials-spherical-separation"
+      ]
+    },
+    {
+      "sectionId": "5.2",
+      "chapterId": "05",
+      "itemId": "5.2",
+      "title": "Separation of variables in spherical coordinates",
+      "primaryTopic": "central-potentials-spherical-separation",
+      "topicTags": [
+        "central-potentials-spherical-separation",
+        "stationary-states-tise"
+      ]
+    },
+    {
+      "sectionId": "5.3",
+      "chapterId": "05",
+      "itemId": "5.3",
+      "title": "Azimuthal and polar equations",
+      "primaryTopic": "angular-equations-special-functions",
+      "topicTags": [
+        "angular-equations-special-functions"
+      ],
+      "advancedTopicTags": [
+        "special-functions-bound-states"
+      ]
+    },
+    {
+      "sectionId": "5.4",
+      "chapterId": "05",
+      "itemId": "5.4",
+      "title": "Spherical harmonics",
+      "primaryTopic": "spherical-harmonics",
+      "topicTags": [
+        "spherical-harmonics",
+        "angular-equations-special-functions"
+      ]
+    },
+    {
+      "sectionId": "5.5",
+      "chapterId": "05",
+      "itemId": "5.5",
+      "title": "Hydrogen atom: radial solution and probability",
+      "primaryTopic": "hydrogen-radial-laguerre",
+      "topicTags": [
+        "hydrogen-radial-laguerre",
+        "hydrogen-effective-potential-radial-density"
+      ],
+      "advancedTopicTags": [
+        "special-functions-bound-states",
+        "hydrogen-from-old-to-schrodinger"
+      ]
+    },
+    {
+      "sectionId": "5.6",
+      "chapterId": "05",
+      "itemId": "5.6",
+      "title": "Hydrogen energy spectrum and degeneracy",
+      "primaryTopic": "hydrogen-spectrum-degeneracy",
+      "topicTags": [
+        "hydrogen-spectrum-degeneracy",
+        "hydrogen-effective-potential-radial-density",
+        "hydrogen-spectral-lines"
+      ],
+      "advancedTopicTags": [
+        "hydrogen-from-old-to-schrodinger",
+        "quantization-history-and-spectra"
+      ]
+    },
+    {
+      "sectionId": "5.7",
+      "chapterId": "05",
+      "itemId": "5.7",
+      "title": "Three-dimensional harmonic oscillator: radial solution and spectrum",
+      "primaryTopic": "three-dimensional-harmonic-oscillator",
+      "topicTags": [
+        "three-dimensional-harmonic-oscillator"
+      ],
+      "advancedTopicTags": [
+        "special-functions-bound-states"
+      ]
+    },
+    {
+      "sectionId": "5.8",
+      "chapterId": "05",
+      "itemId": "5.8",
+      "title": "Hydrogen atom and the periodic table",
+      "primaryTopic": "periodic-table-construction",
+      "topicTags": [
+        "periodic-table-construction",
+        "hydrogen-spectrum-degeneracy"
+      ],
+      "advancedTopicTags": [
+        "hydrogen-from-old-to-schrodinger"
+      ]
+    },
+    {
+      "sectionId": "5.9",
+      "chapterId": "05",
+      "itemId": "5.9",
+      "title": "Hydrogen expectation values",
+      "primaryTopic": "hydrogen-expectation-values",
+      "topicTags": [
+        "hydrogen-expectation-values",
+        "expectation-values-variance"
+      ]
+    },
+    {
+      "sectionId": "5.10",
+      "chapterId": "05",
+      "itemId": "5.10",
+      "title": "Chapter synthesis: solving central potentials",
+      "primaryTopic": "central-potentials-synthesis",
+      "topicTags": [
+        "central-potentials-synthesis",
+        "central-potentials-spherical-separation",
+        "spherical-harmonics",
+        "hydrogen-spectrum-degeneracy"
+      ]
+    },
+    {
+      "sectionId": "6.1",
+      "chapterId": "06",
+      "itemId": "6.1",
+      "title": "Angular momentum: chapter roadmap",
+      "primaryTopic": "angular-momentum-roadmap",
+      "topicTags": [
+        "angular-momentum-roadmap"
+      ]
+    },
+    {
+      "sectionId": "6.2",
+      "chapterId": "06",
+      "itemId": "6.2",
+      "title": "Commutation relations and Levi-Civita notation",
+      "primaryTopic": "angular-momentum-commutators",
+      "topicTags": [
+        "angular-momentum-commutators",
+        "compatibility-measurement-order",
+        "observables-operators-commutators"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "6.3",
+      "chapterId": "06",
+      "itemId": "6.3",
+      "title": "Angular momentum algebra",
+      "primaryTopic": "angular-momentum-algebra-ladders",
+      "topicTags": [
+        "angular-momentum-algebra-ladders",
+        "angular-momentum-commutators",
+        "compatibility-measurement-order",
+        "ladder-operator-methods"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "6.4",
+      "chapterId": "06",
+      "itemId": "6.4",
+      "title": "Consequences of the algebra",
+      "primaryTopic": "angular-momentum-variance-geometry",
+      "topicTags": [
+        "angular-momentum-variance-geometry",
+        "angular-momentum-algebra-ladders",
+        "expectation-values-variance"
+      ],
+      "advancedTopicTags": [
+        "uncertainty-across-formalisms"
+      ]
+    },
+    {
+      "sectionId": "6.5",
+      "chapterId": "06",
+      "itemId": "6.5",
+      "title": "Matrix representation",
+      "primaryTopic": "angular-momentum-matrix-representation",
+      "topicTags": [
+        "angular-momentum-matrix-representation",
+        "angular-momentum-algebra-ladders",
+        "dirac-notation",
+        "hilbert-space-bases-completeness",
+        "unitary-transformations-change-basis"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "6.6",
+      "chapterId": "06",
+      "itemId": "6.6",
+      "title": "Position-space representation",
+      "primaryTopic": "angular-momentum-position-representation",
+      "topicTags": [
+        "angular-momentum-position-representation",
+        "spherical-harmonics",
+        "angular-equations-special-functions"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "6.7",
+      "chapterId": "06",
+      "itemId": "6.7",
+      "title": "Schrödinger uncertainty and Schwartz inequality",
+      "primaryTopic": "schrodinger-uncertainty-schwartz",
+      "topicTags": [
+        "schrodinger-uncertainty-schwartz"
+      ],
+      "advancedTopicTags": [
+        "uncertainty-across-formalisms"
+      ]
+    },
+    {
+      "sectionId": "6.8",
+      "chapterId": "06",
+      "itemId": "6.8",
+      "title": "Chapter synthesis: angular momentum toolkit",
+      "primaryTopic": "angular-momentum-chapter-toolkit",
+      "topicTags": [
+        "angular-momentum-chapter-toolkit",
+        "angular-momentum-roadmap",
+        "angular-momentum-algebra-ladders"
+      ]
+    },
+    {
+      "sectionId": "7.1",
+      "chapterId": "07",
+      "itemId": "7.1",
+      "title": "Addition of angular momenta: chapter roadmap",
+      "primaryTopic": "addition-angular-momenta-roadmap",
+      "topicTags": [
+        "addition-angular-momenta-roadmap",
+        "angular-momentum-interactions",
+        "coupled-basis-construction"
+      ]
+    },
+    {
+      "sectionId": "7.2",
+      "chapterId": "07",
+      "itemId": "7.2",
+      "title": "Interactions between angular momenta",
+      "primaryTopic": "angular-momentum-interactions",
+      "topicTags": [
+        "angular-momentum-interactions",
+        "angular-momentum-algebra-ladders"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "7.3",
+      "chapterId": "07",
+      "itemId": "7.3",
+      "title": "Commutation relations",
+      "primaryTopic": "coupled-commuting-observables",
+      "topicTags": [
+        "coupled-commuting-observables",
+        "angular-momentum-commutators",
+        "compatibility-measurement-order"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "7.4",
+      "chapterId": "07",
+      "itemId": "7.4",
+      "title": "Vectors in the coupled basis",
+      "primaryTopic": "coupled-basis-construction",
+      "topicTags": [
+        "coupled-basis-construction",
+        "hilbert-space-bases-completeness",
+        "angular-momentum-algebra-ladders"
+      ]
+    },
+    {
+      "sectionId": "7.5",
+      "chapterId": "07",
+      "itemId": "7.5",
+      "title": "Hilbert space expansion",
+      "primaryTopic": "hilbert-space-expansion-angular-momenta",
+      "topicTags": [
+        "hilbert-space-expansion-angular-momenta",
+        "hilbert-space-bases-completeness",
+        "dirac-notation"
+      ]
+    },
+    {
+      "sectionId": "7.6",
+      "chapterId": "07",
+      "itemId": "7.6",
+      "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
+      "primaryTopic": "clebsch-gordan-coefficients",
+      "topicTags": [
+        "clebsch-gordan-coefficients",
+        "coupled-basis-construction",
+        "unitary-transformations-change-basis"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "7.7",
+      "chapterId": "07",
+      "itemId": "7.7",
+      "title": "Basis change of an operator",
+      "primaryTopic": "operator-basis-change-coupled",
+      "topicTags": [
+        "operator-basis-change-coupled",
+        "clebsch-gordan-coefficients",
+        "unitary-transformations-change-basis"
+      ],
+      "advancedTopicTags": [
+        "operator-algebra-across-representations"
+      ]
+    },
+    {
+      "sectionId": "7.8",
+      "chapterId": "07",
+      "itemId": "7.8",
+      "title": "Application 7.A: Magnetic moment and the Zeeman effect",
+      "primaryTopic": "magnetic-moment-zeeman-lande",
+      "topicTags": [
+        "magnetic-moment-zeeman-lande",
+        "angular-momentum-interactions",
+        "clebsch-gordan-coefficients"
+      ]
+    },
+    {
+      "sectionId": "7.9",
+      "chapterId": "07",
+      "itemId": "7.9",
+      "title": "Application 7.B: Angular momentum of atoms and Hund's rules",
+      "primaryTopic": "atomic-angular-momentum-hund-rules",
+      "topicTags": [
+        "atomic-angular-momentum-hund-rules",
+        "angular-momentum-interactions",
+        "coupled-basis-construction"
+      ]
+    },
+    {
+      "sectionId": "7.10",
+      "chapterId": "07",
+      "itemId": "7.10",
+      "title": "Chapter synthesis: addition of angular momenta",
+      "primaryTopic": "addition-angular-momenta-synthesis",
+      "topicTags": [
+        "addition-angular-momenta-synthesis",
+        "coupled-basis-construction",
+        "clebsch-gordan-coefficients",
+        "magnetic-moment-zeeman-lande",
+        "atomic-angular-momentum-hund-rules"
+      ]
+    }
   ]
 }

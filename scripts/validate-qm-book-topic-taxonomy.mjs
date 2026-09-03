@@ -1,12 +1,13 @@
 import { readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { isChapterExerciseEligible } from "../lib/qm-content-registry.mjs";
 
 const root = process.cwd();
 const taxonomy = JSON.parse(readFileSync(resolve(root, "data/book-topic-taxonomy.json"), "utf8"));
 const corpus = JSON.parse(readFileSync(resolve(root, "data/book-section-corpus.json"), "utf8"));
 
-const corpusSections = Array.isArray(corpus.sections) ? corpus.sections : [];
-const taxonomySections = Array.isArray(taxonomy.sectionTopics) ? taxonomy.sectionTopics : [];
+const corpusSections = (Array.isArray(corpus.sections) ? corpus.sections : []).filter((section) => isChapterExerciseEligible(section.chapterId));
+const taxonomySections = (Array.isArray(taxonomy.sectionTopics) ? taxonomy.sectionTopics : []).filter((entry) => isChapterExerciseEligible(entry.chapterId));
 const topics = Array.isArray(taxonomy.transversalTopics) ? taxonomy.transversalTopics : [];
 const errors = [];
 
@@ -25,6 +26,7 @@ function rememberTopic(topicId, sectionId) {
 if (!taxonomy.version) errors.push("Taxonomy is missing version.");
 if (!taxonomy.sourceCorpus) errors.push("Taxonomy is missing sourceCorpus.");
 if (!taxonomy.scope?.chapters?.length) errors.push("Taxonomy scope must list reviewed chapters.");
+if ((taxonomy.scope?.chapters || []).some((chapterId) => !isChapterExerciseEligible(chapterId))) errors.push("Taxonomy scope includes a chapter that is not exercise-eligible.");
 
 for (const sectionId of corpusSectionIds) {
   if (!taxonomySectionIds.has(sectionId)) {

@@ -1,0 +1,87 @@
+/* Generated from data/qm-content-registry.json. Do not edit directly. */
+(() => {
+  window.QMContentRegistry = Object.freeze({
+  "schemaVersion": 1,
+  "defaultLanguage": "en",
+  "chapters": {
+    "10": {
+      "availability": "under_editorial_review",
+      "reviewStatus": "unreviewed",
+      "seoEligible": false,
+      "exerciseEligible": false
+    },
+    "11": {
+      "availability": "under_editorial_review",
+      "reviewStatus": "unreviewed",
+      "seoEligible": false,
+      "exerciseEligible": false
+    },
+    "12": {
+      "availability": "under_editorial_review",
+      "reviewStatus": "unreviewed",
+      "seoEligible": false,
+      "exerciseEligible": false
+    },
+    "13": {
+      "availability": "under_editorial_review",
+      "reviewStatus": "unreviewed",
+      "seoEligible": false,
+      "exerciseEligible": false
+    },
+    "01": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "02": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "03": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "04": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "05": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "06": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "07": {
+      "availability": "published",
+      "reviewStatus": "reviewed",
+      "seoEligible": true,
+      "exerciseEligible": true
+    },
+    "08": {
+      "availability": "under_editorial_review",
+      "reviewStatus": "unreviewed",
+      "seoEligible": false,
+      "exerciseEligible": false
+    },
+    "09": {
+      "availability": "under_editorial_review",
+      "reviewStatus": "unreviewed",
+      "seoEligible": false,
+      "exerciseEligible": false
+    }
+  }
+});
+})();

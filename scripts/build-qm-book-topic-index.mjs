@@ -1,5 +1,6 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { isChapterExerciseEligible } from "../lib/qm-content-registry.mjs";
 
 const root = process.cwd();
 const corpusPath = resolve(root, "data/book-section-corpus.json");
@@ -8,8 +9,8 @@ const outputPath = resolve(root, "data/book-topic-index.json");
 
 const corpus = JSON.parse(readFileSync(corpusPath, "utf8"));
 const taxonomy = JSON.parse(readFileSync(taxonomyPath, "utf8"));
-const sections = Array.isArray(corpus.sections) ? corpus.sections : [];
-const sectionTopics = Array.isArray(taxonomy.sectionTopics) ? taxonomy.sectionTopics : [];
+const sections = (Array.isArray(corpus.sections) ? corpus.sections : []).filter((section) => isChapterExerciseEligible(section.chapterId));
+const sectionTopics = (Array.isArray(taxonomy.sectionTopics) ? taxonomy.sectionTopics : []).filter((entry) => isChapterExerciseEligible(entry.chapterId));
 const topicConfigs = Array.isArray(taxonomy.transversalTopics) ? taxonomy.transversalTopics : [];
 
 const sectionById = new Map(sections.map((section) => [section.itemId, section]));
@@ -84,6 +85,8 @@ function buildTopics() {
         section: sectionById.get(entry.sectionId)
       }));
 
+    if (!fragments.length) return null;
+
     return {
       id: topic.id,
       label: topic.label,
@@ -95,7 +98,7 @@ function buildTopics() {
         ? "Use this topic only as advanced support; it must not replace the current page as the exercise anchor."
         : "Use these fragments as related context. The current section remains the primary exercise anchor."
     };
-  });
+  }).filter(Boolean);
 }
 
 function buildSectionIndex() {
