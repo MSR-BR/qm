@@ -175,6 +175,7 @@ function inferPageMeta(relativePath, html, topicMap) {
   const currentTitle = titleMatch ? titleMatch[1].replace(/\s+/g, " ").trim() : COURSE_TITLE;
   const normalizedRelativePath = relativePath.replace(/^\/+/, "");
   const isIndex = normalizedRelativePath === "index.html";
+  const isHome = normalizedRelativePath === "home.html";
   const isInstructions = normalizedRelativePath === "INSTRUCOES_SNIPPET.html";
   const isSource = normalizedRelativePath.includes("/source/");
   const topic = topicMap.get(normalizedRelativePath);
@@ -213,6 +214,8 @@ function inferPageMeta(relativePath, html, topicMap) {
       ]
     };
   }
+
+  if (isHome) return { title: COURSE_TITLE + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", canonical: SITE_URL + "/home.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: COURSE_TITLE + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", url: SITE_URL + "/home.html", inLanguage: "en" } };
 
   if (isInstructions) {
     return {
@@ -322,6 +325,7 @@ function upsertSeoAssets(html, registryTag, seoTag) {
 async function processHtmlFile(filePath, topicMap) {
   const relativePath = toPosix(path.relative(rootDir, filePath));
   let html = await readFile(filePath, "utf8");
+  if (/<meta\s+http-equiv="refresh"|window\.location\.replace\(|<meta\s+name="robots"\s+content="noindex,follow"/i.test(html)) return;
   const meta = inferPageMeta(relativePath, html, topicMap);
   const seoBlock = buildSeoBlock(meta);
   const registryTag = `<script defer src="${getRelativeAssetPath(filePath, "qm-content-registry.js")}?v=${SEO_ASSET_VERSION}"></script>`;
@@ -335,53 +339,24 @@ async function processHtmlFile(filePath, topicMap) {
 }
 
 async function writeRobotsFile() {
-  const content = [
-    "User-agent: *",
-    "Allow: /",
-    "",
-    `Sitemap: ${SITE_URL}/sitemap.xml`
-  ].join("\n");
-
-  await writeFile(path.join(rootDir, "robots.txt"), `${content}\n`, "utf8");
+  const content = ["User-agent: *", "Allow: /", "", "Sitemap: " + SITE_URL + "/sitemap-index.xml"].join("\n");
+  await writeFile(path.join(rootDir, "robots.txt"), content + "\n", "utf8");
 }
-
-async function writeSitemap(topicMap) {
-  const urls = new Map();
-  urls.set(`${SITE_URL}/`, { priority: "1.0", changefreq: "weekly" });
-
-  for (const chapterId of Object.keys(chapterCatalog).sort()) {
-    if (!isChapterSeoEligible(chapterId)) continue;
-    urls.set(`${SITE_URL}/?view=chapters&chapter=${chapterId}`, { priority: "0.9", changefreq: "weekly" });
-  }
-
-  for (const [relativeUrl, topic] of topicMap.entries()) {
-    if (!isChapterSeoEligible(topic.chapterId)) continue;
-    urls.set(`${SITE_URL}/${relativeUrl}`, { priority: "0.7", changefreq: "monthly" });
-  }
-
-  const body = Array.from(urls.entries())
-    .map(([url, meta]) => [
-      "  <url>",
-      `    <loc>${xmlEscape(url)}</loc>`,
-      `    <lastmod>${TODAY}</lastmod>`,
-      `    <changefreq>${meta.changefreq}</changefreq>`,
-      `    <priority>${meta.priority}</priority>`,
-      "  </url>"
-    ].join("\n"))
-    .join("\n");
-
-  const xml = [
-    '<?xml version="1.0" encoding="UTF-8"?>',
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    body,
-    "</urlset>"
-  ].join("\n");
-
-  await writeFile(path.join(rootDir, "sitemap.xml"), `${xml}\n`, "utf8");
+function renderSitemap(urls) {
+  const body = Array.from(urls.entries()).map(([url, meta]) => ["  <url>", "    <loc>" + xmlEscape(url) + "</loc>", "    <lastmod>" + TODAY + "</lastmod>", "    <changefreq>" + meta.changefreq + "</changefreq>", "    <priority>" + meta.priority + "</priority>", "  </url>"].join("\n")).join("\n");
+  return ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', body, "</urlset>"].join("\n");
 }
-
+async function writeSitemaps(topicMap) {
+  const appUrls = new Map(), pageUrls = new Map();
+  appUrls.set(SITE_URL + "/", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/home.html", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/?view=simulators", { priority: "0.8", changefreq: "weekly" });
+  for (const chapterId of Object.keys(chapterCatalog).sort()) if (isChapterSeoEligible(chapterId)) appUrls.set(SITE_URL + "/?view=chapters&chapter=" + chapterId, { priority: "0.9", changefreq: "weekly" });
+  for (const [relativeUrl, topic] of topicMap.entries()) if (isChapterSeoEligible(topic.chapterId)) pageUrls.set(SITE_URL + "/" + relativeUrl, { priority: "0.7", changefreq: "monthly" });
+  await writeFile(path.join(rootDir, "sitemap-app.xml"), renderSitemap(appUrls) + "\n", "utf8"); await writeFile(path.join(rootDir, "sitemap-pages.xml"), renderSitemap(pageUrls) + "\n", "utf8");
+  const indexXml = ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', "  <sitemap><loc>" + SITE_URL + "/sitemap-app.xml</loc><lastmod>" + TODAY + "</lastmod></sitemap>", "  <sitemap><loc>" + SITE_URL + "/sitemap-pages.xml</loc><lastmod>" + TODAY + "</lastmod></sitemap>", "</sitemapindex>"].join("\n");
+  await writeFile(path.join(rootDir, "sitemap-index.xml"), indexXml + "\n", "utf8"); await writeFile(path.join(rootDir, "sitemap.xml"), indexXml + "\n", "utf8");
+}
 const topicMap = await loadTopicMap();
-const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
+const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
   .filter((filePath) => {
     const chapterMatch = toPosix(path.relative(rootDir, filePath)).match(/^slides\/chapter-(\d{2})\//);
     return !chapterMatch || isChapterSeoEligible(chapterMatch[1]);
@@ -392,6 +367,6 @@ for (const filePath of htmlFiles) {
 }
 
 await writeRobotsFile();
-await writeSitemap(topicMap);
+await writeSitemaps(topicMap);
 
-console.log(`SEO atualizado em ${htmlFiles.length} HTMLs, robots.txt e sitemap.xml.`);
+console.log(`SEO atualizado em ${htmlFiles.length} HTMLs, robots.txt e sitemaps segmentados.`);

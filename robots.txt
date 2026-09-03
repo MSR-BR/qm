@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://qm-beta.vercel.app/sitemap.xml
+Sitemap: https://qm-beta.vercel.app/sitemap-index.xml
