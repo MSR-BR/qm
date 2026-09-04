@@ -2382,7 +2382,8 @@
     "assets/termo-share.js?v=0714.3",
     "assets/termo-auth.js?v=0717.2",
     "assets/termo-user-data.js?v=0731.1",
-    "assets/qm-study-progress.js?v=0903.3"
+    "assets/qm-study-progress.js?v=0903.3",
+    "assets/qm-gamification.js?v=0904.1"
   ];
 
   scripts.forEach(function (src) {
@@ -3291,11 +3292,15 @@
       const studyProgress = await waitForAppGlobal("QMStudyProgress", function (value) {
         return value && typeof value.listProgress === "function";
       }, 3200);
+      const gamification = await waitForAppGlobal("QMGamification", function (value) {
+        return value && typeof value.listProfile === "function";
+      }, 3200);
 
       return {
         auth: auth || null,
         userData: userData || null,
-        studyProgress: studyProgress || null
+        studyProgress: studyProgress || null,
+        gamification: gamification || null
       };
     }
 
@@ -4766,7 +4771,10 @@
       }
 
       topicContainer.innerHTML = '<div class="empty-state"><strong>Loading your study journey...</strong><br />Preparing your reviewed sections and private record.</div>';
-      const result = await window.QMStudyProgress?.listProgress?.().catch(function (error) { return { ok: false, error: error, progress: [] }; });
+      const [result, rewardsResult] = await Promise.all([
+        window.QMStudyProgress?.listProgress?.().catch(function (error) { return { ok: false, error: error, progress: [] }; }),
+        window.QMGamification?.listProfile?.().catch(function (error) { return { ok: false, error: error, profile: null }; })
+      ]);
       if (!result?.ok) {
         topicContainer.innerHTML = '<div class="empty-state"><strong>Could not load your study journey.</strong><br />Check whether the private progress table and its RLS policies are active in Supabase.</div>';
         return;
@@ -4790,6 +4798,11 @@
       })[0];
       const latestPath = latest ? normalizeAppRelativeUrl(latest.page_path, "/") : "";
       const latestSection = sections.find(function (section) { return section.path === latestPath; });
+      const rewards = rewardsResult?.ok ? rewardsResult.profile : null;
+      const rewardSummary = rewards
+        ? '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-bolt"></i> ' + Number(rewards.xp_total || 0) + ' points</span><span class="saved-chip">Level ' + Number(rewards.level || 1) + '</span><span class="saved-chip">' + Number(rewards.current_streak || 0) + '-day streak</span></div><h3 class="saved-card__title">Learning rewards</h3><p class="saved-card__summary">Official points are recorded once when you complete a reviewed section. Your best streak is ' + Number(rewards.best_streak || 0) + ' days.</p></div></article>'
+        : '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-bolt"></i> Learning rewards</span></div><h3 class="saved-card__title">Rewards will be available soon</h3><p class="saved-card__summary">Your reading progress is already private. Points and study streaks will appear here as soon as the secure rewards service is enabled.</p></div></article>';
+      const assessmentPlaceholder = '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-clipboard-question"></i> Assessments</span></div><h3 class="saved-card__title">Chapter assessments</h3><p class="saved-card__summary">Assessments will be added only after their reviewed item banks are approved. No assessment is available yet.</p></div></article>';
       const chapterRows = bundles.map(function (bundle) {
         const topics = bundle.topics;
         const completedCount = topics.filter(function (topic) {
@@ -4800,7 +4813,7 @@
         return '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">Chapter ' + escapeHtml(bundle.chapter.id) + '</span><span class="saved-chip">' + completedCount + ' / ' + topics.length + ' sections completed</span></div><h3 class="saved-card__title">' + escapeHtml(bundle.chapter.title) + '</h3><p class="saved-card__summary">' + (allDone ? "All reviewed sections completed." : "Continue through the reviewed sections of this chapter.") + '</p></div><a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(normalizeAppRelativeUrl("?view=chapters&chapter=" + bundle.chapter.id, "/index.html")) + '">Open chapter</a></article>';
       }).join("");
 
-      topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + chapterRows + '</section>';
+      topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + rewardSummary + assessmentPlaceholder + chapterRows + '</section>';
     }
 
     async function renderSavedExercises() {

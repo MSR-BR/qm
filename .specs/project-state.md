@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline before this change: `d87b7f8`.
+- Last published baseline: `d439183`.
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
@@ -17,7 +17,8 @@
 - `001-content-availability-and-canonical-registry` — published.
 - `002-exercise-source-governance-and-index-audit` — published in `bbb0325`.
 - `003-public-discovery-routes-and-seo-parity` — published in `8732fec`.
-- `004-learner-profile-and-study-journey-foundation` — implemented locally and remotely; awaiting visual review and CPD.
+- `004-learner-profile-and-study-journey-foundation` — published in `ee3e91a`.
+- `005-gamification-and-assessment-foundation` — implemented locally and remotely; CPD requested.
 
 ## Non-negotiable content contract
 
