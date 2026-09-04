@@ -2411,7 +2411,8 @@
 <meta name="twitter:description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"Quantum Mechanics","url":"https://qm-beta.vercel.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://qm-beta.vercel.app/"}]</script>
 <!-- termo-seo:end -->
-<script defer src="assets/qm-content-registry.js?v=0903.2"></script>
+<script src="assets/qm-release.js"></script>
+<script src="assets/qm-content-registry.js?v=0903.2"></script>
 <script defer src="assets/termo-seo.js?v=0903.2"></script>
 </head>
 
@@ -2425,7 +2426,7 @@
           <div class="metadata">
             <span><i class="fa-solid fa-user-tie"></i> Prof. Mario Reis</span>
             <span><i class="fa-solid fa-building-columns"></i> Institute of Physics — Fluminense Federal University</span>
-            <span><i class="fa-solid fa-calendar-days"></i> Last updated: <time id="lastUpdated" datetime="2026-06-14">14/06/2026</time> · <span id="appVersion">v0614.1</span></span>
+            <span><i class="fa-solid fa-calendar-days"></i> Last updated: <time id="lastUpdated" datetime="2026-09-04">04/09/2026</time> · <span id="appVersion">v0904.2</span></span>
           </div>
         </div>
         <div class="header-tools" data-termo-header-tools aria-label="Primary actions">
@@ -3137,10 +3138,10 @@
     };
 
     const JSPDF_CDN_URL = "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
-    const releaseInfo = {
-      version: "v0614.1",
-      date: "2026-06-14",
-      label: "14/06/2026"
+    const releaseInfo = window.QMReleaseInfo || {
+      version: "v0904.2",
+      date: "2026-09-04",
+      label: "04/09/2026"
     };
 
     const exerciseGenerationEnabled = true;

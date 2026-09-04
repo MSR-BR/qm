@@ -316,7 +316,7 @@ function upsertSeoBlock(html, block) {
 function upsertSeoAssets(html, registryTag, seoTag) {
   const tags = `${registryTag}\n${seoTag}`;
   if (/termo-seo\.js/i.test(html)) {
-    const withRegistryRemoved = html.replace(/<script defer src="[^"]*qm-content-registry\.js(?:\?v=[^"]*)?"><\/script>\s*/i, "");
+    const withRegistryRemoved = html.replace(/<script(?: defer)? src="[^"]*qm-content-registry\.js(?:\?v=[^"]*)?"><\/script>\s*/i, "");
     return withRegistryRemoved.replace(/<script defer src="[^"]*termo-seo\.js(?:\?v=[^"]*)?"><\/script>/i, tags);
   }
   return html.replace(/<\/head>/i, `${tags}\n</head>`);
@@ -328,7 +328,7 @@ async function processHtmlFile(filePath, topicMap) {
   if (/<meta\s+http-equiv="refresh"|window\.location\.replace\(|<meta\s+name="robots"\s+content="noindex,follow"/i.test(html)) return;
   const meta = inferPageMeta(relativePath, html, topicMap);
   const seoBlock = buildSeoBlock(meta);
-  const registryTag = `<script defer src="${getRelativeAssetPath(filePath, "qm-content-registry.js")}?v=${SEO_ASSET_VERSION}"></script>`;
+  const registryTag = `<script src="${getRelativeAssetPath(filePath, "qm-content-registry.js")}?v=${SEO_ASSET_VERSION}"></script>`;
   const seoTag = `<script defer src="${getRelativeAssetPath(filePath, "termo-seo.js")}?v=${SEO_ASSET_VERSION}"></script>`;
 
   html = upsertTitle(html, meta.title);

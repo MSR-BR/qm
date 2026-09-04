@@ -17,7 +17,7 @@
     "smoke:ai-renderer": "node scripts/smoke-ai-renderer.mjs",
     "smoke:ai-context": "node scripts/smoke-ai-context-package.mjs",
     "audit:supabase": "node scripts/audit-qm-supabase.mjs",
-    "seo": "node scripts/build-seo-artifacts.mjs",
+    "seo": "node scripts/build-qm-release-info.mjs && node scripts/build-seo-artifacts.mjs",
     "deploy": "vercel --prod",
     "build:content-registry": "node scripts/build-qm-content-registry.mjs",
     "build:exercise-source-manifest": "node scripts/build-qm-exercise-source-manifest.mjs",
