@@ -2381,7 +2381,8 @@
   const scripts = [
     "assets/termo-share.js?v=0714.3",
     "assets/termo-auth.js?v=0717.2",
-    "assets/termo-user-data.js?v=0731.1"
+    "assets/termo-user-data.js?v=0731.1",
+    "assets/qm-study-progress.js?v=0903.3"
   ];
 
   scripts.forEach(function (src) {
@@ -3145,6 +3146,12 @@
     const exerciseGenerationEnabled = true;
 
     const personalViews = [
+      {
+        id: "journey",
+        label: "Study journey",
+        icon: "fa-route",
+        note: "Continue reading and review your completion record."
+      },
       ...(exerciseGenerationEnabled ? [{
         id: "saved",
         label: "My exercises",
@@ -3202,6 +3209,7 @@
       favoriteItems: [],
       favoriteExercises: [],
       savedExercises: [],
+      studyProgress: [],
       validationReports: [],
       exerciseModal: null,
       selectedExerciseId: null,
@@ -3279,10 +3287,14 @@
       const userData = await waitForAppGlobal("TermoUserData", function (value) {
         return value && typeof value.listExercises === "function";
       }, 3200);
+      const studyProgress = await waitForAppGlobal("QMStudyProgress", function (value) {
+        return value && typeof value.listProgress === "function";
+      }, 3200);
 
       return {
         auth: auth || null,
-        userData: userData || null
+        userData: userData || null,
+        studyProgress: studyProgress || null
       };
     }
 
@@ -3307,7 +3319,7 @@
     }
 
     function getDrawerSectionForView(viewId) {
-      if (viewId === "saved" || viewId === "favorites" || viewId === "validation-review") return "personal";
+      if (viewId === "journey" || viewId === "saved" || viewId === "favorites" || viewId === "validation-review") return "personal";
       if (viewId === "simulators") return "simulators";
       return "chapters";
     }
@@ -4719,6 +4731,77 @@
       `;
     }
 
+    async function loadStudyJourneyTopics() {
+      const published = chapters.filter(function (chapter) { return !chapter.locked; });
+      const bundles = await Promise.all(published.map(async function (chapter) {
+        try {
+          const response = await fetch(chapter.data, { credentials: "same-origin" });
+          const payload = response.ok ? await response.json() : {};
+          return { chapter: chapter, topics: Array.isArray(payload.topics) ? payload.topics : [] };
+        } catch (_error) {
+          return { chapter: chapter, topics: [] };
+        }
+      }));
+      return bundles;
+    }
+
+    async function renderStudyJourney() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
+      state.loggedIn = Boolean(session?.user);
+      panelKicker.textContent = "Personal Area";
+      panelTitle.textContent = "Study journey";
+      panelDescription.textContent = "Resume your latest reviewed section and keep a private record of completed sections.";
+      setActiveChapter("");
+      setActivePersonal("journey");
+      setActiveExtra("");
+      panelActions.innerHTML = "";
+
+      if (!state.loggedIn) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Sign in with Google to save your study journey.</strong><br />Your reading record, completion state and continuation point remain private to your account.<br /><br /><button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button"><i class="fa-solid fa-bookmark"></i> Sign in to enable Study journey</button></div>';
+        attachCommonHandlers(topicContainer);
+        return;
+      }
+
+      topicContainer.innerHTML = '<div class="empty-state"><strong>Loading your study journey...</strong><br />Preparing your reviewed sections and private record.</div>';
+      const result = await window.QMStudyProgress?.listProgress?.().catch(function (error) { return { ok: false, error: error, progress: [] }; });
+      if (!result?.ok) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Could not load your study journey.</strong><br />Check whether the private progress table and its RLS policies are active in Supabase.</div>';
+        return;
+      }
+
+      state.studyProgress = result.progress || [];
+      const bundles = await loadStudyJourneyTopics();
+      const sections = bundles.flatMap(function (bundle) {
+        return bundle.topics.map(function (topic) {
+          return { chapter: bundle.chapter, topic: topic, path: normalizeAppRelativeUrl(topic.url, "/") };
+        });
+      });
+      const progressByPath = new Map(state.studyProgress.map(function (record) {
+        return [normalizeAppRelativeUrl(record.page_path, "/"), record];
+      }));
+      const completed = sections.filter(function (section) {
+        return progressByPath.get(section.path)?.status === "completed";
+      }).length;
+      const latest = state.studyProgress.slice().sort(function (left, right) {
+        return new Date(right.last_opened_at || 0).getTime() - new Date(left.last_opened_at || 0).getTime();
+      })[0];
+      const latestPath = latest ? normalizeAppRelativeUrl(latest.page_path, "/") : "";
+      const latestSection = sections.find(function (section) { return section.path === latestPath; });
+      const chapterRows = bundles.map(function (bundle) {
+        const topics = bundle.topics;
+        const completedCount = topics.filter(function (topic) {
+          const record = progressByPath.get(normalizeAppRelativeUrl(topic.url, "/"));
+          return record?.status === "completed";
+        }).length;
+        const allDone = topics.length > 0 && completedCount === topics.length;
+        return '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">Chapter ' + escapeHtml(bundle.chapter.id) + '</span><span class="saved-chip">' + completedCount + ' / ' + topics.length + ' sections completed</span></div><h3 class="saved-card__title">' + escapeHtml(bundle.chapter.title) + '</h3><p class="saved-card__summary">' + (allDone ? "All reviewed sections completed." : "Continue through the reviewed sections of this chapter.") + '</p></div><a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(normalizeAppRelativeUrl("?view=chapters&chapter=" + bundle.chapter.id, "/index.html")) + '">Open chapter</a></article>';
+      }).join("");
+
+      topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + chapterRows + '</section>';
+    }
+
     async function renderSavedExercises() {
       setLandingMode(false);
       panelKicker.textContent = "Personal Area";
@@ -5041,6 +5124,11 @@
       }
 
       syncUrl();
+
+      if (viewId === "journey") {
+        await renderStudyJourney();
+        return;
+      }
 
       if (viewId === "saved") {
         await renderSavedExercises();

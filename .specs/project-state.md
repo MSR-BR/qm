@@ -14,9 +14,10 @@
 
 ## Active change
 
-- `001-content-availability-and-canonical-registry` — implemented locally; awaiting its CPD decision.
+- `001-content-availability-and-canonical-registry` — published.
 - `002-exercise-source-governance-and-index-audit` — published in `bbb0325`.
-- `003-public-discovery-routes-and-seo-parity` — implemented locally; awaiting its CPD decision.
+- `003-public-discovery-routes-and-seo-parity` — published in `8732fec`.
+- `004-learner-profile-and-study-journey-foundation` — implemented locally and remotely; awaiting visual review and CPD.
 
 ## Non-negotiable content contract
 
