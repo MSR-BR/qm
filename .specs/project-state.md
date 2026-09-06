@@ -21,6 +21,8 @@
 - `005-gamification-and-assessment-foundation` — published in `5ced1e4`.
 - `006-reviewed-chapter-assessments` — active; follows the TERMO learner-report and administrator-review model.
 
+- `007-learner-facing-gamification` — implemented locally; CPD requested.
+
 ## Non-negotiable content contract
 
 - Follow the Reis *Quantum Mechanics* text exactly; do not invent notation, concepts, equations, conclusions, or derivations.
