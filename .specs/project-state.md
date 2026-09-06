@@ -18,7 +18,8 @@
 - `002-exercise-source-governance-and-index-audit` — published in `bbb0325`.
 - `003-public-discovery-routes-and-seo-parity` — published in `8732fec`.
 - `004-learner-profile-and-study-journey-foundation` — published in `ee3e91a`.
-- `005-gamification-and-assessment-foundation` — implemented locally and remotely; CPD requested.
+- `005-gamification-and-assessment-foundation` — published in `5ced1e4`.
+- `006-reviewed-chapter-assessments` — active; follows the TERMO learner-report and administrator-review model.
 
 ## Non-negotiable content contract
 

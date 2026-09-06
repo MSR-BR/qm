@@ -8,6 +8,7 @@ import {
   handleExerciseValidationRequest
 } from "./lib/exercicio-handler.mjs";
 import { handlePublicConfigRequest } from "./lib/public-config-handler.mjs";
+import { handleQmChapterQuiz } from "./lib/qm-chapter-quiz-handler.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -162,6 +163,11 @@ const server = http.createServer(async (req, res) => {
 
   if (requestUrl.startsWith("/_vercel/insights/")) {
     sendText(res, 200, "", "application/javascript; charset=utf-8");
+    return;
+  }
+
+  if (requestUrl.startsWith("/api/qm-chapter-quiz")) {
+    try { const url = new URL(requestUrl, `http://${host}:${port}`); const body = req.method === "POST" ? await readJsonBody(req) : {}; const response = await handleQmChapterQuiz({ method:req.method, body, headers:req.headers, query:Object.fromEntries(url.searchParams.entries()), env:process.env }); sendJson(res,response.status,response.body); } catch(error) { sendJson(res,400,{error:"Could not read assessment request.",details:String(error)}); }
     return;
   }
 
