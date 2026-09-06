@@ -27,6 +27,8 @@
 
 - `009-section-aware-practice` — active.
 
+- `010-simulator-integration` — implemented locally; CPD pending.
+
 ## Non-negotiable content contract
 
 - Follow the Reis *Quantum Mechanics* text exactly; do not invent notation, concepts, equations, conclusions, or derivations.
