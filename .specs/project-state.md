@@ -25,6 +25,8 @@
 
 - `008-assessment-editorial-quality` — implemented locally; CPD requested.
 
+- `009-section-aware-practice` — active.
+
 ## Non-negotiable content contract
 
 - Follow the Reis *Quantum Mechanics* text exactly; do not invent notation, concepts, equations, conclusions, or derivations.

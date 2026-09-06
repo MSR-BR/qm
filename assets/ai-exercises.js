@@ -1280,7 +1280,7 @@
 
     outputTitle.innerHTML = `
       <i class="fa-solid fa-spinner fa-spin"></i>
-      Generating exercise
+      Generating section practice
     `;
     output.classList.add("termo-exercise__placeholder");
     output.innerHTML = "<p>Please wait a few seconds...</p>";
@@ -1319,6 +1319,8 @@
       const cleanData = normalizeExercisePayload(data);
 
       outputTitle.innerHTML = `
+        <i class="fa-solid fa-book-open"></i>
+        <span class="termo-exercise__generated-title">Section practice · ${escapeHtml(ctx.title || 'Current reviewed page')}</span>
         <i class="fa-solid fa-circle-question"></i>
         <span class="termo-exercise__generated-title">${escapeHtml(cleanData.title || "Exercise")}</span>
         ${cleanData.exerciseId ? `<span class="termo-exercise__id-chip">${escapeHtml(cleanData.exerciseId)}</span>` : ""}
