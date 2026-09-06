@@ -4478,7 +4478,7 @@
       const notes = [report.statement_note, report.solution_note].filter(Boolean).join(" / ");
 
       return `
-        <article class="validation-review-card" data-report-id="${escapeHtml(report.id)}">
+        <article class="validation-review-card" data-report-id="${escapeHtml(report.id)}" data-report-kind="${String(report.exercise_id || "").startsWith("qm-") ? "assessment" : "exercise"}">
           <div class="validation-review-card__top">
             <div>
               <div class="saved-card__meta">
@@ -5011,7 +5011,8 @@
         return;
       }
 
-      topicContainer.innerHTML = `<div class="validation-review-list">${state.validationReports.map(renderValidationReportItem).join("")}</div>`;
+      topicContainer.innerHTML = `<div class="saved-card__actions" style="margin-bottom:16px"><button class="saved-card__button saved-card__button--primary" data-role="validation-filter" data-kind="all" type="button">All reports</button><button class="saved-card__button" data-role="validation-filter" data-kind="assessment" type="button">Assessment reports</button><button class="saved-card__button" data-role="validation-filter" data-kind="exercise" type="button">Exercise reports</button></div><div class="validation-review-list">${state.validationReports.map(renderValidationReportItem).join("")}</div>`;
+      topicContainer.querySelectorAll("[data-role=validation-filter]").forEach(function(button){ button.addEventListener("click",function(){ const kind=button.dataset.kind; topicContainer.querySelectorAll(".validation-review-card").forEach(function(card){card.hidden=kind!=="all" && card.dataset.reportKind!==kind;});});});
       attachValidationReviewHandlers(topicContainer);
       await typesetValidationReview(topicContainer);
     }

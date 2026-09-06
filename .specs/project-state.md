@@ -23,6 +23,8 @@
 
 - `007-learner-facing-gamification` — implemented locally; CPD requested.
 
+- `008-assessment-editorial-quality` — implemented locally; CPD requested.
+
 ## Non-negotiable content contract
 
 - Follow the Reis *Quantum Mechanics* text exactly; do not invent notation, concepts, equations, conclusions, or derivations.
