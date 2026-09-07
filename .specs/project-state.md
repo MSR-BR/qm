@@ -24,7 +24,8 @@
 - `008-assessment-editorial-quality` — published in `54cbabd`.
 - `009-section-aware-practice` — published in `af8b64e`.
 - `010-simulator-integration` — published in `cfe6cb6`.
-- `011-search-seo-and-structured-content` — active.
+- `011-search-seo-and-structured-content` — published in `acea642`.
+- `012-editorial-review-workflow` — active.
 
 ## Non-negotiable content contract
 

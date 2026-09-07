@@ -4499,6 +4499,7 @@
             </div>
           </div>
           <div class="validation-review-card__notice">${escapeHtml(issueLabels.join(" · ") || "Report with no marked error")}</div>
+          <div class="validation-review-card__decision-help">Editorial status: <strong>${escapeHtml(report.review_status || "pending")}</strong>.</div>
           <div class="validation-review-card__choices">
             ${renderValidationChoicePill("Statement", report.statement_status)}
             ${renderValidationChoicePill("Solution", report.solution_status)}
@@ -4966,8 +4967,8 @@
       state.loggedIn = Boolean(session?.user);
       state.canReviewValidations = await canCurrentUserReviewValidations(session);
       panelKicker.textContent = "Personal Area";
-      panelTitle.textContent = "Pending validations";
-      panelDescription.textContent = "Review reports sent by users and decide which comments should inform future generations.";
+      panelTitle.textContent = "Editorial validation reports";
+      panelDescription.textContent = "Review learner reports, record the decision, and preserve confirmed corrections for future section practice.";
       setActiveChapter(state.chapterId);
       setActivePersonal("validation-review");
       setActiveExtra("");
@@ -4995,7 +4996,8 @@
 
       topicContainer.innerHTML = `<div class="empty-state"><strong>Loading pending reports...</strong><br />Fetching validations sent by users.</div>`;
 
-      const result = await window.TermoUserData.listValidationReports({ status: "pending" }).catch(function (error) {
+      const reviewStatus = state.validationReviewStatus || "pending";
+      const result = await window.TermoUserData.listValidationReports({ status: reviewStatus }).catch(function (error) {
         return { ok: false, error, reports: [] };
       });
 
@@ -5021,7 +5023,8 @@
         return;
       }
 
-      topicContainer.innerHTML = `<div class="saved-card__actions" style="margin-bottom:16px"><button class="saved-card__button saved-card__button--primary" data-role="validation-filter" data-kind="all" type="button">All reports</button><button class="saved-card__button" data-role="validation-filter" data-kind="assessment" type="button">Assessment reports</button><button class="saved-card__button" data-role="validation-filter" data-kind="exercise" type="button">Exercise reports</button></div><div class="validation-review-list">${state.validationReports.map(renderValidationReportItem).join("")}</div>`;
+      topicContainer.innerHTML = `<div class="saved-card__actions" style="margin-bottom:16px"><button class="saved-card__button ${reviewStatus === "pending" ? "saved-card__button--primary" : ""}" data-role="validation-status-filter" data-status="pending" type="button">Pending</button><button class="saved-card__button ${reviewStatus === "approved" ? "saved-card__button--primary" : ""}" data-role="validation-status-filter" data-status="approved" type="button">Approved</button><button class="saved-card__button ${reviewStatus === "rejected" ? "saved-card__button--primary" : ""}" data-role="validation-status-filter" data-status="rejected" type="button">Rejected</button><button class="saved-card__button ${reviewStatus === "all" ? "saved-card__button--primary" : ""}" data-role="validation-status-filter" data-status="all" type="button">All statuses</button></div><div class="saved-card__actions" style="margin-bottom:16px"><button class="saved-card__button saved-card__button--primary" data-role="validation-filter" data-kind="all" type="button">All reports</button><button class="saved-card__button" data-role="validation-filter" data-kind="assessment" type="button">Assessment reports</button><button class="saved-card__button" data-role="validation-filter" data-kind="exercise" type="button">Exercise reports</button></div><div class="validation-review-list">${state.validationReports.map(renderValidationReportItem).join("")}</div>`;
+      topicContainer.querySelectorAll("[data-role=validation-status-filter]").forEach(function(button){ button.addEventListener("click",function(){ state.validationReviewStatus=button.dataset.status || "pending"; void renderValidationReview(); });});
       topicContainer.querySelectorAll("[data-role=validation-filter]").forEach(function(button){ button.addEventListener("click",function(){ const kind=button.dataset.kind; topicContainer.querySelectorAll(".validation-review-card").forEach(function(card){card.hidden=kind!=="all" && card.dataset.reportKind!==kind;});});});
       attachValidationReviewHandlers(topicContainer);
       await typesetValidationReview(topicContainer);
