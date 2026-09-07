@@ -10,12 +10,13 @@ const slidesDir = path.join(rootDir, "slides");
 const dataDir = path.join(rootDir, "data");
 
 const SITE_URL = "https://qm-beta.vercel.app";
-const SEO_ASSET_VERSION = "0903.2";
+const BUILD_DATE = new Date().toISOString().slice(0, 10);
+const SEO_ASSET_VERSION = `seo-${BUILD_DATE.replaceAll("-", "")}`;
 const COURSE_TITLE = "Quantum Mechanics";
 const AUTHOR_NAME = "Prof. Mario Reis";
 const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
 const DEFAULT_SITE_DESCRIPTION = "Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).";
-const TODAY = "2026-06-14";
+const TODAY = BUILD_DATE;
 
 
 const chapterCatalog = {
@@ -325,7 +326,8 @@ function upsertSeoAssets(html, registryTag, seoTag) {
 async function processHtmlFile(filePath, topicMap) {
   const relativePath = toPosix(path.relative(rootDir, filePath));
   let html = await readFile(filePath, "utf8");
-  if (/<meta\s+http-equiv="refresh"|window\.location\.replace\(|<meta\s+name="robots"\s+content="noindex,follow"/i.test(html)) return;
+  const isSourceRedirect = relativePath.includes("/source/") && /<meta\s+http-equiv="refresh"|window\.location\.replace\(|<meta\s+name="robots"\s+content="noindex,follow"/i.test(html);
+  if (isSourceRedirect) return;
   const meta = inferPageMeta(relativePath, html, topicMap);
   const seoBlock = buildSeoBlock(meta);
   const registryTag = `<script src="${getRelativeAssetPath(filePath, "qm-content-registry.js")}?v=${SEO_ASSET_VERSION}"></script>`;
@@ -348,7 +350,7 @@ function renderSitemap(urls) {
 }
 async function writeSitemaps(topicMap) {
   const appUrls = new Map(), pageUrls = new Map();
-  appUrls.set(SITE_URL + "/", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/home.html", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/?view=simulators", { priority: "0.8", changefreq: "weekly" });
+  appUrls.set(SITE_URL + "/", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/home.html", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/search.html", { priority: "0.7", changefreq: "weekly" }); appUrls.set(SITE_URL + "/?view=simulators", { priority: "0.8", changefreq: "weekly" });
   for (const chapterId of Object.keys(chapterCatalog).sort()) if (isChapterSeoEligible(chapterId)) appUrls.set(SITE_URL + "/?view=chapters&chapter=" + chapterId, { priority: "0.9", changefreq: "weekly" });
   for (const [relativeUrl, topic] of topicMap.entries()) if (isChapterSeoEligible(topic.chapterId)) pageUrls.set(SITE_URL + "/" + relativeUrl, { priority: "0.7", changefreq: "monthly" });
   await writeFile(path.join(rootDir, "sitemap-app.xml"), renderSitemap(appUrls) + "\n", "utf8"); await writeFile(path.join(rootDir, "sitemap-pages.xml"), renderSitemap(pageUrls) + "\n", "utf8");

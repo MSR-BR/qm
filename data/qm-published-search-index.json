@@ -1,0 +1,685 @@
+{
+  "generatedAt": "2026-09-07T01:46:52.836Z",
+  "sections": [
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.1",
+      "title": "Why old quantum physics matters",
+      "summary": "Historical map of the classical clues that forced a new description of radiation, atoms and matter.",
+      "url": "slides/chapter-01/why-old-quantum-physics-matters.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.2",
+      "title": "Wave optics as the classical benchmark",
+      "summary": "Young's double-slit experiment, Maxwell's wave picture and the reference point for later wave-particle duality.",
+      "url": "slides/chapter-01/wave-optics-classical-benchmark.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.3",
+      "title": "Hydrogen spectral lines",
+      "summary": "From prisms and discrete colors to the Balmer and Rydberg formulas as empirical fingerprints of atomic structure.",
+      "url": "slides/chapter-01/hydrogen-spectral-lines.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.4",
+      "title": "Cathode rays and the electron",
+      "summary": "Thomson's charge-to-mass measurement, atomic divisibility and the first subatomic particle picture.",
+      "url": "slides/chapter-01/cathode-rays-and-electron.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.5",
+      "title": "Black-body radiation",
+      "summary": "Thermal spectra, the ultraviolet catastrophe and Planck's quantum hypothesis as a turning point.",
+      "url": "slides/chapter-01/black-body-radiation.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.6",
+      "title": "Photoelectric effect",
+      "summary": "Einstein's photon interpretation and the experimental signatures that connect light frequency with emitted electrons.",
+      "url": "slides/chapter-01/photoelectric-effect.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.7",
+      "title": "Elementary charge",
+      "summary": "Millikan's oil-drop experiment and the quantization of electric charge.",
+      "url": "slides/chapter-01/elementary-charge.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.8",
+      "title": "Electron diffraction",
+      "summary": "Matter behaving like a wave: diffraction evidence and its connection with de Broglie's idea.",
+      "url": "slides/chapter-01/electron-diffraction.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.9",
+      "title": "Bohr model: postulates",
+      "summary": "Stationary states, angular momentum quantization and quantum jumps in the early atomic model.",
+      "url": "slides/chapter-01/bohr-model-postulates.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.10",
+      "title": "Bohr model: hydrogen spectrum",
+      "summary": "Energy levels, orbital radii and how the Bohr model explains Hydrogen spectral series.",
+      "url": "slides/chapter-01/bohr-model-hydrogen-spectrum.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.11",
+      "title": "de Broglie hypothesis",
+      "summary": "The matter-wave proposal and its role as a bridge from old quantum physics to wave mechanics.",
+      "url": "slides/chapter-01/de-broglie-hypothesis.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.12",
+      "title": "Semi-classical quantization rule",
+      "summary": "Action integrals, allowed orbits and the logic behind early quantization rules.",
+      "url": "slides/chapter-01/semi-classical-quantization-rule.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.13",
+      "title": "SCQR examples",
+      "summary": "Harmonic oscillator, infinite well and power-law potentials as compact examples of semi-classical reasoning.",
+      "url": "slides/chapter-01/scqr-examples.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.14",
+      "title": "Sommerfeld orbits and ellipse geometry",
+      "summary": "A complementary bridge between Bohr-Sommerfeld quantization and geometric properties of elliptical motion.",
+      "url": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html"
+    },
+    {
+      "chapterId": "01",
+      "chapterTitle": "Chapter 1",
+      "sectionId": "1.15",
+      "title": "Chapter synthesis",
+      "summary": "A compact conceptual summary of the ideas that prepare the transition to Schrödinger's equation.",
+      "url": "slides/chapter-01/timeline-conceptual-synthesis.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.1",
+      "title": "Why wave mechanics is needed",
+      "summary": "Chapter map: how de Broglie's matter waves become a dynamical theory for quantum states.",
+      "url": "slides/chapter-02/why-wave-mechanics-is-needed.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.2",
+      "title": "Time-dependent Schrodinger equation",
+      "summary": "From the plane wave, de Broglie's relation and the classical energy balance to the TDSE.",
+      "url": "slides/chapter-02/time-dependent-schrodinger-equation.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.3",
+      "title": "Stationary states and the TISE",
+      "summary": "Separation of variables, time-independent potentials and the energy eigenvalue equation.",
+      "url": "slides/chapter-02/stationary-states-and-tise.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.4",
+      "title": "Probability density and current",
+      "summary": "Born interpretation, continuity equation, normalization and probability in a spatial interval.",
+      "url": "slides/chapter-02/probability-density-and-current.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.5",
+      "title": "Infinite potential well",
+      "summary": "Boundary conditions, allowed sine functions, normalized eigenstates, nodes, probability densities and the quadratic energy spectrum.",
+      "url": "slides/chapter-02/infinite-potential-well.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.6",
+      "title": "Postulates of quantum mechanics: the rules ahead",
+      "summary": "Bridge card: after solving one model, the chapter states the rules for states, observables, probabilities and measurement.",
+      "url": "slides/chapter-02/postulates-rules-ahead.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.7",
+      "title": "Quantum states as superpositions",
+      "summary": "Postulate for quantum states: a physical state is represented by a wave function and can be expanded in an orthonormal basis.",
+      "url": "slides/chapter-02/quantum-states-superpositions.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.8",
+      "title": "Observables, operators and commutators",
+      "summary": "Postulate for observables: each measurable quantity is represented by a Hermitian operator; commutators encode compatibility and uncertainty.",
+      "url": "slides/chapter-02/observables-operators-commutators.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.9",
+      "title": "Measurement probabilities",
+      "summary": "Postulate of probability: expansion coefficients give outcome probabilities, Pₙ = |Cₙ|², when measuring in an eigenstate basis.",
+      "url": "slides/chapter-02/measurement-probabilities.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.10",
+      "title": "Expectation values and collapse",
+      "summary": "Measurement postulate: expectation values are ensemble averages, and after a definite result the state collapses to the measured eigenstate.",
+      "url": "slides/chapter-02/expectation-values-and-collapse.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.11",
+      "title": "Equations of motion: Ehrenfest and Virial",
+      "summary": "Time evolution of expectation values, the classical limit and the Virial theorem.",
+      "url": "slides/chapter-02/ehrenfest-and-virial-theorems.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.12",
+      "title": "Plane waves and localized packets",
+      "summary": "Why a single plane wave has sharp momentum but poor localization, and why packets are needed.",
+      "url": "slides/chapter-02/plane-waves-and-localized-packets.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.13",
+      "title": "Gaussian wave packet and Fourier width",
+      "summary": "Fourier transform, Gaussian distributions in x and k, and the inverse relation between widths.",
+      "url": "slides/chapter-02/gaussian-wave-packet-fourier-width.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.14",
+      "title": "Wave packet spreading and uncertainty",
+      "summary": "Group velocity, phase velocity, time-dependent variance and the Heisenberg uncertainty principle.",
+      "url": "slides/chapter-02/wave-packet-spreading-uncertainty.html"
+    },
+    {
+      "chapterId": "02",
+      "chapterTitle": "Chapter 2",
+      "sectionId": "2.15",
+      "title": "Chapter synthesis",
+      "summary": "Conceptual bridge from wave mechanics to the more abstract formulation of quantum theory.",
+      "url": "slides/chapter-02/chapter-synthesis.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.1",
+      "title": "Why matrix mechanics is needed",
+      "summary": "Chapter map: why the vector-matrix language is natural for discrete quantum systems such as spin.",
+      "url": "slides/chapter-03/why-matrix-mechanics-is-needed.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.2",
+      "title": "Stern-Gerlach experiment: magnetic force and spin",
+      "summary": "Inhomogeneous magnetic fields, magnetic moments, two spots and the interpretation of spin as a two-level observable.",
+      "url": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.3",
+      "title": "Dirac notation: kets, bras and inner products",
+      "summary": "Postulate for quantum states in vector form: a physical state is represented by a ket in Hilbert space.",
+      "url": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.4",
+      "title": "Hilbert space, bases, superposition and completeness",
+      "summary": "Orthonormal bases, vector expansion, spin bases along different axes and the meaning of coefficients as projections.",
+      "url": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.5",
+      "title": "Operators, eigenvalues and spectral decomposition",
+      "summary": "How observables become matrices, how their eigenvalues encode possible outcomes, and how an operator is rebuilt from its eigenbasis.",
+      "url": "slides/chapter-03/operators-as-matrices.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.6",
+      "title": "Pauli matrices and spin observables",
+      "summary": "Spin-1/2 operators, the z and x bases, and the Pauli matrices as the working example of matrix mechanics.",
+      "url": "slides/chapter-03/pauli-matrices-and-spin-observables.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.7",
+      "title": "Born rule in vector notation",
+      "summary": "Postulate of probability: amplitudes are inner products, and probabilities are squared moduli of projections.",
+      "url": "slides/chapter-03/born-rule-vector-notation.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.8",
+      "title": "Expectation value, variance and preparation",
+      "summary": "Ensemble averages, uncertainty of an observable and how repeated Stern-Gerlach measurements prepare a state.",
+      "url": "slides/chapter-03/expectation-value-variance-and-preparation.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.9",
+      "title": "Hermitian operators and real outcomes",
+      "summary": "Why observables must have real eigenvalues, and how Hermitian conjugation controls the matrix representation.",
+      "url": "slides/chapter-03/hermitian-operators-and-real-outcomes.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.10",
+      "title": "Commutators, compatibility and measurement order",
+      "summary": "Non-commuting spin components, compatible observables and why an intermediate measurement can erase information.",
+      "url": "slides/chapter-03/commutators-compatibility-and-measurement-order.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.11",
+      "title": "Schrodinger picture: unitary time evolution",
+      "summary": "Time-dependent state vectors, the unitary evolution operator and phase evolution in the energy basis.",
+      "url": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.12",
+      "title": "Heisenberg picture: operator evolution",
+      "summary": "Fixed state vectors, time-dependent operators and the Heisenberg equation of motion.",
+      "url": "slides/chapter-03/heisenberg-picture-operator-evolution.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.13",
+      "title": "Unitary transformations and change of basis",
+      "summary": "How states and operators transform between bases while probabilities and expectation values remain invariant.",
+      "url": "slides/chapter-03/unitary-transformations-and-change-of-basis.html"
+    },
+    {
+      "chapterId": "03",
+      "chapterTitle": "Chapter 3",
+      "sectionId": "3.14",
+      "title": "Operator functions and chapter synthesis",
+      "summary": "Matrix exponentials, functions of operators and the correspondence between wave mechanics and matrix mechanics.",
+      "url": "slides/chapter-03/operator-functions-and-chapter-synthesis.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.1",
+      "title": "Bound and unbound states: chapter roadmap",
+      "summary": "How confinement, discrete spectra, continuum states and tunneling organize the one-dimensional models in this chapter.",
+      "url": "slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.2",
+      "title": "QHO: differential equation, variables and eigenstates",
+      "summary": "Parabolic confinement, dimensionless variables, the Hermite differential equation and the structure of oscillator eigenstates.",
+      "url": "slides/chapter-04/quantum-harmonic-oscillator-qho-model-and-scaling.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.3",
+      "title": "QHO: energy eigenvalues",
+      "summary": "Normalizability selects the allowed values of energy and yields the equally spaced oscillator spectrum.",
+      "url": "slides/chapter-04/qho-hermite-equation-and-energy-quantization.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.4",
+      "title": "QHO: ladder operators and oscillator algebra",
+      "summary": "Hamiltonian factorization, commutators, number states and the raising and lowering construction of the spectrum.",
+      "url": "slides/chapter-04/qho-ladder-operators-and-oscillator-algebra.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.5",
+      "title": "QHO: expectation values and uncertainty",
+      "summary": "Position and momentum moments, variances and the Heisenberg uncertainty product for oscillator eigenstates.",
+      "url": "slides/chapter-04/qho-expectation-values-and-uncertainty.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.6",
+      "title": "Finite potential well: bound-state setup",
+      "summary": "Piecewise wave functions, boundary matching, penetration depth and the conditions for negative-energy bound states.",
+      "url": "slides/chapter-04/finite-potential-well-bound-state-setup.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.7",
+      "title": "Finite-well quantization and energy levels",
+      "summary": "Transcendental equations, graphical solutions, parity branches and the number of allowed bound levels.",
+      "url": "slides/chapter-04/finite-well-quantization-and-energy-levels.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.8",
+      "title": "Finite-well wave functions and penetration",
+      "summary": "Even and odd eigenfunctions, nodes, probability density and exponential leakage beyond the classical well.",
+      "url": "slides/chapter-04/finite-well-wave-functions-and-penetration.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.9",
+      "title": "Probability current, reflection and transmission",
+      "summary": "Incident, reflected and transmitted waves and the current-based definitions of R and T.",
+      "url": "slides/chapter-04/probability-current-reflection-and-transmission.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.10",
+      "title": "Scattering from an attractive finite well",
+      "summary": "Positive-energy solutions, boundary coefficients, exact transmission and resonant transparency.",
+      "url": "slides/chapter-04/scattering-from-an-attractive-finite-well.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.11",
+      "title": "Delta-function well and scattering",
+      "summary": "The zero-width limit, derivative discontinuity and the energy dependence of reflection and transmission.",
+      "url": "slides/chapter-04/delta-function-well-and-scattering.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.12",
+      "title": "Rectangular step potential and quantum tunneling",
+      "summary": "Evanescent waves at a step, reflection and penetration into a classically forbidden region.",
+      "url": "slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html"
+    },
+    {
+      "chapterId": "04",
+      "chapterTitle": "Chapter 4",
+      "sectionId": "4.14",
+      "title": "Chapter synthesis: one-dimensional quantum models",
+      "summary": "A qualitative closing map connecting bound states, scattering, boundary conditions and probability conservation.",
+      "url": "slides/chapter-04/chapter-synthesis-one-dimensional-quantum-models.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.1",
+      "title": "Central potentials: chapter roadmap",
+      "summary": "Why spherical symmetry separates universal angular physics from the radial dynamics of each potential.",
+      "url": "slides/chapter-05/central-potentials-chapter-roadmap.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.2",
+      "title": "Separation of variables in spherical coordinates",
+      "summary": "The spherical Laplacian, radial and angular equations and the separation constants that become quantum numbers.",
+      "url": "slides/chapter-05/separation-of-variables-in-spherical-coordinates.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.3",
+      "title": "Azimuthal and polar equations",
+      "summary": "Periodic boundary conditions, the magnetic quantum number and the associated Legendre equation.",
+      "url": "slides/chapter-05/azimuthal-and-polar-equations.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.4",
+      "title": "Spherical harmonics",
+      "summary": "Normalized angular eigenfunctions, allowed values of l and m, orthogonality and angular probability patterns.",
+      "url": "slides/chapter-05/spherical-harmonics.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.5",
+      "title": "Hydrogen atom: radial solution and probability",
+      "summary": "Coulomb potential, effective radial equation, associated Laguerre solutions, normalization, degeneracy and radial probability density.",
+      "url": "slides/chapter-05/hydrogen-atom-and-effective-potential.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.6",
+      "title": "Hydrogen energy spectrum and degeneracy",
+      "summary": "Origin of quantization, Bohr energy scale and degenerate states labeled by n, l and m.",
+      "url": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.7",
+      "title": "Three-dimensional harmonic oscillator: radial solution and spectrum",
+      "summary": "Compact book-led sequence from the oscillator potential to the effective radial equation, Laguerre solution, spectrum and total states.",
+      "url": "slides/chapter-05/three-dimensional-harmonic-oscillator.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.8",
+      "title": "Hydrogen atom and the periodic table",
+      "summary": "Shells, subshells, orbital capacity, Madelung ordering and the quantum structure behind the periodic table.",
+      "url": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.9",
+      "title": "Hydrogen expectation values",
+      "summary": "Radial moments, Kramers-Pasternack relations and Feynman-Hellmann methods for extracting observables.",
+      "url": "slides/chapter-05/hydrogen-expectation-values.html"
+    },
+    {
+      "chapterId": "05",
+      "chapterTitle": "Chapter 5",
+      "sectionId": "5.10",
+      "title": "Chapter synthesis: solving central potentials",
+      "summary": "A comparative map of angular quantum numbers, radial equations, special functions, spectra and degeneracies.",
+      "url": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.1",
+      "title": "Angular momentum: chapter roadmap",
+      "summary": "Chapter 6 introduces the formal algebra of angular momentum, for orbital or spin angular momentum, and prepares the addition of angular momenta.",
+      "url": "slides/chapter-06/angular-momentum-chapter-roadmap.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.2",
+      "title": "Commutation relations and Levi-Civita notation",
+      "summary": "The main angular-momentum commutator is stated first; the vector-product definition, Levi-Civita notation and physical consequence then explain the algebraic route.",
+      "url": "slides/chapter-06/commutation-relations-and-physical-meaning.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.3",
+      "title": "Angular momentum algebra",
+      "summary": "The algebra introduces L squared, the compatible pair L squared and Lz, raising/lowering operators, finite ladders and the allowed l,m spectrum.",
+      "url": "slides/chapter-06/compatible-observables-l-squared-and-lz.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.4",
+      "title": "Consequences of the algebra",
+      "summary": "Once Lz is definite, the transverse means vanish while their variances remain finite; the angular-momentum cone visualizes this result.",
+      "url": "slides/chapter-06/expectation-values-and-transverse-variance.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.5",
+      "title": "Matrix representation",
+      "summary": "The angular-momentum matrices are built from matrix elements in the fixed-l basis; the l equals 1 example includes the change-of-basis matrix U.",
+      "url": "slides/chapter-06/general-matrix-representation.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.6",
+      "title": "Position-space representation",
+      "summary": "The position-space form comes from p equals minus i hbar nabla; spherical harmonics recover the L squared and Lz eigenvalue equations.",
+      "url": "slides/chapter-06/angular-momentum-in-position-space.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.7",
+      "title": "Schrödinger uncertainty and Schwartz inequality",
+      "summary": "Derives the Schwartz inequality, the Schrödinger uncertainty principle and its angular-momentum form.",
+      "url": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html"
+    },
+    {
+      "chapterId": "06",
+      "chapterTitle": "Chapter 6",
+      "sectionId": "6.8",
+      "title": "Chapter synthesis: angular momentum toolkit",
+      "summary": "The chapter summary gathers the commutator, compatible observables, ladder spectrum, representations and uncertainty relations needed for exercises.",
+      "url": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.1",
+      "title": "Addition of angular momenta: chapter roadmap",
+      "summary": "Chapter 7 introduces interactions between angular momenta and then builds the coupled basis, Clebsch-Gordan coefficients, basis changes and applications.",
+      "url": "slides/chapter-07/addition-of-angular-momenta-chapter-roadmap.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.2",
+      "title": "Interactions between angular momenta",
+      "summary": "Chapter 7 begins with Heisenberg, Ising, XY, antisymmetric, spin-orbit, local anisotropy and Zeeman Hamiltonians.",
+      "url": "slides/chapter-07/interactions-between-angular-momenta.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.3",
+      "title": "Commutation relations",
+      "summary": "Independent angular-momentum subspaces, total angular momentum, allowed l values and the projection condition m equals m1 plus m2.",
+      "url": "slides/chapter-07/commutation-relations.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.4",
+      "title": "Vectors in the coupled basis",
+      "summary": "The coupled basis is built by adding angular momenta pair by pair, either sequentially or non-sequentially.",
+      "url": "slides/chapter-07/vectors-in-the-coupled-basis.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.5",
+      "title": "Hilbert space expansion",
+      "summary": "Matrix expansion by tensor products makes angular-momentum operators act in the total Hilbert space.",
+      "url": "slides/chapter-07/hilbert-space-expansion.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.6",
+      "title": "Local basis vs. coupled basis: Clebsch-Gordan coefficients",
+      "summary": "Clebsch-Gordan coefficients relate local and coupled basis vectors and form the change-of-basis matrix.",
+      "url": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.7",
+      "title": "Basis change of an operator",
+      "summary": "The Clebsch-Gordan matrix changes an operator from the local basis to the coupled basis.",
+      "url": "slides/chapter-07/basis-change-of-an-operator.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.8",
+      "title": "Application 7.A: Magnetic moment and the Zeeman effect",
+      "summary": "Application 7.A derives the magnetic moment projection, the Lande factor and the Zeeman Hamiltonian in the coupled basis.",
+      "url": "slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.9",
+      "title": "Application 7.B: Angular momentum of atoms and Hund's rules",
+      "summary": "Application 7.B applies angular-momentum addition to atoms, Hund's rules and Russell-Saunders notation.",
+      "url": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html"
+    },
+    {
+      "chapterId": "07",
+      "chapterTitle": "Chapter 7",
+      "sectionId": "7.10",
+      "title": "Chapter synthesis: addition of angular momenta",
+      "summary": "Chapter 7 synthesis connects angular-momentum interactions, coupled bases, Hilbert-space expansion, Clebsch-Gordan coefficients, basis changes, Zeeman effect and Hund's rules.",
+      "url": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html"
+    }
+  ]
+}

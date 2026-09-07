@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search reviewed content | Quantum Mechanics</title>
+  <meta name="description" content="Search the reviewed sections of the interactive Quantum Mechanics book by Prof. Mario Reis.">
+  <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+  <link rel="canonical" href="https://qm-beta.vercel.app/search.html">
+  <meta property="og:type" content="website"><meta property="og:site_name" content="Quantum Mechanics"><meta property="og:title" content="Search reviewed content | Quantum Mechanics"><meta property="og:description" content="Search the reviewed sections of the interactive Quantum Mechanics book by Prof. Mario Reis."><meta property="og:url" content="https://qm-beta.vercel.app/search.html">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Search reviewed content | Quantum Mechanics","url":"https://qm-beta.vercel.app/search.html","inLanguage":"en","potentialAction":{"@type":"SearchAction","target":"https://qm-beta.vercel.app/search.html?q={search_term_string}","query-input":"required name=search_term_string"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"><link rel="stylesheet" href="assets/qm-search.css">
+</head>
+<body>
+  <main class="search-shell">
+    <nav class="search-nav" aria-label="Primary"><a class="brand" href="home.html">Quantum Mechanics</a><a class="back-link" href="index.html?view=chapters">Open reading app →</a></nav>
+    <section class="search-hero" aria-labelledby="search-title">
+      <p class="eyebrow">Reviewed material only</p><h1 id="search-title">Search the book</h1><p class="lede">Find a reviewed section by title, topic, or its short description. Chapters under editorial review are not included.</p>
+      <label class="search-label" for="searchInput">Search reviewed sections</label><input id="searchInput" class="search-input" type="search" autocomplete="off" placeholder="For example: harmonic oscillator" autofocus><p class="search-status" id="searchStatus" aria-live="polite"></p><div class="results" id="searchResults"></div>
+    </section>
+  </main>
+  <script>
+    (() => {
+      const input = document.querySelector('#searchInput'); const status = document.querySelector('#searchStatus'); const results = document.querySelector('#searchResults'); const params = new URLSearchParams(location.search); let sections = [];
+      const normalize = (value) => String(value || '').toLocaleLowerCase('en').normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+      const escapeHtml = (value) => String(value || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      function render() {
+        const query = normalize(input.value.trim()); const matches = !query ? sections.slice(0, 12) : sections.filter((section) => normalize(`${section.chapterTitle} ${section.sectionId} ${section.title} ${section.summary}`).includes(query)).slice(0, 30);
+        status.textContent = query ? `${matches.length} ${matches.length === 1 ? 'section' : 'sections'} found.` : `Showing ${matches.length} reviewed sections. Type to narrow the result.`;
+        results.innerHTML = matches.length ? matches.map((section) => `<a class="result-card" href="${escapeHtml(section.url)}"><div class="result-meta">Chapter ${escapeHtml(section.chapterId)} · Item ${escapeHtml(section.sectionId)}</div><div class="result-title">${escapeHtml(section.title)}</div><p class="result-summary">${escapeHtml(section.summary)}</p></a>`).join('') : '<p class="empty">No reviewed section matches this search. Try a different term.</p>';
+        const url = new URL(location.href); if (input.value.trim()) url.searchParams.set('q', input.value.trim()); else url.searchParams.delete('q'); history.replaceState({}, '', url);
+      }
+      fetch('data/qm-published-search-index.json').then((response) => response.ok ? response.json() : Promise.reject()).then((data) => { sections = Array.isArray(data.sections) ? data.sections : []; input.value = params.get('q') || ''; render(); }).catch(() => { status.textContent = 'Search is temporarily unavailable.'; }); input.addEventListener('input', render);
+    })();
+  </script>
+</body>
+</html>

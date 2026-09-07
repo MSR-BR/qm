@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline: `d439183`.
+- Last published baseline: `cfe6cb6`.
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
@@ -19,15 +19,12 @@
 - `003-public-discovery-routes-and-seo-parity` — published in `8732fec`.
 - `004-learner-profile-and-study-journey-foundation` — published in `ee3e91a`.
 - `005-gamification-and-assessment-foundation` — published in `5ced1e4`.
-- `006-reviewed-chapter-assessments` — active; follows the TERMO learner-report and administrator-review model.
-
-- `007-learner-facing-gamification` — implemented locally; CPD requested.
-
-- `008-assessment-editorial-quality` — implemented locally; CPD requested.
-
-- `009-section-aware-practice` — active.
-
-- `010-simulator-integration` — implemented locally; CPD pending.
+- `006-reviewed-chapter-assessments` — published in `883a80f`.
+- `007-learner-facing-gamification` — published in `5b24041`.
+- `008-assessment-editorial-quality` — published in `54cbabd`.
+- `009-section-aware-practice` — published in `af8b64e`.
+- `010-simulator-integration` — published in `cfe6cb6`.
+- `011-search-seo-and-structured-content` — active.
 
 ## Non-negotiable content contract
 
