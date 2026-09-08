@@ -21,7 +21,7 @@
     ".topic-note"
   ];
 
-  const SHARE_SITE_URL = "https://qm-beta.vercel.app";
+  const SHARE_SITE_URL = "https://quantummechanicsbook.app";
 
   let refreshTimer = null;
   let observer = null;

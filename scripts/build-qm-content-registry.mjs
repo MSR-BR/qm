@@ -12,11 +12,20 @@ const registry = getBrowserContentRegistry();
 const lockedChapterIds = getLockedChapterIds();
 
 const browserAsset = `/* Generated from data/qm-content-registry.json. Do not edit directly. */\n(() => {\n  window.QMContentRegistry = Object.freeze(${JSON.stringify(registry, null, 2)});\n})();\n`;
-const redirects = lockedChapterIds.map((chapterId) => ({
-  source: `/slides/chapter-${chapterId}/:path*`,
-  destination: `/index.html?view=chapters&chapter=${chapterId}`,
-  permanent: false
-}));
+const legacyDomainRedirect = {
+  source: "/:path*",
+  has: [{ type: "host", value: "qm-beta.vercel.app" }],
+  destination: "https://quantummechanicsbook.app/:path*",
+  permanent: true
+};
+const redirects = [
+  legacyDomainRedirect,
+  ...lockedChapterIds.map((chapterId) => ({
+    source: `/slides/chapter-${chapterId}/:path*`,
+    destination: `/index.html?view=chapters&chapter=${chapterId}`,
+    permanent: false
+  }))
+];
 
 await writeFile(browserAssetPath, browserAsset, "utf8");
 await writeFile(vercelConfigPath, `${JSON.stringify({ redirects }, null, 2)}\n`, "utf8");
