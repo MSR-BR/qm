@@ -27,7 +27,7 @@
 - `011-search-seo-and-structured-content` — published in `acea642`.
 - `012-editorial-review-workflow` — published in `35885e4`.
 - `013-production-domain-and-measurement-foundation` — active; final domain is attached and HTTPS-verified, with the Supabase Auth allow-list and post-deploy verification pending.
-- `014-canonical-seo-and-search-console` — planned; depends on C13.
+- `014-canonical-seo-and-search-console` — active; canonical artifacts are prepared locally, with Search Console verification and sitemap submission pending.
 - `015-ga4-measurement-foundation` — planned; depends on C13 and a user-supplied Measurement ID.
 - `016-external-user-quality-audit` — planned; depends on C13–C15.
 - `017-google-ads-readiness` — planned; depends on C13–C16 and explicit launch approval.

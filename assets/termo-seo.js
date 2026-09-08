@@ -1,5 +1,5 @@
 (() => {
-  const SITE_URL = "https://qm-beta.vercel.app";
+  const SITE_URL = "https://quantummechanicsbook.app";
   const COURSE_TITLE = "Quantum Mechanics";
   const AUTHOR_NAME = "Prof. Mario Reis";
   const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
@@ -177,7 +177,7 @@
     if (view === "simulators") {
       return {
         title: `Quantum Mechanics simulators | ${COURSE_TITLE}`,
-        description: "Yesuladores interativos de materiais complementares, exercises e recursos interativos.",
+        description: "Interactive Quantum Mechanics simulators, exercises, and supplementary learning resources.",
         canonical: buildCanonicalForIndex(view, chapterId),
         robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
         ogType: "website",
@@ -284,7 +284,7 @@
     ensureMetaByName("googlebot").setAttribute("content", meta.robots);
     ensureMetaByName("theme-color").setAttribute("content", "#2F6B4F");
 
-    ensureMetaByProperty("og:locale").setAttribute("content", "pt_BR");
+    ensureMetaByProperty("og:locale").setAttribute("content", "en_US");
     ensureMetaByProperty("og:type").setAttribute("content", meta.ogType);
     ensureMetaByProperty("og:site_name").setAttribute("content", COURSE_TITLE);
     ensureMetaByProperty("og:title").setAttribute("content", meta.title);

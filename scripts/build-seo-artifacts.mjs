@@ -9,7 +9,7 @@ const rootDir = path.resolve(__dirname, "..");
 const slidesDir = path.join(rootDir, "slides");
 const dataDir = path.join(rootDir, "data");
 
-const SITE_URL = "https://qm-beta.vercel.app";
+const SITE_URL = "https://quantummechanicsbook.app";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 const SEO_ASSET_VERSION = `seo-${BUILD_DATE.replaceAll("-", "")}`;
 const COURSE_TITLE = "Quantum Mechanics";
@@ -177,6 +177,7 @@ function inferPageMeta(relativePath, html, topicMap) {
   const normalizedRelativePath = relativePath.replace(/^\/+/, "");
   const isIndex = normalizedRelativePath === "index.html";
   const isHome = normalizedRelativePath === "home.html";
+  const isSearch = normalizedRelativePath === "search.html";
   const isInstructions = normalizedRelativePath === "INSTRUCOES_SNIPPET.html";
   const isSource = normalizedRelativePath.includes("/source/");
   const topic = topicMap.get(normalizedRelativePath);
@@ -217,6 +218,8 @@ function inferPageMeta(relativePath, html, topicMap) {
   }
 
   if (isHome) return { title: COURSE_TITLE + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", canonical: SITE_URL + "/home.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: COURSE_TITLE + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", url: SITE_URL + "/home.html", inLanguage: "en" } };
+
+  if (isSearch) return { title: "Search reviewed content | " + COURSE_TITLE, description: "Search the reviewed sections of the interactive Quantum Mechanics book by Prof. Mario Reis.", canonical: SITE_URL + "/search.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: "Search reviewed content | " + COURSE_TITLE, url: SITE_URL + "/search.html", inLanguage: "en", potentialAction: { "@type": "SearchAction", target: SITE_URL + "/search.html?q={search_term_string}", "query-input": "required name=search_term_string" } } };
 
   if (isInstructions) {
     return {
@@ -326,6 +329,7 @@ function upsertSeoAssets(html, registryTag, seoTag) {
 async function processHtmlFile(filePath, topicMap) {
   const relativePath = toPosix(path.relative(rootDir, filePath));
   let html = await readFile(filePath, "utf8");
+  html = html.replaceAll("https://qm-beta.vercel.app", SITE_URL);
   const isSourceRedirect = relativePath.includes("/source/") && /<meta\s+http-equiv="refresh"|window\.location\.replace\(|<meta\s+name="robots"\s+content="noindex,follow"/i.test(html);
   if (isSourceRedirect) return;
   const meta = inferPageMeta(relativePath, html, topicMap);
@@ -358,7 +362,7 @@ async function writeSitemaps(topicMap) {
   await writeFile(path.join(rootDir, "sitemap-index.xml"), indexXml + "\n", "utf8"); await writeFile(path.join(rootDir, "sitemap.xml"), indexXml + "\n", "utf8");
 }
 const topicMap = await loadTopicMap();
-const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
+const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "search.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
   .filter((filePath) => {
     const chapterMatch = toPosix(path.relative(rootDir, filePath)).match(/^slides\/chapter-(\d{2})\//);
     return !chapterMatch || isChapterSeoEligible(chapterMatch[1]);

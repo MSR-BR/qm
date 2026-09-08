@@ -159,7 +159,7 @@ function pageHtml(page, index) {
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(page.title)} | Chapter 8 | Quantum Mechanics</title>
 <meta name="description" content="${esc(page.guide)}"><meta name="author" content="Prof. Mario Reis">
-<link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-08/${page.file}">
+<link rel="canonical" href="https://quantummechanicsbook.app/slides/chapter-08/${page.file}">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;family=Lora:ital,wght@0,400;0,600;1,400&amp;display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">

@@ -111,9 +111,9 @@ function renderPage(page, index, total) {
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>${escapeHtml(page.title)} | Chapter 7 | Quantum Mechanics</title>
   <meta name="description" content="${escapeHtml(page.description)}" /><meta name="author" content="Prof. Mario Reis" />
-  <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://qm-beta.vercel.app/slides/chapter-07/${escapeHtml(page.file)}" />
+  <meta name="robots" content="index,follow,max-image-preview:large" /><link rel="canonical" href="https://quantummechanicsbook.app/slides/chapter-07/${escapeHtml(page.file)}" />
   <meta property="og:type" content="article" /><meta property="og:site_name" content="Quantum Mechanics" />
-  <meta property="og:title" content="${escapeHtml(page.title)} | Chapter 7 | Quantum Mechanics" /><meta property="og:description" content="${escapeHtml(page.description)}" /><meta property="og:url" content="https://qm-beta.vercel.app/slides/chapter-07/${escapeHtml(page.file)}" />
+  <meta property="og:title" content="${escapeHtml(page.title)} | Chapter 7 | Quantum Mechanics" /><meta property="og:description" content="${escapeHtml(page.description)}" /><meta property="og:url" content="https://quantummechanicsbook.app/slides/chapter-07/${escapeHtml(page.file)}" />
   <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet" />

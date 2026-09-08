@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://qm-beta.vercel.app/sitemap-index.xml
+Sitemap: https://quantummechanicsbook.app/sitemap-index.xml

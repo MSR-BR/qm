@@ -77,7 +77,7 @@ try {
     headers: userHeaders(tokenA, { Prefer: "return=representation" }),
     body: JSON.stringify({
       user_id: userAId, chapter_id: "01", item_id: "audit", page_path: "/audit",
-      page_url: "https://qm-beta.vercel.app/audit", page_title: "Temporary audit",
+      page_url: "https://quantummechanicsbook.app/audit", page_title: "Temporary audit",
       difficulty: "medio", exercise_title: "Temporary audit exercise",
       statement: "Temporary statement.", solution: "Temporary solution."
     })
@@ -97,7 +97,7 @@ try {
     method: "POST",
     headers: userHeaders(tokenB),
     body: JSON.stringify({
-      user_id: userAId, page_path: "/audit", page_url: "https://qm-beta.vercel.app/audit",
+      user_id: userAId, page_path: "/audit", page_url: "https://quantummechanicsbook.app/audit",
       page_title: "Forbidden", difficulty: "medio", exercise_title: "Forbidden",
       statement: "Forbidden.", solution: "Forbidden."
     })
@@ -111,7 +111,7 @@ try {
     body: JSON.stringify({
       validator_user_id: userAId, validator_email: emails[0], reporter_user_id: userAId, reporter_email: emails[0],
       saved_exercise_id: savedId, exercise_id: `audit-${runId}`, chapter_id: "01", item_id: "audit",
-      page_path: "/audit", page_url: "https://qm-beta.vercel.app/audit", page_title: "Temporary audit",
+      page_path: "/audit", page_url: "https://quantummechanicsbook.app/audit", page_title: "Temporary audit",
       exercise_title: "Temporary audit exercise", exercise_fingerprint: runId,
       statement_excerpt: "Temporary statement.", solution_excerpt: "Temporary solution.",
       statement_status: "nao", solution_status: "nao", ai_review_state: "inconclusive",
