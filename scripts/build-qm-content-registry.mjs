@@ -28,5 +28,12 @@ const redirects = [
 ];
 
 await writeFile(browserAssetPath, browserAsset, "utf8");
-await writeFile(vercelConfigPath, `${JSON.stringify({ redirects }, null, 2)}\n`, "utf8");
+const headers = [
+  {
+    source: "/:path*",
+    has: [{ type: "host", value: "qm-beta.vercel.app" }],
+    headers: [{ key: "X-Robots-Tag", value: "noindex" }]
+  }
+];
+await writeFile(vercelConfigPath, `${JSON.stringify({ redirects, headers }, null, 2)}\n`, "utf8");
 console.log(`Content registry built: ${lockedChapterIds.length} chapters unavailable.`);
