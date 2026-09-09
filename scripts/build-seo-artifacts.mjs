@@ -345,7 +345,7 @@ async function processHtmlFile(filePath, topicMap) {
 }
 
 async function writeRobotsFile() {
-  const content = ["User-agent: *", "Allow: /", "", "Sitemap: " + SITE_URL + "/sitemap-index.xml"].join("\n");
+  const content = ["User-agent: *", "Allow: /", "", "Sitemap: " + SITE_URL + "/sitemap.xml"].join("\n");
   await writeFile(path.join(rootDir, "robots.txt"), content + "\n", "utf8");
 }
 function renderSitemap(urls) {
@@ -357,9 +357,12 @@ async function writeSitemaps(topicMap) {
   appUrls.set(SITE_URL + "/", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/home.html", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/search.html", { priority: "0.7", changefreq: "weekly" }); appUrls.set(SITE_URL + "/?view=simulators", { priority: "0.8", changefreq: "weekly" });
   for (const chapterId of Object.keys(chapterCatalog).sort()) if (isChapterSeoEligible(chapterId)) appUrls.set(SITE_URL + "/?view=chapters&chapter=" + chapterId, { priority: "0.9", changefreq: "weekly" });
   for (const [relativeUrl, topic] of topicMap.entries()) if (isChapterSeoEligible(topic.chapterId)) pageUrls.set(SITE_URL + "/" + relativeUrl, { priority: "0.7", changefreq: "monthly" });
-  await writeFile(path.join(rootDir, "sitemap-app.xml"), renderSitemap(appUrls) + "\n", "utf8"); await writeFile(path.join(rootDir, "sitemap-pages.xml"), renderSitemap(pageUrls) + "\n", "utf8");
-  const indexXml = ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', "  <sitemap><loc>" + SITE_URL + "/sitemap-app.xml</loc><lastmod>" + TODAY + "</lastmod></sitemap>", "  <sitemap><loc>" + SITE_URL + "/sitemap-pages.xml</loc><lastmod>" + TODAY + "</lastmod></sitemap>", "</sitemapindex>"].join("\n");
-  await writeFile(path.join(rootDir, "sitemap-index.xml"), indexXml + "\n", "utf8"); await writeFile(path.join(rootDir, "sitemap.xml"), indexXml + "\n", "utf8");
+  const allUrls = new Map([...appUrls, ...pageUrls]);
+  const allUrlsXml = renderSitemap(allUrls);
+  await writeFile(path.join(rootDir, "sitemap-app.xml"), renderSitemap(appUrls) + "\n", "utf8");
+  await writeFile(path.join(rootDir, "sitemap-pages.xml"), renderSitemap(pageUrls) + "\n", "utf8");
+  await writeFile(path.join(rootDir, "sitemap-index.xml"), allUrlsXml + "\n", "utf8");
+  await writeFile(path.join(rootDir, "sitemap.xml"), allUrlsXml + "\n", "utf8");
 }
 const topicMap = await loadTopicMap();
 const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "search.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
@@ -375,4 +378,4 @@ for (const filePath of htmlFiles) {
 await writeRobotsFile();
 await writeSitemaps(topicMap);
 
-console.log(`SEO atualizado em ${htmlFiles.length} HTMLs, robots.txt e sitemaps segmentados.`);
+console.log(`SEO updated for ${htmlFiles.length} HTML files, robots.txt, and the primary sitemap.`);

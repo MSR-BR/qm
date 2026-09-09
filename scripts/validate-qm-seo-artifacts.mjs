@@ -8,8 +8,12 @@ const siteUrl = "https://quantummechanicsbook.app";
 const errors = [];
 const read = (filePath) => readFile(path.join(rootDir, filePath), "utf8");
 const searchIndex = JSON.parse(await read("data/qm-published-search-index.json"));
+const sitemap = await read("sitemap.xml");
 const sitemapPages = await read("sitemap-pages.xml");
 const sitemapApp = await read("sitemap-app.xml");
+const robots = await read("robots.txt");
+if (!sitemap.includes('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">') || sitemap.includes("<sitemapindex")) errors.push("Primary sitemap must be a simple urlset.");
+if (!robots.includes(`Sitemap: ${siteUrl}/sitemap.xml`)) errors.push("robots.txt must point to the primary sitemap.");
 for (const section of searchIndex.sections || []) {
   if (!isChapterPublished(section.chapterId)) errors.push(`Search index exposes unpublished Chapter ${section.chapterId}: ${section.url}`);
   const html = await read(section.url);
@@ -18,7 +22,7 @@ for (const section of searchIndex.sections || []) {
   if (!html.includes('"@type":"LearningResource"')) errors.push(`Missing LearningResource JSON-LD for ${section.url}`);
   if (!html.includes('name="robots" content="index,follow')) errors.push(`Missing indexable robots directive for ${section.url}`);
   if (html.includes("https://qm-beta.vercel.app")) errors.push(`Temporary host remains in published HTML: ${section.url}`);
-  if (!sitemapPages.includes(`<loc>${canonical}</loc>`)) errors.push(`Published page missing from sitemap: ${section.url}`);
+  if (!sitemap.includes(`<loc>${canonical}</loc>`)) errors.push(`Published page missing from primary sitemap: ${section.url}`);
 }
 for (const chapterId of ["08", "09", "10", "11", "12", "13"]) {
   if (sitemapPages.includes(`/slides/chapter-${chapterId}/`) || sitemapApp.includes(`chapter=${chapterId}`)) errors.push(`Sitemap exposes Chapter ${chapterId}`);
