@@ -2404,7 +2404,7 @@
 (function () {
   const scripts = [
     "assets/termo-share.js?v=0714.3",
-    "assets/termo-auth.js?v=0717.2",
+    "assets/termo-auth.js?v=0910.3",
     "assets/termo-user-data.js?v=0731.1",
     "assets/qm-study-progress.js?v=0903.3",
     "assets/qm-gamification.js?v=0904.1"
@@ -2459,9 +2459,9 @@
           </div>
         </div>
         <div class="header-tools" data-termo-header-tools aria-label="Primary actions">
-          <a href="#" class="termo-auth-trigger index-back-button" data-termo-auth-button="true" aria-label="Open sign-in options to save your page bookmark">
-            <i class="fa-solid fa-bookmark"></i>
-            <span>Save progress</span>
+          <a href="#" class="termo-auth-trigger index-back-button" data-termo-auth-button="true" aria-label="Sign in or open account options">
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>Sign in</span>
           </a>
           <a href="mailto:?subject=Quantum%20Mechanics&body=See%20this%20interactive%20Quantum%20Mechanics%20book.%0Ahttps%3A%2F%2Fquantummechanicsbook.app%2F%3Fview%3Dchapters" class="termo-share-button termo-share-button--index index-back-button" data-termo-share-button="true" aria-label="Send this page to someone else">
             <i class="fa-solid fa-paper-plane"></i>
@@ -5540,7 +5540,7 @@
 
           if (!existingScript) {
             const script = document.createElement("script");
-            script.src = "assets/termo-auth.js?v=0717.2";
+            script.src = "assets/termo-auth.js?v=0910.3";
             script.async = true;
             script.onerror = function () {
               if (settled) return;

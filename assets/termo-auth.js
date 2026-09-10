@@ -734,10 +734,10 @@
     }
 
     setButtonHtml(state.triggerButton, `
-      <i class="fa-solid fa-bookmark"></i>
-      <span>Save progress</span>
+      <i class="fa-solid fa-right-to-bracket"></i>
+      <span>Sign in</span>
     `, "signed-out");
-    setButtonAttribute(state.triggerButton, "aria-label", "Open sign-in options to save progress");
+    setButtonAttribute(state.triggerButton, "aria-label", "Sign in or open account options");
   }
 
   function createFavoriteButton() {
