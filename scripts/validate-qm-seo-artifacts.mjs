@@ -1,12 +1,21 @@
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { readFile } from "node:fs/promises";
+import { readdir, readFile } from "node:fs/promises";
 import { isChapterPublished } from "../lib/qm-content-registry.mjs";
 const __filename = fileURLToPath(import.meta.url);
 const rootDir = path.resolve(path.dirname(__filename), "..");
 const siteUrl = "https://quantummechanicsbook.app";
 const errors = [];
 const read = (filePath) => readFile(path.join(rootDir, filePath), "utf8");
+async function collectHtmlFiles(dir, bucket = []) {
+  const entries = await readdir(dir, { withFileTypes: true });
+  for (const entry of entries) {
+    const fullPath = path.join(dir, entry.name);
+    if (entry.isDirectory()) await collectHtmlFiles(fullPath, bucket);
+    else if (entry.isFile() && entry.name.endsWith(".html")) bucket.push(fullPath);
+  }
+  return bucket;
+}
 const searchIndex = JSON.parse(await read("data/qm-published-search-index.json"));
 const sitemap = await read("sitemap.xml");
 const sitemapPages = await read("sitemap-pages.xml");
@@ -28,8 +37,15 @@ for (const chapterId of ["08", "09", "10", "11", "12", "13"]) {
   if (sitemapPages.includes(`/slides/chapter-${chapterId}/`) || sitemapApp.includes(`chapter=${chapterId}`)) errors.push(`Sitemap exposes Chapter ${chapterId}`);
 }
 if (!sitemapApp.includes(`<loc>${siteUrl}/search.html</loc>`)) errors.push("Search page missing from the app sitemap.");
-for (const filePath of ["index.html", "home.html", "search.html"]) {
-  if ((await read(filePath)).includes("https://qm-beta.vercel.app")) errors.push(`Temporary host remains in ${filePath}`);
+const publicHtmlPaths = [
+  "index.html",
+  "home.html",
+  "search.html",
+  "INSTRUCOES_SNIPPET.html",
+  ...(await collectHtmlFiles(path.join(rootDir, "slides"))).map((filePath) => path.relative(rootDir, filePath))
+];
+for (const filePath of publicHtmlPaths) {
+  if ((await read(filePath)).includes("https://qm-beta.vercel.app")) errors.push(`Temporary host remains in public HTML: ${filePath}`);
 }
 const searchHtml = await read("search.html");
 if (!searchHtml.includes('data/qm-published-search-index.json')) errors.push("Search page does not consume the generated published index.");

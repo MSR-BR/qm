@@ -328,10 +328,15 @@ function upsertSeoAssets(html, registryTag, seoTag) {
   return html.replace(/<\/head>/i, `${tags}\n</head>`);
 }
 
+async function normalizeTemporaryHost(filePath) {
+  const html = await readFile(filePath, "utf8");
+  const normalized = html.replaceAll("https://qm-beta.vercel.app", SITE_URL);
+  if (normalized !== html) await writeFile(filePath, normalized, "utf8");
+}
+
 async function processHtmlFile(filePath, topicMap) {
   const relativePath = toPosix(path.relative(rootDir, filePath));
   let html = await readFile(filePath, "utf8");
-  html = html.replaceAll("https://qm-beta.vercel.app", SITE_URL);
   const isSourceRedirect = relativePath.includes("/source/") && /<meta\s+http-equiv="refresh"|window\.location\.replace\(|<meta\s+name="robots"\s+content="noindex,follow"/i.test(html);
   if (isSourceRedirect) return;
   const meta = inferPageMeta(relativePath, html, topicMap);
@@ -367,7 +372,13 @@ async function writeSitemaps(topicMap) {
   await writeFile(path.join(rootDir, "sitemap.xml"), allUrlsXml + "\n", "utf8");
 }
 const topicMap = await loadTopicMap();
-const htmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "search.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))]
+const allPublicHtmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "search.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))];
+
+for (const filePath of allPublicHtmlFiles) {
+  await normalizeTemporaryHost(filePath);
+}
+
+const htmlFiles = allPublicHtmlFiles
   .filter((filePath) => {
     const chapterMatch = toPosix(path.relative(rootDir, filePath)).match(/^slides\/chapter-(\d{2})\//);
     return !chapterMatch || isChapterSeoEligible(chapterMatch[1]);

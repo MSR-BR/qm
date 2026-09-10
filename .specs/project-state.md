@@ -27,7 +27,7 @@
 - `011-search-seo-and-structured-content` — published in `acea642`.
 - `012-editorial-review-workflow` — published in `35885e4`.
 - `013-production-domain-and-measurement-foundation` — active; final domain, Supabase Auth allow-list, final-domain authenticated session, and legacy fallback policy are verified. The cleanup is ready for publication after an explicit CPD.
-- `014-canonical-seo-and-search-console` — published in `f7a368b`; Search Console domain ownership is verified and the sitemap is accepted with 96 discovered pages.
+- `014-canonical-seo-and-search-console` — initial domain and Search Console work published in `f7a368b`; ownership is verified and the sitemap is accepted with 96 discovered pages. A QUANTUM-branded static-artifact refresh is locally validated and awaiting explicit CPD.
 - `015-owner-detailed-review` — planned; owner-led manual acceptance and remediation before measurement or external audit.
 - `016-ga4-measurement-foundation` — planned; depends on C13–C15 and a user-supplied Measurement ID.
 - `017-external-user-quality-audit` — planned; depends on C13–C16 and C15 owner acceptance.
