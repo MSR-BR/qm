@@ -6,4 +6,4 @@
 - Public and authenticated failures are user-readable and do not reveal secrets or private data.
 - Core desktop and mobile journeys complete without blocking layout or interaction failures.
 - Accessibility and performance findings are documented with reproducible steps.
-- High-severity findings are fixed and rechecked before Ads readiness begins.
+- High-severity findings are fixed and rechecked before C18 Ads readiness begins.

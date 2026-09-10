@@ -1,17 +1,6 @@
 {
   "redirects": [
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "qm-beta.vercel.app"
-        }
-      ],
-      "destination": "https://quantummechanicsbook.app/:path*",
-      "permanent": true
-    },
-    {
       "source": "/slides/chapter-10/:path*",
       "destination": "/index.html?view=chapters&chapter=10",
       "permanent": false
@@ -40,23 +29,6 @@
       "source": "/slides/chapter-09/:path*",
       "destination": "/index.html?view=chapters&chapter=09",
       "permanent": false
-    }
-  ],
-  "headers": [
-    {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "host",
-          "value": "qm-beta.vercel.app"
-        }
-      ],
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex"
-        }
-      ]
     }
   ]
 }

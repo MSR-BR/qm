@@ -1,6 +1,6 @@
 # Tasks
 
-- [ ] Define external learner and administrator test accounts/authorization boundaries.
+- [ ] Confirm C15 owner acceptance and define external learner and administrator test accounts/authorization boundaries.
 - [ ] Execute automated route, asset, API, and responsive checks.
 - [ ] Execute guided public and authenticated user journeys.
 - [ ] Record defects and fix high-severity blockers.

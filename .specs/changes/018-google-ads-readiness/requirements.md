@@ -1,6 +1,6 @@
 # Requirements
 
-- Start only after C13 is verified, C14 high-severity issues are resolved, and the user approves the final public experience.
+- Start only after C13–C14 are verified, C15 owner review is accepted, C16 GA4 is verified, C17 high-severity issues are resolved, and the user approves the final public experience.
 - Define the campaign objective, target geography/language, audience, budget ceiling, conversion definitions, and landing pages with the user.
 - Use only the final canonical domain in ad destinations.
 - Verify GA4 measurement and, if approved, Google Ads conversion linkage/tags before launching spend.

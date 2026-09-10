@@ -26,11 +26,12 @@
 - `010-simulator-integration` — published in `cfe6cb6`.
 - `011-search-seo-and-structured-content` — published in `acea642`.
 - `012-editorial-review-workflow` — published in `35885e4`.
-- `013-production-domain-and-measurement-foundation` — active; final domain is attached and HTTPS-verified, with the Supabase Auth allow-list and post-deploy verification pending.
-- `014-canonical-seo-and-search-console` — active; Search Console domain ownership is verified and the initial sitemap was submitted. The Termo-proven simplified sitemap correction is ready for publication and re-submission.
-- `015-ga4-measurement-foundation` — planned; depends on C13 and a user-supplied Measurement ID.
-- `016-external-user-quality-audit` — planned; depends on C13–C15.
-- `017-google-ads-readiness` — planned; depends on C13–C16 and explicit launch approval.
+- `013-production-domain-and-measurement-foundation` — active; final domain, Supabase Auth allow-list, final-domain authenticated session, and legacy fallback policy are verified. The cleanup is ready for publication after an explicit CPD.
+- `014-canonical-seo-and-search-console` — published in `f7a368b`; Search Console domain ownership is verified and the sitemap is accepted with 96 discovered pages.
+- `015-owner-detailed-review` — planned; owner-led manual acceptance and remediation before measurement or external audit.
+- `016-ga4-measurement-foundation` — planned; depends on C13–C15 and a user-supplied Measurement ID.
+- `017-external-user-quality-audit` — planned; depends on C13–C16 and C15 owner acceptance.
+- `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
 
 ## Non-negotiable content contract
 
