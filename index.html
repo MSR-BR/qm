@@ -27,8 +27,8 @@
     };
   </script>
   <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
-  <link rel="stylesheet" href="assets/ai-exercises.css?v=0717.2">
-  <script defer src="assets/ai-exercises.js?v=0813.1"></script>
+  <link rel="stylesheet" href="assets/ai-exercises.css?v=0910.4">
+  <script defer src="assets/ai-exercises.js?v=0910.4"></script>
 
   <style>
     :root {
@@ -1392,6 +1392,18 @@
       color: #475569;
     }
 
+    .topic-badge.study-status {
+      border: 1px solid #DDE8F6;
+      background: #F3F7FC;
+      color: #5F6F82;
+    }
+
+    .topic-badge.study-status.is-studied {
+      border-color: #BFE4CC;
+      background: #DCFCE7;
+      color: #166534;
+    }
+
     .empty-state {
       border: 1px dashed #C8D2DF;
       background: #F7F9FC;
@@ -2309,6 +2321,7 @@
         gap: 8px;
       }
       .header-tools .termo-auth-trigger,
+      .header-tools .termo-points-trigger,
       .header-tools .termo-share-button {
         width: 100%;
         min-width: 0;
@@ -2317,6 +2330,7 @@
         font-size: 12.5px;
       }
       .header-tools .termo-auth-trigger span,
+      .header-tools .termo-points-trigger span,
       .header-tools .termo-share-button span {
         min-width: 0;
         overflow: hidden;
@@ -2459,6 +2473,10 @@
           </div>
         </div>
         <div class="header-tools" data-termo-header-tools aria-label="Primary actions">
+          <a href="index.html?view=journey" class="termo-points-trigger index-back-button" data-role="header-points-button" aria-label="Open points and study journey">
+            <i class="fa-solid fa-seedling"></i>
+            <span data-role="header-points-label">Points</span>
+          </a>
           <a href="#" class="termo-auth-trigger index-back-button" data-termo-auth-button="true" aria-label="Sign in or open account options">
             <i class="fa-solid fa-right-to-bracket"></i>
             <span>Sign in</span>
@@ -2530,6 +2548,16 @@
                     <span>Sign in with Google</span>
                   </a>
                 </div>
+              </div>
+            </section>
+
+            <section class="drawer-group" data-drawer-group="admin" id="adminDrawerGroup" hidden>
+              <button type="button" class="drawer-group-trigger" data-drawer-trigger="admin" aria-expanded="false" aria-controls="drawerPanelAdmin">
+                <span class="drawer-group-title"><i class="fa-solid fa-shield-halved"></i> Administration</span>
+                <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
+              </button>
+              <div class="drawer-group-panel" id="drawerPanelAdmin">
+                <div class="extras-list" id="adminList"></div>
               </div>
             </section>
 
@@ -3201,13 +3229,15 @@
         label: "Favorite items",
         icon: "fa-star",
         note: "Quick shortcuts to course items you starred."
-      },
+      }
+    ];
+
+    const adminViews = [
       ...(exerciseGenerationEnabled ? [{
         id: "validation-review",
         label: "Pending validations",
         icon: "fa-clipboard-check",
-        note: "Review reports submitted by users.",
-        requiresValidator: true
+        note: "Review reports submitted by learners."
       }] : [])
     ];
 
@@ -3217,6 +3247,7 @@
       "chapters",
       "simulators",
       ...personalViews.map((view) => view.id),
+      ...adminViews.map((view) => view.id),
       ...extraViews.map((view) => view.id)
     ]);
 
@@ -3225,6 +3256,8 @@
     const personalHint = document.getElementById("personalHint");
     const personalDrawerActions = document.getElementById("personalDrawerActions");
     const extrasList = document.getElementById("extrasList");
+    const adminDrawerGroup = document.getElementById("adminDrawerGroup");
+    const adminList = document.getElementById("adminList");
     const simulatorsChapterList = document.getElementById("simulatorsChapterList");
     const menuToggleButton = document.getElementById("menuToggleButton");
     const menuDrawerOverlay = document.getElementById("menuDrawerOverlay");
@@ -3235,6 +3268,8 @@
     const panelDescription = document.getElementById("panelDescription");
     const panelActions = document.getElementById("panelActions");
     const topicContainer = document.getElementById("topicContainer");
+    const headerPointsButton = document.querySelector('[data-role="header-points-button"]');
+    const headerPointsLabel = headerPointsButton?.querySelector('[data-role="header-points-label"]') || null;
     const params = new URLSearchParams(window.location.search);
     const requestedView = params.get("view");
 
@@ -3248,6 +3283,7 @@
       favoriteExercises: [],
       savedExercises: [],
       studyProgress: [],
+      gamificationProfile: null,
       validationReports: [],
       exerciseModal: null,
       selectedExerciseId: null,
@@ -3361,7 +3397,8 @@
     }
 
     function getDrawerSectionForView(viewId) {
-      if (viewId === "journey" || viewId === "saved" || viewId === "favorites" || viewId === "validation-review") return "personal";
+      if (viewId === "journey" || viewId === "saved" || viewId === "favorites") return "personal";
+      if (viewId === "validation-review") return "admin";
       if (viewId === "simulators") return "simulators";
       return "chapters";
     }
@@ -3696,8 +3733,6 @@
       personalDrawerActions.innerHTML = "";
 
       personalViews.forEach((view) => {
-        if (view.requiresValidator && !state.canReviewValidations) return;
-
         const button = document.createElement("button");
         button.type = "button";
         button.className = `personal-button${state.view === view.id ? " active" : ""}`;
@@ -3745,6 +3780,47 @@
         });
         personalDrawerActions.appendChild(loginButton);
       }
+    }
+
+    function renderAdminMenu() {
+      if (!adminDrawerGroup || !adminList) return;
+
+      adminList.innerHTML = "";
+      adminDrawerGroup.hidden = !state.canReviewValidations;
+      if (!state.canReviewValidations) return;
+
+      adminViews.forEach((view) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = `personal-button${state.view === view.id ? " active" : ""}`;
+        button.dataset.viewId = view.id;
+        button.innerHTML = `
+          <span class="extras-icon"><i class="fa-solid ${view.icon}"></i></span>
+          <span class="extras-text">
+            <span class="extras-label">${view.label}</span>
+            <span class="extras-note">${view.note}</span>
+          </span>
+        `;
+        button.addEventListener("click", function () {
+          closeDrawer();
+          void activateView(view.id);
+        });
+        adminList.appendChild(button);
+      });
+
+      const aiIndexLink = document.createElement("a");
+      aiIndexLink.className = "personal-button";
+      aiIndexLink.href = "docs/exercicios-ia-indice-referencias.html";
+      aiIndexLink.target = "_blank";
+      aiIndexLink.rel = "noopener noreferrer";
+      aiIndexLink.innerHTML = `
+        <span class="extras-icon"><i class="fa-solid fa-diagram-project"></i></span>
+        <span class="extras-text">
+          <span class="extras-label">AI exercise index</span>
+          <span class="extras-note">Technical reference for generated exercises and book sources.</span>
+        </span>
+      `;
+      adminList.appendChild(aiIndexLink);
     }
 
     function renderExtrasMenu() {
@@ -3840,6 +3916,15 @@
       }
     }
 
+    function setActiveAdmin(viewId) {
+      adminList?.querySelectorAll(".personal-button").forEach((button) => {
+        button.classList.toggle("active", button.dataset.viewId === viewId);
+      });
+      if (viewId) {
+        setDrawerSection("admin");
+      }
+    }
+
     function renderTopicGrid(topics) {
       setLandingMode(false);
       const grid = document.createElement("div");
@@ -3861,11 +3946,19 @@
         const relatedSimulators = Array.isArray(topic.simulators)
           ? topic.simulators.map((slug) => simulatorsBySlug[slug]).filter(Boolean)
           : [];
+        const record = state.studyProgress.find(function (entry) {
+          return normalizeProgressPath(entry.page_path) === normalizeProgressPath(topic.url);
+        });
+        const studied = record?.status === "completed";
+        const studyBadge = !isPlanned
+          ? `<div class="topic-badge study-status${studied ? " is-studied" : ""}"><i class="fa-solid ${studied ? "fa-circle-check" : "fa-circle"}" aria-hidden="true"></i> ${studied ? "Studied" : "Not studied"}</div>`
+          : "";
         card.innerHTML = `
           <div class="topic-card-top">
             <div class="topic-id">${escapeHtml(topic.id || "")}</div>
             <div class="topic-card__actions">
               ${isPlanned ? `<div class="topic-badge planned"><i class="fa-solid fa-screwdriver-wrench"></i> Planned</div>` : ""}
+              ${studyBadge}
               ${!isPlanned && topic.aiExercise ? `<div class="topic-badge ai-exercise"><i class="fa-solid fa-wand-magic-sparkles"></i> Exercise IA</div>` : ""}
               ${!isPlanned ? relatedSimulators.map((simulator) => `<a class="topic-badge simulator-link" href="${escapeHtml(simulator.standaloneUrl)}" target="_blank" rel="noopener noreferrer" aria-label="Open simulator ${escapeHtml(simulator.id)}: ${escapeHtml(simulator.title)}"><i class="fa-solid fa-flask" aria-hidden="true"></i> Simulator ${escapeHtml(simulator.id)}</a>`).join("") : ""}
             </div>
@@ -4645,6 +4738,37 @@
       }
     }
 
+    function normalizeProgressPath(value) {
+      return normalizeAppRelativeUrl(value, "/").replace(/^\/+/, "");
+    }
+
+    function updateHeaderPointsButton(profile) {
+      if (!headerPointsButton || !headerPointsLabel) return;
+      const points = Math.max(0, Number(profile?.xp_total || 0));
+      const label = points === 1 ? "1 point" : points > 1 ? points + " points" : "Points";
+      headerPointsLabel.textContent = label;
+      headerPointsButton.classList.toggle("has-points", points > 0);
+      headerPointsButton.setAttribute("aria-label", points > 0 ? "Open points and study journey. You have " + label + "." : "Open points and study journey");
+    }
+
+    async function refreshStudyAndRewards() {
+      if (!state.loggedIn) {
+        state.studyProgress = [];
+        state.gamificationProfile = null;
+        updateHeaderPointsButton(null);
+        return;
+      }
+
+      await ensureAuthModules();
+      const [progressResult, rewardsResult] = await Promise.all([
+        window.QMStudyProgress?.listProgress?.().catch(function () { return { ok: false, progress: [] }; }),
+        window.QMGamification?.listProfile?.().catch(function () { return { ok: false, profile: null }; })
+      ]);
+      state.studyProgress = progressResult?.ok ? (progressResult.progress || []) : [];
+      state.gamificationProfile = rewardsResult?.ok ? rewardsResult.profile : null;
+      updateHeaderPointsButton(state.gamificationProfile);
+    }
+
     async function canCurrentUserReviewValidations(session) {
       const email = String(session?.user?.email || "").trim().toLowerCase();
       if (!email || !window.TermoAuth?.fetchConfig) return false;
@@ -4672,8 +4796,10 @@
       state.loggedIn = Boolean(session?.user);
       state.canReviewValidations = await canCurrentUserReviewValidations(session);
       await refreshFavoriteCollections();
+      await refreshStudyAndRewards();
 
       renderPersonalMenu();
+      renderAdminMenu();
       renderExtrasMenu();
       await renderPanelActions();
     }
@@ -4994,11 +5120,12 @@
       });
       state.loggedIn = Boolean(session?.user);
       state.canReviewValidations = await canCurrentUserReviewValidations(session);
-      panelKicker.textContent = "Personal Area";
+      panelKicker.textContent = "Administration";
       panelTitle.textContent = "Editorial validation reports";
       panelDescription.textContent = "Review learner reports, record the decision, and preserve confirmed corrections for future section practice.";
       setActiveChapter(state.chapterId);
-      setActivePersonal("validation-review");
+      setActivePersonal("");
+      setActiveAdmin("validation-review");
       setActiveExtra("");
       panelActions.innerHTML = "";
 
@@ -5433,6 +5560,10 @@
           }
 
           if (state.view === "chapters") {
+            if (state.chapterId) {
+              await loadChapter(state.chapterId);
+              return;
+            }
             await renderPanelActions();
           }
         });
@@ -5440,10 +5571,23 @@
 
       async function bootIndexPage() {
         renderReleaseInfo();
+        updateHeaderPointsButton(null);
+        window.addEventListener("qm-gamification-change", function (event) {
+          const profile = event?.detail?.profile || null;
+          if (!profile) return;
+          state.gamificationProfile = {
+            xp_total: Number(profile.xpTotal || 0),
+            level: Number(profile.level || 1),
+            current_streak: Number(profile.currentStreak || 0),
+            best_streak: Number(profile.bestStreak || 0)
+          };
+          updateHeaderPointsButton(state.gamificationProfile);
+        });
         renderChapterMenu();
-      renderPersonalMenu();
-      renderExtrasMenu();
-      renderSimulatorsMenu();
+        renderPersonalMenu();
+        renderAdminMenu();
+        renderExtrasMenu();
+        renderSimulatorsMenu();
         setDrawerSection(state.drawerSection);
         bindAuthStateListener();
         await activateView(state.view, state.chapterId);

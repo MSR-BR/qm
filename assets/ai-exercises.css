@@ -137,6 +137,19 @@
   background:#EADAFE;
 }
 
+.termo-exercise__btn--favorite{
+  background:#FFFFFF;
+  color:#A16207;
+  border-color:#E8C985;
+}
+
+.termo-exercise__btn--favorite:hover:not(:disabled),
+.termo-exercise__btn--favorite.is-favorite{
+  background:#FFF7E8;
+  color:#7C2D12;
+  border-color:#D8A84B;
+}
+
 .termo-exercise__btn--validation{
   background:#FFFFFF;
   color:var(--exercise-accent);

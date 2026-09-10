@@ -971,6 +971,44 @@
     }
   }
 
+  function updateExerciseFavoriteButton(host) {
+    const button = host?.querySelector?.('[data-role="exercise-favorite"]');
+    const record = getHostState(host).saveResult?.record;
+    const ready = Boolean(record?.id);
+
+    if (!button) return;
+    button.hidden = !ready;
+    button.disabled = !ready;
+
+    if (!ready) return;
+    const isFavorite = Boolean(record.is_favorite);
+    button.classList.toggle("is-favorite", isFavorite);
+    button.innerHTML = `<i class="fa-${isFavorite ? "solid" : "regular"} fa-star" aria-hidden="true"></i> ${isFavorite ? "Saved to favorites" : "Save as favorite"}`;
+    button.setAttribute("aria-label", isFavorite ? "Remove this exercise from favorites" : "Save this exercise as favorite");
+    button.setAttribute("title", isFavorite ? "Remove from favorites" : "Save as favorite");
+  }
+
+  async function toggleExerciseFavorite(host) {
+    const hostState = getHostState(host);
+    const record = hostState.saveResult?.record;
+    const button = host?.querySelector?.('[data-role="exercise-favorite"]');
+
+    if (!record?.id || !button || !window.TermoUserData?.updateFavorite) return;
+    try {
+      button.disabled = true;
+      const result = await window.TermoUserData.updateFavorite(record.id, !record.is_favorite);
+      if (!result?.ok) {
+        setSaveStatus(host, "Could not update this exercise favorite right now.", "error");
+        return;
+      }
+      hostState.saveResult.record = { ...record, ...result.record };
+      updateExerciseFavoriteButton(host);
+      setSaveStatus(host, hostState.saveResult.record.is_favorite ? "Exercise saved to favorites." : "Exercise removed from favorites.", "success");
+    } finally {
+      button.disabled = false;
+    }
+  }
+
   function syncValidationNoteVisibility(host) {
     ["statement", "solution"].forEach(function (scope) {
       const checked = host.querySelector(`input[name="${scope}-validation-${host.dataset.exerciseIdSuffix}"]:checked`);
@@ -1144,6 +1182,7 @@
 
           <button class="termo-exercise__btn" data-role="generate" type="button">New exercise</button>
           <button class="termo-exercise__btn termo-exercise__btn--secondary" data-role="toggle-solution" type="button" disabled>View solution</button>
+          <button class="termo-exercise__btn termo-exercise__btn--favorite" data-role="exercise-favorite" type="button" hidden disabled aria-label="Save this exercise as favorite" title="Save as favorite"><i class="fa-regular fa-star" aria-hidden="true"></i> Save as favorite</button>
         </div>
       </div>
 
@@ -1274,6 +1313,7 @@
     solutionPanel.style.display = "none";
     hostState.exercise = null;
     hostState.saveResult = null;
+    updateExerciseFavoriteButton(host);
     resetValidationForm(host);
     setMemoryStatus(host, "", "");
     await refreshValidationVisibility(host);
@@ -1347,6 +1387,7 @@
         mathContractOk: data.mathContractOk === true
       };
       hostState.saveResult = await persistExercise(host, buildExerciseRecord(ctx, cleanData, difficulty.value));
+      updateExerciseFavoriteButton(host);
       if (hostState.canValidate && Number(data.validationMemoryCount || 0) > 0) {
         setMemoryStatus(
           host,
@@ -1393,6 +1434,13 @@
     const validationToggle = host.querySelector('[data-role="toggle-validation"]');
     const validationPanel = host.querySelector('[data-role="validation-panel"]');
     const validationSubmit = host.querySelector('[data-role="submit-validation"]');
+    const favoriteButton = host.querySelector('[data-role="exercise-favorite"]');
+
+    if (favoriteButton) {
+      favoriteButton.addEventListener("click", function () {
+        void toggleExerciseFavorite(host);
+      });
+    }
 
     if (generateBtn) {
       generateBtn.addEventListener("click", function () {
