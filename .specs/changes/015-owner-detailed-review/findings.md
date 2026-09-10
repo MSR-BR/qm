@@ -10,7 +10,7 @@
 
 ## C15-002 — Administration menu for the responsible professor
 
-- **Status:** corrected locally; awaiting explicit CPD.
+- **Status:** published and production-verified in commit `8c7f2b0`.
 - **Observed:** the QM app contained the server-authorized editorial validation review, but exposed it incorrectly inside the learner Personal Area and did not present an Administration group for the responsible account.
 - **Correction:** added a dedicated `Administration` drawer group, shown only after the signed-in account is recognized in the public validator allow-list. It now includes `Pending validations` and the existing `AI exercise index` reference.
 - **Security:** client-side visibility is only a convenience; the validation API independently verifies the Supabase access token and allow-listed e-mail before returning or changing reports. Ratings and communication were intentionally not added because QM does not yet implement their corresponding data or delivery flows.
@@ -18,7 +18,7 @@
 
 ## C15-003 — Learner affordances and TERMO feature parity audit
 
-- **Status:** corrected locally; awaiting CPD.
+- **Status:** published and production-verified in commit `8c7f2b0`.
 - **Observed:** the QUANTUM database and secure endpoints already recorded section completion and points, but the header and section cards did not expose them consistently. The generated-exercise card also lacked an immediate favorite control.
 - **Correction:** the header now displays account points, published section cards show **Studied** or **Not studied**, and a generated exercise gains a favorite star after it is saved to the learner's account.
 - **Data protection:** all three controls use existing account-scoped storage; no browser-side authorization or new public write access was introduced.
