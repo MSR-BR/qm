@@ -4,7 +4,8 @@
   <script src="assets/qm-simulator-catalog.js?v=0814.1"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quantum Mechanics | Interactive Quantum Mechanics book</title>
+  <title>QUANTUM | Interactive Quantum Mechanics book</title>
+  <link rel="icon" type="image/svg+xml" href="assets/quantum-logo.svg" />
 
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin href="https://fonts.gstatic.com" rel="preconnect" />
@@ -95,6 +96,29 @@
     .header-main {
       min-width: 0;
       flex: 1;
+    }
+
+    .quantum-brandmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 10px;
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .quantum-brandmark img {
+      width: 46px;
+      height: 46px;
+      display: block;
+      border-radius: 13px;
+      box-shadow: 0 8px 22px rgba(24, 60, 44, 0.16);
+    }
+
+    .quantum-brandmark__word {
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-weight: 800;
+      letter-spacing: 0.12em;
     }
 
     .header-tools {
@@ -2403,14 +2427,14 @@
 <link rel="canonical" href="https://quantummechanicsbook.app/"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:type" content="website"/>
-<meta property="og:site_name" content="Quantum Mechanics"/>
-<meta property="og:title" content="Quantum Mechanics | Interactive Quantum Mechanics book"/>
+<meta property="og:site_name" content="QUANTUM"/>
+<meta property="og:title" content="QUANTUM | Interactive Quantum Mechanics book"/>
 <meta property="og:description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
 <meta property="og:url" content="https://quantummechanicsbook.app/"/>
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Quantum Mechanics | Interactive Quantum Mechanics book"/>
+<meta name="twitter:title" content="QUANTUM | Interactive Quantum Mechanics book"/>
 <meta name="twitter:description" content="Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF)."/>
-<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"Quantum Mechanics","url":"https://quantummechanicsbook.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://quantummechanicsbook.app/"}]</script>
+<script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"QUANTUM","alternateName":"Interactive Quantum Mechanics book","url":"https://quantummechanicsbook.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Interactive Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://quantummechanicsbook.app/"}]</script>
 <!-- termo-seo:end -->
 <script src="assets/qm-release.js"></script>
 <script src="assets/qm-content-registry.js?v=seo-20260909"></script>
@@ -2422,8 +2446,12 @@
     <header class="top-header">
       <div class="header-box">
         <div class="header-main">
+          <a class="quantum-brandmark" href="home.html" aria-label="Open the QUANTUM introduction">
+            <img src="assets/quantum-logo.svg" alt="QUANTUM logo" />
+            <span class="quantum-brandmark__word">QUANTUM</span>
+          </a>
           <div class="course-label">Living Book</div>
-          <h1 class="main-title">Quantum Mechanics</h1>
+          <h1 class="main-title">Interactive Quantum Mechanics</h1>
           <div class="metadata">
             <span><i class="fa-solid fa-user-tie"></i> Prof. Mario Reis</span>
             <span><i class="fa-solid fa-building-columns"></i> Institute of Physics — Fluminense Federal University</span>

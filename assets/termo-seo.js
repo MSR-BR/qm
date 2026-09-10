@@ -1,6 +1,7 @@
 (() => {
   const SITE_URL = "https://quantummechanicsbook.app";
-  const COURSE_TITLE = "Quantum Mechanics";
+  const APP_NAME = "QUANTUM";
+  const COURSE_TITLE = "Interactive Quantum Mechanics";
   const AUTHOR_NAME = "Prof. Mario Reis";
   const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
   const DEFAULT_DESCRIPTION = "Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).";
@@ -154,7 +155,7 @@
 
     if (PRIVATE_VIEWS.has(view)) {
       return {
-        title: `Personal area | ${COURSE_TITLE}`,
+        title: `Personal area | ${APP_NAME}`,
         description: "Personal area with favorites and study history for the interactive Quantum Mechanics book.",
         canonical: buildCanonicalForIndex("chapters", ""),
         robots: "noindex,nofollow,noarchive",
@@ -162,11 +163,11 @@
         jsonLd: {
           "@context": "https://schema.org",
           "@type": "WebPage",
-          name: `Personal area | ${COURSE_TITLE}`,
+          name: `Personal area | ${APP_NAME}`,
           description: "Personal study area.",
           isPartOf: {
             "@type": "WebSite",
-            name: COURSE_TITLE,
+            name: APP_NAME,
             url: SITE_URL
           },
           inLanguage: "en"
@@ -176,7 +177,7 @@
 
     if (view === "simulators") {
       return {
-        title: `Quantum Mechanics simulators | ${COURSE_TITLE}`,
+        title: `${APP_NAME} simulators | ${COURSE_TITLE}`,
         description: "Interactive Quantum Mechanics simulators, exercises, and supplementary learning resources.",
         canonical: buildCanonicalForIndex(view, chapterId),
         robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
@@ -184,13 +185,13 @@
         jsonLd: {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: `Quantum Mechanics simulators | ${COURSE_TITLE}`,
+          name: `${APP_NAME} simulators | ${COURSE_TITLE}`,
           description: "Collection of interactive Quantum Mechanics simulators.",
           url: buildCanonicalForIndex(view, chapterId),
           inLanguage: "en",
           isPartOf: {
             "@type": "WebSite",
-            name: COURSE_TITLE,
+            name: APP_NAME,
             url: SITE_URL
           }
         }
@@ -242,7 +243,7 @@
     }
 
     return {
-      title: `${COURSE_TITLE} | Interactive Quantum Mechanics book`,
+      title: `${APP_NAME} | Interactive Quantum Mechanics book`,
       description: DEFAULT_DESCRIPTION,
       canonical: buildCanonicalForIndex(view, chapterId),
       robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
@@ -251,7 +252,8 @@
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: COURSE_TITLE,
+          name: APP_NAME,
+          alternateName: COURSE_TITLE,
           url: SITE_URL,
           inLanguage: "en"
         },
@@ -286,7 +288,7 @@
 
     ensureMetaByProperty("og:locale").setAttribute("content", "en_US");
     ensureMetaByProperty("og:type").setAttribute("content", meta.ogType);
-    ensureMetaByProperty("og:site_name").setAttribute("content", COURSE_TITLE);
+    ensureMetaByProperty("og:site_name").setAttribute("content", APP_NAME);
     ensureMetaByProperty("og:title").setAttribute("content", meta.title);
     ensureMetaByProperty("og:description").setAttribute("content", meta.description);
     ensureMetaByProperty("og:url").setAttribute("content", meta.canonical);

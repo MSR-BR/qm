@@ -12,7 +12,8 @@ const dataDir = path.join(rootDir, "data");
 const SITE_URL = "https://quantummechanicsbook.app";
 const BUILD_DATE = new Date().toISOString().slice(0, 10);
 const SEO_ASSET_VERSION = `seo-${BUILD_DATE.replaceAll("-", "")}`;
-const COURSE_TITLE = "Quantum Mechanics";
+const APP_NAME = "QUANTUM";
+const COURSE_TITLE = "Interactive Quantum Mechanics";
 const AUTHOR_NAME = "Prof. Mario Reis";
 const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
 const DEFAULT_SITE_DESCRIPTION = "Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).";
@@ -185,7 +186,7 @@ function inferPageMeta(relativePath, html, topicMap) {
 
   if (isIndex) {
     return {
-      title: `${COURSE_TITLE} | Interactive Quantum Mechanics book`,
+      title: `${APP_NAME} | Interactive Quantum Mechanics book`,
       description: DEFAULT_SITE_DESCRIPTION,
       canonical: `${SITE_URL}/`,
       robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1",
@@ -194,7 +195,8 @@ function inferPageMeta(relativePath, html, topicMap) {
         {
           "@context": "https://schema.org",
           "@type": "WebSite",
-          name: COURSE_TITLE,
+          name: APP_NAME,
+          alternateName: COURSE_TITLE,
           url: `${SITE_URL}/`,
           inLanguage: "en"
         },
@@ -217,9 +219,9 @@ function inferPageMeta(relativePath, html, topicMap) {
     };
   }
 
-  if (isHome) return { title: COURSE_TITLE + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", canonical: SITE_URL + "/home.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: COURSE_TITLE + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", url: SITE_URL + "/home.html", inLanguage: "en" } };
+  if (isHome) return { title: APP_NAME + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", canonical: SITE_URL + "/home.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: APP_NAME + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", url: SITE_URL + "/home.html", inLanguage: "en" } };
 
-  if (isSearch) return { title: "Search reviewed content | " + COURSE_TITLE, description: "Search the reviewed sections of the interactive Quantum Mechanics book by Prof. Mario Reis.", canonical: SITE_URL + "/search.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: "Search reviewed content | " + COURSE_TITLE, url: SITE_URL + "/search.html", inLanguage: "en", potentialAction: { "@type": "SearchAction", target: SITE_URL + "/search.html?q={search_term_string}", "query-input": "required name=search_term_string" } } };
+  if (isSearch) return { title: "Search reviewed content | " + APP_NAME, description: "Search the reviewed sections of the interactive Quantum Mechanics book by Prof. Mario Reis.", canonical: SITE_URL + "/search.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: "Search reviewed content | " + APP_NAME, url: SITE_URL + "/search.html", inLanguage: "en", potentialAction: { "@type": "SearchAction", target: SITE_URL + "/search.html?q={search_term_string}", "query-input": "required name=search_term_string" } } };
 
   if (isInstructions) {
     return {
@@ -291,7 +293,7 @@ function buildSeoBlock(meta) {
     `<link rel="canonical" href="${escapeHtml(meta.canonical)}"/>`,
     `<meta property="og:locale" content="en_US"/>`,
     `<meta property="og:type" content="${escapeHtml(meta.ogType)}"/>`,
-    `<meta property="og:site_name" content="${escapeHtml(COURSE_TITLE)}"/>`,
+    `<meta property="og:site_name" content="${escapeHtml(APP_NAME)}"/>`,
     `<meta property="og:title" content="${escapeHtml(meta.title)}"/>`,
     `<meta property="og:description" content="${escapeHtml(meta.description)}"/>`,
     `<meta property="og:url" content="${escapeHtml(meta.canonical)}"/>`,
