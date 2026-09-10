@@ -1,18 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">QUANTUM matrix bracket Q</title>
-  <desc id="desc">A matrix-styled Q framed by quantum-state brackets.</desc>
-  <defs>
-    <linearGradient id="field" x1="62" y1="42" x2="450" y2="462" gradientUnits="userSpaceOnUse"><stop stop-color="#2F6B4F"/><stop offset="1" stop-color="#10281E"/></linearGradient>
-    <filter id="glow" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="12" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-  </defs>
-  <rect width="512" height="512" rx="112" fill="url(#field)"/>
-  <path d="M118 126h-49v260h49M394 126h49v260h-49" fill="none" stroke="#C9F0D7" stroke-linecap="round" stroke-linejoin="round" stroke-width="25"/>
-  <path d="M118 126H90M118 386H90M394 126h28M394 386h28" fill="none" stroke="#E9B96F" stroke-linecap="round" stroke-width="13"/>
-  <g fill="#F8FBF8" filter="url(#glow)">
-    <rect x="171" y="151" width="42" height="42" rx="10"/><rect x="221" y="151" width="42" height="42" rx="10"/><rect x="271" y="151" width="42" height="42" rx="10"/>
-    <rect x="146" y="201" width="42" height="42" rx="10"/><rect x="296" y="201" width="42" height="42" rx="10"/>
-    <rect x="146" y="251" width="42" height="42" rx="10"/><rect x="296" y="251" width="42" height="42" rx="10"/>
-    <rect x="171" y="301" width="42" height="42" rx="10"/><rect x="221" y="301" width="42" height="42" rx="10"/><rect x="271" y="301" width="42" height="42" rx="10"/><rect x="321" y="301" width="42" height="42" rx="10"/>
-  </g>
-  <g fill="#B9E4CC" opacity=".42"><rect x="221" y="201" width="42" height="42" rx="10"/><rect x="221" y="251" width="42" height="42" rx="10"/></g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M74 72H39v368h35M438 72h35v368h-35" fill="none" stroke="#2F6B4F" stroke-linecap="round" stroke-linejoin="round" stroke-width="23"/><path d="M74 72H54M74 440H54M438 72h20M438 440h20" fill="none" stroke="#E1AB56" stroke-linecap="round" stroke-width="11"/><circle cx="128" cy="128" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="192" cy="128" r="22" fill="#183C2C" opacity="1"/><circle cx="256" cy="128" r="22" fill="#183C2C" opacity="1"/><circle cx="320" cy="128" r="22" fill="#183C2C" opacity="1"/><circle cx="384" cy="128" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="128" cy="192" r="22" fill="#183C2C" opacity="1"/><circle cx="192" cy="192" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="256" cy="192" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="320" cy="192" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="384" cy="192" r="22" fill="#183C2C" opacity="1"/><circle cx="128" cy="256" r="22" fill="#183C2C" opacity="1"/><circle cx="192" cy="256" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="256" cy="256" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="320" cy="256" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="384" cy="256" r="22" fill="#183C2C" opacity="1"/><circle cx="128" cy="320" r="22" fill="#183C2C" opacity="1"/><circle cx="192" cy="320" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="256" cy="320" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="320" cy="320" r="22" fill="#183C2C" opacity="1"/><circle cx="384" cy="320" r="22" fill="#183C2C" opacity="1"/><circle cx="128" cy="384" r="15" fill="#B8D8C4" opacity=".5"/><circle cx="192" cy="384" r="22" fill="#183C2C" opacity="1"/><circle cx="256" cy="384" r="22" fill="#183C2C" opacity="1"/><circle cx="320" cy="384" r="22" fill="#183C2C" opacity="1"/><circle cx="384" cy="384" r="22" fill="#183C2C" opacity="1"/></svg>
