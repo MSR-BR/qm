@@ -2414,6 +2414,7 @@
 </script>
 <link rel="stylesheet" href="assets/termo-share.css?v=0714.3">
 <link rel="stylesheet" href="assets/termo-auth.css?v=0714.3">
+<link rel="stylesheet" href="assets/qm-rating.css?v=0910.1">
 <script>
 (function () {
   const scripts = [
@@ -2421,7 +2422,8 @@
     "assets/termo-auth.js?v=0910.3",
     "assets/termo-user-data.js?v=0731.1",
     "assets/qm-study-progress.js?v=0903.3",
-    "assets/qm-gamification.js?v=0904.1"
+    "assets/qm-gamification.js?v=0904.1",
+    "assets/qm-rating.js?v=0910.1"
   ];
 
   scripts.forEach(function (src) {
@@ -2476,6 +2478,10 @@
           <a href="index.html?view=journey" class="termo-points-trigger index-back-button" data-role="header-points-button" aria-label="Open points and study journey">
             <i class="fa-solid fa-seedling"></i>
             <span data-role="header-points-label">Points</span>
+          </a>
+                    <a href="https://books.google.com.br/books?id=vR1LEQAAQBAJ" class="index-back-button" target="_blank" rel="noopener noreferrer" aria-label="Open the book preview on Google Books">
+            <i class="fa-solid fa-book-open"></i>
+            <span>Book preview</span>
           </a>
           <a href="#" class="termo-auth-trigger index-back-button" data-termo-auth-button="true" aria-label="Sign in or open account options">
             <i class="fa-solid fa-right-to-bracket"></i>
@@ -3229,6 +3235,12 @@
         label: "Favorite items",
         icon: "fa-star",
         note: "Quick shortcuts to course items you starred."
+      },
+      {
+        id: "preferences",
+        label: "Privacy and email",
+        icon: "fa-user-shield",
+        note: "Manage consent and optional email updates."
       }
     ];
 
@@ -3238,7 +3250,19 @@
         label: "Pending validations",
         icon: "fa-clipboard-check",
         note: "Review reports submitted by learners."
-      }] : [])
+      }] : []),
+      {
+        id: "ratings",
+        label: "App ratings",
+        icon: "fa-star-half-stroke",
+        note: "Review learner ratings and comments."
+      },
+      {
+        id: "communication",
+        label: "Communication",
+        icon: "fa-envelope-circle-check",
+        note: "Test and prepare opt-in email campaigns."
+      }
     ];
 
     const extraViews = [];
@@ -3397,8 +3421,8 @@
     }
 
     function getDrawerSectionForView(viewId) {
-      if (viewId === "journey" || viewId === "saved" || viewId === "favorites") return "personal";
-      if (viewId === "validation-review") return "admin";
+      if (viewId === "journey" || viewId === "saved" || viewId === "favorites" || viewId === "preferences") return "personal";
+      if (viewId === "validation-review" || viewId === "ratings" || viewId === "communication") return "admin";
       if (viewId === "simulators") return "simulators";
       return "chapters";
     }
@@ -4985,6 +5009,106 @@
       topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + rewardSummary + achievementSummary + simulatorSummary + assessmentPlaceholder + chapterRows + '</section>';
     }
 
+    async function renderPreferences() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
+      panelKicker.textContent = "Personal Area";
+      panelTitle.textContent = "Privacy and email";
+      panelDescription.textContent = "Control optional account communication and record your acknowledgement of the current legal information.";
+      setActiveChapter(""); setActivePersonal("preferences"); setActiveExtra(""); panelActions.innerHTML = "";
+      if (!session?.access_token) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Sign in to manage your preferences.</strong><br />These choices are private to your account.</div>';
+        return;
+      }
+      topicContainer.innerHTML = '<div class="empty-state">Loading your preferences...</div>';
+      const response = await fetch("/api/qm-legal-preferences", { headers: { Authorization: "Bearer " + session.access_token } }).catch(function () { return null; });
+      const data = response?.ok ? await response.json() : null;
+      if (!data) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Preferences are not available yet.</strong><br />The private preferences migration must be applied in Supabase first.</div>';
+        return;
+      }
+      const accepted = Boolean(data.termsAcceptedAt && data.privacyAcknowledgedAt && data.termsVersion === data.termsCurrentVersion && data.privacyVersion === data.privacyCurrentVersion);
+      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-shield-heart"></i> Private account settings</span></div><h3 class="saved-card__title">Privacy and communication</h3><p class="saved-card__summary">Your contact preference is optional and can be changed at any time. We do not publish it.</p><form data-role="qm-preferences-form"><label class="qm-preference-option"><input type="checkbox" name="accept" ${accepted ? "checked disabled" : ""}> I have read the Terms and Privacy information for QUANTUM.</label><label class="qm-preference-option"><input type="checkbox" name="email" ${data.emailUpdatesOptedIn ? "checked" : ""}> Send me optional updates about QUANTUM.</label><p data-role="qm-preferences-status" aria-live="polite"></p><button class="saved-card__button saved-card__button--primary" type="submit">Save preferences</button></form></div></article></section>`;
+      const form = topicContainer.querySelector("[data-role=qm-preferences-form]");
+      form?.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const accept = form.elements.accept;
+        const email = form.elements.email;
+        const status = form.querySelector("[data-role=qm-preferences-status]");
+        if (!accepted && !accept.checked) {
+          status.textContent = "Please acknowledge the current Terms and Privacy information first.";
+          return;
+        }
+        status.textContent = "Saving...";
+        const saved = await fetch("/api/qm-legal-preferences", { method: "PUT", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ acceptDocuments: !accepted && Boolean(accept.checked), emailUpdatesOptedIn: Boolean(email.checked) }) }).catch(function () { return null; });
+        status.textContent = saved?.ok ? "Preferences saved." : "Could not save preferences now. Please try again.";
+      });
+    }
+
+    async function renderRatings() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
+      panelKicker.textContent = "Administration";
+      panelTitle.textContent = "App ratings";
+      panelDescription.textContent = "Private owner view of anonymous product feedback.";
+      setActiveChapter(""); setActivePersonal(""); setActiveAdmin("ratings"); setActiveExtra(""); panelActions.innerHTML = "";
+      if (!session?.access_token || !state.canReviewValidations) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>This area is restricted to the responsible account.</strong></div>';
+        return;
+      }
+      topicContainer.innerHTML = '<div class="empty-state">Loading ratings...</div>';
+      const response = await fetch("/api/qm-app-rating", { headers: { Authorization: "Bearer " + session.access_token } }).catch(function () { return null; });
+      const data = response?.ok ? await response.json() : null;
+      if (!data) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Ratings are not available yet.</strong><br />Apply the QUANTUM operational-parity migration first.</div>';
+        return;
+      }
+      const summary = data.summary || {};
+      const ratings = Array.isArray(data.ratings) ? data.ratings : [];
+      const rows = ratings.length ? ratings.map(function (item) {
+        return `<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">${"★".repeat(Math.max(1, Number(item.rating || 0)))}</span><span class="saved-chip">${escapeHtml(item.pagePath || "Home")}</span></div><p class="saved-card__summary">${escapeHtml(item.feedback || "No written comment.")}</p></div></article>`;
+      }).join("") : '<div class="empty-state">No ratings have been submitted yet.</div>';
+      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">${Number(summary.total || 0)} ratings</span><span class="saved-chip">Average ${Number(summary.average || 0)} / 5</span><span class="saved-chip">${Number(summary.withFeedback || 0)} comments</span></div><h3 class="saved-card__title">Learner feedback</h3><p class="saved-card__summary">Only the responsible account can access this aggregate and its comments.</p></div></article>${rows}</section>`;
+    }
+
+    async function renderCommunication() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
+      panelKicker.textContent = "Administration";
+      panelTitle.textContent = "Communication";
+      panelDescription.textContent = "Prepare consent-based email campaigns. Sending remains server-authorized and requires Resend configuration.";
+      setActiveChapter(""); setActivePersonal(""); setActiveAdmin("communication"); setActiveExtra(""); panelActions.innerHTML = "";
+      if (!session?.access_token || !state.canReviewValidations) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>This area is restricted to the responsible account.</strong></div>';
+        return;
+      }
+      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Opt-in campaign</h3><p class="saved-card__summary">Only accounts that accepted the current legal documents and opted in can receive a campaign.</p><form data-role="qm-campaign-form"><label>Subject<input required name="subject" maxlength="140"></label><label>Message<textarea required name="message" maxlength="5000"></textarea></label><label>Button label (optional)<input name="ctaLabel" maxlength="80"></label><label>Button URL (optional)<input name="ctaUrl" type="url"></label><label>Type SEND to confirm delivery to every opted-in recipient.<input name="confirmationText" autocomplete="off"></label><p data-role="qm-campaign-status" aria-live="polite"></p><div class="saved-card__actions"><button class="saved-card__button" type="button" data-role="qm-email-test">Send test email</button><button class="saved-card__button saved-card__button--primary" type="submit">Send campaign</button></div></form></div></article></section>`;
+      const form = topicContainer.querySelector("[data-role=qm-campaign-form]");
+      const status = form?.querySelector("[data-role=qm-campaign-status]");
+      form?.querySelector("[data-role=qm-email-test]")?.addEventListener("click", async function () {
+        status.textContent = "Sending test email...";
+        const response = await fetch("/api/qm-email-test", { method: "POST", headers: { Authorization: "Bearer " + session.access_token } }).catch(function () { return null; });
+        const data = response?.ok ? await response.json() : null;
+        status.textContent = data?.sent ? "Test email sent to the responsible address." : "Test could not be sent. Configure RESEND_API_KEY and verify the sender domain first.";
+      });
+      form?.addEventListener("submit", async function (event) {
+        event.preventDefault();
+        status.textContent = "Checking opt-in audience...";
+        const audienceResponse = await fetch("/api/qm-email-campaign", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ action: "audience" }) }).catch(function () { return null; });
+        const audience = audienceResponse?.ok ? await audienceResponse.json() : null;
+        const count = Number(audience?.totalEligible || 0);
+        if (!audience) { status.textContent = "Could not load the authorized audience."; return; }
+        const values = Object.fromEntries(new FormData(form).entries());
+        const response = await fetch("/api/qm-email-campaign", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ action: "send", ...values, audienceType: "all_opted_in", confirmRecipientCount: count }) }).catch(function () { return null; });
+        const data = response?.ok ? await response.json() : null;
+        status.textContent = data?.sent ? `Campaign sent to ${data.deliveredCount} recipient(s).` : "Campaign was not sent. Confirm SEND, review the recipient count, and configure Resend.";
+      });
+    }
+
+
     async function renderSavedExercises() {
       setLandingMode(false);
       panelKicker.textContent = "Personal Area";
@@ -5324,6 +5448,21 @@
 
       if (viewId === "favorites") {
         await renderFavorites();
+        return;
+      }
+
+      if (viewId === "preferences") {
+        await renderPreferences();
+        return;
+      }
+
+      if (viewId === "ratings") {
+        await renderRatings();
+        return;
+      }
+
+      if (viewId === "communication") {
+        await renderCommunication();
         return;
       }
 

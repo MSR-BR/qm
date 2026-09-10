@@ -25,11 +25,11 @@ C15 now connects the existing QM private progress/reward services to visible lea
 | Exercise validation report | Operational | Operational | Parity. |
 | Owner validation review | Operational | Secure API existed but was hidden in learner area | Dedicated **Administration** group for the allowed responsible account. |
 | AI exercise/source index | Operational | Existing reference page | Exposed from Administration. |
-| App ratings and owner ratings dashboard | Operational | Not implemented | Add rating table, RLS, server API, learner form, and owner dashboard together. |
-| Email test/campaign delivery | Operational | Not implemented | Add Resend-backed delivery, campaign records, recipient delivery log, and owner controls together. |
-| Legal preferences / consent | Operational | Static legal copy only | Add account-scoped preferences and an editable learner screen. |
-| Authenticated book-PDF delivery | Operational | Not implemented | Add only after the book PDF and access policy are defined. |
-| First-party analytics events | Operational | Vercel page analytics only | Add as part of C16 measurement work, with consent and retention policy. |
+| App ratings and owner ratings dashboard | Operational | Implemented in C16 | Anonymous rating prompt, service-only storage, and responsible-account dashboard. |
+| Email test/campaign delivery | Operational | Implemented in C16; sender configuration pending | Owner-only test/campaign handlers, opt-in audience selection, campaign and recipient logs. Requires a verified Resend sender and RESEND_API_KEY before any delivery can occur. |
+| Legal preferences / consent | Operational | Implemented in C16 | Account-scoped preferences, explicit acknowledgement, and editable learner screen. |
+| Book access | External preview link | Implemented in C16 | The app deliberately does not host or deliver a PDF. It links to the existing Google Books preview instead. |
+| First-party analytics events | Operational | Schema prepared; measurement configuration pending | GA4 measurement ID and an approved event/retention policy are required before collection is enabled. |
 | Canonical SEO, robots, sitemap, Search Console | Operational | Operational | Parity; sitemap accepted for the production domain. |
 
 ## Security findings
@@ -38,7 +38,7 @@ C15 now connects the existing QM private progress/reward services to visible lea
 - qm_gamification_profiles and qm_gamification_events are not writable from the browser. The reward endpoint verifies the Supabase access token, checks that the chapter item is published, and de-duplicates events server-side.
 - The administration drawer is a convenience only. The validation administration endpoint independently verifies the session and allowed e-mail on the server.
 - No authorization decision relies on editable user metadata.
-- No rating, campaign, or PDF button is being added before the associated backend and data protections exist.
+- Ratings and campaigns now use server-side authorization and restricted tables. Book access is deliberately an external Google Books preview, never a hosted PDF.
 
 ## C15 implementation record
 
@@ -50,10 +50,10 @@ C15 now connects the existing QM private progress/reward services to visible lea
 ## Required parity changes after C15
 
 1. **Rich learning journey parity:** missions, badges, level detail, assessment recovery, and daily challenge, backed by reviewed QM assessment content.
-2. **Ratings and feedback:** learner rating prompt plus owner dashboard, with account-owned data and moderation-safe aggregation.
-3. **Communication and legal preferences:** explicit preferences, test delivery, campaigns, recipient log, unsubscribe handling, and Resend/Cloudflare domain verification.
-4. **Authenticated book delivery:** only when the PDF, eligibility, and entitlement policy are approved.
-5. **First-party measurement:** GA4 plus a minimal consent-aware event model and operational dashboard.
+2. **Ratings and feedback:** completed in C16.
+3. **Communication and legal preferences:** completed in C16 at the application and database layers. Live delivery awaits only Resend sender-domain verification and RESEND_API_KEY in Vercel.
+4. **Book access:** deliberately completed as an external Google Books preview; no PDF delivery will be added.
+5. **First-party measurement:** schema is ready; GA4 measurement ID and an approved retention/event policy remain required before activating collection.
 6. **External quality audit:** authenticated and anonymous desktop/mobile test passes after the owner completes the detailed review.
 
 ## Acceptance evidence for this audit
