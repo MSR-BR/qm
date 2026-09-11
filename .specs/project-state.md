@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline: `cfe6cb6`.
+- Last published baseline: `86b2c2b` (2026-09-10).
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
@@ -32,6 +32,8 @@
 - `016-ga4-measurement-foundation` — planned; depends on C13–C15 and a user-supplied Measurement ID.
 - `017-external-user-quality-audit` — planned; depends on C13–C16 and C15 owner acceptance.
 - `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
+- `019-operational-parity-completion` — published in `86b2c2b`; live email delivery remains safely inactive until Resend sender verification and `RESEND_API_KEY` are configured.
+- `020-po-magico-governance-baseline` — active; documentation-only governance baseline, no application behavior change.
 
 ## Non-negotiable content contract
 
