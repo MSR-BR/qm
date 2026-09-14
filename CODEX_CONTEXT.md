@@ -35,7 +35,7 @@ Canonical branch: `main`
 - New Supabase tables require RLS and migration evidence.
 - Never print, version, or expose secrets.
 - Resend delivery remains inactive until the sender domain and `RESEND_API_KEY` are configured.
-- GA4 activation requires an approved measurement ID, event contract, consent/retention decision, and validation.
+- The C16 GA4 event contract, opt-in policy, real Measurement ID, Vercel Production configuration, and 90-day first-party retention migration are approved and ready. Production deployment and DebugView validation remain before C16 closure.
 
 ## Change governance
 

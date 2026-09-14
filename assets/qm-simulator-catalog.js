@@ -1,3 +1,21 @@
+(function () {
+  if (window.__qmAnalyticsLoaderStarted) return;
+  window.__qmAnalyticsLoaderStarted = true;
+  if (document.querySelector('script[data-qm-analytics-loader]')) return;
+  const activeScript = document.currentScript;
+  let assetBase;
+  try {
+    assetBase = activeScript?.src ? new URL("./", activeScript.src) : new URL("/assets/", window.location.origin);
+  } catch (_error) {
+    assetBase = null;
+  }
+  if (!assetBase) return;
+  const script = document.createElement("script");
+  script.defer = true;
+  script.src = new URL("qm-analytics.js?v=0912.1", assetBase).toString();
+  script.dataset.qmAnalyticsLoader = "true";
+  document.head.appendChild(script);
+})();
 (() => {
   const entries = [
     { slug:"double-slit", chapter:1, sections:["1.2"], variant:1, title:"Double-Slit Interference", description:"Explore how wavelength, slit separation, slit width and screen distance shape an interference pattern.", sourceLabel:"Original simulator", source:"Quantum Mechanics book-app · Prof. Mario Reis", standaloneUrl:"simulators/classical.html?sim=double-slit", icon:"fa-water" },

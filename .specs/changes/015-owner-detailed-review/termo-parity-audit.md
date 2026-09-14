@@ -25,10 +25,10 @@ C15 now connects the existing QM private progress/reward services to visible lea
 | Exercise validation report | Operational | Operational | Parity. |
 | Owner validation review | Operational | Secure API existed but was hidden in learner area | Dedicated **Administration** group for the allowed responsible account. |
 | AI exercise/source index | Operational | Existing reference page | Exposed from Administration. |
-| App ratings and owner ratings dashboard | Operational | Implemented in C16 | Anonymous rating prompt, service-only storage, and responsible-account dashboard. |
-| Email test/campaign delivery | Operational | Implemented in C16; sender configuration pending | Owner-only test/campaign handlers, opt-in audience selection, campaign and recipient logs. Requires a verified Resend sender and RESEND_API_KEY before any delivery can occur. |
-| Legal preferences / consent | Operational | Implemented in C16 | Account-scoped preferences, explicit acknowledgement, and editable learner screen. |
-| Book access | External preview link | Implemented in C16 | The app deliberately does not host or deliver a PDF. It links to the existing Google Books preview instead. |
+| App ratings and owner ratings dashboard | Operational | Implemented in C19 | Anonymous rating prompt, service-only storage, and responsible-account dashboard. |
+| Email test/campaign delivery | Operational | Implemented in C19; sender configuration pending | Owner-only test/campaign handlers, opt-in audience selection, campaign and recipient logs. Requires a verified Resend sender and RESEND_API_KEY before any delivery can occur. |
+| Legal preferences / consent | Operational | Implemented in C19 | Account-scoped preferences, explicit acknowledgement, and editable learner screen. |
+| Book access | External preview link | Implemented in C19 | The app deliberately does not host or deliver a PDF. It links to the existing Google Books preview instead. |
 | First-party analytics events | Operational | Schema prepared; measurement configuration pending | GA4 measurement ID and an approved event/retention policy are required before collection is enabled. |
 | Canonical SEO, robots, sitemap, Search Console | Operational | Operational | Parity; sitemap accepted for the production domain. |
 
@@ -50,8 +50,8 @@ C15 now connects the existing QM private progress/reward services to visible lea
 ## Required parity changes after C15
 
 1. **Rich learning journey parity:** missions, badges, level detail, assessment recovery, and daily challenge, backed by reviewed QM assessment content.
-2. **Ratings and feedback:** completed in C16.
-3. **Communication and legal preferences:** completed in C16 at the application and database layers. Live delivery awaits only Resend sender-domain verification and RESEND_API_KEY in Vercel.
+2. **Ratings and feedback:** completed in C19.
+3. **Communication and legal preferences:** completed in C19 at the application and database layers. Live delivery awaits only Resend sender-domain verification and RESEND_API_KEY in Vercel.
 4. **Book access:** deliberately completed as an external Google Books preview; no PDF delivery will be added.
 5. **First-party measurement:** schema is ready; GA4 measurement ID and an approved retention/event policy remain required before activating collection.
 6. **External quality audit:** authenticated and anonymous desktop/mobile test passes after the owner completes the detailed review.

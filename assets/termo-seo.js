@@ -1,3 +1,21 @@
+(function () {
+  if (window.__qmAnalyticsLoaderStarted) return;
+  window.__qmAnalyticsLoaderStarted = true;
+  if (document.querySelector('script[data-qm-analytics-loader]')) return;
+  const activeScript = document.currentScript;
+  let assetBase;
+  try {
+    assetBase = activeScript?.src ? new URL("./", activeScript.src) : new URL("/assets/", window.location.origin);
+  } catch (_error) {
+    assetBase = null;
+  }
+  if (!assetBase) return;
+  const script = document.createElement("script");
+  script.defer = true;
+  script.src = new URL("qm-analytics.js?v=0912.1", assetBase).toString();
+  script.dataset.qmAnalyticsLoader = "true";
+  document.head.appendChild(script);
+})();
 (() => {
   const SITE_URL = "https://quantummechanicsbook.app";
   const APP_NAME = "QUANTUM";

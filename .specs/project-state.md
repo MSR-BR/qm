@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline: `86b2c2b` (2026-09-10).
+- Last published baseline: `e68e643` (2026-09-11).
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
@@ -26,14 +26,14 @@
 - `010-simulator-integration` — published in `cfe6cb6`.
 - `011-search-seo-and-structured-content` — published in `acea642`.
 - `012-editorial-review-workflow` — published in `35885e4`.
-- `013-production-domain-and-measurement-foundation` — active; final domain, Supabase Auth allow-list, final-domain authenticated session, and legacy fallback policy are verified. The cleanup is ready for publication after an explicit CPD.
-- `014-canonical-seo-and-search-console` — initial domain and Search Console work published in `f7a368b`; ownership is verified and the sitemap is accepted with 96 discovered pages. A QUANTUM-branded static-artifact refresh is locally validated and awaiting explicit CPD.
-- `015-owner-detailed-review` — planned; owner-led manual acceptance and remediation before measurement or external audit.
-- `016-ga4-measurement-foundation` — planned; depends on C13–C15 and a user-supplied Measurement ID.
+- `013-production-domain-and-measurement-foundation` — published; final domain, Supabase Auth allow-list, final-domain authenticated session, and legacy fallback policy are verified.
+- `014-canonical-seo-and-search-console` — published; ownership is verified, the sitemap is accepted with 96 discovered pages, and the QUANTUM-branded static artifacts are live.
+- `015-owner-detailed-review` — active; reported operational findings were corrected and the owner explicitly authorized C16. The exhaustive owner desktop/mobile checklist remains open before C17.
+- `016-ga4-measurement-foundation` — active; the privacy-first client/server implementation, event contract, real Measurement ID, Vercel Production configuration, 90-day QM Supabase migration, and local browser evidence are ready. Production deployment and GA4 DebugView verification remain open.
 - `017-external-user-quality-audit` — planned; depends on C13–C16 and C15 owner acceptance.
 - `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
 - `019-operational-parity-completion` — published in `86b2c2b`; live email delivery remains safely inactive until Resend sender verification and `RESEND_API_KEY` are configured.
-- `020-po-magico-governance-baseline` — active; documentation-only governance baseline, no application behavior change.
+- `020-po-magico-governance-baseline` — published in `e68e643`; documentation-only governance baseline, no application behavior change.
 
 ## Non-negotiable content contract
 

@@ -8,6 +8,13 @@
   const DEFAULT_VALIDATOR_EMAILS = ["marioreis@id.uff.br"];
   const EXERCISE_GENERATION_ENABLED = true;
 
+  function trackAnalytics(eventName, properties) {
+    const analytics = window.QMAnalytics || window.QmAnalytics;
+    if (analytics && typeof analytics.track === "function") {
+      analytics.track(eventName, properties || {});
+    }
+  }
+
   function sanitizeGeneratedExerciseText(value) {
     return String(value || "")
       .replace(/\b(?:as|according to|following)\s+(?:prof\.?|professor)\s+mario\s+reis,?\s*/gi, "")
@@ -1004,6 +1011,7 @@
       hostState.saveResult.record = { ...record, ...result.record };
       updateExerciseFavoriteButton(host);
       setSaveStatus(host, hostState.saveResult.record.is_favorite ? "Exercise saved to favorites." : "Exercise removed from favorites.", "success");
+      trackAnalytics("favorite_changed", { kind: "exercise", active: Boolean(hostState.saveResult.record.is_favorite) });
     } finally {
       button.disabled = false;
     }
@@ -1144,6 +1152,11 @@
         payload.summary || "Report sent for professor review.",
         "success"
       );
+      trackAnalytics("exercise_validation_submit", {
+        chapter_id: chapter.chapterId,
+        item_id: chapter.itemId,
+        has_reported_issue: statementStatus === "sim" || solutionStatus === "sim"
+      });
     } catch (error) {
       console.warn("Could not send the exercise validation.", error);
       setValidationStatus(host, error && error.message ? error.message : "Could not register the validation right now.", "error");
@@ -1386,6 +1399,11 @@
         mathContract: data.mathContract || null,
         mathContractOk: data.mathContractOk === true
       };
+      trackAnalytics("exercise_generate", {
+        chapter_id: chapter.chapterId,
+        item_id: chapter.itemId,
+        difficulty: difficulty.value
+      });
       hostState.saveResult = await persistExercise(host, buildExerciseRecord(ctx, cleanData, difficulty.value));
       updateExerciseFavoriteButton(host);
       if (hostState.canValidate && Number(data.validationMemoryCount || 0) > 0) {

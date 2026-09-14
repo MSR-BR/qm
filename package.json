@@ -23,6 +23,7 @@
     "deploy": "vercel --prod",
     "build:content-registry": "node scripts/build-qm-content-registry.mjs",
     "build:exercise-source-manifest": "node scripts/build-qm-exercise-source-manifest.mjs",
-    "audit:exercise-sources": "node scripts/audit-qm-exercise-source-governance.mjs"
+    "audit:exercise-sources": "node scripts/audit-qm-exercise-source-governance.mjs",
+    "test:analytics": "node --test tests/qm-analytics-handler.test.mjs tests/qm-analytics-client.test.mjs"
   }
 }

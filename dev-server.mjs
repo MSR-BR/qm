@@ -8,6 +8,7 @@ import {
   handleExerciseValidationRequest
 } from "./lib/exercicio-handler.mjs";
 import { handlePublicConfigRequest } from "./lib/public-config-handler.mjs";
+import { handleAnalyticsEventRequest } from "./lib/qm-analytics-handler.mjs";
 import { handleQmChapterQuiz } from "./lib/qm-chapter-quiz-handler.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -228,6 +229,22 @@ const server = http.createServer(async (req, res) => {
         error: "Nao foi possivel ler a requisicao de revisao.",
         details: String(error)
       });
+    }
+    return;
+  }
+
+  if (requestUrl === "/api/qm-analytics-event") {
+    try {
+      const body = req.method === "POST" ? await readJsonBody(req) : undefined;
+      const response = await handleAnalyticsEventRequest({
+        method: req.method,
+        headers: req.headers,
+        body,
+        env: process.env
+      });
+      sendJson(res, response.status, response.body);
+    } catch (_error) {
+      sendJson(res, 400, { error: "Could not read the analytics request." });
     }
     return;
   }

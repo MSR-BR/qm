@@ -1,0 +1,58 @@
+.qm-analytics-consent {
+  position: fixed;
+  z-index: 100000;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 22px;
+  align-items: center;
+  width: min(920px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 20px 22px;
+  border: 1px solid #b8d8c4;
+  border-top: 5px solid #2f6b4f;
+  border-radius: 18px;
+  background: #fff;
+  color: #27313f;
+  box-shadow: 0 18px 55px rgba(24, 60, 44, .2);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .18s ease, transform .18s ease;
+}
+.qm-analytics-consent.is-visible { opacity: 1; transform: translateY(0); }
+.qm-analytics-consent__eyebrow {
+  margin: 0 0 5px;
+  color: #8b5c21;
+  font-size: .74rem;
+  font-weight: 800;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+}
+.qm-analytics-consent h2 {
+  margin: 0 0 7px;
+  color: #2f6b4f;
+  font-size: 1.16rem;
+  line-height: 1.25;
+}
+.qm-analytics-consent p { margin: 0; line-height: 1.5; }
+.qm-analytics-consent__actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+.qm-analytics-consent__button {
+  min-height: 42px;
+  padding: 9px 15px;
+  border: 1px solid #b8d8c4;
+  border-radius: 999px;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+.qm-analytics-consent__button--secondary { background: #fff; color: #2f6b4f; }
+.qm-analytics-consent__button--primary { background: #2f6b4f; color: #fff; border-color: #2f6b4f; }
+.qm-analytics-consent__button:focus-visible { outline: 3px solid rgba(47, 107, 79, .24); outline-offset: 2px; }
+@media (max-width: 720px) {
+  .qm-analytics-consent { grid-template-columns: 1fr; gap: 14px; padding: 18px; }
+  .qm-analytics-consent__actions { justify-content: stretch; }
+  .qm-analytics-consent__button { flex: 1 1 150px; }
+}
