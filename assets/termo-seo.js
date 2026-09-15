@@ -23,6 +23,13 @@
   const AUTHOR_NAME = "Prof. Mario Reis";
   const PUBLISHER_NAME = "Institute of Physics — Fluminense Federal University";
   const DEFAULT_DESCRIPTION = "Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).";
+  if (!document.querySelector('link[rel~="icon"]')) {
+    const icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.type = "image/svg+xml";
+    icon.href = new URL("/assets/quantum-logo.svg", window.location.origin).toString();
+    document.head.appendChild(icon);
+  }
   const CHAPTER_META = {
     "01": {
       title: "Old quantum physics",

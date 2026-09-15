@@ -35,7 +35,7 @@ Canonical branch: `main`
 - New Supabase tables require RLS and migration evidence.
 - Never print, version, or expose secrets.
 - Resend delivery remains inactive until the sender domain and `RESEND_API_KEY` are configured.
-- The C16 GA4 event contract, opt-in policy, real Measurement ID, Vercel Production configuration, and 90-day first-party retention migration are approved and ready. Production deployment and DebugView validation remain before C16 closure.
+- C16 is deployed with the GA4 event contract, opt-in policy, real Measurement ID, 90-day first-party retention, production transport, first-party persistence, sanitization, and revocation verified. The only remaining external evidence gate is a signed-in visual confirmation in GA4 DebugView.
 
 ## Change governance
 

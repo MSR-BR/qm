@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline: `e68e643` (2026-09-11).
+- Last published baseline: C16 production release on `main` (2026-09-14).
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
@@ -29,7 +29,7 @@
 - `013-production-domain-and-measurement-foundation` — published; final domain, Supabase Auth allow-list, final-domain authenticated session, and legacy fallback policy are verified.
 - `014-canonical-seo-and-search-console` — published; ownership is verified, the sitemap is accepted with 96 discovered pages, and the QUANTUM-branded static artifacts are live.
 - `015-owner-detailed-review` — active; reported operational findings were corrected and the owner explicitly authorized C16. The exhaustive owner desktop/mobile checklist remains open before C17.
-- `016-ga4-measurement-foundation` — active; the privacy-first client/server implementation, event contract, real Measurement ID, Vercel Production configuration, 90-day QM Supabase migration, and local browser evidence are ready. Production deployment and GA4 DebugView verification remain open.
+- `016-ga4-measurement-foundation` — published; the privacy-first client/server implementation, real Measurement ID, 90-day QM Supabase migration, production consent journey, GA Collect transport, first-party persistence, sanitization, cleanup, and runtime logs are verified. Only the signed-in visual confirmation inside GA4 DebugView remains as an external evidence gate.
 - `017-external-user-quality-audit` — planned; depends on C13–C16 and C15 owner acceptance.
 - `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
 - `019-operational-parity-completion` — published in `86b2c2b`; live email delivery remains safely inactive until Resend sender verification and `RESEND_API_KEY` are configured.

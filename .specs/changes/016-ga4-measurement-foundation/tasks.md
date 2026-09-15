@@ -12,6 +12,7 @@
 - [x] Apply the retention migration to the correct QM Supabase project after temporary database access is available.
 - [x] Set the real Measurement ID in Vercel Production; keep Preview analytics disabled unless a separate test stream is approved.
 - [x] Set GA4 event-data retention to 14 months and keep Google Signals and advertising features disabled unless separately approved.
-- [ ] Verify the production stream and approved events in GA4 DebugView.
+- [x] Verify from a fresh production browser that consented debug traffic reaches Google Analytics Collect and the first-party endpoint.
+- [ ] Confirm the received event visually in the signed-in GA4 DebugView interface.
 - [x] Document event meanings, metric questions, exclusions, routing, fallbacks, and validation evidence.
 - [x] Obtain an explicit CPD request before committing or deploying.
