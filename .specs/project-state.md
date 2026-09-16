@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline: C16 production release on `main` (2026-09-14).
+- Last published baseline: C17 technical-audit release on `main` (2026-09-16), release `v20260916.2013`.
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
@@ -30,7 +30,7 @@
 - `014-canonical-seo-and-search-console` — published; ownership is verified, the sitemap is accepted with 96 discovered pages, and the QUANTUM-branded static artifacts are live.
 - `015-owner-detailed-review` — active; reported operational findings were corrected and the owner explicitly authorized C16. The exhaustive owner desktop/mobile checklist remains open; on 2026-09-16 the owner authorized the C17 technical audit to run first, without implying C15 acceptance.
 - `016-ga4-measurement-foundation` — published; the privacy-first client/server implementation, real Measurement ID, 90-day QM Supabase migration, production consent journey, GA Collect transport, first-party persistence, sanitization, cleanup, and runtime logs are verified. Only the signed-in visual confirmation inside GA4 DebugView remains as an external evidence gate.
-- `017-external-user-quality-audit` — technical audit in progress under the owner's explicit sequencing exception; local browser, repository, and predeployment production gates pass, and fixes are ready for CPD. Final authenticated owner review remains open.
+- `017-external-user-quality-audit` — technical audit published in `38bbd74` and `2e3176e`; final production route/API/browser/security/log gates pass. The owner's authenticated desktop/mobile review and C16 DebugView visual confirmation remain open.
 - `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
 - `019-operational-parity-completion` — published in `86b2c2b`; live email delivery remains safely inactive until Resend sender verification and `RESEND_API_KEY` are configured.
 - `020-po-magico-governance-baseline` — published in `e68e643`; documentation-only governance baseline, no application behavior change.

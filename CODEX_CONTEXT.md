@@ -36,6 +36,7 @@ Canonical branch: `main`
 - Never print, version, or expose secrets.
 - Resend delivery remains inactive until the sender domain and `RESEND_API_KEY` are configured.
 - C16 is deployed with the GA4 event contract, opt-in policy, real Measurement ID, 90-day first-party retention, production transport, first-party persistence, sanitization, and revocation verified. The only remaining external evidence gate is a signed-in visual confirmation in GA4 DebugView.
+- C17 technical QA is deployed: canonical routes, locked chapters, API boundaries, security headers, desktop/mobile browser journeys, keyboard focus, headings, MathJax, simulators, assessments, SEO idempotence, and runtime logs pass. The owner's final authenticated manual review remains open. C18 has not started.
 
 ## Change governance
 

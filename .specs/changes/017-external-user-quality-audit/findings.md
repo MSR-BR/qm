@@ -28,6 +28,20 @@
 - **Correction:** Vercel now configures `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin`, and a restrictive `Permissions-Policy`.
 - **Verification:** the production auditor enforces all four headers after deployment.
 
+## C17-005 — Non-idempotent alias-page SEO
+
+- **Severity:** high external-discovery regression.
+- **Observed:** six alias pages appended another Quantum Mechanics suffix every time the SEO generator ran; the generic fallback description also retained a mixed-language sentence.
+- **Correction:** the generator now strips all existing site-title suffixes before composing metadata, emits an English fallback description, and the validator rejects repeated suffixes and mixed-language remnants.
+- **Verification:** two consecutive SEO runs produced identical HTML hashes, and the 85-section SEO validation passed.
+
+## C17-006 — Legacy query parsing warnings
+
+- **Severity:** low runtime compatibility issue, but classified as error-level noise by Vercel.
+- **Observed:** audit calls to the quiz and validation-admin routes emitted Node's deprecated `url.parse()` warning through `req.query`.
+- **Correction:** both wrappers now derive query parameters from `req.url` with the WHATWG `URL` API.
+- **Verification:** 26 tests passed, both routes retained their expected HTTP behavior, and the final deployment returned no Vercel error logs.
+
 ## External acceptance gates
 
 These are not code defects and are intentionally not represented as complete:
