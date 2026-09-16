@@ -1071,7 +1071,7 @@ function renderPage(page, index) {
           <i class="fa-solid fa-layer-group"></i>
           Chapter 1 · Item ${escapeHtml(page.id)}
         </div>
-        <div class="hdr-title">${escapeHtml(page.title)}</div>
+        <h1 class="hdr-title">${escapeHtml(page.title)}</h1>
         <div class="hdr-sub">${escapeHtml(page.subtitle)}</div>
       </div>
       <div class="slide-num">${index + 1} / ${pages.length}</div>

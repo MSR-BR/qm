@@ -24,6 +24,9 @@
     "build:content-registry": "node scripts/build-qm-content-registry.mjs",
     "build:exercise-source-manifest": "node scripts/build-qm-exercise-source-manifest.mjs",
     "audit:exercise-sources": "node scripts/audit-qm-exercise-source-governance.mjs",
-    "test:analytics": "node --test tests/qm-analytics-handler.test.mjs tests/qm-analytics-client.test.mjs"
+    "test:analytics": "node --test tests/qm-analytics-handler.test.mjs tests/qm-analytics-client.test.mjs",
+    "test:operational": "node --test tests/qm-operational-handlers.test.mjs",
+    "audit:production": "node scripts/audit-qm-production.mjs",
+    "audit:browser": "node scripts/audit-qm-browser.mjs"
   }
 }
