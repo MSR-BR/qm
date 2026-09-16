@@ -45,7 +45,13 @@ const publicHtmlPaths = [
   ...(await collectHtmlFiles(path.join(rootDir, "slides"))).map((filePath) => path.relative(rootDir, filePath))
 ];
 for (const filePath of publicHtmlPaths) {
-  if ((await read(filePath)).includes("https://qm-beta.vercel.app")) errors.push(`Temporary host remains in public HTML: ${filePath}`);
+  const html = await read(filePath);
+  if (html.includes("https://qm-beta.vercel.app")) errors.push("Temporary host remains in public HTML: " + filePath);
+  const title = html.match(/<title>([\s\S]*?)<\/title>/i)?.[1].replace(/\s+/g, " ").trim() || "";
+  if (/\|\s*(?:Interactive\s+)?Quantum Mechanics\s*\|\s*(?:Interactive\s+)?Quantum Mechanics/i.test(title)) {
+    errors.push("Repeated Quantum Mechanics title suffix: " + filePath);
+  }
+  if (/Page do livro interativo|\bno Institute\b/i.test(html)) errors.push("Mixed-language SEO description: " + filePath);
 }
 const searchHtml = await read("search.html");
 if (!searchHtml.includes('data/qm-published-search-index.json')) errors.push("Search page does not consume the generated published index.");

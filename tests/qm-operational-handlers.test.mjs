@@ -5,6 +5,7 @@ import { handleLegalPreferencesRequest } from "../lib/qm-legal-preferences-handl
 import { handleEmailCampaignRequest } from "../lib/qm-email-campaign-handler.mjs";
 import { handleEmailTestRequest } from "../lib/qm-email-test-handler.mjs";
 import { handleQmChapterQuiz } from "../lib/qm-chapter-quiz-handler.mjs";
+import { queryFromRequestUrl } from "../lib/qm-request-query.mjs";
 
 const SERVER_ENV = {
   PUBLIC_SUPABASE_URL: "https://example.supabase.co",
@@ -192,4 +193,14 @@ test("chapter assessments expose reviewed questions without answer keys", async 
     env: {}
   });
   assert.equal(locked.status, 404);
+});
+
+test("request queries use the WHATWG URL parser", function () {
+  assert.deepEqual(queryFromRequestUrl("/api/qm-chapter-quiz?chapterId=01&history=1"), {
+    chapterId: "01",
+    history: "1"
+  });
+  assert.deepEqual(queryFromRequestUrl("/api/exercicio-validacao-admin?status=needs%20review"), {
+    status: "needs review"
+  });
 });

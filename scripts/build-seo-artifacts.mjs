@@ -98,6 +98,16 @@ function truncate(value, maxLength) {
   return `${text.slice(0, maxLength - 1).trimEnd()}...`;
 }
 
+function normalizeBaseTitle(value) {
+  let title = String(value || "").replace(/\s+/g, " ").trim();
+  let previous;
+  do {
+    previous = title;
+    title = title.replace(/\s*\|\s*(?:Interactive\s+)?Quantum Mechanics\s*$/i, "").trim();
+  } while (title !== previous);
+  return title || COURSE_TITLE;
+}
+
 async function collectHtmlFiles(dir, bucket = []) {
   const entries = await readdir(dir, { withFileTypes: true });
 
@@ -174,7 +184,7 @@ function getSourceCanonical(relativePath) {
 
 function inferPageMeta(relativePath, html, topicMap) {
   const titleMatch = html.match(/<title>([\s\S]*?)<\/title>/i);
-  const currentTitle = titleMatch ? titleMatch[1].replace(/\s+/g, " ").trim() : COURSE_TITLE;
+  const currentTitle = normalizeBaseTitle(titleMatch ? titleMatch[1] : COURSE_TITLE);
   const normalizedRelativePath = relativePath.replace(/^\/+/, "");
   const isIndex = normalizedRelativePath === "index.html";
   const isHome = normalizedRelativePath === "home.html";
@@ -245,7 +255,7 @@ function inferPageMeta(relativePath, html, topicMap) {
 
   const description = topic
     ? truncate(`${topic.note} Interactive material from the book ${COURSE_TITLE}, with teaching authorship by ${AUTHOR_NAME} (${PUBLISHER_NAME}).`, 170)
-    : coverMeta?.description || truncate(`${currentTitle}. Page do livro interativo ${COURSE_TITLE}, created by ${AUTHOR_NAME} no ${PUBLISHER_NAME}.`, 170);
+    : coverMeta?.description || truncate(`${currentTitle}. Page from the ${COURSE_TITLE} interactive book, created by ${AUTHOR_NAME} at ${PUBLISHER_NAME}.`, 170);
 
   const canonicalRelativePath = isSource ? getSourceCanonical(normalizedRelativePath) : normalizedRelativePath;
 
