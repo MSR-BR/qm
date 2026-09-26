@@ -32,3 +32,4 @@
 - Local disposable Supabase replay/reset: `VERIFIED WITH DOCUMENTED COMPATIBILITY HARNESS`; C21/C27 SQL, exact grants, 13-table RLS state, and database lint passed. Direct canonical replay remains blocked by two pre-existing migration-history defects recorded as `QM-SEC-006`.
 - Remote schema/advisors/two-identity proof: `NOT_CHECKED`; intentionally not run without authorization.
 - Production release decision: `BLOCKED` on 2026-09-25 for the accumulated C21/C22/C23/C27 candidate. The local fast check passed, but `QM-SEC-001` and `QM-SEC-006` prevent push/deploy until the exact remote migration history and required database contract are reconciled and authorized.
+- Remote history evidence: a read-only `supabase migration list --linked` attempt using CLI `2.118.0` returned `403` for insufficient account privilege. No remote mutation occurred.
