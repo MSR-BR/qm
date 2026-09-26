@@ -1,0 +1,7 @@
+interface:
+  display_name: "Adaptive Learning Gamification"
+  short_description: "Design learning rewards and adaptive practice"
+  brand_color: "#2F7659"
+  default_prompt: "Use $adaptive-learning-gamification to design or audit this interactive book's learning journey, rewards, and adaptive practice."
+policy:
+  allow_implicit_invocation: true
