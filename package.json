@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "node dev-server.mjs",
     "dev:vercel": "vercel dev",
-    "check": "node scripts/check-content.mjs",
+    "check": "node scripts/check-content.mjs && node scripts/check-supabase-privileges.mjs",
     "extract:qm-book-corpus": "node scripts/extract-qm-book-corpus.mjs",
     "extract:book-sections": "node scripts/extract-qm-book-corpus.mjs",
     "build:book-topic-index": "node scripts/build-qm-book-topic-index.mjs",
@@ -27,6 +27,10 @@
     "test:analytics": "node --test tests/qm-analytics-handler.test.mjs tests/qm-analytics-client.test.mjs",
     "test:operational": "node --test tests/qm-operational-handlers.test.mjs",
     "audit:production": "node scripts/audit-qm-production.mjs",
-    "audit:browser": "node scripts/audit-qm-browser.mjs"
+    "audit:browser": "node scripts/audit-qm-browser.mjs",
+    "reconcile:learning-rewards": "node scripts/reconcile-qm-learning-rewards.mjs",
+    "audit:supabase:learning": "node scripts/audit-qm-learning-supabase.mjs",
+    "check:supabase-privileges": "node scripts/check-supabase-privileges.mjs",
+    "test:supabase-privileges": "node --test tests/qm-supabase-privilege-contract.test.mjs"
   }
 }

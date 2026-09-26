@@ -1,0 +1,34 @@
+{
+  "version": "2026-09-25.1",
+  "policy": "Explicit Data API reachability and least privilege; RLS is evaluated separately.",
+  "tables": [
+    { "name": "public.qm_saved_exercises", "consumers": ["authenticated browser"], "roles": { "authenticated": ["select", "insert", "update", "delete"] }, "rls": true, "ownerPolicy": "auth.uid() = user_id", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_exercise_validation_reports", "consumers": ["anonymous approved-memory reader", "authenticated reporter/admin", "authorized audit cleanup"], "roles": { "anon": ["select"], "authenticated": ["select", "insert", "update"], "service_role": ["delete"] }, "rls": true, "ownerPolicy": "approved public memory, own report, or validator allowlist", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_book_sources", "consumers": ["server source uploader/generator"], "roles": { "service_role": ["select", "insert", "update"] }, "rls": true, "ownerPolicy": "server only", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_study_progress", "consumers": ["authenticated browser", "server reconciliation reader"], "roles": { "authenticated": ["select", "insert", "update", "delete"], "service_role": ["select"] }, "rls": true, "ownerPolicy": "auth.uid() = user_id", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_gamification_profiles", "consumers": ["authenticated profile reader", "server reward RPC"], "roles": { "authenticated": ["select"], "service_role": ["select", "insert", "update"] }, "rls": true, "ownerPolicy": "auth.uid() = user_id for browser reads", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_gamification_events", "consumers": ["authenticated event reader", "server reward RPC/reconciliation"], "roles": { "authenticated": ["select"], "service_role": ["select", "insert"] }, "rls": true, "ownerPolicy": "auth.uid() = user_id for browser reads", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_chapter_quiz_attempts", "consumers": ["server chapter-assessment handler"], "roles": { "service_role": ["select", "insert"] }, "rls": true, "ownerPolicy": "server derives user from verified session", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_simulator_activity", "consumers": ["authenticated browser"], "roles": { "authenticated": ["select", "insert", "update"] }, "rls": true, "ownerPolicy": "auth.uid() = user_id", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_user_legal_preferences", "consumers": ["server legal-preferences and campaign handlers"], "roles": { "service_role": ["select", "insert", "update"] }, "rls": true, "ownerPolicy": "server derives user from verified session", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_email_campaigns", "consumers": ["server owner-only campaign handler"], "roles": { "service_role": ["select", "insert", "update"] }, "rls": true, "ownerPolicy": "owner authorization enforced by server", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_email_recipient_deliveries", "consumers": ["server owner-only campaign handler"], "roles": { "service_role": ["select", "insert", "update"] }, "rls": true, "ownerPolicy": "owner authorization enforced by server", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_app_ratings", "consumers": ["server anonymous-rating and owner-admin handler"], "roles": { "service_role": ["select", "insert", "update", "delete"] }, "rls": true, "ownerPolicy": "server boundary; owner auth for reads/deletes", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_analytics_events", "consumers": ["server analytics handler and retention job"], "roles": { "service_role": ["select", "insert"] }, "rls": true, "ownerPolicy": "server-only privacy-sanitized events", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" }
+  ],
+  "functions": [
+    { "name": "public.set_qm_saved_exercises_updated_at", "consumers": ["database trigger"], "roles": {}, "decision": "not exposed as RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.set_qm_exercise_validation_reports_updated_at", "consumers": ["database trigger"], "roles": {}, "decision": "not exposed as RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "private.is_qm_exercise_validator", "consumers": ["authenticated RLS policy", "server"], "roles": { "authenticated": ["execute"], "service_role": ["execute"] }, "decision": "private helper", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.set_qm_study_progress_updated_at", "consumers": ["database trigger"], "roles": {}, "decision": "not exposed as RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.set_qm_gamification_updated_at", "consumers": ["database trigger"], "roles": {}, "decision": "not exposed as RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.set_qm_user_legal_preferences_updated_at", "consumers": ["database trigger"], "roles": {}, "decision": "not exposed as RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.purge_qm_analytics_events", "consumers": ["server retention operation"], "roles": { "service_role": ["execute"] }, "decision": "server-only RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.enforce_qm_analytics_retention", "consumers": ["database trigger", "server maintenance"], "roles": { "service_role": ["execute"] }, "decision": "server-only; trigger remains functional", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.record_qm_section_completion_reward", "consumers": ["server reward handler and reconciliation"], "roles": { "service_role": ["execute"] }, "decision": "server-only atomic reward RPC", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" }
+  ],
+  "sequences": [
+    { "name": "public.qm_app_ratings_id_seq", "consumers": ["server rating insert"], "roles": { "service_role": ["usage", "select"] }, "decision": "identity sequence", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" },
+    { "name": "public.qm_analytics_events_id_seq", "consumers": ["server analytics insert"], "roles": { "service_role": ["usage", "select"] }, "decision": "identity sequence", "grantMigration": "20260925215027_explicit_data_api_privileges.sql" }
+  ]
+}
