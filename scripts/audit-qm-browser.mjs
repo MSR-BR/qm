@@ -158,6 +158,25 @@ const scenarios = [
     expected: ["Chapter assessments", "Start assessment"]
   },
   {
+    name: "index-minimum-width",
+    path: "/index.html?view=chapters",
+    width: 320,
+    height: 720,
+    expected: ["Interactive Quantum Mechanics", "Book preview", "Sign in", "Send"],
+    reducedMotion: true,
+    capture: true
+  },
+  {
+    name: "assessment-minimum-width-zoom",
+    path: "/assessments.html",
+    width: 320,
+    height: 720,
+    expected: ["Chapter assessments", "Reviewed chapter", "Start assessment"],
+    interaction: "document.documentElement.style.fontSize='200%'",
+    reducedMotion: true,
+    capture: true
+  },
+  {
     name: "journey-signed-out",
     path: "/index.html?view=journey",
     width: 1440,
@@ -292,6 +311,10 @@ try {
       height: scenario.height,
       deviceScaleFactor: 1,
       mobile: scenario.width < 600
+    });
+    await client.send("Emulation.setEmulatedMedia", {
+      media: "screen",
+      features: [{ name: "prefers-reduced-motion", value: scenario.reducedMotion ? "reduce" : "no-preference" }]
     });
     const load = client.once("Page.loadEventFired", 20000).catch(function () { return null; });
     await client.send("Page.navigate", { url: new URL(scenario.path, BASE_URL).toString() });

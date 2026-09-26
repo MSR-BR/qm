@@ -118,6 +118,29 @@ test("legal preferences require a verified learner and preserve explicit consent
   }
 });
 
+test("legal preferences default optional email updates to off", async function () {
+  const originalFetch = globalThis.fetch;
+  globalThis.fetch = async function (url) {
+    if (String(url).includes("/auth/v1/user")) {
+      return json({ id: "learner-1", email: "learner@example.com" });
+    }
+    return json([]);
+  };
+  try {
+    const response = await handleLegalPreferencesRequest({
+      method: "GET",
+      headers: { authorization: "Bearer learner-token" },
+      env: SERVER_ENV
+    });
+    assert.equal(response.status, 200);
+    assert.equal(response.body.emailUpdatesOptedIn, false);
+    assert.equal(response.body.termsAcceptedAt, "");
+    assert.equal(response.body.privacyAcknowledgedAt, "");
+  } finally {
+    globalThis.fetch = originalFetch;
+  }
+});
+
 test("email test delivery is admin-only and remains disabled without Resend", async function () {
   const originalFetch = globalThis.fetch;
   globalThis.fetch = async function () {

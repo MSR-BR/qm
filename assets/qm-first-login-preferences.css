@@ -1,0 +1,140 @@
+.qm-first-login-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1600;
+  display: none;
+  place-items: center;
+  padding: 20px;
+  background: rgba(17, 24, 39, 0.62);
+  backdrop-filter: blur(7px);
+}
+
+.qm-first-login-overlay.is-open { display: grid; }
+
+.qm-first-login-dialog {
+  width: min(100%, 620px);
+  max-height: min(92vh, 760px);
+  overflow: auto;
+  border: 1px solid #b8d8c4;
+  border-radius: 22px;
+  background: #fff;
+  color: #27313f;
+  box-shadow: 0 28px 72px rgba(15, 23, 42, 0.25);
+  font-family: "Inter", sans-serif;
+}
+
+.qm-first-login-header,
+.qm-first-login-body { padding: 22px; }
+
+.qm-first-login-header {
+  border-bottom: 1px solid #d7e9de;
+  background: #f0f7f3;
+}
+
+.qm-first-login-kicker {
+  margin: 0 0 6px;
+  color: #b03a2e;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.qm-first-login-title {
+  margin: 0;
+  color: #2f6b4f;
+  font-size: clamp(1.45rem, 5vw, 2rem);
+  line-height: 1.15;
+}
+
+.qm-first-login-copy {
+  margin: 0 0 16px;
+  color: #526476;
+  line-height: 1.58;
+}
+
+.qm-first-login-details {
+  margin: 12px 0;
+  border: 1px solid #d7e9de;
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: #fcfcfa;
+}
+
+.qm-first-login-details summary {
+  cursor: pointer;
+  color: #2f6b4f;
+  font-weight: 750;
+}
+
+.qm-first-login-details p { margin: 10px 0 0; line-height: 1.55; }
+
+.qm-first-login-option {
+  display: grid;
+  grid-template-columns: 24px 1fr;
+  gap: 10px;
+  align-items: start;
+  margin-top: 16px;
+  line-height: 1.48;
+  cursor: pointer;
+}
+
+.qm-first-login-option input {
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: #2f6b4f;
+}
+
+.qm-first-login-option--optional {
+  padding-top: 16px;
+  border-top: 1px solid #d7e9de;
+}
+
+.qm-first-login-note {
+  margin: 8px 0 0 34px;
+  color: #6d6258;
+  font-size: .88rem;
+  line-height: 1.45;
+}
+
+.qm-first-login-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.qm-first-login-button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid #8ebda1;
+  border-radius: 999px;
+  background: #fff;
+  color: #2f6b4f;
+  font: inherit;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.qm-first-login-button--primary { background: #2f6b4f; color: #fff; }
+.qm-first-login-button:disabled { opacity: .65; cursor: wait; }
+.qm-first-login-status { min-height: 1.45em; margin: 14px 0 0; color: #b03a2e; }
+
+.qm-first-login-dialog :focus-visible {
+  outline: 3px solid #f29f3d;
+  outline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .qm-first-login-overlay { padding: 10px; }
+  .qm-first-login-header,
+  .qm-first-login-body { padding: 18px; }
+  .qm-first-login-actions { display: grid; }
+  .qm-first-login-button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .qm-first-login-overlay,
+  .qm-first-login-dialog { scroll-behavior: auto; }
+}

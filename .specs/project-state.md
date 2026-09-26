@@ -34,6 +34,51 @@
 - `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
 - `019-operational-parity-completion` — published in `86b2c2b`; live email delivery remains safely inactive until Resend sender verification and `RESEND_API_KEY` are configured.
 - `020-po-magico-governance-baseline` — published in `e68e643`; documentation-only governance baseline, no application behavior change.
+- `021-authenticated-learning-flow-repair` — active; the local implementation and all local gates passed on 2026-09-24. The exact QM migration, dry-run/reconciliation, temporary-user Supabase audit, deployment, and authenticated production browser evidence remain pending; the pre-migration dry-run returned the expected 403 and changed no data.
+- `022-learner-interface-and-rendering-polish` — locally implemented and validated on 2026-09-25. Responsive header actions, English-only shared copy, the assessment UX/status lifecycle, favorite detail lookup/math rendering, and versioned first-login consent are complete locally. Optional email now defaults off; an unapplied local migration preserves explicit timestamped opt-ins while withdrawing only legacy implicit defaults. The 2026-09-25 CPD gate is `BLOCKED`: C21/C27 are not applied remotely and `QM-SEC-006` prevents a reproducible canonical migration run. A local commit may be prepared, but push/deploy remain withheld because pushing `main` may publish an application whose required database contract is absent.
+- `023-unified-learning-gamification-blueprint` — blueprint and reusable skill completed on 2026-09-23; the package is versioned under `.specs/blueprints/`, validated, and installed as a personal Codex skill. Project adoption is staged in C21, C22, and the canonical C28–C32 program; C24/C25 are superseded planning records.
+- `024-adaptive-study-journey-and-daily-practice` — superseded before execution by the smaller, auditable C28–C32 program. Its requirements were preserved and redistributed; it must not be executed as a competing implementation.
+- `025-learning-communication-and-reengagement` — superseded before execution by C32. Its consent, frequency, quiet-hours, unsubscribe, and non-coercion requirements were preserved.
+- `026-canonical-url-consolidation-and-search-console-validation` — planned from the 2026-09-23 Search Console notice; consolidates `/index.html` alternates into the canonical root-query routes and requires affected-URL inspection before validation.
+- `027-supabase-explicit-data-api-privileges` — locally implemented on 2026-09-25. The full table/function/sequence access contract, least-privilege migration, static drift gate, handler-operation tests, security profile, and rollback are recorded. A normalized disposable replay/reset proves the C21/C27 SQL, exact grants, RLS, and lint; direct canonical reset remains blocked by two older migration-history defects (`QM-SEC-006`). No remote migration, audit, or deploy occurred; history reconciliation and release proof remain separately authorized.
+- `028-unified-learning-contract-and-adapter` — planned; inventories and classifies every learning, activity, reward, assessment, simulator, and analytics event against the shared policy without changing production behavior.
+- `029-authoritative-learning-ledger-and-profile` — planned; completes the immutable ledger, derived profile, atomic/idempotent award paths, historical reconciliation, and own/cross-user security proof.
+- `030-adaptive-learning-modes-and-rewards` — planned; implements Daily Challenge, chapter assessment/review/retry, simulator evidence, concept scheduling, mechanism cards, missions, badges, and transparent next actions.
+- `031-learning-methodology-help-and-explainability` — planned; adds a stable public English Help page and contextual explanations of exercises, evidence, rewards, AI, privacy, and reporting.
+- `032-academic-evaluation-and-responsible-communication` — planned; separates learning/behavior/experience/fidelity/equity outcomes and implements affirmative-opt-in communication with caps, quiet hours, unsubscribe, and non-coercive evaluation.
+
+## Canonical execution order
+
+### Local product and learning sequence
+
+```text
+C22 learner-facing repairs
+  -> C28 contract and adapter
+  -> C29 authoritative ledger/profile
+  -> C30 adaptive modes and rewards
+  -> C31 methodology Help and C32 evaluation/communication
+```
+
+C29 cannot pass its release gate until C21/C27 and `QM-SEC-006` have an authorized migration-history reconciliation and remote proof. Local specification, deterministic code, and disposable validation may proceed without remote mutation.
+
+### Independent discovery sequence
+
+```text
+C26 canonical URL consolidation
+  -> authorized CPD
+  -> Search Console validation
+  -> C18 Google Ads readiness only after the owner's detailed C15 review
+```
+
+### Remote-only gates
+
+- C21 migration/reconciliation/audit/deploy.
+- C27 explicit-grant migration and post-migration proof.
+- Any migration-history repair, provider configuration, disposable remote data, Search Console mutation, Git push, or deployment.
+
+Each requires explicit authorization for the exact action. The final TERMO/QUANTUM parity audit starts only after both independent programs are stable.
+
+C24 and C25 are historical planning records, not executable competitors. C23, `.specs/blueprints/adaptive-learning-gamification/`, and `.specs/shared/learning-gamification-contract.md` are the methodological authorities for C22 and C28–C32. The Pó Mágico security profile and risk register apply concurrently and cannot be overridden by a product Change.
 
 ## Non-negotiable content contract
 
@@ -41,3 +86,4 @@
 - Math content must render with MathJax. Long dynamic LaTeX must use `String.raw`.
 - Preserve the slide/card teaching pattern used by the reviewed chapters.
 - A `cpd` request means commit, push to `main`, and production deployment; no commit otherwise.
+- Remote database mutations, provider changes, audits with disposable remote data, Git push, and deploy require explicit authorization for that exact action.

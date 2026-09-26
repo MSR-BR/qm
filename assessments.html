@@ -1,1 +1,83 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Chapter assessments · Quantum Mechanics</title><link rel="stylesheet" href="assets/ai-exercises.css"><script src="assets/termo-auth.js"></script></head><body><main class="termo-exercise" style="max-width:900px;margin:40px auto;padding:24px" id="app"><h1>Chapter assessments</h1><p>Choose a reviewed chapter. Questions are linked to the relevant course page. Report any possible issue after submitting.</p><select id="chapter"><option value="01">Chapter 1</option><option value="02">Chapter 2</option><option value="03">Chapter 3</option><option value="04">Chapter 4</option><option value="05">Chapter 5</option><option value="06">Chapter 6</option><option value="07">Chapter 7</option></select> <button id="load">Start assessment</button><div id="content"></div></main><script>function trackAssessmentEvent(name,properties){const analytics=window.QMAnalytics||window.QmAnalytics;if(analytics&&typeof analytics.track==="function")analytics.track(name,properties||{})}const c=document.querySelector('#content'),sel=document.querySelector('#chapter');let quiz,result;async function reportQuiz(){let session=await window.TermoAuth?.getSession?.();if(!session?.access_token)return document.querySelector('#reportStatus').textContent='Please sign in first.';let statement=quiz.questions.map(q=>q.prompt+' '+Object.entries(q.options).map(([k,v])=>k+') '+v).join(' ')).join('\n');let solution=result.feedback.map(f=>f.explanation+' Review: '+f.reviewTitle).join('\n');let r=await fetch('/api/exercicio-validacao',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},body:JSON.stringify({chapterId:quiz.chapterId,itemId:(result.feedback.find(f=>!f.correct)||result.feedback[0]).reviewItem,pagePath:(result.feedback.find(f=>!f.correct)||result.feedback[0]).reviewPath,pageUrl:(result.feedback.find(f=>!f.correct)||result.feedback[0]).reviewPath,pageTitle:(result.feedback.find(f=>!f.correct)||result.feedback[0]).reviewTitle,pageContent:quiz.title,difficulty:'medium',exerciseId:quiz.quizKey,exerciseTitle:quiz.title,statement,solution,statementStatus:'sim',solutionStatus:'nao_sei',statementNote:'Possible issue reported from chapter assessment. See the learner report context.',solutionNote:'',language:'en'})});let p=await r.json();document.querySelector('#reportStatus').textContent=p.summary||p.error||'Report sent.';}function e(x){return String(x).replace(/[&<>]/g,s=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[s]))}async function load(){let r=await fetch('/api/qm-chapter-quiz',{method:'GET',headers:{'Content-Type':'application/json'},body:undefined});if(!r.ok){c.textContent='Assessment service is unavailable.';return}let d=await r.json();quiz=d.quiz;trackAssessmentEvent("assessment_start",{chapter_id:quiz.chapterId,question_count:Array.isArray(quiz.questions)?quiz.questions.length:0});c.innerHTML='<h2>'+e(quiz.title)+'</h2><form id="f">'+quiz.questions.map((q,i)=>'<fieldset><legend>'+ (i+1)+'. '+e(q.prompt)+'</legend>'+Object.entries(q.options).map(([k,v])=>'<label><input required type="radio" name="'+q.questionId+'" value="'+k+'"> '+k.toUpperCase()+'. '+e(v)+'</label><br>').join('')+'</fieldset>').join('')+'<button>Submit assessment</button></form>';document.querySelector('#f').onsubmit=submit}async function submit(ev){ev.preventDefault();let session=await window.TermoAuth?.getSession?.();if(!session?.access_token){c.insertAdjacentHTML('beforeend','<p>Please sign in with Google before submitting.</p>');return}let answers=quiz.questions.map(q=>({questionId:q.questionId,choice:new FormData(ev.target).get(q.questionId)}));let r=await fetch('/api/qm-chapter-quiz',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+session.access_token},body:JSON.stringify({chapterId:quiz.chapterId,answers})});let d=await r.json();if(!r.ok){c.insertAdjacentHTML('beforeend','<p>'+e(d.error||'Could not submit.')+'</p>');return}result=d.result;trackAssessmentEvent("assessment_complete",{chapter_id:quiz.chapterId,question_count:Array.isArray(quiz.questions)?quiz.questions.length:0,correct_count:Array.isArray(d.result.feedback)?d.result.feedback.filter(x=>x.correct).length:0,score_percent:Number(d.result.score||0)});c.innerHTML='<h2>'+d.result.score+'%</h2>'+d.result.feedback.map(x=>'<p>'+ (x.correct?'Correct.':'Review: <a href="'+e(x.reviewPath)+'">'+e(x.reviewTitle)+'</a>')+'</p>').join('')+'<details><summary>Report a possible assessment error</summary><p>Use the existing private professor-review queue.</p><button id=\"report\">Report this assessment</button><span id=\"reportStatus\"></span></details>';document.querySelector('#report').onclick=reportQuiz}document.querySelector('#load').onclick=async()=>{let r=await fetch('/api/qm-chapter-quiz?chapterId='+sel.value);let d=await r.json();quiz=d.quiz;trackAssessmentEvent("assessment_start",{chapter_id:quiz.chapterId,question_count:Array.isArray(quiz.questions)?quiz.questions.length:0});c.innerHTML='<h2>'+e(quiz.title)+'</h2><form id="f">'+quiz.questions.map((q,i)=>'<fieldset><legend>'+ (i+1)+'. '+e(q.prompt)+'</legend>'+Object.entries(q.options).map(([k,v])=>'<label><input required type="radio" name="'+q.questionId+'" value="'+k+'"> '+k.toUpperCase()+'. '+e(v)+'</label><br>').join('')+'</fieldset>').join('')+'<button>Submit assessment</button></form>';document.querySelector('#f').onsubmit=submit};</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Chapter assessments · QUANTUM</title>
+  <meta name="description" content="Reviewed chapter assessments for the QUANTUM interactive Quantum Mechanics book.">
+  <link rel="icon" type="image/svg+xml" href="assets/quantum-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Lora:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@7.2.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/termo-auth.css?v=0714.3">
+  <link rel="stylesheet" href="assets/qm-first-login-preferences.css?v=0925.1">
+  <link rel="stylesheet" href="assets/qm-assessments.css?v=0925.1">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(','\\)']],
+        displayMath: [['\\[','\\]']],
+        packages: {'[+]': ['ams']}
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+  <script defer src="assets/termo-auth.js?v=0910.3"></script>
+  <script defer src="assets/qm-first-login-preferences.js?v=0925.1"></script>
+  <script defer src="assets/qm-assessments.js?v=0925.1"></script>
+</head>
+<body>
+  <a class="skip-link" href="#assessmentContent">Skip to assessment</a>
+  <header class="assessment-header">
+    <div class="assessment-header__inner">
+      <a class="assessment-brand" href="index.html?view=journey" aria-label="Back to QUANTUM study journey">
+        <img src="assets/quantum-logo.svg" alt="">
+        <span>QUANTUM</span>
+      </a>
+      <a class="assessment-back" href="index.html?view=journey">
+        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i>
+        Study journey
+      </a>
+    </div>
+  </header>
+
+  <main class="assessment-layout" id="assessmentContent">
+    <section class="assessment-intro" aria-labelledby="assessmentTitle">
+      <p class="assessment-kicker">Reviewed practice</p>
+      <h1 id="assessmentTitle">Chapter assessments</h1>
+      <p>Check your understanding of a reviewed chapter. This is a chapter assessment, not the Daily Challenge. Every question links back to its source section for guided review.</p>
+      <div class="assessment-controls">
+        <label for="chapter">Reviewed chapter</label>
+        <div class="assessment-controls__row">
+          <select id="chapter" name="chapter">
+            <option value="01">Chapter 1</option>
+            <option value="02">Chapter 2</option>
+            <option value="03">Chapter 3</option>
+            <option value="04">Chapter 4</option>
+            <option value="05">Chapter 5</option>
+            <option value="06">Chapter 6</option>
+            <option value="07">Chapter 7</option>
+          </select>
+          <button class="assessment-button assessment-button--primary" id="load" type="button">
+            <i class="fa-solid fa-play" aria-hidden="true"></i>
+            Start assessment
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <p class="assessment-page-status" id="pageStatus" role="status" aria-live="polite"></p>
+    <section id="content" aria-live="off"></section>
+  </main>
+
+  <footer class="assessment-footer">
+    <a href="index.html?view=chapters">Chapters</a>
+    <span aria-hidden="true">•</span>
+    <a href="index.html?view=preferences">Privacy and communication</a>
+    <span aria-hidden="true">•</span>
+    <a href="mailto:marioreis@id.uff.br">Support</a>
+  </footer>
+</body>
+</html>

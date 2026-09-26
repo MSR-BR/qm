@@ -84,11 +84,11 @@
   }
 
   function buildIndexBlurb() {
-    return "Veja este interactive Quantum Mechanics book.";
+    return "Explore this interactive Quantum Mechanics book.";
   }
 
   function buildPageBlurb() {
-    const title = sanitizeTitle(firstText(TITLE_SELECTORS) || document.title || "este material");
+    const title = sanitizeTitle(firstText(TITLE_SELECTORS) || document.title || "this material");
     return `See this interactive material: ${title}.`;
   }
 
@@ -311,7 +311,8 @@
   window.TermoShare = {
     autoMount,
     refresh,
-    getSharePayload
+    getSharePayload,
+    shareCurrentPage
   };
 
   if (document.readyState === "loading") {

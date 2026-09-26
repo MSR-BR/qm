@@ -1,0 +1,54 @@
+.header-tools .header-action {
+  appearance: none;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid rgba(47, 107, 79, 0.24);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue, #2f6b4f);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: "Inter", sans-serif;
+  font-size: .88rem;
+  font-weight: 750;
+  line-height: 1.15;
+  text-decoration: none;
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 0 6px 16px rgba(47, 107, 79, 0.08);
+}
+
+.header-tools .header-action:hover {
+  transform: none;
+  background: #e8f4ed;
+  border-color: #8ebda1;
+  box-shadow: 0 8px 18px rgba(47, 107, 79, 0.11);
+}
+
+.header-tools .header-action:focus-visible {
+  outline: 3px solid #f29f3d;
+  outline-offset: 3px;
+}
+
+.header-tools .header-action.has-points {
+  background: #eef9f1;
+  border-color: #8ebda1;
+}
+
+@media (max-width: 520px) {
+  .header-tools .header-action {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 9px 10px;
+    font-size: 12.5px;
+  }
+
+  .header-tools .header-action span {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

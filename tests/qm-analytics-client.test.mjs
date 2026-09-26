@@ -8,7 +8,7 @@ const seoSource = await readFile(new URL("../assets/termo-seo.js", import.meta.u
 const simulatorCatalogSource = await readFile(new URL("../assets/qm-simulator-catalog.js", import.meta.url), "utf8");
 const exerciseSource = await readFile(new URL("../assets/ai-exercises.js", import.meta.url), "utf8");
 const ratingSource = await readFile(new URL("../assets/qm-rating.js", import.meta.url), "utf8");
-const assessmentSource = await readFile(new URL("../assessments.html", import.meta.url), "utf8");
+const assessmentSource = await readFile(new URL("../assets/qm-assessments.js", import.meta.url), "utf8");
 const migrationSource = await readFile(new URL("../supabase/migrations/20260914223802_qm_analytics_retention.sql", import.meta.url), "utf8");
 
 test("analytics is opt-in and Google consent defaults to denied", function () {
