@@ -24,3 +24,16 @@ test("Vercel Hobby function count stays within its 12-function limit", () => {
   assert.ok(functions.includes("qm-learning.js"));
   assert.ok(functions.length <= 12, `Found ${functions.length} serverless function files.`);
 });
+
+test("server modules are denied before filesystem resolution, not with a fallback rewrite", () => {
+  const deny = vercel.routes.find(item => item.status === 404);
+  assert.ok(deny);
+  const pattern = new RegExp(`^${deny.src}$`);
+  for (const path of ["/lib", "/lib/qm-chapter-quiz-catalog.mjs", "/lib/nested/file.js"]) {
+    assert.ok(pattern.test(path));
+  }
+  assert.ok(!pattern.test("/library.html"));
+  assert.ok(!pattern.test("/assets/qm-auth.js"));
+  assert.ok(!deny.continue);
+  assert.ok(!vercel.rewrites.some(item => item.source.startsWith("/lib")));
+});

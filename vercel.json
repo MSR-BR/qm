@@ -1,6 +1,8 @@
 {
+  "routes": [
+    { "src": "/lib(?:/.*)?", "status": 404, "headers": { "Cache-Control": "private, no-store" } }
+  ],
   "rewrites": [
-    { "source": "/lib/:path*", "destination": "/api/qm-internal-denied" },
     { "source": "/api/qm-adaptive-learning", "destination": "/api/qm-learning?route=adaptive" },
     { "source": "/api/qm-learning-communication", "destination": "/api/qm-learning?route=communication" },
     { "source": "/api/qm-learning-evaluation", "destination": "/api/qm-learning?route=evaluation" },

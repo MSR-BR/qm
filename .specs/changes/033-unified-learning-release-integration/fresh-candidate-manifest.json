@@ -1,10 +1,10 @@
 {
   "format": "qm-release-candidate-v1",
-  "baseHead": "f667621fd4bd646f4c79844899a95342171b594e",
+  "baseHead": "4cb95a82ce9d95f780cc4f31c9cb709ef83abaf2",
   "projectRef": "crasnnvdvujzxudmbakv",
   "destination": "https://quantummechanicsbook.app",
-  "payloadSha256": "610ee96ac7d8c4b5942551347085ed40484be310408a1a1fa1784d603d135899",
-  "fileCount": 383,
+  "payloadSha256": "f52fa9d73566641312e1fd0465d4337650e9e2d080db57b707e3f700eed75a03",
+  "fileCount": 382,
   "scope": "Runtime, data, migrations, tests and tools listed in files; docs/specs and ignored local configuration excluded. Not a commit or deployment identity.",
   "migrationCount": 21,
   "duplicateMigrationVersions": [
@@ -223,11 +223,6 @@
     {
       "path": "api/qm-email-test.js",
       "sha256": "cdebfa672e4351d6742e7da8d5e3402f7b8ffb5e8737c07f004e60031c5d8180",
-      "executable": false
-    },
-    {
-      "path": "api/qm-internal-denied.js",
-      "sha256": "c2f420f866d9281bc8b7b1d61403fecbab09eeb2bde6cce13434a3dc2e556011",
       "executable": false
     },
     {
@@ -2072,7 +2067,7 @@
     },
     {
       "path": "tests/qm-vercel-function-routing.test.mjs",
-      "sha256": "17c243efda5e003fcf296611f21769c1a735bd011ed9a25aa2ac9642cd321f59",
+      "sha256": "05357eaa55a9da4e9086f7fb64bace69f88358a770a2e70b1b1f816232628e19",
       "executable": false
     },
     {
@@ -2082,7 +2077,7 @@
     },
     {
       "path": "vercel.json",
-      "sha256": "d7165c9cdcaf5839afbf302f509a174756020d54d9069cc462885604209fa6a1",
+      "sha256": "ff4cd074453a9ca5321b4f8cd7eac6985d53c29c6d9c21824bc6b6a19d8752c2",
       "executable": false
     }
   ]
