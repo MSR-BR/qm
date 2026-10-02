@@ -2,13 +2,13 @@
 
 ## Current execution checkpoint, 2026-10-02
 
-Google-only Auth and durable encrypted local recovery are verified. With that
-new evidence, the same bounded Production-variable operation was approved and
-completed; historical rejection notes below do not represent the current state.
-Public promotion and CPD are still pending. See the latest section of
-`cpd-preflight-2026-10-02.md` for exact rollout, rollback limitations and remaining
-production/browser proof. Do not reinterpret local/API evidence as completed
-public-domain browser acceptance.
+Google-only Auth, recovery and the approved production cutover are complete.
+Deployment `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` is live and public HTTP /
+fresh-browser smoke passes. See `release-receipt-2026-10-02.md` for current
+evidence and recovery limitations. Full C33 acceptance awaits only the owner's
+public Google-login / reload / logout confirmation; do not reinterpret the
+technical CPD as that browser proof. Historical rejection and pending-cutover
+checkpoints below are superseded by the current receipt.
 
 ## Scope amendment — owner authorized completion and CPD, 2026-10-02
 

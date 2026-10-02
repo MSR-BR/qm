@@ -14,16 +14,17 @@
 
 ## Active change
 
-### Current C33 checkpoint — Production variables prepared, not yet promoted
+### Current C33 checkpoint — production cutover completed, browser acceptance pending
 
-The scoped Production configuration update was approved on renewed review using
-the recorded new security/recovery evidence and has now succeeded. All four
-variables select the replacement backend and dedicated Google client. Login is
-Google-only; email/password and learning-email delivery remain disabled. The
-incumbent public deployment has not changed yet. Candidate packaging is hardened
-and 85 tests pass. Next: exact manifest/commit, isolated Production-target build,
-deployed boundary tests, promotion and public smoke, then final CPD receipt.
-Earlier pending-variable/rejection entries below are historical, not current.
+The approved configuration and promotion now serve the replacement backend and
+dedicated Google client at the public domain. Login is Google-only; email/password
+and learning-email delivery remain disabled. Runtime commit `041de5e`, deployment
+`dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` READY. 86 tests, HTTP audit (99 URLs,
+65 assets, 9 API boundaries) and 12 fresh-browser scenarios pass. Internal source
+URLs return 404. The owner public-browser login/reload/logout confirmation remains
+open; C33 is not yet fully user-accepted. Current evidence/rollback/security
+limits: `changes/033-unified-learning-release-integration/release-receipt-2026-10-02.md`.
+Earlier pending-variable/rejection/cutover entries below are historical.
 
 ### C33 current — Google-only applied and verified, 2026-10-02
 

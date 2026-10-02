@@ -51,7 +51,12 @@ const sitemapXml = await sitemapResult.response.text();
 const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(function (match) {
   return decodeXml(match[1]);
 });
-check(urls.length === 98, "Expected 98 sitemap URLs, received " + urls.length + ".");
+// C33 includes the public methodology help page, in addition to the legal-only
+// baseline: 14 application routes plus 85 reviewed chapter sections.
+check(urls.length === 99, "Expected 99 sitemap URLs, received " + urls.length + ".");
+for (const pathname of ["/help.html", "/privacy.html", "/terms.html"]) {
+  check(urls.includes(new URL(pathname, BASE_URL).href), "Missing public help/legal URL: " + pathname);
+}
 check(new Set(urls).size === urls.length, "The sitemap contains duplicate URLs.");
 urls.forEach(function (value) {
   const url = new URL(value);

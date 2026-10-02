@@ -1,5 +1,14 @@
 # C33 — Google OAuth setup follow-up, 2026-09-26
 
+## Current — dedicated Google-only configuration is live, 2026-10-02
+
+The public app now uses the new backend and dedicated client. Public config,
+Google-only provider settings, authorize redirect and exact callback were verified
+after promotion of `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz`. Owner public-browser
+login/reload/logout confirmation is the remaining acceptance check, not a missing
+provider migration. See `release-receipt-2026-10-02.md`. Older statements below
+about the public app still using the paused backend are historical.
+
 ## Latest release evidence — Audience published and replacement-target Preview, 2026-10-02
 
 Owner screenshot confirms Google Audience for the dedicated QUANTUM project is

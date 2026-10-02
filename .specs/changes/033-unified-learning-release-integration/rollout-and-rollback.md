@@ -2,8 +2,13 @@
 
 Fresh target: QUANTUM `crasnnvdvujzxudmbakv` / `quantum_rebuild`.
 Old target `plqiofznjlbpfufigpcp` is paused and must not receive migrations.
-Public alias remains `https://quantummechanicsbook.app`, NOT yet switched.
+Public alias `https://quantummechanicsbook.app` switched successfully on 2026-10-02.
 TERMO and Google Ads are out of scope. See `provider-replacement.md`.
+
+Current release evidence: `release-receipt-2026-10-02.md`. Runtime commit
+`041de5e` and deployment `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` passed public
+HTTP and isolated-browser smoke. Owner authenticated public-browser acceptance
+is still pending. The earlier preparatory sequence below is historical.
 
 ## Current fresh-target sequence (supersedes original runbook below)
 

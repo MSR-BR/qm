@@ -1,9 +1,9 @@
 {
   "format": "qm-release-candidate-v1",
-  "baseHead": "4cb95a82ce9d95f780cc4f31c9cb709ef83abaf2",
+  "baseHead": "041de5ee7c160f3b47e04a013d371057fd2f2760",
   "projectRef": "crasnnvdvujzxudmbakv",
   "destination": "https://quantummechanicsbook.app",
-  "payloadSha256": "f52fa9d73566641312e1fd0465d4337650e9e2d080db57b707e3f700eed75a03",
+  "payloadSha256": "ab04839212fa409c93e1f1acafa8ce1b27311b85fc343604011fbdde58f317de",
   "fileCount": 382,
   "scope": "Runtime, data, migrations, tests and tools listed in files; docs/specs and ignored local configuration excluded. Not a commit or deployment identity.",
   "migrationCount": 21,
@@ -1037,7 +1037,7 @@
     },
     {
       "path": "scripts/audit-qm-production.mjs",
-      "sha256": "00f968a432cd1ea63488f7233f33d85467f08e1cba7ce23d469720ffbdaf468d",
+      "sha256": "95648a65b81a9d33c37df46b20629433fd9208b9f857034b4d0d19d15dfb8a1c",
       "executable": false
     },
     {

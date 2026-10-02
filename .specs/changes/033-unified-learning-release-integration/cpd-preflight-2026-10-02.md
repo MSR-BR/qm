@@ -1,5 +1,12 @@
 # C33 — Authorized CPD preflight, 2026-10-02
 
+## Superseding outcome
+
+Production cutover and public smoke completed; see
+`release-receipt-2026-10-02.md` for authoritative current status, exact artifact,
+recovery limitations and outstanding owner browser acceptance. The sequence
+below preserves historical preflight evidence, not current blockers.
+
 ## Current execution — production configuration prepared; deployment pending
 
 The same scoped four-variable Production operation was resubmitted for approval
