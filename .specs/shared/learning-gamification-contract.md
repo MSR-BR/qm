@@ -2,6 +2,18 @@
 
 Policy version: `qm-learning-policy-2026-09-25.1`
 
+C29 adoption checkpoint (2026-09-26): the local server now consumes the frozen C28
+eligibility helper and policy. `activation: contract_only` still describes the C28
+baseline artifact, not a claim that C29 has shipped or that C30 mechanics are active.
+Runtime scope, role checks and release limits are recorded in C29 design and validation.
+
+C32 adoption checkpoint (2026-09-26): the local implementation now separates
+learning, behavior, experience, implementation fidelity and equity/safety;
+optional learning email is off by default and bounded by reviewed-content,
+consent, time-zone, pause, quiet-hour and frequency gates. Generic bulk sending
+is disabled. Production sending, secrets, scheduled jobs and provider changes
+remain inactive and separately authorized.
+
 This contract governs Changes C28–C32 and supersedes feature-level assumptions in C24 and C25. It derives from the versioned `adaptive-learning-gamification` blueprint and the reviewed academic evidence recorded there.
 
 This contract is normative. Any implementation that conflicts with it fails acceptance even if the UI, analytics, or point counters appear to work. Security is governed concurrently by `docs/security/SECURITY-PROFILE.md`, `docs/security/RISK-REGISTER.md`, and the active Pó Mágico `SECURITY_AND_RESILIENCE` overlay; pedagogical behavior never overrides authentication, least privilege, consent, or release authorization.
@@ -32,6 +44,9 @@ This contract is normative. Any implementation that conflicts with it fails acce
 
 - Optional learning communication requires affirmative opt-in; optional consent is never preselected.
 - Enforce server-side frequency caps, quiet hours, pause, and unsubscribe.
+- The current adapter defaults are one eligible message per local day, two in
+  seven days, and quiet hours from 21:00 to 07:00. Unknown time zone means no
+  send. Provider acceptance is `sent`, not learner exposure.
 - Never use threatened point loss, expiring mastery, rank pressure, or artificial urgency.
 - Do not place sensitive performance detail in subject lines, previews, logs, or analytics.
 
@@ -48,5 +63,16 @@ These values preserve recognizable TERMO behavior while remaining configurable p
 Every award must be atomic, idempotent, capped against farming, and linked to verified evidence. Mechanism cards may change these defaults only through a governed Change.
 
 ## Validation boundary
+
+C28 adoption artifacts (contract-only; no runtime activation):
+
+- QUANTUM adapter: `data/qm-learning-policy.v1.json`.
+- Event envelope/allow-list, legacy classification and store map: `data/qm-learning-event-map.v1.json`.
+- Mechanism cards: `data/qm-learning-mechanisms.v1.json`.
+- Simulator persistence capabilities: `data/qm-simulator-evidence.v1.json`.
+- Generic validator: `lib/learning-policy-contract.mjs`; test command: `npm run test:learning-contract`.
+- Evidence, conflicts, preserved behavior and adoption owners: `.specs/changes/028-unified-learning-contract-and-adapter/event-inventory.md`.
+
+Adapter defaults are versioned product choices. In particular, C28's remediation caps and mastery minima require C30 validation; they are not claims of an optimal scientific threshold. A legacy event mapping never grants authority or manufactures missing learning evidence. The shared policy remains normative if implementation and documentation conflict.
 
 No Change may claim learning efficacy from engagement, points, page views, satisfaction, or time alone. Claims about retention, transfer, or mastery require delayed or changed-form evidence, implementation-fidelity evidence, denominators, uncertainty, and limitations.

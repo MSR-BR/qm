@@ -1,0 +1,76 @@
+{
+  "contractVersion": "learning-contract-v1",
+  "adapterVersion": "quantum-adapter-2026-09-25.1",
+  "policyVersion": "qm-learning-policy-2026-09-25.1",
+  "project": "QUANTUM",
+  "activation": "c30_local_implementation_pending_authorized_remote_migration",
+  "language": "en",
+  "eligibleChapters": ["01", "02", "03", "04", "05", "06", "07"],
+  "content": {
+    "registry": "data/qm-content-registry.json",
+    "sourceManifest": "data/qm-exercise-source-manifest.json",
+    "requiredAvailability": "published",
+    "requiredReviewStatus": "reviewed",
+    "unknownContent": "deny",
+    "conceptGraphVersion": "qm-concept-graph-2026-09-26.1",
+    "conceptGraphOwner": "C30"
+  },
+  "authority": {
+    "identity": "verified_server_session",
+    "awards": "server_atomic_ledger",
+    "mastery": "server_verified_evidence",
+    "analyticsCanAward": false,
+    "clientCanAward": false,
+    "historicalActivityCanBecomeMastery": false
+  },
+  "rewards": {
+    "section_completed": {"points": 20, "cap": 1, "scope": "user+canonical_section", "evidence": "explicit_completion_of_reviewed_section", "mastery": false},
+    "assessment_completed": {"points": 30, "cap": 1, "scope": "user+chapter", "evidence": "server_graded_complete_attempt", "mastery": false},
+    "assessment_reviewed": {"points": 10, "cap": 1, "scope": "user+assessment_remediation_cycle", "evidence": "completed_guided_review", "mastery": false},
+    "assessment_retry_completed": {"points": 10, "cap": 1, "scope": "user+assessment_remediation_cycle", "evidence": "server_graded_changed_retry", "mastery": false},
+    "chapter_mastery_reached": {"points": 80, "cap": 1, "scope": "user+chapter", "evidence": "verified_concept_coverage_across_sessions_and_forms", "mastery": true}
+  },
+  "rewardRules": {
+    "negativePoints": false,
+    "pointsPurchaseAnswersOrGrades": false,
+    "policyUpgradeResetsCaps": false,
+    "recompletionResetsCaps": false,
+    "additionalDailyChallengePoints": 0,
+    "simulatorOpeningPoints": 0,
+    "pageOpeningPoints": 0,
+    "remediationCycleCreation": "server_only_after_diagnostic_need",
+    "remediationDailyCycleCap": 1,
+    "remediationChapterWeeklyCycleCap": 2,
+    "defaultsAreScientificConstants": false
+  },
+  "mastery": {
+    "minimumUnaidedSuccesses": 2,
+    "minimumSeparateSessions": 2,
+    "minimumRepresentations": 2,
+    "requiresDelayedRetrieval": true,
+    "requiresReviewedConceptCoverage": true,
+    "singleCorrectAnswerSufficient": false,
+    "openingOrCompletionSufficient": false,
+    "sparseEvidence": "insufficient_evidence",
+    "thresholdStatus": "configurable_starting_default_validate_in_C30"
+  },
+  "modes": {
+    "assessment": {"manualAccess": true, "completionPromptRatio": 0.8, "promptIsAccessGate": false},
+    "dailyChallenge": {"itemRange": [3, 5], "minutesRange": [5, 10], "missedDayPenalty": false},
+    "simulator": {"stages": ["predict", "manipulate", "compare", "explain"], "inferUnsupportedEvidence": false},
+    "practice": {"hintLevels": ["orienting", "strategic", "next_step", "worked_support"], "allowDirectSolutionForChoiceOrAccessibility": true}
+  },
+  "recommendations": {
+    "rulesVersion": "qm-recommendations-contract-v1",
+    "engineOwner": "C30",
+    "priority": ["weak_or_overdue", "missing_prerequisites", "successful_but_not_delayed", "due_maintenance", "interleaving", "eligible_new_material"],
+    "requiredExplanation": ["why", "source", "expected_minutes", "alternative"],
+    "deterministicFallback": true,
+    "aiMayOverrideEligibility": false,
+    "aiRequiresProvenance": true,
+    "retainLearnerControl": true
+  },
+  "structural": {"levelIsMastery": false, "publicIndividualLeaderboard": false, "timedAssessmentRequired": false, "streakCanRemovePointsOrMastery": false},
+  "communication": {"optInDefault": false, "requiresTimestampedAffirmativeOptIn": true, "dailyCap": 1, "rollingSevenDayCap": 2, "quietHoursRequired": true, "quietHoursLocal": {"start": "21:00", "end": "07:00"}, "unknownTimezone": "do_not_send", "pauseAndUnsubscribeRequired": true, "owner": "C32"},
+  "profile": {"version": "learning-profile-v1", "owner": "C29", "requiredFields": ["generated_at", "policy_version", "progress", "rewards", "concepts", "assessments", "simulators", "missions", "badges", "next_action", "freshness"], "unavailableIsZero": false}
+}

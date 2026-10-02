@@ -1,0 +1,13 @@
+.home-footer p { margin: 0 0 12px; }
+.home-footer__links { display: flex; flex-wrap: wrap; gap: 8px 22px; }
+.home-footer__links a { color: var(--qm-green-deep); font-weight: 700; text-underline-offset: 3px; }
+.legal-page { max-width: 800px; margin: 0 auto; }
+.legal-header { padding: clamp(28px, 5vw, 52px); border: 1px solid var(--qm-line); border-radius: 24px; background: var(--qm-mint); }
+.legal-header h1 { margin: 0; color: var(--qm-green-deep); font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.1; }
+.legal-header p:last-child { margin: 16px 0 0; color: var(--qm-muted); }
+.legal-content { margin-top: 24px; padding: clamp(24px, 4vw, 40px); border: 1px solid var(--qm-line); border-radius: 20px; background: #fff; }
+.legal-content h2 { margin: 28px 0 8px; color: var(--qm-green-deep); font-size: 1.25rem; }
+.legal-content h2:first-child { margin-top: 0; }
+.legal-content p { margin: 0 0 14px; }
+.legal-content a { color: var(--qm-green); text-underline-offset: 3px; }
+.legal-content a:focus-visible, .home-footer__links a:focus-visible { outline: 3px solid var(--qm-green); outline-offset: 3px; }

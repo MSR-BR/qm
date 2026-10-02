@@ -1,0 +1,157 @@
+{
+  "policyVersion": "qm-learning-policy-2026-09-25.1",
+  "adapterVersion": "quantum-adapter-2026-09-25.1",
+  "note": "C30 locally instruments internal simulators with prediction, at least two interactions, reflection and goal completion. Opening and guided-cycle evidence are not mastery. Production remains pending an authorized database migration. Alternate external resources have no QUANTUM persistence.",
+  "simulators": [
+    {
+      "slug": "double-slit",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "hydrogen-bohr",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "thomson-circle",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "thomson-deflection",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "blackbody-radiation",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "photoelectric-effect",
+      "opened": false,
+      "prediction": false,
+      "meaningfulInteraction": false,
+      "reflection": false,
+      "completedGoal": false,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "millikan-oil-drop",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "probability-current",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "infinite-well",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "superposition-measurement",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "gaussian-wave-packet",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "finite-well-bound-states",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "hydrogen-radial-states",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "angular-momentum-matrix-calculator",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    },
+    {
+      "slug": "angular-momentum-coupled-states",
+      "opened": true,
+      "prediction": true,
+      "meaningfulInteraction": true,
+      "reflection": true,
+      "completedGoal": true,
+      "mastery": false,
+      "owner": "C30"
+    }
+  ]
+}

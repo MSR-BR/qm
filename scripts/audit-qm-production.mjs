@@ -51,7 +51,7 @@ const sitemapXml = await sitemapResult.response.text();
 const urls = [...sitemapXml.matchAll(/<loc>([^<]+)<\/loc>/g)].map(function (match) {
   return decodeXml(match[1]);
 });
-check(urls.length === 96, "Expected 96 sitemap URLs, received " + urls.length + ".");
+check(urls.length === 98, "Expected 98 sitemap URLs, received " + urls.length + ".");
 check(new Set(urls).size === urls.length, "The sitemap contains duplicate URLs.");
 urls.forEach(function (value) {
   const url = new URL(value);

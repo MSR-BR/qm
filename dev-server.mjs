@@ -10,6 +10,12 @@ import {
 import { handlePublicConfigRequest } from "./lib/public-config-handler.mjs";
 import { handleAnalyticsEventRequest } from "./lib/qm-analytics-handler.mjs";
 import { handleQmChapterQuiz } from "./lib/qm-chapter-quiz-handler.mjs";
+import { handleQmLearningProfile } from "./lib/qm-learning-profile-handler.mjs";
+import { handleQmGamificationEvent } from "./lib/qm-gamification-handler.mjs";
+import { handleQmAdaptiveLearning } from "./lib/qm-adaptive-learning-handler.mjs";
+import { handleQmLearningCommunication } from "./lib/qm-learning-communication-handler.mjs";
+import { handleQmLearningEvaluation } from "./lib/qm-learning-evaluation-handler.mjs";
+import { handleLegalPreferencesRequest } from "./lib/qm-legal-preferences-handler.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -161,6 +167,36 @@ async function serveStaticFile(req, res) {
 
 const server = http.createServer(async (req, res) => {
   const requestUrl = req.url || "/";
+  const learningUrl = new URL(requestUrl, `http://${host}:${port}`);
+  if (learningUrl.pathname === "/api/qm-legal-preferences") {
+    res.setHeader("Cache-Control", "private, no-store");
+    try {
+      const response = await handleLegalPreferencesRequest({
+        method: req.method,
+        headers: req.headers,
+        body: req.method === "PUT" || req.method === "POST" ? await readJsonBody(req) : undefined,
+        env: process.env
+      });
+      sendJson(res, response.status, response.body);
+    } catch {
+      sendJson(res, 503, { error: "Preferences service unavailable." });
+    }
+    return;
+  }
+  if (["/api/qm-learning-profile", "/api/qm-gamification-event", "/api/qm-adaptive-learning", "/api/qm-learning-communication", "/api/qm-learning-evaluation"].includes(learningUrl.pathname)) {
+    res.setHeader("Cache-Control", "private, no-store");
+    try {
+      const handler = learningUrl.pathname.endsWith("profile") ? handleQmLearningProfile
+        : learningUrl.pathname.endsWith("adaptive-learning") ? handleQmAdaptiveLearning
+          : learningUrl.pathname.endsWith("learning-communication") ? handleQmLearningCommunication
+            : learningUrl.pathname.endsWith("learning-evaluation") ? handleQmLearningEvaluation : handleQmGamificationEvent;
+      const response = await handler({ method: req.method, headers: req.headers,
+        body: req.method === "POST" ? await readJsonBody(req) : undefined,
+        query: Object.fromEntries(learningUrl.searchParams), env: process.env });
+      sendJson(res, response.status, response.body);
+    } catch { sendJson(res, 503, { error: "Learning service unavailable." }); }
+    return;
+  }
 
   if (requestUrl.startsWith("/_vercel/insights/")) {
     sendText(res, 200, "", "application/javascript; charset=utf-8");

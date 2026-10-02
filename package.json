@@ -31,6 +31,13 @@
     "reconcile:learning-rewards": "node scripts/reconcile-qm-learning-rewards.mjs",
     "audit:supabase:learning": "node scripts/audit-qm-learning-supabase.mjs",
     "check:supabase-privileges": "node scripts/check-supabase-privileges.mjs",
-    "test:supabase-privileges": "node --test tests/qm-supabase-privilege-contract.test.mjs"
+    "test:supabase-privileges": "node --test tests/qm-supabase-privilege-contract.test.mjs",
+    "test:learning-contract": "node --test tests/qm-learning-adapter.test.mjs",
+    "test:learning-profile": "node --test tests/qm-learning-profile.test.mjs",
+    "test:adaptive-learning": "node --test tests/qm-adaptive-learning.test.mjs",
+    "test:learning-help": "node --test tests/qm-learning-help.test.mjs",
+    "test:learning-evaluation": "node --test tests/qm-academic-evaluation-and-communication.test.mjs",
+    "test:learning-ledger:local": "node scripts/test-qm-learning-ledger-postgres.mjs",
+    "plan:learning-ledger": "node scripts/plan-qm-ledger-import.mjs"
   }
 }

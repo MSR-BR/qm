@@ -2458,7 +2458,7 @@
     "assets/qm-first-login-preferences.js?v=0925.1",
     "assets/termo-user-data.js?v=0731.1",
     "assets/qm-study-progress.js?v=0903.3",
-    "assets/qm-gamification.js?v=0904.1",
+    "assets/qm-gamification.js?v=0926.1",
     "assets/qm-rating.js?v=0910.1"
   ];
 
@@ -2489,8 +2489,8 @@
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"QUANTUM","alternateName":"Interactive Quantum Mechanics","url":"https://quantummechanicsbook.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Interactive Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://quantummechanicsbook.app/"}]</script>
 <!-- termo-seo:end -->
 <script src="assets/qm-release.js"></script>
-<script src="assets/qm-content-registry.js?v=seo-20260916"></script>
-<script defer src="assets/termo-seo.js?v=seo-20260916"></script>
+<script src="assets/qm-content-registry.js?v=seo-20261002"></script>
+<script defer src="assets/termo-seo.js?v=seo-20261002"></script>
 </head>
 
 <body>
@@ -2565,6 +2565,14 @@
                 <a class="personal-button" href="search.html">
                   <span class="extras-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                   <span class="extras-text"><span class="extras-label">Search reviewed content</span><span class="extras-note">Find a published section by title or topic.</span></span>
+                </a>
+              </div>
+            </section>
+            <section class="drawer-group" data-drawer-group="learning-help">
+              <div class="drawer-group-panel is-open">
+                <a class="personal-button" href="help.html">
+                  <span class="extras-icon"><i class="fa-solid fa-circle-question"></i></span>
+                  <span class="extras-text"><span class="extras-label">Learning guide</span><span class="extras-note">How exercises, recommendations and points work.</span></span>
                 </a>
               </div>
             </section>
@@ -2734,11 +2742,13 @@
 
     <footer class="footer">
       <div class="footer-links" aria-label="Institutional information">
-        <button type="button" class="footer-link" data-info-modal-open="terms">Terms</button>
+        <a class="footer-link" href="terms.html">Terms</a>
         <span class="footer-divider" aria-hidden="true">•</span>
-        <button type="button" class="footer-link" data-info-modal-open="privacy">Privacy</button>
+        <a class="footer-link" href="privacy.html">Privacy</a>
         <span class="footer-divider" aria-hidden="true">•</span>
         <button type="button" class="footer-link" data-info-modal-open="support">Support</button>
+        <span class="footer-divider" aria-hidden="true">•</span>
+        <a class="footer-link" href="help.html">Learning guide</a>
       </div>
     </footer>
 
@@ -3313,9 +3323,15 @@
       },
       {
         id: "communication",
-        label: "Communication",
+        label: "Learning communication",
         icon: "fa-envelope-circle-check",
-        note: "Test and prepare opt-in email campaigns."
+        note: "Preview bounded, consent-based review reminders."
+      },
+      {
+        id: "learning-evaluation",
+        label: "Learning evaluation",
+        icon: "fa-chart-line",
+        note: "Review aggregate learning, fidelity, experience and safety outcomes."
       }
     ];
 
@@ -3477,7 +3493,7 @@
 
     function getDrawerSectionForView(viewId) {
       if (viewId === "journey" || viewId === "saved" || viewId === "favorites" || viewId === "preferences") return "personal";
-      if (viewId === "validation-review" || viewId === "ratings" || viewId === "communication") return "admin";
+      if (viewId === "validation-review" || viewId === "ratings" || viewId === "communication" || viewId === "learning-evaluation") return "admin";
       if (viewId === "simulators") return "simulators";
       return "chapters";
     }
@@ -4876,13 +4892,11 @@
       }
 
       await ensureAuthModules();
-      const [progressResult, rewardsResult] = await Promise.all([
-        window.QMStudyProgress?.listProgress?.().catch(function () { return { ok: false, progress: [] }; }),
-        window.QMGamification?.listProfile?.().catch(function () { return { ok: false, profile: null }; })
-      ]);
-      state.studyProgress = progressResult?.ok ? (progressResult.progress || []) : [];
-      state.gamificationProfile = rewardsResult?.ok ? rewardsResult.profile : null;
+      const result = await window.QMGamification?.learningProfile?.();
+      state.studyProgress = result?.ok ? result.profile.progress.records : [];
+      state.gamificationProfile = result?.ok && result.profile.rewards.status === "available" ? result.profile.rewards : null;
       updateHeaderPointsButton(state.gamificationProfile);
+      if (!result?.ok) headerPointsButton?.setAttribute("aria-label", "Learning profile unavailable. Your records have not been reset.");
     }
 
     async function canCurrentUserReviewValidations(session) {
@@ -5050,18 +5064,14 @@
       }
 
       topicContainer.innerHTML = '<div class="empty-state"><strong>Loading your study journey...</strong><br />Preparing your reviewed sections and private record.</div>';
-      const [result, rewardsResult, assessmentResult, simulatorResult] = await Promise.all([
-        window.QMStudyProgress?.listProgress?.().catch(function (error) { return { ok: false, error: error, progress: [] }; }),
-        window.QMGamification?.listProfile?.().catch(function (error) { return { ok: false, error: error, profile: null }; }),
-        fetch('/api/qm-chapter-quiz?history=1', { headers: session?.access_token ? { Authorization: 'Bearer ' + session.access_token } : {} }).then(function (response) { return response.ok ? response.json() : { attempts: [] }; }).catch(function () { return { attempts: [] }; }),
-        window.TermoAuth?.ensureSupabase?.().then(function(client){ return client ? client.from('qm_simulator_activity').select('simulator_path,simulator_slug,open_count,last_opened_at') : { data: [] }; }).catch(function(){ return { data: [] }; })
-      ]);
+      const result = await window.QMGamification?.learningProfile?.();
       if (!result?.ok) {
-        topicContainer.innerHTML = '<div class="empty-state"><strong>Could not load your study journey.</strong><br />Check whether the private progress table and its RLS policies are active in Supabase.</div>';
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Could not load your study journey.</strong><br />Please try again. Your saved records have not been reset.</div>';
         return;
       }
 
-      state.studyProgress = result.progress || [];
+      const learning = result.profile;
+      state.studyProgress = learning.progress.records;
       const bundles = await loadStudyJourneyTopics();
       const sections = bundles.flatMap(function (bundle) {
         return bundle.topics.map(function (topic) {
@@ -5079,14 +5089,14 @@
       })[0];
       const latestPath = latest ? normalizeAppRelativeUrl(latest.page_path, "/") : "";
       const latestSection = sections.find(function (section) { return section.path === latestPath; });
-      const rewards = rewardsResult?.ok ? rewardsResult.profile : null;
+      const rewards = learning.rewards.status === "available" ? learning.rewards : null;
       const rewardSummary = rewards
-        ? '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-bolt"></i> ' + Number(rewards.xp_total || 0) + ' points</span><span class="saved-chip">Level ' + Number(rewards.level || 1) + '</span><span class="saved-chip">' + Number(rewards.current_streak || 0) + '-day streak</span></div><h3 class="saved-card__title">Learning rewards</h3><p class="saved-card__summary">Official points are recorded once when you complete a reviewed section. Your best streak is ' + Number(rewards.best_streak || 0) + ' days.</p></div></article>'
-        : '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-bolt"></i> Learning rewards</span></div><h3 class="saved-card__title">Rewards will be available soon</h3><p class="saved-card__summary">Your reading progress is already private. Points and study streaks will appear here as soon as the secure rewards service is enabled.</p></div></article>';
-      const simulatorActivity = Array.isArray(simulatorResult?.data) ? simulatorResult.data : []; const simulatorSummary = '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-flask"></i> ' + simulatorActivity.length + ' simulators explored</span></div><h3 class="saved-card__title">Simulator exploration</h3><p class="saved-card__summary">Simulator activity is private and supports your study journey.</p></div><a class="saved-card__button saved-card__button--primary" href="?view=simulators">Open simulators</a></article>';
-      const attempts = Array.isArray(assessmentResult?.attempts) ? assessmentResult.attempts : []; const bestScore = attempts.reduce(function (best, item) { return Math.max(best, Number(item.score || 0)); }, 0); const assessmentPlaceholder = '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-clipboard-question"></i> ' + attempts.length + ' assessment attempts</span><span class="saved-chip">Best ' + bestScore + '%</span></div><h3 class="saved-card__title">Chapter assessments</h3><p class="saved-card__summary">Your results are private. Use each missed item&#39;s review link to return to the relevant page.</p></div><a class="saved-card__button saved-card__button--primary" href="assessments.html">Open assessments</a></article>';
-      const achievements = [completed >= 1 ? 'First reviewed section completed' : '', completed >= 10 ? 'Ten reviewed sections completed' : '', attempts.length >= 1 ? 'First chapter assessment submitted' : '', bestScore >= 80 ? 'Assessment result at 80% or above' : '', rewards?.current_streak >= 3 ? 'Three-day study streak' : ''].filter(Boolean);
-      const achievementSummary = '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-medal"></i> ' + achievements.length + ' achievements</span></div><h3 class="saved-card__title">Study achievements</h3><p class="saved-card__summary">' + (achievements.length ? escapeHtml(achievements.join(' · ')) : 'Complete a reviewed section or submit a chapter assessment to begin your achievement record.') + '</p></div></article>';
+        ? '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-bolt"></i> ' + Number(rewards.xp_total || 0) + ' points</span><span class="saved-chip">Level ' + Number(rewards.level || 1) + '</span><span class="saved-chip">' + Number(rewards.current_streak || 0) + '-day streak</span></div><h3 class="saved-card__title">Learning rewards</h3><p class="saved-card__summary">Official points are recorded once when you complete a reviewed section. Your best streak is ' + Number(rewards.best_streak || 0) + ' days.</p><a href="help.html#rewards">What do these points mean?</a></div></article>'
+        : '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-bolt"></i> Learning rewards</span></div><h3 class="saved-card__title">Rewards need verification</h3><p class="saved-card__summary">Your previous reward records need reconciliation. Your reading progress is saved and no historical points have been removed.</p><a href="help.html#rewards">How learning rewards work</a></div></article>';
+      const simulatorSummary = '<article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">' + learning.simulators.opened + ' simulators opened · ' + Number(learning.simulators.completed_goals || 0) + ' guided cycles</h3><p class="saved-card__summary">A guided cycle records prediction, meaningful interaction and reflection. Opening alone is activity, and even a complete cycle is evidence rather than instant mastery.</p><a href="help.html#simulators">What counts as simulator learning?</a></div><a class="saved-card__button saved-card__button--primary" href="?view=simulators">Open simulators</a></article>';
+      const assessmentPlaceholder = '<article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">' + learning.assessments.total + ' assessment attempts</h3><p class="saved-card__summary">Best score: ' + (learning.assessments.best_score === null ? 'not yet available' : Number(learning.assessments.best_score) + '%') + '. All-time attempts, not just recent history. A score alone does not establish mastery.</p><a href="help.html#activities">How assessments support learning</a></div><a class="saved-card__button saved-card__button--primary" href="assessments.html">Open assessments</a></article>';
+      const achievementSummary = '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">' + Number(learning.due_reviews.items.length || 0) + ' concepts due</span><span class="saved-chip">' + Number(learning.badges.items.length || 0) + ' criterion badges</span></div><h3 class="saved-card__title">Recommended next action</h3><p class="saved-card__summary">' + escapeHtml(learning.next_action.reason) + '</p><p class="saved-card__summary">Reading, points and simulator openings are not mastery. Mastery requires repeated unaided retrieval in separate sessions, changed representations and a delay.</p><a href="help.html#recommendations">Why was this suggested?</a></div><a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(learning.next_action.href) + '">Open recommendation</a></article>';
+      const dailyChallenge = '<article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Daily Challenge</h3><p class="saved-card__summary">An optional 5–10 minute retrieval from reviewed material you studied. No missed-day penalty and no extra daily points.</p><a href="help.html#recommendations">How it is selected</a></div><a class="saved-card__button saved-card__button--primary" href="daily-challenge.html">Prepare challenge</a></article>';
       const chapterRows = bundles.map(function (bundle) {
         const topics = bundle.topics;
         const completedCount = topics.filter(function (topic) {
@@ -5098,7 +5108,7 @@
         return '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">Chapter ' + escapeHtml(bundle.chapter.id) + '</span><span class="saved-chip">' + completedCount + ' / ' + topics.length + ' sections completed</span></div><h3 class="saved-card__title">' + escapeHtml(bundle.chapter.title) + '</h3><p class="saved-card__summary">' + (allDone ? "All reviewed sections completed." : "Continue through the reviewed sections of this chapter.") + '</p></div><a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(normalizeAppRelativeUrl("?view=chapters&chapter=" + bundle.chapter.id, "/index.html")) + '">Open chapter</a></article>';
       }).join("");
 
-      topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + rewardSummary + achievementSummary + simulatorSummary + assessmentPlaceholder + chapterRows + '</section>';
+      topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + rewardSummary + achievementSummary + dailyChallenge + simulatorSummary + assessmentPlaceholder + chapterRows + '</section>';
     }
 
     async function renderPreferences() {
@@ -5121,7 +5131,8 @@
         return;
       }
       const accepted = Boolean(data.termsAcceptedAt && data.privacyAcknowledgedAt && data.termsVersion === data.termsCurrentVersion && data.privacyVersion === data.privacyCurrentVersion);
-      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-shield-heart"></i> Private account settings</span></div><h3 class="saved-card__title">Privacy and communication</h3><p class="saved-card__summary">Your contact preference is optional and can be changed at any time. We do not publish it.</p><form data-role="qm-preferences-form"><label class="qm-preference-option"><input type="checkbox" name="accept" ${accepted ? "checked disabled" : ""}> I have read the Terms and Privacy information for QUANTUM.</label><label class="qm-preference-option"><input type="checkbox" name="email" ${data.emailUpdatesOptedIn ? "checked" : ""}> Send me optional updates about QUANTUM.</label><p data-role="qm-preferences-status" aria-live="polite"></p><button class="saved-card__button saved-card__button--primary" type="submit">Save preferences</button></form></div></article></section>`;
+      const browserTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone || "";
+      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-shield-heart"></i> Private account settings</span></div><h3 class="saved-card__title">Privacy and communication</h3><p class="saved-card__summary">Optional learning email is off until you enable it. Messages can only suggest reviewed material, are limited to one per local day and two in seven days, respect 21:00–07:00 quiet hours, and include one-click unsubscribe. Delivery never changes your points or access.</p><form data-role="qm-preferences-form"><label class="qm-preference-option"><input type="checkbox" name="accept" ${accepted ? "checked disabled" : ""}> I have read the Terms and Privacy information for QUANTUM.</label><label class="qm-preference-option"><input type="checkbox" name="email" ${data.emailUpdatesOptedIn ? "checked" : ""}> Send me optional learning updates about reviewed material.</label><label>Time zone for quiet hours<input name="timezone" value="${escapeHtml(data.timezone || browserTimezone)}" autocomplete="off" placeholder="America/Sao_Paulo"></label><label class="qm-preference-option"><input type="checkbox" name="paused" ${data.learningEmailPaused ? "checked" : ""}> Pause learning email without changing my learning account.</label><p class="saved-card__summary"><a href="help.html#communication">How optional learning communication works</a></p><p data-role="qm-preferences-status" aria-live="polite"></p><button class="saved-card__button saved-card__button--primary" type="submit">Save preferences</button></form></div></article></section>`;
       const form = topicContainer.querySelector("[data-role=qm-preferences-form]");
       form?.addEventListener("submit", async function (event) {
         event.preventDefault();
@@ -5133,8 +5144,9 @@
           return;
         }
         status.textContent = "Saving...";
-        const saved = await fetch("/api/qm-legal-preferences", { method: "PUT", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ acceptDocuments: !accepted && Boolean(accept.checked), emailUpdatesOptedIn: Boolean(email.checked) }) }).catch(function () { return null; });
-        status.textContent = saved?.ok ? "Preferences saved." : "Could not save preferences now. Please try again.";
+        const saved = await fetch("/api/qm-legal-preferences", { method: "PUT", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ acceptDocuments: !accepted && Boolean(accept.checked), emailUpdatesOptedIn: Boolean(email.checked), learningEmailPaused: Boolean(form.elements.paused.checked), timezone: String(form.elements.timezone.value || "").trim() }) }).catch(function () { return null; });
+        const savedData = saved ? await saved.json().catch(function () { return {}; }) : {};
+        status.textContent = saved?.ok ? "Preferences saved." : (savedData.error || "Could not save preferences now. Please try again.");
       });
     }
 
@@ -5171,33 +5183,47 @@
       const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
       panelKicker.textContent = "Administration";
       panelTitle.textContent = "Communication";
-      panelDescription.textContent = "Prepare consent-based email campaigns. Sending remains server-authorized and requires Resend configuration.";
+      panelDescription.textContent = "Preview optional review reminders. Production delivery is separately authorized and disabled by default.";
       setActiveChapter(""); setActivePersonal(""); setActiveAdmin("communication"); setActiveExtra(""); panelActions.innerHTML = "";
       if (!session?.access_token || !state.canReviewValidations) {
         topicContainer.innerHTML = '<div class="empty-state"><strong>This area is restricted to the responsible account.</strong></div>';
         return;
       }
-      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Opt-in campaign</h3><p class="saved-card__summary">Only accounts that accepted the current legal documents and opted in can receive a campaign.</p><form data-role="qm-campaign-form"><label>Subject<input required name="subject" maxlength="140"></label><label>Message<textarea required name="message" maxlength="5000"></textarea></label><label>Button label (optional)<input name="ctaLabel" maxlength="80"></label><label>Button URL (optional)<input name="ctaUrl" type="url"></label><label>Type SEND to confirm delivery to every opted-in recipient.<input name="confirmationText" autocomplete="off"></label><p data-role="qm-campaign-status" aria-live="polite"></p><div class="saved-card__actions"><button class="saved-card__button" type="button" data-role="qm-email-test">Send test email</button><button class="saved-card__button saved-card__button--primary" type="submit">Send campaign</button></div></form></div></article></section>`;
-      const form = topicContainer.querySelector("[data-role=qm-campaign-form]");
-      const status = form?.querySelector("[data-role=qm-campaign-status]");
-      form?.querySelector("[data-role=qm-email-test]")?.addEventListener("click", async function () {
-        status.textContent = "Sending test email...";
-        const response = await fetch("/api/qm-email-test", { method: "POST", headers: { Authorization: "Bearer " + session.access_token } }).catch(function () { return null; });
-        const data = response?.ok ? await response.json() : null;
-        status.textContent = data?.sent ? "Test email sent to the responsible address." : "Test could not be sent. Configure RESEND_API_KEY and verify the sender domain first.";
-      });
-      form?.addEventListener("submit", async function (event) {
-        event.preventDefault();
-        status.textContent = "Checking opt-in audience...";
-        const audienceResponse = await fetch("/api/qm-email-campaign", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ action: "audience" }) }).catch(function () { return null; });
-        const audience = audienceResponse?.ok ? await audienceResponse.json() : null;
-        const count = Number(audience?.totalEligible || 0);
-        if (!audience) { status.textContent = "Could not load the authorized audience."; return; }
-        const values = Object.fromEntries(new FormData(form).entries());
-        const response = await fetch("/api/qm-email-campaign", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ action: "send", ...values, audienceType: "all_opted_in", confirmRecipientCount: count }) }).catch(function () { return null; });
-        const data = response?.ok ? await response.json() : null;
-        status.textContent = data?.sent ? `Campaign sent to ${data.deliveredCount} recipient(s).` : "Campaign was not sent. Confirm SEND, review the recipient count, and configure Resend.";
-      });
+      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Reviewed learning reminders</h3><p class="saved-card__summary">Eligibility requires affirmative opt-in, current legal acknowledgement, a known time zone, a reviewed due activity, quiet-hours clearance and both frequency caps. The message text is fixed and non-coercive; free-form bulk campaigns are disabled.</p><form data-role="qm-learning-email-form"><label>Production confirmation (used only after a separate release authorization)<input name="confirmationText" autocomplete="off" placeholder="SEND REVIEWED LEARNING UPDATES"></label><p data-role="qm-learning-email-status" aria-live="polite"></p><div class="saved-card__actions"><button class="saved-card__button" type="button" data-role="qm-learning-email-preview">Preview eligibility</button><button class="saved-card__button saved-card__button--primary" type="submit">Dispatch authorized reminders</button></div></form><p class="saved-card__summary"><a href="help.html#communication">Read the communication policy</a>.</p></div></article></section>`;
+      const form = topicContainer.querySelector("[data-role=qm-learning-email-form]");
+      const status = form?.querySelector("[data-role=qm-learning-email-status]");
+      async function request(action) {
+        status.textContent = action === "preview" ? "Evaluating server eligibility…" : "Requesting authorized dispatch…";
+        const response = await fetch("/api/qm-learning-communication", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token }, body: JSON.stringify({ action, confirmationText: form.elements.confirmationText.value }) }).catch(function () { return null; });
+        const data = response ? await response.json().catch(function () { return {}; }) : {};
+        if (!response?.ok) { status.textContent = data.error || "The request could not be completed."; return; }
+        status.textContent = action === "preview"
+          ? `${data.eligible} of ${data.evaluated} consented account(s) are currently eligible. Production delivery: ${data.productionDeliveryEnabled ? "enabled" : "disabled"}.`
+          : `${data.sent} sent, ${data.failed} failed, ${data.suppressed} suppressed by a server gate.`;
+      }
+      form?.querySelector("[data-role=qm-learning-email-preview]")?.addEventListener("click", function () { request("preview"); });
+      form?.addEventListener("submit", function (event) { event.preventDefault(); request("dispatch"); });
+    }
+
+    async function renderLearningEvaluation() {
+      setLandingMode(false);
+      await ensureAuthModules();
+      const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
+      panelKicker.textContent = "Administration";
+      panelTitle.textContent = "Learning evaluation";
+      panelDescription.textContent = "Aggregate outcome families with explicit claim boundaries and no unnecessary individual exposure.";
+      setActiveChapter(""); setActivePersonal(""); setActiveAdmin("learning-evaluation"); setActiveExtra(""); panelActions.innerHTML = "";
+      if (!session?.access_token || !state.canReviewValidations) {
+        topicContainer.innerHTML = '<div class="empty-state"><strong>This area is restricted to the responsible account.</strong></div>';
+        return;
+      }
+      topicContainer.innerHTML = '<div class="empty-state">Building the aggregate report…</div>';
+      const response = await fetch("/api/qm-learning-evaluation", { headers: { Authorization: "Bearer " + session.access_token } }).catch(function () { return null; });
+      const data = response?.ok ? await response.json() : null;
+      const report = data?.report;
+      if (!report) { topicContainer.innerHTML = '<div class="empty-state"><strong>The report is not available yet.</strong><br>Apply the C32 migration after its release gate.</div>'; return; }
+      const outcomes = report.outcomes;
+      topicContainer.innerHTML = `<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Learning evidence</h3><p class="saved-card__summary">Delayed unaided retrieval: ${outcomes.learning.delayedUnaidedRetrieval.numerator} / ${outcomes.learning.delayedUnaidedRetrieval.denominator}. Changed representation: ${outcomes.learning.changedRepresentation.numerator} / ${outcomes.learning.changedRepresentation.denominator}.</p><p class="saved-card__summary">${escapeHtml(outcomes.learning.claimBoundary)}</p></div></article><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Implementation fidelity</h3><p class="saved-card__summary">${outcomes.implementationFidelity.exposed} exposures and ${outcomes.implementationFidelity.acted} actions. Exposure-to-action is descriptive, not a learning result.</p></div></article><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Experience, behavior and safety</h3><p class="saved-card__summary">${outcomes.experience.ratingCount} voluntary ratings; ${outcomes.behavior.analyticsEvents} product events; ${outcomes.equitySafety.communicationSent} learning emails accepted for sending, ${outcomes.equitySafety.communicationDelivered} confirmed deliveries, ${outcomes.equitySafety.deliveryFailures} failures and ${outcomes.equitySafety.optOuts} opt-outs.</p><p class="saved-card__summary">Neither provider acceptance nor delivery proves that a learner read a message. Learner exposure is not measured. Engagement and satisfaction are not reported as learning gains.</p></div></article><article class="saved-card"><div class="saved-card__body"><h3 class="saved-card__title">Uncertainty and limitations</h3><p class="saved-card__summary">${escapeHtml(report.uncertainty)}</p><ul>${report.limitations.map(function (item) { return `<li>${escapeHtml(item)}</li>`; }).join("")}</ul></div></article></section>`;
     }
 
 
@@ -5558,6 +5584,11 @@
         return;
       }
 
+      if (viewId === "learning-evaluation") {
+        await renderLearningEvaluation();
+        return;
+      }
+
       if (viewId === "validation-review") {
         await renderValidationReview();
         return;
@@ -5773,7 +5804,15 @@
         }
 
         window.TermoUserData.onAuthStateChange(async function () {
+          if (state.view === "journey") {
+            topicContainer.innerHTML = '<div class="empty-state">Refreshing your private learning profile...</div>';
+          }
           await refreshUserState();
+
+          if (state.view === "journey") {
+            await renderStudyJourney();
+            return;
+          }
 
           if (state.view === "saved") {
             await renderSavedExercises();

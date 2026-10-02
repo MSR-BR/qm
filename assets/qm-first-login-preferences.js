@@ -47,7 +47,7 @@
             <input type="checkbox" name="email">
             <span>Send me optional updates about QUANTUM.</span>
           </label>
-          <p class="qm-first-login-note">Optional updates are off by default. You can change this choice later in Personal Area → Privacy and communication.</p>
+          <p class="qm-first-login-note">Optional learning updates are off by default. If enabled, QUANTUM uses your device time zone for quiet hours (21:00–07:00), sends at most one message per day and two in seven days, and provides one-click unsubscribe. You can change this choice later in Personal Area → Privacy and communication.</p>
           <p class="qm-first-login-status" data-role="qm-first-login-status" role="status" aria-live="polite"></p>
           <div class="qm-first-login-actions">
             <button class="qm-first-login-button qm-first-login-button--primary" type="submit">Save and continue</button>
@@ -121,7 +121,9 @@
       },
       body: JSON.stringify({
         acceptDocuments: true,
-        emailUpdatesOptedIn: Boolean(form.elements.email.checked)
+        emailUpdatesOptedIn: Boolean(form.elements.email.checked),
+        learningEmailPaused: false,
+        timezone: form.elements.email.checked ? (Intl.DateTimeFormat().resolvedOptions().timeZone || "") : ""
       })
     }).catch(function () { return null; });
     submit.disabled = false;

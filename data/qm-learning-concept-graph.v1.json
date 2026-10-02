@@ -1,0 +1,59 @@
+{
+  "version": "qm-concept-graph-2026-09-26.1",
+  "policyVersion": "qm-learning-policy-2026-09-25.1",
+  "status": "reviewed_chapters_01_07",
+  "nodeDerivation": {
+    "taxonomy": "data/book-topic-taxonomy.json",
+    "sourceManifest": "data/qm-exercise-source-manifest.json",
+    "nodeKey": "sectionTopics.primaryTopic",
+    "sourceRule": "Only sections present in the reviewed source manifest are included",
+    "unknownContent": "deny"
+  },
+  "representations": [
+    "conceptual_recognition",
+    "relation_transfer",
+    "simulator_prediction",
+    "simulator_reflection"
+  ],
+  "assessmentCoverage": {
+    "01": ["classical-wave-benchmark", "photoelectric-effect", "de-broglie-matter-waves"],
+    "02": ["schrodinger-equation", "probability-density-current", "infinite-potential-well"],
+    "03": ["matrix-mechanics-spin-entry", "dirac-notation", "hermitian-observables"],
+    "04": ["hermite-quantization", "finite-well-bound-states", "quantum-tunneling-barrier"],
+    "05": ["spherical-harmonics", "hydrogen-radial-laguerre", "hydrogen-spectrum-degeneracy"],
+    "06": ["angular-momentum-algebra-ladders", "angular-momentum-commutators", "angular-momentum-matrix-representation"],
+    "07": ["addition-angular-momenta-roadmap", "clebsch-gordan-coefficients", "coupled-basis-construction"]
+  },
+  "prerequisiteEdges": [
+    ["classical-wave-benchmark", "de-broglie-matter-waves"],
+    ["de-broglie-matter-waves", "schrodinger-equation"],
+    ["schrodinger-equation", "probability-density-current"],
+    ["schrodinger-equation", "infinite-potential-well"],
+    ["probability-density-current", "infinite-potential-well"],
+    ["quantum-postulates-measurement", "matrix-mechanics-spin-entry"],
+    ["superposition-state-space", "dirac-notation"],
+    ["dirac-notation", "hilbert-space-bases-completeness"],
+    ["dirac-notation", "hermitian-observables"],
+    ["observables-operators-commutators", "hermitian-observables"],
+    ["stationary-states-tise", "hermite-quantization"],
+    ["infinite-potential-well", "finite-well-bound-states"],
+    ["finite-well-bound-states", "quantum-tunneling-barrier"],
+    ["central-potentials-spherical-separation", "spherical-harmonics"],
+    ["spherical-harmonics", "hydrogen-radial-laguerre"],
+    ["hydrogen-radial-laguerre", "hydrogen-spectrum-degeneracy"],
+    ["angular-momentum-commutators", "angular-momentum-algebra-ladders"],
+    ["angular-momentum-algebra-ladders", "angular-momentum-matrix-representation"],
+    ["angular-momentum-algebra-ladders", "addition-angular-momenta-roadmap"],
+    ["addition-angular-momenta-roadmap", "coupled-basis-construction"],
+    ["coupled-basis-construction", "clebsch-gordan-coefficients"]
+  ],
+  "masteryRules": {
+    "minimumUnaidedCorrect": 2,
+    "minimumSeparateSessions": 2,
+    "minimumRepresentations": 2,
+    "minimumDelayHours": 24,
+    "chapterRequiresEveryAssessmentConcept": true,
+    "singleCorrectAnswerSufficient": false,
+    "simulatorOpeningSufficient": false
+  }
+}

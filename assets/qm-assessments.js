@@ -7,6 +7,10 @@
   let result = null;
   let submitting = false;
   let reporting = false;
+  let attemptMeta = null;
+  let attemptAction = "assessment";
+  let remediationCycleId = null;
+  const sessionId = crypto.randomUUID();
 
   function escapeHtml(value) {
     return String(value || "").replace(/[&<>"']/g, function (character) {
@@ -38,9 +42,12 @@
     }
   }
 
-  function renderQuiz(nextQuiz) {
+  function renderQuiz(nextQuiz, options) {
     quiz = nextQuiz;
     result = null;
+    attemptMeta = null;
+    attemptAction = options?.action || "assessment";
+    remediationCycleId = options?.cycleId || null;
     const questions = Array.isArray(quiz.questions) ? quiz.questions : [];
     content.innerHTML = `
       <section class="assessment-card" aria-labelledby="quizTitle">
@@ -56,6 +63,11 @@
                 ${Object.entries(question.options).map(function ([key, value]) {
                   return `<label class="assessment-option"><input required type="radio" name="${escapeHtml(question.questionId)}" value="${escapeHtml(key)}"><span><strong>${escapeHtml(key.toUpperCase())}.</strong> ${escapeHtml(value)}</span></label>`;
                 }).join("")}
+                <label class="assessment-confidence">Confidence before feedback
+                  <select required name="confidence:${escapeHtml(question.questionId)}">
+                    <option value="">Choose</option><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option>
+                  </select>
+                </label>
                 <a class="assessment-source" href="${escapeHtml(question.reviewPath)}" target="_blank" rel="noopener noreferrer">Review source: ${escapeHtml(question.reviewTitle)}</a>
               </fieldset>
             `;
@@ -109,7 +121,7 @@
     }
     const formData = new FormData(form);
     const answers = quiz.questions.map(function (question) {
-      return { questionId: question.questionId, choice: formData.get(question.questionId) };
+      return { questionId: question.questionId, choice: formData.get(question.questionId), confidence: formData.get("confidence:" + question.questionId) };
     });
     const submitButton = form.querySelector('button[type="submit"]');
     submitting = true;
@@ -119,7 +131,8 @@
       const response = await fetch("/api/qm-chapter-quiz", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token },
-        body: JSON.stringify({ chapterId: quiz.chapterId, answers })
+        body: JSON.stringify({ chapterId: quiz.chapterId, action: attemptAction, cycleId: remediationCycleId,
+          sessionId: sessionId, idempotencyKey: crypto.randomUUID(), answers })
       });
       const data = await response.json().catch(function () { return {}; });
       if (!response.ok || !data.result) {
@@ -127,6 +140,7 @@
         return;
       }
       result = data.result;
+      attemptMeta = data.attempt || null;
       trackAssessmentEvent("assessment_complete", {
         chapter_id: quiz.chapterId,
         question_count: quiz.questions.length,
@@ -144,23 +158,27 @@
 
   function renderResult() {
     const feedback = Array.isArray(result.feedback) ? result.feedback : [];
+    const missed = feedback.filter(function (item) { return !item.correct; });
+    const cycleId = attemptMeta?.remediation_cycle_id || remediationCycleId;
     content.innerHTML = `
       <section class="assessment-result" aria-labelledby="resultTitle">
         <p class="assessment-kicker">Assessment complete</p>
         <h2 id="resultTitle" tabindex="-1">${escapeHtml(result.score)}%</h2>
-        <p>${escapeHtml(result.correctCount)} of ${escapeHtml(result.questionCount)} questions correct. Review the source for any missed item before trying again.</p>
+        <p>${escapeHtml(result.correctCount)} of ${escapeHtml(result.questionCount)} questions correct. ${attemptMeta?.xp_delta ? "+" + escapeHtml(attemptMeta.xp_delta) + " points were recorded. " : ""}A score alone is not mastery; mastery requires changed, delayed, unaided retrieval.</p>
         <div class="assessment-feedback">
           ${feedback.map(function (item, index) {
             return `<article class="assessment-feedback__item${item.correct ? " is-correct" : ""}">
               <h3>Question ${index + 1}: ${item.correct ? "Correct" : "Review recommended"}</h3>
               <p>${escapeHtml(item.explanation)}</p>
+              ${item.correct ? "" : `<ol class="assessment-hint-ladder">${item.hintLadder.map(function (hint) { return `<li>${escapeHtml(hint)}</li>`; }).join("")}</ol>`}
               <a class="assessment-source" href="${escapeHtml(item.reviewPath)}">Open ${escapeHtml(item.reviewTitle)}</a>
             </article>`;
           }).join("")}
         </div>
         <div class="assessment-submit-row">
-          <button class="assessment-button assessment-button--primary" type="button" id="retryAssessment"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Try this chapter again</button>
+          ${missed.length && cycleId ? '<button class="assessment-button assessment-button--primary" type="button" id="completeReview"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Complete guided review</button>' : '<button class="assessment-button assessment-button--primary" type="button" id="retryAssessment"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i> Start a new assessment</button>'}
           <button class="assessment-button" type="button" id="chooseAssessment">Choose another chapter</button>
+          <p class="assessment-submit-status" id="reviewStatus" role="status" aria-live="polite"></p>
         </div>
         <details class="assessment-report">
           <summary>Report a possible assessment error</summary>
@@ -172,11 +190,30 @@
         </details>
       </section>
     `;
-    content.querySelector("#retryAssessment").addEventListener("click", function () { renderQuiz(quiz); content.querySelector("input")?.focus(); });
+    content.querySelector("#retryAssessment")?.addEventListener("click", function () { void loadAssessment(); });
+    content.querySelector("#completeReview")?.addEventListener("click", function () { void completeReview(cycleId); });
     content.querySelector("#chooseAssessment").addEventListener("click", function () { content.innerHTML = ""; chapterSelect.focus(); });
     content.querySelector("#reportAssessment").addEventListener("click", reportQuiz);
     content.querySelector("#resultTitle")?.focus?.();
     void typeset(content);
+  }
+
+  async function completeReview(cycleId) {
+    const status = document.querySelector("#reviewStatus"); const button = document.querySelector("#completeReview");
+    const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
+    if (!session?.access_token) { status.textContent = "Please sign in first."; return; }
+    button.disabled = true; status.textContent = "Recording guided review…";
+    try {
+      const saved = await fetch("/api/qm-chapter-quiz", { method: "POST", headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token },
+        body: JSON.stringify({ chapterId: quiz.chapterId, action: "review", cycleId, highestHintLevel: 4, solutionRevealed: true }) });
+      const review = await saved.json().catch(function () { return {}; });
+      if (!saved.ok) throw new Error(review.error || "Could not save guided review.");
+      status.textContent = review.review?.xp_delta ? "+" + review.review.xp_delta + " review points. Preparing a changed retry…" : "Review saved. Preparing a changed retry…";
+      const retry = await fetch("/api/qm-chapter-quiz?action=retry&cycleId=" + encodeURIComponent(cycleId), { headers: { Authorization: "Bearer " + session.access_token }, cache: "no-store" });
+      const data = await retry.json().catch(function () { return {}; });
+      if (!retry.ok || !data.quiz) throw new Error(data.error || "Focused retry is unavailable.");
+      renderQuiz(data.quiz, { action: "retry", cycleId }); content.querySelector("input")?.focus();
+    } catch (error) { status.textContent = error.message; button.disabled = false; }
   }
 
   async function reportQuiz() {

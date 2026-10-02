@@ -1,9 +1,9 @@
 # Checklist
 
-- [ ] Event inventory
-- [ ] Evidence classification
-- [ ] Policy adapter
-- [ ] Mechanism cards
-- [ ] Locked-content rules
-- [ ] Contract tests
-- [ ] Validation evidence
+- [x] Event inventory
+- [x] Evidence classification
+- [x] Policy adapter
+- [x] Mechanism cards
+- [x] Locked-content rules
+- [x] Contract tests
+- [x] Validation evidence

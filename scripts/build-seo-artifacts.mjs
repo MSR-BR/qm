@@ -189,6 +189,9 @@ function inferPageMeta(relativePath, html, topicMap) {
   const isIndex = normalizedRelativePath === "index.html";
   const isHome = normalizedRelativePath === "home.html";
   const isSearch = normalizedRelativePath === "search.html";
+  const isHelp = normalizedRelativePath === "help.html";
+  const isPrivacy = normalizedRelativePath === "privacy.html";
+  const isTerms = normalizedRelativePath === "terms.html";
   const isInstructions = normalizedRelativePath === "INSTRUCOES_SNIPPET.html";
   const isSource = normalizedRelativePath.includes("/source/");
   const topic = topicMap.get(normalizedRelativePath);
@@ -232,6 +235,17 @@ function inferPageMeta(relativePath, html, topicMap) {
   if (isHome) return { title: APP_NAME + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", canonical: SITE_URL + "/home.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: APP_NAME + " | Interactive Quantum Mechanics book", description: "Interactive Quantum Mechanics book by Prof. Mario Reis, with reviewed chapters, guided reading and simulators.", url: SITE_URL + "/home.html", inLanguage: "en" } };
 
   if (isSearch) return { title: "Search reviewed content | " + APP_NAME, description: "Search the reviewed sections of the interactive Quantum Mechanics book by Prof. Mario Reis.", canonical: SITE_URL + "/search.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: "Search reviewed content | " + APP_NAME, url: SITE_URL + "/search.html", inLanguage: "en", potentialAction: { "@type": "SearchAction", target: SITE_URL + "/search.html?q={search_term_string}", "query-input": "required name=search_term_string" } } };
+
+  if (isHelp) return { title: "How learning works | " + APP_NAME, description: "Learn how QUANTUM selects reviewed exercises, uses learning evidence, awards points, and protects your study journey.", canonical: SITE_URL + "/help.html", robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "article", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: "How learning works | " + APP_NAME, description: "A public guide to QUANTUM's learning methodology, reviewed activities, recommendations, rewards, privacy and research limitations.", url: SITE_URL + "/help.html", inLanguage: "en", dateModified: "2026-09-26", isPartOf: { "@type": "WebSite", name: APP_NAME, url: SITE_URL + "/" }, about: { "@type": "Thing", name: "Evidence-informed learning methodology" } } };
+
+  if (isPrivacy || isTerms) {
+    const pageName = isPrivacy ? "Privacy" : "Terms of Use";
+    const description = isPrivacy
+      ? "Learn how QUANTUM handles Google sign-in, optional study records, analytics, communication choices, and data requests."
+      : "Read the terms for using the QUANTUM interactive book, generated exercises, simulations, and optional study tools.";
+    const canonical = SITE_URL + "/" + normalizedRelativePath;
+    return { title: pageName + " | " + APP_NAME, description, canonical, robots: "index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1", ogType: "website", jsonLd: { "@context": "https://schema.org", "@type": "WebPage", name: pageName + " | " + APP_NAME, description, url: canonical, inLanguage: "en", isPartOf: { "@type": "WebSite", name: APP_NAME, url: SITE_URL + "/" } } };
+  }
 
   if (isInstructions) {
     return {
@@ -371,7 +385,7 @@ function renderSitemap(urls) {
 }
 async function writeSitemaps(topicMap) {
   const appUrls = new Map(), pageUrls = new Map();
-  appUrls.set(SITE_URL + "/", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/home.html", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/search.html", { priority: "0.7", changefreq: "weekly" }); appUrls.set(SITE_URL + "/?view=simulators", { priority: "0.8", changefreq: "weekly" });
+  appUrls.set(SITE_URL + "/", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/home.html", { priority: "1.0", changefreq: "weekly" }); appUrls.set(SITE_URL + "/search.html", { priority: "0.7", changefreq: "weekly" }); appUrls.set(SITE_URL + "/help.html", { priority: "0.7", changefreq: "monthly" }); appUrls.set(SITE_URL + "/privacy.html", { priority: "0.3", changefreq: "monthly" }); appUrls.set(SITE_URL + "/terms.html", { priority: "0.3", changefreq: "monthly" }); appUrls.set(SITE_URL + "/?view=simulators", { priority: "0.8", changefreq: "weekly" });
   for (const chapterId of Object.keys(chapterCatalog).sort()) if (isChapterSeoEligible(chapterId)) appUrls.set(SITE_URL + "/?view=chapters&chapter=" + chapterId, { priority: "0.9", changefreq: "weekly" });
   for (const [relativeUrl, topic] of topicMap.entries()) if (isChapterSeoEligible(topic.chapterId)) pageUrls.set(SITE_URL + "/" + relativeUrl, { priority: "0.7", changefreq: "monthly" });
   const allUrls = new Map([...appUrls, ...pageUrls]);
@@ -382,7 +396,7 @@ async function writeSitemaps(topicMap) {
   await writeFile(path.join(rootDir, "sitemap.xml"), allUrlsXml + "\n", "utf8");
 }
 const topicMap = await loadTopicMap();
-const allPublicHtmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "search.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))];
+const allPublicHtmlFiles = [path.join(rootDir, "index.html"), path.join(rootDir, "home.html"), path.join(rootDir, "search.html"), path.join(rootDir, "help.html"), path.join(rootDir, "privacy.html"), path.join(rootDir, "terms.html"), path.join(rootDir, "INSTRUCOES_SNIPPET.html"), ...(await collectHtmlFiles(slidesDir))];
 
 for (const filePath of allPublicHtmlFiles) {
   await normalizeTemporaryHost(filePath);

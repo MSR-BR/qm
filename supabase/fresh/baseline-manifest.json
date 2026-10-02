@@ -1,0 +1,98 @@
+{
+  "format": "qm-fresh-baseline-v1",
+  "projectRef": "crasnnvdvujzxudmbakv",
+  "migration": "supabase/fresh/supabase/migrations/20260926204825_qm_clean_baseline.sql",
+  "migrationVersion": "20260926204825",
+  "sha256": "dca627488716f50e826edae5d5cc023b1c18892a9221a495a6a07ad3db931730",
+  "sources": [
+    {
+      "path": "supabase/migrations/20260528_create_saved_exercises.sql",
+      "sha256": "c88b87496e721bb412ef2590547dae7c17dc190af9e7ed7d751d572f23d7f033"
+    },
+    {
+      "path": "supabase/migrations/20260529_create_exercise_validation_reports.sql",
+      "sha256": "89603ef9b17571bde35899f2f75395fda21201a0eb49cdee724e05052a30b25e"
+    },
+    {
+      "path": "supabase/migrations/20260531_fix_exercise_validation_rls.sql",
+      "sha256": "48b35a056d2d75facde1a7c33b87b892bfb027d482d39ac2ce82ba57a5a5d63d"
+    },
+    {
+      "path": "supabase/migrations/20260531_moderate_exercise_validation_reports.sql",
+      "sha256": "c4a2b338a6ccf460ab9ec6d7535c89bd4b9c0d131059ba7c1c54ba36f2843cfa"
+    },
+    {
+      "path": "supabase/migrations/20260717_secure_qm_exercise_tables.sql",
+      "sha256": "4f579417ad4441d6ac2f8a7b058074081dc3d4b987406d9cc6e9b22c5e08d523"
+    },
+    {
+      "path": "supabase/migrations/20260731_add_qm_book_sources.sql",
+      "sha256": "25564f3c587d120a6709bac888ce09417c1da46d5e4d4157e642f14d4f4765c9"
+    },
+    {
+      "path": "supabase/migrations/20260731_add_qm_saved_exercise_source_metadata.sql",
+      "sha256": "058ecb96f228e6063b7cf33c897b60719e25b2498bc481c03d3774fbbf6fe802"
+    },
+    {
+      "path": "supabase/migrations/20260803_fix_qm_book_source_chapter_id_check.sql",
+      "sha256": "0cdc2b65c9066e0f6e142db747b8df2de6b89533a45a830541c6785f5994d3fd"
+    },
+    {
+      "path": "supabase/migrations/20260803_grant_qm_book_source_server_access.sql",
+      "sha256": "f4ea2428af3649c0f01987f09fc8cd08ffe01f732e156ceca08335f3fc4beaad"
+    },
+    {
+      "path": "supabase/migrations/20260903225925_create_qm_study_progress.sql",
+      "sha256": "9071b04b9b1e102b2e8079a055a11e635db627f8990774ddca14a44d3a3e8894"
+    },
+    {
+      "path": "supabase/migrations/20260904115229_create_qm_gamification_foundation.sql",
+      "sha256": "7a756a26b1fabe579b787c120a61803cc9cd761ca923f213d62cbcbd94ccdb7a"
+    },
+    {
+      "path": "supabase/migrations/20260906143603_create_qm_chapter_quiz_attempts.sql",
+      "sha256": "01951aea287c6f438a7cc4b4a5277078dfa425a3c85ed97ae62f6892f026e805"
+    },
+    {
+      "path": "supabase/migrations/20260906225907_create_qm_simulator_activity.sql",
+      "sha256": "75e043d8fd459603c8113bd151a2a04a12c457b31638c0c8ff650c98dbbfc670"
+    },
+    {
+      "path": "supabase/migrations/20260910230457_qm_operational_parity.sql",
+      "sha256": "8404d549f6eef9088d4640b08890f069445f125bced066f3c4be553df3baf834"
+    },
+    {
+      "path": "supabase/migrations/20260914223802_qm_analytics_retention.sql",
+      "sha256": "931ca629a97a7cf80ec5756fe00bca9e42e1f933f330ae3db637590659561f96"
+    },
+    {
+      "path": "supabase/migrations/20260924125315_repair_qm_authenticated_learning_flows.sql",
+      "sha256": "312aea66932bb1c47f2eeb35c11fb4e1c0a8fdaaf5a0c42081bfec45d1b89d96"
+    },
+    {
+      "path": "supabase/migrations/20260925215027_explicit_data_api_privileges.sql",
+      "sha256": "961c6243ba30841ec6437cdf87cf7f8cb523e1e577b9f46fa04ab3bac1b526b5"
+    },
+    {
+      "path": "supabase/migrations/20260925230000_qm_optional_email_consent_default_off.sql",
+      "sha256": "4d7df0cfab0df362ab50581ddd05fb188877b87eddacc7d61003031eac6a80aa"
+    },
+    {
+      "path": "supabase/migrations/20260926112057_qm_authoritative_learning_ledger.sql",
+      "sha256": "32c884fd2bda533e3894030d54e6f3b1d9588324a8e92ddb99f5b5ee425e3e07"
+    },
+    {
+      "path": "supabase/migrations/20260926120250_qm_adaptive_learning_modes.sql",
+      "sha256": "1c218630bd10649da62586506765eb05dfa3be50932deafb4be4e062a00154e5"
+    },
+    {
+      "path": "supabase/migrations/20260926154500_qm_academic_evaluation_and_responsible_communication.sql",
+      "sha256": "da642ec317a3467d2df0e1ac7e737878606be1aa295410610febb5a3f9db035f"
+    }
+  ],
+  "transformations": [
+    "Strip standalone outer BEGIN/COMMIT so the runner owns the atomic transaction",
+    "Guard optional public.rls_auto_enable() revoke in 20260910230457 only"
+  ],
+  "authorization": "Fresh empty QUANTUM replacement; no TERMO, no historical data import, no app cutover"
+}

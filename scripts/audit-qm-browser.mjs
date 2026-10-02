@@ -158,6 +158,24 @@ const scenarios = [
     expected: ["Chapter assessments", "Start assessment"]
   },
   {
+    name: "daily-challenge-mobile",
+    path: "/daily-challenge.html",
+    width: 390,
+    height: 844,
+    expected: ["Daily Challenge", "Prepare my challenge", "no missed-day penalty"],
+    capture: true
+  },
+  {
+    name: "learning-help-mobile-zoom",
+    path: "/help.html",
+    width: 320,
+    height: 720,
+    expected: ["How learning works", "Why this activity?", "Points, badges and streaks", "Research and limitations"],
+    interaction: "document.documentElement.style.fontSize='200%'",
+    reducedMotion: true,
+    capture: true
+  },
+  {
     name: "index-minimum-width",
     path: "/index.html?view=chapters",
     width: 320,

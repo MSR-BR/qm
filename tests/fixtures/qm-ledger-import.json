@@ -1,0 +1,6 @@
+{
+  "complete": true,
+  "profiles": [{ "user_id": "10000000-0000-4000-8000-000000000003", "xp_total": 20, "level": 1, "studied_items_count": 1 }],
+  "rewardEvents": [{ "id": "20000000-0000-4000-8000-000000000001", "user_id": "10000000-0000-4000-8000-000000000003", "event_type": "section_completed", "chapter_id": "01", "item_id": "1.1", "page_path": "slides/chapter-01/why-old-quantum-physics-matters.html", "xp_delta": 20 }],
+  "ledger": []
+}

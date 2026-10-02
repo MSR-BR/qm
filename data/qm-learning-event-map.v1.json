@@ -1,0 +1,703 @@
+{
+  "policyVersion": "qm-learning-policy-2026-09-25.1",
+  "adapterVersion": "quantum-adapter-2026-09-25.1",
+  "canonicalEvents": [
+    "section_opened",
+    "section_completed",
+    "exercise_attempted",
+    "exercise_corrected",
+    "hint_used",
+    "solution_revealed",
+    "assessment_started",
+    "assessment_completed",
+    "assessment_reviewed",
+    "assessment_retry_completed",
+    "daily_challenge_completed",
+    "simulator_opened",
+    "simulator_prediction_recorded",
+    "simulator_meaningful_interaction",
+    "simulator_reflection_recorded",
+    "simulator_goal_completed",
+    "concept_retrieved",
+    "concept_mastery_reached",
+    "chapter_mastery_reached",
+    "mechanic_eligible",
+    "mechanic_exposed",
+    "mechanic_acted",
+    "mechanic_opted_out",
+    "preference_changed"
+  ],
+  "envelope": {
+    "version": "learning-event-v1",
+    "required": [
+      "event_id",
+      "user_id",
+      "event_type",
+      "occurred_at",
+      "received_at",
+      "content_id",
+      "chapter_id",
+      "section_id",
+      "concept_ids",
+      "source_ids",
+      "attempt_id",
+      "activity_id",
+      "idempotency_key",
+      "policy_version",
+      "evidence"
+    ],
+    "rules": [
+      "IDs, actor and received_at come from verified server context; never copy client reward fields.",
+      "Content fields required for learning events; null allowed only for global fidelity/privacy events with documented scope.",
+      "At least one attempt_id/activity_id required for instructional evidence.",
+      "Canonical name does not confer authority. Validate source, evidence and semantic uniqueness in C29.",
+      "Legacy missing fields remain unknown; do not invent sessions, confidence, concepts or unaided success.",
+      "preference_changed stays outside reward ledger. Fidelity and analytics cannot award.",
+      "Mastery transitions require delayed, separate-session, varied-form concept evidence; chapter mastery also requires coverage."
+    ]
+  },
+  "events": [
+    {
+      "channel": "analytics",
+      "name": "session_start",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "home_study_cta_click",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "chapter_start",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "section_open",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "section_complete",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "simulator_open",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "assessment_start",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "assessment_complete",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "exercise_generate",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "exercise_solution_open",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "exercise_validation_submit",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "favorite_changed",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "auth_open",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "login_success",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "rating_prompt_shown",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "rating_submitted",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "book_preview_open",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "search_submit",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "analytics",
+      "name": "search_result_open",
+      "category": "analytics",
+      "source": "lib/qm-analytics-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Consented GA4/first-party measurement only; do not replay into learning ledger."
+    },
+    {
+      "channel": "ui",
+      "name": "qm-study-progress-change",
+      "category": "activity",
+      "source": "assets/qm-study-progress.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "ui",
+      "name": "qm-gamification-change",
+      "category": "reward",
+      "source": "assets/qm-gamification.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "ui",
+      "name": "qm-simulator-progress-change",
+      "category": "activity",
+      "source": "assets/qm-simulator-progress.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "ui",
+      "name": "qm-legal-preferences-change",
+      "category": "privacy",
+      "source": "assets/qm-first-login-preferences.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "ui",
+      "name": "qm-analytics-consent-change",
+      "category": "privacy",
+      "source": "assets/qm-analytics.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "ui",
+      "name": "termo-auth-state-change",
+      "category": "infrastructure",
+      "source": "assets/termo-auth.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "ui",
+      "name": "termo-favorite-items-change",
+      "category": "activity",
+      "source": "assets/termo-user-data.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Never grants points or mastery by itself."
+    },
+    {
+      "channel": "legacy",
+      "name": "recordOpen",
+      "category": "activity",
+      "source": "assets/qm-study-progress.js",
+      "canonicalEvent": "section_opened",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Mutable own-user progress; exposure only."
+    },
+    {
+      "channel": "legacy",
+      "name": "setCompletion",
+      "category": "activity",
+      "source": "assets/qm-study-progress.js",
+      "canonicalEvent": "section_completed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Explicit self-report or undo; server must verify persisted state. Not mastery."
+    },
+    {
+      "channel": "legacy",
+      "name": "section_completed",
+      "category": "reward",
+      "source": "lib/qm-gamification-handler.mjs",
+      "canonicalEvent": "section_completed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "C21 RPC awards 20 once. Legacy lacks concept, policy and attempt evidence; C29 must reconcile without invented evidence."
+    },
+    {
+      "channel": "legacy",
+      "name": "assessment.get",
+      "category": "activity",
+      "source": "lib/qm-chapter-quiz-handler.mjs",
+      "canonicalEvent": "assessment_started",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Public quiz fetch is not a persisted start or attempt."
+    },
+    {
+      "channel": "legacy",
+      "name": "assessment.submit",
+      "category": "learning",
+      "source": "lib/qm-chapter-quiz-handler.mjs",
+      "canonicalEvent": "assessment_completed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Server grades and stores answers/feedback. No request idempotency or reward yet; no confidence/help/delayed evidence."
+    },
+    {
+      "channel": "legacy",
+      "name": "simulator.record",
+      "category": "activity",
+      "source": "assets/qm-simulator-progress.js",
+      "canonicalEvent": "simulator_opened",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Client increment per sessionStorage key; not meaningful manipulation, prediction or reflection."
+    },
+    {
+      "channel": "legacy",
+      "name": "exercise.generate",
+      "category": "activity",
+      "source": "lib/exercicio-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Generated source-linked statement/solution is not an answered attempt."
+    },
+    {
+      "channel": "legacy",
+      "name": "exercise.save",
+      "category": "activity",
+      "source": "assets/termo-user-data.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Mutable saved exercise/provenance, not demonstrated retrieval."
+    },
+    {
+      "channel": "legacy",
+      "name": "exercise.favorite",
+      "category": "activity",
+      "source": "assets/termo-user-data.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Saved preference only."
+    },
+    {
+      "channel": "legacy",
+      "name": "page.favorite",
+      "category": "activity",
+      "source": "assets/termo-user-data.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "User metadata preferences, never authorization or learning evidence."
+    },
+    {
+      "channel": "legacy",
+      "name": "exercise.report",
+      "category": "safety",
+      "source": "api/exercicio-validacao.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Learner quality report, not correctness evidence."
+    },
+    {
+      "channel": "legacy",
+      "name": "exercise.report.review",
+      "category": "safety",
+      "source": "api/exercicio-validacao-admin.js",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Editorial decision, not student performance."
+    },
+    {
+      "channel": "legacy",
+      "name": "preferences.save",
+      "category": "privacy",
+      "source": "lib/qm-legal-preferences-handler.mjs",
+      "canonicalEvent": "preference_changed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Separate consent store; no reward."
+    },
+    {
+      "channel": "legacy",
+      "name": "rating.submit",
+      "category": "experience",
+      "source": "lib/qm-app-rating-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Satisfaction measure, not learning outcome."
+    },
+    {
+      "channel": "legacy",
+      "name": "campaign.audience",
+      "category": "privacy",
+      "source": "lib/qm-email-campaign-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Owner-only audience preparation."
+    },
+    {
+      "channel": "legacy",
+      "name": "campaign.test",
+      "category": "infrastructure",
+      "source": "lib/qm-email-campaign-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Owner test; no learning evidence."
+    },
+    {
+      "channel": "legacy",
+      "name": "campaign.send",
+      "category": "fidelity",
+      "source": "lib/qm-email-campaign-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Disabled by C32; free-form bulk campaigns are not an authorized learning communication path."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "learning_communication.eligible",
+      "category": "fidelity",
+      "source": "lib/qm-learning-communication-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Atomic server reservation after consent, reviewed-content, quiet-hours and frequency-cap checks; never learning evidence."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "learning_communication.sent",
+      "category": "fidelity",
+      "source": "lib/qm-learning-communication-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Provider acceptance of a bounded reviewed reminder; explicitly not treated as learner exposure, action or learning."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "learning_communication.opt_out",
+      "category": "privacy",
+      "source": "lib/qm-learning-communication-handler.mjs",
+      "canonicalEvent": "preference_changed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Signed one-click unsubscribe and pause; no message body, email address or token is stored in the event."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "learning_evaluation.read",
+      "category": "fidelity",
+      "source": "lib/qm-learning-evaluation-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Owner-only aggregate report that preserves outcome-family claim boundaries."
+    },
+    {
+      "channel": "legacy",
+      "name": "email.test",
+      "category": "infrastructure",
+      "source": "lib/qm-email-test-handler.mjs",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Owner configuration test; no learner evidence."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "learning_attempt.record",
+      "category": "learning",
+      "source": "lib/qm-chapter-quiz-handler.mjs",
+      "canonicalEvent": "assessment_completed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "The mapping is descriptive; the C30 database RPC validates evidence, caps and atomic rewards."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "daily_challenge.issue_and_submit",
+      "category": "learning",
+      "source": "lib/qm-adaptive-learning-handler.mjs",
+      "canonicalEvent": "daily_challenge_completed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Uses studied reviewed sources only; no missed-day penalty and no extra daily points."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "guided_review.complete",
+      "category": "learning",
+      "source": "lib/qm-chapter-quiz-handler.mjs",
+      "canonicalEvent": "assessment_reviewed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "The database enforces one reward per cycle plus daily and rolling chapter caps."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "simulator_cycle.record",
+      "category": "learning",
+      "source": "lib/qm-adaptive-learning-handler.mjs",
+      "canonicalEvent": "simulator_goal_completed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Ordered stages are persisted with zero points and never confer mastery by themselves."
+    },
+    {
+      "channel": "authoritative_server",
+      "name": "mechanic_fidelity.record",
+      "category": "fidelity",
+      "source": "lib/qm-adaptive-learning-handler.mjs",
+      "canonicalEvent": "mechanic_exposed",
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Fidelity evidence remains separate from activity and learning outcomes."
+    }
+  ],
+  "stores": [
+    {
+      "table": "qm_learning_attempts",
+      "category": "learning",
+      "note": "C30 immutable server-issued assessment, Daily Challenge and retry attempts"
+    },
+    {
+      "table": "qm_learning_attempt_items",
+      "category": "learning",
+      "note": "Bounded correctness, confidence, help, representation and session evidence; no raw answer payload"
+    },
+    {
+      "table": "qm_learning_activity_issues",
+      "category": "learning",
+      "note": "Server-issued Daily Challenge item set and ordered help state"
+    },
+    {
+      "table": "qm_learning_remediation_cycles",
+      "category": "learning",
+      "note": "Server-created source-linked guided review and changed retry lifecycle"
+    },
+    {
+      "table": "qm_learning_badges",
+      "category": "reward",
+      "note": "Persistent criterion badges without bonus points"
+    },
+    {
+      "table": "qm_learning_mechanic_events",
+      "category": "fidelity",
+      "note": "Eligibility, exposure, action and opt-out evidence separated from learning outcomes"
+    },
+    {
+      "table": "qm_learning_communication_events",
+      "category": "fidelity",
+      "note": "Server-only eligibility, send, confirmed-delivery, action, failure and opt-out metadata; provider acceptance is not exposure, and no message bodies or recipient addresses are stored"
+    },
+    {
+      "table": "qm_simulator_learning_events",
+      "category": "learning",
+      "note": "Ordered prediction, meaningful interaction, reflection and goal evidence; zero points and not mastery"
+    },
+    {
+      "table": "qm_learning_ledger",
+      "category": "learning",
+      "note": "C29 append-only section rewards and limited assessment evidence. Legacy rewards imported only after authorized reconciliation; not mastery."
+    },
+    {
+      "table": "qm_study_progress",
+      "category": "activity",
+      "note": "Mutable browser-owned reading state; not immutable evidence"
+    },
+    {
+      "table": "qm_gamification_events",
+      "category": "reward",
+      "note": "Legacy reward ledger, section_completed only"
+    },
+    {
+      "table": "qm_gamification_profiles",
+      "category": "reward",
+      "note": "Derived XP/level/streak/counter; never concept mastery"
+    },
+    {
+      "table": "qm_chapter_quiz_attempts",
+      "category": "learning",
+      "note": "Server-scored attempts, no delay/help metadata"
+    },
+    {
+      "table": "qm_simulator_activity",
+      "category": "activity",
+      "note": "Opens and timestamps only"
+    },
+    {
+      "table": "qm_saved_exercises",
+      "category": "activity",
+      "note": "Saved generated material and favorites; not solved evidence"
+    },
+    {
+      "table": "qm_exercise_validation_reports",
+      "category": "safety",
+      "note": "Quality reports and editorial review"
+    },
+    {
+      "table": "qm_book_sources",
+      "category": "infrastructure",
+      "note": "Approved source/provenance metadata"
+    },
+    {
+      "table": "qm_user_legal_preferences",
+      "category": "privacy",
+      "note": "Legal acknowledgement and optional email choice"
+    },
+    {
+      "table": "qm_email_campaigns",
+      "category": "fidelity",
+      "note": "Campaign send status, not learner exposure"
+    },
+    {
+      "table": "qm_email_recipient_deliveries",
+      "category": "fidelity",
+      "note": "Provider acceptance/failure; return_reminder schema label is not a running scheduler"
+    },
+    {
+      "table": "qm_app_ratings",
+      "category": "experience",
+      "note": "Satisfaction and optional feedback"
+    },
+    {
+      "table": "qm_analytics_events",
+      "category": "analytics",
+      "note": "Consented first-party metrics, never reward input"
+    }
+  ]
+}

@@ -159,7 +159,7 @@ test("email test delivery is admin-only and remains disabled without Resend", as
   }
 });
 
-test("campaign delivery uses the English SEND confirmation contract", async function () {
+test("generic bulk campaign delivery is disabled in favor of reviewed learning communication", async function () {
   const originalFetch = globalThis.fetch;
   const resendPayloads = [];
   globalThis.fetch = async function (url, options = {}) {
@@ -190,12 +190,9 @@ test("campaign delivery uses the English SEND confirmation contract", async func
       },
       env: { ...SERVER_ENV, RESEND_API_KEY: "resend-test-key" }
     });
-    assert.equal(response.status, 200);
-    assert.equal(response.body.deliveredCount, 1);
-    assert.equal(response.body.failedCount, 0);
-    assert.equal(resendPayloads.length, 1);
-    assert.deepEqual(resendPayloads[0].to, ["learner@example.com"]);
-    assert.equal(resendPayloads[0].from, "QUANTUM <hello@quantummechanicsbook.app>");
+    assert.equal(response.status, 410);
+    assert.match(response.body.error, /Generic bulk campaigns are disabled/);
+    assert.equal(resendPayloads.length, 0);
   } finally {
     globalThis.fetch = originalFetch;
   }

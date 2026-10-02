@@ -37,10 +37,24 @@ for (const chapterId of ["08", "09", "10", "11", "12", "13"]) {
   if (sitemapPages.includes(`/slides/chapter-${chapterId}/`) || sitemapApp.includes(`chapter=${chapterId}`)) errors.push(`Sitemap exposes Chapter ${chapterId}`);
 }
 if (!sitemapApp.includes(`<loc>${siteUrl}/search.html</loc>`)) errors.push("Search page missing from the app sitemap.");
+if (!sitemapApp.includes(`<loc>${siteUrl}/help.html</loc>`)) errors.push("Learning Help page missing from the app sitemap.");
+for (const legalPage of ["privacy.html", "terms.html"]) {
+  if (!sitemapApp.includes(`<loc>${siteUrl}/${legalPage}</loc>`)) errors.push(`Legal page missing from the app sitemap: ${legalPage}`);
+  const legalHtml = await read(legalPage);
+  if (!legalHtml.includes(`<link rel="canonical" href="${siteUrl}/${legalPage}"/>`)) errors.push(`Legal page is missing its canonical URL: ${legalPage}`);
+  if (!legalHtml.includes('name="robots" content="index,follow')) errors.push(`Legal page is not indexable: ${legalPage}`);
+}
+const helpHtml = await read("help.html");
+if (!helpHtml.includes(`<link rel="canonical" href="${siteUrl}/help.html"/>`)) errors.push("Learning Help page is missing its canonical URL.");
+if (!helpHtml.includes('"@type":"WebPage"') || !helpHtml.includes('"url":"https://quantummechanicsbook.app/help.html"')) errors.push("Learning Help page is missing WebPage structured data.");
+if (!helpHtml.includes('name="robots" content="index,follow')) errors.push("Learning Help page is not indexable.");
 const publicHtmlPaths = [
   "index.html",
   "home.html",
   "search.html",
+  "help.html",
+  "privacy.html",
+  "terms.html",
   "INSTRUCOES_SNIPPET.html",
   ...(await collectHtmlFiles(path.join(rootDir, "slides"))).map((filePath) => path.relative(rootDir, filePath))
 ];

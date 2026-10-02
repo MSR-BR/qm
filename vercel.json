@@ -1,4 +1,12 @@
 {
+  "rewrites": [
+    { "source": "/lib/:path*", "destination": "/api/qm-internal-denied" },
+    { "source": "/api/qm-adaptive-learning", "destination": "/api/qm-learning?route=adaptive" },
+    { "source": "/api/qm-learning-communication", "destination": "/api/qm-learning?route=communication" },
+    { "source": "/api/qm-learning-evaluation", "destination": "/api/qm-learning?route=evaluation" },
+    { "source": "/api/qm-learning-profile", "destination": "/api/qm-learning?route=profile" },
+    { "source": "/api/qm-gamification-event", "destination": "/api/qm-learning?route=reward" }
+  ],
   "redirects": [
     {
       "source": "/slides/chapter-10/:path*",

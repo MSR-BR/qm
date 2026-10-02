@@ -5,3 +5,14 @@
 - profile and reconciliation contracts under `data/` and `.specs/`
 - learner-facing readers under `assets/`
 - unit, handler, migration, isolation, and reconciliation tests
+
+## Delivered locally
+
+- `supabase/migrations/20260926112057_qm_authoritative_learning_ledger.sql`
+- `lib/qm-gamification-handler.mjs`, `lib/qm-learning-profile-handler.mjs`, `lib/qm-ledger-reconciliation.mjs`
+- `api/qm-learning-profile.js`, `dev-server.mjs`
+- `assets/qm-gamification.js`, `index.html`
+- `data/qm-learning-simulator-paths.v1.json`, C28 store inventory, Supabase access contract
+- `scripts/plan-qm-ledger-import.mjs`, `scripts/test-qm-learning-ledger-postgres.mjs`
+- `tests/qm-learning-profile.test.mjs`, privilege/C28 adoption tests, synthetic fixture
+- C29 design/validation/rollout records, project state, security profile/risk register, C30 handoff

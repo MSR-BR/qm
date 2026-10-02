@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>Pause learning email | QUANTUM</title>
+  <link rel="stylesheet" href="assets/qm-assessments.css">
+</head>
+<body>
+  <main class="assessment-layout qm-help" id="mainContent">
+    <section class="assessment-intro" aria-labelledby="unsubscribeTitle">
+      <p class="assessment-kicker">Privacy and communication</p>
+      <h1 id="unsubscribeTitle">Pause learning email</h1>
+      <p id="unsubscribeStatus" role="status" aria-live="polite">Confirm below to pause and unsubscribe from optional learning email. Your learning account and progress will not be changed.</p>
+      <button class="assessment-button assessment-button--primary" id="unsubscribeButton" type="button">Pause and unsubscribe</button>
+      <p><a href="index.html?view=preferences">Open your account preferences</a></p>
+    </section>
+  </main>
+  <script>
+    (function () {
+      const status = document.getElementById("unsubscribeStatus");
+      const button = document.getElementById("unsubscribeButton");
+      const token = new URLSearchParams(location.hash.slice(1)).get("token") || "";
+      history.replaceState(null, "", location.pathname);
+      if (!token) { status.textContent = "This unsubscribe link is incomplete."; button.disabled = true; return; }
+      button.addEventListener("click", async function () {
+        button.disabled = true;
+        status.textContent = "Saving your preference…";
+        const response = await fetch("/api/qm-learning-communication", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ action: "unsubscribe", token })
+        }).catch(function () { return null; });
+        status.textContent = response?.ok
+          ? "Optional learning email is now paused and unsubscribed. Your learning account and progress were not changed."
+          : "We could not change this preference now. Open your account preferences or contact support.";
+        if (!response?.ok) button.disabled = false;
+      });
+    }());
+  </script>
+</body>
+</html>

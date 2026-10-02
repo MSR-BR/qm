@@ -7,14 +7,14 @@ import { auditSupabasePrivilegeContract } from "../scripts/check-supabase-privil
 test("every project-created Supabase object has an explicit privilege decision", async function () {
   const result = await auditSupabasePrivilegeContract();
   assert.equal(result.ok, true, result.errors.join("\n"));
-  assert.deepEqual(result.counts, { tables: 13, functions: 9, sequences: 2 });
+  assert.deepEqual(result.counts, { tables: 25, functions: 22, sequences: 2 });
 });
 
-test("chapter assessment service performs only SELECT and INSERT on attempts", async function () {
+test("chapter assessment service writes learning evidence only through server-owned RPCs", async function () {
   const source = await readFile(new URL("../lib/qm-chapter-quiz-handler.mjs", import.meta.url), "utf8");
-  assert.match(source, /qm_chapter_quiz_attempts\?user_id=eq\./);
-  assert.match(source, /rest\(config,\s*"qm_chapter_quiz_attempts",\s*\{\s*method:\s*"POST"/s);
-  assert.doesNotMatch(source, /rest\(config,\s*"qm_chapter_quiz_attempts"[\s\S]*?method:\s*"(?:PATCH|PUT|DELETE)"/);
+  assert.match(source, /rpc\/record_qm_learning_activity/);
+  assert.match(source, /rpc\/complete_qm_learning_review/);
+  assert.doesNotMatch(source, /"qm_learning_attempts",\s*\{\s*method:\s*"POST"/s);
 });
 
 test("section reward service writes only through the server-only atomic RPC", async function () {

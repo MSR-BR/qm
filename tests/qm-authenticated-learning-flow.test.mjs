@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 import vm from "node:vm";
 
+import { handleQmAdaptiveLearning } from "../lib/qm-adaptive-learning-handler.mjs";
 import { handleQmChapterQuiz } from "../lib/qm-chapter-quiz-handler.mjs";
 import {
   handleQmGamificationEvent,
@@ -31,13 +32,56 @@ function json(payload, status = 200) {
   });
 }
 
+test("adaptive learning requires a verified bearer session before any evidence call", async function () {
+  let calls = 0;
+  const response = await handleQmAdaptiveLearning({
+    method: "POST",
+    body: { action: "simulator_stage" },
+    env: SERVER_ENV,
+    fetchImpl: async function () { calls += 1; return json({}); }
+  });
+
+  assert.equal(response.status, 401);
+  assert.equal(calls, 0);
+});
+
+test("adaptive simulator evidence uses verified identity and a server-only RPC", async function () {
+  let rpcRequest = null;
+  const response = await handleQmAdaptiveLearning({
+    method: "POST",
+    headers: { authorization: "Bearer learner-token" },
+    body: {
+      action: "simulator_stage",
+      activityId: "11111111-1111-4111-8111-111111111111",
+      idempotencyKey: "22222222-2222-4222-8222-222222222222",
+      simulatorSlug: "infinite-well",
+      stage: "prediction_recorded",
+      responseCode: "higher",
+      interactionCount: 0,
+      user_id: "attacker-controlled"
+    },
+    env: SERVER_ENV,
+    fetchImpl: async function (url, options = {}) {
+      if (String(url).includes("/auth/v1/user")) return json({ id: "learner-1" });
+      rpcRequest = { url: String(url), body: JSON.parse(options.body) };
+      return json([{ id: "event-1" }]);
+    }
+  });
+
+  assert.equal(response.status, 200);
+  assert.match(rpcRequest.url, /\/rest\/v1\/rpc\/record_qm_simulator_learning_stage$/);
+  assert.equal(rpcRequest.body.p_user_id, "learner-1");
+  assert.equal(rpcRequest.body.p_simulator_slug, "infinite-well");
+  assert.equal("user_id" in rpcRequest.body, false);
+});
+
 test("chapter assessment save uses the verified learner and returns the attempt identifier", async function () {
   const originalFetch = globalThis.fetch;
   let stored = null;
   globalThis.fetch = async function (url, options = {}) {
     if (String(url).includes("/auth/v1/user")) return json({ id: "learner-1" });
     stored = JSON.parse(options.body);
-    return json([{ id: "attempt-1", ...stored }], 201);
+    return json({ attempt_id: "11111111-1111-4111-8111-111111111111", xp_delta: 30 }, 201);
   };
 
   try {
@@ -46,16 +90,24 @@ test("chapter assessment save uses the verified learner and returns the attempt 
       headers: { authorization: "Bearer learner-token" },
       body: {
         chapterId: "01",
-        answers: [{ questionId: "qm-01-q1", choice: "a" }],
+        sessionId: "22222222-2222-4222-8222-222222222222",
+        idempotencyKey: "33333333-3333-4333-8333-333333333333",
+        answers: [
+          { questionId: "qm-01-wave-benchmark", choice: "a", confidence: "high" },
+          { questionId: "qm-01-photoelectric", choice: "a", confidence: "medium" },
+          { questionId: "qm-01-de-broglie", choice: "a", confidence: "low" }
+        ],
         user_id: "attacker-controlled"
       },
       env: SERVER_ENV
     });
 
     assert.equal(response.status, 200);
-    assert.equal(response.body.attempt.id, "attempt-1");
-    assert.equal(stored.user_id, "learner-1");
-    assert.equal(stored.chapter_id, "01");
+    assert.equal(response.body.attempt.attempt_id, "11111111-1111-4111-8111-111111111111");
+    assert.equal(stored.p_user_id, "learner-1");
+    assert.equal(stored.p_chapter_id, "01");
+    assert.equal(stored.p_evidence.length, 3);
+    assert.equal("answers" in stored, false);
   } finally {
     globalThis.fetch = originalFetch;
   }
@@ -127,7 +179,13 @@ test("chapter assessment reports a retryable storage failure without leaking dat
       headers: { authorization: "Bearer learner-token" },
       body: {
         chapterId: "01",
-        answers: [{ questionId: "qm-01-q1", choice: "a" }]
+        sessionId: "22222222-2222-4222-8222-222222222222",
+        idempotencyKey: "33333333-3333-4333-8333-333333333333",
+        answers: [
+          { questionId: "qm-01-wave-benchmark", choice: "a", confidence: "high" },
+          { questionId: "qm-01-photoelectric", choice: "a", confidence: "medium" },
+          { questionId: "qm-01-de-broglie", choice: "a", confidence: "low" }
+        ]
       },
       env: SERVER_ENV
     });

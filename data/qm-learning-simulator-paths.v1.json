@@ -1,0 +1,62 @@
+{
+  "version": "qm-learning-simulator-paths-2026-09-26.1",
+  "source": "assets/qm-simulator-catalog.js",
+  "simulators": [
+    {
+      "slug": "double-slit",
+      "pagePath": "simulators/classical.html?sim=double-slit"
+    },
+    {
+      "slug": "hydrogen-bohr",
+      "pagePath": "simulators/classical.html?sim=hydrogen-bohr"
+    },
+    {
+      "slug": "thomson-circle",
+      "pagePath": "simulators/classical.html?sim=thomson-circle"
+    },
+    {
+      "slug": "thomson-deflection",
+      "pagePath": "simulators/classical.html?sim=thomson-deflection"
+    },
+    {
+      "slug": "blackbody-radiation",
+      "pagePath": "simulators/classical.html?sim=blackbody-radiation"
+    },
+    {
+      "slug": "millikan-oil-drop",
+      "pagePath": "simulators/classical.html?sim=millikan-oil-drop"
+    },
+    {
+      "slug": "probability-current",
+      "pagePath": "simulators/probability-current.html"
+    },
+    {
+      "slug": "infinite-well",
+      "pagePath": "simulators/infinite-well.html"
+    },
+    {
+      "slug": "superposition-measurement",
+      "pagePath": "simulators/superposition-measurement.html"
+    },
+    {
+      "slug": "gaussian-wave-packet",
+      "pagePath": "simulators/gaussian-wave-packet.html"
+    },
+    {
+      "slug": "finite-well-bound-states",
+      "pagePath": "simulators/chapter-04-labs.html?sim=finite"
+    },
+    {
+      "slug": "hydrogen-radial-states",
+      "pagePath": "simulators/hydrogen-radial.html"
+    },
+    {
+      "slug": "angular-momentum-matrix-calculator",
+      "pagePath": "simulators/angular-momentum-matrices.html"
+    },
+    {
+      "slug": "angular-momentum-coupled-states",
+      "pagePath": "simulators/angular-momentum-coupled-states.html"
+    }
+  ]
+}

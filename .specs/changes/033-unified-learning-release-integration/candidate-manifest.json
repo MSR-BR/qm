@@ -1,0 +1,2010 @@
+{
+  "format": "qm-release-candidate-v1",
+  "baseHead": "f667621fd4bd646f4c79844899a95342171b594e",
+  "projectRef": "plqiofznjlbpfufigpcp",
+  "destination": "https://quantummechanicsbook.app",
+  "payloadSha256": "2e7f159e8b28064d50811ad7e09ba7257326c5d608ec95d52c36fce36a4d23ec",
+  "fileCount": 369,
+  "scope": "Runtime, data, migrations, tests and tools listed in files; docs/specs and ignored local configuration excluded. Not a commit or deployment identity.",
+  "migrationCount": 21,
+  "duplicateMigrationVersions": [
+    {
+      "version": "20260531",
+      "paths": [
+        "supabase/migrations/20260531_fix_exercise_validation_rls.sql",
+        "supabase/migrations/20260531_moderate_exercise_validation_reports.sql"
+      ]
+    },
+    {
+      "version": "20260731",
+      "paths": [
+        "supabase/migrations/20260731_add_qm_book_sources.sql",
+        "supabase/migrations/20260731_add_qm_saved_exercise_source_metadata.sql"
+      ]
+    },
+    {
+      "version": "20260803",
+      "paths": [
+        "supabase/migrations/20260803_fix_qm_book_source_chapter_id_check.sql",
+        "supabase/migrations/20260803_grant_qm_book_source_server_access.sql"
+      ]
+    }
+  ],
+  "canonicalHistoryReady": false,
+  "productionGate": "BLOCKED: remote history, role/API proof, historical balances, recovery and scoped authorization required",
+  "migrations": [
+    {
+      "path": "supabase/migrations/20260528_create_saved_exercises.sql",
+      "sha256": "c88b87496e721bb412ef2590547dae7c17dc190af9e7ed7d751d572f23d7f033",
+      "executable": false,
+      "version": "20260528"
+    },
+    {
+      "path": "supabase/migrations/20260529_create_exercise_validation_reports.sql",
+      "sha256": "89603ef9b17571bde35899f2f75395fda21201a0eb49cdee724e05052a30b25e",
+      "executable": false,
+      "version": "20260529"
+    },
+    {
+      "path": "supabase/migrations/20260531_fix_exercise_validation_rls.sql",
+      "sha256": "48b35a056d2d75facde1a7c33b87b892bfb027d482d39ac2ce82ba57a5a5d63d",
+      "executable": false,
+      "version": "20260531"
+    },
+    {
+      "path": "supabase/migrations/20260531_moderate_exercise_validation_reports.sql",
+      "sha256": "c4a2b338a6ccf460ab9ec6d7535c89bd4b9c0d131059ba7c1c54ba36f2843cfa",
+      "executable": false,
+      "version": "20260531"
+    },
+    {
+      "path": "supabase/migrations/20260717_secure_qm_exercise_tables.sql",
+      "sha256": "4f579417ad4441d6ac2f8a7b058074081dc3d4b987406d9cc6e9b22c5e08d523",
+      "executable": false,
+      "version": "20260717"
+    },
+    {
+      "path": "supabase/migrations/20260731_add_qm_book_sources.sql",
+      "sha256": "25564f3c587d120a6709bac888ce09417c1da46d5e4d4157e642f14d4f4765c9",
+      "executable": false,
+      "version": "20260731"
+    },
+    {
+      "path": "supabase/migrations/20260731_add_qm_saved_exercise_source_metadata.sql",
+      "sha256": "058ecb96f228e6063b7cf33c897b60719e25b2498bc481c03d3774fbbf6fe802",
+      "executable": false,
+      "version": "20260731"
+    },
+    {
+      "path": "supabase/migrations/20260803_fix_qm_book_source_chapter_id_check.sql",
+      "sha256": "0cdc2b65c9066e0f6e142db747b8df2de6b89533a45a830541c6785f5994d3fd",
+      "executable": false,
+      "version": "20260803"
+    },
+    {
+      "path": "supabase/migrations/20260803_grant_qm_book_source_server_access.sql",
+      "sha256": "f4ea2428af3649c0f01987f09fc8cd08ffe01f732e156ceca08335f3fc4beaad",
+      "executable": false,
+      "version": "20260803"
+    },
+    {
+      "path": "supabase/migrations/20260903225925_create_qm_study_progress.sql",
+      "sha256": "9071b04b9b1e102b2e8079a055a11e635db627f8990774ddca14a44d3a3e8894",
+      "executable": false,
+      "version": "20260903225925"
+    },
+    {
+      "path": "supabase/migrations/20260904115229_create_qm_gamification_foundation.sql",
+      "sha256": "7a756a26b1fabe579b787c120a61803cc9cd761ca923f213d62cbcbd94ccdb7a",
+      "executable": false,
+      "version": "20260904115229"
+    },
+    {
+      "path": "supabase/migrations/20260906143603_create_qm_chapter_quiz_attempts.sql",
+      "sha256": "01951aea287c6f438a7cc4b4a5277078dfa425a3c85ed97ae62f6892f026e805",
+      "executable": false,
+      "version": "20260906143603"
+    },
+    {
+      "path": "supabase/migrations/20260906225907_create_qm_simulator_activity.sql",
+      "sha256": "75e043d8fd459603c8113bd151a2a04a12c457b31638c0c8ff650c98dbbfc670",
+      "executable": false,
+      "version": "20260906225907"
+    },
+    {
+      "path": "supabase/migrations/20260910230457_qm_operational_parity.sql",
+      "sha256": "8404d549f6eef9088d4640b08890f069445f125bced066f3c4be553df3baf834",
+      "executable": false,
+      "version": "20260910230457"
+    },
+    {
+      "path": "supabase/migrations/20260914223802_qm_analytics_retention.sql",
+      "sha256": "931ca629a97a7cf80ec5756fe00bca9e42e1f933f330ae3db637590659561f96",
+      "executable": false,
+      "version": "20260914223802"
+    },
+    {
+      "path": "supabase/migrations/20260924125315_repair_qm_authenticated_learning_flows.sql",
+      "sha256": "312aea66932bb1c47f2eeb35c11fb4e1c0a8fdaaf5a0c42081bfec45d1b89d96",
+      "executable": false,
+      "version": "20260924125315"
+    },
+    {
+      "path": "supabase/migrations/20260925215027_explicit_data_api_privileges.sql",
+      "sha256": "961c6243ba30841ec6437cdf87cf7f8cb523e1e577b9f46fa04ab3bac1b526b5",
+      "executable": false,
+      "version": "20260925215027"
+    },
+    {
+      "path": "supabase/migrations/20260925230000_qm_optional_email_consent_default_off.sql",
+      "sha256": "4d7df0cfab0df362ab50581ddd05fb188877b87eddacc7d61003031eac6a80aa",
+      "executable": false,
+      "version": "20260925230000"
+    },
+    {
+      "path": "supabase/migrations/20260926112057_qm_authoritative_learning_ledger.sql",
+      "sha256": "32c884fd2bda533e3894030d54e6f3b1d9588324a8e92ddb99f5b5ee425e3e07",
+      "executable": false,
+      "version": "20260926112057"
+    },
+    {
+      "path": "supabase/migrations/20260926120250_qm_adaptive_learning_modes.sql",
+      "sha256": "1c218630bd10649da62586506765eb05dfa3be50932deafb4be4e062a00154e5",
+      "executable": false,
+      "version": "20260926120250"
+    },
+    {
+      "path": "supabase/migrations/20260926154500_qm_academic_evaluation_and_responsible_communication.sql",
+      "sha256": "da642ec317a3467d2df0e1ac7e737878606be1aa295410610febb5a3f9db035f",
+      "executable": false,
+      "version": "20260926154500"
+    }
+  ],
+  "files": [
+    {
+      "path": "INSTRUCOES_SNIPPET.html",
+      "sha256": "7fef98d02b3a3f92009ee3b58c66c575379d7c71d0032a26c887b533ec05eba1",
+      "executable": false
+    },
+    {
+      "path": "api/exercicio-validacao-admin.js",
+      "sha256": "6c28db88ced2834bbcf9ddd8c67350bad738a787cdc3c06a097235f74defb478",
+      "executable": false
+    },
+    {
+      "path": "api/exercicio-validacao.js",
+      "sha256": "e6d437a626316118a56c303e49834193c13f826addaf6588fb7a10fb3ab0baca",
+      "executable": false
+    },
+    {
+      "path": "api/exercicio.js",
+      "sha256": "d93b488269347ba48462346078cf9290b758afb4354ab0cc34833c15469baddf",
+      "executable": false
+    },
+    {
+      "path": "api/public-config.js",
+      "sha256": "ccbe7b2a024b194a5fef60f09e4c104ee7e7e2608f77a16baa67b2c1b45020d9",
+      "executable": false
+    },
+    {
+      "path": "api/qm-adaptive-learning.js",
+      "sha256": "3409271012a7435b30b45dac3c6e793c0672c8fe20299aecb9adc3f5cd3fc497",
+      "executable": false
+    },
+    {
+      "path": "api/qm-analytics-event.js",
+      "sha256": "ce10bb8ad8af1498b329ef39cf31901f8872a159d517b1a0e05333bc5d14d3f3",
+      "executable": false
+    },
+    {
+      "path": "api/qm-app-rating.js",
+      "sha256": "659f8bf5c71e7ecab742d7209dc8b48f77afd412a6b6a18b93a7a2130177ef5e",
+      "executable": false
+    },
+    {
+      "path": "api/qm-chapter-quiz.js",
+      "sha256": "680f82d063bc588144d48905958d20a99e9f2a1f8bb89166b98c436a8bca48d2",
+      "executable": false
+    },
+    {
+      "path": "api/qm-email-campaign.js",
+      "sha256": "776750ab05bc3a1a2e08009164bb607813a41d6c0f958572da1c3000eff01ebb",
+      "executable": false
+    },
+    {
+      "path": "api/qm-email-test.js",
+      "sha256": "cdebfa672e4351d6742e7da8d5e3402f7b8ffb5e8737c07f004e60031c5d8180",
+      "executable": false
+    },
+    {
+      "path": "api/qm-gamification-event.js",
+      "sha256": "6ee26bf4e41c9aceef25ba86fb12c8abb66b81cae7bd116770f1c56ac9c46522",
+      "executable": false
+    },
+    {
+      "path": "api/qm-learning-communication.js",
+      "sha256": "1ba95a84e51af351152026be66afc1364c6a63d359c11b9fc40d042a768d8c2c",
+      "executable": false
+    },
+    {
+      "path": "api/qm-learning-evaluation.js",
+      "sha256": "5fae656be81de8808389e19bfc8f5957ff7ed9424f89f7eb6a8614014fecbc43",
+      "executable": false
+    },
+    {
+      "path": "api/qm-learning-profile.js",
+      "sha256": "e93d4c911a24fe2c2db94def1fb431853af68761685a29b5523a93b511fbb217",
+      "executable": false
+    },
+    {
+      "path": "api/qm-legal-preferences.js",
+      "sha256": "a94989459671410ddedab8e7cb3257bff5b9862cedf2804d3d0a194facaf16d2",
+      "executable": false
+    },
+    {
+      "path": "assessments.html",
+      "sha256": "7313726c251ed53f074b5c36e2da8c658974dc110c5948bfa3c26f9c84b8287f",
+      "executable": false
+    },
+    {
+      "path": "assets/ai-exercises.css",
+      "sha256": "ef9f4ea54b64fee6dc5bc2ba657cacd504aa8887ba96797359f1715b7524a2c3",
+      "executable": false
+    },
+    {
+      "path": "assets/ai-exercises.js",
+      "sha256": "da685802f62903f44949c29a9ad09dca86a7503ff2c41173a17e6ab9ef79f09b",
+      "executable": false
+    },
+    {
+      "path": "assets/capitulo-02-layout.css",
+      "sha256": "c1a37af5b38b1fa9223f73d0dd18adf24faa1fe78e820f0a26f95c3b6fc2ae42",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-1-hydrogen-spectra.png",
+      "sha256": "bdb246850638749f4aed4d4d0d23d7bed4aa7d1a9330efd6c9cbf7b54ee4822a",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-10-de-broglie-orbit.png",
+      "sha256": "2c6f192dadeb53000d20148b1d70f67018f97a436a861d9fbfc37a594452a0b7",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-11-harmonic-oscillator-scqr.png",
+      "sha256": "0d139108a5f995d0c24f63759733b1382602c272e2f8c6cff5ac1c79a08a1c94",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-12-sommerfeld-orbits.png",
+      "sha256": "8ca714ff7ccc32ce2b80ce6ad783a3299661983a9ad72626efc7c430b452faa5",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-13-ellipse-geometry.png",
+      "sha256": "404576bd2f9377bb81d7449c38c748d1d4b6dcd82ec255089f61748ff6ca9feb",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-14-infinite-well.png",
+      "sha256": "84e86e7bc8975f569ef08d6b9c21b6c3a21f736b90975482e363c95c3239ad0a",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-15-power-law-potential.png",
+      "sha256": "85666d395ede4afc882e9c3d80569e4edf0295f74a84f7dc2dc2fa76a24e8668",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-16-old-quantum-timeline.png",
+      "sha256": "7b4e5c55e9d6eac284a47dc463fb83e8b44fe55b8ff3463616003b93a21e8e9e",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-2-cathode-ray-tube.png",
+      "sha256": "1782397dcb70d3acf0e3d8857dbefa82258de3f172d5b30f158064821a74f8e7",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-3-black-body-cavity.png",
+      "sha256": "3760bf0fdfcf7d0a6087a484235fce8046cbaa14c4b44adac0a11c6ef2f981f9",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-4-black-body-radiance.png",
+      "sha256": "a2564e1f67c74c76c97983533c7b0b38716a9ff2f8b6d77ef96391309b6aa183",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-5-photoelectric-setup.png",
+      "sha256": "6b3e76c27f4544698bb5297cff3b80b96f641eef4e9c01f1e163e115d99d4de2",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-6-millikan-oil-drop.png",
+      "sha256": "5a1707eba154f9db667ef761f72a517d79ec5ffeb8d0546dce51bfb2d947773a",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-7-electron-diffraction.png",
+      "sha256": "ff85392dca9dde06791aa94192c97e1af982ffad28857af90e29749b9b3e6c54",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-8-bohr-atom.png",
+      "sha256": "fc0678f3cd401a3059ec53131812a6cf8701ac13565942ce45f09e991c48ce73",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-01/figures/fig-1-9-bohr-spectrum.png",
+      "sha256": "d757b51cbc8ce957cbdd16cc9a21227f2da48c47b013bfabf85de543fce9d611",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-02/figures/fig-2-1-infinite-well.png",
+      "sha256": "2903c8a20d9da367eb20496038ceb6fe7815cdb1e7cedbfeea386af811d1cc26",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-02/figures/fig-2-2-plane-wave.png",
+      "sha256": "ebe977a0e7ddfc443c0dd5bbe28f779edb83f2f210dd70d04e8e30814090be46",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-02/figures/fig-2-3-gaussian-wave-packet.png",
+      "sha256": "7bba4c285d9f2e25ed92a9187dd16d85f0e1b67540fe64f480fe7a8e4c27df4f",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-02/figures/fig-2-4-width-comparison.png",
+      "sha256": "d13a3c1032b6b00a0556acd03a51b1c8a1b506633891b8a20864392bbe3a8be5",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-02/page-layout.css",
+      "sha256": "9c3ed64183568c909dc99aa87414fa0619c4a0393b88ced0b687e5584a535eb8",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-03/figures/fig-3-1-stern-gerlach-setup.png",
+      "sha256": "3c5e55134a62236af0944c2b2656e5d814706f67d2731a40a35430e556b24a48",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-03/figures/fig-3-2-single-sg-z.png",
+      "sha256": "2d2bc3590d3c7b9341ad63da03da04c5749bf86b6da3928ac4de16c47e3723f2",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-03/figures/fig-3-3-repeated-sg-z.png",
+      "sha256": "f33c8141013bb7c2fdc5f441240d4c3cd31caa9d2c07a8beb77ecff384dad762",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-03/figures/fig-3-4-sg-z-then-x.png",
+      "sha256": "9938258142581d26259dea759a72611465443c2ef73cab30ed66c12541c03674",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-03/figures/fig-3-5-sg-z-x-z.png",
+      "sha256": "bf2bdf4a24eeab9699883ad2497e2f20e2ad5509a497fc3a1dd728f8201eac66",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-03/page-layout.css",
+      "sha256": "9c3ed64183568c909dc99aa87414fa0619c4a0393b88ced0b687e5584a535eb8",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/delta-well-figure-4-10.png",
+      "sha256": "08dd02fe8edd009bc887fb1b983c812e0bf3dd7ba7e9d12cb88484745bd7debf",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/delta-well-figure-4-9.png",
+      "sha256": "54d39fbd1869df74afc5a0a283885290df0941b969dd52a6738b023aba809b7e",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/finite-well-figure-4-3.png",
+      "sha256": "102b7703cce7f2f9d0394e67ed00da4a5109cffec4d5269a2284b089f84d977f",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/finite-well-figure-4-4.png",
+      "sha256": "e6cca80f567827e0ecbef5c876121f17393db56f5aec66e90f149053b21ebe6e",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/finite-well-figure-4-5.png",
+      "sha256": "b08d9c5a4608aaed5d3a7a68aa390deff0a03b2e161e4455cef516d594ddb7b2",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/finite-well-figure-4-7.png",
+      "sha256": "a046126b882869a615aa53398e81793fb56f8dca6b6e499f5196368ed8daf340",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/finite-well-figure-4-8.png",
+      "sha256": "7095d5cec196e6417baa0861e4cc79be0323d1233a2254be02d94fe70973575e",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/page-layout.css",
+      "sha256": "9c3ed64183568c909dc99aa87414fa0619c4a0393b88ced0b687e5584a535eb8",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/qho-figure-4-1.png",
+      "sha256": "eca0281087374a9eaa2c7811e98162dfeec897f4d0c0dbf52229d93e6af0e442",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-04/rectangular-step-figure-4-11.png",
+      "sha256": "64145d1f609ee9975b505c453dedd3a16657cfeb826f22c8f8b613645d22291a",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/figure-5-2-spherical-harmonics.png",
+      "sha256": "6fe3eb2a8e7030cfa9ed1caff6096f7a99f1ab670e800bf2a232d047f1b83e60",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/figure-5-3-effective-potential.png",
+      "sha256": "d2b511320d5f584d2a4819ce6857267f853b1b1544c4b8e31d21b01a9922939b",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/figure-5-4-hydrogen-energy-degeneracy.png",
+      "sha256": "d6a91d7135bc537f839fa8bc0085f4b5ebf707908fec40ea1f9588c5ad6045e1",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/figure-5-5-hydrogen-radial-probability.png",
+      "sha256": "5a0dbae1fe62af6f51d6895b13af0b9bf92036da1ea8cf74752a0130aa46e019",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/figure-5-9-pauling-diagram.png",
+      "sha256": "69a5b3daee7a3119220d1d6464fad5bfcd78b0f39694fc64c3d0bd91084530d9",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/page-layout.css",
+      "sha256": "fff92a6dd32c01edfef407995bbcafdf4b9f63b810dc7c190a3b0f405e23724c",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-05/table-5-1-hydrogen-quantum-numbers.png",
+      "sha256": "429225bbe6b370234c70d9938c365e3dfa1771d568266efda705a9b8d5c94087",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-06/figures/angular-momentum-cone-l3.png",
+      "sha256": "95feaa3a5d0af51afc940eff9bebb1361da4de27ea9760f7321d5806bdc31d58",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-06/page-layout.css",
+      "sha256": "c28498468f4ff00d07fdd05ffa62008e29d5f9ccf76e81d18c5eff31ed56ce9b",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-07-coupling-simulators.js",
+      "sha256": "1cb04269e8f7a8e38f380905b32694c5fe4767b909fa6882ff59629929358451",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-07/fig-7-4-non-sequential-basis.png",
+      "sha256": "6458c8dede58e6f993590db016d2139a3145d0b7ef2a3f221fb3c5a36483f191",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-07/fig-7-4-sequential-basis.png",
+      "sha256": "5c37bcb1e1f91310c9175ff13b4db8d7f2c3763dcc2a942115d852a62c0dcfbc",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-07/fig-7-8-zeeman-geometry.png",
+      "sha256": "91ce75b869f5e3c0dd641bb532b7f16143df0bdc99fbfa49d82affeb237d44d9",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-07/page-layout.css",
+      "sha256": "d4fb03fe16fac5c08f616bf8bff8fe7a4a0eaaca07d143c401747c84afb70925",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-08/page-layout.css",
+      "sha256": "9c3ed64183568c909dc99aa87414fa0619c4a0393b88ced0b687e5584a535eb8",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-embedded-slide.css",
+      "sha256": "ddc1ccee1652cea81d13c928be7fd71b5f45ddfb19305e3da678ce3173e6d9e0",
+      "executable": false
+    },
+    {
+      "path": "assets/chapter-embedded-slide.js",
+      "sha256": "14f11a6f51d1286d4d927b0162dde28c213a8135caa66ec87d8d6ae5bdd8f48e",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-analytics.css",
+      "sha256": "453ddce5ad20a4b434801bf06c05df8460cff0f1eef8596ff51501f8e32425ce",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-analytics.js",
+      "sha256": "1279de7595488bea4c113328f60f0c53fcdcf74b58dd4983049c8809819f5abe",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-assessments.css",
+      "sha256": "251aebfbd65e9a03b72a56a4239fb4cf0f93171677bd36a2f590036fcf1d1a69",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-assessments.js",
+      "sha256": "d6adc91ef22e277ab02c5e085d4d4719a808e8ba1b9d625cb7e9a6b6fbd8d090",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-classical-simulators.js",
+      "sha256": "a3d5e1a5ab05de3ab7dc3dc12198657f0fdac24c512cdd04840b2233fedff9e7",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-content-registry.js",
+      "sha256": "a3d9b506a74a9f2011a48f314170f3dc85919e8513d6a74bdb3e511151a61371",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-daily-challenge.js",
+      "sha256": "55dc36093dee7441ae76806a02060bcb56d3779bb4ac5b94b6c22494ace6f7f6",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-first-login-preferences.css",
+      "sha256": "85f692b02f31720176fedf5d61d159d105e33d7d11c48e6d4cf0ea7bddcc73ad",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-first-login-preferences.js",
+      "sha256": "b4e918846e5833b1eccfa47424863c1c6720d380ea8aa3ade66c653be77723a3",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-gamification.js",
+      "sha256": "6b9b67f1d9622c7571e5c563f64049437f788aebc7f491a0dd596143ce874d2d",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-header-actions.css",
+      "sha256": "20c6cb56a1c8fe1554c90a4a579051b66b75d74330dfeaa98d4fccf615bca030",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-home.css",
+      "sha256": "2dec438e2941b23d6a495c2620598a0a6e332104f352ba8bfb58cced2d12abe2",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-rating.css",
+      "sha256": "79acd185f7f574331e145b52f94725aceda0f42fdc4f4b72c588bb145c48f619",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-rating.js",
+      "sha256": "cbd2f8f5367d67f65eea879c79e3b32e0282fcf4d3487346b05220cfdd6ab746",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-release.js",
+      "sha256": "0b2f579301d4e5e81fc23c1f822bf2f7908cd2541c5522c5d34d06174148517a",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-search.css",
+      "sha256": "597de1fb8e081bbebdb73aa3c4daea7cae39f6ac49e49ecb230b7a91a8804e6f",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-simulator-catalog.js",
+      "sha256": "2d790b3bb0db0f35992f16df66e1bdcbfab41f4ffa9e98082e5e74c608bbe284",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-simulator-mobile.js",
+      "sha256": "176f1ed339a075a3bc0dc5013e0bb8e1186749aaba324aa182e0c7e7cd42ab75",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-simulator-progress.js",
+      "sha256": "584c15776f48f8cdff92261424bd929556165eeb6b36b4168de1daeb021124ae",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-simulators.css",
+      "sha256": "a9434ffe1ab45f48b8ce4d03237637f13cba15b0780834aa7f442bc4be57198e",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-study-progress.css",
+      "sha256": "39a9efe7812ff8b5c8fe50683e91714d84ce6278509c930bd3bbc92e86ebf167",
+      "executable": false
+    },
+    {
+      "path": "assets/qm-study-progress.js",
+      "sha256": "25d6b23f46f117382737538cdb86e45b372a7fd99860a20b344c2f52f88d9098",
+      "executable": false
+    },
+    {
+      "path": "assets/qm4-labs.js",
+      "sha256": "04e07f0d5cd6bd969f5378b0db2ebe5a18f46dd72fc3997286842d195e271664",
+      "executable": false
+    },
+    {
+      "path": "assets/quantum-logo.svg",
+      "sha256": "ecfeeb2a9951fd437265e898f9432521368b6f314dfe940259c83acc8d736f26",
+      "executable": false
+    },
+    {
+      "path": "assets/termo-auth.css",
+      "sha256": "2fed2ef00c9c7777a6323f5854995676d1e1f195984220d0172ba54bcd5a44b5",
+      "executable": false
+    },
+    {
+      "path": "assets/termo-auth.js",
+      "sha256": "228cfda7c311cdc034a8d6745715545994547dfe1e617051f1907b45abae1307",
+      "executable": false
+    },
+    {
+      "path": "assets/termo-seo.js",
+      "sha256": "c6c1a95cf6086b69152b21629a53969a51a8c4793dfe4bd28233261ec1e604da",
+      "executable": false
+    },
+    {
+      "path": "assets/termo-share.css",
+      "sha256": "4aedf3feca94f7bc1d59d77b4e806942b04073613d62aa77e59846c6c8f0c230",
+      "executable": false
+    },
+    {
+      "path": "assets/termo-share.js",
+      "sha256": "6cca6102b414cb175825930808c595e570355f37d098bd5e41009f0b5e528fd0",
+      "executable": false
+    },
+    {
+      "path": "assets/termo-user-data.js",
+      "sha256": "dc4fdcdd612c3d3a541336473b0d5c4b0953a973d13c56b62a912519f9c3681a",
+      "executable": false
+    },
+    {
+      "path": "daily-challenge.html",
+      "sha256": "1fcf75670e9ce6dc124c2c2c9f89010db470bad77becc0f2087db62e116ddbc2",
+      "executable": false
+    },
+    {
+      "path": "data/book-section-corpus.json",
+      "sha256": "ce0abfedd2bbc6c45262751ec40b8d8473f4e50a86e5b2ca133de1442eec2ad4",
+      "executable": false
+    },
+    {
+      "path": "data/book-solution-guidance.json",
+      "sha256": "224795a45e87145bdc77193dba5a5c0644196f8cf6309a53c6427ede8182e57c",
+      "executable": false
+    },
+    {
+      "path": "data/book-topic-index.json",
+      "sha256": "b379241dfb1ab1a28c506d7d1b690365464e6a33fb597086d5ca057fc382a0b9",
+      "executable": false
+    },
+    {
+      "path": "data/book-topic-taxonomy.json",
+      "sha256": "bfb159575a350f14293b5ce396efa6991603a1231ddbc3c7fbc28f6944310909",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-01.json",
+      "sha256": "ca07717b815656a896bfde488e71394a5b0534bad1fc9613a20a344952a8eaba",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-02.json",
+      "sha256": "e9e99e01bf016e27c2ab3d5f297a1cce5873ad1cd5c27ed1019eca3ebc8208c0",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-03.json",
+      "sha256": "3e23ffd2d3e112e935f54ba63f70807df8a56d117cf0aa1c5eb80d0262be1dd1",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-04.json",
+      "sha256": "1ef5e6e09cd14dc77cbaac2151567de9fa8295333d30b327499a51ecf46ca989",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-05.json",
+      "sha256": "5fecbaf4025d3573744790d0912574a76f6dd8504588a95306402e8d75bfdd75",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-06.json",
+      "sha256": "92673d88cbe30e30b6f68c923f1dd26e4fad515ef45eae3520cc69899cc02a62",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-07.json",
+      "sha256": "bbc29f6076b0ea0e92155085d1e48982cef41ea0ab9ea457d600680cc59aec97",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-08.json",
+      "sha256": "dc6cedef38abe8a3fe02f984f3c30e9c8a218f8e3c1888b1b82aa75220bea9e0",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-09.json",
+      "sha256": "faa54871fda6fb414b98361a5a287517839524fcffc6e15dca705f40b8b48e65",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-10.json",
+      "sha256": "258cdeda54ed71711c2fdbe779d3c920219a732e1bd14dc84915df1483689250",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-11.json",
+      "sha256": "5b2219a0062c1ff25722568844f9ebedd1a43d5c6de8bc212ec6f9e924587b69",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-12.json",
+      "sha256": "822a4ea854be72ccf6075349f2d36f5f8f9df6993792542872cd71f24d93edf4",
+      "executable": false
+    },
+    {
+      "path": "data/chapter-13.json",
+      "sha256": "64d026b0dceb9f2e6f790062c8c8a4ebf733daa926212819755febd313e71b2d",
+      "executable": false
+    },
+    {
+      "path": "data/qm-content-registry.json",
+      "sha256": "11871cb831880d9a9f3fbe0e986139e3c3f0eb149dea8191af83071e3b14a44a",
+      "executable": false
+    },
+    {
+      "path": "data/qm-exercise-source-manifest.json",
+      "sha256": "ffbd259dc6fe563578cfc2f39e3a908ec51fc42ce1cef76ebeace2435cfc811a",
+      "executable": false
+    },
+    {
+      "path": "data/qm-learning-concept-graph.v1.json",
+      "sha256": "2a794efb8409d16de7e770adb161d05fb36d10c3f8938206187236795a75762c",
+      "executable": false
+    },
+    {
+      "path": "data/qm-learning-evaluation.v1.json",
+      "sha256": "5f5609a13c71423c6536f4a7bb249c2a075658a706eb7b5439a9251bb23f82d3",
+      "executable": false
+    },
+    {
+      "path": "data/qm-learning-event-map.v1.json",
+      "sha256": "a1ba0794a991979b9b6b34d25491b54fc9253c1cd5a9ab8ff8cd6f578bd0a235",
+      "executable": false
+    },
+    {
+      "path": "data/qm-learning-mechanisms.v1.json",
+      "sha256": "9625b58aa74939edd8f128a7caadde01df3870299795085f02fb5b1fff77e72c",
+      "executable": false
+    },
+    {
+      "path": "data/qm-learning-policy.v1.json",
+      "sha256": "ae751635e944f97111aa7b8b7d9e5d4602c315d820efbd5f86077d1bb0c91a62",
+      "executable": false
+    },
+    {
+      "path": "data/qm-learning-simulator-paths.v1.json",
+      "sha256": "8797b00f5cc73ea49b9a2ad8fb6f281a62d69347a562a333215773f488442746",
+      "executable": false
+    },
+    {
+      "path": "data/qm-published-search-index.json",
+      "sha256": "e222dbcbd6998777f4da87ca36a57087a22413d0c87755d0e1bbe5932fdf3794",
+      "executable": false
+    },
+    {
+      "path": "data/qm-simulator-evidence.v1.json",
+      "sha256": "115276edd35dd5bcc2d80898c271e18580be735077887891c2e9e1697ac88439",
+      "executable": false
+    },
+    {
+      "path": "data/qm-supabase-access-contract.json",
+      "sha256": "126f5773621109faf7d41e22f98a971805e7ef89b18fbf377a0d60c45af63821",
+      "executable": false
+    },
+    {
+      "path": "dev-server.mjs",
+      "sha256": "ebb7dcc8499250ef2c47962c67b023207c1ced32daa86ffa0a0572ff6aaa22b3",
+      "executable": false
+    },
+    {
+      "path": "googlec8a8ea7a391b749a.html",
+      "sha256": "d8fe3820f9ed0e12ac0a7a8e09f67fa5dda56e3c2907b8923cc961020737eb70",
+      "executable": false
+    },
+    {
+      "path": "help.html",
+      "sha256": "4769f68baa3bb3d6a0c48c9a9fe8b29a1035f4b9a67e1a4b15e62899c8165694",
+      "executable": false
+    },
+    {
+      "path": "home.html",
+      "sha256": "c742c8422a42495627e8663538e332f2c8adbdc226eb806fa43cd586f678c72e",
+      "executable": false
+    },
+    {
+      "path": "index.html",
+      "sha256": "39f52334de2184301e94f8a72d041983309233b6f7716fd2a78828abf16626c5",
+      "executable": false
+    },
+    {
+      "path": "lib/ai-context-package.mjs",
+      "sha256": "b00390aa3f719c5167a382d8ac94d078fff9811f245cbaeb45c4f26ffad237fa",
+      "executable": false
+    },
+    {
+      "path": "lib/book-section-corpus.mjs",
+      "sha256": "40d520c604dca89653e6ae8c5c5bfd12f9dadcf647f96387f0142384888ad575",
+      "executable": false
+    },
+    {
+      "path": "lib/book-topic-index.mjs",
+      "sha256": "4f7ea5568ee17b9503d070940f485108a6c27f8147799b16c3b67ad8b32d5435",
+      "executable": false
+    },
+    {
+      "path": "lib/exercicio-handler.mjs",
+      "sha256": "a9e038d9ba9fb9e0d93ae88f4654d771d82572b5274cd5d7feef3c63de70d882",
+      "executable": false
+    },
+    {
+      "path": "lib/learning-policy-contract.mjs",
+      "sha256": "e7562e6eeb0e347e30ee5064403a8fae99a4656779265b5c434e800e1472f7c3",
+      "executable": false
+    },
+    {
+      "path": "lib/math-format-validator.mjs",
+      "sha256": "d4fc8ec57c022426978bbcf88d8a68315a951915b495ee8d432ee74c52c57f2a",
+      "executable": false
+    },
+    {
+      "path": "lib/public-config-handler.mjs",
+      "sha256": "31b0069bac8fb324b8f91be1474234d8d06eae8fe16abd61617565c8a2a4c4fd",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-adaptive-engine.mjs",
+      "sha256": "4bee50dc280c603b86a33c5ba79e638b7f32ea05d8ead781871e6427690f4eca",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-adaptive-learning-handler.mjs",
+      "sha256": "086ce2c953a12fd476fe4898b5d3d470d614aa3a3544c34a827f4f1c9d21c895",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-analytics-handler.mjs",
+      "sha256": "a45a82bf42c753a2b226c2de73ac75705aff85eeed79643c75cd314fb95d3d0b",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-app-rating-handler.mjs",
+      "sha256": "f1d0a0b89c9c618ce6ed8d62f36b368d5fca88c59847b93773d353c8be03ac0f",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-chapter-quiz-catalog.mjs",
+      "sha256": "696bfb8e210b46c28e3cf94308c5b41d26457bd19ed9def67a62fa8758876052",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-chapter-quiz-handler.mjs",
+      "sha256": "2cb49b226bbc4e981754b237ace2e81f50b9281f328e92082739e73807a7c4b0",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-content-registry.mjs",
+      "sha256": "1c9af82e9a05d01d078b914e50fb51c1c13e81c1633b1eab443915e6813d1aa7",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-email-campaign-handler.mjs",
+      "sha256": "9b98418acc90915c50e62db253fe0f27f684daa26bd1c2d6b738228caf9aa05e",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-email-test-handler.mjs",
+      "sha256": "117c71758bb652440ddeea12d01adb8280cd44656f726602fcaf07e8ef098974",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-gamification-handler.mjs",
+      "sha256": "c7799297a31e452c546ca57c6cb1f99bd1bc1fb33ab369043752c458d0096152",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-adapter.mjs",
+      "sha256": "229fafeee316ab327a791742396f04feec350bb9f3bc2258f7d7a6ae15a77154",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-communication-handler.mjs",
+      "sha256": "e1638434fdfab92bd94f03f53b06a7ef593dd7656ca150392d6658692f6f02e6",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-communication.mjs",
+      "sha256": "605101c2979a6024ec562f596dea14817f1cbd64bcdbe2307d83f8cadf03eb8d",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-evaluation-handler.mjs",
+      "sha256": "34f08936874d7ff437c71975b7d0c4e206d43d96abb36de75ac59aa31e2d4a75",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-evaluation.mjs",
+      "sha256": "f73ddacb19080461e9c895ede69f29672f56869d61f8fd471c4e8806a2654d1e",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-profile-handler.mjs",
+      "sha256": "7598e8723f1ea7ec49d89317a8c9da3d2d3b122763019781f93df214fbad952e",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-learning-reconciliation.mjs",
+      "sha256": "063a9f03e59add06ef10fbb2c4b1db7658c3cf8f07e0d40a058e004c7bb0599d",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-ledger-reconciliation.mjs",
+      "sha256": "df3aa50f4cd784bef17c00fc889a83200fa36d5c3ac8eb3b28ad0244540d734f",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-legal-preferences-handler.mjs",
+      "sha256": "698c12d99dd5f7139527e680a5b28605fa5415b1371fe29f80b6828b1688254e",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-request-query.mjs",
+      "sha256": "19d211818ced4291c09f8e8fcd781b3852f0bc7f83d3cbcd64c72a79bd057e16",
+      "executable": false
+    },
+    {
+      "path": "lib/qm-server-shared.mjs",
+      "sha256": "f776c1df0ebfdf2cdf82f402f36d06f20a34fe2b9b6945b97249071ca354213a",
+      "executable": false
+    },
+    {
+      "path": "package.json",
+      "sha256": "bdcf2e98aaac05704a2aead617e33e351b116dd2b9a5f7c36bf539005f1f7c19",
+      "executable": false
+    },
+    {
+      "path": "robots.txt",
+      "sha256": "ef79d3d947e4a0fa4dd598932ab8e85bf2caaa1120c4e2f363d4c84174e3cebd",
+      "executable": false
+    },
+    {
+      "path": "scripts/audit-qm-browser.mjs",
+      "sha256": "95275d9504d1a3fdd24ffb7c51045b7c2b06120bce48055fe740006bf66c38b4",
+      "executable": false
+    },
+    {
+      "path": "scripts/audit-qm-exercise-source-governance.mjs",
+      "sha256": "684e91f0bda75914e17a7682209f0aed9237a4cc3e2fda0d36523ee1e1711ca9",
+      "executable": false
+    },
+    {
+      "path": "scripts/audit-qm-learning-supabase.mjs",
+      "sha256": "3a3999517b24098b8b5a2068f9d954bde9a5ee48ece5f2bd00330439845161fb",
+      "executable": false
+    },
+    {
+      "path": "scripts/audit-qm-production.mjs",
+      "sha256": "4275ae2067797925fd57dad31a29499f160f5455967163e5e1cb1bff661e3a0f",
+      "executable": false
+    },
+    {
+      "path": "scripts/audit-qm-supabase.mjs",
+      "sha256": "3e265b1dff877468c941efe82ddae34143b5568fba8e49f631fcc18059bd5409",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-qm-ai-exercise-index-page.mjs",
+      "sha256": "5f90d2fab6ed2c9f1ede4c2643dbc17f66b808c408487fc536316790c3240fec",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-qm-book-topic-index.mjs",
+      "sha256": "96de40a52099858d21e49bd6fcbb2b3e5d727e7c7d56d7578986825fa1c21f00",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-qm-content-registry.mjs",
+      "sha256": "4e79e1ae34e23db63e8e16ad86c02f2f91f02f9c3423aaee2c88f42ddf07fe63",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-qm-exercise-source-manifest.mjs",
+      "sha256": "0b99f6c1bd9b5f238fc72b20a1fe17bc0ac3cf72993d69d2f610c08e67575921",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-qm-published-search-index.mjs",
+      "sha256": "e1498fe9dfbaa0fae9eb5d0e99dbacd25fe14d7bd128be9cffdfbaee64fbb478",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-qm-release-info.mjs",
+      "sha256": "da40c2a26aa4d68009d9b4db6b89a7a5014ef5cc2c023a63b30e28d12de897e7",
+      "executable": false
+    },
+    {
+      "path": "scripts/build-seo-artifacts.mjs",
+      "sha256": "3f647cc52413d656802828a0b45b56a5719e6323f8249a2c8d3a83930d3dae7c",
+      "executable": false
+    },
+    {
+      "path": "scripts/check-content.mjs",
+      "sha256": "6089140fca670da693c1a744fff2e6f6cc50c1b91c4b8fa9b82bd245bbbb78be",
+      "executable": false
+    },
+    {
+      "path": "scripts/check-supabase-privileges.mjs",
+      "sha256": "f5f40238f1717fb8dc8fec5e5c0d924f91de40de9ec01b4f094f1a4c241c09a8",
+      "executable": false
+    },
+    {
+      "path": "scripts/extract-qm-book-corpus.mjs",
+      "sha256": "8aadd07ad64279c5e41909ec04c434600a7169313a61cdf9567f14619cbbbce6",
+      "executable": false
+    },
+    {
+      "path": "scripts/generate-chapter-01-htmls.mjs",
+      "sha256": "b13c72df000b9cf65584f4aa4084b09bb16ec93687a32c6905da3e11e9288db0",
+      "executable": false
+    },
+    {
+      "path": "scripts/generate-chapter-02-htmls.mjs",
+      "sha256": "f7eb145e7885b1bd1793fae9e4470006e8e9e01cccee4c352c2035eb91b993b5",
+      "executable": false
+    },
+    {
+      "path": "scripts/generate-chapter-07-htmls.mjs",
+      "sha256": "ecef877c02b9626824ea23e55b50deaad77013f772345baea95ec7c420bca576",
+      "executable": false
+    },
+    {
+      "path": "scripts/generate-chapter-08-htmls.mjs",
+      "sha256": "3f1d908d44cfd10f30b6c2c3039ee902be2f03623742368b962e50f338cf1732",
+      "executable": false
+    },
+    {
+      "path": "scripts/inspect-qm-release-candidate.mjs",
+      "sha256": "6849c0db66bff1ec94b8ee218b8b0a92856829d32cf67770a99932fdc920ec77",
+      "executable": false
+    },
+    {
+      "path": "scripts/plan-qm-ledger-import.mjs",
+      "sha256": "e51576f13d9c028cf2bb57b0f8086ce517259bb9d80b71b2455b0f57517b318a",
+      "executable": false
+    },
+    {
+      "path": "scripts/reconcile-qm-learning-rewards.mjs",
+      "sha256": "e881032b8c3c2c534e5fee6836b237870c05c5afedb57b29dc4af8a04b6b2b4f",
+      "executable": false
+    },
+    {
+      "path": "scripts/smoke-ai-context-package.mjs",
+      "sha256": "5234be36d329f8e529fe8dfff3c5386d306c25fe724872cfb897f8652dcf516e",
+      "executable": false
+    },
+    {
+      "path": "scripts/smoke-ai-renderer.mjs",
+      "sha256": "f768ea4c264a84d3f964b07e8a610478dcea1098c355f631d76134a630b0cf83",
+      "executable": false
+    },
+    {
+      "path": "scripts/smoke-math-contract.mjs",
+      "sha256": "b1590a8fa0fdc406f22c1940a621b2e796cda643beb498b59fc3b2fe3b4b85d2",
+      "executable": false
+    },
+    {
+      "path": "scripts/test-qm-learning-ledger-postgres.mjs",
+      "sha256": "5857b6e764387bbc68e2d32e73a5b30cda6ca839064390a60f6cf550457383f5",
+      "executable": false
+    },
+    {
+      "path": "scripts/upload-qm-book-sources.mjs",
+      "sha256": "9e1608dd6ce12c4cdb8bdbef0b1cc1e864ee0c6c524714b4e930827328559c79",
+      "executable": false
+    },
+    {
+      "path": "scripts/validate-qm-book-corpus.mjs",
+      "sha256": "1649b4f80da502635e22c60d5e5f904d6dab69cc317ef00754c7e4ce97185cff",
+      "executable": false
+    },
+    {
+      "path": "scripts/validate-qm-book-topic-index.mjs",
+      "sha256": "325c578df0fd01d93281cac501a66da2e2200053b10d43b62cf0f9ebcdbec7b2",
+      "executable": false
+    },
+    {
+      "path": "scripts/validate-qm-book-topic-taxonomy.mjs",
+      "sha256": "50db4434069baea1ee6e590187f2be0d089a89e058193b0f4b0e79d9c5646181",
+      "executable": false
+    },
+    {
+      "path": "scripts/validate-qm-seo-artifacts.mjs",
+      "sha256": "12f1c6296ac4fa8d53f4c03e3491f7d54575de269cb4034c67e36f0c828e311f",
+      "executable": false
+    },
+    {
+      "path": "search.html",
+      "sha256": "cf716c9d292ecbadb8c828717501b4796d60c11c3143361a76d8aee4282b9221",
+      "executable": false
+    },
+    {
+      "path": "simulators/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "simulators/angular-momentum-coupled-states.html",
+      "sha256": "01e21909c8e8ccf55e5873a072273dff8f871b2df165fcecb48313e611ea014a",
+      "executable": false
+    },
+    {
+      "path": "simulators/angular-momentum-matrices.html",
+      "sha256": "569b86350810682827f24d5aa613d67aff0af6edcbcb88bd26dbabee0ede0164",
+      "executable": false
+    },
+    {
+      "path": "simulators/chapter-04-labs.html",
+      "sha256": "40e3013b337bd89c8f1c584dfa24743844b4217c204fe41ea1d84e886f6d6dbe",
+      "executable": false
+    },
+    {
+      "path": "simulators/classical.html",
+      "sha256": "69bd47438a04d73b9857f04b9e7886052cc5a85495606d4ca7a23cbe78a797f1",
+      "executable": false
+    },
+    {
+      "path": "simulators/gaussian-wave-packet.html",
+      "sha256": "8a2cd1632b80588d4715d9ace7ed54f131cc4f0bcdf78b9d2d8d36deff2ad628",
+      "executable": false
+    },
+    {
+      "path": "simulators/hydrogen-radial.html",
+      "sha256": "2d3f23613dda1b51c263658020763032009f5b11179d3b0cd97e86cc98893d43",
+      "executable": false
+    },
+    {
+      "path": "simulators/infinite-well.html",
+      "sha256": "263bf969eac17e3d0e48c1e2e8f0a130621c178d84dc781efd5100ca17dd4805",
+      "executable": false
+    },
+    {
+      "path": "simulators/probability-current.html",
+      "sha256": "739c4fb45ef5dc45278a4278c63cee17e9de31b51dea30d6d72f22e7ee67c050",
+      "executable": false
+    },
+    {
+      "path": "simulators/superposition-measurement.html",
+      "sha256": "aff56b148b31825640ab9a97133e8900b924c93cd57d2290368d132f399c4a85",
+      "executable": false
+    },
+    {
+      "path": "sitemap-app.xml",
+      "sha256": "fae34985b68f07d08b6835b0b18256cf33dec7b4b68772987e0e6009eb1a604c",
+      "executable": false
+    },
+    {
+      "path": "sitemap-index.xml",
+      "sha256": "e65da44792a8ef2e754e7927c84c21424421eccb33aa9dc62bb1d23aa708541d",
+      "executable": false
+    },
+    {
+      "path": "sitemap-pages.xml",
+      "sha256": "905c94255514a6bf56fa605f048f5acdc9d26d88f483976a8da258a77fe88fbc",
+      "executable": false
+    },
+    {
+      "path": "sitemap.xml",
+      "sha256": "e65da44792a8ef2e754e7927c84c21424421eccb33aa9dc62bb1d23aa708541d",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/black-body-radiation.html",
+      "sha256": "29c04fffaacf5d1b633147b6607a00847ddeb5c7a56aa38b18f6d1b2fdcf3b36",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/bohr-model-hydrogen-spectrum.html",
+      "sha256": "7b0a33df0cbab9de9bb5af29c4271c70885a31c06e8ebe8b03ef2d531379a11c",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/bohr-model-postulates.html",
+      "sha256": "3c883786d43db74ebf72e5c651fe5fba58285b26b12caa443bd0e201cf71a385",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/cathode-rays-and-electron.html",
+      "sha256": "c33678bb288b563ea03f659fefad88a08c9058c0e580c4a4feb7382f2b6d1ca1",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/de-broglie-hypothesis.html",
+      "sha256": "868c1165d1f04bd0f0d9c17e86b32a17a788cdf93975a3cca2d6cb48749313ce",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/electron-diffraction.html",
+      "sha256": "ef1583743bae1b105b074f2e927b97e7d242faf512172a3191c1047def49e3cd",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/elementary-charge.html",
+      "sha256": "98625e3468758b7ce08e17b08c78fefcabf30a4ee901a6b4605a072476e76b7b",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/hydrogen-spectral-lines.html",
+      "sha256": "88007f43e3784e1d24511d469defac85817e4722bcfaa27a6e8c5573d9f19597",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/photoelectric-effect.html",
+      "sha256": "2cb778a6ce195a59041ab9412612be19a798230ad4ba8454dc4a30ae5be3d99c",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/scqr-examples.html",
+      "sha256": "55ee0060007976b013f4b529f19469c53ca4fa8d5906e13b81856781a88eb0cf",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/semi-classical-quantization-rule.html",
+      "sha256": "1e4e7d18f2042d7340c956e5b83edd1477e1248b44da7cfc017dd431450bf0ff",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/sommerfeld-orbits-ellipse-geometry.html",
+      "sha256": "ab0fd4a11120dc4a918fc1c7e67c93e7ede132143e88bd5b6e7a33b00c138fe5",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/timeline-conceptual-synthesis.html",
+      "sha256": "dab592c6c322e9356a5a62d80a185b2280983b2f42581907bbacd47f2dccc60d",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/wave-optics-classical-benchmark.html",
+      "sha256": "9f886fe0eb5629e5e57afd3ed19ff86016bf06f7362985e5e7894659fb942b65",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-01/why-old-quantum-physics-matters.html",
+      "sha256": "dee4fe6df540977f74b25b1017190e47877baa97b08f8a0f2a1c4d00cc3af12d",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/chapter-synthesis.html",
+      "sha256": "307e0df6b97407643d83bbb6a2f6c6aed47c5476ea1a5a37b25d5ca4f1c2e696",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/ehrenfest-and-virial-theorems.html",
+      "sha256": "224a90d3eeb451c8f97a94c7a4373d3d1099d0ee7e05af84f9bcc191f4c55f4f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/expectation-values-and-collapse.html",
+      "sha256": "f1822db58df7d3da239221d8fbaa63ab993484365794ba6d9d4d463e54ab3a7c",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/gaussian-wave-packet-fourier-width.html",
+      "sha256": "7be1cbb08285396c87ff08f415aad14d5da238871181a5a87e4e9b5f904bbae6",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/infinite-potential-well.html",
+      "sha256": "33351f9baf7e213912aa29431896447172a3e3ef65cea1128adaa28640c5182d",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/measurement-probabilities.html",
+      "sha256": "9784bf855ed67dfb2adec14102e9e64f16ee11dc2c6b3b142bb57ac58e44cf64",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/observables-operators-commutators.html",
+      "sha256": "3c9d4384e8dd863ea75bbcdb5932a96297eabe3e7d29e7e01ef965e0a62be227",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/plane-waves-and-localized-packets.html",
+      "sha256": "cf31a0ad2104f7d3e0415656d999de080498a305d2e94f6970cc458490d997da",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/postulates-rules-ahead.html",
+      "sha256": "642bb0938b2a148c4d31f4bbeb3260b691d559ed29c073bd8aedc69fed985023",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/probability-density-and-current.html",
+      "sha256": "dc6d949cd77f4d8b1488d60d3e606f96cb1f4a33a105b15e07cdccc477d5ecf0",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/quantum-states-superpositions.html",
+      "sha256": "3e9d0d3eb06d0ee3246d6c1162db76b9723e614cbfdb13c2237223e9c56e7b7a",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/stationary-states-and-tise.html",
+      "sha256": "b483edf106482955ebcfb94482cc5890ab71a2070f871f47e61e218a352893c7",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/time-dependent-schrodinger-equation.html",
+      "sha256": "2db63f942908ee523c7e4ecccd5c7b6412fce0cd2d3f3d04b5854c2c47d2cc8d",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/wave-packet-spreading-uncertainty.html",
+      "sha256": "91cb5604b3a5ef9ec8c5b718662eb9cdc85681bce7ba365246acb2ed49850b33",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-02/why-wave-mechanics-is-needed.html",
+      "sha256": "de6c106bea6978bbcdfd6b048046ec1497066fd2a5fdd02532d5075356b87e15",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/born-rule-vector-notation.html",
+      "sha256": "450f3d0ccd28cce8fb9ab4844c0b26ee95c84dccc7f5e2d3e07557cc781dff2b",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/commutators-compatibility-and-measurement-order.html",
+      "sha256": "d8d51ea838176d71c24165452844ad99c1f9d2db6329a42ca21bca9ff680909e",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/dirac-notation-kets-bras-inner-products.html",
+      "sha256": "b6666e156e357674c2163368aa9117e6951901bbe91171a681cd05892dd1e572",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/eigenvalues-eigenstates-spectral-decomposition.html",
+      "sha256": "d096e0fea52122c3c54699083ad5ad053644c107d7e03e0a91b951a3614e621f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/expectation-value-variance-and-preparation.html",
+      "sha256": "1b575780bce99342e2b67dd26ad20ef083638e0b11244781ec5e5d45b952af28",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/heisenberg-picture-operator-evolution.html",
+      "sha256": "b020d3422fd838d7a9c44c9043316afcd83d2bd773e61a63082611638fd7e1f6",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/hermitian-operators-and-real-outcomes.html",
+      "sha256": "4f143d628bb546c293a480e7b8e87eb0480b6b47d7c124218f758e39fc23adf8",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/hilbert-space-bases-superposition-completeness.html",
+      "sha256": "7dca7741e1ff3f704902f2979fddf8bc4551f6e6245f9e5be6cd8937372e7bfe",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/operator-functions-and-chapter-synthesis.html",
+      "sha256": "25176dfb04387a759bfe2a84dd9d6db79cc6348870d5dc3d5177aedb5de8fd54",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/operators-as-matrices.html",
+      "sha256": "5c1f02bd5e8796d885c15a653baa1c7ec2be2fa3a4e5c42a172093c0a90ab350",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/pauli-matrices-and-spin-observables.html",
+      "sha256": "23414a20ab2ee12a87165ab4fef228ff5e3f5b323d4b5cd528f8cadfa3f96db0",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/schrodinger-picture-unitary-time-evolution.html",
+      "sha256": "5b9609198e061019a6e7bf9452b800df6aed20d3c299b11c50f61807cb4e305a",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/stern-gerlach-experiment-magnetic-force-and-spin.html",
+      "sha256": "f200284fc2d7fad22f51435d22dd01eeffab5d43adfb3513f718a2d070ee2cd3",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/unitary-transformations-and-change-of-basis.html",
+      "sha256": "1b9db4646f5d36f0d5873f2cb04376d5b909934d8899d8de03711478406235da",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-03/why-matrix-mechanics-is-needed.html",
+      "sha256": "215f5bdd88722a0f1aba13c58c4706808986568e3e18953aed4c6ec89ff92c44",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/bound-and-unbound-states-chapter-roadmap.html",
+      "sha256": "50f3662deca20113f005623e46c0625e2f7a920db32867a539b1522ee2917d7f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/chapter-synthesis-one-dimensional-quantum-models.html",
+      "sha256": "368917b3e0b6855f845c96baf0e9c7e2c74ccab321f55155c7e7306206247522",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/delta-function-well-and-scattering.html",
+      "sha256": "457cb7710574eda3ac136103a31d1f632a2afbf3ec137ccb8ac81f88259473ae",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/finite-potential-well-bound-state-setup.html",
+      "sha256": "6dbf563b03c4b5580f7004a1e4544dbe3319418ac23ab9cb758b6a0e5ce4ebaf",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/finite-well-quantization-and-energy-levels.html",
+      "sha256": "f877e1c004c25c788e7537468801ce81bf27415b1dc3d3dc81304e27e308648f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/finite-well-wave-functions-and-penetration.html",
+      "sha256": "8e337444cb4883ce0f72ba1cb870533b75bc0bd36c95a02c09dd8d1eab71474f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/probability-current-reflection-and-transmission.html",
+      "sha256": "c4d40d59a6b5e3cb4b69726ee0f2caca9978a2d964f019427d9a36d7881a1de2",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/qho-expectation-values-and-uncertainty.html",
+      "sha256": "8c35c6d289efa2a4878735c60b36d5eef93e0b06b1fef86b5242e15594481672",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/qho-hermite-equation-and-energy-quantization.html",
+      "sha256": "3260eeba072659d0ef0ba20b211a878f8cd071787cd1d249a2b9c92d873bd924",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/qho-ladder-operators-and-oscillator-algebra.html",
+      "sha256": "28dcea4c4064110af8a2030caf650e4c4aceda6a48be6fe2a04eaaf8442991c7",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/quantum-harmonic-oscillator-qho-model-and-scaling.html",
+      "sha256": "3e2615ede3d832b0b16d80a8a9346152c2ac0b93a62cb88b0aee4106782ee679",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/rectangular-barrier-and-quantum-tunneling.html",
+      "sha256": "86cc515cc53b9693210d8601d0a3be39e08042e47ff30c943eca729c46abb4a2",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-04/scattering-from-an-attractive-finite-well.html",
+      "sha256": "86ae16994e4112425efd83e7c533e28f01fc18d5a8d20467c52089ac58ae3838",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/3d-oscillator-radial-equation.html",
+      "sha256": "e456a43c14ba9e57d86ce20e49887f5c791cc13a9b2b15f3a9aad753bc11b4bf",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/3d-oscillator-spectrum-and-degeneracy.html",
+      "sha256": "491660a07e09962a33012bc9c505c9ea99f04ba29611e195f48e3c1df67dc425",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/3d-oscillator-wave-functions-and-probability.html",
+      "sha256": "22cf716170749fec71146f15f16673e3bc9dd0fb687fd8945d6d22806536444f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/azimuthal-and-polar-equations.html",
+      "sha256": "38b20058d6abed61a1da3507f46e998a5086463de54f2878e589db1757b757ef",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/central-potentials-chapter-roadmap.html",
+      "sha256": "86f83c23db9212cc3d69241b36a0f87407c1b260d9f49127dbe6e8dcfa20dc56",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/chapter-synthesis-solving-central-potentials.html",
+      "sha256": "37c0168147f9ed14c1e9773ac6c6e532d725561068d609f2b4e62c154356d2ef",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/hydrogen-atom-and-effective-potential.html",
+      "sha256": "dfda3c159b3758d1c4feea98f803f852fd40dc5822d81944140f543acc3f4520",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/hydrogen-atom-and-the-periodic-table.html",
+      "sha256": "4cd8349eb2e0a56b1fdfa99062e5daa75d931f0f5cf0749af481981f678187c2",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/hydrogen-expectation-values.html",
+      "sha256": "010801cd9b00645edfa93a5e9f4450afe1bf461aaf7fc002f6e1a208f07d6e68",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/hydrogen-orbitals-and-radial-probability.html",
+      "sha256": "fca0b07711558951cd0769b1c11e46136e5ee120fea9971eb1962290fa3db7b7",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/hydrogen-radial-equation-and-laguerre-solutions.html",
+      "sha256": "7ca6d4a5c07a81f0acdce51137537cbb7633bda7e63a1b6842f6a83e41855ae5",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/hydrogen-spectrum-and-degeneracy.html",
+      "sha256": "4b8b3d988af5a5ea88f0669e5c1308a1111af5489912cdff04d57115b08565e7",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/separation-of-variables-in-spherical-coordinates.html",
+      "sha256": "1948ff1875011cf107ea882bfd93edf653e952acd849870e1aa40556b91d81ae",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/spherical-harmonics.html",
+      "sha256": "15acbc5c5a9e870ed40663310733e24c8d08aabbe769abb2cbd61ac2ca1e1fe1",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-05/three-dimensional-harmonic-oscillator.html",
+      "sha256": "cbeb3a19c8fc85971cf371320802dca5f6d184e86d2d1c4c824cb291be6e662f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/angular-momentum-chapter-roadmap.html",
+      "sha256": "74e4e4f1c96c9b738c88313acc29cebf1a1c70e93e89c7ce3af094bf04912efc",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/angular-momentum-in-position-space.html",
+      "sha256": "a00d8a91b46248108caeff6abc67e0bad772c160e4be92f2e194a20cb302fafb",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/chapter-synthesis-angular-momentum-toolkit.html",
+      "sha256": "d72a33d0310ff555afd8fb33e0671b544cc4bbe3698e47f4115f246a3f0dcb95",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/commutation-relations-and-physical-meaning.html",
+      "sha256": "09e9416bf4c3ef8b6aa17cf29871193d768f1510a56092708f4ee3088d725f96",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/compatible-observables-l-squared-and-lz.html",
+      "sha256": "5b060bec15f731225987a64522b9f620cdeaafa45e27ae7642f4bf71c17c5dbb",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/expectation-values-and-transverse-variance.html",
+      "sha256": "9cd68524a92c6d9f4945e70738cdbbfa77a1909f01480fc8ba67c58fe1abd9b9",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/general-matrix-representation.html",
+      "sha256": "67f03216227589c0e4aaa2b07e34059598cab31209e0bd8d9b412666b7d90930",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-06/generalized-uncertainty-for-angular-momentum.html",
+      "sha256": "8286e15c7da6b1121ca8156f7235bfe1748623e0a38a5d1cc262e512fbb1ebf3",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/addition-of-angular-momenta-chapter-roadmap.html",
+      "sha256": "35c3a033394c7115a87a05a6f29c52eb21275f10a51124e87823861ab3d1121a",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/addition-of-angular-momenta-chapter-synthesis.html",
+      "sha256": "0b0f629ed899f6c527b6be0bdb1321a3ff464e6464d4bf53e84e80eb6fe4e619",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/application-angular-momentum-of-atoms-and-hunds-rules.html",
+      "sha256": "cfa1d8c986b54c01829686e830a138d88135b7a84aa1d2059e73b3e5cb0b77bd",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html",
+      "sha256": "d34d62bb4caec09993a0269fe1acd5acd181175e8e4d64d5cdcc65be5882968c",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/basis-change-of-an-operator.html",
+      "sha256": "6eacb3d10903d03f705dadea14d26a85816cf30ecfb047a89ce544f36c188028",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/commutation-relations.html",
+      "sha256": "76479ed9807aa037863b0d99539e5b5359f6e3fd8abeb27ecb18b908df8fcbef",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/hilbert-space-expansion.html",
+      "sha256": "352cc8266d04292b0c2dfd2c37501b30d174742f919d75e6df81b5c5fb5b2c15",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/interactions-between-angular-momenta.html",
+      "sha256": "b2cfff9b31ab39084d7c038ed8c9d25098c51ca87473c869dcab91d9de0a5ad0",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/local-basis-vs-coupled-basis-clebsch-gordan-coefficients.html",
+      "sha256": "79c656a09abbb4f68ca21db2135450c3e43edc658ffdb2cf9a166a06dc888a21",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-07/vectors-in-the-coupled-basis.html",
+      "sha256": "2d40a4ec1b6f33d9f4c7400255270040201d0b509cd6f955a1cfb5a22c3e6923",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/anisotropic-spin-example.html",
+      "sha256": "9931faffb2005962e4a167e6fe57adfda45f44cfc21e8199891f576fe957d554",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/chapter-synthesis-perturbative-workflow.html",
+      "sha256": "1aa8fabe4cf42790245412332cbd6dcb6833b7cff94bcd42b2535331ccf12c99",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/degenerate-state-and-second-order-corrections.html",
+      "sha256": "407726513b21c5fcabac95d0720631b86a7b0e033efd218755ebcf4e3754963a",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/exact-matrix-benchmark.html",
+      "sha256": "c6e9c30d1ed3de9ceb52b70e1e949abbc11e7e84e0c38878d0b0d06ed01eea4c",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/first-order-degenerate-perturbation-theory.html",
+      "sha256": "e6d76c89d6f65f02c9d8ab5604b24483723cce997a219aab321694435799b37f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/first-order-non-degenerate-corrections.html",
+      "sha256": "ceadc39fa4ebcb6d6f8cd495edc91aaae96030a740da8da532f886915a6e651e",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/hamiltonian-state-and-energy-expansions.html",
+      "sha256": "a5ca087238f560886d41a0ab8785d387b63bac5244dd8dac4ea361c5dbfcc31b",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/hydrogen-atom-in-an-electric-field.html",
+      "sha256": "31b42b0550d1dc8a5420ed29dc6d618186d59fcf5e91b0921d766c61bc08a655",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/linear-and-quadratic-stark-effects.html",
+      "sha256": "dc5467df87c33e33dd9b0d365be428b259d7939a7e140bc8d3f27fa85d1fa299",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/second-order-energy-correction.html",
+      "sha256": "cb63e789666ba135c4ad96a21ba3aa5daf1645d5efc88468dceed0e427364651",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/second-order-state-correction.html",
+      "sha256": "d2a43582bc0c75e3d9cf999fe40106376505ee93cc58bc8190f3221f432b295f",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/stark-selection-rules.html",
+      "sha256": "252c9438f825e91894dda6764caf388e384a5c25b6b6b703c2882f4c1146ba10",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/van-vleck-susceptibility.html",
+      "sha256": "789400d8efb09bc40aad9861295493e707ff8e74912546ffeaeade93bb759981",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/why-degeneracy-changes-the-method.html",
+      "sha256": "a45dbc31a38d8e5fcfa76c51a7f602b55019d4d06d756311453d50d9755e1463",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-08/why-perturbation-theory-is-needed.html",
+      "sha256": "8db2c6ebfae2c9cbed072f2e98641b343562c11a038e08fa9deeeca339c846c7",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-09/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-10/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-11/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-12/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "slides/chapter-13/.gitkeep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260528_create_saved_exercises.sql",
+      "sha256": "c88b87496e721bb412ef2590547dae7c17dc190af9e7ed7d751d572f23d7f033",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260529_create_exercise_validation_reports.sql",
+      "sha256": "89603ef9b17571bde35899f2f75395fda21201a0eb49cdee724e05052a30b25e",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260531_fix_exercise_validation_rls.sql",
+      "sha256": "48b35a056d2d75facde1a7c33b87b892bfb027d482d39ac2ce82ba57a5a5d63d",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260531_moderate_exercise_validation_reports.sql",
+      "sha256": "c4a2b338a6ccf460ab9ec6d7535c89bd4b9c0d131059ba7c1c54ba36f2843cfa",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260717_secure_qm_exercise_tables.sql",
+      "sha256": "4f579417ad4441d6ac2f8a7b058074081dc3d4b987406d9cc6e9b22c5e08d523",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260731_add_qm_book_sources.sql",
+      "sha256": "25564f3c587d120a6709bac888ce09417c1da46d5e4d4157e642f14d4f4765c9",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260731_add_qm_saved_exercise_source_metadata.sql",
+      "sha256": "058ecb96f228e6063b7cf33c897b60719e25b2498bc481c03d3774fbbf6fe802",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260803_fix_qm_book_source_chapter_id_check.sql",
+      "sha256": "0cdc2b65c9066e0f6e142db747b8df2de6b89533a45a830541c6785f5994d3fd",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260803_grant_qm_book_source_server_access.sql",
+      "sha256": "f4ea2428af3649c0f01987f09fc8cd08ffe01f732e156ceca08335f3fc4beaad",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260903225925_create_qm_study_progress.sql",
+      "sha256": "9071b04b9b1e102b2e8079a055a11e635db627f8990774ddca14a44d3a3e8894",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260904115229_create_qm_gamification_foundation.sql",
+      "sha256": "7a756a26b1fabe579b787c120a61803cc9cd761ca923f213d62cbcbd94ccdb7a",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260906143603_create_qm_chapter_quiz_attempts.sql",
+      "sha256": "01951aea287c6f438a7cc4b4a5277078dfa425a3c85ed97ae62f6892f026e805",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260906225907_create_qm_simulator_activity.sql",
+      "sha256": "75e043d8fd459603c8113bd151a2a04a12c457b31638c0c8ff650c98dbbfc670",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260910230457_qm_operational_parity.sql",
+      "sha256": "8404d549f6eef9088d4640b08890f069445f125bced066f3c4be553df3baf834",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260914223802_qm_analytics_retention.sql",
+      "sha256": "931ca629a97a7cf80ec5756fe00bca9e42e1f933f330ae3db637590659561f96",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260924125315_repair_qm_authenticated_learning_flows.sql",
+      "sha256": "312aea66932bb1c47f2eeb35c11fb4e1c0a8fdaaf5a0c42081bfec45d1b89d96",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260925215027_explicit_data_api_privileges.sql",
+      "sha256": "961c6243ba30841ec6437cdf87cf7f8cb523e1e577b9f46fa04ab3bac1b526b5",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260925230000_qm_optional_email_consent_default_off.sql",
+      "sha256": "4d7df0cfab0df362ab50581ddd05fb188877b87eddacc7d61003031eac6a80aa",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260926112057_qm_authoritative_learning_ledger.sql",
+      "sha256": "32c884fd2bda533e3894030d54e6f3b1d9588324a8e92ddb99f5b5ee425e3e07",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260926120250_qm_adaptive_learning_modes.sql",
+      "sha256": "1c218630bd10649da62586506765eb05dfa3be50932deafb4be4e062a00154e5",
+      "executable": false
+    },
+    {
+      "path": "supabase/migrations/20260926154500_qm_academic_evaluation_and_responsible_communication.sql",
+      "sha256": "da642ec317a3467d2df0e1ac7e737878606be1aa295410610febb5a3f9db035f",
+      "executable": false
+    },
+    {
+      "path": "tests/fixtures/qm-ledger-import.json",
+      "sha256": "6cfaafdfabed946eaa776440f3807d3befb16a8f02f5bf0c1f8c28887caef48f",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-academic-evaluation-and-communication.test.mjs",
+      "sha256": "df19ac32149f9d64acbda26d645b547b6a38cc4d1c12e31ca7dd6fafe702558b",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-adaptive-learning.test.mjs",
+      "sha256": "53c909c259a3e1c03858086789c4d8591806268a77b940f9465b1bad3f6dd96c",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-analytics-client.test.mjs",
+      "sha256": "59a10b9abc3b274ad294b2619c03ce0d422b954e1bac17fbdfdefaf97ee63844",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-analytics-handler.test.mjs",
+      "sha256": "c5e4f8b1d43f7af2e7eb2c85a28eca7b432bc2bd6b3bc26c75acdbb7aba18cc3",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-authenticated-learning-flow.test.mjs",
+      "sha256": "e84943265b7f89ef73916812df8ecd07dbbca8d7eb8b2b0d61d7837c6e5138e7",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-c22-ui-contract.test.mjs",
+      "sha256": "6161056679170a513fac625ead585cdb040d4907e66464ce18259ab575cdc412",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-gamification-handler.test.mjs",
+      "sha256": "f95b59b6d8c9585d57ff56ee5bdfcb607cac0e9a3a457ffb06e9063c0dac0e98",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-learning-adapter.test.mjs",
+      "sha256": "8cba61c07f43a7781c39b8ee2445af7b8b589bf51c2db48551fee257c3e523ac",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-learning-help.test.mjs",
+      "sha256": "be9c707759c1fc8de4809a63aa5b7de55f186b43b1df49af514147f6efdfe644",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-learning-profile.test.mjs",
+      "sha256": "c40f25aebcf9ac78760d7166e06a95a8ec2c4575f94d86f754b298987a78613b",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-operational-handlers.test.mjs",
+      "sha256": "bc93d104c1fbec1c9641e5c3e41b5b9da92e5e4d5d01ed290afa7457e61e9a6d",
+      "executable": false
+    },
+    {
+      "path": "tests/qm-supabase-privilege-contract.test.mjs",
+      "sha256": "47ed52b89bce747b049718ef32d5e5fbabbf4721bec1e731a1b108ec2b2af4c9",
+      "executable": false
+    },
+    {
+      "path": "unsubscribe.html",
+      "sha256": "2bd987dc8a159bfe5fe0c050a01379f4ad17805eaab92064d55616b8ae20620a",
+      "executable": false
+    },
+    {
+      "path": "vercel.json",
+      "sha256": "a3207f869d30b98da939abc0d604b03828a068e3d7d40ca7d8beaade880b05bb",
+      "executable": false
+    }
+  ]
+}

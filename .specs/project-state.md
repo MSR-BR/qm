@@ -14,6 +14,224 @@
 
 ## Active change
 
+### Current C33 checkpoint — Production variables prepared, not yet promoted
+
+The scoped Production configuration update was approved on renewed review using
+the recorded new security/recovery evidence and has now succeeded. All four
+variables select the replacement backend and dedicated Google client. Login is
+Google-only; email/password and learning-email delivery remain disabled. The
+incumbent public deployment has not changed yet. Candidate packaging is hardened
+and 85 tests pass. Next: exact manifest/commit, isolated Production-target build,
+deployed boundary tests, promotion and public smoke, then final CPD receipt.
+Earlier pending-variable/rejection entries below are historical, not current.
+
+### C33 current — Google-only applied and verified, 2026-10-02
+
+Owner explicitly authorized disabling email/password. Replacement Supabase now
+advertises Google as its sole enabled provider; password login returns HTTP 422
+`email_provider_disabled`, Google authorize uses the dedicated client/new
+callback, and all unrelated Auth settings remain unchanged. 634/634 managed
+access checks still pass. The leaked-password Advisor warning remains visible
+but password login is disabled; reopening that provider requires review.
+The previously rehearsed SQL plus fourteen PDFs have a durable encrypted local
+archive outside Git; Keychain key, decryption/hash and tamper checks verified.
+Off-site/continuous backup is not claimed. The detailed fresh manifest can now
+be regenerated and verified mechanically. C33 production cutover/CPD remains
+pending; any renewed Production-variable request must go through approval review
+with this new evidence, without bypassing the earlier rejection.
+
+### C33 latest — Google production and authenticated Preview verified, 2026-10-02
+
+Owner screenshot confirms the dedicated QUANTUM Google OAuth audience is
+**External / In production**. This supersedes the older Audience=Testing notices
+below. The replacement-target Preview deployment
+`dpl_FQycaHgdZ32m3qCVwVCyauhA69P1` built after learning API handler
+consolidation for the Vercel Hobby 12-function limit. The authenticated
+`/api/qm-learning-profile` path returned `learning-profile-v1`; the remote
+acceptance audit created two disposable users and verified their cleanup.
+`node --test tests/*.test.mjs` passes 85/85, `npm run check` passes, SEO
+validation passes for 85 sections, and `git diff --check` passes.
+
+This is target-bound Preview/API proof, not public-domain OAuth redirect/browser
+proof or production cutover. Production Vercel still points to the old paused
+Supabase target. A requested four-variable production switch was rejected by
+the approval reviewer while recovery/security/cutover gates remained incomplete;
+do not retry by another path. C33/CPD remains open pending durable recovery
+evidence, security disposition for the Free-plan leaked-password warning, exact
+candidate fingerprint/commit and production authenticated smoke. Owner's CPD
+authorization is recorded and must not be requested again; it does not override
+the release gates. No TERMO, email-delivery, or old-project changes are in scope.
+
+### Historical C33 checkpoint — restore rehearsal passed; public OAuth Testing
+
+Owner entered the new public legal URLs in dedicated Google Branding, but
+Google Auth Platform → Audience still reports **Testing** on owner readback;
+public OAuth publication is not confirmed. A linked, read-only Supabase audit
+again passed 634/634 privilege/RLS checks; the remaining leaked-password
+protection WARN is a Free-plan limitation requiring a release decision, not a
+silent zero-warning claim. A temporary, restricted logical snapshot of the
+new project was restored into a clean local Supabase stack. Counts matched
+(1 owner, 14 sources/Storage metadata, 85 reviewed sections, 0 ledger rows,
+1 migration), and a required post-restore ACL repair passed 634/634 local
+checks. The disposable restored volume was deleted; the SQL snapshot remains
+only in `/private/tmp`, so durable encrypted/off-site retention is still open.
+Storage object bytes were separately hash-verified. See C33
+`cpd-preflight-2026-10-02.md`. No C33 commit/push/cutover; the legal-only
+production deployment below is unchanged. The app loop and production-target
+smoke also remain unproven. Do not label this clean CPD.
+
+### C33 public legal pages released separately, 2026-10-02
+
+The QUANTUM Privacy and Terms of Use pages are now public at
+`https://quantummechanicsbook.app/privacy.html` and
+`https://quantummechanicsbook.app/terms.html`. A legal-only production package
+was built from the exact C17 production code snapshot, keeping the backend
+configuration unchanged. Vercel deployment `dpl_FcudtUG1p2vKyfW4W4Y3tDmq8gMR`
+is the verified custom-domain target; both pages, their CSS and landing/app
+links returned 200. The production audit passed 98 sitemap routes, 62 local
+assets and 9 API boundary checks without warnings. This is **not** C33 cutover,
+Google Audience publication, C18 activation, or clean CPD of the candidate.
+Use the verified public URLs in dedicated Google Branding; Audience remains
+unverified until Google readback confirms publication.
+
+### C33 current — CPD authorized; Google publication/recovery gates open
+
+2026-10-02: owner explicitly authorized finishing C33 followed by clean CPD.
+Earlier statements that production/CPD authorization is absent are superseded;
+readiness gates are not waived. Read `cpd-preflight-2026-10-02.md` under C33.
+Current checks: 82 tests, 634 managed privilege checks, content/SEO, unchanged
+377-file fingerprint and fresh isolated SQL replay PASS. Owner preferences have
+GET/PUT/subsequent GET 200 evidence. Google Audience remains Testing, with
+Publish app disabled until Branding is completed; native Save did not establish
+success. New password-protection Advisor warning requires review; real backup
+restore, complete app/logout proof and deployment smoke remain pending. No
+Vercel writes/commit/push/deploy/cutover occurred. Preserve the owner account and
+all existing work. TERMO and C18 remain out of scope.
+
+### C33 latest follow-up — Google sign-in confirmed; onboarding verification pending
+
+2026-10-02: new Supabase individual Auth record confirms Google identity and
+completed sign-in. Owner's local privacy dialog failed because the temporary
+test wrapper omitted its preferences endpoint, not because OAuth failed.
+Wrapper now routes authenticated GET/PUT to the existing preferences handler;
+401/403 boundary checks and 18 relevant unit tests pass. Await owner reload/save,
+then profile/session/reload/logout verification. No choices made for the owner,
+no emails, production cutover, TERMO changes or schema/provider changes.
+See C33 OAuth runbook for current evidence and runtime limitations. Earlier
+full-login-pending observations below describe the previous checkpoint.
+
+### C33 latest — dedicated Google provider enabled; full login pending, 2026-10-02
+
+New owner-supplied local credential validated and installed only on
+`quantum_rebuild` / `crasnnvdvujzxudmbakv`. Google provider now enabled with
+dedicated `QUANTUM web` client `1091169926547-...`. Readback confirms unrelated
+Auth settings unchanged. Keyed authorize probe returns 302 to Google with the
+dedicated client and new callback. This is NOT completed OAuth login evidence.
+An isolated local app at `http://127.0.0.1:4173/index.html` is prepared in Codex,
+with new-target-only runtime credentials, no analytics, read-only application
+APIs and private-file denials. Native accessibility confirms the app/rating modal.
+Await owner Google account selection, then session/profile/reload/logout proof.
+Details, limitations and provider-disable rollback are recorded in C33
+`google-oauth-setup.md`. No TERMO/shared client, production configuration, deploy
+or CPD changes. Full release remains pending; C18 stays deferred. This supersedes
+earlier secret-pending/disabled-provider notes; existing worktree is preserved.
+
+### C33 historical — dedicated OAuth client created by owner, 2026-10-02
+
+Owner created `QUANTUM web` in `quantum-book-auth-20260926`. Supplied JSON
+metadata validates client ID
+`1091169926547-94qapsmdmtg38hbognu8dapl1j8lpimd.apps.googleusercontent.com`,
+canonical app origin and new Supabase callback. Do not create a duplicate.
+The supplied screenshot exposes its secret: replacement is required before
+activation. No credential installed or remote change in this follow-up; provider
+configuration/full login remain pending. Rotate only the dedicated client secret,
+not TERMO; keep production untouched. See latest C33 OAuth checkpoint. This
+supersedes the earlier empty-inventory/form-creation blocker below.
+
+### C33 resumed — dedicated OAuth only — 2026-10-02
+
+Owner explicitly ended the 26/09 pause and authorized the dedicated QUANTUM Web
+OAuth client/provider configuration and isolated login tests through the browser
+inside Codex. Production cutover, CPD, billing changes and TERMO/shared-client
+mutations remain unauthorized. Do not reopen the general infrastructure audit.
+
+Current checkpoint: Google project `quantum-book-auth-20260926` read-only verified
+ACTIVE; new Supabase `crasnnvdvujzxudmbakv` verified ACTIVE_HEALTHY. Its Google
+provider is still disabled with the shared client ID staged. All 634 managed
+catalog/grant/RLS checks and 82 local Node tests pass again; no remote writes.
+Follow-up live accessibility inspection of Codex's embedded browser confirms
+Gmail identity, QUANTUM project and **No OAuth clients to display**. The dedicated
+create-client form is now open in Codex. However, accessibility click/press and
+focus/keyboard attempts do not operate its controls; no client was created and
+no provider PATCH was sent. Native browser automation and `agent-browser` remain
+unavailable. This is a form-interaction blocker, not missing audit/authorization.
+Do not silently switch to Safari. After credential creation, configure only the
+new backend, prove full login, then present any production switch for approval.
+See C33 `google-oauth-setup.md` for exact scope and rollback/acceptance checks.
+
+### Owner-requested pause / resume checkpoint — 2026-09-26
+
+Historical checkpoint, superseded by the bounded resumption above.
+The owner will first resolve Google Cloud account/project organization in the
+separate Infrastructure project and then return to QUANTUM. Pause execution
+here; do not autonomously resume OAuth, provider changes or publication.
+C33 remains unfinished, not accepted as a production release.
+
+On return, obtain the Infrastructure decisions/handoff and revalidate project
+IDs, access, billing and OAuth metadata before any mutation. Do not recreate
+projects/clients that Infrastructure may have configured or undo its work.
+Resume C33: dedicated Google OAuth and new-Supabase callback/login proof →
+target-bound application environment and end-to-end learning/security checks →
+recovery/release gate → owner-authorized CPD. Do not repeat the installed clean
+baseline. Preserve all existing worktree changes and gamification rules.
+
+C28–C32 are locally implemented; fresh Supabase installation/managed tests have
+passed as recorded below. Application publication remains pending. C26 SEO,
+owner C15 review and C16 GA4 visual confirmation remain tracked separately;
+C18 stays deferred until the owner's review and explicit launch approval.
+No remote action or commit/push/deploy was performed to record this pause.
+
+Current next action: **C33 — integrated release preparation**. C28–C32 have local
+implementations; none of the open remote gates is satisfied by those local
+milestones. The historical "next" notes below describe their completion order.
+Production cutover is held on Google OAuth, target-bound app validation/recovery
+and exact release approval. Fresh database installation and managed role/learning
+tests have passed. The old-history dependency is superseded for
+the fresh target by the owner's explicit no-data-preservation decision below.
+
+Latest C33 infrastructure decision (2026-09-26): owner authorized replacing
+QUANTUM with no old learner-data preservation requirement. Old project
+`plqiofznjlbpfufigpcp` is **paused (`INACTIVE`), not deleted**. New Free-plan
+`quantum_rebuild` / `crasnnvdvujzxudmbakv` is `ACTIVE_HEALTHY` in `sa-east-1`,
+same organization `farevhlbtnmkuewoxhry`. Clean baseline `20260926204825` installed
+through the isolated `supabase/fresh` CLI workdir. All 634 managed catalog checks
+and two-user Auth/PostgREST learning tests passed; test users removed. Fourteen
+private source PDFs for Chapters 1–7 are provisioned. Password is in
+macOS Keychain, never Git. TERMO remains active and untouched. See C33
+`provider-replacement.md` for the receipt and credential locator.
+
+Latest Google observation before pause: the overview displayed **OAuth
+configuration created!** and **You haven't configured any OAuth clients for
+this project yet**. Initial configuration is now complete; the former pending
+policy-acceptance step is historical, not the next action. Following explicit
+owner authorization, normal approval review allowed creation of the dedicated
+`quantum-book-auth-20260926` Google Cloud project; billing readback is disabled
+with no billing account. The earlier approval denial was not bypassed.
+Existing shared `termo-web` client is untouched; its warning
+means two secrets exist, not a confirmed login failure. Dedicated QUANTUM OAuth
+client/secret and functional separation are still pending.
+See C33 `google-oauth-setup.md`. Google remains disabled until the client/secret
+and new callback are safely configured and login proven. Database/source proof
+in `fresh-installation.md` is unchanged. No old migration was renamed; use new forward migrations
+in `supabase/fresh` for subsequent schema work, never regenerate the applied baseline.
+Old CLI link and app/Vercel credentials are deliberately unchanged; the paused
+old backend cannot serve authenticated app features. Do not run implicit linked
+commands against it; use the new reference explicitly. No commit/push/deploy or
+gamification-policy change. Old PAM investigation below is historical, not a
+blocker to fresh bootstrap; it is not claimed repaired.
+
+- `033-unified-learning-release-integration` — active on 2026-09-26. Fresh replacement baseline installed with canonical history; 634 managed catalog assertions, disposable Auth/REST learning tests and private-source integrity/isolation pass. All 82 Node tests pass. Fresh target fingerprint: 377 inputs, `bee86b08ab55a651dd690c4ba058c18076eefd5b032854a444df1cbfb30d8f2e`; see `fresh-candidate-manifest.json`. Old history and no-data import requirements are superseded only for this fresh launch. Google secret/callback, browser/app environment proof, recovery plan and exact publication approval remain. Release **BLOCKED**; scoped database/auth preparation and private-source provisioning executed, no commit/push/deploy or app credential switch. Previous local-integration and old PAM evidence is retained in `validation-evidence.md`.
+
 - `001-content-availability-and-canonical-registry` — published.
 - `002-exercise-source-governance-and-index-audit` — published in `bbb0325`.
 - `003-public-discovery-routes-and-seo-parity` — published in `8732fec`.
@@ -41,11 +259,11 @@
 - `025-learning-communication-and-reengagement` — superseded before execution by C32. Its consent, frequency, quiet-hours, unsubscribe, and non-coercion requirements were preserved.
 - `026-canonical-url-consolidation-and-search-console-validation` — planned from the 2026-09-23 Search Console notice; consolidates `/index.html` alternates into the canonical root-query routes and requires affected-URL inspection before validation.
 - `027-supabase-explicit-data-api-privileges` — locally implemented on 2026-09-25. The full table/function/sequence access contract, least-privilege migration, static drift gate, handler-operation tests, security profile, and rollback are recorded. A normalized disposable replay/reset proves the C21/C27 SQL, exact grants, RLS, and lint; direct canonical reset remains blocked by two older migration-history defects (`QM-SEC-006`). No remote migration, audit, or deploy occurred; history reconciliation and release proof remain separately authorized.
-- `028-unified-learning-contract-and-adapter` — planned; inventories and classifies every learning, activity, reward, assessment, simulator, and analytics event against the shared policy without changing production behavior.
-- `029-authoritative-learning-ledger-and-profile` — planned; completes the immutable ledger, derived profile, atomic/idempotent award paths, historical reconciliation, and own/cross-user security proof.
-- `030-adaptive-learning-modes-and-rewards` — planned; implements Daily Challenge, chapter assessment/review/retry, simulator evidence, concept scheduling, mechanism cards, missions, badges, and transparent next actions.
-- `031-learning-methodology-help-and-explainability` — planned; adds a stable public English Help page and contextual explanations of exercises, evidence, rewards, AI, privacy, and reporting.
-- `032-academic-evaluation-and-responsible-communication` — planned; separates learning/behavior/experience/fidelity/equity outcomes and implements affirmative-opt-in communication with caps, quiet hours, unsubscribe, and non-coercive evaluation.
+- `028-unified-learning-contract-and-adapter` — completed locally on 2026-09-25; versioned QUANTUM policy, event/store map, 15 mechanism cards, 15 simulator capability declarations, generic contract validator and exact reviewed-source eligibility are implemented offline. Seven new contract tests pass; full suite 51/51 and content/privilege checks pass. No runtime import, migration, commit, push or deploy in this Change. C29 is next; remote C21/C27 and migration-history release gates remain open.
+- `029-authoritative-learning-ledger-and-profile` — implemented and validated locally on 2026-09-26; append-only ledger, reviewed allowlist, persisted-completion/atomic reward guard, operator-only historical import, offline dry run and unified private profile/Journey are ready. 58 Node tests, isolated PostgreSQL replay, 315 table/39 function privilege checks, 12-request concurrency, rollback and synthetic mobile UI checks passed. C30 mechanics remain inactive. Real historical dry run, managed Supabase/PostgREST proof, migration-history/PAM resolution and release remain blocked/separately authorized. No commit, push or deploy this turn. See C29 validation and rollout records.
+- `030-adaptive-learning-modes-and-rewards` — implemented and validated locally on 2026-09-26. The reviewed concept graph, deterministic scheduler, distinct Daily Challenge, three-checkpoint chapter assessments, guided review/changed-form retry, four-stage simulator evidence, persistent badges/missions, transparent next actions and conservative mastery/reward rules are complete locally. Full Node/content/source/SEO/math/browser/security gates and an isolated PostgreSQL transaction suite passed, including exact privileges, concurrency, São Paulo local-day cap, cross-user isolation and rollback. C30 remains unreleased: managed Supabase/history reconciliation, real authenticated evidence, commit, push and deploy require the separate C21/C27/C29/C30 release authorization. C31 is next.
+- `031-learning-methodology-help-and-explainability` — implemented locally on 2026-09-26. Added canonical English methodology source, public `/help.html`, contextual links from Study Journey/rewards/recommendations, assessments, Daily Challenge and simulator cycles, plus generated SEO/sitemap/structured data and static accessibility/link gates. The page explicitly marks backend-dependent features as staged and distinguishes research principles from QUANTUM efficacy. Local-only; remote backend rollout and production behavior remain unverified. C32 is next; final manual browser/screen-reader review remains open.
+- `032-academic-evaluation-and-responsible-communication` — implemented and validated locally on 2026-09-26. Added a versioned five-family outcome dictionary, owner-only aggregate report, affirmative versioned consent, time zone and pause controls, reviewed due-review eligibility, atomic daily/seven-day caps, 21:00–07:00 quiet hours, fixed non-coercive English template, strong signed/RFC one-click unsubscribe and append-only communication evidence without message bodies or recipient addresses. Generic bulk campaign sending is disabled, analytics has no reward/mastery/message authority, provider acceptance is not called exposure, and production delivery remains disabled behind a separate environment gate. Content, privilege, C28–C32 regression and worktree security gates pass locally. C32 migration, secrets, sender verification, webhook evidence, commit/push/deploy and production enablement were not performed; `QM-SEC-001/006/007/008/009` remain release blockers.
 
 ## Canonical execution order
 
@@ -57,9 +275,10 @@ C22 learner-facing repairs
   -> C29 authoritative ledger/profile
   -> C30 adaptive modes and rewards
   -> C31 methodology Help and C32 evaluation/communication
+  -> C33 integrated candidate, migration-history resolution and release proof
 ```
 
-C29 cannot pass its release gate until C21/C27 and `QM-SEC-006` have an authorized migration-history reconciliation and remote proof. Local specification, deterministic code, and disposable validation may proceed without remote mutation.
+C29/C30 cannot pass their release gate until C21/C27 and `QM-SEC-006` have an authorized migration-history reconciliation and remote proof. Local specification, deterministic code, and disposable validation may proceed without remote mutation.
 
 ### Independent discovery sequence
 

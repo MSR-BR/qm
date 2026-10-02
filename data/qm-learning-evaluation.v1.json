@@ -1,0 +1,93 @@
+{
+  "version": "qm-learning-evaluation-2026-09-26.1",
+  "policyVersion": "qm-learning-policy-2026-09-25.1",
+  "claimRules": {
+    "retention": "Requires a baseline plus unaided retrieval in a separate session after at least 24 hours.",
+    "transfer": "Requires a changed representation or materially changed problem form; repeated identical items do not establish transfer.",
+    "mastery": "Requires repeated unaided success, separate sessions, changed representations and delayed retrieval.",
+    "engagement": "Behavioral activity is reported as behavior only and cannot be relabeled as learning.",
+    "experience": "Ratings and comments describe experience only and cannot be relabeled as learning."
+  },
+  "outcomes": [
+    {
+      "id": "learning_delayed_retrieval",
+      "family": "learning",
+      "label": "Delayed unaided retrieval",
+      "numerator": "learners with a correct, unaided retrieval in a separate session at least 24 hours after prior evidence",
+      "denominator": "learners with at least two eligible retrieval opportunities",
+      "source": "qm_learning_attempt_items",
+      "limitations": "Evidence is limited to reviewed in-app items and does not by itself establish broad transfer."
+    },
+    {
+      "id": "learning_changed_representation",
+      "family": "learning",
+      "label": "Changed-representation success",
+      "numerator": "learners with unaided success in at least two reviewed representations",
+      "denominator": "learners exposed to at least two eligible representations",
+      "source": "qm_learning_attempt_items",
+      "limitations": "A representation change is only a bounded transfer indicator."
+    },
+    {
+      "id": "behavior_activity",
+      "family": "behavior",
+      "label": "Product activity",
+      "numerator": "privacy-sanitized product events",
+      "denominator": "consenting visits represented in the analytics dataset",
+      "source": "qm_analytics_events",
+      "limitations": "Activity is not learning, retention or mastery and never changes the learning ledger."
+    },
+    {
+      "id": "experience_rating",
+      "family": "experience",
+      "label": "Voluntary app rating",
+      "numerator": "sum and distribution of submitted ratings",
+      "denominator": "voluntary rating submissions",
+      "source": "qm_app_ratings",
+      "limitations": "Self-selected experience feedback is not a learning outcome."
+    },
+    {
+      "id": "implementation_fidelity",
+      "family": "implementation_fidelity",
+      "label": "Mechanic exposure and action",
+      "numerator": "acted events for the named mechanic",
+      "denominator": "exposed events for the same mechanic",
+      "source": "qm_learning_mechanic_events",
+      "limitations": "Exposure is needed to interpret an intervention; acting is not evidence of learning."
+    },
+    {
+      "id": "equity_safety",
+      "family": "equity_safety",
+      "label": "Communication suppression, opt-out and adverse signals",
+      "numerator": "suppressed, failed, bounced or opted-out communication events",
+      "denominator": "eligible communication events",
+      "source": "qm_learning_communication_events",
+      "limitations": "Low counts can be identifying and must not be segmented or exposed."
+    }
+  ],
+  "requiredReportFields": [
+    "population",
+    "sample",
+    "denominator",
+    "mechanism_exposure",
+    "attrition",
+    "missing_data",
+    "effect_size",
+    "uncertainty",
+    "adverse_effects",
+    "limitations"
+  ],
+  "analyticsSeparation": {
+    "authoritativeLearningSources": [
+      "qm_learning_ledger",
+      "qm_learning_attempts",
+      "qm_learning_attempt_items",
+      "qm_simulator_learning_events"
+    ],
+    "behaviorOnlySources": [
+      "qm_analytics_events"
+    ],
+    "analyticsMayAwardPoints": false,
+    "analyticsMayEstablishMastery": false,
+    "analyticsMayDetermineMessageEligibility": false
+  }
+}

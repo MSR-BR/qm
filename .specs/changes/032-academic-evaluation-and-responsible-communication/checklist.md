@@ -1,9 +1,9 @@
 # Checklist
 
-- [ ] Outcome framework
-- [ ] Fidelity events
-- [ ] Affirmative consent migration
-- [ ] Scheduler/caps/quiet hours
-- [ ] Templates/unsubscribe
-- [ ] Owner reporting
-- [ ] Privacy/security/release gates
+- [x] Outcome framework
+- [x] Fidelity events
+- [x] Affirmative consent migration
+- [x] Scheduler/caps/quiet hours
+- [x] Templates/unsubscribe
+- [x] Owner reporting
+- [x] Privacy/security/release gates

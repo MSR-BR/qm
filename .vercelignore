@@ -1,1 +1,11 @@
 sources/
+.specs/
+.agents/
+.codex/
+docs/*
+!docs/learning-methodology.md
+!docs/exercicios-ia-indice-referencias.html
+scripts/
+tests/
+supabase/
+.env*
