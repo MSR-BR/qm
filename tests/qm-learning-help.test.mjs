@@ -21,10 +21,16 @@ test("public learning guide is versioned, English, and accessible without login"
   assert.match(html, /aria-label="On this page"/);
   assert.match(html, new RegExp(policy.policyVersion));
   assert.match(source, new RegExp(policy.policyVersion));
-  assert.match(html, /Updated 26 September 2026/);
+  assert.match(html, /Policy dated 26 September 2026/);
+  assert.match(html, /Page status updated 3 October 2026/);
+  assert.match(html, /"dateModified":"2026-10-03"/);
+  assert.equal((html.match(/<meta name="description"/g) || []).length, 1);
   assert.match(html, /engagement is not the same as learning/i);
   assert.match(html, /no extra daily completion points/i);
   assert.match(html, /Opening a simulator alone does not award points/i);
+  assert.match(html, /Account-based learning features are available after Google sign-in/);
+  assert.match(html, /Learning-email delivery is currently disabled/);
+  assert.match(source, /learning-email delivery remains disabled/i);
 });
 
 test("guide explains the core pedagogy and has no private rubric values", async () => {

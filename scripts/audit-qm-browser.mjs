@@ -338,6 +338,14 @@ try {
     await client.send("Page.navigate", { url: new URL(scenario.path, BASE_URL).toString() });
     await load;
     await sleep(2500);
+    // This is an isolated, disposable Chrome profile. Decline optional analytics
+    // so screenshots and accessibility checks inspect the actual page content.
+    // Never reuse an owner's profile or choose consent on their behalf.
+    await client.send("Runtime.evaluate", {
+      expression: "document.querySelector('[data-qm-analytics-consent=\"denied\"]')?.click()",
+      returnByValue: true
+    });
+    await sleep(100);
     if (scenario.interaction) {
       await client.send("Runtime.evaluate", { expression: scenario.interaction, awaitPromise: true });
       await sleep(500);

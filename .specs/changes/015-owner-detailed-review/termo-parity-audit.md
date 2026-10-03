@@ -4,6 +4,13 @@
 **Reference:** production-oriented code and migrations in the local TERMO and QUANTUM repositories.  
 **Scope:** operational learner, owner, data, authorization, and delivery functionality. Content quality is out of scope.
 
+> **Historical comparison, not the current parity verdict.** This matrix
+> predates C21/C22/C27–C33. QUANTUM's unified learning implementation was
+> published on 2026-10-02; see `../033-unified-learning-release-integration/release-receipt-2026-10-02.md`
+> and the C15 `review-2026-10-03.md`. The remaining signed-in owner review and
+> eventual cross-project production audit are separate. No TERMO configuration
+> or code is changed by this document.
+
 ## Audit conclusion
 
 QUANTUM has secure foundations for authentication, private exercises, progress, learning rewards, reviewed assessments, simulator activity, and editorial validation. The main gap is not a missing database foundation for the three learner features reviewed here; it is incomplete presentation and incomplete product workflows relative to the older TERMO app.

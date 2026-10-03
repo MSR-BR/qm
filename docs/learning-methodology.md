@@ -1,8 +1,8 @@
 # How learning works in QUANTUM
 
-**Public methodology guide · policy `qm-learning-policy-2026-09-25.1` · updated 26 September 2026**
+**Public methodology guide · policy `qm-learning-policy-2026-09-25.1` dated 26 September 2026 · operational status updated 3 October 2026**
 
-This guide explains the learning design used by the QUANTUM interactive Quantum Mechanics book. It describes product intent and evidence-informed principles; it is not a claim that the app's effectiveness has been established in a controlled study. Features that save account-based records require sign-in and may be staged while operational changes are rolled out.
+This guide explains the learning design used by the QUANTUM interactive Quantum Mechanics book. It describes product intent and evidence-informed principles; it is not a claim that the app's effectiveness has been established in a controlled study. Account-based records require Google sign-in. The integrated learning features were released through C33 on 2 October 2026; optional learning-email delivery remains disabled pending a separate activation decision.
 
 ## Learning activities and their purposes
 
@@ -34,7 +34,7 @@ Where an AI feature is offered, it may help organize or suggest eligible reviewe
 
 ## Data and privacy
 
-When account-based learning features are enabled, the app may use a learner's own activity records—such as section progress, responses, assessment attempts, help use, confidence when supplied, simulator stages and reward records—to show a private study journey and inform recommendations. These records are not a public leaderboard. Sign-in is required for personal persistence; optional learning email is a separate affirmative preference, off by default. The server applies a maximum of one message per local day and two in seven days, 21:00–07:00 quiet hours, no-send when the time zone is unknown, pause and one-click unsubscribe. A message can only link to reviewed eligible content and must explain its non-coercive reason. Consult the [Privacy and communication settings](../index.html?view=preferences) and [Privacy information](../index.html#privacy) for current controls and notices. Do not include passwords, access tokens or sensitive personal information in a support report.
+The app may use a learner's own activity records—such as section progress, responses, assessment attempts, help use, confidence when supplied, simulator stages and reward records—to show a private study journey and inform recommendations. These records are not a public leaderboard. Sign-in is required for personal persistence; optional learning email is a separate affirmative preference, off by default, and delivery is currently disabled even for affirmative preferences. If later activated, the server applies a maximum of one message per local day and two in seven days, 21:00–07:00 quiet hours, no-send when the time zone is unknown, pause and one-click unsubscribe. A message can only link to reviewed eligible content and must explain its non-coercive reason. Consult the [Privacy and communication settings](../index.html?view=preferences) and [Privacy notice](../privacy.html) for current controls and notices. Do not include passwords, access tokens or sensitive personal information in a support report.
 
 ## Evaluation boundaries
 
@@ -57,4 +57,4 @@ Use the Support link in the app to report an incorrect exercise, inaccessible co
 
 ## Governance
 
-This public guide follows policy `qm-learning-policy-2026-09-25.1`, updated 26 September 2026. Product values and rollout status may change through versioned changes; research principles are not product thresholds. For a correction to this methodology, contact [QUANTUM support](mailto:marioreis@id.uff.br).
+This public guide follows policy `qm-learning-policy-2026-09-25.1`, dated 26 September 2026; operational status was updated 3 October 2026. Product values and rollout status may change through versioned changes; research principles are not product thresholds. For a correction to this methodology, contact [QUANTUM support](mailto:marioreis@id.uff.br).

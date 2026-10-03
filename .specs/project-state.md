@@ -7,12 +7,20 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published baseline: C17 technical-audit release on `main` (2026-09-16), release `v20260916.2013`.
+- Last published learning baseline: C33 production integration on 2026-10-02; see its release receipt for the exact deployment and acceptance evidence.
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
-- The QM Supabase project reference `plqiofznjlbpfufigpcp` was read-only verified on 2026-09-03. Any remote database mutation still requires its own scoped authorization.
+- Production uses replacement Supabase `crasnnvdvujzxudmbakv` and a dedicated QUANTUM Google OAuth client. The old `plqiofznjlbpfufigpcp` project is paused and is not the production target. Any new remote mutation requires its own scoped authorization.
 
-## Active change
+## Authoritative status and next work
+
+- **C33 complete and published.** Its 2026-10-02 receipt is the source of truth for release, Google-only authentication, security and rollback. The owner confirmed public login, Personal Area, session persistence after reload and sign-out. This is owner testimony, not an agent-observed authenticated browser run.
+- **C21, C22 and C27–C32 were integrated and released through C33.** The prior “local only”, migration-history and old-project PAM blockers below are historical. C32 learning-email **delivery remains disabled** pending a separate sender/enablement gate. C31's manual screen-reader/200% zoom review is still open.
+- **C15 owner detailed review remains open.** The current run reconciles C15 findings and reviews public desktop/mobile journeys; exhaustive authenticated owner/device acceptance is not implied by the C33 login smoke.
+- **C16 GA4 DebugView visual confirmation, C26 affected-URL Search Console inspection/canonical validation, and C18 Ads launch decision** remain separate work. C18 requires explicit owner approval. Off-site/continuous backup remains an operational follow-up before broader rollout.
+- **TERMO is out of scope in this checkout.** A final cross-project parity audit follows only after both projects independently stabilize; no QUANTUM change authorizes modifying TERMO.
+
+## Completed integration
 
 ### C33 completed — production release and owner acceptance, 2026-10-02
 
@@ -30,6 +38,13 @@ deployment `dpl_57wHRqRPvkn94tjhEsiHNzRSGzx2` at `f355191` was READY and
 passed the repeated HTTP audit, with Git clean/synchronized. Current evidence/rollback/security
 limits: `changes/033-unified-learning-release-integration/release-receipt-2026-10-02.md`.
 Earlier pending-variable/rejection/cutover entries below are historical.
+
+## Historical C33 checkpoints — superseded by the completed release above
+
+The following dated entries preserve decision and diagnostic history. Words such as
+“current”, “pending”, “blocked” and “next” in their original headings or text
+describe their former checkpoint, **not the state on 2026-10-03**. Use the C33
+release receipt and the authoritative status above for current decisions.
 
 ### C33 current — Google-only applied and verified, 2026-10-02
 
@@ -236,7 +251,9 @@ commands against it; use the new reference explicitly. No commit/push/deploy or
 gamification-policy change. Old PAM investigation below is historical, not a
 blocker to fresh bootstrap; it is not claimed repaired.
 
-- `033-unified-learning-release-integration` — active on 2026-09-26. Fresh replacement baseline installed with canonical history; 634 managed catalog assertions, disposable Auth/REST learning tests and private-source integrity/isolation pass. All 82 Node tests pass. Fresh target fingerprint: 377 inputs, `bee86b08ab55a651dd690c4ba058c18076eefd5b032854a444df1cbfb30d8f2e`; see `fresh-candidate-manifest.json`. Old history and no-data import requirements are superseded only for this fresh launch. Google secret/callback, browser/app environment proof, recovery plan and exact publication approval remain. Release **BLOCKED**; scoped database/auth preparation and private-source provisioning executed, no commit/push/deploy or app credential switch. Previous local-integration and old PAM evidence is retained in `validation-evidence.md`.
+- `033-unified-learning-release-integration` — **completed and published 2026-10-02**. The earlier fresh-install candidate, blocked release and 82-test snapshot belong to the historical 2026-09-26 checkpoint above. The authoritative production target, 86-test release proof, owner acceptance and rollback limits are in `changes/033-unified-learning-release-integration/release-receipt-2026-10-02.md`.
+
+## Change inventory — reconciled on 2026-10-03
 
 - `001-content-availability-and-canonical-registry` — published.
 - `002-exercise-source-governance-and-index-audit` — published in `bbb0325`.
@@ -252,28 +269,28 @@ blocker to fresh bootstrap; it is not claimed repaired.
 - `012-editorial-review-workflow` — published in `35885e4`.
 - `013-production-domain-and-measurement-foundation` — published; final domain, Supabase Auth allow-list, final-domain authenticated session, and legacy fallback policy are verified.
 - `014-canonical-seo-and-search-console` — published; ownership is verified, the sitemap is accepted with 96 discovered pages, and the QUANTUM-branded static artifacts are live.
-- `015-owner-detailed-review` — active; reported operational findings were corrected and the owner explicitly authorized C16. The exhaustive owner desktop/mobile checklist remains open; on 2026-09-16 the owner authorized the C17 technical audit to run first, without implying C15 acceptance.
+- `015-owner-detailed-review` — active. Historical operational findings have C33 release evidence; the 2026-10-03 anonymous desktop/mobile audit passes, but exhaustive authenticated owner desktop/mobile and manual accessibility acceptance remain open. See its current checklist and review checkpoint. Earlier authorization to begin C16 did not close C15.
 - `016-ga4-measurement-foundation` — published; the privacy-first client/server implementation, real Measurement ID, 90-day QM Supabase migration, production consent journey, GA Collect transport, first-party persistence, sanitization, cleanup, and runtime logs are verified. Only the signed-in visual confirmation inside GA4 DebugView remains as an external evidence gate.
 - `017-external-user-quality-audit` — technical audit published in `38bbd74` and `2e3176e`; final production route/API/browser/security/log gates pass. The owner's authenticated desktop/mobile review and C16 DebugView visual confirmation remain open.
 - `018-google-ads-readiness` — planned; depends on C13–C17 and explicit launch approval.
 - `019-operational-parity-completion` — published in `86b2c2b`; live email delivery remains safely inactive until Resend sender verification and `RESEND_API_KEY` are configured.
 - `020-po-magico-governance-baseline` — published in `e68e643`; documentation-only governance baseline, no application behavior change.
-- `021-authenticated-learning-flow-repair` — active; the local implementation and all local gates passed on 2026-09-24. The exact QM migration, dry-run/reconciliation, temporary-user Supabase audit, deployment, and authenticated production browser evidence remain pending; the pre-migration dry-run returned the expected 403 and changed no data.
-- `022-learner-interface-and-rendering-polish` — locally implemented and validated on 2026-09-25. Responsive header actions, English-only shared copy, the assessment UX/status lifecycle, favorite detail lookup/math rendering, and versioned first-login consent are complete locally. Optional email now defaults off; an unapplied local migration preserves explicit timestamped opt-ins while withdrawing only legacy implicit defaults. The 2026-09-25 CPD gate is `BLOCKED`: C21/C27 are not applied remotely and `QM-SEC-006` prevents a reproducible canonical migration run. A local commit may be prepared, but push/deploy remain withheld because pushing `main` may publish an application whose required database contract is absent.
-- `023-unified-learning-gamification-blueprint` — blueprint and reusable skill completed on 2026-09-23; the package is versioned under `.specs/blueprints/`, validated, and installed as a personal Codex skill. Project adoption is staged in C21, C22, and the canonical C28–C32 program; C24/C25 are superseded planning records.
+- `021-authenticated-learning-flow-repair` — integrated and released through C33 against the replacement backend; the old project's failed pre-migration dry run is historical. See C33 managed checks and release receipt.
+- `022-learner-interface-and-rendering-polish` — integrated and released through C33. Responsive header, English-only share copy, assessment lifecycle, favorite detail/math rendering and versioned first-login consent are present. Optional email defaults off. The 2026-09-25 local CPD block was superseded by the fresh-target C33 release.
+- `023-unified-learning-gamification-blueprint` — blueprint and reusable skill completed on 2026-09-23; the package is versioned under `.specs/blueprints/`, validated, and installed as a personal Codex skill. Its QUANTUM adoption in C21/C22/C28–C32 was released through C33; C24/C25 are superseded planning records.
 - `024-adaptive-study-journey-and-daily-practice` — superseded before execution by the smaller, auditable C28–C32 program. Its requirements were preserved and redistributed; it must not be executed as a competing implementation.
 - `025-learning-communication-and-reengagement` — superseded before execution by C32. Its consent, frequency, quiet-hours, unsubscribe, and non-coercion requirements were preserved.
 - `026-canonical-url-consolidation-and-search-console-validation` — planned from the 2026-09-23 Search Console notice; consolidates `/index.html` alternates into the canonical root-query routes and requires affected-URL inspection before validation.
-- `027-supabase-explicit-data-api-privileges` — locally implemented on 2026-09-25. The full table/function/sequence access contract, least-privilege migration, static drift gate, handler-operation tests, security profile, and rollback are recorded. A normalized disposable replay/reset proves the C21/C27 SQL, exact grants, RLS, and lint; direct canonical reset remains blocked by two older migration-history defects (`QM-SEC-006`). No remote migration, audit, or deploy occurred; history reconciliation and release proof remain separately authorized.
-- `028-unified-learning-contract-and-adapter` — completed locally on 2026-09-25; versioned QUANTUM policy, event/store map, 15 mechanism cards, 15 simulator capability declarations, generic contract validator and exact reviewed-source eligibility are implemented offline. Seven new contract tests pass; full suite 51/51 and content/privilege checks pass. No runtime import, migration, commit, push or deploy in this Change. C29 is next; remote C21/C27 and migration-history release gates remain open.
-- `029-authoritative-learning-ledger-and-profile` — implemented and validated locally on 2026-09-26; append-only ledger, reviewed allowlist, persisted-completion/atomic reward guard, operator-only historical import, offline dry run and unified private profile/Journey are ready. 58 Node tests, isolated PostgreSQL replay, 315 table/39 function privilege checks, 12-request concurrency, rollback and synthetic mobile UI checks passed. C30 mechanics remain inactive. Real historical dry run, managed Supabase/PostgREST proof, migration-history/PAM resolution and release remain blocked/separately authorized. No commit, push or deploy this turn. See C29 validation and rollout records.
-- `030-adaptive-learning-modes-and-rewards` — implemented and validated locally on 2026-09-26. The reviewed concept graph, deterministic scheduler, distinct Daily Challenge, three-checkpoint chapter assessments, guided review/changed-form retry, four-stage simulator evidence, persistent badges/missions, transparent next actions and conservative mastery/reward rules are complete locally. Full Node/content/source/SEO/math/browser/security gates and an isolated PostgreSQL transaction suite passed, including exact privileges, concurrency, São Paulo local-day cap, cross-user isolation and rollback. C30 remains unreleased: managed Supabase/history reconciliation, real authenticated evidence, commit, push and deploy require the separate C21/C27/C29/C30 release authorization. C31 is next.
-- `031-learning-methodology-help-and-explainability` — implemented locally on 2026-09-26. Added canonical English methodology source, public `/help.html`, contextual links from Study Journey/rewards/recommendations, assessments, Daily Challenge and simulator cycles, plus generated SEO/sitemap/structured data and static accessibility/link gates. The page explicitly marks backend-dependent features as staged and distinguishes research principles from QUANTUM efficacy. Local-only; remote backend rollout and production behavior remain unverified. C32 is next; final manual browser/screen-reader review remains open.
-- `032-academic-evaluation-and-responsible-communication` — implemented and validated locally on 2026-09-26. Added a versioned five-family outcome dictionary, owner-only aggregate report, affirmative versioned consent, time zone and pause controls, reviewed due-review eligibility, atomic daily/seven-day caps, 21:00–07:00 quiet hours, fixed non-coercive English template, strong signed/RFC one-click unsubscribe and append-only communication evidence without message bodies or recipient addresses. Generic bulk campaign sending is disabled, analytics has no reward/mastery/message authority, provider acceptance is not called exposure, and production delivery remains disabled behind a separate environment gate. Content, privilege, C28–C32 regression and worktree security gates pass locally. C32 migration, secrets, sender verification, webhook evidence, commit/push/deploy and production enablement were not performed; `QM-SEC-001/006/007/008/009` remain release blockers.
+- `027-supabase-explicit-data-api-privileges` — installed on the replacement backend and included in C33's 634 managed catalog/grant/RLS checks. The old project's migration-history defect is not a current fresh-target release blocker.
+- `028-unified-learning-contract-and-adapter` — versioned policy, reviewed-source eligibility, event/store map, mechanism and simulator contracts integrated through C33; the earlier local-only validation remains in its change record.
+- `029-authoritative-learning-ledger-and-profile` — append-only account-scoped ledger, atomic/idempotent rewards and private profile integrated through C33. The fresh target had no old learner history to import; this does not imply import was performed on the paused old project.
+- `030-adaptive-learning-modes-and-rewards` — guided review, focused retry, distinct Daily Challenge and chapter assessment, simulator evidence, missions/badges and conservative mastery logic integrated through C33. Automated/public smoke and owner login proof do not replace the open C15 full authenticated review.
+- `031-learning-methodology-help-and-explainability` — public `/help.html`, contextual explanations and methodology source published through C33. Final manual screen-reader and 200% zoom review remains open; the prior staged-rollout notice is being reconciled in C15.
+- `032-academic-evaluation-and-responsible-communication` — outcome dictionary, owner-only aggregate reporting, affirmative consent, frequency/quiet-hour controls and unsubscribe contract integrated through C33. **Actual learning-email delivery remains disabled** until separate sender, operational and owner release gates; do not claim exposure from provider acceptance or analytics.
 
 ## Canonical execution order
 
-### Local product and learning sequence
+### Completed product and learning sequence
 
 ```text
 C22 learner-facing repairs
@@ -284,22 +301,25 @@ C22 learner-facing repairs
   -> C33 integrated candidate, migration-history resolution and release proof
 ```
 
-C29/C30 cannot pass their release gate until C21/C27 and `QM-SEC-006` have an authorized migration-history reconciliation and remote proof. Local specification, deterministic code, and disposable validation may proceed without remote mutation.
+The sequence above was released through C33 on the fresh backend. The old
+`QM-SEC-006` history problem remains historical to the paused project, not a
+reason to repeat migrations on production. New schema/production changes still
+require their own gate and evidence.
 
 ### Independent discovery sequence
 
 ```text
-C26 canonical URL consolidation
-  -> authorized CPD
-  -> Search Console validation
-  -> C18 Google Ads readiness only after the owner's detailed C15 review
+C15 remaining owner journey review
+  -> C26 affected-URL inspection, canonical decision and validation
+  -> separately authorized publication if code changes are needed
+  -> C18 Google Ads readiness only after owner review and explicit launch approval
 ```
 
 ### Remote-only gates
 
-- C21 migration/reconciliation/audit/deploy.
-- C27 explicit-grant migration and post-migration proof.
-- Any migration-history repair, provider configuration, disposable remote data, Search Console mutation, Git push, or deployment.
+- Any new migration-history repair, provider configuration, disposable remote
+  data, Search Console mutation, Git push or deployment.
+- Learning-email delivery/sender activation and off-site recovery arrangement.
 
 Each requires explicit authorization for the exact action. The final TERMO/QUANTUM parity audit starts only after both independent programs are stable.
 

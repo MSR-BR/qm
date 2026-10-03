@@ -1,5 +1,27 @@
 # Owner review findings
 
+## Status reconciliation — 2026-10-03
+
+The individual entries below preserve what was observed in September and the
+Change to which each repair was assigned; phrases such as “assigned to C21/C22”
+are **historical**, not a claim that those Changes are still unreleased. C21,
+C22 and C27–C32 were integrated into the 2026-10-02 C33 production release.
+The [C33 release receipt](../033-unified-learning-release-integration/release-receipt-2026-10-02.md)
+records the managed security tests, public browser smoke and owner-confirmed
+login/session/logout. The September failures C15-006–014 have implementation
+and release evidence, but the owner has **not yet completed the exhaustive
+authenticated exercise, assessment, reward and recommendation review** on both
+desktop and phone. The 2026-10-03 public-only C15 review and remaining checks
+are recorded in `review-2026-10-03.md` and `owner-review-checklist.md`.
+
+Current triage: C15-004/005/010/011/012 have released UI repairs; C15-006–009
+and 013/014 have released backend and learning-contract repairs with managed
+tests; C15-007's signed-in save/history behavior and C15-008's real reward
+outcome still need direct owner acceptance. C15-015 is partially addressed by
+the C33 suite and the revised public browser auditor, but an authenticated
+browser loop plus manual screen-reader review remains open. No historical
+failure is silently declared impossible in current production.
+
 ## C15-001 — Header sign-in affordance
 
 - **Status:** corrected and verified locally.
