@@ -8,4 +8,4 @@
 - [x] Repair the disposable-profile auditor blind spot and stale public methodology rollout wording; verify the local changes.
 - [ ] Triage any new owner findings with screenshots/URLs; implement and verify approved corrections.
 - [x] Obtain the owner's explicit acceptance to begin C16.
-- [ ] Request CPD only when explicitly asked.
+- [x] Owner requested CPD on 2026-10-03; commit/push and production verification are recorded in `review-2026-10-03.md`.
