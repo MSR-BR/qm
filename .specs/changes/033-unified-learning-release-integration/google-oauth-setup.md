@@ -4,9 +4,9 @@
 
 The public app now uses the new backend and dedicated client. Public config,
 Google-only provider settings, authorize redirect and exact callback were verified
-after promotion of `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz`. Owner public-browser
-login/reload/logout confirmation is the remaining acceptance check, not a missing
-provider migration. See `release-receipt-2026-10-02.md`. Older statements below
+after promotion of `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz`. Owner has now confirmed
+public-site login, Personal Area, reload persistence and logout; OAuth acceptance
+is complete. See `release-receipt-2026-10-02.md`. Older statements below
 about the public app still using the paused backend are historical.
 
 ## Latest release evidence — Audience published and replacement-target Preview, 2026-10-02

@@ -8,12 +8,13 @@ client. Google is the sole enabled login provider; email/password is disabled
 by explicit owner choice. TERMO, its client/callbacks and the paused old database
 were not modified. Learning-email delivery remains disabled.
 
-Owner subsequently reported **“consegui logar e sair”**, in response to the
-public-site acceptance request. Login and sign-out are owner-confirmed; origin
-was not independently inspected (ambient browser context still showed localhost).
-Personal Area and session persistence after reload were not explicitly confirmed.
-Remaining acceptance: verify those steps at `https://quantummechanicsbook.app`.
-Do not label the entire browser acceptance complete from login/logout alone.
+**C33 user acceptance completed, 2026-10-02.** Owner first reported
+“consegui logar e sair”, then answered “sim” to the explicit request to enter
+the public site, open Personal Area, reload and confirm the session remained
+connected. Login, Personal Area, reload persistence and sign-out are therefore
+owner-confirmed on the requested public-site flow, not agent-observed browser
+evidence. This closes the remaining acceptance check. Off-site backup remains
+the separately documented operational follow-up, not a completed protection.
 Browser control inside Codex failed
 before attaching due an unrelated symlinked writable root. No personal browser
 cookies/tokens were read and no consent was accepted for the owner.

@@ -5,10 +5,10 @@
 Google-only Auth, recovery and the approved production cutover are complete.
 Deployment `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` is live and public HTTP /
 fresh-browser smoke passes. See `release-receipt-2026-10-02.md` for current
-evidence and recovery limitations. Owner has confirmed login and logout; full
-C33 acceptance still awaits Personal Area / reload persistence on the public
-origin. Do not reinterpret the
-technical CPD as that browser proof. Historical rejection and pending-cutover
+evidence and recovery limitations. Owner confirmed login/logout and subsequently
+confirmed Personal Area / reload persistence in response to the explicit
+public-site test request. C33 acceptance is complete; this browser evidence is
+owner-reported, not agent-observed. Historical rejection and pending-cutover
 checkpoints below are superseded by the current receipt.
 
 ## Scope amendment — owner authorized completion and CPD, 2026-10-02
@@ -85,10 +85,10 @@ independent execution. Local implementation is not production acceptance.
 - [x] Prepare rollout/rollback, environment names and role/learning matrix.
 - [x] Update canonical project state; state remaining production gates explicitly.
 
-Overall C33: **active; fresh database, managed security checks, Google Audience
-publication and authenticated Preview profile passed. Production cutover and
-clean CPD remain blocked on durable recovery evidence, security disposition,
-exact candidate commit and production authenticated smoke.**
+Overall C33: **completed, 2026-10-02. Production cutover, managed security and
+recovery checks, CPD and public smoke passed. Owner confirmed the remaining
+Google login / Personal Area / reload / logout acceptance flow.** Off-site
+backup remains a separately recorded operational follow-up.
 
 ## Risks
 

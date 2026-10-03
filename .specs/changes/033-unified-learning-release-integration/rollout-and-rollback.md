@@ -8,7 +8,8 @@ TERMO and Google Ads are out of scope. See `provider-replacement.md`.
 Current release evidence: `release-receipt-2026-10-02.md`. Runtime commit
 `041de5e` and deployment `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` passed public
 HTTP and isolated-browser smoke. Owner authenticated public-browser acceptance
-is still pending. The earlier preparatory sequence below is historical.
+is now complete: login, Personal Area, reload persistence and logout confirmed
+on 2026-10-02. The earlier preparatory sequence below is historical.
 
 ## Current fresh-target sequence (supersedes original runbook below)
 
