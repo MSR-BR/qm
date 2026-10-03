@@ -8,14 +8,24 @@ client. Google is the sole enabled login provider; email/password is disabled
 by explicit owner choice. TERMO, its client/callbacks and the paused old database
 were not modified. Learning-email delivery remains disabled.
 
-Full C33 user acceptance remains **pending the owner's public-browser Google
-login → Personal Area → reload → sign-out confirmation**. Do not confuse the
-technical CPD with that last acceptance check, or label the C33 program fully
-accepted until the result is recorded. Browser control inside Codex failed
+Owner subsequently reported **“consegui logar e sair”**, in response to the
+public-site acceptance request. Login and sign-out are owner-confirmed; origin
+was not independently inspected (ambient browser context still showed localhost).
+Personal Area and session persistence after reload were not explicitly confirmed.
+Remaining acceptance: verify those steps at `https://quantummechanicsbook.app`.
+Do not label the entire browser acceptance complete from login/logout alone.
+Browser control inside Codex failed
 before attaching due an unrelated symlinked writable root. No personal browser
 cookies/tokens were read and no consent was accepted for the owner.
 
 ## Exact release and verification
+
+After the receipt push, GitHub-triggered production deployment
+`dpl_57wHRqRPvkn94tjhEsiHNzRSGzx2` (`qm-2ggqrfi7f-msr-brs-projects.vercel.app`)
+was READY and served the public domain at commit `f355191cedb1207d8dddb5f916c27d0629690775`.
+Post-push backend/client and source-denial smoke plus the full HTTP audit passed;
+Git was clean and synchronized with origin/main. The entries below identify the
+original manually promoted runtime build, not a contradictory current target.
 
 - Integration commit: `4cb95a82ce9d95f780cc4f31c9cb709ef83abaf2`.
 - Runtime fix/released commit: `041de5ee7c160f3b47e04a013d371057fd2f2760`.

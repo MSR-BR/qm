@@ -5,8 +5,9 @@
 Google-only Auth, recovery and the approved production cutover are complete.
 Deployment `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` is live and public HTTP /
 fresh-browser smoke passes. See `release-receipt-2026-10-02.md` for current
-evidence and recovery limitations. Full C33 acceptance awaits only the owner's
-public Google-login / reload / logout confirmation; do not reinterpret the
+evidence and recovery limitations. Owner has confirmed login and logout; full
+C33 acceptance still awaits Personal Area / reload persistence on the public
+origin. Do not reinterpret the
 technical CPD as that browser proof. Historical rejection and pending-cutover
 checkpoints below are superseded by the current receipt.
 

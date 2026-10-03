@@ -21,8 +21,11 @@ dedicated Google client at the public domain. Login is Google-only; email/passwo
 and learning-email delivery remain disabled. Runtime commit `041de5e`, deployment
 `dpl_5jG4jC9bVvbBjEu4GTKF8gSv5vWz` READY. 86 tests, HTTP audit (99 URLs,
 65 assets, 9 API boundaries) and 12 fresh-browser scenarios pass. Internal source
-URLs return 404. The owner public-browser login/reload/logout confirmation remains
-open; C33 is not yet fully user-accepted. Current evidence/rollback/security
+URLs return 404. Owner subsequently confirmed login and sign-out in response to
+the public-site test request. Personal Area and reload/session persistence on the
+public origin remain unconfirmed; C33 is not yet fully user-accepted. Post-push
+deployment `dpl_57wHRqRPvkn94tjhEsiHNzRSGzx2` at `f355191` was READY and
+passed the repeated HTTP audit, with Git clean/synchronized. Current evidence/rollback/security
 limits: `changes/033-unified-learning-release-integration/release-receipt-2026-10-02.md`.
 Earlier pending-variable/rejection/cutover entries below are historical.
 
