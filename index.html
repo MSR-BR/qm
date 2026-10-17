@@ -2511,7 +2511,7 @@
           </div>
         </div>
         <div class="header-tools" data-termo-header-tools aria-label="Primary actions">
-          <a href="index.html?view=journey" class="header-action termo-points-trigger" data-role="header-points-button" aria-label="Open points and study journey">
+          <a href="/?view=journey" class="header-action termo-points-trigger" data-role="header-points-button" aria-label="Open points and study journey">
             <i class="fa-solid fa-seedling"></i>
             <span data-role="header-points-label">Points</span>
           </a>
@@ -2583,7 +2583,7 @@
               </button>
               <div class="drawer-group-panel is-open" id="drawerPanelPersonal">
                 <div class="personal-list" id="personalList">
-                                    <a class="personal-button" href="#" data-landing-login-target="index.html?view=favorites">
+                                    <a class="personal-button" href="#" data-landing-login-target="/?view=favorites">
                     <span class="extras-icon"><i class="fa-solid fa-star"></i></span>
                     <span class="extras-text">
                       <span class="extras-label">Favorite items</span>
@@ -2593,7 +2593,7 @@
                 </div>
                 <div class="sidebar-helper" id="personalHint">Sign in with Google to enable your personal area.</div>
                 <div class="personal-drawer-actions" id="personalDrawerActions">
-                  <a class="drawer-inline-action" href="#" data-landing-login-target="index.html?view=favorites">
+                  <a class="drawer-inline-action" href="#" data-landing-login-target="/?view=favorites">
                     <i class="fa-brands fa-google"></i>
                     <span>Sign in with Google</span>
                   </a>
@@ -2639,43 +2639,43 @@
               <div class="drawer-group-panel is-open" id="drawerPanelChapters">
                 <ul class="chapter-list" id="chapterList">
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=01">
+                    <a class="chapter-button" href="/?view=chapters&chapter=01">
                       <span class="chapter-number">01</span>
                       <span class="chapter-name">Old quantum physics</span>
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=02">
+                    <a class="chapter-button" href="/?view=chapters&chapter=02">
                       <span class="chapter-number">02</span>
                       <span class="chapter-name">Construction of quantum theory I: wave mechanics</span>
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=03">
+                    <a class="chapter-button" href="/?view=chapters&chapter=03">
                       <span class="chapter-number">03</span>
                       <span class="chapter-name">Construction of quantum theory II: matrix mechanics</span>
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=04">
+                    <a class="chapter-button" href="/?view=chapters&chapter=04">
                       <span class="chapter-number">04</span>
                       <span class="chapter-name">One-dimensional problems: bound and unbound states</span>
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=05">
+                    <a class="chapter-button" href="/?view=chapters&chapter=05">
                       <span class="chapter-number">05</span>
                       <span class="chapter-name">Traditional problems with central potential</span>
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=06">
+                    <a class="chapter-button" href="/?view=chapters&chapter=06">
                       <span class="chapter-number">06</span>
                       <span class="chapter-name">Angular momentum</span>
                     </a>
                   </li>
                   <li>
-                    <a class="chapter-button" href="index.html?view=chapters&chapter=07">
+                    <a class="chapter-button" href="/?view=chapters&chapter=07">
                       <span class="chapter-number">07</span>
                       <span class="chapter-name">Addition of angular momenta</span>
                     </a>
@@ -2725,7 +2725,7 @@
                   <div class="discovery-card__title"><i class="fa-solid fa-list-ul"></i> Chapters</div>
                   <div class="discovery-card__meta">Open chapter menu</div>
                 </button>
-                <a class="discovery-card" href="#" data-landing-login-target="index.html?view=favorites">
+                <a class="discovery-card" href="#" data-landing-login-target="/?view=favorites">
                   <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
                   <div class="discovery-card__meta">Open Personal Area</div>
                 </a>
@@ -2921,7 +2921,7 @@
           void window.handleLandingLoginRequest(
             landingLoginTarget.getAttribute("data-landing-login-target") ||
             landingLoginTarget.getAttribute("href") ||
-            "index.html?view=favorites"
+            "/?view=favorites"
           );
           return;
         }
@@ -3138,7 +3138,7 @@
       function navigateToView(button) {
         const viewId = button.dataset.viewId || "chapters";
         const chapterId = button.dataset.chapterId || "";
-        const targetUrl = new URL("index.html", window.location.href);
+        const targetUrl = new URL("/", window.location.href);
         targetUrl.searchParams.set("view", viewId);
         if (chapterId) {
           targetUrl.searchParams.set("chapter", chapterId);
@@ -4084,7 +4084,7 @@
               <div class="discovery-card__title"><i class="fa-solid fa-list-ul"></i> Chapters</div>
               <div class="discovery-card__meta">Open chapter menu</div>
             </button>
-            <a class="discovery-card" href="#" data-landing-login-target="index.html?view=favorites">
+            <a class="discovery-card" href="#" data-landing-login-target="/?view=favorites">
               <div class="discovery-card__title"><i class="fa-solid fa-circle-user"></i> Personal Area</div>
               <div class="discovery-card__meta">Open Personal Area</div>
             </a>
@@ -5105,7 +5105,7 @@
         }).length;
         const allDone = topics.length > 0 && completedCount === topics.length;
         const percent = topics.length ? Math.round((completedCount / topics.length) * 100) : 0;
-        return '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">Chapter ' + escapeHtml(bundle.chapter.id) + '</span><span class="saved-chip">' + completedCount + ' / ' + topics.length + ' sections completed</span></div><h3 class="saved-card__title">' + escapeHtml(bundle.chapter.title) + '</h3><p class="saved-card__summary">' + (allDone ? "All reviewed sections completed." : "Continue through the reviewed sections of this chapter.") + '</p></div><a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(normalizeAppRelativeUrl("?view=chapters&chapter=" + bundle.chapter.id, "/index.html")) + '">Open chapter</a></article>';
+        return '<article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip">Chapter ' + escapeHtml(bundle.chapter.id) + '</span><span class="saved-chip">' + completedCount + ' / ' + topics.length + ' sections completed</span></div><h3 class="saved-card__title">' + escapeHtml(bundle.chapter.title) + '</h3><p class="saved-card__summary">' + (allDone ? "All reviewed sections completed." : "Continue through the reviewed sections of this chapter.") + '</p></div><a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(normalizeAppRelativeUrl("?view=chapters&chapter=" + bundle.chapter.id, "/")) + '">Open chapter</a></article>';
       }).join("");
 
       topicContainer.innerHTML = '<section class="saved-list"><article class="saved-card"><div class="saved-card__body"><div class="saved-card__meta"><span class="saved-chip"><i class="fa-solid fa-circle-check"></i> ' + completed + ' of ' + sections.length + ' reviewed sections completed</span></div><h3 class="saved-card__title">' + (latestSection ? "Continue where you left off" : "Start your study journey") + '</h3><p class="saved-card__summary">' + (latestSection ? escapeHtml("Chapter " + Number(latestSection.chapter.id) + " · Item " + latestSection.topic.id + " — " + latestSection.topic.title) : "Open a reviewed section to create your first private study record.") + '</p></div>' + (latestSection ? '<a class="saved-card__button saved-card__button--primary" href="' + escapeHtml(latestSection.path) + '">Continue reading</a>' : '<a class="saved-card__button saved-card__button--primary" href="?view=chapters&chapter=01">Start with Chapter 1</a>') + '</article>' + rewardSummary + achievementSummary + dailyChallenge + simulatorSummary + assessmentPlaceholder + chapterRows + '</section>';
@@ -5497,7 +5497,7 @@
             <h2 class="simulator-detail__title">${escapeHtml(simulator.title)}</h2>
             <div class="simulator-detail__description">${escapeHtml(simulator.description)}</div>
             <div class="simulator-detail__actions">
-              <a class="simulator-detail__button" href="index.html?view=simulators">
+              <a class="simulator-detail__button" href="/?view=simulators">
                 <i class="fa-solid fa-arrow-left"></i>
                 <span>Back to catalog</span>
               </a>
@@ -5633,10 +5633,10 @@
 
     function normalizeLandingTarget(target) {
       try {
-        const url = new URL(target || "index.html?view=favorites", window.location.origin);
-        return (url.pathname || "/index.html") + (url.search || "") + (url.hash || "");
+        const url = new URL(target || "/?view=favorites", window.location.origin);
+        return (url.pathname || "/") + (url.search || "") + (url.hash || "");
       } catch (_error) {
-        return "/index.html?view=favorites";
+        return "/?view=favorites";
       }
     }
 
@@ -5751,7 +5751,7 @@
             void window.handleLandingLoginRequest(
               landingLoginTarget.getAttribute("data-landing-login-target") ||
               landingLoginTarget.getAttribute("href") ||
-              "index.html?view=favorites"
+              "/?view=favorites"
             );
           } else {
             void ensureAuthModules().then(function (modules) {
@@ -5907,10 +5907,10 @@
 
       function normalizeLandingTarget(target) {
         try {
-          var url = new URL(target || "index.html?view=favorites", window.location.origin);
-          return (url.pathname || "/index.html") + (url.search || "") + (url.hash || "");
+          var url = new URL(target || "/?view=favorites", window.location.origin);
+          return (url.pathname || "/") + (url.search || "") + (url.hash || "");
         } catch (_error) {
-          return "index.html?view=favorites";
+          return "/?view=favorites";
         }
       }
 
@@ -6024,7 +6024,7 @@
         document.querySelectorAll("[data-landing-login-target]").forEach(function (anchor) {
           anchor.addEventListener("click", function (event) {
             event.preventDefault();
-            void handleLandingLoginRequest(anchor.getAttribute("data-landing-login-target") || anchor.getAttribute("href") || "index.html?view=favorites");
+            void handleLandingLoginRequest(anchor.getAttribute("data-landing-login-target") || anchor.getAttribute("href") || "/?view=favorites");
           });
         });
       }

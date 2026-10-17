@@ -1,43 +1,88 @@
 {
+  "functions": {
+    "api/app.js": {
+      "includeFiles": "index.html"
+    }
+  },
   "routes": [
-    { "src": "/lib(?:/.*)?", "status": 404, "headers": { "Cache-Control": "private, no-store" } }
+    {
+      "src": "/lib(?:/.*)?",
+      "status": 404,
+      "headers": {
+        "Cache-Control": "private, no-store"
+      }
+    },
+    {
+      "src": "/api/app",
+      "status": 404
+    },
+    {
+      "src": "/",
+      "dest": "/api/app",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "SAMEORIGIN",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()"
+      }
+    }
   ],
   "rewrites": [
-    { "source": "/api/qm-adaptive-learning", "destination": "/api/qm-learning?route=adaptive" },
-    { "source": "/api/qm-learning-communication", "destination": "/api/qm-learning?route=communication" },
-    { "source": "/api/qm-learning-evaluation", "destination": "/api/qm-learning?route=evaluation" },
-    { "source": "/api/qm-learning-profile", "destination": "/api/qm-learning?route=profile" },
-    { "source": "/api/qm-gamification-event", "destination": "/api/qm-learning?route=reward" }
+    {
+      "source": "/api/qm-adaptive-learning",
+      "destination": "/api/qm-learning?route=adaptive"
+    },
+    {
+      "source": "/api/qm-learning-communication",
+      "destination": "/api/qm-learning?route=communication"
+    },
+    {
+      "source": "/api/qm-learning-evaluation",
+      "destination": "/api/qm-learning?route=evaluation"
+    },
+    {
+      "source": "/api/qm-learning-profile",
+      "destination": "/api/qm-learning?route=profile"
+    },
+    {
+      "source": "/api/qm-gamification-event",
+      "destination": "/api/qm-learning?route=reward"
+    }
   ],
   "redirects": [
     {
+      "source": "/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/slides/chapter-10/:path*",
-      "destination": "/index.html?view=chapters&chapter=10",
+      "destination": "/?view=chapters&chapter=10",
       "permanent": false
     },
     {
       "source": "/slides/chapter-11/:path*",
-      "destination": "/index.html?view=chapters&chapter=11",
+      "destination": "/?view=chapters&chapter=11",
       "permanent": false
     },
     {
       "source": "/slides/chapter-12/:path*",
-      "destination": "/index.html?view=chapters&chapter=12",
+      "destination": "/?view=chapters&chapter=12",
       "permanent": false
     },
     {
       "source": "/slides/chapter-13/:path*",
-      "destination": "/index.html?view=chapters&chapter=13",
+      "destination": "/?view=chapters&chapter=13",
       "permanent": false
     },
     {
       "source": "/slides/chapter-08/:path*",
-      "destination": "/index.html?view=chapters&chapter=08",
+      "destination": "/?view=chapters&chapter=08",
       "permanent": false
     },
     {
       "source": "/slides/chapter-09/:path*",
-      "destination": "/index.html?view=chapters&chapter=09",
+      "destination": "/?view=chapters&chapter=09",
       "permanent": false
     }
   ],
@@ -45,10 +90,22 @@
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
       ]
     }
   ]

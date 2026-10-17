@@ -16,7 +16,7 @@
     "smoke:math-contract": "node scripts/smoke-math-contract.mjs",
     "smoke:ai-renderer": "node scripts/smoke-ai-renderer.mjs",
     "smoke:ai-context": "node scripts/smoke-ai-context-package.mjs",
-    "audit:supabase": "node scripts/audit-qm-supabase.mjs",
+    "audit:supabase": "node scripts/audit-qm-fresh-supabase.mjs --catalog",
     "build:published-search-index": "node scripts/build-qm-published-search-index.mjs",
     "validate:seo": "node scripts/validate-qm-seo-artifacts.mjs",
     "seo": "node scripts/build-qm-release-info.mjs && node scripts/build-qm-published-search-index.mjs && node scripts/build-seo-artifacts.mjs",

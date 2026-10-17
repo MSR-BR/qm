@@ -7,7 +7,7 @@
 ## Current state
 
 - Canonical branch: `main`.
-- Last published learning baseline: C33 production integration on 2026-10-02; see its release receipt for the exact deployment and acceptance evidence.
+- Last published learning baseline: C33 production integration on 2026-10-02. C34 Gemini request compatibility was subsequently published at `1e048ac` on 2026-10-07. The 2026-10-17 continuation implements C26; see its validation evidence for release status.
 - The public application is in English; project collaboration may be in Portuguese.
 - Chapters 1–7 are reviewed and published. Chapters 8–13 are under editorial review and must not expose learning content, exercises, or indexed SEO pages.
 - Production uses replacement Supabase `crasnnvdvujzxudmbakv` and a dedicated QUANTUM Google OAuth client. The old `plqiofznjlbpfufigpcp` project is paused and is not the production target. Any new remote mutation requires its own scoped authorization.
@@ -17,7 +17,11 @@
 - **C33 complete and published.** Its 2026-10-02 receipt is the source of truth for release, Google-only authentication, security and rollback. The owner confirmed public login, Personal Area, session persistence after reload and sign-out. This is owner testimony, not an agent-observed authenticated browser run.
 - **C21, C22 and C27–C32 were integrated and released through C33.** The prior “local only”, migration-history and old-project PAM blockers below are historical. C32 learning-email **delivery remains disabled** pending a separate sender/enablement gate. C31's manual screen-reader/200% zoom review is still open.
 - **C15 owner detailed review remains open.** The 2026-10-03 corrections were committed/published and public desktop/mobile post-deploy audits passed; exhaustive authenticated owner/device acceptance is not implied by the C33 login smoke or anonymous C15 smoke. See the C15 CPD verification.
-- **C16 GA4 DebugView visual confirmation, C26 affected-URL Search Console inspection/canonical validation, and C18 Ads launch decision** remain separate work. C18 requires explicit owner approval. Off-site/continuous backup remains an operational follow-up before broader rollout.
+- **C26 implementation and release verification:** root-query links, legacy 308 redirect, shared server/browser metadata, private/locked noindex and analytics normalization. Search Console closure remains pending: the connected GSC Wizard account returned no properties on 2026-10-17. Do not equate a successful deployment with Google reindexing.
+- **C16 GA4 DebugView remains open.** Public configuration enables `G-X5Y1C68QMN`; that is configuration evidence, not visual DebugView confirmation. Browser control is currently unavailable because the executor rejects a symlinked writable root. Standalone disposable Chrome QA works and is recorded separately.
+- **C18 Ads and C32 email delivery remain disabled/pending separate decisions.** No campaign, budget, sender or paid-model change is part of this continuation.
+- **Recovery:** a new encrypted local snapshot was exported and verified on 2026-10-17 (five SQL files plus fourteen private PDFs). The owner explicitly chose **local backup only**; no Dropbox/off-site copy was made. Continuous retention and independent key recovery remain open. Details: `changes/026-canonical-url-consolidation-and-search-console-validation/operations-2026-10-17.md`.
+- **Checkout:** continue in `/Users/marioreis/Library/CloudStorage/Dropbox/Mac (6)/Documents/Developer/qm`. Its ignored local backend configuration now matches production. The old `Documents/GitHub/qm` checkout has substantial pre-existing changes and remains untouched; “clean CPD” applies to the authoritative Developer checkout only.
 - **TERMO is out of scope in this checkout.** A final cross-project parity audit follows only after both projects independently stabilize; no QUANTUM change authorizes modifying TERMO.
 
 ## Completed integration

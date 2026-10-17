@@ -123,7 +123,8 @@
         if (value) safeParams.set(key, value.replace(/[^a-zA-Z0-9_.-]/g, "").slice(0, 40));
       });
       const query = safeParams.toString();
-      return (url.pathname + (query ? "?" + query : "")).slice(0, 240);
+      const pathname = url.pathname === "/index.html" ? "/" : url.pathname;
+      return (pathname + (query ? "?" + query : "")).slice(0, 240);
     } catch (_error) {
       return String(window.location.pathname || "/").slice(0, 240);
     }
@@ -562,7 +563,7 @@
     if (window.location.pathname.endsWith("/home.html")) {
       let destination = null;
       try { destination = new URL(href, window.location.href); } catch (_error) { destination = null; }
-      if (destination && destination.hostname === window.location.hostname && destination.pathname.endsWith("/index.html")) {
+      if (destination && destination.hostname === window.location.hostname && ["/", "/index.html"].includes(destination.pathname)) {
         track("home_study_cta_click", {
           surface: link.classList.contains("nav-link") ? "navigation" : "hero",
           destination: destination.searchParams.get("view") || "chapters",

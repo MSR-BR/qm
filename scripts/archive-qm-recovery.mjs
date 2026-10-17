@@ -1,15 +1,18 @@
 // Preserve the rehearsed C33 snapshot and verified private PDFs as an encrypted,
 // local-only artifact. Secrets stay in memory/Keychain; no cloud upload occurs.
 import {execFileSync} from 'node:child_process';
-import {readFileSync,writeFileSync,mkdirSync,mkdtempSync,statSync} from 'node:fs';
+import {readFileSync,writeFileSync,mkdirSync,mkdtempSync,statSync,realpathSync} from 'node:fs';
 import {dirname} from 'node:path';
 import {createHash,randomBytes,createCipheriv,createDecipheriv} from 'node:crypto';
 import {gzipSync,gunzipSync} from 'node:zlib';
 import assert from 'node:assert/strict';
 const ref='crasnnvdvujzxudmbakv';
 const destination='/Users/marioreis/Library/Application Support/QUANTUM/backups';
-const archive=destination+'/c33-2026-10-02.qmbak';
-const service='QUANTUM recovery archive',account=ref+'-c33-2026-10-02';
+const option=name=>{const i=process.argv.indexOf(name);return i<0?'':process.argv[i+1]||'';};
+const archiveId=option('--archive-id')||'c33-2026-10-02';
+assert.match(archiveId,/^(?:c33-2026-10-02|backup-\d{4}-\d{2}-\d{2}(?:-[a-z0-9]+)?)$/);
+const archive=destination+'/'+archiveId+'.qmbak';
+const service='QUANTUM recovery archive',account=ref+'-'+archiveId;
 const hash=x=>createHash('sha256').update(x).digest('hex');
 const keychainRead=(s,a)=>execFileSync('/usr/bin/security',['find-generic-password','-s',s,'-a',a,'-w'],{stdio:['ignore','pipe','ignore']}).toString().trim();
 function decrypt(bytes,key){
@@ -41,7 +44,8 @@ if(['--verify','--extract'].includes(process.argv[2])){
   console.log(JSON.stringify({verified:true,archive,archiveSha256:hash(bytes),databaseFiles:p.database.length,privateSources:p.sources.length,authenticatedEncryption:true,snapshotAt:p.snapshotAt}));
 }else{
   assert.equal(process.argv[2],'--create','Choose --create, --verify or --extract');
-  const snapshot='/private/tmp/qm-c33-backup.dXLQcr';
+  const snapshot=realpathSync(option('--snapshot-dir')||'/private/tmp/qm-c33-backup.dXLQcr');
+  assert.match(snapshot,/^\/private\/tmp\/qm-(?:backup-|c33-backup\.)[a-zA-Z0-9.\-]+$/,'Only an explicit private temporary snapshot is accepted');
   const names=['schema.sql','data.sql','roles.sql','history_schema.sql','history_data.sql'];
   const database=names.map(name=>{const b=readFileSync(snapshot+'/'+name);return {name,sha256:hash(b),base64:b.toString('base64')};});
   let token=process.env.SUPABASE_ACCESS_TOKEN;

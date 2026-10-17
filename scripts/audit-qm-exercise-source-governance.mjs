@@ -8,8 +8,8 @@ const corpus = readJson("data/book-section-corpus.json");
 const taxonomy = readJson("data/book-topic-taxonomy.json");
 const index = readJson("data/book-topic-index.json");
 const manifest = readJson("data/qm-exercise-source-manifest.json");
-const configuredUrl = readFileSync(resolve(root, "scripts/audit-qm-supabase.mjs"), "utf8").match(/SUPABASE_URL\s*=\s*"([^"]+)"/)?.[1] || "";
-const configuredProjectRef = configuredUrl.match(/^https:\/\/([a-z0-9]+)\.supabase\.co$/i)?.[1] || "";
+// This is the expected release target, not a claim about ignored local credentials.
+const configuredProjectRef = "crasnnvdvujzxudmbakv";
 const eligibleChapters = Object.keys(getContentRegistry().chapters).filter((chapterId) => isChapterExerciseEligible(chapterId));
 const eligibleSections = (corpus.sections || []).filter((section) => isChapterExerciseEligible(section.chapterId));
 const errors = [];
@@ -35,7 +35,7 @@ const report = {
   supabase: {
     localEnvironmentFilePresent: existsSync(resolve(root, ".env.local")),
     configuredProjectRef: configuredProjectRef || "unavailable",
-    remoteOwnershipVerification: "verified separately on 2026-09-03; this command makes no remote request"
+    remoteOwnershipVerification: "not performed by this local command; use audit-qm-fresh-supabase.mjs --catalog"
   },
   errors
 };

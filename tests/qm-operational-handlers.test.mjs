@@ -34,7 +34,7 @@ test("anonymous ratings validate and sanitize the persisted payload", async func
         rating: 5,
         visitorToken: "rating-token-1234567890",
         feedback: "  Clear\u0000  and useful.  ",
-        pagePath: "/index.html?view=chapters",
+        pagePath: "/?view=chapters",
         visitCount: 7,
         contentViewCount: 4
       },
@@ -46,7 +46,7 @@ test("anonymous ratings validate and sanitize the persisted payload", async func
     const row = JSON.parse(captured.options.body);
     assert.equal(row.feedback, "Clear and useful.");
     assert.equal(row.feedback_prompt, "highlight");
-    assert.equal(row.page_path, "/index.html?view=chapters");
+    assert.equal(row.page_path, "/?view=chapters");
     assert.equal(row.visitor_hash.length, 64);
     assert.notEqual(row.visitor_hash, "rating-token-1234567890");
   } finally {

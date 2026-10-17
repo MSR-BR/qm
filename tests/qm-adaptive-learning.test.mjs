@@ -46,7 +46,7 @@ test("Daily Challenge selects only completed reviewed sources and exposes an alt
   assert.equal(plan.status, "available");
   assert.equal(plan.questions.length, 3);
   assert.ok(plan.questions.every(question => ["1.2", "1.6", "1.11"].includes(question.reviewItem)));
-  assert.equal(plan.alternative, "/index.html?view=chapters");
+  assert.equal(plan.alternative, "/?view=chapters");
   assert.equal(selectDailyChallenge({ completedSectionIds: ["1.2"] }).status, "insufficient_studied_content");
 });
 

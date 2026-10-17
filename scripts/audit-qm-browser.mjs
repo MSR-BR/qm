@@ -237,6 +237,9 @@ const auditExpression = `(() => {
     missingAlt,
     duplicateIds: [...new Set(duplicateIds)].slice(0, 12),
     interactiveCount: interactive.length,
+    canonical: document.querySelector('link[rel="canonical"]')?.href || "",
+    robots: document.querySelector('meta[name="robots"]')?.content || "",
+    currentPath: location.pathname,
     mathCount: document.querySelectorAll("mjx-container").length,
     canvasCount: document.querySelectorAll("canvas").length,
     tableCount: document.querySelectorAll("table").length,
@@ -324,6 +327,15 @@ try {
     scenarioConsoleErrors = [];
     scenarioNetworkErrors = [];
     requestUrls.clear();
+    let initialIndexMeta = null;
+    if (scenario.path.startsWith("/index.html") || scenario.path.startsWith("/?")) {
+      const initial = await fetch(new URL(scenario.path, BASE_URL));
+      const html = await initial.text();
+      initialIndexMeta = {
+        canonical: (html.match(/<link rel="canonical" href="([^"]+)"/)?.[1] || "").replaceAll("&amp;", "&"),
+        robots: html.match(/<meta name="robots" content="([^"]+)"/)?.[1] || ""
+      };
+    }
     await client.send("Emulation.setDeviceMetricsOverride", {
       width: scenario.width,
       height: scenario.height,
@@ -356,6 +368,11 @@ try {
       awaitPromise: true
     });
     const result = evaluated.result?.value || {};
+    if (initialIndexMeta) {
+      if (initialIndexMeta.canonical !== result.canonical) errors.push(scenario.name + " initial/runtime canonical disagreement.");
+      if (initialIndexMeta.robots !== result.robots) errors.push(scenario.name + " initial/runtime robots disagreement.");
+      if (result.currentPath !== "/") errors.push(scenario.name + " legacy index path did not consolidate to root.");
+    }
     let keyboardFocus = { tag: "none", visible: false };
     if (result.interactiveCount) {
       await client.send("Runtime.evaluate", {

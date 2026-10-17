@@ -1,15 +1,9 @@
 import { randomUUID } from "node:crypto";
-import { readFile } from "node:fs/promises";
 
-const SUPABASE_URL = "https://plqiofznjlbpfufigpcp.supabase.co";
-
-async function loadLocalEnv() {
-  const contents = await readFile(new URL("../.env.local", import.meta.url), "utf8");
-  for (const line of contents.split(/\r?\n/)) {
-    const match = line.match(/^([A-Z0-9_]+)=(.*)$/);
-    if (!match || process.env[match[1]] !== undefined) continue;
-    process.env[match[1]] = match[2].replace(/^("|')|("|')$/g, "");
-  }
+// Historical password-based fixture audit: never run on either production backend.
+const SUPABASE_URL = String(process.env.QM_ISOLATED_AUDIT_URL || "");
+if (!/^http:\/\/(?:localhost|127\.0\.0\.1):\d+$/.test(SUPABASE_URL)) {
+  throw new Error("This fixture audit requires an isolated local Supabase via QM_ISOLATED_AUDIT_URL. For production use audit-qm-fresh-supabase.mjs --catalog.");
 }
 
 function assert(result, label) {
@@ -20,12 +14,10 @@ async function request(path, options = {}) {
   return fetch(`${SUPABASE_URL}${path}`, options);
 }
 
-await loadLocalEnv();
-
 const serviceKey = String(process.env.SUPABASE_SECRET_KEY || "").trim();
 const publicKey = String(process.env.PUBLIC_SUPABASE_PUBLISHABLE_KEY || "").trim();
-assert(/^sb_secret_[A-Za-z0-9_-]{20,}$/.test(serviceKey), "SUPABASE_SECRET_KEY is missing or malformed in .env.local");
-assert(Boolean(publicKey), "PUBLIC_SUPABASE_PUBLISHABLE_KEY is missing in .env.local");
+assert(Boolean(serviceKey), "Pass the isolated backend service key through the environment");
+assert(Boolean(publicKey), "Pass the isolated backend public key through the environment");
 
 const serviceHeaders = { apikey: serviceKey, Authorization: `Bearer ${serviceKey}` };
 const runId = randomUUID();

@@ -16,6 +16,7 @@ import { handleQmAdaptiveLearning } from "./lib/qm-adaptive-learning-handler.mjs
 import { handleQmLearningCommunication } from "./lib/qm-learning-communication-handler.mjs";
 import { handleQmLearningEvaluation } from "./lib/qm-learning-evaluation-handler.mjs";
 import { handleLegalPreferencesRequest } from "./lib/qm-legal-preferences-handler.mjs";
+import { renderIndexResponse } from "./lib/qm-index-response.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -106,7 +107,7 @@ function resolveFilePath(requestPath) {
   const normalized = decodedPath === "/" ? "/index.html" : decodedPath;
   const candidate = path.normalize(path.join(rootDir, normalized));
 
-  if (!candidate.startsWith(rootDir)) {
+  if (candidate !== rootDir && !candidate.startsWith(rootDir + path.sep)) {
     return null;
   }
 
@@ -145,7 +146,12 @@ async function serveStaticFile(req, res) {
     const targetPath = fileStats.isDirectory()
       ? path.join(filePath, "index.html")
       : filePath;
-    const content = await readFile(targetPath);
+    let content = await readFile(targetPath);
+    if (targetPath === path.join(rootDir, "index.html")) {
+      const result = renderIndexResponse(content.toString("utf8"), new URL(req.url, "http://localhost").search);
+      content = result.html;
+      res.setHeader("X-Robots-Tag", result.robots);
+    }
     const extension = path.extname(targetPath).toLowerCase();
     const contentType = mimeTypes[extension] || "application/octet-stream";
 
@@ -168,6 +174,16 @@ async function serveStaticFile(req, res) {
 const server = http.createServer(async (req, res) => {
   const requestUrl = req.url || "/";
   const learningUrl = new URL(requestUrl, `http://${host}:${port}`);
+  let decodedRequestPath;
+  try { decodedRequestPath = decodeURIComponent(learningUrl.pathname); }
+  catch { return sendText(res, 400, "Invalid path."); }
+  if (/^\/(?:\.|lib(?:\/|$)|scripts(?:\/|$)|tests(?:\/|$)|supabase(?:\/|$))/.test(decodedRequestPath)) {
+    return sendText(res, 404, "Not found.");
+  }
+  if (learningUrl.pathname === "/index.html") {
+    res.writeHead(308, { Location: "/" + learningUrl.search });
+    return res.end();
+  }
   if (learningUrl.pathname === "/api/qm-legal-preferences") {
     res.setHeader("Cache-Control", "private, no-store");
     try {

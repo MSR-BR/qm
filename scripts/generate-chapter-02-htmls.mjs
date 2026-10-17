@@ -953,7 +953,7 @@ function renderPage(page, index) {
   <div class="slide">
     <div class="hdr">
       <div class="hdr-inner">
-        <a href="../../index.html?view=chapters&chapter=02" class="index-back-button">
+        <a href="/?view=chapters&chapter=02" class="index-back-button">
           <i class="fa-solid fa-arrow-left"></i>
           Index
         </a>

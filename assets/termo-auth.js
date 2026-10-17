@@ -459,7 +459,7 @@
 
       const url = new URL(raw, AUTH_SITE_URL);
       if (url.origin !== AUTH_SITE_URL) return "";
-      return `${url.pathname || "/index.html"}${url.search || ""}${url.hash || ""}`;
+      return `${url.pathname === "/index.html" ? "/" : url.pathname || "/"}${url.search || ""}${url.hash || ""}`;
     } catch (_error) {
       return "";
     }
@@ -475,12 +475,12 @@
       const markerIndex = pathname.lastIndexOf(marker);
       if (markerIndex !== -1) {
         const relativePath = pathname.slice(markerIndex + marker.length).replace(/^\/+/, "");
-        return `/${relativePath || "index.html"}${search}${hash}`;
+        return `/${relativePath === "index.html" ? "" : relativePath}${search}${hash}`;
       }
-      return `/index.html${search}${hash}`;
+      return `/${search}${hash}`;
     }
 
-    const pathname = window.location.pathname || "/";
+    const pathname = window.location.pathname === "/index.html" ? "/" : window.location.pathname || "/";
     return `${pathname}${search}${hash}`;
   }
 
@@ -544,9 +544,9 @@
 
     return {
       savedUrl: EXERCISE_GENERATION_ENABLED
-        ? `/index.html?view=saved&chapter=${encodeURIComponent(chapterId)}`
-        : `/index.html?view=favorites&chapter=${encodeURIComponent(chapterId)}`,
-      favoritesUrl: `/index.html?view=favorites&chapter=${encodeURIComponent(chapterId)}`
+        ? `/?view=saved&chapter=${encodeURIComponent(chapterId)}`
+        : `/?view=favorites&chapter=${encodeURIComponent(chapterId)}`,
+      favoritesUrl: `/?view=favorites&chapter=${encodeURIComponent(chapterId)}`
     };
   }
 

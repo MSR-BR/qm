@@ -119,7 +119,7 @@ for (const chapterId of ["08", "09", "10", "11", "12", "13"]) {
   const result = await timedFetch(target, { redirect: "manual" });
   check([307, 308].includes(result.response.status), "Locked Chapter " + chapterId + " did not redirect.");
   check(
-    result.response.headers.get("location") === "/index.html?view=chapters&chapter=" + chapterId,
+    result.response.headers.get("location") === "/?view=chapters&chapter=" + chapterId,
     "Locked Chapter " + chapterId + " redirected to an unexpected location."
   );
 }

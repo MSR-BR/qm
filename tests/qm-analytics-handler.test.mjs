@@ -49,8 +49,8 @@ test("the event contract is explicit and covers the C16 learning funnel", functi
 
 test("page paths keep only approved navigation parameters", function () {
   assert.equal(
-    normalizeAnalyticsPagePath("/index.html?view=chapters&chapter=06&code=oauth-secret&utm_campaign=private#token"),
-    "/index.html?view=chapters&chapter=06"
+    normalizeAnalyticsPagePath("/?view=chapters&chapter=06&code=oauth-secret&utm_campaign=private#token"),
+    "/?view=chapters&chapter=06"
   );
   assert.equal(
     normalizeAnalyticsPagePath("https://quantummechanicsbook.app/search.html?q=wavefunction&email=student@example.com"),
