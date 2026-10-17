@@ -8,4 +8,4 @@
 - [ ] Auth, navigation, SEO, analytics, mobile, and security gates passed
 - [x] Actual model route and validation evidence recorded (exact model identifier unavailable)
 - [x] CPD explicitly authorized before production mutation
-- [ ] Live evidence collected before Search Console validation request
+- [x] Live evidence collected before any Search Console validation request (request remains pending property access)

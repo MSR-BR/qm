@@ -80,3 +80,31 @@ References used: Google Search Central,
 https://developers.google.com/search/docs/crawling-indexing/consolidate-duplicate-urls ;
 Vercel routing, https://vercel.com/docs/routing/redirects .
 Operational/backup decisions: `operations-2026-10-17.md`.
+
+## Production receipt — 2026-10-17
+
+- Runtime commit: `29f8526ffc93abe173342620861465f5361419e1`, pushed to `origin/main`.
+- Production: `dpl_76Pmrk1B1qWZV629PVL9xSLZxXRQ`, READY. Deployment metadata
+  matches the commit and lists `quantummechanicsbook.app` among its aliases.
+- `node scripts/audit-qm-production.mjs`: PASS, 99 sitemap URLs, 85 reviewed
+  search sections, 65 assets, nine API boundaries, no warnings/errors.
+- `node --experimental-websocket scripts/audit-qm-browser.mjs`: PASS, twelve
+  public scenarios on the canonical production domain, no warnings/errors.
+  Screenshots: `/private/tmp/qm-c26-production-20261017`.
+- Independent HTTP probes confirm chapter 01/07 and simulators source canonicals,
+  Journey/locked chapter 08 noindex, and `/index.html?view=favorites&code=opaque%2Bfixture`
+  returning 308 with the query intact. The code value is a synthetic fixture,
+  not a credential. Direct `/api/app` and `/lib/qm-server-shared.mjs` return 404.
+- Final Preview before promotion: `dpl_ECt1jiJFZicbunqMA24ws1RSqaaA`; direct
+  renderer denial, query metadata and legacy redirect verified with authenticated
+  CLI access without changing deployment protection.
+- Rollback target, if required: prior production
+  `dpl_Apzj1Sm56tnUZtQVkjTMDwFDEDXR`, runtime `1e048ac`. Restore its production
+  aliases via the existing deployment rollback workflow; no database rollback
+  is needed because this release did not migrate production schema or data.
+  Do not revert the replacement backend or dedicated Google client.
+
+This closes the technical deployment work, not GSC indexing, GA4 DebugView or
+the detailed authenticated/manual C15 gates. TERMO was not changed. A subsequent
+documentation-only commit records this receipt; its SHA is intentionally not
+self-referenced inside the document. No paid AI calls or campaign activation.
