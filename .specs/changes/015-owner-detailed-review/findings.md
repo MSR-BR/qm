@@ -4,9 +4,18 @@
 
 The real authenticated round is recorded in `authenticated-review-2026-10-18.md`.
 Reading/rewards, simulator evidence, daily retrieval, page favorites and
-sign-out now have direct production-browser evidence. C15-016/017 below remain
-open; generated-exercise favorites and final owner/device acceptance are not
-certified. Historical September findings below retain their original context.
+sign-out now have direct production-browser evidence. C15-016/017 were corrected
+and rechecked; generated-exercise favorites passed the subsequent authenticated
+round. Owner then reported C15-018 and authorized C15 closure after its correction
+and CPD. This does not certify unexecuted physical-device/editorial/accessibility
+checks. Historical September findings retain their original context.
+
+## C15-018 — Exercise PDF exposes raw LaTeX
+
+- **Status:** corrected and locally verified; publication receipt in `export-release-2026-10-18.md`.
+- **Cause:** jsPDF text export bypasses the modal's MathJax rendering.
+- **Correction:** self-contained MathJax SVG print view, native Save as PDF, explicit failure handling, canonical source and escaped metadata. No server upload or new generation.
+- **Evidence:** 131 Node tests; one- and three-page PDF raster/visual inspection, 11/31 rendered equations and zero missing glyphs/raw delimiters.
 
 ## Status reconciliation — 2026-10-03
 

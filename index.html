@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="assets/ai-exercises.css?v=0910.4">
   <link rel="stylesheet" href="assets/qm-first-login-preferences.css?v=0925.1">
   <script defer src="assets/ai-exercises.js?v=0910.4"></script>
+  <script defer src="assets/qm-exercise-export.js?v=20261018.1"></script>
 
   <style>
     :root {
@@ -3329,7 +3330,6 @@
       }
     };
 
-    const JSPDF_CDN_URL = "https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js";
     const releaseInfo = window.QMReleaseInfo || {
       version: "v0904.2",
       date: "2026-09-04",
@@ -3450,7 +3450,6 @@
       exerciseModal: null,
       exerciseModalTrigger: null,
       selectedExerciseId: null,
-      jsPdfPromise: null,
       chapterLoadToken: 0,
       drawerSection: "chapters"
     };
@@ -3716,51 +3715,6 @@
       } catch {
         return value;
       }
-    }
-
-    async function ensureJsPdf() {
-      if (window.jspdf && window.jspdf.jsPDF) {
-        return window.jspdf.jsPDF;
-      }
-
-      if (!state.jsPdfPromise) {
-        state.jsPdfPromise = new Promise(function (resolve, reject) {
-          const existing = document.querySelector('script[data-termo-jspdf="true"]');
-          if (existing) {
-            existing.addEventListener("load", function () {
-              if (window.jspdf && window.jspdf.jsPDF) {
-                resolve(window.jspdf.jsPDF);
-              } else {
-                reject(new Error("jsPDF is not available after loading."));
-              }
-            }, { once: true });
-            existing.addEventListener("error", function () {
-              reject(new Error("Could not load jsPDF."));
-            }, { once: true });
-            return;
-          }
-
-          const script = document.createElement("script");
-          script.src = JSPDF_CDN_URL;
-          script.async = true;
-          script.setAttribute("data-termo-jspdf", "true");
-          script.onload = function () {
-            if (window.jspdf && window.jspdf.jsPDF) {
-              resolve(window.jspdf.jsPDF);
-              return;
-            }
-            reject(new Error("jsPDF is not available after loading."));
-          };
-          script.onerror = function () {
-            reject(new Error("Could not load jsPDF."));
-          };
-          document.head.appendChild(script);
-        }).finally(function () {
-          state.jsPdfPromise = null;
-        });
-      }
-
-      return state.jsPdfPromise;
     }
 
     function findChapterById(id) {
@@ -4435,83 +4389,12 @@
     }
 
     async function exportExercise(exercise) {
-      const jsPDF = await ensureJsPdf();
-      const doc = new jsPDF({
-        orientation: "portrait",
-        unit: "pt",
-        format: "a4"
+      return window.QMExerciseExport.open(exercise, {
+        formatText: window.TermoAIExercise?.formatGeneratedText,
+        metadata: [exercise.exercise_code, exercise.item_id || exercise.chapter_id,
+          difficultyLabel(exercise.difficulty), formatDate(exercise.created_at)].filter(Boolean).join(" · "),
+        sourceUrl: buildAbsoluteCourseUrl(exercise.page_path || exercise.page_url)
       });
-      const pageWidth = doc.internal.pageSize.getWidth();
-      const pageHeight = doc.internal.pageSize.getHeight();
-      const margin = 48;
-      const contentWidth = pageWidth - (margin * 2);
-      const lineHeight = 16;
-      const filename = `exercise-${String(exercise.item_id || exercise.chapter_id || "course").replace(/[^a-z0-9.-]+/gi, "-").toLowerCase()}.pdf`;
-
-      const bodyText = buildExercisePlainText(exercise);
-      let cursorY = margin;
-
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(18);
-      doc.text("Quantum Mechanics", margin, cursorY);
-      cursorY += 26;
-
-      doc.setFont("helvetica", "bold");
-      doc.setFontSize(14);
-      const titleLines = doc.splitTextToSize(exercise.exercise_title || "Exercise", contentWidth);
-      doc.text(titleLines, margin, cursorY);
-      cursorY += (titleLines.length * 18) + 10;
-
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(11);
-      const lines = doc.splitTextToSize(bodyText, contentWidth);
-
-      for (const line of lines) {
-        if (cursorY > pageHeight - margin) {
-          doc.addPage();
-          cursorY = margin;
-          doc.setFont("helvetica", "normal");
-          doc.setFontSize(11);
-        }
-        doc.text(String(line), margin, cursorY);
-        cursorY += lineHeight;
-      }
-
-      const pdfArrayBuffer = doc.output("arraybuffer");
-
-      if (window.showSaveFilePicker) {
-        try {
-          const handle = await window.showSaveFilePicker({
-            suggestedName: filename,
-            types: [{
-              description: "PDF file",
-              accept: {
-                "application/pdf": [".pdf"]
-              }
-            }]
-          });
-          const writable = await handle.createWritable();
-          await writable.write(pdfArrayBuffer);
-          await writable.close();
-          return "saved";
-        } catch (error) {
-          if (error && error.name === "AbortError") {
-            return "cancelled";
-          }
-        }
-      }
-
-      const blob = new Blob([pdfArrayBuffer], { type: "application/pdf" });
-      const link = document.createElement("a");
-      link.href = URL.createObjectURL(blob);
-      link.download = filename;
-      document.body.appendChild(link);
-      link.click();
-      link.remove();
-      window.setTimeout(function () {
-        URL.revokeObjectURL(link.href);
-      }, 1000);
-      return "pdf";
     }
 
     async function openExerciseModal(exerciseId, trigger) {
@@ -4608,10 +4491,10 @@
             setExerciseModalStatus("");
             return;
           }
-          setExerciseModalStatus("File exported.");
+          setExerciseModalStatus("Print view ready. Choose Print / Save as PDF in the new tab.");
         } catch (error) {
           console.warn("Could not export the exercise.", error);
-          setExerciseModalStatus("Could not export this exercise right now.", true);
+          setExerciseModalStatus(error.message || "Could not export this exercise right now.", true);
         } finally {
           button.disabled = false;
         }
