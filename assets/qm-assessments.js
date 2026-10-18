@@ -6,6 +6,7 @@
   let quiz = null;
   let result = null;
   let submitting = false;
+  let pendingSubmission = null;
   let reporting = false;
   let attemptMeta = null;
   let attemptAction = "assessment";
@@ -44,6 +45,7 @@
 
   function renderQuiz(nextQuiz, options) {
     quiz = nextQuiz;
+    pendingSubmission = null;
     result = null;
     attemptMeta = null;
     attemptAction = options?.action || "assessment";
@@ -86,7 +88,7 @@
   }
 
   async function loadAssessment() {
-    if (loadButton.disabled) return;
+    if (submitting || loadButton.disabled) return;
     loadButton.disabled = true;
     setPageStatus("Loading assessment...");
     try {
@@ -112,29 +114,44 @@
 
   async function submitAssessment(event) {
     event.preventDefault();
-    if (submitting || !quiz) return;
+    if (submitting || result || !quiz) return;
     const form = event.currentTarget;
-    if (!form.reportValidity()) return;
-    const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
-    if (!session?.access_token) {
-      setSubmitStatus("Please sign in with Google before submitting.");
-      window.TermoAuth?.openModal?.();
-      return;
-    }
-    const formData = new FormData(form);
-    const answers = quiz.questions.map(function (question) {
-      return { questionId: question.questionId, choice: formData.get(question.questionId), confidence: formData.get("confidence:" + question.questionId) };
-    });
+    if (!form.isConnected || (!pendingSubmission && !form.reportValidity())) return;
     const submitButton = form.querySelector('button[type="submit"]');
+    // Acquire the lock before the first await: rapid taps must not race auth.
     submitting = true;
     submitButton.disabled = true;
+    loadButton.disabled = true;
+    chapterSelect.disabled = true;
     setSubmitStatus("Submitting assessment...");
     try {
+      const session = await window.TermoAuth?.getSession?.();
+      if (!session?.access_token || !session.user?.id) {
+        setSubmitStatus("Please sign in with Google before submitting.");
+        window.TermoAuth?.openModal?.();
+        return;
+      }
+      if (pendingSubmission && pendingSubmission.userId !== session.user.id) {
+        setSubmitStatus("This submission belongs to another sign-in. Start a new assessment for this account.");
+        return;
+      }
+      if (!pendingSubmission) {
+        const formData = new FormData(form);
+        const answers = quiz.questions.map(function (question) {
+          return { questionId: question.questionId, choice: formData.get(question.questionId), confidence: formData.get("confidence:" + question.questionId) };
+        });
+        pendingSubmission = { userId: session.user.id, body: JSON.stringify({
+          chapterId: quiz.chapterId, action: attemptAction, cycleId: remediationCycleId,
+          sessionId, itemSetVersion: quiz.itemSetVersion, idempotencyKey: crypto.randomUUID(), answers
+        }) };
+      }
+      // An uncertain response may already be committed. Freeze the submitted
+      // answers and replay the exact request instead of creating fresh evidence.
+      form.querySelectorAll("fieldset").forEach(fieldset => { fieldset.disabled = true; });
       const response = await fetch("/api/qm-chapter-quiz", {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token },
-        body: JSON.stringify({ chapterId: quiz.chapterId, action: attemptAction, cycleId: remediationCycleId,
-          sessionId: sessionId, itemSetVersion: quiz.itemSetVersion, idempotencyKey: crypto.randomUUID(), answers })
+        body: pendingSubmission.body
       });
       const data = await response.json().catch(function () { return {}; });
       if (!response.ok || !data.result) {
@@ -151,9 +168,11 @@
       });
       renderResult();
     } catch (error) {
-      setSubmitStatus("Could not submit the assessment. Please try again.");
+      setSubmitStatus("Could not confirm the assessment. Retry to recover the same submission; your answers are preserved.");
     } finally {
       submitting = false;
+      loadButton.disabled = false;
+      chapterSelect.disabled = false;
       if (submitButton.isConnected) submitButton.disabled = false;
     }
   }

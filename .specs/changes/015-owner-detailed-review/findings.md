@@ -1,5 +1,13 @@
 # Owner review findings
 
+## Latest technical checkpoint — 2026-10-18
+
+The real authenticated round is recorded in `authenticated-review-2026-10-18.md`.
+Reading/rewards, simulator evidence, daily retrieval, page favorites and
+sign-out now have direct production-browser evidence. C15-016/017 below remain
+open; generated-exercise favorites and final owner/device acceptance are not
+certified. Historical September findings below retain their original context.
+
 ## Status reconciliation — 2026-10-03
 
 The individual entries below preserve what was observed in September and the
@@ -123,3 +131,19 @@ failure is silently declared impossible in current production.
 - **Status:** diagnosed; assigned to C21 and C22.
 - **Observed:** the existing Supabase audit covers saved exercises, validation reports, and book metadata but not study progress, gamification, assessment attempts, or simulator activity. Handler tests exercise the public quiz but not authenticated save/history success.
 - **Expected:** authenticated database, handler, browser, mobile, and duplicate-request gates cover the entire learner loop before release.
+
+## C15-016 — Concurrent assessment submissions create duplicate learning evidence
+
+- **Status:** reproduced in production and confirmed locally without network on 2026-10-18; correction pending.
+- **Severity:** blocking for technical acceptance: learning history/correction-cycle integrity, despite the XP cap working.
+- **Observed:** two rapid submit-button activations on one six-question assessment created two assessment attempts. After completing one guided recovery, Journey still recommended the other pending correction cycle. Assessment reward was awarded only once.
+- **Cause:** `assets/qm-assessments.js` checks `submitting`, awaits `getSession`, and only then sets the lock. Both overlapping handlers pass the initial guard and generate different idempotency keys.
+- **Required correction:** lock before the first await, unlock reliably on every failure/return, and retain the submission idempotency key across transport retries. Add real overlapping-handler and request replay regressions. Recheck authenticated history, rewards and recovery; do not silently erase test records.
+
+## C15-017 — Assessment summary mixes scores from different activity modes
+
+- **Status:** reproduced and source-confirmed on 2026-10-18; correction pending.
+- **Severity:** major: misleading learning feedback, not a duplicated XP award.
+- **Observed:** original assessment score was 83%; its one-question focused retry was 100%. Journey's assessment card then showed `Best score: 100%` next to the assessment-only attempt count.
+- **Cause:** `read_qm_learning_snapshot`, as defined in `20260926120250_qm_adaptive_learning_modes.sql`, filters the count to `activity_type='assessment'` but computes the maximum score from all learning attempts, including retry and daily retrieval. The profile/card does not distinguish these populations.
+- **Required correction:** align count and score populations or provide explicitly separated activity summaries. Cover mixed-mode scores in regression tests and obtain remote authorization before any required database change.

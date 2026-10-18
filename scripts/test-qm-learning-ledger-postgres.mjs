@@ -135,6 +135,15 @@ assert.ok(assessment.remediation_cycle_id);
 const duplicate = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}','${assessmentKey}',
   'assessment','01','${session}','${ITEM_SET_VERSION}','${assessmentEvidence}'::jsonb,null,null);`));
 assert.equal(duplicate.deduped,true);
+assert.equal(duplicate.attempt_id,assessment.attempt_id);
+assert.equal(duplicate.remediation_cycle_id,assessment.remediation_cycle_id);
+assert.equal(duplicate.xp_delta,0);
+for (const [kind, sessionId, evidence] of [
+  ['retry',session,assessmentEvidence],
+  ['assessment','20000000-0000-4000-8000-000000000099',assessmentEvidence],
+  ['assessment',session,assessmentEvidence.replace('"correct":true','"correct":false')]
+]) assert.throws(() => sql(`set role service_role; select public.record_qm_learning_activity('${user}','${assessmentKey}',
+  '${kind}','01','${sessionId}','${ITEM_SET_VERSION}','${evidence}'::jsonb,null,null);`),/different learning request/);
 assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${user}'`),"50");
 const review = JSON.parse(sql(`set role service_role; select public.complete_qm_learning_review('${user}',
   '${assessment.remediation_cycle_id}','review:${assessment.remediation_cycle_id}',4,true);`));
@@ -145,7 +154,35 @@ const retry = JSON.parse(sql(`set role service_role; select public.record_qm_lea
   '${ITEM_SET_VERSION}','${retryEvidence}'::jsonb,null,'${assessment.remediation_cycle_id}');`));
 assert.equal(retry.xp_delta,10);
 assert.equal(retry.mastery_status,"insufficient_evidence");
+const retryReplay = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}',
+  '30000000-0000-4000-8000-000000000002','retry','01','20000000-0000-4000-8000-000000000002',
+  '${ITEM_SET_VERSION}','${retryEvidence}'::jsonb,null,'${assessment.remediation_cycle_id}');`));
+assert.equal(retryReplay.deduped,true);
+assert.equal(retryReplay.attempt_id,retry.attempt_id);
+assert.equal(retryReplay.remediation_cycle_id,assessment.remediation_cycle_id);
+assert.equal(retryReplay.xp_delta,0);
+assert.throws(() => sql(`set role service_role; select public.record_qm_learning_activity('${user}',
+  '30000000-0000-4000-8000-000000000099','retry','01','20000000-0000-4000-8000-000000000002',
+  '${ITEM_SET_VERSION}','${retryEvidence}'::jsonb,null,'${assessment.remediation_cycle_id}');`),/Guided review is required/);
 assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${user}'`),"70");
+
+// Independent aggregate fixtures: daily/retry scores never stand in for a full
+// assessment. This database is disposable and has no remote connection.
+const summaryUser = '10000000-0000-4000-8000-000000000099';
+sql(`insert into auth.users(id) values('${summaryUser}');
+insert into public.qm_learning_attempts(user_id,activity_type,chapter_id,session_id,item_set_version,idempotency_key,score,correct_count,question_count,policy_version)
+select '${summaryUser}',kind,'01','${session}','${ITEM_SET_VERSION}',kind,100,1,1,'fixture' from unnest(array['daily_challenge','retry']) kind;`);
+const assessmentSummary = () => JSON.parse(sql(`set role service_role; select public.read_qm_learning_snapshot('${summaryUser}');`)).assessments;
+assert.equal(assessmentSummary().total,0);
+assert.equal(assessmentSummary().best_score,null);
+sql(`insert into public.qm_learning_attempts(user_id,activity_type,chapter_id,session_id,item_set_version,idempotency_key,score,correct_count,question_count,policy_version)
+values('${summaryUser}','assessment','01','${session}','${ITEM_SET_VERSION}','assessment',83,5,6,'fixture');`);
+assert.equal(assessmentSummary().total,1);
+assert.equal(assessmentSummary().best_score,83);
+sql(`insert into public.qm_chapter_quiz_attempts(user_id,quiz_key,chapter_id,answers,feedback,score,correct_count,question_count)
+values('${summaryUser}','legacy-summary','01','[]','[]',90,9,10);`);
+assert.equal(assessmentSummary().total,2);
+assert.equal(assessmentSummary().best_score,90);
 
 // The second same-day review is valid learning activity but earns no reward;
 // its retry inherits that ineligibility. This proves the São Paulo local-day

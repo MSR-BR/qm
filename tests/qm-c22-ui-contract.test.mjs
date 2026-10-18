@@ -32,7 +32,7 @@ test("favorite exercises use the shared lookup and accessible detail dialog", fu
 test("chapter assessments expose responsive, traceable, duplicate-safe practice", function () {
   assert.match(assessmentPage, /This is a chapter assessment, not the Daily Challenge/);
   assert.match(assessmentPage, /id="pageStatus" role="status" aria-live="polite"/);
-  assert.match(assessmentClient, /if \(submitting \|\| !quiz\) return/);
+  assert.match(assessmentClient, /if \(submitting \|\| result \|\| !quiz\) return/);
   assert.match(assessmentClient, /if \(reporting \|\| !quiz \|\| !result\) return/);
   assert.match(assessmentClient, /Review source:/);
   assert.match(assessmentClient, /Report a possible assessment error/);
