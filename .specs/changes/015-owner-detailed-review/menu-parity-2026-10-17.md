@@ -76,5 +76,7 @@ desktop all-simulator grid and mobile chapter-filter screenshots were inspected.
 Root-font-size smoke is not claimed as real mobile browser zoom or screen-reader
 acceptance. No real Google session or learner event was exercised in this run.
 
-Result: owner-reported navigation defects corrected locally. The C15 detailed
-authenticated/manual review remains open; publication requires a new CPD request.
+Result at this checkpoint: owner-reported navigation defects corrected locally.
+Published with the authorized C30 coordinated release on 2026-10-18; see
+`../030-adaptive-learning-modes-and-rewards/release-2026-10-18.md`.
+The C15 detailed authenticated/manual review remains open.

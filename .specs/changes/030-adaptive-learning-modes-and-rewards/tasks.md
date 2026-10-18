@@ -1,15 +1,17 @@
 # Tasks
 
-## Corrective follow-up — 2026-10-17 (local, unpublished)
+## Corrective follow-up — 2026-10-17; released 2026-10-18
 
 - [x] Versioned server option permutation with matching grading and stale-client rejection.
 - [x] Cross-chapter Daily Challenge ranking, due maintenance and bounded rotation.
 - [x] Six source-linked objectives per chapter, changed retries and explicit partial coverage.
 - [x] Block new full-chapter mastery/XP from the partial bank, preserving history.
 - [x] Forward migration, local PostgreSQL upgrade/fresh replay, full tests and browser QA.
-- [ ] Editorial acceptance and separately authorized remote release/real-account smoke.
+- [x] Owner authorized the prepared candidate and coordinated remote release on 2026-10-18.
+- [x] Backup verified; migration applied, production promoted and managed transactional learning smoke passed.
+- [ ] C15 real-account/device acceptance (not replaced by the rolled-back server transaction).
 
-Details, limits and evidence: `corrective-followup-2026-10-17.md`.
+Details, limits and evidence: `corrective-followup-2026-10-17.md` and `release-2026-10-18.md`.
 The execution records below remain historical.
 
 ## C29 handoff — 2026-09-26

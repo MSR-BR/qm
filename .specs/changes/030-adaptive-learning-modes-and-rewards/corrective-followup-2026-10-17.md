@@ -1,8 +1,10 @@
 # C30 corrective follow-up — assessment integrity, selection and coverage
 
-Status: implemented and validated locally; unpublished. Authorized 2026-10-17 after C15's
-second parity audit. Preserve prior unpublished menu/header changes. TERMO is
-read-only/out of scope; no commit, push, deployment or remote SQL this turn.
+Status: released on 2026-10-18 after explicit owner authorization; see
+`release-2026-10-18.md`. The record below preserves the local implementation
+checkpoint of 2026-10-17 after C15's second parity audit. Its references to
+unpublished work and no remote mutation describe that earlier turn, not current
+production. TERMO remains read-only/out of scope.
 
 ## Requirements and decisions
 
