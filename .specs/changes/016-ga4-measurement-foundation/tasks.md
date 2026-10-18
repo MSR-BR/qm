@@ -13,6 +13,6 @@
 - [x] Set the real Measurement ID in Vercel Production; keep Preview analytics disabled unless a separate test stream is approved.
 - [x] Set GA4 event-data retention to 14 months and keep Google Signals and advertising features disabled unless separately approved.
 - [x] Verify from a fresh production browser that consented debug traffic reaches Google Analytics Collect and the first-party endpoint.
-- [ ] Confirm the received event visually in the signed-in GA4 DebugView interface.
+- [x] Confirm the received event in the signed-in GA4 DebugView rendered interface (2026-10-18: real Safari landing CTA and section journey, expanded safe parameters; UI readback, not a screenshot). See `debugview-review-2026-10-18.md` for evidence and coverage limits.
 - [x] Document event meanings, metric questions, exclusions, routing, fallbacks, and validation evidence.
 - [x] Obtain an explicit CPD request before committing or deploying.

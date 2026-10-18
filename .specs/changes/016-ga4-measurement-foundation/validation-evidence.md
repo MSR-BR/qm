@@ -75,6 +75,7 @@ Verified on 2026-09-14:
 - The regression exposed one missing favicon declaration on section pages. A shared fallback to the existing QUANTUM SVG was added and locally reverified with the 404 eliminated and the mathematics unchanged.
 - Temporary browser daemons, the isolated local server, generated lockfile, and ignored Finder metadata created or encountered during verification were cleaned up.
 
-## External gate still open
+## Historical external gate — closed on 2026-10-18
 
-- Google accepted the production debug request with HTTP 204 and the payload carried `debug_mode: true`. A signed-in visual confirmation of the event inside the GA4 DebugView interface remains open because the available authenticated browser could not be attached through the current Codex UI sandbox.
+- At the September checkpoint, Google accepted the production debug request with HTTP 204 and the payload carried `debug_mode: true`, but signed-in DebugView confirmation was still unavailable.
+- On 2026-10-18 the signed-in Safari UI confirmed property `554204628`, stream `15777520006`, the production Measurement ID and 14-month retention. A real public landing/section journey appeared in DebugView with `home_study_cta_click`, `page_view`, `chapter_start` and `section_open`; safe navigation parameters were expanded and checked. This closes the property-side gate without relying on HTTP 204 alone. Read [the full receipt](debugview-review-2026-10-18.md) for timestamps, UI-readback limitations and test coverage. No property setting or application code changed.
