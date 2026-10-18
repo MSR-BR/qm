@@ -3,7 +3,8 @@
 - [x] Prepare an owner-facing detailed review checklist by journey and device width (`owner-review-checklist.md`).
 - [x] Repeat the automated public desktop/mobile browser review after C33 (`review-2026-10-03.md`).
 - [x] Execute the authorized authenticated technical browser round (`authenticated-review-2026-10-18.md`); record real persistence/rewards and failed gates without claiming owner acceptance.
-- [ ] Correct and recheck C15-016 (concurrent assessment submission) and C15-017 (mixed-mode best-score summary); changes are not implemented/published by the test-only round.
+- [x] Correct C15-016 (concurrent assessment submission) and C15-017 (mixed-mode best-score summary); local regressions, remote transaction, catalog and published route checks passed (`corrections-release-2026-10-18.md`).
+- [ ] Repeat authenticated browser assessment/history/review/retry and Journey on the corrected deployment; new isolated login requested. This technical recheck is agent-owned, not owner acceptance.
 - [ ] Finish generated-exercise save/favorite testing with an existing exercise or separately authorized bounded AI call; current test account had none.
 - [ ] Complete the owner's authenticated desktop review: exercise/favorite, assessment save/history, points, Journey, Daily Challenge and simulator stages.
 - [ ] Complete the owner's authenticated narrow/mobile review of the same core flows.

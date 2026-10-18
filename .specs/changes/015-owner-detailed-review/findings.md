@@ -134,7 +134,7 @@ failure is silently declared impossible in current production.
 
 ## C15-016 — Concurrent assessment submissions create duplicate learning evidence
 
-- **Status:** reproduced in production and confirmed locally without network on 2026-10-18; correction pending.
+- **Status:** corrected and published on 2026-10-18; overlapping-handler regressions and real-database replay passed. Post-fix interactive authenticated recheck awaits owner login; see `corrections-release-2026-10-18.md`.
 - **Severity:** blocking for technical acceptance: learning history/correction-cycle integrity, despite the XP cap working.
 - **Observed:** two rapid submit-button activations on one six-question assessment created two assessment attempts. After completing one guided recovery, Journey still recommended the other pending correction cycle. Assessment reward was awarded only once.
 - **Cause:** `assets/qm-assessments.js` checks `submitting`, awaits `getSession`, and only then sets the lock. Both overlapping handlers pass the initial guard and generate different idempotency keys.
@@ -142,7 +142,7 @@ failure is silently declared impossible in current production.
 
 ## C15-017 — Assessment summary mixes scores from different activity modes
 
-- **Status:** reproduced and source-confirmed on 2026-10-18; correction pending.
+- **Status:** corrected by migration `20261018194619` and published on 2026-10-18; mixed-mode/legacy regression and real-database transaction passed. Post-fix Journey recheck awaits owner login; see `corrections-release-2026-10-18.md`.
 - **Severity:** major: misleading learning feedback, not a duplicated XP award.
 - **Observed:** original assessment score was 83%; its one-question focused retry was 100%. Journey's assessment card then showed `Best score: 100%` next to the assessment-only attempt count.
 - **Cause:** `read_qm_learning_snapshot`, as defined in `20260926120250_qm_adaptive_learning_modes.sql`, filters the count to `activity_type='assessment'` but computes the maximum score from all learning attempts, including retry and daily retrieval. The profile/card does not distinguish these populations.

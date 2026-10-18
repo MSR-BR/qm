@@ -2,6 +2,10 @@
 
 Status: **technical browser round executed; two technical findings and owner acceptance remain open**.
 
+Historical result of this test-only round. The subsequent authorized correction,
+publication and remaining authenticated recheck are tracked separately in
+`corrections-release-2026-10-18.md`; the original failed observations are retained.
+
 ## Scope and execution evidence
 
 - User authorized authenticated QUANTUM testing and completed Google login in an isolated headed Chrome profile. TERMO was not inspected or modified.
