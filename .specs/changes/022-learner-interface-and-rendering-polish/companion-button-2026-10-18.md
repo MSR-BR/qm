@@ -38,7 +38,23 @@ Authorized target: Vercel `msr-brs-projects/qm`, project
 `prj_A9ZEdGd9hXOqAsacRPtIcKUaU8tq`, verified via CLI project inspection.
 Prior canonical READY deployment: `dpl_H5BBXR4dF8T2DBoirjX4bHQzyba1`.
 Rollback is promotion of that prior deployment (restores the banner); no data
-rollback or migration is involved. Release result will be appended after checks.
+rollback or migration is involved.
+
+Runtime commit `908a070`, version `v20261018.2244`, deployed as staged production
+`dpl_2mreoBMfRBy2D7DrSutZhYkMb42S` (READY, build 2s), then promoted to
+`https://quantummechanicsbook.app/`. Candidate URL:
+`https://qm-a0z95sqdi-msr-brs-projects.vercel.app`.
+Authenticated staged HTML check confirmed the native button, safe destination
+and absence of the banner before promotion. Canonical release metadata matches.
+All 20 production Chrome scenarios passed with zero warnings/errors; the 390px
+public screenshot was visually inspected and matches the intended layout.
+Evidence: `/private/tmp/qm-companion-button-production/` and
+`/private/tmp/qm-companion-browser-production.json`.
+The deployment's error-level log query for the preceding five minutes returned
+no entries; this is bounded observation, not a long-term monitoring guarantee.
+Final documentation-only commit/push follows this receipt; Git integration can
+create a further deployment of the identical runtime, which must be checked
+against the canonical version/button before reporting clean CPD.
 
 Vercel deployment/CLI skills governed target verification and release checks;
 verification skill scoped testing to the native link and preserved header.
