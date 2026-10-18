@@ -110,7 +110,7 @@ const scenarios = [
   ...[320, 390, 1440].map(width => ({
     name: 'companion-header-' + width,
     path: '/?view=chapters', width, height: 900,
-    expected: ['Companion book', 'TERMO — Thermodynamics', 'In Portuguese · opens in a new tab'],
+    expected: ['TERMO', 'Book preview', 'Send'],
     checkCompanion: true, capture: true
   })),
   {
@@ -440,7 +440,10 @@ try {
             || !link.relList.contains('noopener') || !link.relList.contains('noreferrer')) issues.push('Unsafe or incorrect companion destination');
           const rect = link.getBoundingClientRect();
           if (rect.height < 44 || rect.left < 0 || rect.right > innerWidth) issues.push('Companion touch target is clipped or too small');
-          if (document.querySelectorAll('.top-header .header-tools .header-action').length !== 4) issues.push('Primary actions changed');
+          if (document.querySelectorAll('.top-header .header-tools .header-action').length !== 5) issues.push('Expected four existing actions plus companion button');
+          if (!link.closest('.header-tools') || !link.classList.contains('header-action')) issues.push('Companion is not a shared header button');
+          if (document.querySelector('.companion-book')) issues.push('Old announcement banner remains');
+          if (!link.getAttribute('aria-label')?.includes('Portuguese (opens in a new tab)')) issues.push('Missing destination description');
           return issues;
         })()`, returnByValue: true
       });

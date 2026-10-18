@@ -6,25 +6,31 @@ ou serviço do TERMO foi alterado por esta tarefa.
 
 ---
 
-Quero adicionar ao cabeçalho principal do TERMO uma chamada discreta para o livro
-QUANTUM. Leia as instruções locais, o Git e as specs antes de editar. Preserve
+Quero adicionar ao cabeçalho principal do TERMO um botão discreto para o livro
+QUANTUM, no mesmo padrão visual de Enviar e das demais ações. Leia as instruções
+locais, o Git e as specs antes de editar. Preserve
 todo trabalho existente e registre a implementação na Change apropriada.
 
-Referência: o QUANTUM preparou uma faixa secundária no cabeçalho, abaixo das
-quatro ações principais, anunciando TERMO — Thermodynamics e indicando português.
-Não presuma que essa alteração já foi publicada.
+Referência atualizada: o QUANTUM substituiu a antiga faixa secundária por um
+link-botão TERMO na própria linha de ações, com ícone de livro e indicador de
+link externo. Não reproduza a faixa antiga.
 
 Implemente o equivalente no TERMO, mantendo sua identidade visual e a interface
 em português:
 
-- Rótulo: **Livro complementar**.
-- Link principal: **QUANTUM — Mecânica Quântica**.
-- Informação visível: **Em inglês · abre em nova aba**.
+- Texto visível do botão: **QUANTUM**.
+- Ícone de livro ou átomo e pequeno indicador de link externo, decorativos
+  (`aria-hidden="true"`).
+- Nome acessível: **QUANTUM — livro interativo de mecânica quântica em inglês
+  (abre em nova aba)**. Use também uma descrição equivalente no `title`.
 - Destino canônico: `https://quantummechanicsbook.app/`.
 - Link HTML nativo, `target="_blank"` e `rel="noopener noreferrer"`.
 
-Use uma faixa compacta que quebre linha em telas estreitas, não um quinto botão
-primário, popup, carrossel ou anúncio sobreposto. Preserve menu, login, pontos,
+Reutilize a classe dos botões existentes: formato arredondado, borda, tipografia,
+cores, altura e estados de hover/foco. Coloque-o depois das ações existentes.
+No celular, se houver grade de duas colunas, o último botão pode ocupar a linha
+inteira para evitar uma célula isolada. Não use faixa, popup, carrossel ou anúncio
+sobreposto; não duplique uma chamada já existente. Preserve menu, login, pontos,
 compartilhamento e acesso ao livro. Use contraste legível, foco visível e alvo de
 toque de pelo menos 44px. Sem tracker, parâmetros de marketing, iframe, login
 automático ou envio de dados ao QUANTUM. Não sugira conta, pontuação ou progresso
