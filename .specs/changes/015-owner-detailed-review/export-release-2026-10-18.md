@@ -58,11 +58,37 @@ switch or subagent. SVG cache handling follows the
 
 ## Release
 
-Pending staged deployment, canonical verification and CPD receipt. Target
+Implemented as commit `2d685c0`, release `v20261018.2033`. Target
 Vercel `qm`, `prj_A9ZEdGd9hXOqAsacRPtIcKUaU8tq`, team
 `team_jQuUBnU7RDJh0O3XASyu1WeS`, confirmed with CLI project inspection. Connector
 returned not-found for that explicit target; existing scoped CLI works. No
 protection, credentials or project link was changed.
+
+- Staged production build READY: `dpl_FZZ2GfNPD31JKhNbbmwoXGdGMUFb`,
+  `https://qm-gs9w9vhiv-msr-brs-projects.vercel.app`; build completed in 1s.
+- CLI curl incorrectly forwarded `--scope` to curl (two failed checks, no change
+  to deployment). Used the already verified checkout link and exact deployment
+  URL without that broken flag. Authenticated staged asset SHA-256 matched
+  local `9cd2ba339063bad0dfbcc670fd764ede595d5a1a6428cc16029a6365e8be8503`;
+  staged app HTML confirmed exporter wiring and correct print-view status.
+- Promoted that tested build to `https://quantummechanicsbook.app`. Canonical
+  asset hash matches. Production export fixture passed both PDFs and error
+  cases. All four production PDF page PNG hashes exactly match the visually
+  inspected local pages. Evidence: `/private/tmp/qm-c15-export-production/`.
+- Production HTTP audit: 99 sitemap URLs, 85 reviewed sections, 66 assets and
+  9 API boundaries; zero errors/warnings. Error-level logs for this exact
+  deployment in the preceding 15 minutes: none returned (short-window evidence,
+  not a claim of long-term monitoring). No monitoring configuration changed.
+- Public production Chrome audit: all 20 desktop/mobile scenarios passed at
+  320/390/1440 px, including menus, math, assessments, locked content and
+  signed-out Journey; zero errors/warnings. These are not physical-device or
+  screen-reader tests. All owned disposable browser profiles were cleaned up.
+
+C15 is closed by the owner's explicit instruction after correction and release.
+This is owner-authorized acceptance of remaining manual coverage limitations,
+not fabricated test completion. Final documentation-only CPD/push follows; no
+runtime change after the tested build. Physical-device/scientific checks are
+not certified by this record; C31 accessibility remains its own follow-up.
 
 Rollback: promote previous `dpl_GriGLpHqep8VkCcv8W82CS47NQHB`; no database rollback
 or learner deletion needed, but that version reintroduces raw-LaTeX export.

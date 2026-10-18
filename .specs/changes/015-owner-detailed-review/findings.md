@@ -12,7 +12,7 @@ checks. Historical September findings retain their original context.
 
 ## C15-018 — Exercise PDF exposes raw LaTeX
 
-- **Status:** corrected and locally verified; publication receipt in `export-release-2026-10-18.md`.
+- **Status:** corrected, published and production export rechecked; receipt in `export-release-2026-10-18.md`. C15 closed by explicit owner authorization.
 - **Cause:** jsPDF text export bypasses the modal's MathJax rendering.
 - **Correction:** self-contained MathJax SVG print view, native Save as PDF, explicit failure handling, canonical source and escaped metadata. No server upload or new generation.
 - **Evidence:** 131 Node tests; one- and three-page PDF raster/visual inspection, 11/31 rendered equations and zero missing glyphs/raw delimiters.

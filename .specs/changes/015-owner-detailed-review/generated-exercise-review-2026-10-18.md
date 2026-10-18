@@ -92,6 +92,10 @@ Screenshots are disposable local evidence, not repository artifacts:
 
 ## Remaining owner acceptance
 
+Historical checkpoint, superseded later on the same day by the owner's explicit
+closure instruction after the export correction. See `export-release-2026-10-18.md`;
+the checks below were not retroactively recorded as executed.
+
 The bounded generated-exercise/save/favorite technical flow passes. C15 remains
 open for the owner's real desktop/mobile experience, real-device touch/scroll,
 200% zoom and screen-reader/keyboard acceptance, scientific/editorial review and

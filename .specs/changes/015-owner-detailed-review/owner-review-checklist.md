@@ -1,5 +1,10 @@
 # C15 — Owner review checklist after the C33 release
 
+Historical checklist: C15 was closed by explicit owner instruction on 2026-10-18
+after fixing the exported-math defect. This checklist is not evidence of every
+manual check having been performed; see `export-release-2026-10-18.md` for the
+accepted coverage limits. C31's accessibility follow-up remains separately open.
+
 Use `https://quantummechanicsbook.app` with the QUANTUM Google account. Review at
 desktop width (about 1440 px) and a real phone or narrow 390/320 px viewport.
 Do not share credentials, tokens or another learner's records in reports. The
