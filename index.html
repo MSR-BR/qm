@@ -99,6 +99,42 @@
       flex: 1;
     }
 
+    .companion-book {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2px 16px;
+      width: 100%;
+      padding-top: 10px;
+      border-top: 1px solid var(--border);
+      font-size: .85rem;
+      line-height: 1.5;
+    }
+
+    .companion-book__label {
+      color: #525f59;
+      font-weight: 600;
+    }
+
+    .companion-book__link {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2px 8px;
+      min-height: 44px;
+      max-width: 100%;
+      color: #175b78;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .companion-book__link:hover { color: #103e52; }
+    .companion-book__link:focus-visible {
+      outline: 3px solid #b8630a;
+      outline-offset: 4px;
+      border-radius: 3px;
+    }
+
     .quantum-brandmark {
       display: inline-flex;
       align-items: center;
@@ -343,6 +379,18 @@
     .drawer-stack {
       display: grid;
       gap: 14px;
+    }
+
+    .drawer-search-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      margin-top: 6px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 600;
+      text-underline-offset: 3px;
     }
 
     .drawer-group {
@@ -2489,8 +2537,8 @@
 <script type="application/ld+json">[{"@context":"https://schema.org","@type":"WebSite","name":"QUANTUM","alternateName":"Interactive Quantum Mechanics","url":"https://quantummechanicsbook.app/","inLanguage":"en"},{"@context":"https://schema.org","@type":"Course","name":"Interactive Quantum Mechanics","description":"Interactive Quantum Mechanics book with chapters, favorites, and a personal study area by Prof. Mario Reis (IF-UFF).","provider":{"@type":"CollegeOrUniversity","name":"Institute of Physics — Fluminense Federal University"},"creator":{"@type":"Person","name":"Prof. Mario Reis"},"url":"https://quantummechanicsbook.app/"}]</script>
 <!-- termo-seo:end -->
 <script src="assets/qm-release.js"></script>
-<script src="assets/qm-content-registry.js?v=seo-20261002"></script>
-<script defer src="assets/termo-seo.js?v=seo-20261002"></script>
+<script src="assets/qm-content-registry.js?v=seo-20261018"></script>
+<script defer src="assets/termo-seo.js?v=seo-20261018"></script>
 </head>
 
 <body>
@@ -2528,6 +2576,13 @@
             <span>Send</span>
           </button>
         </div>
+        <aside class="companion-book" aria-label="Companion interactive book">
+          <span class="companion-book__label">Companion book</span>
+          <a class="companion-book__link" href="https://termo.app.br/" target="_blank" rel="noopener noreferrer">
+            <strong>TERMO — Thermodynamics</strong>
+            <span>In Portuguese · opens in a new tab</span>
+          </a>
+        </aside>
       </div>
     </header>
 
@@ -2552,6 +2607,7 @@
           <div>
             <div class="drawer-kicker">Menu</div>
             <h2 class="drawer-title" id="menuDrawerTitle">Book navigation</h2>
+            <a class="drawer-search-link" href="search.html" aria-label="Search reviewed content"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Search</a>
           </div>
           <button type="button" class="drawer-close-button" id="menuDrawerClose" aria-label="Close menu">
             <i class="fa-solid fa-xmark"></i>
@@ -2560,22 +2616,6 @@
 
         <div class="drawer-scroll">
           <div class="drawer-stack">
-            <section class="drawer-group" data-drawer-group="search">
-              <div class="drawer-group-panel is-open">
-                <a class="personal-button" href="search.html">
-                  <span class="extras-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
-                  <span class="extras-text"><span class="extras-label">Search reviewed content</span><span class="extras-note">Find a published section by title or topic.</span></span>
-                </a>
-              </div>
-            </section>
-            <section class="drawer-group" data-drawer-group="learning-help">
-              <div class="drawer-group-panel is-open">
-                <a class="personal-button" href="help.html">
-                  <span class="extras-icon"><i class="fa-solid fa-circle-question"></i></span>
-                  <span class="extras-text"><span class="extras-label">Learning guide</span><span class="extras-note">How exercises, recommendations and points work.</span></span>
-                </a>
-              </div>
-            </section>
             <section class="drawer-group" data-drawer-group="personal">
               <button type="button" class="drawer-group-trigger is-open" data-drawer-trigger="personal" aria-expanded="true" aria-controls="drawerPanelPersonal">
                 <span class="drawer-group-title"><i class="fa-solid fa-circle-user"></i> Personal Area</span>
@@ -2611,13 +2651,30 @@
               </div>
             </section>
 
-            <section class="drawer-group" data-drawer-group="extras" hidden>
+            <section class="drawer-group" data-drawer-group="extras">
               <button type="button" class="drawer-group-trigger" data-drawer-trigger="extras" aria-expanded="false" aria-controls="drawerPanelExtras">
                 <span class="drawer-group-title"><i class="fa-solid fa-sparkles"></i> Extras</span>
                 <i class="fa-solid fa-chevron-down drawer-group-indicator" aria-hidden="true"></i>
               </button>
               <div class="drawer-group-panel" id="drawerPanelExtras">
-                <div class="extras-list" id="extrasList"></div>
+                <div class="extras-list" id="extrasList">
+                  <a class="extras-button" href="/?view=journey" data-view-id="journey">
+                    <span class="extras-icon"><i class="fa-solid fa-route" aria-hidden="true"></i></span>
+                    <span class="extras-text"><span class="extras-label">Points and study journey</span><span class="extras-note">Your progress, rewards, due reviews and recommended next activity.</span></span>
+                  </a>
+                  <a class="extras-button" href="assessments.html" data-view-id="assessments">
+                    <span class="extras-icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span>
+                    <span class="extras-text"><span class="extras-label">Chapter assessments</span><span class="extras-note">Choose a reviewed chapter, practise retrieval and review your answers.</span></span>
+                  </a>
+                  <a class="extras-button" href="daily-challenge.html" data-view-id="daily-challenge">
+                    <span class="extras-icon"><i class="fa-solid fa-bullseye" aria-hidden="true"></i></span>
+                    <span class="extras-text"><span class="extras-label">Daily Challenge</span><span class="extras-note">A short review based on your learning history, with no missed-day penalty.</span></span>
+                  </a>
+                  <a class="extras-button" href="/?view=simulators" data-view-id="simulators">
+                    <span class="extras-icon"><i class="fa-solid fa-flask-vial" aria-hidden="true"></i></span>
+                    <span class="extras-text"><span class="extras-label">All simulators</span><span class="extras-note">Explore the catalogue across reviewed chapters, or use the chapter shortcuts below.</span></span>
+                  </a>
+                </div>
               </div>
             </section>
 
@@ -2804,7 +2861,7 @@
           }
           button.setAttribute("aria-expanded", isActive ? "true" : "false");
         });
-        each(".drawer-group-panel", function (panel) {
+        each(".drawer-group-panel[id]", function (panel) {
           var expectedId = "drawerPanel" + normalized.charAt(0).toUpperCase() + normalized.slice(1);
           if (panel.id === expectedId) {
             panel.classList.add("is-open");
@@ -3069,7 +3126,7 @@
           button.setAttribute("aria-expanded", String(isActive));
         });
 
-        document.querySelectorAll(".drawer-group-panel").forEach(function (panel) {
+        document.querySelectorAll(".drawer-group-panel[id]").forEach(function (panel) {
           const expectedId = `drawerPanel${normalizedSection.charAt(0).toUpperCase()}${normalizedSection.slice(1)}`;
           panel.classList.toggle("is-open", panel.id === expectedId);
         });
@@ -3282,12 +3339,6 @@
     const exerciseGenerationEnabled = true;
 
     const personalViews = [
-      {
-        id: "journey",
-        label: "Study journey",
-        icon: "fa-route",
-        note: "Continue reading and review your completion record."
-      },
       ...(exerciseGenerationEnabled ? [{
         id: "saved",
         label: "My exercises",
@@ -3335,14 +3386,31 @@
       }
     ];
 
-    const extraViews = [];
+    const extraViews = [
+      {
+        id: "journey", label: "Points and study journey", icon: "fa-route",
+        note: "Your progress, rewards, due reviews and recommended next activity."
+      },
+      {
+        id: "assessments", href: "assessments.html", label: "Chapter assessments", icon: "fa-list-check",
+        note: "Choose a reviewed chapter, practise retrieval and review your answers."
+      },
+      {
+        id: "daily-challenge", href: "daily-challenge.html", label: "Daily Challenge", icon: "fa-bullseye",
+        note: "A short review based on your learning history, with no missed-day penalty."
+      },
+      {
+        id: "simulators", href: "/?view=simulators", label: "All simulators", icon: "fa-flask-vial",
+        note: "Explore the catalogue across reviewed chapters, or use the chapter shortcuts below."
+      }
+    ];
 
     const viewIds = new Set([
       "chapters",
       "simulators",
       ...personalViews.map((view) => view.id),
       ...adminViews.map((view) => view.id),
-      ...extraViews.map((view) => view.id)
+      ...extraViews.filter((view) => !view.href).map((view) => view.id)
     ]);
 
     const chapterList = document.getElementById("chapterList");
@@ -3492,7 +3560,8 @@
     }
 
     function getDrawerSectionForView(viewId) {
-      if (viewId === "journey" || viewId === "saved" || viewId === "favorites" || viewId === "preferences") return "personal";
+      if (viewId === "journey") return "extras";
+      if (viewId === "saved" || viewId === "favorites" || viewId === "preferences") return "personal";
       if (viewId === "validation-review" || viewId === "ratings" || viewId === "communication" || viewId === "learning-evaluation") return "admin";
       if (viewId === "simulators") return "simulators";
       return "chapters";
@@ -3595,7 +3664,10 @@
       }
     ];
 
-    const simulatorsCatalog = window.QMSimulatorCatalog || legacySimulatorsCatalog;
+    const simulatorsCatalog = (window.QMSimulatorCatalog || legacySimulatorsCatalog).filter(function (simulator) {
+      const chapter = chapters.find(function (item) { return Number(item.id) === Number(simulator.chapter); });
+      return chapter && !chapter.locked;
+    });
 
     const simulatorsBySlug = simulatorsCatalog.reduce(function (accumulator, simulator) {
       accumulator[simulator.slug] = simulator;
@@ -3752,7 +3824,7 @@
         button.setAttribute("aria-expanded", String(isActive));
       });
 
-      document.querySelectorAll(".drawer-group-panel").forEach((panel) => {
+      document.querySelectorAll(".drawer-group-panel[id]").forEach((panel) => {
         const expectedId = normalizedSection
           ? `drawerPanel${normalizedSection.charAt(0).toUpperCase()}${normalizedSection.slice(1)}`
           : "";
@@ -3925,8 +3997,8 @@
       if (extraViews.length === 0) return;
 
       extraViews.forEach((view) => {
-        const button = document.createElement("button");
-        button.type = "button";
+        const button = document.createElement("a");
+        button.href = view.href || `/?view=${view.id}`;
         button.className = `extras-button${state.view === view.id ? " active" : ""}`;
         button.dataset.viewId = view.id;
         button.innerHTML = `
@@ -3936,11 +4008,6 @@
             <span class="extras-note">${view.note}</span>
           </span>
         `;
-        button.addEventListener("click", function () {
-          closeDrawer();
-          state.simulatorId = "";
-          void activateView(view.id);
-        });
         extrasList.appendChild(button);
       });
     }
@@ -4935,7 +5002,9 @@
     }
 
     async function renderPanelActions() {
-      panelActions.innerHTML = "";
+      panelActions.innerHTML = state.view === "simulators" && state.chapterId
+        ? '<a class="drawer-inline-action" href="/?view=simulators">All simulators</a>'
+        : "";
     }
 
     async function loadChapter(chapterId) {
@@ -5049,12 +5118,12 @@
       await ensureAuthModules();
       const session = await window.TermoAuth?.getSession?.().catch(function () { return null; });
       state.loggedIn = Boolean(session?.user);
-      panelKicker.textContent = "Personal Area";
+      panelKicker.textContent = "Extras";
       panelTitle.textContent = "Study journey";
-      panelDescription.textContent = "Resume your latest reviewed section and keep a private record of completed sections.";
+      panelDescription.textContent = "Review your progress, points and recommended activities, or resume your latest reviewed section.";
       setActiveChapter("");
-      setActivePersonal("journey");
-      setActiveExtra("");
+      setActivePersonal("");
+      setActiveExtra("journey");
       panelActions.innerHTML = "";
 
       if (!state.loggedIn) {
@@ -5452,22 +5521,22 @@
     }
 
     function renderYesulatorCatalog() {
-      const selectedChapterNumber = Number(state.chapterId) || Number(simulatorsCatalog[0]?.chapter) || 1;
+      const selectedChapterNumber = Number(state.chapterId) || 0;
       const selectedChapterId = String(selectedChapterNumber).padStart(2, "0");
       const selectedChapter = chapters.find(function (item) { return item.id === selectedChapterId; });
       const selectedSimulators = simulatorsCatalog.filter(function (simulator) {
-        return Number(simulator.chapter) === selectedChapterNumber;
+        return !selectedChapterNumber || Number(simulator.chapter) === selectedChapterNumber;
       });
       topicContainer.innerHTML = `
-          <section class="simulator-chapter-group" id="simulators-chapter-${escapeHtml(selectedChapterNumber)}">
-            <h3 class="simulator-chapter-heading"><span>Chapter ${escapeHtml(selectedChapterId)}</span>${escapeHtml(selectedChapter ? selectedChapter.title : "Quantum Mechanics")}</h3>
+          <section class="simulator-chapter-group" id="simulators-chapter-${escapeHtml(selectedChapterNumber || 'all')}">
+            <h3 class="simulator-chapter-heading"><span>${selectedChapterNumber ? `Chapter ${escapeHtml(selectedChapterId)}` : 'All reviewed chapters'}</span>${escapeHtml(selectedChapter ? selectedChapter.title : "Simulator catalogue")}</h3>
             <div class="simulator-grid">
           ${selectedSimulators.map(function (simulator) {
             return `
-              <article class="simulator-card">
+              <article class="simulator-card" data-simulator-chapter="${escapeHtml(simulator.chapter)}">
                 <div class="simulator-card__top">
                   <div>
-                    <div class="simulator-card__eyebrow">${escapeHtml(simulator.id)}</div>
+                    <div class="simulator-card__eyebrow">${escapeHtml(simulator.id)} · Chapter ${escapeHtml(simulator.chapter)}</div>
                     <div class="simulator-card__title">${escapeHtml(simulator.title)}</div>
                   </div>
                   <span class="simulator-card__icon" aria-hidden="true">
@@ -5517,20 +5586,22 @@
     }
 
     function renderYesulators() {
-      if (!state.chapterId || !simulatorsCatalog.some(function (simulator) { return Number(simulator.chapter) === Number(state.chapterId); })) {
-        state.chapterId = String(Number(simulatorsCatalog[0]?.chapter) || 1).padStart(2, "0");
+      if (state.chapterId && !simulatorsCatalog.some(function (simulator) { return Number(simulator.chapter) === Number(state.chapterId); })) {
+        state.chapterId = "";
         syncUrl();
       }
       const selectedChapter = chapters.find(function (chapter) { return chapter.id === state.chapterId; });
       setLandingMode(false);
-      panelKicker.textContent = `Chapter ${state.chapterId}`;
+      panelKicker.textContent = selectedChapter ? `Chapter ${state.chapterId}` : "Extras";
       panelTitle.textContent = selectedChapter ? `${selectedChapter.title} — simulators` : simulatorsPanelCopy.title;
-      panelDescription.textContent = "Choose one of the simulators available for this chapter. Each resource opens in a new browser tab.";
+      panelDescription.textContent = selectedChapter
+        ? "Choose a simulator for this chapter, or browse all reviewed chapters. Each resource opens in a new browser tab."
+        : "Explore simulators from all reviewed chapters together. Each resource opens in a new browser tab; use the menu for chapter shortcuts.";
       setActiveChapter(state.chapterId);
       setActivePersonal("");
       setActiveExtra("");
       renderSimulatorsMenu();
-      panelActions.innerHTML = "";
+      void renderPanelActions();
 
       if (state.simulatorId) {
         state.simulatorId = "";

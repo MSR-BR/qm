@@ -1,5 +1,17 @@
 # Tasks
 
+## Corrective follow-up — 2026-10-17 (local, unpublished)
+
+- [x] Versioned server option permutation with matching grading and stale-client rejection.
+- [x] Cross-chapter Daily Challenge ranking, due maintenance and bounded rotation.
+- [x] Six source-linked objectives per chapter, changed retries and explicit partial coverage.
+- [x] Block new full-chapter mastery/XP from the partial bank, preserving history.
+- [x] Forward migration, local PostgreSQL upgrade/fresh replay, full tests and browser QA.
+- [ ] Editorial acceptance and separately authorized remote release/real-account smoke.
+
+Details, limits and evidence: `corrective-followup-2026-10-17.md`.
+The execution records below remain historical.
+
 ## C29 handoff — 2026-09-26
 
 - Consume `/api/qm-learning-profile` / `learning-profile-v1`; do not restore separate

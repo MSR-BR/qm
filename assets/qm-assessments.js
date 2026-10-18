@@ -55,6 +55,8 @@
           <h2 id="quizTitle">${escapeHtml(quiz.title)}</h2>
           <span class="assessment-progress">${questions.length} ${questions.length === 1 ? "question" : "questions"}</span>
         </div>
+        <p class="assessment-coverage">Sampled checkpoint: ${Number(quiz.coverage?.assessedConceptIds?.length || questions.length)} of ${Number(quiz.coverage?.requiredConceptIds?.length || questions.length)} reviewed chapter objectives have assessment items. This is not full-chapter certification.</p>
+        ${quiz.coverage?.unassessedObjectives?.length ? `<details class="assessment-coverage"><summary>Objectives not assessed by this checkpoint bank</summary><ul>${quiz.coverage.unassessedObjectives.map(objective => `<li><a href="${escapeHtml(objective.pagePath)}">${escapeHtml(objective.sectionId)} — ${escapeHtml(objective.title)}</a></li>`).join("")}</ul></details>` : ""}
         <form id="assessmentForm">
           ${questions.map(function (question, index) {
             return `
@@ -132,7 +134,7 @@
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: "Bearer " + session.access_token },
         body: JSON.stringify({ chapterId: quiz.chapterId, action: attemptAction, cycleId: remediationCycleId,
-          sessionId: sessionId, idempotencyKey: crypto.randomUUID(), answers })
+          sessionId: sessionId, itemSetVersion: quiz.itemSetVersion, idempotencyKey: crypto.randomUUID(), answers })
       });
       const data = await response.json().catch(function () { return {}; });
       if (!response.ok || !data.result) {
@@ -165,6 +167,7 @@
         <p class="assessment-kicker">Assessment complete</p>
         <h2 id="resultTitle" tabindex="-1">${escapeHtml(result.score)}%</h2>
         <p>${escapeHtml(result.correctCount)} of ${escapeHtml(result.questionCount)} questions correct. ${attemptMeta?.xp_delta ? "+" + escapeHtml(attemptMeta.xp_delta) + " points were recorded. " : ""}A score alone is not mastery; mastery requires changed, delayed, unaided retrieval.</p>
+        <p>These questions sample the chapter. Unassessed objectives remain outside this score; full-chapter mastery and its reward are unavailable while coverage is partial.</p>
         <div class="assessment-feedback">
           ${feedback.map(function (item, index) {
             return `<article class="assessment-feedback__item${item.correct ? " is-correct" : ""}">

@@ -5,6 +5,7 @@ import { execFileSync, execFile } from "node:child_process";
 import { promisify } from "node:util";
 import assert from "node:assert/strict";
 import { fileURLToPath } from 'node:url';
+import { getQuiz, ITEM_SET_VERSION, catalogContractRows, chapterCoverage } from '../lib/qm-chapter-quiz-catalog.mjs';
 const container = process.env.QM_LOCAL_TEST_CONTAINER || "qm-c29-disposable-20260926";
 assert.match(container, /^qm-(?:c29-disposable-\d+|qa-[a-z0-9-]+)$/);
 const database = "qm_c29_" + Date.now();
@@ -37,6 +38,16 @@ for (const file of readdirSync(new URL(migrationPath, root)).filter(f => f.endsW
   catch (error) { throw new Error(`SQL replay failed: ${file}: ${error.stderr}`); }
 }
 const access = JSON.parse(readFileSync(new URL("data/qm-supabase-access-contract.json",root)));
+if (fresh) {
+  const baseline = JSON.parse(readFileSync(new URL('supabase/fresh/baseline-manifest.json', root)));
+  const included = new Set(baseline.sources.map(source => source.path.split('/').at(-1)));
+  for (const file of readdirSync(new URL('supabase/migrations/', root)).filter(f => f.endsWith('.sql') && !included.has(f)).sort()) {
+    sql(readFileSync(new URL('supabase/migrations/' + file, root), 'utf8'));
+  }
+}
+const chapterEvidence = (id, wrong) => getQuiz(id).questions.map(q => ({questionId:q.questionId,correct:q.questionId !== wrong,confidence:'high'}));
+assert.equal(Number(sql('select count(*) from private.qm_learning_question_contracts')), catalogContractRows().length);
+for (const row of catalogContractRows()) assert.equal(sql(`select content_id from private.qm_learning_question_contracts where question_id='${row.questionId}'`), row.contentId);
 for (const table of access.tables) for (const role of ["anon","authenticated","service_role"]) {
   for (const privilege of ["select","insert","update","delete","truncate","references","trigger"]) {
     assert.equal(sql(`select has_table_privilege('${role}','${table.name}','${privilege}');`),
@@ -114,19 +125,15 @@ assert.equal(sql(`select count(*) from public.qm_learning_ledger where user_id='
 
 const session = "20000000-0000-4000-8000-000000000001";
 const assessmentKey = "30000000-0000-4000-8000-000000000001";
-const assessmentEvidence = JSON.stringify([
-  {questionId:"qm-01-wave-benchmark",correct:true,confidence:"high"},
-  {questionId:"qm-01-photoelectric",correct:false,confidence:"high"},
-  {questionId:"qm-01-de-broglie",correct:true,confidence:"medium"}
-]).replaceAll("'","''");
+const assessmentEvidence = JSON.stringify(chapterEvidence('01','qm-01-photoelectric')).replaceAll("'","''");
 const assessment = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}','${assessmentKey}',
-  'assessment','01','${session}','qm-reviewed-question-set-2026-09-26.1','${assessmentEvidence}'::jsonb,null,null);`));
-assert.equal(assessment.score,67);
+  'assessment','01','${session}','${ITEM_SET_VERSION}','${assessmentEvidence}'::jsonb,null,null);`));
+assert.equal(assessment.score,83);
 assert.equal(assessment.xp_delta,30);
 assert.equal(assessment.mastery_status,"insufficient_evidence");
 assert.ok(assessment.remediation_cycle_id);
 const duplicate = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}','${assessmentKey}',
-  'assessment','01','${session}','qm-reviewed-question-set-2026-09-26.1','${assessmentEvidence}'::jsonb,null,null);`));
+  'assessment','01','${session}','${ITEM_SET_VERSION}','${assessmentEvidence}'::jsonb,null,null);`));
 assert.equal(duplicate.deduped,true);
 assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${user}'`),"50");
 const review = JSON.parse(sql(`set role service_role; select public.complete_qm_learning_review('${user}',
@@ -135,7 +142,7 @@ assert.equal(review.xp_delta,10);
 const retryEvidence = JSON.stringify([{questionId:"qm-01-photoelectric-transfer",correct:true,confidence:"medium"}]).replaceAll("'","''");
 const retry = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}',
   '30000000-0000-4000-8000-000000000002','retry','01','20000000-0000-4000-8000-000000000002',
-  'qm-reviewed-question-set-2026-09-26.1','${retryEvidence}'::jsonb,null,'${assessment.remediation_cycle_id}');`));
+  '${ITEM_SET_VERSION}','${retryEvidence}'::jsonb,null,'${assessment.remediation_cycle_id}');`));
 assert.equal(retry.xp_delta,10);
 assert.equal(retry.mastery_status,"insufficient_evidence");
 assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${user}'`),"70");
@@ -145,11 +152,7 @@ assert.equal(sql(`select xp_total from public.qm_gamification_profiles where use
 // cap without treating a missed or extra practice opportunity as a penalty.
 const secondAssessment = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}',
   '30000000-0000-4000-8000-000000000004','assessment','02','20000000-0000-4000-8000-000000000004',
-  'qm-reviewed-question-set-2026-09-26.1','${JSON.stringify([
-    {questionId:"qm-02-schrodinger",correct:true,confidence:"medium"},
-    {questionId:"qm-02-probability",correct:false,confidence:"high"},
-    {questionId:"qm-02-infinite-well",correct:true,confidence:"medium"}
-  ]).replaceAll("'","''")}'::jsonb,null,null);`));
+  '${ITEM_SET_VERSION}','${JSON.stringify(chapterEvidence('02','qm-02-probability')).replaceAll("'","''")}'::jsonb,null,null);`));
 assert.equal(secondAssessment.xp_delta,30);
 const cappedReview = JSON.parse(sql(`set role service_role; select public.complete_qm_learning_review('${user}',
   '${secondAssessment.remediation_cycle_id}','review:${secondAssessment.remediation_cycle_id}',2,false);`));
@@ -158,7 +161,7 @@ assert.equal(cappedReview.reward_eligible,false);
 const cappedRetryEvidence = JSON.stringify([{questionId:"qm-02-probability-transfer",correct:true,confidence:"medium"}]).replaceAll("'","''");
 const cappedRetry = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}',
   '30000000-0000-4000-8000-000000000005','retry','02','20000000-0000-4000-8000-000000000005',
-  'qm-reviewed-question-set-2026-09-26.1','${cappedRetryEvidence}'::jsonb,null,'${secondAssessment.remediation_cycle_id}');`));
+  '${ITEM_SET_VERSION}','${cappedRetryEvidence}'::jsonb,null,'${secondAssessment.remediation_cycle_id}');`));
 assert.equal(cappedRetry.xp_delta,0);
 assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${user}'`),"100");
 
@@ -169,14 +172,10 @@ sql(`insert into public.qm_learning_ledger(user_id,event_type,occurred_at,conten
   ((((current_timestamp at time zone 'America/Sao_Paulo')::date-1)::timestamp+interval '23 hours 59 minutes') at time zone 'America/Sao_Paulo'),
   'guided-review:03','03','60000000-0000-4000-8000-000000000001','fixture:timezone:yesterday',
   'qm-learning-policy-2026-09-25.1','{"fixture":"timezone_boundary"}',0);`);
-const timezoneEvidence = JSON.stringify([
-  {questionId:"qm-03-spin",correct:true,confidence:"medium"},
-  {questionId:"qm-03-dirac",correct:false,confidence:"high"},
-  {questionId:"qm-03-hermitian",correct:true,confidence:"medium"}
-]).replaceAll("'","''");
+const timezoneEvidence = JSON.stringify(chapterEvidence('03','qm-03-dirac')).replaceAll("'","''");
 const timezoneAssessment = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${timezone}',
   '30000000-0000-4000-8000-000000000006','assessment','03','20000000-0000-4000-8000-000000000006',
-  'qm-reviewed-question-set-2026-09-26.1','${timezoneEvidence}'::jsonb,null,null);`));
+  '${ITEM_SET_VERSION}','${timezoneEvidence}'::jsonb,null,null);`));
 const timezoneReview = JSON.parse(sql(`set role service_role; select public.complete_qm_learning_review('${timezone}',
   '${timezoneAssessment.remediation_cycle_id}','review:${timezoneAssessment.remediation_cycle_id}',2,false);`));
 assert.equal(timezoneReview.xp_delta,10);
@@ -189,14 +188,10 @@ sql(`insert into public.qm_learning_ledger(user_id,event_type,occurred_at,conten
     '60000000-0000-4000-8000-000000000002','fixture:weekly:one','qm-learning-policy-2026-09-25.1','{"fixture":"weekly_cap"}',0),
   ('${weekly}','assessment_reviewed',now()-interval '4 days','guided-review:04','04',
     '60000000-0000-4000-8000-000000000003','fixture:weekly:two','qm-learning-policy-2026-09-25.1','{"fixture":"weekly_cap"}',0);`);
-const weeklyEvidence = JSON.stringify([
-  {questionId:"qm-04-hermite",correct:true,confidence:"medium"},
-  {questionId:"qm-04-finite-well",correct:false,confidence:"high"},
-  {questionId:"qm-04-tunneling",correct:true,confidence:"medium"}
-]).replaceAll("'","''");
+const weeklyEvidence = JSON.stringify(chapterEvidence('04','qm-04-finite-well')).replaceAll("'","''");
 const weeklyAssessment = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${weekly}',
   '30000000-0000-4000-8000-000000000007','assessment','04','20000000-0000-4000-8000-000000000007',
-  'qm-reviewed-question-set-2026-09-26.1','${weeklyEvidence}'::jsonb,null,null);`));
+  '${ITEM_SET_VERSION}','${weeklyEvidence}'::jsonb,null,null);`));
 const weeklyReview = JSON.parse(sql(`set role service_role; select public.complete_qm_learning_review('${weekly}',
   '${weeklyAssessment.remediation_cycle_id}','review:${weeklyAssessment.remediation_cycle_id}',2,false);`));
 assert.equal(weeklyReview.xp_delta,0);
@@ -216,7 +211,7 @@ const dailyEvidence = JSON.stringify([
 ]).replaceAll("'","''");
 const daily = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${user}',
   '30000000-0000-4000-8000-000000000003','daily_challenge','01','20000000-0000-4000-8000-000000000003',
-  'qm-reviewed-question-set-2026-09-26.1','${dailyEvidence}'::jsonb,'${issue.id}',null);`));
+  '${ITEM_SET_VERSION}','${dailyEvidence}'::jsonb,'${issue.id}',null);`));
 assert.equal(daily.xp_delta,0);
 assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${user}'`),"100");
 
@@ -296,7 +291,44 @@ sql(`delete from auth.users where id='${commUser}';`);
 assert.equal(sql(`select count(*) from public.qm_learning_communication_events where user_id='${commUser}'`),"0");
 sql(`delete from auth.users where id='${user}';`);
 assert.equal(sql(`select count(*) from public.qm_learning_ledger where user_id='${user}'`),"0");
+// C30 follow-up: synthetic, backdated evidence for all six sampled objectives
+// must not mint whole-chapter mastery. No mutation of existing historical rows.
+const coverageUser = '80000000-0000-4000-8000-000000000001';
+sql(`insert into auth.users(id,email) values('${coverageUser}','coverage@example.invalid');`);
+for (const [i, mode] of ['assessment','retry'].entries()) {
+  sql(`with a as (insert into public.qm_learning_attempts(user_id,activity_type,chapter_id,session_id,item_set_version,idempotency_key,score,correct_count,question_count,policy_version,occurred_at)
+    values('${coverageUser}','${mode}','01','80000000-0000-4000-8000-00000000000${i+2}','historical-fixture','coverage:${i}',100,6,6,'qm-learning-policy-2026-09-25.1',now()-interval '${4-i*2} days') returning *)
+    insert into public.qm_learning_attempt_items(user_id,attempt_id,question_id,concept_id,source_id,content_id,representation,correct,confidence,hint_level,solution_revealed,session_id,occurred_at)
+    select a.user_id,a.id,q.question_id,q.concept_id,q.source_id,q.content_id,q.representation,true,'high',0,false,a.session_id,a.occurred_at
+    from a cross join private.qm_learning_question_contracts q where q.chapter_id='01' and q.mode='${mode}';`);
+}
+const perfect = JSON.stringify(chapterEvidence('01')).replaceAll("'","''");
+const coverageCall = `select public.record_qm_learning_activity('${coverageUser}','coverage:new','assessment','01','${session}','${ITEM_SET_VERSION}','${perfect}'::jsonb,null,null);`;
+const concurrent = await Promise.all(Array.from({length:6},()=>run('docker',[...args(database),'-c',`set role service_role; ${coverageCall}`])));
+const saved = concurrent.map(r=>JSON.parse(r.stdout.trim()));
+assert.equal(saved.filter(r=>!r.deduped).length,1);
+assert.equal(saved.reduce((n,r)=>n+r.xp_delta,0),30);
+const full = saved.find(r=>!r.deduped);
+assert.equal(full.mastery_status,'insufficient_evidence');
+assert.equal(full.required_concepts,chapterCoverage('01').requiredConceptIds.length);
+assert.equal(full.assessed_concepts,6);
+assert.equal(sql(`select count(*) from public.qm_learning_ledger where user_id='${coverageUser}' and event_type='chapter_mastery_reached'`),'0');
+assert.equal(sql(`select xp_total from public.qm_gamification_profiles where user_id='${coverageUser}'`),'30');
+const beforeInvalid = sql(`select count(*) from public.qm_learning_attempts where user_id='${coverageUser}'`);
+assert.throws(()=>sql(`set role service_role; ${coverageCall.replace('coverage:new','coverage:stale').replace(ITEM_SET_VERSION,'obsolete')}`),/Invalid learning attempt/);
+assert.throws(()=>sql(`set role service_role; ${coverageCall.replace('coverage:new','coverage:incomplete').replace(perfect,JSON.stringify(chapterEvidence('01').slice(0,3)))}`),/issued reviewed set/);
+assert.equal(sql(`select count(*) from public.qm_learning_attempts where user_id='${coverageUser}'`),beforeInvalid);
+const wrong = JSON.stringify(chapterEvidence('01').map(q=>({...q,correct:false})));
+const allWrong = JSON.parse(sql(`set role service_role; ${coverageCall.replace('coverage:new','coverage:wrong').replace(perfect,wrong)}`));
+const sixReview = JSON.parse(sql(`set role service_role; select public.complete_qm_learning_review('${coverageUser}','${allWrong.remediation_cycle_id}','review:${allWrong.remediation_cycle_id}',4,true);`));
+assert.equal(sixReview.xp_delta,10);
+const retrySix = JSON.stringify(getQuiz('01',{retryConceptIds:chapterCoverage('01').assessedConceptIds}).questions.map(q=>({questionId:q.questionId,correct:true,confidence:'medium'})));
+const sixRetried = JSON.parse(sql(`set role service_role; select public.record_qm_learning_activity('${coverageUser}','coverage:retry','retry','01','${session}','${ITEM_SET_VERSION}','${retrySix}'::jsonb,null,'${allWrong.remediation_cycle_id}');`));
+assert.equal(sixRetried.question_count,6);
+assert.equal(sixRetried.xp_delta,10);
+assert.equal(sixRetried.mastery_status,'insufficient_evidence');
 console.log(JSON.stringify({ok:true,database,freshBaseline:fresh,optionalHelperStub:!fresh,tablePrivilegeChecks:access.tables.length*21,functionPrivilegeChecks:access.functions.length*3,
+  expandedCatalog:84,partialCoverageGuard:true,concurrentAssessmentDeduplication:6,sixItemRetry:true,staleVersionRejected:true,
   parallelRequests:12,awards:1,legacyAttempts:25,adaptiveAssessment:true,guidedReview:true,focusedRetry:true,dailyChallenge:true,
   sameDayRewardCap:true,timeZoneBoundary:true,rollingSevenDayCap:true,crossUserIsolation:true,
   simulatorCycle:true,masteryGuard:true,rollbackProven:true,

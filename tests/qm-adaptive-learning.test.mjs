@@ -5,12 +5,12 @@ import { catalogContractRows, getQuiz, publicQuiz } from "../lib/qm-chapter-quiz
 
 const base = { concept_id: "classical-wave-benchmark", correct: true, hint_level: 0, solution_revealed: false, confidence: "high" };
 
-test("reviewed catalog has three checkpoints and one changed representation per chapter", function () {
+test("reviewed catalog has six checkpoints and one changed representation per chapter", function () {
   const rows = catalogContractRows();
-  assert.equal(rows.length, 42);
+  assert.equal(rows.length, 84);
   for (const chapterId of ["01", "02", "03", "04", "05", "06", "07"]) {
-    assert.equal(rows.filter(row => row.chapterId === chapterId && row.mode === "assessment").length, 3);
-    assert.equal(rows.filter(row => row.chapterId === chapterId && row.mode === "retry").length, 3);
+    assert.equal(rows.filter(row => row.chapterId === chapterId && row.mode === "assessment").length, 6);
+    assert.equal(rows.filter(row => row.chapterId === chapterId && row.mode === "retry").length, 6);
   }
   const publicValue = JSON.stringify(publicQuiz(getQuiz("01")));
   assert.doesNotMatch(publicValue, /"correct"|"explanation"|"hintLadder"/);
@@ -59,7 +59,7 @@ test("optional AI may reorder eligible actions but cannot introduce a new action
 
 test("concept graph is versioned and covers all seven reviewed chapters", function () {
   const graph = conceptGraphContract();
-  assert.equal(graph.version, "qm-concept-graph-2026-09-26.1");
+  assert.equal(graph.version, "qm-concept-graph-2026-10-17.1");
   assert.deepEqual(Object.keys(graph.assessmentCoverage), ["01", "02", "03", "04", "05", "06", "07"]);
   assert.ok(graph.nodes.every(node => node.sections.length > 0 && node.sections.every(section => section.sourceIds.length > 0)));
 });

@@ -5,6 +5,7 @@ import vm from "node:vm";
 
 import { handleQmAdaptiveLearning } from "../lib/qm-adaptive-learning-handler.mjs";
 import { handleQmChapterQuiz } from "../lib/qm-chapter-quiz-handler.mjs";
+import { getQuiz, ITEM_SET_VERSION } from "../lib/qm-chapter-quiz-catalog.mjs";
 import {
   handleQmGamificationEvent,
   sectionCompletionIdempotencyKey
@@ -92,11 +93,8 @@ test("chapter assessment save uses the verified learner and returns the attempt 
         chapterId: "01",
         sessionId: "22222222-2222-4222-8222-222222222222",
         idempotencyKey: "33333333-3333-4333-8333-333333333333",
-        answers: [
-          { questionId: "qm-01-wave-benchmark", choice: "a", confidence: "high" },
-          { questionId: "qm-01-photoelectric", choice: "a", confidence: "medium" },
-          { questionId: "qm-01-de-broglie", choice: "a", confidence: "low" }
-        ],
+        itemSetVersion: ITEM_SET_VERSION,
+        answers: getQuiz("01").questions.map(q => ({ questionId: q.questionId, choice: q.correct, confidence: "high" })),
         user_id: "attacker-controlled"
       },
       env: SERVER_ENV
@@ -106,7 +104,8 @@ test("chapter assessment save uses the verified learner and returns the attempt 
     assert.equal(response.body.attempt.attempt_id, "11111111-1111-4111-8111-111111111111");
     assert.equal(stored.p_user_id, "learner-1");
     assert.equal(stored.p_chapter_id, "01");
-    assert.equal(stored.p_evidence.length, 3);
+    assert.equal(stored.p_evidence.length, 6);
+    assert.ok(stored.p_evidence.every(item => item.correct));
     assert.equal("answers" in stored, false);
   } finally {
     globalThis.fetch = originalFetch;
@@ -154,7 +153,8 @@ test("chapter assessment rejects incomplete or malformed answer sets before stor
       headers: { authorization: "Bearer learner-token" },
       body: {
         chapterId: "01",
-        answers: [{ questionId: "qm-01-q1", choice: "not-a-choice" }]
+        answers: [{ questionId: "qm-01-q1", choice: "not-a-choice" }],
+        itemSetVersion: ITEM_SET_VERSION
       },
       env: SERVER_ENV
     });
@@ -181,11 +181,8 @@ test("chapter assessment reports a retryable storage failure without leaking dat
         chapterId: "01",
         sessionId: "22222222-2222-4222-8222-222222222222",
         idempotencyKey: "33333333-3333-4333-8333-333333333333",
-        answers: [
-          { questionId: "qm-01-wave-benchmark", choice: "a", confidence: "high" },
-          { questionId: "qm-01-photoelectric", choice: "a", confidence: "medium" },
-          { questionId: "qm-01-de-broglie", choice: "a", confidence: "low" }
-        ]
+        itemSetVersion: ITEM_SET_VERSION,
+        answers: getQuiz("01").questions.map(q => ({ questionId: q.questionId, choice: q.correct, confidence: "high" }))
       },
       env: SERVER_ENV
     });

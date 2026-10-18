@@ -3,6 +3,7 @@ import { mkdir, mkdtemp, rm, writeFile } from "node:fs/promises";
 import net from "node:net";
 import os from "node:os";
 import path from "node:path";
+import { checkLearningBrowser } from "./qm-learning-browser-checks.mjs";
 
 const BASE_URL = new URL(process.env.QM_AUDIT_BASE_URL || "https://quantummechanicsbook.app");
 const CHROME_PATH = process.env.CHROME_PATH || "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome";
@@ -106,6 +107,12 @@ class CdpClient {
 }
 
 const scenarios = [
+  ...[320, 390, 1440].map(width => ({
+    name: 'companion-header-' + width,
+    path: '/?view=chapters', width, height: 900,
+    expected: ['Companion book', 'TERMO — Thermodynamics', 'In Portuguese · opens in a new tab'],
+    checkCompanion: true, capture: true
+  })),
   {
     name: "home-desktop",
     path: "/home.html",
@@ -122,7 +129,32 @@ const scenarios = [
     expected: ["Chapter 7", "Addition of angular momenta"],
     interaction: "document.getElementById('menuToggleButton')?.click()",
     requireDrawer: true,
+    checkMenu: true,
     capture: true
+  },
+  {
+    name: "extras-mobile-menu",
+    path: "/?view=chapters&chapter=07",
+    width: 390, height: 844,
+    expected: ["Points and study journey", "Chapter assessments", "Daily Challenge", "All simulators", "Search"],
+    interaction: "document.getElementById('menuToggleButton').click(); document.querySelector('[data-drawer-trigger=extras]').click()",
+    requireDrawer: true, checkMenu: true, capture: true
+  },
+  {
+    name: "extras-minimum-width-zoom",
+    path: "/?view=chapters",
+    width: 320, height: 720,
+    expected: ["Points and study journey", "Daily Challenge", "Search"],
+    interaction: "document.documentElement.style.fontSize='200%'; document.getElementById('menuToggleButton').click(); document.querySelector('[data-drawer-trigger=extras]').click()",
+    requireDrawer: true, checkMenu: true, reducedMotion: true, capture: true
+  },
+  {
+    name: "extras-desktop-menu",
+    path: "/?view=chapters",
+    width: 1440, height: 900,
+    expected: ["Points and study journey", "Chapter assessments", "Daily Challenge", "All simulators"],
+    interaction: "document.getElementById('menuToggleButton').click(); document.querySelector('[data-drawer-trigger=extras]').click()",
+    requireDrawer: true, checkMenu: true, capture: true
   },
   {
     name: "search-desktop",
@@ -155,7 +187,8 @@ const scenarios = [
     path: "/assessments.html",
     width: 390,
     height: 844,
-    expected: ["Chapter assessments", "Start assessment"]
+    expected: ["Chapter assessments", "Start assessment"],
+    fromExtras: "assessments"
   },
   {
     name: "daily-challenge-mobile",
@@ -163,6 +196,7 @@ const scenarios = [
     width: 390,
     height: 844,
     expected: ["Daily Challenge", "Prepare my challenge", "no missed-day penalty"],
+    fromExtras: "daily-challenge",
     capture: true
   },
   {
@@ -199,7 +233,22 @@ const scenarios = [
     path: "/index.html?view=journey",
     width: 1440,
     height: 900,
-    expected: ["Study journey", "Sign in with Google"]
+    expected: ["Study journey", "Sign in with Google"],
+    fromExtras: "journey"
+  },
+  {
+    name: "extras-all-simulators",
+    path: "/?view=simulators",
+    width: 1440, height: 900,
+    expected: ["All reviewed chapters", "Double-Slit", "Clebsch-Gordan"],
+    fromExtras: "simulators", simulatorChapter: "all", capture: true
+  },
+  {
+    name: "simulators-chapter-filter",
+    path: "/?view=simulators&chapter=07",
+    width: 390, height: 844,
+    expected: ["Chapter 07", "Clebsch-Gordan", "All simulators"],
+    simulatorChapter: "7", capture: true
   },
   {
     name: "locked-chapter-mobile",
@@ -240,6 +289,8 @@ const auditExpression = `(() => {
     canonical: document.querySelector('link[rel="canonical"]')?.href || "",
     robots: document.querySelector('meta[name="robots"]')?.content || "",
     currentPath: location.pathname,
+    simulatorChapters: [...new Set(Array.from(document.querySelectorAll('[data-simulator-chapter]'), el => el.dataset.simulatorChapter))],
+    simulatorCards: document.querySelectorAll('[data-simulator-chapter]').length,
     mathCount: document.querySelectorAll("mjx-container").length,
     canvasCount: document.querySelectorAll("canvas").length,
     tableCount: document.querySelectorAll("table").length,
@@ -347,7 +398,7 @@ try {
       features: [{ name: "prefers-reduced-motion", value: scenario.reducedMotion ? "reduce" : "no-preference" }]
     });
     const load = client.once("Page.loadEventFired", 20000).catch(function () { return null; });
-    await client.send("Page.navigate", { url: new URL(scenario.path, BASE_URL).toString() });
+    await client.send("Page.navigate", { url: new URL(scenario.fromExtras ? "/?view=chapters" : scenario.path, BASE_URL).toString() });
     await load;
     await sleep(2500);
     // This is an isolated, disposable Chrome profile. Decline optional analytics
@@ -358,9 +409,76 @@ try {
       returnByValue: true
     });
     await sleep(100);
+    if (scenario.fromExtras) {
+      const navigation = client.once("Page.loadEventFired", 20000);
+      const click = await client.send("Runtime.evaluate", {
+        expression: `document.getElementById('menuToggleButton').click(); document.querySelector('[data-drawer-trigger=extras]').click(); document.querySelector('#extrasList a[data-view-id="${scenario.fromExtras}"]').click()`,
+        returnByValue: true
+      });
+      if (click.exceptionDetails) throw new Error(scenario.name + " could not activate Extras link");
+      await navigation;
+      await sleep(2500);
+      const destination = await client.send("Runtime.evaluate", { expression: "location.pathname + location.search", returnByValue: true });
+      const expected = new URL(scenario.path, BASE_URL);
+      const actual = new URL(destination.result.value, BASE_URL);
+      if (actual.pathname !== expected.pathname.replace('/index.html', '/') || actual.searchParams.get('view') !== expected.searchParams.get('view')) {
+        errors.push(scenario.name + " did not navigate to the intended Extras destination.");
+      }
+    }
     if (scenario.interaction) {
-      await client.send("Runtime.evaluate", { expression: scenario.interaction, awaitPromise: true });
+      const interaction = await client.send("Runtime.evaluate", { expression: scenario.interaction, awaitPromise: true });
+      if (interaction.exceptionDetails) throw new Error(scenario.name + " interaction failed");
       await sleep(500);
+    }
+    if (scenario.checkCompanion) {
+      const companion = await client.send('Runtime.evaluate', {
+        expression: `(() => {
+          const link = document.querySelector('.top-header .companion-book__link');
+          if (!link) return ['Missing companion link in header'];
+          const issues = [];
+          if (link.href !== 'https://termo.app.br/' || link.target !== '_blank'
+            || !link.relList.contains('noopener') || !link.relList.contains('noreferrer')) issues.push('Unsafe or incorrect companion destination');
+          const rect = link.getBoundingClientRect();
+          if (rect.height < 44 || rect.left < 0 || rect.right > innerWidth) issues.push('Companion touch target is clipped or too small');
+          if (document.querySelectorAll('.top-header .header-tools .header-action').length !== 4) issues.push('Primary actions changed');
+          return issues;
+        })()`, returnByValue: true
+      });
+      errors.push(...(companion.result.value || []).map(message => scenario.name + ': ' + message));
+      await client.send('Runtime.evaluate', { expression: "document.querySelector('.companion-book__link').focus()" });
+      await client.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, modifiers: 8 });
+      await client.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9, modifiers: 8 });
+      await client.send('Input.dispatchKeyEvent', { type: 'keyDown', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+      await client.send('Input.dispatchKeyEvent', { type: 'keyUp', key: 'Tab', code: 'Tab', windowsVirtualKeyCode: 9 });
+      const focused = await client.send('Runtime.evaluate', { expression: `(() => {
+        const link = document.querySelector('.companion-book__link');
+        return document.activeElement === link && getComputedStyle(link).outlineStyle !== 'none';
+      })()`, returnByValue: true });
+      if (!focused.result.value) errors.push(scenario.name + ': Companion keyboard focus is not visible');
+    }
+
+    if (scenario.checkMenu) {
+      const menu = await client.send("Runtime.evaluate", {
+        expression: `(() => {
+          const failures = [];
+          const visible = el => !!el && getComputedStyle(el).visibility !== 'hidden' && el.getBoundingClientRect().height > 0;
+          const original = document.querySelector('[data-drawer-trigger][aria-expanded=true]')?.dataset.drawerTrigger;
+          for (const group of ['extras', 'chapters', 'simulators', 'personal']) {
+            const trigger = document.querySelector('[data-drawer-trigger="' + group + '"]');
+            if (trigger.getAttribute('aria-expanded') !== 'true') trigger.click();
+            if (!visible(document.querySelector('.drawer-search-link'))) failures.push('Search hidden after ' + group);
+            if (document.querySelectorAll('.drawer-group-panel.is-open').length !== 1) failures.push('Accordion state mismatch: ' + group);
+            if (group === 'extras') for (const id of ['journey','assessments','daily-challenge','simulators']) {
+              if (!visible(document.querySelector('#extrasList a[data-view-id="' + id + '"]'))) failures.push('Missing Extras link: ' + id);
+            }
+          }
+          const restore = document.querySelector('[data-drawer-trigger="' + original + '"]');
+          if (restore && restore.getAttribute('aria-expanded') !== 'true') restore.click();
+          return failures;
+        })()`, returnByValue: true
+      });
+      if (menu.exceptionDetails) throw new Error(scenario.name + " menu assertions failed");
+      errors.push(...(menu.result.value || []).map(message => scenario.name + ': ' + message));
     }
     const evaluated = await client.send("Runtime.evaluate", {
       expression: auditExpression,
@@ -368,6 +486,12 @@ try {
       awaitPromise: true
     });
     const result = evaluated.result?.value || {};
+    if (scenario.simulatorChapter === "all") {
+      if (result.simulatorChapters.length < 2 || !result.simulatorChapters.includes('7')) errors.push(scenario.name + " did not show the complete multi-chapter catalogue.");
+    } else if (scenario.simulatorChapter) {
+      if (JSON.stringify(result.simulatorChapters) !== JSON.stringify([scenario.simulatorChapter])) errors.push(scenario.name + " chapter filter mismatch.");
+    }
+    if ((result.simulatorChapters || []).some(chapter => Number(chapter) > 7)) errors.push(scenario.name + " exposed a locked simulator chapter.");
     if (initialIndexMeta) {
       if (initialIndexMeta.canonical !== result.canonical) errors.push(scenario.name + " initial/runtime canonical disagreement.");
       if (initialIndexMeta.robots !== result.robots) errors.push(scenario.name + " initial/runtime robots disagreement.");
@@ -424,6 +548,7 @@ try {
       keyboardFocus
     });
   }
+  if (process.env.QM_AUDIT_SYNTHETIC_LEARNING === '1') evidence.push(...await checkLearningBrowser(client, BASE_URL));
 } finally {
   if (client) client.close();
   chrome.kill("SIGTERM");

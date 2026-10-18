@@ -6,7 +6,8 @@ const root = new URL('../', import.meta.url);
 const target = 'supabase/fresh/supabase/migrations/20260926204825_qm_clean_baseline.sql';
 const receipt = 'supabase/fresh/baseline-manifest.json';
 const sha = value => createHash('sha256').update(value).digest('hex');
-const files = readdirSync(new URL('supabase/migrations/',root)).filter(f=>f.endsWith('.sql')).sort();
+// Freeze the original baseline; subsequent upgrades are applied after it.
+const files = readdirSync(new URL('supabase/migrations/',root)).filter(f=>f.endsWith('.sql') && f.slice(0,14) <= '20260926154500').sort();
 assert.equal(files.length,21,'Baseline source set changed; review before regenerating');
 let guarded = 0;
 const sources = [];
