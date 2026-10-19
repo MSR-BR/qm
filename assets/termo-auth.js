@@ -12,7 +12,7 @@
   if (!assetBase) return;
   const script = document.createElement("script");
   script.defer = true;
-  script.src = new URL("qm-analytics.js?v=1018.3", assetBase).toString();
+  script.src = new URL("qm-analytics.js?v=1019.1", assetBase).toString();
   script.dataset.qmAnalyticsLoader = "true";
   document.head.appendChild(script);
 })();
@@ -20,7 +20,7 @@
   if (window.TermoAuth) return;
 
   const CONFIG_ENDPOINT = "/api/public-config";
-  const SUPABASE_ESM_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+  const SUPABASE_ESM_URL = "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/+esm";
   const DEFAULT_AUTH_SITE_URL = "https://quantummechanicsbook.app";
   const AUTH_SITE_URL = /^(http|https):$/i.test(window.location.protocol)
     ? window.location.origin

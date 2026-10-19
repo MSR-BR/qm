@@ -25,6 +25,8 @@ try {
       return route.fulfill({ body: '<!doctype html><meta name="viewport" content="width=device-width,initial-scale=1"><title>QUANTUM test</title><button data-qm-analytics-settings>Preferences</button><script src="/assets/qm-analytics.js"></script>', contentType: 'text/html' });
     });
     const page = await context.newPage();
+    const errors = [];
+    page.on('pageerror', error => errors.push(error.message));
     await page.goto('https://quantummechanicsbook.app/?utm_source=codex_qa&utm_medium=qa&utm_campaign=quantum_c18_validation');
     await page.locator('[data-qm-analytics-consent-panel]').waitFor();
     assert.equal(calls.length, 0);
@@ -49,10 +51,32 @@ try {
     assert.equal(config.campaign_source, 'codex_qa');
     assert.equal(config.campaign_medium, 'qa');
     assert.equal(config.page_location, 'https://quantummechanicsbook.app/?view=chapters');
+    const complete = target => target.evaluate(() => {
+      for (const status of ['completed', 'in_progress', 'completed']) {
+        window.dispatchEvent(new CustomEvent('qm-study-progress-change', { detail: {
+          record: { status }, item: { chapterId: '01', itemId: '1.2', pagePath: 'slides/chapter-01/fixture.html' }
+        } }));
+      }
+      // Drain the same lock after the event listeners' asynchronous critical sections.
+      return navigator.locks.request('qm_analytics_completed_v1:01:1.2', () => {});
+    });
+    const count = target => target.evaluate(() => Array.from(window.dataLayer).filter(c => c[0] === 'event' && c[1] === 'section_complete').length);
+    const second = await context.newPage();
+    await second.goto('https://quantummechanicsbook.app/?view=chapters');
+    await second.waitForFunction(() => window.QMAnalytics?.isEnabled());
+    await Promise.all([complete(page), complete(second)]);
+    assert.equal(await count(page) + await count(second), 1, 'simultaneous tabs count a section only once');
+    await second.close();
+    await page.reload();
+    await page.waitForFunction(() => window.QMAnalytics?.isEnabled());
+    await complete(page);
+    assert.equal(await count(page), 0, 'reload does not reset the completion marker');
     await page.getByRole('button', { name: 'Preferences', exact: true }).click();
     await page.getByRole('button', { name: 'Only necessary' }).click();
     assert.equal(await page.evaluate(() => window['ga-disable-G-X5Y1C68QMN']), true);
+    assert.equal(await page.evaluate(() => localStorage.getItem('qm_analytics_completed_v1:01:1.2')), null);
+    assert.deepEqual(errors, []);
     await context.close();
-    console.log('PASS consent controls, revocation and attribution at ' + width + 'px (all external requests stubbed)');
+    console.log('PASS consent, revocation, attribution, concurrent completion and reload at ' + width + 'px (all external requests stubbed)');
   }
 } finally { await browser.close(); }

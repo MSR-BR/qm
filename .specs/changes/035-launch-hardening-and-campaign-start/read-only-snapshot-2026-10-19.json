@@ -1,0 +1,762 @@
+{
+  "capturedAt": "2026-10-19T22:12:50Z",
+  "mode": "read-only",
+  "source": "HYPD Google Ads / Google Analytics connectors",
+  "googleAdsCustomer": "3838359068",
+  "currency": "EUR",
+  "campaignConfiguration": {
+    "googleAdsId": "3838359068",
+    "result": {
+      "columns": [
+        "campaign__id",
+        "campaign__name",
+        "campaign__status",
+        "campaign__advertising_channel_type",
+        "campaign__bidding_strategy_type",
+        "campaign__target_spend__cpc_bid_ceiling",
+        "campaign__network_settings__target_google_search",
+        "campaign__network_settings__target_search_network",
+        "campaign__network_settings__target_content_network",
+        "campaign__geo_target_type_setting__positive_geo_target_type",
+        "campaign__final_url_suffix",
+        "campaign__tracking_url_template",
+        "campaign__campaign_budget",
+        "campaign_budget__id",
+        "campaign_budget__amount",
+        "campaign_budget__explicitly_shared",
+        "campaign__asset_automation_settings",
+        "campaign__ai_max_setting__enable_ai_max"
+      ],
+      "rows": [
+        {
+          "campaign__id": 24027143907,
+          "campaign__name": "TERMO - Search - BR - PT",
+          "campaign__status": "ENABLED",
+          "campaign__advertising_channel_type": "SEARCH",
+          "campaign__bidding_strategy_type": "TARGET_SPEND",
+          "campaign__target_spend__cpc_bid_ceiling": null,
+          "campaign__network_settings__target_google_search": true,
+          "campaign__network_settings__target_search_network": true,
+          "campaign__network_settings__target_content_network": false,
+          "campaign__geo_target_type_setting__positive_geo_target_type": "PRESENCE",
+          "campaign__final_url_suffix": "",
+          "campaign__tracking_url_template": "",
+          "campaign__campaign_budget": "customers/3838359068/campaignBudgets/15717335910",
+          "campaign_budget__id": 15717335910,
+          "campaign_budget__amount": 2,
+          "campaign_budget__explicitly_shared": false,
+          "campaign__asset_automation_settings": "[{\n  \"asset_automation_type\": \"TEXT_ASSET_AUTOMATION\",\n  \"asset_automation_status\": \"OPTED_OUT\"\n}, {\n  \"asset_automation_type\": \"FINAL_URL_EXPANSION_TEXT_ASSET_AUTOMATION\",\n  \"asset_automation_status\": \"OPTED_OUT\"\n}]",
+          "campaign__ai_max_setting__enable_ai_max": false
+        },
+        {
+          "campaign__id": 24369162368,
+          "campaign__name": "QUANTUM - Search - International - EN - Pilot",
+          "campaign__status": "PAUSED",
+          "campaign__advertising_channel_type": "SEARCH",
+          "campaign__bidding_strategy_type": "TARGET_SPEND",
+          "campaign__target_spend__cpc_bid_ceiling": 0.25,
+          "campaign__network_settings__target_google_search": true,
+          "campaign__network_settings__target_search_network": false,
+          "campaign__network_settings__target_content_network": false,
+          "campaign__geo_target_type_setting__positive_geo_target_type": "PRESENCE",
+          "campaign__final_url_suffix": "utm_source=google&utm_medium=cpc&utm_campaign=quantum_international_en_search_pilot",
+          "campaign__tracking_url_template": "",
+          "campaign__campaign_budget": "customers/3838359068/campaignBudgets/15962079046",
+          "campaign_budget__id": 15962079046,
+          "campaign_budget__amount": 2,
+          "campaign_budget__explicitly_shared": false,
+          "campaign__asset_automation_settings": "[{\n  \"asset_automation_type\": \"TEXT_ASSET_AUTOMATION\",\n  \"asset_automation_status\": \"OPTED_OUT\"\n}]",
+          "campaign__ai_max_setting__enable_ai_max": null
+        }
+      ]
+    }
+  },
+  "ga4": {
+    "query": {
+      "propertyId": "properties/554204628",
+      "dimensions": [
+        "dateHourMinute",
+        "eventName",
+        "sessionSourceMedium",
+        "sessionCampaignName"
+      ],
+      "metrics": [
+        "eventCount"
+      ],
+      "dateRanges": [
+        {
+          "startDate": "2026-10-18",
+          "endDate": "2026-10-19"
+        }
+      ],
+      "dimensionFilter": {
+        "filter": {
+          "fieldName": "eventName",
+          "stringFilter": {
+            "matchType": "EXACT",
+            "value": "section_complete"
+          }
+        }
+      }
+    },
+    "report": {
+      "dimensionHeaders": [
+        "dateHourMinute",
+        "eventName",
+        "sessionSourceMedium",
+        "sessionCampaignName"
+      ],
+      "metricHeaders": [
+        {
+          "name": "eventCount",
+          "type": "TYPE_INTEGER"
+        }
+      ],
+      "rows": [
+        {
+          "dateHourMinute": "202610181228",
+          "eventName": "section_complete",
+          "sessionSourceMedium": "accounts.google.com / referral",
+          "sessionCampaignName": "(referral)",
+          "eventCount": "1"
+        },
+        {
+          "dateHourMinute": "202610182133",
+          "eventName": "section_complete",
+          "sessionSourceMedium": "accounts.google.com / referral",
+          "sessionCampaignName": "(referral)",
+          "eventCount": "1"
+        },
+        {
+          "dateHourMinute": "202610182217",
+          "eventName": "section_complete",
+          "sessionSourceMedium": "codex_qa / qa",
+          "sessionCampaignName": "quantum_c18_validation",
+          "eventCount": "1"
+        }
+      ],
+      "rowCount": 3,
+      "totals": null,
+      "metadata": {
+        "currencyCode": "BRL",
+        "timeZone": "America/Sao_Paulo"
+      },
+      "propertyQuota": null
+    }
+  },
+  "queries": {
+    "targeting": {
+      "query": "SELECT campaign_criterion.type, campaign_criterion.negative, campaign_criterion.status, campaign_criterion.location.geo_target_constant, campaign_criterion.language.language_constant, campaign_criterion.keyword.text, campaign_criterion.keyword.match_type FROM campaign_criterion WHERE campaign.id = 24369162368 AND campaign_criterion.status != 'REMOVED'",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "campaign_criterion__type",
+            "campaign_criterion__negative",
+            "campaign_criterion__status",
+            "campaign_criterion__location__geo_target_constant",
+            "campaign_criterion__language__language_constant",
+            "campaign_criterion__keyword__text",
+            "campaign_criterion__keyword__match_type"
+          ],
+          "rows": [
+            {
+              "campaign_criterion__type": "LANGUAGE",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": "languageConstants/1000",
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2032",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2036",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2050",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2076",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2124",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2356",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2360",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2372",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2404",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2484",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2554",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2566",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2586",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2608",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2710",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2826",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "LOCATION",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2840",
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "DEVICE",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "DEVICE",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "DEVICE",
+              "campaign_criterion__negative": false,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": null,
+              "campaign_criterion__keyword__match_type": null
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "trading",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "jobs",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "salary",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "healing",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "crypto",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "manifestation",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "pirated",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "torrent",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "quantum computer",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "quantum computing",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "campaign_criterion__type": "KEYWORD",
+              "campaign_criterion__negative": true,
+              "campaign_criterion__status": "ENABLED",
+              "campaign_criterion__location__geo_target_constant": null,
+              "campaign_criterion__language__language_constant": null,
+              "campaign_criterion__keyword__text": "quantum ai",
+              "campaign_criterion__keyword__match_type": "PHRASE"
+            }
+          ]
+        }
+      }
+    },
+    "ad": {
+      "query": "SELECT ad_group.id, ad_group.status, ad_group_ad.ad.id, ad_group_ad.status, ad_group_ad.policy_summary.approval_status, ad_group_ad.ad.final_urls, ad_group_ad.ad.responsive_search_ad.headlines, ad_group_ad.ad.responsive_search_ad.descriptions FROM ad_group_ad WHERE campaign.id = 24369162368 AND ad_group_ad.status != 'REMOVED'",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "ad_group__id",
+            "ad_group__status",
+            "ad_group_ad__ad__id",
+            "ad_group_ad__status",
+            "ad_group_ad__policy_summary__approval_status",
+            "ad_group_ad__ad__final_urls",
+            "ad_group_ad__ad__responsive_search_ad__headlines",
+            "ad_group_ad__ad__responsive_search_ad__descriptions"
+          ],
+          "rows": [
+            {
+              "ad_group__id": 199601244925,
+              "ad_group__status": "PAUSED",
+              "ad_group_ad__ad__id": 828563447756,
+              "ad_group_ad__status": "PAUSED",
+              "ad_group_ad__policy_summary__approval_status": "APPROVED",
+              "ad_group_ad__ad__final_urls": "[\"https://quantummechanicsbook.app/\"]",
+              "ad_group_ad__ad__responsive_search_ad__headlines": "[{\n  \"text\": \"Learn Quantum Mechanics\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Interactive Physics Book\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Explore Quantum Simulators\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Study Quantum Step by Step\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Practice Quantum Exercises\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Build Your Study Journey\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Quantum Mechanics in English\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Read Explore and Practice\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}]",
+              "ad_group_ad__ad__responsive_search_ad__descriptions": "[{\n  \"text\": \"Read in English and practise concepts with exercises and chapter assessments.\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Build a study routine with progress tracking and daily challenges. Google sign-in.\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Start with the reviewed chapters and explore the interactive learning tools.\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}]"
+            }
+          ]
+        }
+      }
+    },
+    "keywords": {
+      "query": "SELECT ad_group_criterion.status, ad_group_criterion.negative, ad_group_criterion.keyword.text, ad_group_criterion.keyword.match_type FROM ad_group_criterion WHERE campaign.id = 24369162368 AND ad_group_criterion.type = 'KEYWORD' AND ad_group_criterion.status != 'REMOVED'",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "ad_group_criterion__status",
+            "ad_group_criterion__negative",
+            "ad_group_criterion__keyword__text",
+            "ad_group_criterion__keyword__match_type"
+          ],
+          "rows": [
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "learn quantum mechanics",
+              "ad_group_criterion__keyword__match_type": "EXACT"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "learn quantum mechanics",
+              "ad_group_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "quantum mechanics exercises",
+              "ad_group_criterion__keyword__match_type": "EXACT"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "interactive quantum mechanics",
+              "ad_group_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "quantum physics simulator",
+              "ad_group_criterion__keyword__match_type": "EXACT"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "quantum mechanics simulations",
+              "ad_group_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "quantum mechanics exercises",
+              "ad_group_criterion__keyword__match_type": "PHRASE"
+            },
+            {
+              "ad_group_criterion__status": "PAUSED",
+              "ad_group_criterion__negative": false,
+              "ad_group_criterion__keyword__text": "quantum mechanics interactive book",
+              "ad_group_criterion__keyword__match_type": "EXACT"
+            }
+          ]
+        }
+      }
+    },
+    "goals": {
+      "query": "SELECT campaign.id, conversion_goal_campaign_config.goal_config_level, conversion_goal_campaign_config.custom_conversion_goal FROM conversion_goal_campaign_config WHERE campaign.id IN (24369162368, 24027143907)",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "campaign__id",
+            "conversion_goal_campaign_config__goal_config_level",
+            "conversion_goal_campaign_config__custom_conversion_goal"
+          ],
+          "rows": [
+            {
+              "campaign__id": 24027143907,
+              "conversion_goal_campaign_config__goal_config_level": "CUSTOMER",
+              "conversion_goal_campaign_config__custom_conversion_goal": ""
+            },
+            {
+              "campaign__id": 24369162368,
+              "conversion_goal_campaign_config__goal_config_level": "CAMPAIGN",
+              "conversion_goal_campaign_config__custom_conversion_goal": "customers/3838359068/customConversionGoals/6459537936"
+            }
+          ]
+        }
+      }
+    },
+    "spend": {
+      "query": "SELECT campaign.id, metrics.cost_micros, metrics.clicks, metrics.impressions FROM campaign WHERE campaign.id = 24369162368",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "campaign__id",
+            "metrics__cost",
+            "metrics__clicks",
+            "metrics__impressions"
+          ],
+          "rows": [
+            {
+              "campaign__id": 24369162368,
+              "metrics__cost": 0,
+              "metrics__clicks": 0,
+              "metrics__impressions": 0
+            }
+          ]
+        }
+      }
+    },
+    "conversion": {
+      "query": "SELECT conversion_action.id, conversion_action.name, conversion_action.status, conversion_action.type, conversion_action.counting_type, conversion_action.primary_for_goal, conversion_action.value_settings.default_value, conversion_action.value_settings.always_use_default_value FROM conversion_action WHERE conversion_action.id = 7855071770",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "conversion_action__id",
+            "conversion_action__name",
+            "conversion_action__status",
+            "conversion_action__type",
+            "conversion_action__counting_type",
+            "conversion_action__primary_for_goal",
+            "conversion_action__value_settings__default_value",
+            "conversion_action__value_settings__always_use_default_value"
+          ],
+          "rows": [
+            {
+              "conversion_action__id": 7855071770,
+              "conversion_action__name": "QUANTUM (web) section_complete",
+              "conversion_action__status": "ENABLED",
+              "conversion_action__type": "GOOGLE_ANALYTICS_4_CUSTOM",
+              "conversion_action__counting_type": "ONE_PER_CLICK",
+              "conversion_action__primary_for_goal": false,
+              "conversion_action__value_settings__default_value": 0,
+              "conversion_action__value_settings__always_use_default_value": true
+            }
+          ]
+        }
+      }
+    },
+    "customGoal": {
+      "query": "SELECT custom_conversion_goal.id, custom_conversion_goal.status, custom_conversion_goal.conversion_actions FROM custom_conversion_goal WHERE custom_conversion_goal.id = 6459537936",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "custom_conversion_goal__id",
+            "custom_conversion_goal__status",
+            "custom_conversion_goal__conversion_actions"
+          ],
+          "rows": [
+            {
+              "custom_conversion_goal__id": 6459537936,
+              "custom_conversion_goal__status": "ENABLED",
+              "custom_conversion_goal__conversion_actions": "[\"customers/3838359068/conversionActions/7855071770\"]"
+            }
+          ]
+        }
+      }
+    },
+    "campaignAssets": {
+      "query": "SELECT campaign.id, campaign_asset.asset, campaign_asset.field_type, campaign_asset.status FROM campaign_asset WHERE campaign.id = 24369162368 AND campaign_asset.status != 'REMOVED'",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "campaign__id",
+            "campaign_asset__asset",
+            "campaign_asset__field_type",
+            "campaign_asset__status"
+          ],
+          "rows": []
+        }
+      }
+    },
+    "customerAssets": {
+      "query": "SELECT customer_asset.asset, customer_asset.field_type, customer_asset.status FROM customer_asset WHERE customer_asset.status != 'REMOVED'",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "customer_asset__asset",
+            "customer_asset__field_type",
+            "customer_asset__status"
+          ],
+          "rows": [
+            {
+              "customer_asset__asset": "customers/3838359068/assets/211723829310",
+              "customer_asset__field_type": "SITELINK",
+              "customer_asset__status": "PAUSED"
+            },
+            {
+              "customer_asset__asset": "customers/3838359068/assets/212167698599",
+              "customer_asset__field_type": "SITELINK",
+              "customer_asset__status": "PAUSED"
+            }
+          ]
+        }
+      }
+    },
+    "defaults": {
+      "query": "SELECT customer_conversion_goal.category, customer_conversion_goal.origin, customer_conversion_goal.biddable FROM customer_conversion_goal",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "customer_conversion_goal__category",
+            "customer_conversion_goal__origin",
+            "customer_conversion_goal__biddable"
+          ],
+          "rows": [
+            {
+              "customer_conversion_goal__category": "PAGE_VIEW",
+              "customer_conversion_goal__origin": "WEBSITE",
+              "customer_conversion_goal__biddable": false
+            },
+            {
+              "customer_conversion_goal__category": "ENGAGEMENT",
+              "customer_conversion_goal__origin": "WEBSITE",
+              "customer_conversion_goal__biddable": true
+            },
+            {
+              "customer_conversion_goal__category": "ENGAGEMENT",
+              "customer_conversion_goal__origin": "YOUTUBE_HOSTED",
+              "customer_conversion_goal__biddable": true
+            },
+            {
+              "customer_conversion_goal__category": "YOUTUBE_FOLLOW_ON_VIEWS",
+              "customer_conversion_goal__origin": "YOUTUBE_HOSTED",
+              "customer_conversion_goal__biddable": false
+            }
+          ]
+        }
+      }
+    },
+    "sharedLists": {
+      "query": "SELECT campaign_shared_set.shared_set, campaign_shared_set.status FROM campaign_shared_set WHERE campaign.id = 24369162368 AND campaign_shared_set.status != 'REMOVED'",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "campaign_shared_set__shared_set",
+            "campaign_shared_set__status"
+          ],
+          "rows": []
+        }
+      }
+    },
+    "autoTagging": {
+      "query": "SELECT customer.id, customer.currency_code, customer.time_zone, customer.auto_tagging_enabled FROM customer",
+      "result": {
+        "googleAdsId": "3838359068",
+        "result": {
+          "columns": [
+            "customer__id",
+            "customer__currency_code",
+            "customer__time_zone",
+            "customer__auto_tagging_enabled"
+          ],
+          "rows": [
+            {
+              "customer__id": 3838359068,
+              "customer__currency_code": "EUR",
+              "customer__time_zone": "America/Sao_Paulo",
+              "customer__auto_tagging_enabled": true
+            }
+          ]
+        }
+      }
+    }
+  },
+  "unresolved": [
+    "GA4 processed report has no 2026-10-19 section_complete row; earlier realtime/transport proof remains historical.",
+    "QUANTUM final URL expansion has no explicit opt-out in this API result; AI Max value null is not proof of false. Confirm in panel before activation.",
+    "No production deployment, Google login, or Ads mutation performed in C35."
+  ]
+}

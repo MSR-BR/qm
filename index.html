@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script src="assets/qm-simulator-catalog.js?v=0814.1"></script>
+  <script src="assets/qm-simulator-catalog.js?v=1019.1"></script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>QUANTUM | Interactive Quantum Mechanics book</title>
@@ -2470,7 +2470,7 @@
 (function () {
   const scripts = [
     "assets/termo-share.js?v=0714.3",
-    "assets/termo-auth.js?v=0910.3",
+    "assets/termo-auth.js?v=1019.1",
     "assets/qm-first-login-preferences.js?v=0925.1",
     "assets/termo-user-data.js?v=0731.1",
     "assets/qm-study-progress.js?v=0903.3",
@@ -2506,7 +2506,7 @@
 <!-- termo-seo:end -->
 <script src="assets/qm-release.js"></script>
 <script src="assets/qm-content-registry.js?v=seo-20261018"></script>
-<script defer src="assets/termo-seo.js?v=seo-20261018"></script>
+<script defer src="assets/termo-seo.js?v=1019.1"></script>
 </head>
 
 <body>
@@ -3772,6 +3772,7 @@
     }
 
     function syncUrl() {
+      const previousUrl = window.location.href;
       const url = new URL(window.location.href);
       url.searchParams.set("view", state.view);
       if (state.chapterId) {
@@ -3785,6 +3786,7 @@
         url.searchParams.delete("sim");
       }
       window.history.replaceState({}, "", url);
+      if (url.href !== previousUrl) window.dispatchEvent(new CustomEvent("qm-navigation-change"));
     }
 
     function renderChapterMenu() {
@@ -5873,7 +5875,7 @@
 
           if (!existingScript) {
             const script = document.createElement("script");
-            script.src = "assets/termo-auth.js?v=0910.3";
+            script.src = "assets/termo-auth.js?v=1019.1";
             script.async = true;
             script.onerror = function () {
               if (settled) return;

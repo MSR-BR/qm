@@ -299,6 +299,16 @@
     },
     {
       "channel": "ui",
+      "name": "qm-navigation-change",
+      "category": "infrastructure",
+      "source": "index.html",
+      "canonicalEvent": null,
+      "awardAuthority": false,
+      "masteryAuthority": false,
+      "note": "Refreshes consented campaign attribution on app navigation; no GA4 event, points, progress or mastery."
+    },
+    {
+      "channel": "ui",
       "name": "termo-auth-state-change",
       "category": "infrastructure",
       "source": "assets/termo-auth.js",

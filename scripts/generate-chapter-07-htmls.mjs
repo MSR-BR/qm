@@ -123,7 +123,7 @@ function renderPage(page, index, total) {
   <script>window.va=window.va||function(){(window.vaq=window.vaq||[]).push(arguments);};</script><script defer src="/_vercel/insights/script.js"></script>
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0731.1" /><script defer src="../../assets/ai-exercises.js?v=0813.1"></script>
   <script defer src="../../assets/termo-share.js?v=0717.1"></script><link rel="stylesheet" href="../../assets/termo-auth.css?v=0717.1" />
-  <script defer src="../../assets/termo-auth.js?v=0717.2"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=0614.1"></script>
+  <script defer src="../../assets/termo-auth.js?v=1019.1"></script><script defer src="../../assets/termo-user-data.js?v=0731.1"></script><script defer src="../../assets/termo-seo.js?v=1019.1"></script>
 </head><body><div class="slide">
   <div class="hdr"><div class="hdr-inner"><a href="/?view=chapters&chapter=07" class="index-back-button"><i class="fa-solid fa-arrow-left"></i> Index</a><div class="chapter-label"><i class="fa-solid fa-layer-group"></i> Chapter 7 · Item ${page.id}</div><h1 class="hdr-title">${page.title}</h1><div class="hdr-sub">${page.subtitle}</div></div><div class="slide-num">${index + 1} / ${total}</div></div>
   <div class="body">

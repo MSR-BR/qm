@@ -1,7 +1,7 @@
 (function () {
   if (window.QMAnalytics) return;
 
-  const VERSION = "1018.3";
+  const VERSION = "1019.1";
   const CONFIG_ENDPOINT = "/api/public-config";
   const EVENT_ENDPOINT = "/api/qm-analytics-event";
   const CONSENT_STORAGE_KEY = "qm_analytics_consent_v1";
@@ -10,6 +10,7 @@
   const CONSENT_VERSION = "qm-analytics-consent-v1";
   const ADS_CONSENT_KEY = "qm_ads_measurement_consent_v1";
   const ATTRIBUTION_KEY = "qm_campaign_attribution_v1";
+  const COMPLETION_KEY_PREFIX = "qm_analytics_completed_v1:";
   const ATTRIBUTION_TTL_MS = 30 * 60 * 1000;
   const PRODUCTION_HOST = "quantummechanicsbook.app";
   const QUEUE_LIMIT = 40;
@@ -54,6 +55,7 @@
   let analyticsEnabled = false;
   let booted = false;
   let searchTimer = null;
+  const completedSections = new Set();
 
   function storageGet(storageName, key) {
     try {
@@ -143,8 +145,8 @@
   }
 
   // Only our published campaign vocabulary is accepted, never arbitrary query text.
-  // Store only after analytics consent, in this tab, for at most 30 minutes.
-  function campaignAttribution() {
+  // Store only after analytics consent, in this tab, for 30 minutes of page-view inactivity.
+  function campaignAttribution(pageView) {
     if (consentDecision !== "granted") return {};
     const url = new URL(window.location.href);
     const campaigns = {
@@ -153,22 +155,23 @@
       quantum_c18_validation: ["codex_qa", "qa"]
     };
     const name = url.searchParams.get("utm_campaign");
-    const expected = campaigns[name];
+    const expected = Object.hasOwn(campaigns, name) ? campaigns[name] : null;
     let saved = {};
     try { saved = JSON.parse(storageGet("sessionStorage", ATTRIBUTION_KEY) || "{}"); } catch (_error) { /* fail closed */ }
-    if (!saved.expires || saved.expires <= Date.now() || saved.expires > Date.now() + ATTRIBUTION_TTL_MS || !Object.hasOwn(campaigns, saved.name)) saved = {};
+    if (!saved || !Number.isFinite(saved.expires) || saved.expires <= Date.now() || saved.expires > Date.now() + ATTRIBUTION_TTL_MS || !Object.hasOwn(campaigns, saved.name)) saved = {};
     if (expected && url.searchParams.get("utm_source") === expected[0] && url.searchParams.get("utm_medium") === expected[1]) {
-      saved = { name, expires: Date.now() + ATTRIBUTION_TTL_MS };
+      if (pageView) saved = { name, expires: Date.now() + ATTRIBUTION_TTL_MS };
     } else if (["utm_source", "utm_medium", "utm_campaign"].some(function (key) { return url.searchParams.has(key); })) {
       saved = {}; // A new, unknown campaign must not inherit stale attribution.
     }
+    if (pageView && saved.name) saved.expires = Date.now() + ATTRIBUTION_TTL_MS;
     if (saved.name) storageSet("sessionStorage", ATTRIBUTION_KEY, JSON.stringify(saved));
     else storageRemove("sessionStorage", ATTRIBUTION_KEY);
     const pair = campaigns[saved.name];
     return pair ? { campaign_source: pair[0], campaign_medium: pair[1], campaign_name: saved.name } : {};
   }
 
-  function googlePageContext() {
+  function googlePageContext(pageView) {
     const url = new URL(window.location.origin + safePath());
     // Click identifiers are passed only on the landing page after separate ads consent.
     // Google manages attribution cookies; we do not persist or log click identifiers.
@@ -184,7 +187,43 @@
       const previous = new URL(document.referrer);
       if (/^https?:$/.test(previous.protocol)) referrer = previous.origin + "/";
     } catch (_error) { /* No referrer. Never forward query, fragment or credentials. */ }
-    return { page_location: url.toString(), page_referrer: referrer, page_path: safePath(), ...campaignAttribution() };
+    return { page_location: url.toString(), page_referrer: referrer, page_path: safePath(), ...campaignAttribution(pageView) };
+  }
+
+  function clearCompletionMarkers() {
+    completedSections.clear();
+    try {
+      const keys = [];
+      for (let i = 0; i < window.localStorage.length; i += 1) {
+        const key = window.localStorage.key(i);
+        if (key?.startsWith(COMPLETION_KEY_PREFIX)) keys.push(key);
+      }
+      keys.forEach(function (key) { storageRemove("localStorage", key); });
+    } catch (_error) { /* Storage may be unavailable; the in-memory markers are cleared. */ }
+  }
+
+  function trackSectionCompletion(item) {
+    if (!analyticsEnabled || consentDecision !== "granted") return;
+    const chapter = String(item.chapterId || "").padStart(2, "0");
+    const section = String(item.itemId || "");
+    if (!/^\d{2}$/.test(chapter) || !/^\d{1,2}\.\d{1,3}$/.test(section)) return;
+    const key = COMPLETION_KEY_PREFIX + chapter + ":" + section;
+    const epoch = consentEpoch;
+    function record() {
+      // Recheck consent after waiting for another tab's completion lock.
+      if (consentDecision !== "granted" || epoch !== consentEpoch || completedSections.has(key) || storageGet("localStorage", key) === "1") return;
+      completedSections.add(key);
+      storageSet("localStorage", key, "1");
+      track("section_complete", {
+        chapter_id: item.chapterId,
+        item_id: item.itemId,
+        page_slug: String(item.pagePath || "").split("/").pop()?.replace(/\.html$/i, "") || "",
+        completed: true
+      });
+    }
+    // Web Locks serialize concurrent tabs; memory still deduplicates when storage is blocked.
+    if (navigator.locks?.request) void navigator.locks.request(key, record).catch(function () { /* Fail closed. */ });
+    else record();
   }
 
   function updateGoogleConsent() {
@@ -346,7 +385,7 @@
       allow_ad_personalization_signals: false,
       allow_google_signals: false,
       anonymize_ip: true,
-      ...googlePageContext(),
+      ...googlePageContext(true),
       page_title: String(document.title || "QUANTUM").slice(0, 120),
       debug_mode: isDebugMode()
     });
@@ -536,6 +575,7 @@
       window.clearTimeout(flushTimer);
       flushTimer = null;
       storageRemove("sessionStorage", ATTRIBUTION_KEY);
+      clearCompletionMarkers();
     }
 
     window.dispatchEvent(new CustomEvent("qm-analytics-consent-change", {
@@ -665,6 +705,17 @@
   }
 
   function bindEvents() {
+    let lastPagePath = safePath();
+    function renewNavigationAttribution() {
+      const path = safePath();
+      if (path === lastPagePath) return;
+      lastPagePath = path;
+      if (analyticsEnabled && consentDecision === "granted") campaignAttribution(true);
+    }
+    // Internal app navigation and Back/Forward are page views without a new document.
+    // GA4 retains its existing page-view collection; this only refreshes our tab TTL.
+    window.addEventListener("qm-navigation-change", renewNavigationAttribution);
+    window.addEventListener("popstate", renewNavigationAttribution);
     window.addEventListener("storage", function (event) {
       if (![CONSENT_STORAGE_KEY, ADS_CONSENT_KEY].includes(event.key) && event.key !== null) return;
       consentEpoch += 1;
@@ -675,6 +726,7 @@
       if (consentDecision !== "granted") {
         queue = [];
         storageRemove("sessionStorage", ATTRIBUTION_KEY);
+        clearCompletionMarkers();
       } else void activateAnalytics();
     });
     document.addEventListener("click", handleClick, true);
@@ -687,13 +739,7 @@
     });
     window.addEventListener("qm-study-progress-change", function (event) {
       if (event?.detail?.record?.status !== "completed") return;
-      const item = event.detail.item || {};
-      track("section_complete", {
-        chapter_id: item.chapterId || "",
-        item_id: item.itemId || "",
-        page_slug: String(item.pagePath || "").split("/").pop()?.replace(/\.html$/i, "") || "",
-        completed: true
-      });
+      trackSectionCompletion(event.detail.item || {});
     });
     window.addEventListener("pagehide", function () {
       void flush({ beacon: true, keepalive: true });

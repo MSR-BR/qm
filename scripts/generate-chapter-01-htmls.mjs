@@ -1056,7 +1056,7 @@ function renderPage(page, index) {
   <link rel="stylesheet" href="../../assets/termo-share.css?v=0714.3" />
   <script defer src="../../assets/termo-share.js?v=0714.3"></script>
   <link rel="stylesheet" href="../../assets/termo-auth.css?v=0714.3" />
-  <script defer src="../../assets/termo-auth.js?v=0714.3"></script>
+  <script defer src="../../assets/termo-auth.js?v=1019.1"></script>
   <script defer src="../../assets/termo-user-data.js?v=0714.3"></script>
 </head>
 <body>

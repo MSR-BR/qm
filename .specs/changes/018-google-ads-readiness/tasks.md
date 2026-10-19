@@ -6,7 +6,7 @@
 - [x] Draft ads, assets, negative keywords, conversion and consent plan.
 - [x] Review the countries, budget and campaign plan with the user; the owner explicitly authorized activation on 2026-10-19, subject to technical launch gates.
 - [x] Configure only the approved account items while paused; see the scoped setup and conversion reports.
-- [ ] Launch only after the remaining attribution-processing and Ads-access gates in `activation-gates-2026-10-19.md` are satisfied.
+- [ ] Launch follow-up is tracked in [C35](../035-launch-hardening-and-campaign-start/tasks.md). C35's 2026-10-19 read-only API access worked; processing evidence and current final-URL-expansion panel verification remain open, as do CPD/production acceptance and final owner confirmation. No activation is claimed.
 
 ## Paused preparation — 2026-10-18
 
@@ -48,7 +48,7 @@ Evidence and rollback: `paused-campaign-setup-2026-10-18.md`. C18 remains open; 
 - [x] Validate a fresh authenticated OAuth round-trip, one collected GA4 event with retained QA labels, and persisted section completion. Minute-level report places the two old Google referrals before the correction; see `activation-gates-2026-10-19.md`.
 - [x] Document and run a repeatable non-QA GA4 report segment; recheck manual and automated ad-asset associations. The internal filter remains in Testing, and Ads activation still requires an agent-operable authorized browser session.
 - [x] Obtain separate explicit activation approval on 2026-10-19.
-- [ ] Confirm the new 2026-10-19 completion in the processed GA4 attribution report and an adequate clean observation window; enable only QUANTUM delivery entities after the final checks. C18 remains open; no paid-click attribution is yet proven.
+- [ ] Continue the final report/panel checks and owner-confirmed activation through [C35 launch checkpoint](../035-launch-hardening-and-campaign-start/launch-2026-10-19.md). Its read-only GA4 query still has no Oct 19 completion row. The clean baseline excludes pre-fix/internal traffic per [C35 measurement rules](../035-launch-hardening-and-campaign-start/measurement-baseline-2026-10-19.md). C18 remains open; no paid-click attribution or campaign launch is proven.
 
 Current configuration, limitations and scoped rollback: `conversion-setup-2026-10-19.md`.
 

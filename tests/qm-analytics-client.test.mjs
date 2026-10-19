@@ -40,7 +40,7 @@ test("the client never exposes known sensitive learning payload fields", functio
 
 test("shared loaders cover reading pages, public SEO pages, and simulators", function () {
   for (const loaderSource of [authSource, seoSource, simulatorCatalogSource]) {
-    assert.match(loaderSource, /qm-analytics\.js\?v=1018\.3/);
+    assert.match(loaderSource, /qm-analytics\.js\?v=1019\.1/);
     assert.match(loaderSource, /window\.__qmAnalyticsLoaderStarted/);
   }
 });
