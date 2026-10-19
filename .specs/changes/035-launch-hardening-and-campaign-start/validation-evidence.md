@@ -3,8 +3,8 @@
 ## Checkpoint
 
 Corrections committed, pushed and published with owner authorization on 2026-10-19.
-Production bytes verified; owner production login/reload/logout acceptance remains
-open. No database migration, provider configuration or Ads mutation. Campaign paused.
+Production bytes verified; owner confirmed production login/reload/logout on
+2026-10-19. No database migration, provider configuration or Ads mutation. Campaign paused.
 The initial implementation-only evidence below is retained chronologically.
 
 ## Preflight and routing
@@ -163,7 +163,8 @@ Production auth acceptance remains separate from the publication receipt.
   clicks and spend. No campaign/account mutations; TERMO unchanged.
 - Browser control failed during initialization. Owner asked to perform Google login,
   reload/session persistence and logout in Safari, without another section completion.
-  This remains pending and will be recorded as owner-reported, not automated observation.
+  Owner subsequently confirmed “Login, recarga e saída funcionaram”. This closes the
+  authentication acceptance gate as owner-reported evidence, not automated observation.
 - Deployment skills guided target/provenance confirmation and public byte checks.
 - Bounded production error-log query (`--level error --since 10m --limit 20`) returned
   no entries. This is not a substitute for authenticated interaction testing.
@@ -171,7 +172,21 @@ Production auth acceptance remains separate from the publication receipt.
   in GitHub, despite the original deployment being READY and serving correct bytes.
   The documentation receipt is a separate subsequent commit/deployment, not a code fix.
 
-## Rollback procedure
+## Owner acceptance follow-up — 2026-10-19
+
+The owner confirmed all three requested Safari checks after publication: Google
+login, reload with the session retained, and logout. No password, token or code was
+requested or received. No new section completion was requested. This does not
+establish a new GA4/Ads conversion or authorize campaign activation.
+
+Final release-record commit `a7372adb31b3471dd94fa26a138d9d4f451b4e50`
+deployed READY as `dpl_yK5vvxXqhe5UXcKvSW14Vza8kUBE`; GitHub Vercel status success.
+Canonical root, auth loader and analytics matched HEAD. The preceding expanded
+read-only HTTP check passed 108 changed public HTML pages and 15 locked redirects.
+Campaign activation, final URL expansion panel evidence and processed GA4 evidence
+remain separate gates. QUANTUM campaign stays paused; TERMO unchanged.
+
+## Rollback instructions
 
 Before publication, review/revert only the C35 diff while preserving the supplied
 specs and any unrelated owner edits. After publication, prepare a scoped revert or

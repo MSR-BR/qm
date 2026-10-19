@@ -1,7 +1,7 @@
 # Tasks
 
 Current checkpoint, 2026-10-19: corrections published by authorized CPD; production
-auth acceptance pending; campaign remains paused. See `validation-evidence.md`, `measurement-baseline-2026-10-19.md`
+auth acceptance confirmed manually by the owner; campaign remains paused. See `validation-evidence.md`, `measurement-baseline-2026-10-19.md`
 and `launch-2026-10-19.md`. `[x]` below is evidence of the named task, not closure
 of the whole Change. The user explicitly requires notification before publication
 or Ads activation; no login was needed for these local/read-only checks.
@@ -20,7 +20,7 @@ or Ads activation; no login was needed for these local/read-only checks.
 - [x] Re-run all validations plus `scripts/test-qm-analytics-browser.mjs`; see validation receipt.
 - [x] Owner explicitly authorized CPD on 2026-10-19, with the campaign kept paused and TERMO unchanged.
 - [x] Verify Vercel READY and production bytes = committed candidate after CPD (`c7c5fb7`, receipt in validation evidence).
-- [ ] Owner performs one Google login for the production login/reload/logout check (no section completion needed).
+- [x] Owner confirmed Google login, reload with session persistence, and logout in Safari after publication: “Login, recarga e saída funcionaram”. Owner-reported acceptance, not an automated browser observation; no section completion requested.
 
 ## C. Measurement records
 
