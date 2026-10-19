@@ -1,13 +1,16 @@
 (function () {
   if (window.QMAnalytics) return;
 
-  const VERSION = "0912.1";
+  const VERSION = "1018.3";
   const CONFIG_ENDPOINT = "/api/public-config";
   const EVENT_ENDPOINT = "/api/qm-analytics-event";
   const CONSENT_STORAGE_KEY = "qm_analytics_consent_v1";
   const LOGIN_PENDING_KEY = "termo_auth_login_pending_v1";
   const SESSION_EVENT_KEY = "qm_analytics_session_event_v1";
   const CONSENT_VERSION = "qm-analytics-consent-v1";
+  const ADS_CONSENT_KEY = "qm_ads_measurement_consent_v1";
+  const ATTRIBUTION_KEY = "qm_campaign_attribution_v1";
+  const ATTRIBUTION_TTL_MS = 30 * 60 * 1000;
   const PRODUCTION_HOST = "quantummechanicsbook.app";
   const QUEUE_LIMIT = 40;
   const BATCH_SIZE = 10;
@@ -42,6 +45,8 @@
   let configPromise = null;
   let analyticsConfig = null;
   let consentDecision = readConsentDecision();
+  let adsConsent = consentDecision === "granted" && storageGet("localStorage", ADS_CONSENT_KEY) === "granted";
+  let consentEpoch = 0;
   let queue = [];
   let flushTimer = null;
   let flushInFlight = false;
@@ -135,6 +140,78 @@
       .replace(/\.html$/i, "")
       .replace(/[^a-zA-Z0-9_-]/g, "")
       .slice(0, 80);
+  }
+
+  // Only our published campaign vocabulary is accepted, never arbitrary query text.
+  // Store only after analytics consent, in this tab, for at most 30 minutes.
+  function campaignAttribution() {
+    if (consentDecision !== "granted") return {};
+    const url = new URL(window.location.href);
+    const campaigns = {
+      quantum_international_en_search_pilot: ["google", "cpc"],
+      quantum_uk_ie_en_search_pilot: ["google", "cpc"],
+      quantum_c18_validation: ["codex_qa", "qa"]
+    };
+    const name = url.searchParams.get("utm_campaign");
+    const expected = campaigns[name];
+    let saved = {};
+    try { saved = JSON.parse(storageGet("sessionStorage", ATTRIBUTION_KEY) || "{}"); } catch (_error) { /* fail closed */ }
+    if (!saved.expires || saved.expires <= Date.now() || saved.expires > Date.now() + ATTRIBUTION_TTL_MS || !Object.hasOwn(campaigns, saved.name)) saved = {};
+    if (expected && url.searchParams.get("utm_source") === expected[0] && url.searchParams.get("utm_medium") === expected[1]) {
+      saved = { name, expires: Date.now() + ATTRIBUTION_TTL_MS };
+    } else if (["utm_source", "utm_medium", "utm_campaign"].some(function (key) { return url.searchParams.has(key); })) {
+      saved = {}; // A new, unknown campaign must not inherit stale attribution.
+    }
+    if (saved.name) storageSet("sessionStorage", ATTRIBUTION_KEY, JSON.stringify(saved));
+    else storageRemove("sessionStorage", ATTRIBUTION_KEY);
+    const pair = campaigns[saved.name];
+    return pair ? { campaign_source: pair[0], campaign_medium: pair[1], campaign_name: saved.name } : {};
+  }
+
+  function googlePageContext() {
+    const url = new URL(window.location.origin + safePath());
+    // Click identifiers are passed only on the landing page after separate ads consent.
+    // Google manages attribution cookies; we do not persist or log click identifiers.
+    if (adsConsent) {
+      const source = new URL(window.location.href);
+      ["gclid", "gbraid", "wbraid"].forEach(function (key) {
+        const value = source.searchParams.get(key) || "";
+        if (/^[a-zA-Z0-9_-]{10,250}$/.test(value)) url.searchParams.set(key, value);
+      });
+    }
+    let referrer = "";
+    try {
+      const previous = new URL(document.referrer);
+      if (/^https?:$/.test(previous.protocol)) referrer = previous.origin + "/";
+    } catch (_error) { /* No referrer. Never forward query, fragment or credentials. */ }
+    return { page_location: url.toString(), page_referrer: referrer, page_path: safePath(), ...campaignAttribution() };
+  }
+
+  function updateGoogleConsent() {
+    const granted = consentDecision === "granted";
+    window["ga-disable-" + analyticsConfig?.measurementId] = !granted;
+    if (typeof window.gtag !== "function") return;
+    window.gtag("set", "ads_data_redaction", !adsConsent);
+    window.gtag("set", "url_passthrough", false);
+    window.gtag("consent", "update", {
+      analytics_storage: granted ? "granted" : "denied",
+      ad_storage: granted && adsConsent ? "granted" : "denied",
+      ad_user_data: granted && adsConsent ? "granted" : "denied",
+      ad_personalization: "denied"
+    });
+  }
+
+  function clearMeasurementCookies(analytics) {
+    // QUANTUM's own origin only. Never touch login, preferences or study data.
+    const names = document.cookie.split(";").map(function (cookie) { return cookie.split("=")[0].trim(); });
+    const host = window.location.hostname;
+    names.filter(function (name) {
+      return /^_gcl_/.test(name) || (analytics && /^_ga(?:_|$)/.test(name));
+    }).forEach(function (name) {
+      ["", host, "." + host].forEach(function (domain) {
+        document.cookie = name + "=; Max-Age=0; path=/; SameSite=Lax" + (domain ? "; domain=" + domain : "");
+      });
+    });
   }
 
   function inferChapterContext() {
@@ -254,12 +331,7 @@
       ad_personalization: "denied",
       analytics_storage: "denied"
     });
-    window.gtag("consent", "update", {
-      ad_storage: "denied",
-      ad_user_data: "denied",
-      ad_personalization: "denied",
-      analytics_storage: "granted"
-    });
+    updateGoogleConsent();
 
     if (!document.querySelector('script[data-qm-ga="gtag"]')) {
       const script = document.createElement("script");
@@ -269,14 +341,12 @@
       document.head.appendChild(script);
     }
 
-    const safeLocation = window.location.origin + safePath();
     window.gtag("js", new Date());
     window.gtag("config", measurementId, {
       allow_ad_personalization_signals: false,
       allow_google_signals: false,
       anonymize_ip: true,
-      page_location: safeLocation,
-      page_path: safePath(),
+      ...googlePageContext(),
       page_title: String(document.title || "QUANTUM").slice(0, 120),
       debug_mode: isDebugMode()
     });
@@ -287,6 +357,7 @@
     if (!googleTagConfigured || !GOOGLE_EVENT_NAMES.has(event.eventName) || typeof window.gtag !== "function") return;
     window.gtag("event", event.eventName, {
       ...event.properties,
+      ...googlePageContext(),
       send_to: analyticsConfig.measurementId,
       debug_mode: isDebugMode()
     });
@@ -300,7 +371,8 @@
     };
   }
 
-  function requeue(events) {
+  function requeue(events, epoch) {
+    if (consentDecision !== "granted" || epoch !== consentEpoch) return;
     queue = events.concat(queue).slice(0, QUEUE_LIMIT);
   }
 
@@ -313,6 +385,7 @@
     }
 
     const events = queue.splice(0, BATCH_SIZE);
+    const epoch = consentEpoch;
     const payload = JSON.stringify({
       analyticsConsent: true,
       consentVersion: CONSENT_VERSION,
@@ -322,7 +395,7 @@
     try {
       if (options?.beacon && navigator.sendBeacon) {
         const accepted = navigator.sendBeacon(EVENT_ENDPOINT, new Blob([payload], { type: "application/json" }));
-        if (!accepted) requeue(events);
+        if (!accepted) requeue(events, epoch);
         return;
       }
 
@@ -333,9 +406,9 @@
         headers: { "Content-Type": "application/json" },
         body: payload
       });
-      if (!response.ok && response.status >= 500) requeue(events);
+      if (!response.ok && response.status >= 500) requeue(events, epoch);
     } catch (_error) {
-      requeue(events);
+      requeue(events, epoch);
     } finally {
       flushInFlight = false;
       if (queue.length) scheduleFlush(1000);
@@ -388,12 +461,14 @@
     panel.innerHTML =
       '<div class="qm-analytics-consent__copy">' +
         '<p class="qm-analytics-consent__eyebrow">Privacy controls</p>' +
-        '<h2 id="qm-analytics-consent-title">' + (manageMode ? 'Analytics preferences' : 'Help improve QUANTUM') + '</h2>' +
-        '<p>Optional analytics help us understand which reviewed chapters, simulators, exercises, and assessments are useful. We never send names, email addresses, search text, answers, generated content, or feedback text.</p>' +
+        '<h2 id="qm-analytics-consent-title">' + (manageMode ? 'Measurement preferences' : 'Help improve QUANTUM') + '</h2>' +
+        '<p>Optional analytics use Google Analytics cookies and learning events to understand use of QUANTUM. We do not send names, emails, answers, search text or generated content. <a href="/privacy.html">Privacy details</a>.</p>' +
+        '<label class="qm-analytics-consent__choice"><input type="checkbox" data-qm-ads-consent' + (adsConsent ? ' checked' : '') + '> Also allow advertising measurement</label>' +
+        '<p class="qm-analytics-consent__detail">Optional: share campaign identifiers and learning events with Google Ads to measure whether ads lead to study. Requires analytics; no personalized advertising. Leave unchecked for analytics only. Change or withdraw either choice here at any time.</p>' +
       '</div>' +
       '<div class="qm-analytics-consent__actions">' +
         '<button type="button" class="qm-analytics-consent__button qm-analytics-consent__button--secondary" data-qm-analytics-consent="denied">Only necessary</button>' +
-        '<button type="button" class="qm-analytics-consent__button qm-analytics-consent__button--primary" data-qm-analytics-consent="granted">Allow analytics</button>' +
+        '<button type="button" class="qm-analytics-consent__button qm-analytics-consent__button--primary" data-qm-analytics-consent="granted">Allow analytics / save choices</button>' +
       '</div>';
     document.body.appendChild(panel);
     window.requestAnimationFrame(function () { panel.classList.add("is-visible"); });
@@ -441,28 +516,30 @@
     await detectPendingLogin();
   }
 
-  function setConsent(decision) {
+  function setConsent(decision, advertisingMeasurement) {
     if (decision !== "granted" && decision !== "denied") return;
+    consentEpoch += 1;
     consentDecision = decision;
+    adsConsent = decision === "granted" && advertisingMeasurement === true;
     saveConsentDecision(decision);
+    storageSet("localStorage", ADS_CONSENT_KEY, adsConsent ? "granted" : "denied");
     hideConsentPanel();
+    updateGoogleConsent();
+    if (!adsConsent) clearMeasurementCookies(decision !== "granted");
 
     if (decision === "granted") {
       void activateAnalytics();
+      // Refresh consent/context without a second page_view when preferences change.
+      if (googleTagConfigured) window.gtag("config", analyticsConfig.measurementId, { ...googlePageContext(), send_page_view: false });
     } else {
       queue = [];
-      if (typeof window.gtag === "function") {
-        window.gtag("consent", "update", {
-          ad_storage: "denied",
-          ad_user_data: "denied",
-          ad_personalization: "denied",
-          analytics_storage: "denied"
-        });
-      }
+      window.clearTimeout(flushTimer);
+      flushTimer = null;
+      storageRemove("sessionStorage", ATTRIBUTION_KEY);
     }
 
     window.dispatchEvent(new CustomEvent("qm-analytics-consent-change", {
-      detail: { decision, version: CONSENT_VERSION }
+      detail: { decision, advertisingMeasurement: adsConsent, version: CONSENT_VERSION }
     }));
   }
 
@@ -505,7 +582,7 @@
     const consentButton = target.closest("[data-qm-analytics-consent]");
     if (consentButton) {
       event.preventDefault();
-      setConsent(consentButton.getAttribute("data-qm-analytics-consent"));
+      setConsent(consentButton.getAttribute("data-qm-analytics-consent"), Boolean(document.querySelector("[data-qm-ads-consent]")?.checked));
       return;
     }
 
@@ -588,6 +665,18 @@
   }
 
   function bindEvents() {
+    window.addEventListener("storage", function (event) {
+      if (![CONSENT_STORAGE_KEY, ADS_CONSENT_KEY].includes(event.key) && event.key !== null) return;
+      consentEpoch += 1;
+      consentDecision = readConsentDecision();
+      adsConsent = consentDecision === "granted" && storageGet("localStorage", ADS_CONSENT_KEY) === "granted";
+      updateGoogleConsent();
+      if (!adsConsent) clearMeasurementCookies(consentDecision !== "granted");
+      if (consentDecision !== "granted") {
+        queue = [];
+        storageRemove("sessionStorage", ATTRIBUTION_KEY);
+      } else void activateAnalytics();
+    });
     document.addEventListener("click", handleClick, true);
     document.addEventListener("input", handleSearchInput, true);
     window.addEventListener("termo-auth-state-change", function (event) {
@@ -640,7 +729,7 @@
   window.QMAnalytics = {
     track,
     flush: function () { return flush(); },
-    getConsent: function () { return { decision: consentDecision, version: CONSENT_VERSION }; },
+    getConsent: function () { return { decision: consentDecision, advertisingMeasurement: adsConsent, version: CONSENT_VERSION }; },
     setConsent,
     openConsentSettings: function () { showConsentPanel(true); },
     isEnabled: function () { return analyticsEnabled; }

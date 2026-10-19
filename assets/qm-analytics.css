@@ -1,4 +1,5 @@
 .qm-analytics-consent {
+  box-sizing: border-box;
   position: fixed;
   z-index: 100000;
   right: 18px;
@@ -18,6 +19,8 @@
   color: #27313f;
   box-shadow: 0 18px 55px rgba(24, 60, 44, .2);
   font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  max-height: calc(100dvh - 36px);
+  overflow-y: auto;
   opacity: 0;
   transform: translateY(16px);
   transition: opacity .18s ease, transform .18s ease;
@@ -38,6 +41,9 @@
   line-height: 1.25;
 }
 .qm-analytics-consent p { margin: 0; line-height: 1.5; }
+.qm-analytics-consent__choice { display: flex; align-items: center; gap: 10px; margin: 14px 0 6px; font-weight: 750; }
+.qm-analytics-consent__choice input { width: 20px; height: 20px; flex-shrink: 0; accent-color: #2f6b4f; }
+.qm-analytics-consent__detail { font-size: .86rem; }
 .qm-analytics-consent__actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 .qm-analytics-consent__button {
   min-height: 42px;

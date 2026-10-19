@@ -25,13 +25,13 @@ test("collection is restricted to the final host and public environment config",
   assert.match(source, /PRODUCTION_HOST = "quantummechanicsbook\.app"/);
   assert.match(source, /config\?\.productionHost/);
   assert.match(source, /publicConfig\?\.analytics/);
-  assert.match(source, /page_location: safeLocation/);
+  assert.match(source, /page_location: url.toString\(\)/);
   assert.match(source, /\["view", "chapter", "sim"\]/);
 });
 
 test("the client never exposes known sensitive learning payload fields", function () {
   assert.match(source, /EVENT_PROPERTIES/);
-  assert.doesNotMatch(source, /utm_source/);
+  assert.match(source, /Only our published campaign vocabulary/);
   assert.doesNotMatch(source, /learner_answer/);
   assert.doesNotMatch(source, /generated_solution/);
   assert.match(source, /query_length_bucket/);
@@ -40,7 +40,7 @@ test("the client never exposes known sensitive learning payload fields", functio
 
 test("shared loaders cover reading pages, public SEO pages, and simulators", function () {
   for (const loaderSource of [authSource, seoSource, simulatorCatalogSource]) {
-    assert.match(loaderSource, /qm-analytics\.js\?v=0912\.1/);
+    assert.match(loaderSource, /qm-analytics\.js\?v=1018\.3/);
     assert.match(loaderSource, /window\.__qmAnalyticsLoaderStarted/);
   }
 });
