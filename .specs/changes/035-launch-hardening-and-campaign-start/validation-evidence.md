@@ -2,10 +2,10 @@
 
 ## Checkpoint
 
-Local implementation ready for owner review and explicit CPD. No commit, push,
-deployment, database migration, provider change or Ads mutation in this run.
-Production login/reload/logout and post-deployment byte verification remain open.
-The owner explicitly requested notification before publication or campaign activation.
+Corrections committed, pushed and published with owner authorization on 2026-10-19.
+Production bytes verified; owner production login/reload/logout acceptance remains
+open. No database migration, provider configuration or Ads mutation. Campaign paused.
+The initial implementation-only evidence below is retained chronologically.
 
 ## Preflight and routing
 
@@ -134,8 +134,6 @@ then one owner Google login, reload and logout, without completing another secti
 Before Ads activation: resolve remaining panel/report evidence, refresh the scoped
 snapshot, present it and obtain separate explicit owner confirmation.
 
-## Rollback
-
 ## Authorized release continuation
 
 On 2026-10-19 the owner explicitly authorized commit, push and production deployment
@@ -146,6 +144,32 @@ production alias `quantummechanicsbook.app`, and previous READY commit `e04b107`
 The project lookup with the locally stored team ID returned 404; a direct read of
 the known deployment succeeded. No linking or credentials were changed.
 Production auth acceptance remains separate from the publication receipt.
+
+### Publication receipt
+
+- Code commit: `c7c5fb7ae968d19e2c99bbb70aa34325767b8bfc`, pushed to `origin/main`.
+- Production deployment: `dpl_9nbDb7LgRmJ3wVLWqRx3uSSK6L3L`, READY;
+  `https://qm-br3uhugzg-msr-brs-projects.vercel.app` and canonical domain.
+- First deployment remained Initializing for about six minutes, then built successfully.
+  One identical-source retry `dpl_AZpxQ8j1pM3zxDUjQ1wfciWzxN3q` was queued.
+  Cancellation of the first returned 400 because it had already completed; the
+  redundant queued retry was canceled successfully. Neither operation removed production.
+- Canonical `/` (using `renderIndexResponse`) and `assets/termo-auth.js`,
+  `qm-analytics.js`, `termo-seo.js`, `qm-simulator-catalog.js` at revision 1019.1
+  returned HTTP 200 and exact local/committed bytes after publication. Before READY
+  the same checks correctly detected the previous version; they were not reported as passes.
+- Full Node suite repeated at CPD: 151/151 pass; content, privilege and SEO checks pass.
+- Read-only Ads recheck: campaign 24369162368 PAUSED, EUR 2/day, zero impressions,
+  clicks and spend. No campaign/account mutations; TERMO unchanged.
+- Browser control failed during initialization. Owner asked to perform Google login,
+  reload/session persistence and logout in Safari, without another section completion.
+  This remains pending and will be recorded as owner-reported, not automated observation.
+- Deployment skills guided target/provenance confirmation and public byte checks.
+- Bounded production error-log query (`--level error --since 10m --limit 20`) returned
+  no entries. This is not a substitute for authenticated interaction testing.
+- The canceled duplicate wrote a canceled/failure Vercel status against the code SHA
+  in GitHub, despite the original deployment being READY and serving correct bytes.
+  The documentation receipt is a separate subsequent commit/deployment, not a code fix.
 
 ## Rollback procedure
 

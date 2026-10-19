@@ -1,7 +1,7 @@
 # Tasks
 
-Current checkpoint, 2026-10-19: local corrections and tests complete; no CPD or
-activation performed. See `validation-evidence.md`, `measurement-baseline-2026-10-19.md`
+Current checkpoint, 2026-10-19: corrections published by authorized CPD; production
+auth acceptance pending; campaign remains paused. See `validation-evidence.md`, `measurement-baseline-2026-10-19.md`
 and `launch-2026-10-19.md`. `[x]` below is evidence of the named task, not closure
 of the whole Change. The user explicitly requires notification before publication
 or Ads activation; no login was needed for these local/read-only checks.
@@ -19,7 +19,7 @@ or Ads activation; no login was needed for these local/read-only checks.
 - [x] R3 sliding attribution TTL on consented page views; exact expiry, unknown/malformed state and revocation tests.
 - [x] Re-run all validations plus `scripts/test-qm-analytics-browser.mjs`; see validation receipt.
 - [x] Owner explicitly authorized CPD on 2026-10-19, with the campaign kept paused and TERMO unchanged.
-- [ ] Verify Vercel READY and production bytes = committed candidate after CPD.
+- [x] Verify Vercel READY and production bytes = committed candidate after CPD (`c7c5fb7`, receipt in validation evidence).
 - [ ] Owner performs one Google login for the production login/reload/logout check (no section completion needed).
 
 ## C. Measurement records
