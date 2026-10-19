@@ -29,7 +29,8 @@ repository was changed.
   test. The historical core report still had no 2026-10-19 row at the time of
   this check; Realtime cannot report session source/medium. Thus live transport
   and persistence are proven, but **current-day aggregate attribution awaits
-  processing**. Do not represent this as a paid-click or Ads conversion.
+  processing**. A repeat at approximately 11:55 BRT still returned zero rows
+  for 2026-10-19. Do not represent this as a paid-click or Ads conversion.
 - A minute-granularity GA4 core report places the two old
   `accounts.google.com / referral` completions at 2026-10-18 12:28 and 21:33
   BRT, before the recorded 22:17 controlled completion with
@@ -70,9 +71,14 @@ paid decisions must use the non-QA segment with source/campaign inspection.
   not a claim that Google will never render an automated asset in the future.
 - The Safari Ads panel displayed an ad-blocker warning during the final review.
   A separate Chrome profile authenticated to the QUANTUM test account was
-  denied Ads access by that account's organization. No Ads mutation was made
-  through either blocked surface. Activation requires the owner's authorized
-  Ads account in a working browser session.
+  denied Ads access by that account's organization. A subsequent login attempt
+  with a different account in that automation profile was rejected by Google
+  as an insecure browser. The owner then reported successfully entering Ads in
+  the Codex in-app browser; however, the local browser-control executor failed
+  to initialize because a configured writable root traverses a symlink, so
+  this agent could not inspect or mutate that tab. No Ads mutation was made
+  through any of these surfaces. Activation requires an agent-operable,
+  authorized Ads session; do not bypass Google's browser security warning.
 
 ## Launch decision, monitoring and reversal
 
@@ -80,7 +86,8 @@ The owner has explicitly authorized activation, but authorization is distinct
 from readiness. The current-day aggregate OAuth attribution row and an
 operable Ads session remain unverified as recorded above. Until those gates are
 resolved, **keep campaign, ad group, ad, and keywords paused**; do not claim
-spend or a launch. After processing, the new `section_complete` row should be
+spend or a launch. After at least one full 24-hour post-correction observation
+period and GA4 processing, the new `section_complete` row should be
 exactly one with `codex_qa / qa / quantum_c18_validation`. The QA segment must
 remain excluded from any paid result. Before turning on the campaign, verify
 the same creative, budget, geo, English, negatives, goal isolation, and no
