@@ -1,7 +1,11 @@
 # Tasks
 
-Current checkpoint, 2026-10-19: corrections published by authorized CPD; production
-auth acceptance confirmed manually by the owner; campaign remains paused. See `validation-evidence.md`, `measurement-baseline-2026-10-19.md`
+Current checkpoint, 2026-10-20: serving confirmed (2 impressions, ENABLED/LEARNING);
+processed Oct 19 QA completion now confirmed once with correct QA labels. No
+remote edits needed in follow-up; see `campaign-audit-2026-10-20.md`.
+
+Historical checkpoint, 2026-10-19: corrections published by authorized CPD; production
+auth acceptance confirmed manually by the owner; campaign enabled with explicit authorization at approximately 21:52:37 BRT. Initial aggregate eligibility/actual serving still needs follow-up. See `validation-evidence.md`, `measurement-baseline-2026-10-19.md`
 and `launch-2026-10-19.md`. `[x]` below is evidence of the named task, not closure
 of the whole Change. The user explicitly requires notification before publication
 or Ads activation; no login was needed for these local/read-only checks.
@@ -39,23 +43,32 @@ Account 3838359068 (EUR). Expected:
 - [x] Eight positive keywords PAUSED; eleven campaign phrase negatives; no shared list.
 - [x] Final URL suffix `utm_source=google&utm_medium=cpc&utm_campaign=quantum_international_en_search_pilot`; tracking template empty; auto-tagging on.
 - [x] Goal config CAMPAIGN with only custom goal 6459537936 = action 7855071770 (ENABLED, ONE_PER_CLICK, secondary, value 0).
-- [ ] No enabled campaign or account-level assets that could serve on this campaign; automatically created assets / text customization / final URL expansion off.
+- [x] No enabled campaign or account-level assets returned; text automation OPTED_OUT by API. Owner subsequently confirmed AI Max, text customization and final URL expansion off in the panel; see `activation-attempt-2026-10-19.md` (owner-reported evidence).
 - [x] Spend to date EUR 0; zero clicks and impressions at this read.
 - [x] TERMO campaign 24027143907 baseline recorded read-only (status, budget, goals) for later comparison; account default goals also captured.
 
-The unresolved assets item above is **partial**: no campaign assets, no enabled
+At the earlier API-only checkpoint, the assets item was **partial**: no campaign assets, no enabled
 account assets, both account sitelinks PAUSED and text automation OPTED_OUT. The
 API did not explicitly establish QUANTUM final-URL-expansion opt-out or AI Max false;
-confirm the panel before activation. A null field is not evidence of disabled state.
+The owner subsequently supplied the panel confirmation. A null field itself is not evidence of disabled state.
 All checked remote items are time-bound and require a fresh read before launch.
 
 ## E. Activation (only after the owner types an explicit confirmation in this session)
 
-- [ ] Present the section D snapshot and ask: "Confirma ativar a campanha QUANTUM agora?".
-- [ ] Enable the eight keywords → ad → ad group → campaign last; readback after each step.
-- [ ] Re-read TERMO baseline and account-default goals: unchanged.
-- [ ] Load the production landing with the campaign suffix (no gclid, no ad click): 200, consent panel, login button present.
-- [ ] Record activation timestamp (BRT), monitoring plan, stop rules and rollback in `launch-2026-MM-DD.md`; mark C18's final task done with a link here.
+- [x] Owner explicitly authorized activation after confirming the three automation controls off. Earlier browser attempts failed; Firefox later succeeded. See dated attempt record.
+- [x] Enable group → ad → eight keywords, with API readback after each; campaign last at approximately 21:52:37 BRT. Order of children differed from plan, but campaign remained PAUSED until all were verified ENABLED.
+- [x] Re-read TERMO baseline and account-default goals: unchanged.
+- [x] Load canonical landing with campaign suffix (no gclid, no ad click): HTTP 200. No new login/consent acceptance test; prior dated production evidence remains the source.
+- [x] Record activation timestamp, monitoring plan, stop rules and rollback in `launch-2026-10-19.md`; link C18 activation task here. No monitor scheduled.
+- [x] Confirm campaign aggregate eligibility and actual serving: Oct 20 07:20 BRT, ENABLED/LEARNING with 2 impressions; prior NOT_ELIGIBLE cleared. Group/ad and seven keywords eligible; one low-volume keyword remains.
+
+## E2. Oct 20 early follow-up (before full 24 h)
+
+- [x] Compare manual changes/current settings with launch receipts; no material drift found in queried fields. No subsequent edit returned by scoped change history.
+- [x] Confirm processed Oct 19 QA completion once with QA labels; no genuine paid attribution claimed.
+- [x] Confirm isolated goal, caps, networks, targets, negatives, policy approval and canonical landing.
+- [x] Run 32 analytics tests, SEO validation and public landing/legal/sitemap HTTP checks.
+- [x] Record API evidence, unavailable UI controls, rationale for no unnecessary bid/creative/budget changes and TERMO preservation.
 
 ## F. After 24 h (separate session)
 

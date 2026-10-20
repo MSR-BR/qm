@@ -1,0 +1,28 @@
+{
+  "checkpoint": "2026-10-19, approximately 21:55 BRT",
+  "result": {
+    "googleAdsId": "3838359068",
+    "result": {
+      "columns": [
+        "campaign__id",
+        "campaign__status",
+        "campaign__primary_status",
+        "campaign__primary_status_reasons",
+        "metrics__impressions",
+        "metrics__clicks",
+        "metrics__cost"
+      ],
+      "rows": [
+        {
+          "campaign__id": 24369162368,
+          "campaign__status": "ENABLED",
+          "campaign__primary_status": "NOT_ELIGIBLE",
+          "campaign__primary_status_reasons": "[9, 16, 18]",
+          "metrics__impressions": 0,
+          "metrics__clicks": 0,
+          "metrics__cost": 0
+        }
+      ]
+    }
+  }
+}

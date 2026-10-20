@@ -48,7 +48,9 @@ Evidence and rollback: `paused-campaign-setup-2026-10-18.md`. C18 remains open; 
 - [x] Validate a fresh authenticated OAuth round-trip, one collected GA4 event with retained QA labels, and persisted section completion. Minute-level report places the two old Google referrals before the correction; see `activation-gates-2026-10-19.md`.
 - [x] Document and run a repeatable non-QA GA4 report segment; recheck manual and automated ad-asset associations. The internal filter remains in Testing, and Ads activation still requires an agent-operable authorized browser session.
 - [x] Obtain separate explicit activation approval on 2026-10-19.
-- [ ] Continue the final report/panel checks and owner-confirmed activation through [C35 launch checkpoint](../035-launch-hardening-and-campaign-start/launch-2026-10-19.md). Its read-only GA4 query still has no Oct 19 completion row. The clean baseline excludes pre-fix/internal traffic per [C35 measurement rules](../035-launch-hardening-and-campaign-start/measurement-baseline-2026-10-19.md). C18 remains open; no paid-click attribution or campaign launch is proven.
+- [x] Complete owner-authorized activation through [C35 launch checkpoint](../035-launch-hardening-and-campaign-start/launch-2026-10-19.md): campaign, group, approved ad and eight keywords ENABLED on 2026-10-19 around 21:52 BRT; budget/CPC and TERMO preserved.
+- [x] Follow up actual serving and aggregate eligibility: Oct 20 07:20 BRT, ENABLED/LEARNING and 2 impressions. Processed Oct 19 QA completion also confirmed once with QA labels; see [C35 audit](../035-launch-hardening-and-campaign-start/campaign-audit-2026-10-20.md).
+- [ ] Evaluate clean paid attribution and first full 24-hour results. C18 monitoring/measurement follow-up remains open; two impressions and a QA event do not prove paid conversions. Use [C35 measurement rules](../035-launch-hardening-and-campaign-start/measurement-baseline-2026-10-19.md).
 
 Current configuration, limitations and scoped rollback: `conversion-setup-2026-10-19.md`.
 

@@ -1,0 +1,1202 @@
+{
+  "auditedOn": "2026-10-20",
+  "timezone": "America/Sao_Paulo",
+  "window": "approximately 07:08–07:20 BRT",
+  "scope": "QUANTUM 24369162368; TERMO/account reads for preservation only",
+  "remoteMutations": [],
+  "queries": {
+    "audit20_0": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign__id",
+          "campaign__name",
+          "campaign__status",
+          "campaign__primary_status",
+          "campaign__primary_status_reasons",
+          "campaign__bidding_strategy_type",
+          "campaign__target_spend__cpc_bid_ceiling",
+          "campaign_budget__id",
+          "campaign_budget__amount",
+          "campaign_budget__explicitly_shared",
+          "campaign__start_date_time",
+          "campaign__end_date_time",
+          "campaign__network_settings__target_google_search",
+          "campaign__network_settings__target_search_network",
+          "campaign__network_settings__target_content_network",
+          "campaign__geo_target_type_setting__positive_geo_target_type",
+          "campaign__final_url_suffix",
+          "campaign__tracking_url_template"
+        ],
+        "rows": [
+          {
+            "campaign__id": 24027143907,
+            "campaign__name": "TERMO - Search - BR - PT",
+            "campaign__status": "ENABLED",
+            "campaign__primary_status": "ELIGIBLE",
+            "campaign__primary_status_reasons": "[]",
+            "campaign__bidding_strategy_type": "TARGET_SPEND",
+            "campaign__target_spend__cpc_bid_ceiling": null,
+            "campaign_budget__id": 15717335910,
+            "campaign_budget__amount": 2,
+            "campaign_budget__explicitly_shared": false,
+            "campaign__start_date_time": "2026-07-14 19:00:16",
+            "campaign__end_date_time": null,
+            "campaign__network_settings__target_google_search": true,
+            "campaign__network_settings__target_search_network": true,
+            "campaign__network_settings__target_content_network": false,
+            "campaign__geo_target_type_setting__positive_geo_target_type": "PRESENCE",
+            "campaign__final_url_suffix": "",
+            "campaign__tracking_url_template": ""
+          },
+          {
+            "campaign__id": 24369162368,
+            "campaign__name": "QUANTUM - Search - International - EN - Pilot",
+            "campaign__status": "ENABLED",
+            "campaign__primary_status": "LEARNING",
+            "campaign__primary_status_reasons": "[9]",
+            "campaign__bidding_strategy_type": "TARGET_SPEND",
+            "campaign__target_spend__cpc_bid_ceiling": 0.25,
+            "campaign_budget__id": 15962079046,
+            "campaign_budget__amount": 2,
+            "campaign_budget__explicitly_shared": false,
+            "campaign__start_date_time": "2026-10-18 21:21:20",
+            "campaign__end_date_time": null,
+            "campaign__network_settings__target_google_search": true,
+            "campaign__network_settings__target_search_network": false,
+            "campaign__network_settings__target_content_network": false,
+            "campaign__geo_target_type_setting__positive_geo_target_type": "PRESENCE",
+            "campaign__final_url_suffix": "utm_source=google&utm_medium=cpc&utm_campaign=quantum_international_en_search_pilot",
+            "campaign__tracking_url_template": ""
+          }
+        ]
+      }
+    },
+    "audit20_1": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "ad_group__id",
+          "ad_group__name",
+          "ad_group__status",
+          "ad_group__primary_status",
+          "ad_group__primary_status_reasons",
+          "ad_group__cpc_bid"
+        ],
+        "rows": [
+          {
+            "ad_group__id": 199601244925,
+            "ad_group__name": "Quantum Mechanics Study",
+            "ad_group__status": "ENABLED",
+            "ad_group__primary_status": "ELIGIBLE",
+            "ad_group__primary_status_reasons": "[]",
+            "ad_group__cpc_bid": 0.01
+          }
+        ]
+      }
+    },
+    "audit20_2": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "ad_group_ad__ad__id",
+          "ad_group_ad__status",
+          "ad_group_ad__primary_status",
+          "ad_group_ad__primary_status_reasons",
+          "ad_group_ad__policy_summary__approval_status",
+          "ad_group_ad__policy_summary__policy_topic_entries",
+          "ad_group_ad__ad__final_urls",
+          "ad_group_ad__ad__responsive_search_ad__headlines",
+          "ad_group_ad__ad__responsive_search_ad__descriptions",
+          "ad_group_ad__ad_strength"
+        ],
+        "rows": [
+          {
+            "ad_group_ad__ad__id": 828563447756,
+            "ad_group_ad__status": "ENABLED",
+            "ad_group_ad__primary_status": "ELIGIBLE",
+            "ad_group_ad__primary_status_reasons": "[]",
+            "ad_group_ad__policy_summary__approval_status": "APPROVED",
+            "ad_group_ad__policy_summary__policy_topic_entries": "[]",
+            "ad_group_ad__ad__final_urls": "[\"https://quantummechanicsbook.app/\"]",
+            "ad_group_ad__ad__responsive_search_ad__headlines": "[{\n  \"text\": \"Learn Quantum Mechanics\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Interactive Physics Book\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Explore Quantum Simulators\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Study Quantum Step by Step\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Practice Quantum Exercises\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Build Your Study Journey\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Quantum Mechanics in English\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Read Explore and Practice\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}]",
+            "ad_group_ad__ad__responsive_search_ad__descriptions": "[{\n  \"text\": \"Read in English and practise concepts with exercises and chapter assessments.\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Build a study routine with progress tracking and daily challenges. Google sign-in.\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}, {\n  \"text\": \"Start with the reviewed chapters and explore the interactive learning tools.\",\n  \"asset_performance_label\": \"PENDING\",\n  \"policy_summary_info\": {\n    \"review_status\": \"REVIEWED\",\n    \"approval_status\": \"APPROVED\"\n  }\n}]",
+            "ad_group_ad__ad_strength": "PENDING"
+          }
+        ]
+      }
+    },
+    "audit20_3": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "segments__date",
+          "metrics__impressions",
+          "metrics__clicks",
+          "metrics__cost",
+          "metrics__conversions",
+          "metrics__all_conversions"
+        ],
+        "rows": [
+          {
+            "segments__date": "2026-10-20",
+            "metrics__impressions": 2,
+            "metrics__clicks": 0,
+            "metrics__cost": 0,
+            "metrics__conversions": 0,
+            "metrics__all_conversions": 0
+          }
+        ]
+      }
+    },
+    "audit20b_0": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "change_event__change_date_time",
+          "change_event__change_resource_type",
+          "change_event__change_resource_name",
+          "change_event__client_type",
+          "change_event__resource_change_operation",
+          "change_event__changed_fields",
+          "change_event__old_resource",
+          "change_event__new_resource"
+        ],
+        "rows": [
+          {
+            "change_event__change_date_time": "2026-10-19 21:52:44.893215",
+            "change_event__change_resource_type": "CAMPAIGN",
+            "change_event__change_resource_name": "customers/3838359068/campaigns/24369162368",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__resource_change_operation": "UPDATE",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"campaign\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"campaign\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          }
+        ]
+      }
+    },
+    "audit20b_1": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "ad_group_criterion__criterion_id",
+          "ad_group_criterion__status",
+          "ad_group_criterion__keyword__text",
+          "ad_group_criterion__keyword__match_type",
+          "ad_group_criterion__negative",
+          "ad_group_criterion__primary_status",
+          "ad_group_criterion__primary_status_reasons",
+          "ad_group_criterion__final_urls",
+          "ad_group_criterion__cpc_bid"
+        ],
+        "rows": [
+          {
+            "ad_group_criterion__criterion_id": 414046513320,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "learn quantum mechanics",
+            "ad_group_criterion__keyword__match_type": "EXACT",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 464123123210,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "learn quantum mechanics",
+            "ad_group_criterion__keyword__match_type": "PHRASE",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 535558720486,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "quantum mechanics exercises",
+            "ad_group_criterion__keyword__match_type": "EXACT",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 741807573356,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "interactive quantum mechanics",
+            "ad_group_criterion__keyword__match_type": "PHRASE",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 1253742090366,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "quantum physics simulator",
+            "ad_group_criterion__keyword__match_type": "EXACT",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 2508419947657,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "quantum mechanics simulations",
+            "ad_group_criterion__keyword__match_type": "PHRASE",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 2508419960577,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "quantum mechanics exercises",
+            "ad_group_criterion__keyword__match_type": "PHRASE",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          },
+          {
+            "ad_group_criterion__criterion_id": 2508419980057,
+            "ad_group_criterion__status": "ENABLED",
+            "ad_group_criterion__keyword__text": "quantum mechanics interactive book",
+            "ad_group_criterion__keyword__match_type": "EXACT",
+            "ad_group_criterion__negative": false,
+            "ad_group_criterion__primary_status": "NOT_ELIGIBLE",
+            "ad_group_criterion__primary_status_reasons": "[10]",
+            "ad_group_criterion__final_urls": "[]",
+            "ad_group_criterion__cpc_bid": 0
+          }
+        ]
+      }
+    },
+    "audit20b_2": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign_criterion__criterion_id",
+          "campaign_criterion__type",
+          "campaign_criterion__negative",
+          "campaign_criterion__status",
+          "campaign_criterion__location__geo_target_constant",
+          "campaign_criterion__language__language_constant",
+          "campaign_criterion__keyword__text",
+          "campaign_criterion__keyword__match_type",
+          "campaign_criterion__ad_schedule__day_of_week",
+          "campaign_criterion__ad_schedule__start_hour",
+          "campaign_criterion__ad_schedule__end_hour",
+          "campaign_criterion__bid_modifier"
+        ],
+        "rows": [
+          {
+            "campaign_criterion__criterion_id": 1000,
+            "campaign_criterion__type": "LANGUAGE",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": "languageConstants/1000",
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2032,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2032",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2036,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2036",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2050,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2050",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2076,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2076",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2124,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2124",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2356,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2356",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2360,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2360",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2372,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2372",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2404,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2404",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2484,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2484",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2554,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2554",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2566,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2566",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2586,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2586",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2608,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2608",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2710,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2710",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2826,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2826",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 2840,
+            "campaign_criterion__type": "LOCATION",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": "geoTargetConstants/2840",
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 30000,
+            "campaign_criterion__type": "DEVICE",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 30001,
+            "campaign_criterion__type": "DEVICE",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 30002,
+            "campaign_criterion__type": "DEVICE",
+            "campaign_criterion__negative": false,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": null,
+            "campaign_criterion__keyword__match_type": null,
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 17166740,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "trading",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 20584260,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "jobs",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 43322030,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "salary",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 52294753,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "healing",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 99375811,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "crypto",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 99710183,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "manifestation",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 249307839,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "pirated",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 292439069,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "torrent",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 298956509275,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "quantum computer",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 302451812790,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "quantum computing",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          },
+          {
+            "campaign_criterion__criterion_id": 475176927493,
+            "campaign_criterion__type": "KEYWORD",
+            "campaign_criterion__negative": true,
+            "campaign_criterion__status": "ENABLED",
+            "campaign_criterion__location__geo_target_constant": null,
+            "campaign_criterion__language__language_constant": null,
+            "campaign_criterion__keyword__text": "quantum ai",
+            "campaign_criterion__keyword__match_type": "PHRASE",
+            "campaign_criterion__ad_schedule__day_of_week": null,
+            "campaign_criterion__ad_schedule__start_hour": null,
+            "campaign_criterion__ad_schedule__end_hour": null,
+            "campaign_criterion__bid_modifier": 0
+          }
+        ]
+      }
+    },
+    "audit20b_3": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "conversion_goal_campaign_config__goal_config_level",
+          "conversion_goal_campaign_config__custom_conversion_goal"
+        ],
+        "rows": [
+          {
+            "conversion_goal_campaign_config__goal_config_level": "CAMPAIGN",
+            "conversion_goal_campaign_config__custom_conversion_goal": "customers/3838359068/customConversionGoals/6459537936"
+          }
+        ]
+      }
+    },
+    "audit20b_4": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign__id",
+          "campaign__asset_automation_settings",
+          "campaign__ai_max_setting__enable_ai_max"
+        ],
+        "rows": [
+          {
+            "campaign__id": 24369162368,
+            "campaign__asset_automation_settings": "[{\n  \"asset_automation_type\": \"TEXT_ASSET_AUTOMATION\",\n  \"asset_automation_status\": \"OPTED_OUT\"\n}]",
+            "campaign__ai_max_setting__enable_ai_max": null
+          }
+        ]
+      }
+    },
+    "audit20b_5": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "customer__auto_tagging_enabled",
+          "customer__currency_code",
+          "customer__time_zone"
+        ],
+        "rows": [
+          {
+            "customer__auto_tagging_enabled": true,
+            "customer__currency_code": "EUR",
+            "customer__time_zone": "America/Sao_Paulo"
+          }
+        ]
+      }
+    },
+    "audit20c_0": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "change_event__change_date_time",
+          "change_event__change_resource_type",
+          "change_event__change_resource_name",
+          "change_event__client_type",
+          "change_event__changed_fields",
+          "change_event__old_resource",
+          "change_event__new_resource"
+        ],
+        "rows": [
+          {
+            "change_event__change_date_time": "2026-10-19 21:52:44.893215",
+            "change_event__change_resource_type": "CAMPAIGN",
+            "change_event__change_resource_name": "customers/3838359068/campaigns/24369162368",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"campaign\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"campaign\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~414046513320",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~464123123210",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~535558720486",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~741807573356",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~1253742090366",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~2508419947657",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~2508419960577",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:49:59.948212",
+            "change_event__change_resource_type": "AD_GROUP_CRITERION",
+            "change_event__change_resource_name": "customers/3838359068/adGroupCriteria/199601244925~2508419980057",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_criterion\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:48:18.857807",
+            "change_event__change_resource_type": "AD_GROUP_AD",
+            "change_event__change_resource_name": "customers/3838359068/adGroupAds/199601244925~828563447756",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "ad",
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group_ad\": {\n    \"status\": \"PAUSED\",\n    \"ad\": {}\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group_ad\": {\n    \"status\": \"ENABLED\",\n    \"ad\": {}\n  }\n}"
+          },
+          {
+            "change_event__change_date_time": "2026-10-19 21:46:25.587807",
+            "change_event__change_resource_type": "AD_GROUP",
+            "change_event__change_resource_name": "customers/3838359068/adGroups/199601244925",
+            "change_event__client_type": "GOOGLE_ADS_WEB_CLIENT",
+            "change_event__changed_fields": [
+              "status"
+            ],
+            "change_event__old_resource": "{\n  \"ad_group\": {\n    \"status\": \"PAUSED\"\n  }\n}",
+            "change_event__new_resource": "{\n  \"ad_group\": {\n    \"status\": \"ENABLED\"\n  }\n}"
+          }
+        ]
+      }
+    },
+    "audit20c_1": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "custom_conversion_goal__id",
+          "custom_conversion_goal__name",
+          "custom_conversion_goal__status",
+          "custom_conversion_goal__conversion_actions"
+        ],
+        "rows": [
+          {
+            "custom_conversion_goal__id": 6459537936,
+            "custom_conversion_goal__name": "QUANTUM | Section completed",
+            "custom_conversion_goal__status": "ENABLED",
+            "custom_conversion_goal__conversion_actions": "[\"customers/3838359068/conversionActions/7855071770\"]"
+          }
+        ]
+      }
+    },
+    "audit20c_2": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign_asset__asset",
+          "campaign_asset__field_type",
+          "campaign_asset__status",
+          "campaign__id"
+        ],
+        "rows": []
+      },
+      "repairs": [
+        "added campaign.id to SELECT — filtering on it segments the result, which Google requires be selected; rows are one per campaign.id"
+      ]
+    },
+    "audit20c_3": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "search_term_view__search_term",
+          "search_term_view__status",
+          "metrics__impressions",
+          "metrics__clicks",
+          "metrics__cost"
+        ],
+        "rows": []
+      }
+    },
+    "audit20d_0": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "conversion_action__id",
+          "conversion_action__name",
+          "conversion_action__status",
+          "conversion_action__type",
+          "conversion_action__primary_for_goal",
+          "conversion_action__counting_type",
+          "conversion_action__value_settings__default_value",
+          "conversion_action__value_settings__always_use_default_value"
+        ],
+        "rows": [
+          {
+            "conversion_action__id": 7855071770,
+            "conversion_action__name": "QUANTUM (web) section_complete",
+            "conversion_action__status": "ENABLED",
+            "conversion_action__type": "GOOGLE_ANALYTICS_4_CUSTOM",
+            "conversion_action__primary_for_goal": false,
+            "conversion_action__counting_type": "ONE_PER_CLICK",
+            "conversion_action__value_settings__default_value": 0,
+            "conversion_action__value_settings__always_use_default_value": true
+          }
+        ]
+      }
+    },
+    "audit20d_1": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign_asset_set__asset_set",
+          "campaign_asset_set__status"
+        ],
+        "rows": []
+      }
+    },
+    "audit20d_2": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign_shared_set__shared_set",
+          "campaign_shared_set__status"
+        ],
+        "rows": []
+      }
+    },
+    "audit20d_3": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "ad_group_criterion__type",
+          "ad_group_criterion__status",
+          "ad_group_criterion__negative",
+          "ad_group_criterion__bid_modifier"
+        ],
+        "rows": []
+      }
+    },
+    "audit20d_4": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "customer_asset__asset",
+          "customer_asset__field_type",
+          "customer_asset__status"
+        ],
+        "rows": []
+      }
+    },
+    "audit20final_0": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign__id",
+          "campaign_conversion_goal__category",
+          "campaign_conversion_goal__origin",
+          "campaign_conversion_goal__biddable"
+        ],
+        "rows": [
+          {
+            "campaign__id": 24369162368,
+            "campaign_conversion_goal__category": "PAGE_VIEW",
+            "campaign_conversion_goal__origin": "WEBSITE",
+            "campaign_conversion_goal__biddable": false
+          },
+          {
+            "campaign__id": 24369162368,
+            "campaign_conversion_goal__category": "ENGAGEMENT",
+            "campaign_conversion_goal__origin": "WEBSITE",
+            "campaign_conversion_goal__biddable": false
+          },
+          {
+            "campaign__id": 24369162368,
+            "campaign_conversion_goal__category": "ENGAGEMENT",
+            "campaign_conversion_goal__origin": "YOUTUBE_HOSTED",
+            "campaign_conversion_goal__biddable": false
+          },
+          {
+            "campaign__id": 24369162368,
+            "campaign_conversion_goal__category": "YOUTUBE_FOLLOW_ON_VIEWS",
+            "campaign_conversion_goal__origin": "YOUTUBE_HOSTED",
+            "campaign_conversion_goal__biddable": false
+          }
+        ]
+      }
+    },
+    "audit20final_1": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "customer_conversion_goal__category",
+          "customer_conversion_goal__origin",
+          "customer_conversion_goal__biddable"
+        ],
+        "rows": [
+          {
+            "customer_conversion_goal__category": "PAGE_VIEW",
+            "customer_conversion_goal__origin": "WEBSITE",
+            "customer_conversion_goal__biddable": false
+          },
+          {
+            "customer_conversion_goal__category": "ENGAGEMENT",
+            "customer_conversion_goal__origin": "WEBSITE",
+            "customer_conversion_goal__biddable": true
+          },
+          {
+            "customer_conversion_goal__category": "ENGAGEMENT",
+            "customer_conversion_goal__origin": "YOUTUBE_HOSTED",
+            "customer_conversion_goal__biddable": true
+          },
+          {
+            "customer_conversion_goal__category": "YOUTUBE_FOLLOW_ON_VIEWS",
+            "customer_conversion_goal__origin": "YOUTUBE_HOSTED",
+            "customer_conversion_goal__biddable": false
+          }
+        ]
+      }
+    },
+    "audit20final_2": {
+      "googleAdsId": "3838359068",
+      "result": {
+        "columns": [
+          "campaign__id",
+          "campaign__primary_status",
+          "campaign__primary_status_reasons",
+          "metrics__impressions",
+          "metrics__clicks",
+          "metrics__cost",
+          "metrics__conversions"
+        ],
+        "rows": [
+          {
+            "campaign__id": 24369162368,
+            "campaign__primary_status": "LEARNING",
+            "campaign__primary_status_reasons": "[9]",
+            "metrics__impressions": 2,
+            "metrics__clicks": 0,
+            "metrics__cost": 0,
+            "metrics__conversions": 0
+          }
+        ]
+      }
+    }
+  },
+  "processedGA4": {
+    "dimensionHeaders": [
+      "date",
+      "sessionSourceMedium",
+      "sessionCampaignName"
+    ],
+    "metricHeaders": [
+      {
+        "name": "sessions",
+        "type": "TYPE_INTEGER"
+      },
+      {
+        "name": "eventCount",
+        "type": "TYPE_INTEGER"
+      }
+    ],
+    "rows": [
+      {
+        "date": "20261018",
+        "sessionSourceMedium": "accounts.google.com / referral",
+        "sessionCampaignName": "(referral)",
+        "sessions": "2",
+        "eventCount": "2"
+      },
+      {
+        "date": "20261018",
+        "sessionSourceMedium": "codex_qa / qa",
+        "sessionCampaignName": "quantum_c18_validation",
+        "sessions": "1",
+        "eventCount": "1"
+      },
+      {
+        "date": "20261019",
+        "sessionSourceMedium": "codex_qa / qa",
+        "sessionCampaignName": "quantum_c18_validation",
+        "sessions": "1",
+        "eventCount": "1"
+      }
+    ],
+    "rowCount": 3,
+    "totals": null,
+    "metadata": {
+      "currencyCode": "BRL",
+      "timeZone": "America/Sao_Paulo"
+    },
+    "propertyQuota": null
+  }
+}

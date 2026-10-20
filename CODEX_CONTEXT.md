@@ -28,6 +28,37 @@ Canonical branch: `main`
 - `api/`, `lib/`, and `supabase/migrations/`: protected server/data flows.
 - `search.html`: public search of reviewed content only.
 
+## Latest Ads operational checkpoint — 2026-10-20, 12:16 BRT
+
+Fresh scoped API read: campaign ENABLED / LEARNING, EUR 2/day, 4 impressions
+today, zero clicks/cost/conversions. No immediate corrective action established.
+Owner's 25 broad additions were audited separately: 33 positive keywords total,
+all enabled at the 07:35 read. Preserve useful reach; do not prune without
+relevant search-term/outcome evidence. See C35 `keyword-review-2026-10-20.md`.
+Owner requested documentation CPD; see `cpd-2026-10-20.md`. No Ads mutation.
+
+### Earlier follow-up — 2026-10-20, 07:20 BRT
+
+QUANTUM is serving: 2 impressions today, 0 clicks/cost/conversions at this partial
+read. Campaign ENABLED / LEARNING; yesterday's aggregate NOT_ELIGIBLE has cleared.
+Oct 19 QA section_complete now appears once in processed GA4 with correct QA
+labels. No material configuration drift found; no remote change made today.
+EUR 2/day and EUR 0.25 CPC cap preserved, TERMO untouched. Current AI Max/URL
+expansion panel state not reread (browser unavailable); retain dated owner OFF
+confirmation, not API-null inference. Performance optimization needs data.
+See C35 `campaign-audit-2026-10-20.md`; no monitor scheduled.
+
+### Historical activation checkpoint — 2026-10-19
+
+Owner-authorized Firefox activation completed: QUANTUM campaign 24369162368,
+group 199601244925, approved ad 828563447756 and all eight positive keywords
+are ENABLED. EUR 2 average/day and EUR 0.25 CPC ceiling preserved; TERMO and
+account-default goals unchanged. This supersedes historical paused/approval-needed
+wording below. Initial aggregate status remains NOT_ELIGIBLE despite eligible
+group/ad/seven keywords; one keyword has low search volume. Actual serving and
+processed paid attribution are not proven. Check C35 launch/activation receipts
+before further Ads work. No automated monitor scheduled; no deploy in this turn.
+
 ## Security and service rules
 
 - Google/Supabase authentication, private learner data, and owner administration must remain server-authorized.
@@ -37,7 +68,7 @@ Canonical branch: `main`
 - Resend delivery remains inactive until the sender domain and `RESEND_API_KEY` are configured.
 - C16 is deployed with the GA4 event contract, opt-in policy, real Measurement ID, 90-day first-party retention, production transport, first-party persistence, sanitization, and revocation verified. Signed-in GA4 DebugView acceptance was recorded on 2026-10-18; see the C16 dated receipt.
 - C17 technical QA is deployed: canonical routes, locked chapters, API boundaries, security headers, desktop/mobile browser journeys, keyboard focus, headings, MathJax, simulators, assessments, SEO idempotence, and runtime logs pass. C15 closed by explicit owner authorization on 2026-10-18 after rendered exercise PDF export was fixed and released; unexecuted manual-device/editorial checks are recorded as accepted limits, not performed tests. C31 screen-reader/200% zoom follow-up remains open.
-- C18 campaign/conversion preparation is complete; the QUANTUM campaign, ad group, ad and eight positive keywords were reread PAUSED on 2026-10-19, EUR 2/day, zero spend. C35 dependency pin, completion deduplication and sliding attribution were published by authorized CPD (`c7c5fb7`); READY and canonical bytes verified. The owner confirmed production Google login, reload/session persistence and logout in Safari on 2026-10-19 (manual, owner-reported acceptance). Campaign must remain paused; Ads activation needs final evidence and a separate confirmation. Current GA4 processed attribution for the Oct 19 QA completion and explicit final-URL-expansion panel state remain unconfirmed. See C35 validation, measurement baseline and launch records. Historical pre-fix referrals are internal/likely internal tests, not paid results.
+- C18 preparation and C35 owner-authorized activation are complete; see the latest checkpoint above. C35 code fixes (`c7c5fb7`) were published and production login/reload/logout confirmed by the owner. Processed Oct 19 QA attribution is now verified; actual paid outcomes remain an observation task. AI Max/URL-expansion OFF is dated owner testimony, not a current API-null inference. Historical pre-fix referrals are internal/likely internal tests, not paid results.
 
 ## Change governance
 
