@@ -141,7 +141,11 @@
       button.disabled = true;
       const result = await setCompletion(currentItem, !completed);
       button.disabled = false;
-      if (result.ok) renderControl(result.record);
+      if (result.ok) {
+        renderControl(result.record);
+      } else {
+        control.querySelector(".qm-progress-control__copy span").textContent = "Could not save your progress. Please check your connection and try again.";
+      }
     });
   }
 
@@ -149,16 +153,29 @@
     currentItem = await resolveCurrentItem().catch(function () { return null; });
     if (!currentItem) return;
 
-    const session = await getSession();
-    if (!session?.user) return;
-
-    const result = await recordOpen(currentItem);
     const header = document.querySelector(".hdr-inner");
-    if (!header || !result.ok) return;
-
+    if (!header) return;
     control = document.createElement("section");
     control.className = "qm-progress-control";
+    control.setAttribute("aria-live", "polite");
     header.appendChild(control);
+
+    const session = await getSession();
+    if (!session?.user) {
+      control.innerHTML = '<div class="qm-progress-control__copy"><strong>Track your progress</strong><span>Reading is open to everyone. Sign in to save this section as completed.</span></div>' +
+        '<button type="button" class="qm-progress-control__button">Sign in to save progress</button>';
+      control.querySelector("button").addEventListener("click", function () {
+        if (typeof window.TermoAuth?.openModal === "function") window.TermoAuth.openModal();
+        else control.querySelector(".qm-progress-control__copy span").textContent = "Sign-in is unavailable right now. You can still read this section.";
+      });
+      return;
+    }
+
+    const result = await recordOpen(currentItem);
+    if (!result.ok) {
+      control.innerHTML = '<div class="qm-progress-control__copy"><strong>Study progress unavailable</strong><span>Could not load your progress. Refresh the page to try again; you can still read this section.</span></div>';
+      return;
+    }
     renderControl(result.record);
   }
 

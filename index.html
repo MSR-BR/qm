@@ -2473,7 +2473,7 @@
     "assets/termo-auth.js?v=1019.1",
     "assets/qm-first-login-preferences.js?v=0925.1",
     "assets/termo-user-data.js?v=0731.1",
-    "assets/qm-study-progress.js?v=0903.3",
+    "assets/qm-study-progress.js?v=20261101.1",
     "assets/qm-gamification.js?v=0926.1",
     "assets/qm-rating.js?v=0910.1"
   ];
@@ -4010,6 +4010,7 @@
 
     function renderTopicGrid(topics) {
       setLandingMode(false);
+      panelDescription.textContent = "Choose a section to start reading. Sign in on the section page to save your progress and mark it as completed.";
       const grid = document.createElement("div");
       grid.className = "topic-grid";
 
@@ -4878,7 +4879,7 @@
 
       panelKicker.textContent = `Chapter ${chapter.id}`;
       panelTitle.textContent = chapter.title;
-      panelDescription.textContent = "";
+      panelDescription.textContent = "Choose a section to start reading. Sign in on the section page to save your progress and mark it as completed.";
       if (embeddedData.topics.length > 0) {
         renderTopicGrid(embeddedData.topics);
       } else {
