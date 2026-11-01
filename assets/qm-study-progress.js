@@ -165,8 +165,10 @@
       control.innerHTML = '<div class="qm-progress-control__copy"><strong>Track your progress</strong><span>Reading is open to everyone. Sign in to save this section as completed.</span></div>' +
         '<button type="button" class="qm-progress-control__button">Sign in to save progress</button>';
       control.querySelector("button").addEventListener("click", function () {
-        if (typeof window.TermoAuth?.openModal === "function") window.TermoAuth.openModal();
-        else control.querySelector(".qm-progress-control__copy span").textContent = "Sign-in is unavailable right now. You can still read this section.";
+        if (typeof window.TermoAuth?.openModal === "function") {
+          window.QMAnalytics?.track?.("auth_open", { surface: "header" });
+          window.TermoAuth.openModal();
+        } else control.querySelector(".qm-progress-control__copy span").textContent = "Sign-in is unavailable right now. You can still read this section.";
       });
       return;
     }
