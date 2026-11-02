@@ -2,6 +2,8 @@
   "version": "2026-09-26.3",
   "policy": "Explicit Data API reachability and least privilege; RLS is evaluated separately.",
   "tables": [
+        {"name":"signup_measurement_private.config","consumers":["signup claim function"],"roles":{},"rls":true,"ownerPolicy":"private schema, no browser table privileges","grantMigration":"20261102144931_signup_event_claim.sql"},
+        {"name":"signup_measurement_private.claims","consumers":["signup claim function"],"roles":{},"rls":true,"ownerPolicy":"private schema, no browser table privileges","grantMigration":"20261102144931_signup_event_claim.sql"},
         {"name":"public.qm_saved_exercises","consumers":["authenticated browser"],"roles":{"authenticated":["select","insert","update","delete"]},"rls":true,"ownerPolicy":"auth.uid() = user_id","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},
         {"name":"public.qm_exercise_validation_reports","consumers":["anonymous approved-memory reader","authenticated reporter/admin","authorized audit cleanup"],"roles":{"anon":["select"],"authenticated":["select","insert","update"],"service_role":["delete"]},"rls":true,"ownerPolicy":"approved public memory, own report, or validator allowlist","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},
         {"name":"public.qm_book_sources","consumers":["server source uploader/generator"],"roles":{"service_role":["select","insert","update"]},"rls":true,"ownerPolicy":"server only","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},
@@ -29,6 +31,8 @@
         {"name":"public.qm_learning_communication_events","consumers":["server eligibility reservation, delivery audit and aggregate evaluation"],"roles":{"service_role":["select","insert"]},"rls":true,"ownerPolicy":"server-only append-only metadata; no message bodies or recipient addresses","grantMigration":"20260926154500_qm_academic_evaluation_and_responsible_communication.sql"}
   ],
   "functions": [
+        {"name":"public.claim_signup_measurement","consumers":["authenticated browser after analytics consent"],"roles":{"authenticated":["execute"]},"decision":"one-shot own-user claim without identifier","grantMigration":"20261102144931_signup_event_claim.sql"},
+        {"name":"public.signup_measurement_available","consumers":["authenticated eligibility check"],"roles":{"authenticated":["execute"]},"decision":"read-only own-user eligibility","grantMigration":"20261102144931_signup_event_claim.sql"},
         {"name":"public.set_qm_saved_exercises_updated_at","consumers":["database trigger"],"roles":{},"decision":"not exposed as RPC","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},
         {"name":"public.set_qm_exercise_validation_reports_updated_at","consumers":["database trigger"],"roles":{},"decision":"not exposed as RPC","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},
         {"name":"private.is_qm_exercise_validator","consumers":["authenticated RLS policy","server"],"roles":{"authenticated":["execute"],"service_role":["execute"]},"decision":"private helper","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},

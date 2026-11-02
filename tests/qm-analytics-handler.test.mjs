@@ -39,6 +39,7 @@ test("the event contract is explicit and covers the C16 learning funnel", functi
     "favorite_changed",
     "auth_open",
     "login_success",
+    "sign_up",
     "rating_prompt_shown",
     "rating_submitted",
     "book_preview_open",

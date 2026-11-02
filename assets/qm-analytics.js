@@ -32,6 +32,7 @@
     favorite_changed: ["kind", "active", "count"],
     auth_open: ["surface"],
     login_success: ["provider"],
+    sign_up: ["method"],
     rating_prompt_shown: ["visit_band", "content_view_band"],
     rating_submitted: ["rating", "has_feedback"],
     book_preview_open: ["provider", "surface"],
@@ -584,15 +585,34 @@
   }
 
   async function detectPendingLogin(event) {
-    if (consentDecision !== "granted" || storageGet("sessionStorage", LOGIN_PENDING_KEY) !== "1") return;
-    let hasUser = Boolean(event?.detail?.user || event?.detail?.session?.user);
-    if (!hasUser && window.TermoAuth?.getSession) {
-      const session = await window.TermoAuth.getSession().catch(function () { return null; });
-      hasUser = Boolean(session?.user);
+    if (!analyticsEnabled || consentDecision !== "granted" || storageGet("sessionStorage", LOGIN_PENDING_KEY) !== "1") return;
+    let session = event?.detail?.session || null;
+    let hasUser = Boolean(event?.detail?.user || session?.user);
+    if ((!hasUser || !session?.access_token) && window.TermoAuth?.getSession) {
+      session = await window.TermoAuth.getSession().catch(function () { return null; });
+      hasUser = hasUser || Boolean(session?.user);
     }
     if (!hasUser) return;
     storageRemove("sessionStorage", LOGIN_PENDING_KEY);
     track("login_success", { provider: "google" });
+    if (!session?.access_token) return;
+    const epoch = consentEpoch;
+    try {
+      const config = await getPublicConfig();
+      if (consentDecision !== "granted" || epoch !== consentEpoch || !config?.supabaseUrl || !config?.supabasePublishableKey) return;
+      const response = await fetch(String(config.supabaseUrl).replace(/\/$/, "") + "/rest/v1/rpc/claim_signup_measurement", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", apikey: config.supabasePublishableKey, Authorization: "Bearer " + session.access_token },
+        body: "{}"
+      });
+      if (!response.ok) return;
+      const claimed = await response.json();
+      if (claimed === true && consentDecision === "granted" && epoch === consentEpoch) {
+        track("sign_up", { method: "Google" });
+      }
+    } catch (_error) {
+      // Signup measurement must never interrupt login.
+    }
   }
 
   function bookProvider(href) {

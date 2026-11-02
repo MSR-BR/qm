@@ -14,7 +14,7 @@ const storage = (initial = {}) => {
     get length() { return values.size; }, key: index => [...values.keys()][index] || null };
 };
 
-async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", session, local, eventFetch, clock = Date, locks } = {}) {
+async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", session, local, eventFetch, signupClaim, clock = Date, locks } = {}) {
   const nodes = [];
   const listeners = {};
   const requests = [];
@@ -42,7 +42,8 @@ async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", 
     fetch: async (endpoint, options) => {
       requests.push({ endpoint, options });
       if (endpoint.includes("analytics-event") && eventFetch) return eventFetch();
-      return { ok: true, json: async () => ({ analytics: { enabled: true, measurementId: "G-X5Y1C68QMN", productionHost: "quantummechanicsbook.app" } }) };
+      if (endpoint.includes("claim_signup_measurement")) return { ok: true, json: async () => typeof signupClaim === "function" ? signupClaim() : signupClaim };
+      return { ok: true, json: async () => ({ ...(signupClaim !== undefined ? {supabaseUrl: "https://example.supabase.co", supabasePublishableKey: "public-key"} : {}), analytics: { enabled: true, measurementId: "G-X5Y1C68QMN", productionHost: "quantummechanicsbook.app" } }) };
     }
   });
   vm.runInContext(source, context);
@@ -51,6 +52,33 @@ async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", 
   const config = () => calls().filter(call => call[0] === "config").at(-1)?.[2];
   return { window, document, localStorage, sessionStorage, listeners, nodes, requests, deletions, calls, config };
 }
+
+test("signup needs consent and a first-signup claim, without sending identity to Google", async () => {
+  for (const decision of ["granted", "denied"]) {
+    for (const claim of [true, false]) {
+      const pending = storage({ termo_auth_login_pending_v1: "1" });
+      const app = await boot({ decision, session: pending, signupClaim: claim });
+      app.listeners["termo-auth-state-change"]({ detail: { session: { user: { id: "private-user" }, access_token: "private-token" } } });
+      await new Promise(resolve => setImmediate(resolve));
+      const emitted = app.calls().filter(call => call[0] === "event" && call[1] === "sign_up");
+      assert.equal(emitted.length, decision === "granted" && claim ? 1 : 0);
+      if (decision === "denied") assert.equal(app.requests.some(r => r.endpoint.includes("claim_signup_measurement")), false);
+      assert.doesNotMatch(JSON.stringify(app.calls()), /private-user|private-token/);
+    }
+  }
+});
+
+test("revoking consent while the signup claim is in flight suppresses the Google event", async () => {
+  let resolveClaim;
+  const pending = storage({ termo_auth_login_pending_v1: "1" });
+  const app = await boot({ decision: "granted", session: pending, signupClaim: () => new Promise(resolve => { resolveClaim = resolve; }) });
+  app.listeners["termo-auth-state-change"]({ detail: { session: { user: { id: "private-user" }, access_token: "private-token" } } });
+  await new Promise(resolve => setImmediate(resolve));
+  app.window.QMAnalytics.setConsent("denied");
+  resolveClaim(true);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(app.calls().filter(call => call[0] === "event" && call[1] === "sign_up").length, 0);
+});
 
 test("unknown and denied choices load no Google tag, send no events and store no attribution", async () => {
   for (const decision of [undefined, "denied"]) {
