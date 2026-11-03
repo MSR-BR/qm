@@ -910,6 +910,12 @@
       -webkit-tap-highlight-color: transparent;
     }
 
+    .discovery-card--start {
+      border-color: #78ac8c;
+      border-left: 5px solid #2f6b4f;
+      background: #eef7f1;
+    }
+
     .discovery-card:focus-visible {
       border-color: #C6D7F2;
       box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
@@ -2744,6 +2750,10 @@
           <div class="topic-container" id="topicContainer">
             <div class="discovery-shell">
               <section class="discovery-grid">
+                <a class="discovery-card discovery-card--start" href="/slides/chapter-01/why-old-quantum-physics-matters.html">
+                  <div class="discovery-card__title"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Start reading</div>
+                  <div class="discovery-card__meta">Open the first section. Read without signing in; sign in to save your progress.</div>
+                </a>
                 <button type="button" class="discovery-card" data-role="open-drawer-section" data-section-id="chapters">
                   <div class="discovery-card__title"><i class="fa-solid fa-list-ul"></i> Chapters</div>
                   <div class="discovery-card__meta">Open chapter menu</div>
@@ -4069,6 +4079,10 @@
       topicContainer.innerHTML = `
         <div class="discovery-shell">
           <section class="discovery-grid">
+            <a class="discovery-card discovery-card--start" href="/slides/chapter-01/why-old-quantum-physics-matters.html">
+              <div class="discovery-card__title"><i class="fa-solid fa-book-open" aria-hidden="true"></i> Start reading</div>
+              <div class="discovery-card__meta">Open the first section. Read without signing in; sign in to save your progress.</div>
+            </a>
             <button type="button" class="discovery-card" data-role="open-drawer-section" data-section-id="chapters">
               <div class="discovery-card__title"><i class="fa-solid fa-list-ul"></i> Chapters</div>
               <div class="discovery-card__meta">Open chapter menu</div>

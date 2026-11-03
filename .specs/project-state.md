@@ -354,3 +354,7 @@ C24 and C25 are historical planning records, not executable competitors. C23, `.
 - Preserve the slide/card teaching pattern used by the reviewed chapters.
 - A `cpd` request means commit, push to `main`, and production deployment; no commit otherwise.
 - Remote database mutations, provider changes, audits with disposable remote data, Git push, and deploy require explicit authorization for that exact action.
+
+## 2026-11-03 — Change 037: entrada direta de leitura
+
+Preparada localmente uma ação direta para a primeira seção na entrada do aplicativo, com leitura sem autenticação e explicação do benefício de entrar. Validação local registrada em `.specs/changes/037-entrada-direta-leitura/README.md`. Preparada para publicação autorizada; o teste de destinos Ads está ativo, de modo que a publicação altera uma das condições da comparação.
