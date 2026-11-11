@@ -334,3 +334,53 @@ test("revocation clears sliding attribution and regrant without campaign does no
   app.window.QMAnalytics.setConsent("granted");
   assert.equal(app.config().campaign_source, undefined);
 });
+
+
+test("concurrent session recovery consumes one pending login and preserves later logins", async () => {
+  for (const newlyCreated of [false, true]) {
+    let claims = 0;
+    const app = await boot({
+      decision: "granted",
+      url: "https://quantummechanicsbook.app/?utm_source=codex_qa&utm_medium=qa&utm_campaign=quantum_c18_validation",
+      signupClaim: () => ++claims === 1 && newlyCreated
+    });
+    const recoveredSession = { user: { id: "private-user" }, access_token: "private-token" };
+    let resolveSession;
+    const waiting = new Promise(resolve => { resolveSession = resolve; });
+    app.window.TermoAuth = { getSession: () => waiting };
+    app.sessionStorage.setItem("termo_auth_login_pending_v1", "1");
+    app.listeners["termo-auth-state-change"]({ detail: {} });
+    app.listeners["termo-auth-state-change"]({ detail: {} });
+    resolveSession(recoveredSession);
+    await new Promise(resolve => setImmediate(resolve));
+    const events = name => app.calls().filter(c => c[0] === "event" && c[1] === name);
+    assert.equal(events("login_success").length, 1);
+    assert.equal(claims, 1);
+    assert.equal(events("sign_up").length, newlyCreated ? 1 : 0);
+    assert.equal(events("login_success")[0][2].campaign_name, "quantum_c18_validation");
+    // A repeated callback must not count; a new explicit login must still count.
+    app.listeners["termo-auth-state-change"]({ detail: { session: recoveredSession } });
+    assert.equal(events("login_success").length, 1);
+    app.sessionStorage.setItem("termo_auth_login_pending_v1", "1");
+    app.listeners["termo-auth-state-change"]({ detail: { session: recoveredSession } });
+    await new Promise(resolve => setImmediate(resolve));
+    assert.equal(events("login_success").length, 2);
+    assert.equal(claims, 2);
+    assert.equal(events("sign_up").length, newlyCreated ? 1 : 0);
+    assert.doesNotMatch(JSON.stringify(app.calls()), /private-user|private-token/);
+  }
+});
+
+test("a direct auth callback wins over an earlier pending session recovery", async () => {
+  const app = await boot({ decision: "granted", signupClaim: false });
+  const session = { user: { id: "private-user" }, access_token: "private-token" };
+  let resolveSession;
+  app.window.TermoAuth = { getSession: () => new Promise(resolve => { resolveSession = resolve; }) };
+  app.sessionStorage.setItem("termo_auth_login_pending_v1", "1");
+  app.listeners["termo-auth-state-change"]({ detail: {} });
+  app.listeners["termo-auth-state-change"]({ detail: { session } });
+  resolveSession(session);
+  await new Promise(resolve => setImmediate(resolve));
+  assert.equal(app.calls().filter(c => c[0] === "event" && c[1] === "login_success").length, 1);
+  assert.equal(app.requests.filter(r => r.endpoint.includes("claim_signup_measurement")).length, 1);
+});
