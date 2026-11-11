@@ -592,7 +592,8 @@
       session = await window.TermoAuth.getSession().catch(function () { return null; });
       hasUser = hasUser || Boolean(session?.user);
     }
-    if (!hasUser) return;
+    // Another callback may have consumed this login while getSession was pending.
+    if (!hasUser || storageGet("sessionStorage", LOGIN_PENDING_KEY) !== "1") return;
     storageRemove("sessionStorage", LOGIN_PENDING_KEY);
     track("login_success", { provider: "google" });
     if (!session?.access_token) return;
