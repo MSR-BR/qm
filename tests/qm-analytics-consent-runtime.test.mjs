@@ -4,6 +4,7 @@ import vm from "node:vm";
 import test from "node:test";
 
 const source = await readFile(new URL("../assets/qm-analytics.js", import.meta.url), "utf8");
+const registry = JSON.parse(await readFile(new URL("../data/qm-content-registry.json", import.meta.url), "utf8"));
 const KEY = "qm_campaign_attribution_v1";
 const decisionKey = "qm_analytics_consent_v1";
 const adsKey = "qm_ads_measurement_consent_v1";
@@ -34,6 +35,7 @@ async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", 
   Object.defineProperty(document, "cookie", { get: () => "_ga=private; _ga_X5Y1C68QMN=private; _gcl_aw=private; auth_session=private", set: value => deletions.push(value) });
   const window = {
     location: new URL(url), localStorage, sessionStorage, innerWidth: 400,
+    QMContentRegistry: registry,
     setTimeout: () => 1, clearTimeout() {}, setInterval() {}, requestAnimationFrame: fn => fn(),
     addEventListener: (name, fn) => { listeners[name] = fn; }, dispatchEvent() {}
   };
@@ -383,4 +385,60 @@ test("a direct auth callback wins over an earlier pending session recovery", asy
   await new Promise(resolve => setImmediate(resolve));
   assert.equal(app.calls().filter(c => c[0] === "event" && c[1] === "login_success").length, 1);
   assert.equal(app.requests.filter(r => r.endpoint.includes("claim_signup_measurement")).length, 1);
+});
+
+const readingConversion = "qm_ads_section_open";
+const paidLanding = "?utm_source=google&utm_medium=cpc&utm_campaign=quantum_international_en_search_pilot";
+const zeeman = "https://quantummechanicsbook.app/slides/chapter-07/application-magnetic-moment-and-zeeman-effect.html";
+const readingConversions = app => app.calls().filter(c => c[0] === "event" && c[1] === readingConversion);
+
+test("a consented Search visitor can start reading directly in chapter 7", async () => {
+  const app = await boot({ decision: "granted", ads: true, url: zeeman + paidLanding });
+  const [event] = readingConversions(app);
+  assert.equal(readingConversions(app).length, 1);
+  assert.equal(event[2].chapter_id, "07");
+  assert.equal(event[2].campaign_name, "quantum_international_en_search_pilot");
+  assert.equal(event[2].page_location, zeeman);
+  app.window.QMAnalytics.setConsent("granted", true);
+  assert.equal(readingConversions(app).length, 1);
+  await app.window.QMAnalytics.flush();
+  assert.equal(app.requests.some(r => r.options?.body?.includes(readingConversion)), false);
+});
+
+test("navigation preserves the Search context without using the generic per-tab section marker for Ads", async () => {
+  const landing = await boot({ decision: "granted", ads: true, url: "https://quantummechanicsbook.app/" + paidLanding });
+  assert.equal(readingConversions(landing).length, 0);
+  const first = await boot({ decision: "granted", ads: true, url: zeeman, session: landing.sessionStorage });
+  const reentry = await boot({ decision: "granted", ads: true, url: zeeman, session: landing.sessionStorage });
+  assert.equal(readingConversions(first).length, 1);
+  assert.equal(readingConversions(reentry).length, 1);
+  assert.equal(reentry.calls().some(c => c[1] === "section_open"), false);
+});
+
+test("only published production sections with both consents and the allowed Search context qualify", async () => {
+  for (const options of [
+    { url: zeeman, ads: true },
+    { url: zeeman + paidLanding, ads: false },
+    { url: zeeman + paidLanding, ads: true, decision: "denied" },
+    { url: zeeman.replace("chapter-07", "chapter-08") + paidLanding, ads: true },
+    { url: "https://quantummechanicsbook.app/simulators/example.html" + paidLanding, ads: true },
+    { url: zeeman.replace("quantummechanicsbook.app", "preview.example.org") + paidLanding + "&analytics_debug=1", ads: true },
+    { url: zeeman + paidLanding.replace("international", "uk_ie"), ads: true }
+  ]) {
+    assert.equal(readingConversions(await boot({ decision: "granted", ...options })).length, 0);
+  }
+  const landing = await boot({ decision: "granted", ads: true, url: "https://quantummechanicsbook.app/" + paidLanding });
+  landing.window.QMAnalytics.setConsent("granted", false);
+  const next = await boot({ url: zeeman, local: landing.localStorage, session: landing.sessionStorage });
+  assert.equal(readingConversions(next).length, 0);
+});
+
+test("QA and debug exclusion survives navigation even if a later URL carries the paid UTM", async () => {
+  for (const tag of ["?utm_source=codex_qa&utm_medium=qa&utm_campaign=quantum_c18_validation",
+    "?utm_source=qa&utm_medium=internal&utm_campaign=qa_signup_c001_c011", paidLanding + "&analytics_debug=1"]) {
+    const landing = await boot({ decision: "granted", ads: true, url: "https://quantummechanicsbook.app/" + tag });
+    const next = await boot({ decision: "granted", ads: true, url: zeeman + paidLanding, session: landing.sessionStorage });
+    assert.equal(readingConversions(next).length, 0);
+    assert.equal(next.calls().filter(c => c[0] === "event" && c[1] === "section_open").length, 1);
+  }
 });
