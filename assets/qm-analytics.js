@@ -10,6 +10,7 @@
   const CONSENT_VERSION = "qm-analytics-consent-v1";
   const ADS_CONSENT_KEY = "qm_ads_measurement_consent_v1";
   const ATTRIBUTION_KEY = "qm_campaign_attribution_v1";
+  const ADS_QA_SESSION_KEY = "qm_ads_qa_session_v1";
   const COMPLETION_KEY_PREFIX = "qm_analytics_completed_v1:";
   const ATTRIBUTION_TTL_MS = 30 * 60 * 1000;
   const PRODUCTION_HOST = "quantummechanicsbook.app";
@@ -55,6 +56,7 @@
   let googleTagConfigured = false;
   let analyticsEnabled = false;
   let booted = false;
+  let adsSectionSent = false;
   let searchTimer = null;
   const completedSections = new Set();
 
@@ -349,6 +351,19 @@
     }
   }
 
+  function isAdsQaSession() {
+    const params = new URLSearchParams(window.location.search);
+    const source = (params.get("utm_source") || "").toLowerCase();
+    const medium = (params.get("utm_medium") || "").toLowerCase();
+    const campaign = (params.get("utm_campaign") || "").toLowerCase();
+    const marked = isDebugMode() ||
+      ["codex_qa", "codex_validation", "mapa_team", "qa"].includes(source) ||
+      ["qa", "internal"].includes(medium) ||
+      ["quantum_c18_validation", "qa_signup_c001_c011"].includes(campaign);
+    if (marked) storageSet("sessionStorage", ADS_QA_SESSION_KEY, "1");
+    return marked || storageGet("sessionStorage", ADS_QA_SESSION_KEY) === "1";
+  }
+
   function runtimeIsAllowed(config) {
     const expectedHost = String(config?.productionHost || PRODUCTION_HOST).toLowerCase();
     return window.location.hostname.toLowerCase() === expectedHost || isDebugMode();
@@ -400,6 +415,24 @@
       ...googlePageContext(),
       send_to: analyticsConfig.measurementId,
       debug_mode: isDebugMode()
+    });
+  }
+
+  function trackAdsSectionOpen(context) {
+    if (adsSectionSent || !googleTagConfigured || !adsConsent || consentDecision !== "granted") return;
+    if (window.location.hostname !== PRODUCTION_HOST || isAdsQaSession()) return;
+    if (window.QMContentRegistry?.chapters?.[context.chapter_id]?.availability !== "published") return;
+
+    const pageContext = googlePageContext();
+    if (pageContext.campaign_source !== "google" || pageContext.campaign_medium !== "cpc" ||
+        pageContext.campaign_name !== "quantum_international_en_search_pilot") return;
+
+    // Deduplicate activation calls for this document. GA4 counts one key event per session.
+    adsSectionSent = true;
+    window.gtag("event", "qm_ads_section_open", {
+      ...cleanProperties("section_open", context),
+      ...pageContext,
+      send_to: analyticsConfig.measurementId
     });
   }
 
@@ -537,6 +570,7 @@
         storageSet("sessionStorage", sectionKey, "1");
         track("section_open", context);
       }
+      trackAdsSectionOpen(context);
     }
 
     const simulatorId = inferSimulatorId();
@@ -728,6 +762,7 @@
   function bindEvents() {
     let lastPagePath = safePath();
     function renewNavigationAttribution() {
+      isAdsQaSession();
       const path = safePath();
       if (path === lastPagePath) return;
       lastPagePath = path;
@@ -773,6 +808,7 @@
   async function boot() {
     if (booted) return;
     booted = true;
+    isAdsQaSession();
     ensureStyle();
     bindEvents();
 
