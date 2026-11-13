@@ -532,3 +532,35 @@ mjx-container,
     min-width:560px;
   }
 }
+
+.termo-auth-email-form {
+  display: grid;
+  width: 100%;
+  gap: 10px;
+}
+
+.termo-auth-email-form label {
+  color: #334155;
+  font-size: .92rem;
+}
+
+.termo-auth-email-form input {
+  display: block;
+  width: 100%;
+  margin-top: 4px;
+  padding: 10px 12px;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  background: #fff;
+  color: #0f172a;
+  font: inherit;
+}
+
+.termo-auth-email-form [data-email-retry] {
+  justify-self: start;
+  border: 0;
+  background: transparent;
+  color: #0b5ea8;
+  text-decoration: underline;
+  cursor: pointer;
+}

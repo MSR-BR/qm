@@ -32,6 +32,7 @@
   ],
   "functions": [
         {"name":"public.claim_signup_measurement","consumers":["authenticated browser after analytics consent"],"roles":{"authenticated":["execute"]},"decision":"one-shot own-user claim without identifier","grantMigration":"20261102144931_signup_event_claim.sql"},
+        {"name":"public.claim_email_signup_measurement","consumers":["authenticated browser after analytics consent and code verification"],"roles":{"authenticated":["execute"]},"decision":"one-shot claim for the current user and first email confirmation session without returning identifiers","grantMigration":"20261113231256_qm_email_signup_measurement.sql"},
         {"name":"public.signup_measurement_available","consumers":["authenticated eligibility check"],"roles":{"authenticated":["execute"]},"decision":"read-only own-user eligibility","grantMigration":"20261102144931_signup_event_claim.sql"},
         {"name":"public.set_qm_saved_exercises_updated_at","consumers":["database trigger"],"roles":{},"decision":"not exposed as RPC","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},
         {"name":"public.set_qm_exercise_validation_reports_updated_at","consumers":["database trigger"],"roles":{},"decision":"not exposed as RPC","grantMigration":"20260925215027_explicit_data_api_privileges.sql"},

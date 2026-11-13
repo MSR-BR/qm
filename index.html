@@ -2603,11 +2603,11 @@
                     </span>
                   </a>
                 </div>
-                <div class="sidebar-helper" id="personalHint">Sign in with Google to enable your personal area.</div>
+                <div class="sidebar-helper" id="personalHint">Sign in to enable your personal area.</div>
                 <div class="personal-drawer-actions" id="personalDrawerActions">
                   <a class="drawer-inline-action" href="#" data-landing-login-target="/?view=favorites">
                     <i class="fa-brands fa-google"></i>
-                    <span>Sign in with Google</span>
+                    <span>Sign in</span>
                   </a>
                 </div>
               </div>
@@ -3861,13 +3861,13 @@
 
       personalHint.textContent = state.loggedIn
         ? "Your personal area is active. The subtopics above open your history and saved shortcuts."
-        : "Sign in with Google to enable your personal area.";
+        : "Sign in to enable your personal area.";
 
       if (!state.loggedIn) {
         const loginButton = document.createElement("button");
         loginButton.type = "button";
         loginButton.className = "drawer-inline-action";
-        loginButton.innerHTML = `<i class="fa-brands fa-google"></i><span>Sign in with Google</span>`;
+        loginButton.innerHTML = `<i class="fa-solid fa-right-to-bracket"></i><span>Sign in</span>`;
         loginButton.addEventListener("click", function () {
           closeDrawer();
           ensureAuthModules().then(function (modules) {
@@ -4992,7 +4992,7 @@
       panelActions.innerHTML = "";
 
       if (!state.loggedIn) {
-        topicContainer.innerHTML = '<div class="empty-state"><strong>Sign in with Google to save your study journey.</strong><br />Your reading record, completion state and continuation point remain private to your account.<br /><br /><button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button"><i class="fa-solid fa-bookmark"></i> Sign in to enable Study journey</button></div>';
+        topicContainer.innerHTML = '<div class="empty-state"><strong>Sign in to save your study journey.</strong><br />Your reading record, completion state and continuation point remain private to your account.<br /><br /><button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button"><i class="fa-solid fa-bookmark"></i> Sign in to enable Study journey</button></div>';
         attachCommonHandlers(topicContainer);
         return;
       }
@@ -5199,7 +5199,7 @@
       if (!state.loggedIn) {
         topicContainer.innerHTML = `
           <div class="empty-state">
-            <strong>Sign in with Google to view your exercises.</strong><br />
+            <strong>Sign in to view your exercises.</strong><br />
             Once you sign in, this tab will list everything generated during your study.<br /><br />
             <button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button">
               <i class="fa-solid fa-bookmark"></i>
@@ -5263,7 +5263,7 @@
       if (!state.loggedIn) {
         topicContainer.innerHTML = `
           <div class="empty-state">
-            <strong>Sign in with Google to enable your favorites.</strong><br />
+            <strong>Sign in to enable your favorites.</strong><br />
             After signing in, you can save specific course items and return to them directly from here.<br /><br />
             <button class="saved-card__button saved-card__button--primary" data-role="open-login" type="button">
               <i class="fa-solid fa-star"></i>
@@ -5308,7 +5308,7 @@
       if (!state.loggedIn) {
         topicContainer.innerHTML = `
           <div class="empty-state">
-            <strong>Sign in with Google to review validations.</strong><br />
+            <strong>Sign in to review validations.</strong><br />
             This area is restricted to the professor responsible for the material.
           </div>
         `;

@@ -25,6 +25,7 @@
   const AUTH_SITE_URL = /^(http|https):$/i.test(window.location.protocol)
     ? window.location.origin
     : DEFAULT_AUTH_SITE_URL;
+  const LOGIN_PENDING_KEY = "termo_auth_login_pending_v1";
   const LANDING_LOGIN_TARGET_KEY = "termoLandingPostLoginTarget";
   const EXERCISE_GENERATION_ENABLED = true;
   const PROGRESS_METADATA_KEYS = {
@@ -264,14 +265,14 @@
       return {
         kicker: "Optional access",
         title: "Save your page bookmark",
-        copy: "Sign in with Google to save your page bookmark and favorite items without blocking the content."
+        copy: "Sign in to save your page bookmark and favorite items without blocking the content."
       };
     }
 
     return {
       kicker: "Optional access",
       title: "Continue this study later",
-      copy: `Sign in with Google to save this page bookmark for ${title} and resume exactly here whenever you want.`
+      copy: `Sign in to save this page bookmark for ${title} and resume exactly here whenever you want.`
     };
   }
 
@@ -405,7 +406,7 @@
             <li><i class="fa-solid fa-star"></i><span>Keep exercises and favorites.</span></li>
           </ul>
           <div class="termo-auth-panel" data-termo-auth-panel></div>
-          <div class="termo-auth-status" data-termo-auth-status></div>
+          <div class="termo-auth-status" data-termo-auth-status role="status"></div>
         </div>
       </div>
     `;
@@ -567,21 +568,31 @@
     return `
       <div class="termo-auth-panel-title">Login ready to be activated</div>
       <div class="termo-auth-panel-copy">
-        The content remains open. When the public keys are configured in Vercel, this modal will offer Google access without interrupting reading.
+        The content remains open. When the public keys are configured in Vercel, this modal will offer account access without interrupting reading.
       </div>
       <div class="termo-auth-muted">
-        Expected variables: <code>PUBLIC_SUPABASE_URL</code>, <code>PUBLIC_SUPABASE_PUBLISHABLE_KEY</code>, and <code>PUBLIC_GOOGLE_CLIENT_ID</code>.
+        Configure the public Supabase URL and key and enable a sign-in method.
       </div>
     `;
   }
 
-  function buildSignedOutPanel() {
+  function buildSignedOutPanel(config) {
     return `
       <div class="termo-auth-actions">
-        <button type="button" class="termo-auth-google-button" data-termo-auth-google-button>
+        ${config.googleClientId ? `<button type="button" class="termo-auth-google-button" data-termo-auth-google-button>
           <span class="termo-auth-google-icon" aria-hidden="true">G</span>
           <span>Sign in with Google</span>
-        </button>
+        </button>` : ""}
+        ${config.emailSignInEnabled ? `
+          <form class="termo-auth-email-form" data-termo-auth-email-form>
+            <label>Email address <input type="email" name="email" autocomplete="email" required></label>
+            <label hidden>Six-digit code
+              <input type="text" name="code" inputmode="numeric" autocomplete="one-time-code"
+                pattern="[0-9]{6}" maxlength="6" disabled>
+            </label>
+            <button type="submit" class="termo-auth-google-button">Send sign-in code</button>
+            <button type="button" data-email-retry hidden>Use a different email or resend</button>
+          </form>` : ""}
       </div>
     `;
   }
@@ -657,6 +668,75 @@
     }
   }
 
+  function bindEmailSignIn(form) {
+    const email = form.elements.namedItem("email");
+    const code = form.elements.namedItem("code");
+    const submit = form.querySelector("[type=submit]");
+    const retry = form.querySelector("[data-email-retry]");
+
+    function showCodeEntry(waitingForCode) {
+      email.readOnly = waitingForCode;
+      code.disabled = !waitingForCode;
+      code.required = waitingForCode;
+      code.parentElement.hidden = !waitingForCode;
+      submit.textContent = waitingForCode ? "Verify and sign in" : "Send sign-in code";
+      retry.hidden = !waitingForCode;
+    }
+
+    retry.addEventListener("click", function () {
+      code.value = "";
+      showCodeEntry(false);
+      setStatus("");
+      email.focus();
+    });
+
+    form.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      if (submit.disabled) return;
+      const address = email.value.trim();
+      const verifying = !code.disabled;
+      submit.disabled = true;
+      retry.disabled = true;
+      email.readOnly = true;
+      setStatus(verifying ? "Verifying your code…" : "Sending your code…");
+      try {
+        const supabase = await ensureSupabase();
+        if (!supabase) throw new Error("Authentication unavailable.");
+        if (verifying) {
+          try {
+            window.sessionStorage.removeItem(LOGIN_PENDING_KEY);
+          } catch (_error) {
+            // Storage restrictions must not interrupt sign-in.
+          }
+          const { data, error } = await supabase.auth.verifyOtp({ email: address, token: code.value, type: "email" });
+          if (error || !data?.session) throw error || new Error("Session unavailable.");
+          code.value = "";
+          window.dispatchEvent(new CustomEvent("qm-email-sign-in-confirmed", {
+            detail: { session: data.session }
+          }));
+          await refreshSession();
+          setStatus("");
+          closeModal();
+        } else {
+          const { error } = await supabase.auth.signInWithOtp({ email: address });
+          if (error) throw error;
+          showCodeEntry(true);
+          setStatus("Check your inbox for a six-digit code.");
+          code.focus();
+        }
+      } catch (error) {
+        const rateLimited = error?.status === 429;
+        setStatus(rateLimited ? "Wait a moment before trying again." : verifying
+          ? "That code could not be verified. Check the code or request a new one."
+          : "Could not send a code right now. Try again shortly.", true);
+      } finally {
+        submit.disabled = false;
+        retry.disabled = false;
+        email.readOnly = !code.disabled;
+      }
+    });
+  }
+
   async function hydrateModal() {
     const modal = ensureModal();
     const panel = modal.querySelector("[data-termo-auth-panel]");
@@ -709,7 +789,9 @@
       return;
     }
 
-    panel.innerHTML = buildSignedOutPanel();
+    panel.innerHTML = buildSignedOutPanel(config);
+    const emailForm = panel.querySelector("[data-termo-auth-email-form]");
+    if (emailForm) bindEmailSignIn(emailForm);
     const googleButton = panel.querySelector("[data-termo-auth-google-button]");
 
     if (googleButton) {

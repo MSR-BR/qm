@@ -44,7 +44,7 @@ async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", 
     fetch: async (endpoint, options) => {
       requests.push({ endpoint, options });
       if (endpoint.includes("analytics-event") && eventFetch) return eventFetch();
-      if (endpoint.includes("claim_signup_measurement")) return { ok: true, json: async () => typeof signupClaim === "function" ? signupClaim() : signupClaim };
+      if (endpoint.includes("claim_signup_measurement") || endpoint.includes("claim_email_signup_measurement")) return { ok: true, json: async () => typeof signupClaim === "function" ? signupClaim() : signupClaim };
       return { ok: true, json: async () => ({ ...(signupClaim !== undefined ? {supabaseUrl: "https://example.supabase.co", supabasePublishableKey: "public-key"} : {}), analytics: { enabled: true, measurementId: "G-X5Y1C68QMN", productionHost: "quantummechanicsbook.app" } }) };
     }
   });
@@ -440,5 +440,23 @@ test("QA and debug exclusion survives navigation even if a later URL carries the
     const next = await boot({ decision: "granted", ads: true, url: zeeman + paidLanding, session: landing.sessionStorage });
     assert.equal(readingConversions(next).length, 0);
     assert.equal(next.calls().filter(c => c[0] === "event" && c[1] === "section_open").length, 1);
+  }
+});
+
+test("email verification uses its own claim and generic session callbacks do not duplicate the login", async () => {
+  for (const [decision, claim] of [["granted", true], ["granted", false], ["denied", true]]) {
+    const app = await boot({ decision, signupClaim: claim });
+    const session = { user: { email: "private@example.org", id: "private-user" }, access_token: "private-token" };
+    const event = { detail: { session } };
+    app.listeners["qm-email-sign-in-confirmed"](event);
+    app.listeners["termo-auth-state-change"](event);
+    app.listeners["termo-auth-state-change"](event);
+    await new Promise(resolve => setImmediate(resolve));
+    const authEvents = app.calls().filter(call => call[0] === "event" && ["sign_up", "login_success"].includes(call[1]));
+    const expected = decision === "granted" ? [["login_success", "email"]] : [];
+    if (decision === "granted" && claim) expected.push(["sign_up", "Email"]);
+    assert.deepEqual(Array.from(authEvents, call => [call[1], call[2].provider || call[2].method]), expected);
+    assert.equal(app.requests.filter(r => r.endpoint.endsWith("/claim_email_signup_measurement")).length, decision === "granted" ? 1 : 0);
+    assert.doesNotMatch(JSON.stringify(app.calls()), /private@example.org|private-user|private-token/);
   }
 });

@@ -4,6 +4,8 @@
   const TABLE_NAME = "qm_study_progress";
   let currentItem = null;
   let control = null;
+  let displayedUserId;
+  let refreshVersion = 0;
 
   function escapeHtml(value) {
     return String(value || "")
@@ -139,7 +141,9 @@
     control.querySelector("button").addEventListener("click", async function () {
       const button = control.querySelector("button");
       button.disabled = true;
+      const version = refreshVersion;
       const result = await setCompletion(currentItem, !completed);
+      if (version !== refreshVersion) return;
       button.disabled = false;
       if (result.ok) {
         renderControl(result.record);
@@ -147,6 +151,34 @@
         control.querySelector(".qm-progress-control__copy span").textContent = "Could not save your progress. Please check your connection and try again.";
       }
     });
+  }
+
+  async function refreshControl(session) {
+    const userId = session?.user?.id || null;
+    if (displayedUserId === userId) return;
+    displayedUserId = userId;
+    const version = ++refreshVersion;
+
+    if (!userId) {
+      control.innerHTML = '<div class="qm-progress-control__copy"><strong>Track your progress</strong><span>Reading is open to everyone. Sign in to save this section as completed.</span></div>' +
+        '<button type="button" class="qm-progress-control__button">Sign in to save progress</button>';
+      control.querySelector("button").addEventListener("click", function () {
+        if (typeof window.TermoAuth?.openModal === "function") {
+          window.QMAnalytics?.track?.("auth_open", { surface: "header" });
+          window.TermoAuth.openModal();
+        } else control.querySelector(".qm-progress-control__copy span").textContent = "Sign-in is unavailable right now. You can still read this section.";
+      });
+      return;
+    }
+
+    control.textContent = "Loading your study progress…";
+    const result = await recordOpen(currentItem);
+    if (version !== refreshVersion) return;
+    if (!result.ok) {
+      control.innerHTML = '<div class="qm-progress-control__copy"><strong>Study progress unavailable</strong><span>Could not load your progress. Refresh the page to try again; you can still read this section.</span></div>';
+      return;
+    }
+    renderControl(result.record);
   }
 
   async function mount() {
@@ -161,24 +193,10 @@
     header.appendChild(control);
 
     const session = await getSession();
-    if (!session?.user) {
-      control.innerHTML = '<div class="qm-progress-control__copy"><strong>Track your progress</strong><span>Reading is open to everyone. Sign in to save this section as completed.</span></div>' +
-        '<button type="button" class="qm-progress-control__button">Sign in to save progress</button>';
-      control.querySelector("button").addEventListener("click", function () {
-        if (typeof window.TermoAuth?.openModal === "function") {
-          window.QMAnalytics?.track?.("auth_open", { surface: "header" });
-          window.TermoAuth.openModal();
-        } else control.querySelector(".qm-progress-control__copy span").textContent = "Sign-in is unavailable right now. You can still read this section.";
-      });
-      return;
-    }
-
-    const result = await recordOpen(currentItem);
-    if (!result.ok) {
-      control.innerHTML = '<div class="qm-progress-control__copy"><strong>Study progress unavailable</strong><span>Could not load your progress. Refresh the page to try again; you can still read this section.</span></div>';
-      return;
-    }
-    renderControl(result.record);
+    window.addEventListener("termo-auth-state-change", function (event) {
+      void refreshControl(event.detail?.session);
+    });
+    await refreshControl(session);
   }
 
   async function boot() {

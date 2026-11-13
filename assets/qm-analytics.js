@@ -629,13 +629,19 @@
     // Another callback may have consumed this login while getSession was pending.
     if (!hasUser || storageGet("sessionStorage", LOGIN_PENDING_KEY) !== "1") return;
     storageRemove("sessionStorage", LOGIN_PENDING_KEY);
-    track("login_success", { provider: "google" });
+    await measureSignIn(session, "google");
+  }
+
+  async function measureSignIn(session, provider) {
+    if (!analyticsEnabled || consentDecision !== "granted") return;
+    track("login_success", { provider });
     if (!session?.access_token) return;
     const epoch = consentEpoch;
     try {
       const config = await getPublicConfig();
       if (consentDecision !== "granted" || epoch !== consentEpoch || !config?.supabaseUrl || !config?.supabasePublishableKey) return;
-      const response = await fetch(String(config.supabaseUrl).replace(/\/$/, "") + "/rest/v1/rpc/claim_signup_measurement", {
+      const claim = provider === "email" ? "claim_email_signup_measurement" : "claim_signup_measurement";
+      const response = await fetch(String(config.supabaseUrl).replace(/\/$/, "") + "/rest/v1/rpc/" + claim, {
         method: "POST",
         headers: { "Content-Type": "application/json", apikey: config.supabasePublishableKey, Authorization: "Bearer " + session.access_token },
         body: "{}"
@@ -643,7 +649,7 @@
       if (!response.ok) return;
       const claimed = await response.json();
       if (claimed === true && consentDecision === "granted" && epoch === consentEpoch) {
-        track("sign_up", { method: "Google" });
+        track("sign_up", { method: provider === "email" ? "Email" : "Google" });
       }
     } catch (_error) {
       // Signup measurement must never interrupt login.
@@ -787,6 +793,10 @@
     });
     document.addEventListener("click", handleClick, true);
     document.addEventListener("input", handleSearchInput, true);
+    window.addEventListener("qm-email-sign-in-confirmed", function (event) {
+      storageRemove("sessionStorage", LOGIN_PENDING_KEY);
+      void measureSignIn(event.detail?.session, "email");
+    });
     window.addEventListener("termo-auth-state-change", function (event) {
       void detectPendingLogin(event);
     });

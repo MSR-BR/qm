@@ -226,3 +226,9 @@ test("public config exposes only a validated Measurement ID", async function () 
   assert.equal(disabled.body.analytics.enabled, false);
   assert.equal(disabled.body.analytics.measurementId, "");
 });
+
+test("auth event normalization keeps only the allowed sign-in method", () => {
+  const properties = { method: "Email", provider: "email", email: "private@example.org", code: "123456" };
+  assert.deepEqual(normalizeAnalyticsEvent({ eventName: "sign_up", properties }).properties, { method: "email" });
+  assert.deepEqual(normalizeAnalyticsEvent({ eventName: "login_success", properties }).properties, { provider: "email" });
+});
