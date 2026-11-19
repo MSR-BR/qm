@@ -52,7 +52,7 @@ async function boot({ decision, ads, url = "https://quantummechanicsbook.app/", 
   await new Promise(resolve => setImmediate(resolve));
   const calls = () => (window.dataLayer || []).map(args => Array.from(args));
   const config = () => calls().filter(call => call[0] === "config").at(-1)?.[2];
-  return { window, document, localStorage, sessionStorage, listeners, nodes, requests, deletions, calls, config };
+  return { window, document, localStorage, sessionStorage, listeners, nodes, requests, deletions, calls, config, Element: context.Element };
 }
 
 test("signup needs consent and a first-signup claim, without sending identity to Google", async () => {
@@ -458,5 +458,28 @@ test("email verification uses its own claim and generic session callbacks do not
     assert.deepEqual(Array.from(authEvents, call => [call[1], call[2].provider || call[2].method]), expected);
     assert.equal(app.requests.filter(r => r.endpoint.endsWith("/claim_email_signup_measurement")).length, decision === "granted" ? 1 : 0);
     assert.doesNotMatch(JSON.stringify(app.calls()), /private@example.org|private-user|private-token/);
+  }
+});
+
+
+test("home primary reading CTA is measured only with consent and never tracks external lookalikes", async () => {
+  for (const [decision, href, expected] of [
+    ["granted", "/slides/chapter-01/why-old-quantum-physics-matters.html", 1],
+    ["denied", "/slides/chapter-01/why-old-quantum-physics-matters.html", 0],
+    ["granted", "https://example.org/slides/chapter-01/why-old-quantum-physics-matters.html", 0],
+    ["granted", "/slides/chapter-01/another.html", 0]
+  ]) {
+    const app = await boot({ decision, url: "https://quantummechanicsbook.app/home.html" });
+    const link = new app.Element();
+    link.closest = selector => selector === "a[href]" ? link : null;
+    link.getAttribute = name => name === "href" ? href : null;
+    link.classList = { contains: () => false };
+    app.listeners["document:click"]({ target: link });
+    const events = app.calls().filter(call => call[0] === "event" && call[1] === "home_study_cta_click");
+    assert.equal(events.length, expected);
+    if (expected) {
+      assert.equal(events[0][2].destination, "section");
+      assert.equal(events[0][2].chapter_id, "01");
+    }
   }
 });

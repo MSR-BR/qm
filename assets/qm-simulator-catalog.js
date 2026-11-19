@@ -12,7 +12,7 @@
   if (!assetBase) return;
   const script = document.createElement("script");
   script.defer = true;
-  script.src = new URL("qm-analytics.js?v=20261102.1", assetBase).toString();
+  script.src = new URL("qm-analytics.js?v=20261119.2", assetBase).toString();
   script.dataset.qmAnalyticsLoader = "true";
   document.head.appendChild(script);
 })();

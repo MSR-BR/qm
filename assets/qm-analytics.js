@@ -741,11 +741,12 @@
     if (window.location.pathname.endsWith("/home.html")) {
       let destination = null;
       try { destination = new URL(href, window.location.href); } catch (_error) { destination = null; }
-      if (destination && destination.hostname === window.location.hostname && ["/", "/index.html"].includes(destination.pathname)) {
+      const firstSection = destination?.pathname === "/slides/chapter-01/why-old-quantum-physics-matters.html";
+      if (destination && destination.origin === window.location.origin && (["/", "/index.html"].includes(destination.pathname) || firstSection)) {
         track("home_study_cta_click", {
           surface: link.classList.contains("nav-link") ? "navigation" : "hero",
-          destination: destination.searchParams.get("view") || "chapters",
-          chapter_id: destination.searchParams.get("chapter") || ""
+          destination: firstSection ? "section" : (destination.searchParams.get("view") || "chapters"),
+          chapter_id: firstSection ? "01" : (destination.searchParams.get("chapter") || "")
         });
       }
     }
